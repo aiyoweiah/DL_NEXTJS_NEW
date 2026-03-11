@@ -97,8 +97,8 @@ function Wordmark() {
         Plain <img> — Next.js <Image> overrides inline height via its own
         sizing logic, making pixel-level control impossible for SVGs.
         SVGs get zero optimisation benefit from <Image> anyway.
-        height/width here are CSS values, not intrinsic dimensions.
       */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/logo-dark.svg"
         alt="DODO Learning"
