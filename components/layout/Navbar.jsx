@@ -94,16 +94,33 @@ function Wordmark() {
       aria-label="DODO Learning — home"
     >
       {/*
-        Plain <img> — Next.js <Image> overrides inline height via its own
-        sizing logic, making pixel-level control impossible for SVGs.
-        SVGs get zero optimisation benefit from <Image> anyway.
+        Hard-clamped wrapper: 28px tall, overflow hidden.
+        The container is the constraint — nothing inside can exceed it.
+        CSS class and inline style both fight base-layer resets on <img>.
+        A fixed-height parent with overflow:hidden is unconditional.
       */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src="/logo-dark.svg"
-        alt="DODO Learning"
-        className="nav-logo"
-      />
+      <div
+        style={{
+          height:   '28px',
+          overflow: 'hidden',
+          display:  'flex',
+          alignItems: 'center',
+          flexShrink: 0,
+        }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/logo-dark.svg"
+          alt="DODO Learning"
+          style={{
+            height:    '28px',
+            width:     'auto',
+            maxHeight: '28px',
+            display:   'block',
+            flexShrink: 0,
+          }}
+        />
+      </div>
     </Link>
   )
 }

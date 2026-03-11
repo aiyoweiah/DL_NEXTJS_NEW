@@ -225,6 +225,15 @@
     display: block;
   }
 
+  /* Nav logo — must never be overridden by the height:auto reset above.
+     Scoped to .nav so it only fires inside the navbar. */
+  .nav img {
+    height: 28px !important;
+    width: auto !important;
+    max-height: 28px !important;
+    max-width: none !important;
+  }
+
   /* ── HR ── */
   hr {
     border: none;
