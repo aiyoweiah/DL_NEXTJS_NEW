@@ -1,21 +1,20 @@
 // app/[locale]/about/page.jsx
 //
-// /about — Brand story, Think Once philosophy, Who We Serve
-// SEO Priority: Medium
+// /about — Direct translation of Figma variant-b.tsx into project patterns.
 //
-// Section rhythm (matches homepage alternating cadence):
-//   1. AboutHero       — LIGHT  (#F5F5FF)  — brand statement, credentialed entry
-//   2. TheNameSection  — DARK   (#212830)  — DO + DO architecture, weight + gravitas
-//   3. ThreeTruths     — LIGHT  (#F5F5FF)  — 3 brand truth cards, airy
-//   4. WhoWeServe      — WHITE  (#ffffff)  — 3-column family profiles, breathing room
-//   5. MissionSection  — DARK   (#212830)  — full brand narrative, authoritative
-//   6. ThinkOnceStamp  — DARKER (#0E0E12)  — deepest conversion closing
-//
-// Colour rhythm: Light → Dark → Light → White → Dark → Darkest
-// No two same-tone sections adjacent. Matches homepage cadence.
+// Figma section order (preserved exactly):
+//   1. Hero              — #0E0E12  full-bleed dark, 3-col text + 2-col video panel
+//   2. TheNameSection    — #0E0E12→#212830 gradient, text left + circular Do+Do right
+//   3. WhatWeBelieve     — #F5F5FF  horizontal row layout (NOT cards), 3 beliefs
+//   4. TheLoop           — #212830  4-col steps with connecting line + icons
+//   5. WhoNavigatorsAre  — #F5F5FF  2-col: image left w/ chip, text right + trait pills
+//   6. FamiliesWeServe   — #0E0E12  3-col image cards, italic Gilt quote
+//   7. ClosingStamp      — gradient dark, split h2 with gradient text
 //
 // Pure server component. Zero 'use client'.
-// Content hardcoded with migration comments for content/en/about.json.
+// Framer-motion animations replaced with CSS (no client bundle).
+// Images: placeholder divs — swap for <Image> once next.config.js allows
+//   images.unsplash.com or client provides production assets.
 
 import Link from 'next/link'
 import { buildMetadata } from '@/lib/metadata'
@@ -32,98 +31,249 @@ export const metadata = buildMetadata({
 })
 
 // ═══════════════════════════════════════════════════════════════
-// SECTION 1 — ABOUT HERO
+// SHARED — BilingualHeading
 // ═══════════════════════════════════════════════════════════════
-// LIGHT section — Whisper (#F5F5FF) with lavender ambient glow.
-// H1 on light = Deep Void (#212830). Lavender accent on key phrase.
-// Mirrors Hero pattern from homepage but tighter — not full-viewport.
+// Figma: BilingualHeadingB component
+//   h2 (light=false → #0E0E12 | light=true → #F0F0F0)
+//   Chinese subtitle always in #b7b5fe, fontSize 16, font-cjk
+//   center prop applies text-center to wrapper
 
-function AboutHero() {
+function BilingualHeading({ en, cn, light = false, center = false }) {
+  return (
+    <div className={center ? 'text-center' : ''}>
+      <h2
+        style={{
+          fontSize: 'clamp(1.5rem, 3vw, 2.25rem)',
+          fontWeight: 600,
+          lineHeight: 1.2,
+          color: light ? '#F0F0F0' : '#0E0E12',
+        }}
+      >
+        {en}
+      </h2>
+      <p
+        className="mt-2"
+        style={{
+          fontFamily: 'var(--font-cjk)',
+          fontSize: '16px',
+          fontWeight: 500,
+          color: '#b7b5fe',
+        }}
+      >
+        {cn}
+      </p>
+    </div>
+  )
+}
+
+// ═══════════════════════════════════════════════════════════════
+// SECTION 1 — HERO
+// ═══════════════════════════════════════════════════════════════
+// Figma: bg-[#0E0E12], min-h-screen, items-center
+//   gradient overlay: bg-gradient-to-b from-[#b7b5fe]/5 via-transparent to-transparent
+//   max-w-7xl mx-auto px-6 lg:px-10, pt-32 pb-20
+//   grid lg:grid-cols-5 gap-12 items-center
+// Left (lg:col-span-3): badge → h1 (weight 300, #b7b5fe speak, #F5C842 thinks)
+//   → Chinese subtitle #b7b5fe/50 → body #F0F0F0/50
+// Right (lg:col-span-2): aspect-[3/4] rounded-3xl, Gilt play button, label
+
+function Hero() {
   return (
     <section
-      className="section-light relative overflow-hidden"
+      className="relative overflow-hidden"
       aria-labelledby="about-hero-heading"
+      style={{
+        backgroundColor: '#0E0E12',
+        minHeight: '100dvh',
+        display: 'flex',
+        alignItems: 'center',
+      }}
     >
-      {/* Ambient lavender glow — top-right, same as homepage hero */}
+      {/* Figma: bg-gradient-to-b from-[#b7b5fe]/5 via-transparent to-transparent */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            'radial-gradient(ellipse 55% 60% at 75% 35%, rgba(183,181,254,0.18) 0%, transparent 65%)',
+            'linear-gradient(to bottom, rgba(183,181,254,0.05) 0%, transparent 50%)',
         }}
       />
 
-      <div className="container-section relative z-10">
-        <div className="max-w-3xl">
+      <div
+        className="container-section relative z-10 w-full"
+        style={{
+          paddingTop:    'calc(var(--nav-height-md) + 3.5rem)',
+          paddingBottom: '5rem',
+        }}
+      >
+        {/* Figma: grid lg:grid-cols-5 gap-12 items-center */}
+        <div className="grid lg:grid-cols-5 gap-12 items-center">
 
-          {/* Eyebrow */}
-          {/* migrate → content/en/about.json > hero.eyebrow */}
-          <p className="eyebrow mb-6">About DODO Learning</p>
+          {/* ── Left — lg:col-span-3 ── */}
+          <div className="lg:col-span-3">
 
-          {/* H1 — diagnoses what DODO is, not just names the company */}
-          {/* migrate → content/en/about.json > hero.heading */}
-          <h1
-            id="about-hero-heading"
-            className="mb-8"
-            style={{ color: '#212830' }}
-          >
-            We don&rsquo;t teach English.{' '}
-            <br className="hidden sm:block" />
-            We build{' '}
-            <span style={{ color: '#b7b5fe' }}>Bilingual Thinkers.</span>
-          </h1>
-
-          {/* Differentiator — one true sentence */}
-          {/* migrate → content/en/about.json > hero.differentiator */}
-          <p
-            className="text-lg md:text-xl leading-relaxed max-w-2xl mb-6"
-            style={{ color: '#3D4452' }}
-          >
-            Most English programs teach children what to say. DODO teaches them
-            how to think — then say it, then write it. We are the only live,
-            high-touch program that trains the full Read → Think → Speak → Write
-            loop, for families who live between two languages.
-          </p>
-
-          {/* Brand position */}
-          {/* migrate → content/en/about.json > hero.position */}
-          <p
-            className="text-base leading-relaxed max-w-xl mb-10"
-            style={{ color: '#7B8494' }}
-          >
-            Live, Navigator-led sessions. Lexile-measured literacy growth.
-            For Chinese-speaking diaspora families in Canada and the US.
-          </p>
-
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link
-              href="/program"
-              className="btn btn-secondary text-base px-8 py-4 justify-center"
-              aria-label="Learn about The 16-Week Program"
+            {/* Figma: pill badge — border border-[#b7b5fe]/20 bg-[#b7b5fe]/5 */}
+            {/* pulse dot + "Our Story" uppercase label */}
+            <div
+              className="inline-flex items-center gap-2 mb-10 rounded-full"
+              style={{
+                padding:         '6px 16px',
+                border:          '1px solid rgba(183,181,254,0.2)',
+                backgroundColor: 'rgba(183,181,254,0.05)',
+              }}
             >
-              See The 16-Week Program
-            </Link>
-            <Link
-              href="/consult"
-              className="btn btn-outline text-base px-8 py-4 justify-center"
-              aria-label="Book a diagnostic consultation"
+              <span
+                className="w-2 h-2 rounded-full"
+                style={{ backgroundColor: '#b7b5fe' }}
+                aria-hidden="true"
+              />
+              <span
+                style={{
+                  fontSize:      '12px',
+                  fontWeight:    500,
+                  letterSpacing: '0.05em',
+                  textTransform: 'uppercase',
+                  color:         '#b7b5fe',
+                }}
+              >
+                Our Story
+              </span>
+            </div>
+
+            {/* Figma: h1 fontWeight 300, clamp(2.25rem, 5.5vw, 4rem), color #F0F0F0 */}
+            {/* "speaks" → #b7b5fe fontWeight 600 | "thinks" → #F5C842 fontWeight 600 */}
+            <h1
+              id="about-hero-heading"
+              className="mb-6"
+              style={{
+                fontSize:      'clamp(2.25rem, 5.5vw, 4rem)',
+                fontWeight:    300,
+                lineHeight:    1.08,
+                letterSpacing: '-0.02em',
+                color:         '#F0F0F0',
+              }}
             >
-              Book a Consultation
-            </Link>
+              A child who{' '}
+              <em className="not-italic" style={{ fontWeight: 600, color: '#b7b5fe' }}>
+                speaks
+              </em>{' '}
+              English
+              <br />
+              is not the same as a child
+              <br />
+              who{' '}
+              <em className="not-italic" style={{ fontWeight: 600, color: '#F5C842' }}>
+                thinks
+              </em>{' '}
+              in it.
+            </h1>
+
+            {/* Figma: Chinese subtitle — font-chinese fontSize 20 color #b7b5fe/50 */}
+            <p
+              className="mb-8"
+              style={{
+                fontFamily: 'var(--font-cjk)',
+                fontSize:   '20px',
+                color:      'rgba(183,181,254,0.5)',
+              }}
+            >
+              会说英语的孩子，和用英语思考的孩子，是不一样的。
+            </p>
+
+            {/* Figma: body — fontSize 16, lineHeight 1.9, color #F0F0F0/50, max-w-lg */}
+            <p
+              style={{
+                fontSize:   '16px',
+                lineHeight: 1.9,
+                color:      'rgba(240,240,240,0.5)',
+                maxWidth:   '32rem',
+              }}
+            >
+              Most bilingual children learn English as a subject. They pass exams
+              and sound fluent. But ask them to argue, to build, to write something
+              original — and the language falls apart. Our founder saw this gap and
+              built DODO to close it.
+            </p>
+
           </div>
 
-          {/* Trust micro-line */}
-          <p
-            className="mt-8 text-xs"
-            style={{ color: 'rgba(123,132,148,0.8)' }}
-          >
-            Serving Vancouver · Richmond BC · Markham · Toronto ·
-            San Francisco Bay Area · Los Angeles
-          </p>
+          {/* ── Right — lg:col-span-2 ── */}
+          {/* Figma: aspect-[3/4] rounded-3xl overflow-hidden */}
+          {/* Inner: image brightness-50 + play button overlay + border overlay */}
+          <div className="lg:col-span-2">
+            <div
+              className="relative rounded-3xl overflow-hidden"
+              style={{ aspectRatio: '3/4' }}
+              aria-label="Video: Why DODO Exists — 3 minutes"
+            >
+              {/* Image placeholder — replace with <Image> + production asset */}
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    'linear-gradient(135deg, #161c28 0%, #2E3848 50%, #1a2030 100%)',
+                }}
+                aria-hidden="true"
+              />
+
+              {/* Figma: centred play button — w-20 h-20 rounded-full bg-[#F5C842] */}
+              <div
+                className="absolute inset-0 flex flex-col items-center justify-center"
+                aria-hidden="true"
+              >
+                <div
+                  className="flex items-center justify-center"
+                  style={{
+                    width:           80,
+                    height:          80,
+                    borderRadius:    '50%',
+                    backgroundColor: '#F5C842',
+                    boxShadow:       '0 8px 40px rgba(0,0,0,0.4)',
+                  }}
+                >
+                  {/* Play triangle */}
+                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <path d="M11 8l14 8-14 8V8z" fill="#0E0E12" />
+                  </svg>
+                </div>
+                <p
+                  className="mt-4"
+                  style={{ fontSize: '13px', fontWeight: 500, color: 'rgba(255,255,255,0.8)' }}
+                >
+                  Watch: Why DODO Exists
+                </p>
+                <p style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)' }}>
+                  3 min
+                </p>
+              </div>
+
+              {/* Figma: border border-[#b7b5fe]/10 on rounded-3xl */}
+              <div
+                className="absolute inset-0 rounded-3xl"
+                style={{ border: '1px solid rgba(183,181,254,0.1)' }}
+                aria-hidden="true"
+              />
+            </div>
+          </div>
 
         </div>
+
+        {/* Figma: ArrowDown animate-bounce, centred, mt-16 */}
+        <div className="flex justify-center mt-16" aria-hidden="true">
+          <svg
+            width="20" height="20" viewBox="0 0 20 20" fill="none"
+            style={{ color: 'rgba(183,181,254,0.3)', animation: 'bounce 2s infinite' }}
+          >
+            <path
+              d="M10 3v11M4 9l6 6 6-6"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </div>
+
       </div>
     </section>
   )
@@ -132,260 +282,323 @@ function AboutHero() {
 // ═══════════════════════════════════════════════════════════════
 // SECTION 2 — THE NAME
 // ═══════════════════════════════════════════════════════════════
-// DARK (#212830) — the etymology of DODO earns weight and gravitas.
-// Two-column split: DO (English) / DO (Mother Tongue).
-// Large typographic treatment — the name is the brand.
+// Figma: gradient section — absolute bg from-[#0E0E12] via-[#212830] to-[#212830]
+//   py-28, grid lg:grid-cols-2 gap-16 items-center
+// Left: BilingualHeadingB (light) + body text (#F0F0F0/70) + Chinese body (#b7b5fe/50)
+// Right: relative div → w-64 h-64 circle + inner ring + "Do + Do" text
+//   gold dot (-top-2 -right-2) + lavender dot (-bottom-3 -left-3)
 
 function TheNameSection() {
   return (
     <section
-      className="section-dark relative overflow-hidden"
+      className="relative"
       aria-labelledby="name-heading"
+      style={{ padding: 'var(--section-md) 0' }}
     >
-      {/* Subtle background texture */}
+      {/* Figma: absolute bg-gradient-to-b from-[#0E0E12] via-[#212830] to-[#212830] */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0"
+        className="absolute inset-0"
         style={{
-          background:
-            'radial-gradient(ellipse 70% 50% at 20% 60%, rgba(183,181,254,0.04) 0%, transparent 60%)',
+          background: 'linear-gradient(to bottom, #0E0E12 0%, #212830 40%, #212830 100%)',
         }}
       />
 
       <div className="container-section relative z-10">
+        {/* Figma: grid lg:grid-cols-2 gap-16 items-center */}
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
 
-        <div className="max-w-xl mb-14 md:mb-16">
-          <p
-            className="eyebrow mb-4"
-            style={{ color: 'rgba(183,181,254,0.6)' }}
-          >
-            The Name
-          </p>
-          {/* migrate → content/en/about.json > name.heading */}
-          <h2 id="name-heading">
-            DODO is not named after the extinct bird.
-          </h2>
-          <p
-            className="mt-4 text-base md:text-lg leading-relaxed"
-            style={{ color: '#94A3B8' }}
-          >
-            It is named after the most fundamental act of language mastery:
-            doing the work — twice, in two languages, at every level.
-          </p>
-        </div>
+          {/* ── Left — text ── */}
+          <div>
+            <BilingualHeading en="The Name" cn="名字的故事" light />
 
-        {/* DO + DO split — large typographic centrepiece */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-16">
-
-          {/* DO — English */}
-          {/* migrate → content/en/about.json > name.doEnglish */}
-          <div
-            className="card card-dark p-8 md:p-10 flex flex-col gap-5"
-            aria-label="DO — English, the first language of the name"
-          >
-            <div className="flex items-baseline gap-4">
-              <span
-                className="font-bold leading-none"
-                style={{
-                  fontSize: 'clamp(4rem, 8vw, 7rem)',
-                  color: '#b7b5fe',
-                  letterSpacing: '-0.04em',
-                  lineHeight: 1,
-                }}
-                aria-hidden="true"
-              >
-                DO
-              </span>
-              <span
-                className="text-xs font-semibold uppercase tracking-widest"
-                style={{ color: 'rgba(183,181,254,0.5)', paddingBottom: '0.75rem' }}
-              >
-                English
-              </span>
-            </div>
+            {/* Figma: space-y-5, fontSize 17, lineHeight 1.9, color rgba(240,240,240,0.7) */}
             <div
-              className="w-8 h-0.5 rounded-full"
-              style={{ backgroundColor: '#b7b5fe' }}
-              aria-hidden="true"
-            />
-            <p
-              className="text-base leading-relaxed"
-              style={{ color: '#94A3B8' }}
+              className="mt-10 space-y-5"
+              style={{ fontSize: '17px', lineHeight: 1.9, color: 'rgba(240,240,240,0.7)' }}
             >
-              The new world. The academic language. The language of possibility
-              and future belonging.
-            </p>
+              <p>
+                DODO comes from a simple, powerful idea:{' '}
+                <strong style={{ color: '#F0F0F0' }}>Do + Do.</strong>
+              </p>
+              <p>
+                Learning isn&rsquo;t passive. It&rsquo;s not about absorbing — it&rsquo;s
+                about doing. Reading is doing. Thinking is doing. Speaking is doing.
+                Writing is doing.
+              </p>
+              <p>
+                The double &ldquo;Do&rdquo; is also a nod to the iterative nature of
+                mastery. You don&rsquo;t learn a language once. You learn it by doing,
+                then doing again — each time deeper, each time more your own.
+              </p>
+            </div>
+
+            {/* Figma: Chinese body — font-chinese fontSize 15 lineHeight 1.8 color #b7b5fe/50 */}
             <p
-              className="text-sm leading-relaxed"
-              style={{ color: 'rgba(148,163,184,0.7)' }}
+              className="mt-6"
+              style={{
+                fontFamily: 'var(--font-cjk)',
+                fontSize:   '15px',
+                lineHeight: 1.8,
+                color:      'rgba(183,181,254,0.5)',
+              }}
             >
-              Every session, every Navigator, every Lexile target — this DO is
-              the destination. The language your child will lead in.
+              DODO，源于"做"与"再做"。学习不是被动的吸收，而是主动的行动与反复的深化。
             </p>
           </div>
 
-          {/* DO — Mother Tongue */}
-          {/* migrate → content/en/about.json > name.doMotherTongue */}
-          <div
-            className="card card-dark p-8 md:p-10 flex flex-col gap-5"
-            aria-label="DO — Mother Tongue, the second language of the name"
-          >
-            <div className="flex items-baseline gap-4">
-              <span
-                className="font-bold leading-none"
+          {/* ── Right — circular Do+Do graphic ── */}
+          <div className="flex items-center justify-center">
+            <div className="relative">
+
+              {/* Figma: w-64 h-64 rounded-full border-2 border-[#b7b5fe]/20 */}
+              <div
+                className="flex items-center justify-center"
                 style={{
-                  fontSize: 'clamp(4rem, 8vw, 7rem)',
-                  color: '#b7b5fe',
-                  letterSpacing: '-0.04em',
-                  lineHeight: 1,
+                  width:        256,
+                  height:       256,
+                  borderRadius: '50%',
+                  border:       '2px solid rgba(183,181,254,0.2)',
+                  position:     'relative',
                 }}
+              >
+                {/* Figma: absolute inset-4 rounded-full border border-[#b7b5fe]/10 */}
+                <div
+                  aria-hidden="true"
+                  style={{
+                    position:     'absolute',
+                    inset:        '1rem',
+                    borderRadius: '50%',
+                    border:       '1px solid rgba(183,181,254,0.1)',
+                  }}
+                />
+
+                {/* Figma: "Do + Do" — flex items-center gap-4 */}
+                <div
+                  className="flex items-center gap-4 relative z-10"
+                  aria-label="Do plus Do"
+                >
+                  <span
+                    style={{
+                      fontSize:      '56px',
+                      fontWeight:    700,
+                      color:         '#b7b5fe',
+                      letterSpacing: '-0.02em',
+                      lineHeight:    1,
+                    }}
+                  >
+                    Do
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    style={{
+                      fontSize:   '32px',
+                      fontWeight: 300,
+                      color:      '#F5C842',
+                      lineHeight: 1,
+                    }}
+                  >
+                    +
+                  </span>
+                  <span
+                    style={{
+                      fontSize:      '56px',
+                      fontWeight:    700,
+                      color:         '#b7b5fe',
+                      letterSpacing: '-0.02em',
+                      lineHeight:    1,
+                    }}
+                  >
+                    Do
+                  </span>
+                </div>
+              </div>
+
+              {/* Figma: absolute -top-2 -right-2, w-6 h-6, bg-[#F5C842] */}
+              <div
                 aria-hidden="true"
-              >
-                DO
-              </span>
-              <span
-                className="text-xs font-semibold uppercase tracking-widest"
-                style={{ color: 'rgba(183,181,254,0.5)', paddingBottom: '0.75rem' }}
-              >
-                母语
-              </span>
+                style={{
+                  position:        'absolute',
+                  top:             -8,
+                  right:           -8,
+                  width:           24,
+                  height:          24,
+                  borderRadius:    '50%',
+                  backgroundColor: '#F5C842',
+                }}
+              />
+              {/* Figma: absolute -bottom-3 -left-3, w-4 h-4, bg-[#b7b5fe]/40 */}
+              <div
+                aria-hidden="true"
+                style={{
+                  position:        'absolute',
+                  bottom:          -12,
+                  left:            -12,
+                  width:           16,
+                  height:          16,
+                  borderRadius:    '50%',
+                  backgroundColor: 'rgba(183,181,254,0.4)',
+                }}
+              />
+
             </div>
-            <div
-              className="w-8 h-0.5 rounded-full"
-              style={{ backgroundColor: 'rgba(183,181,254,0.4)' }}
-              aria-hidden="true"
-            />
-            <p
-              className="text-base leading-relaxed"
-              style={{ color: '#94A3B8' }}
-            >
-              The emotional core. The first lens. The language through which
-              the world first made sense.
-            </p>
-            <p
-              className="text-sm leading-relaxed"
-              style={{ color: 'rgba(148,163,184,0.7)' }}
-            >
-              Not a language to leave behind — a cognitive foundation to
-              leverage. The bilingual mind is not half of two things.
-              It is twice one thing.
-            </p>
           </div>
-        </div>
 
-        {/* The synthesis statement */}
-        {/* migrate → content/en/about.json > name.synthesis */}
-        <div
-          className="max-w-3xl mx-auto text-center px-4 py-10 md:py-12 rounded-2xl"
-          style={{
-            background: 'rgba(183,181,254,0.05)',
-            border: '1px solid rgba(183,181,254,0.1)',
-          }}
-        >
-          <p
-            className="text-xl md:text-2xl font-semibold leading-relaxed"
-            style={{ color: '#b7b5fe', letterSpacing: '-0.01em' }}
-          >
-            &ldquo;DODO is what happens when a student stops translating and
-            starts thinking — simultaneously — in both.&rdquo;
-          </p>
         </div>
-
       </div>
     </section>
   )
 }
 
 // ═══════════════════════════════════════════════════════════════
-// SECTION 3 — THREE BRAND TRUTHS
+// SECTION 3 — WHAT WE BELIEVE
 // ═══════════════════════════════════════════════════════════════
-// LIGHT (#F5F5FF) — returns to Whisper after the dark name section.
-// .card with .accent-top lavender border — matches ConfidenceSection
-// pattern from homepage.
+// Figma: bg-[#F5F5FF] text-[#0E0E12], py-28
+//   Centred BilingualHeadingB, mb-20
+//   Horizontal rows — NOT card grid.
+//   Per row: 12-col grid with:
+//     col-span-1: number (#b7b5fe, fontSize 14, fontWeight 600)
+//     col-span-1: icon in lavender circle (w-12 h-12)
+//     col-span-5: belief quote (fontSize 20, fw 600) + Chinese (#b7b5fe, fontSize 14)
+//     col-span-5: body text (#2E3848, fontSize 15, lineHeight 1.8)
+//   Separated by border-b border-[#0E0E12]/8, last row no border
 
-const BRAND_TRUTHS = [
+const BELIEFS = [
   {
-    id:      'truth-1',
-    number:  '01',
-    heading: 'Language is a thinking tool, not a performance skill.',
+    id:       'belief-1',
+    num:      '01',
+    belief:   'Language is a thinking tool, not a performance skill.',
+    beliefCn: '语言是思维的工具，而非表演的技能。',
     body:
-      'Fluency without depth is noise. We train students to have something ' +
-      'worth saying — and the precision to say it in two languages. A student ' +
-      'who can perform English is not the same as a student who can wield it.',
+      'Fluency isn\'t about sounding right. It\'s about thinking clearly. ' +
+      'We build the architecture of thought — in both languages.',
   },
   {
-    id:      'truth-2',
-    number:  '02',
-    heading: 'The bilingual mind is a competitive advantage.',
+    id:       'belief-2',
+    num:      '02',
+    belief:   'Children don\'t need more content. They need better conversations.',
+    beliefCn: '孩子们需要的不是更多内容，而是更好的对话。',
     body:
-      'We don\'t treat bilingualism as a gap to close. We treat it as a ' +
-      'cognitive superpower to develop. Every lesson builds the double-track ' +
-      'mind — the student who leads in two registers simultaneously.',
+      'The best learning happens between people, not between a child and a screen. ' +
+      'Every DODO session is a dialogue, not a lecture.',
   },
   {
-    id:      'truth-3',
-    number:  '03',
-    heading: 'Progress must be visible, measurable, and felt.',
+    id:       'belief-3',
+    num:      '03',
+    belief:   'Bilingual means both. Not one at the cost of the other.',
+    beliefCn: '双语意味着两者兼得，而非此消彼长。',
     body:
-      'Parents invest in outcomes. Students invest in confidence. We measure ' +
-      'both — with Lexile levels and 6+1 Trait writing assessments — and we ' +
-      'make growth legible. The numbers are the proof.',
+      'We don\'t teach English by replacing Chinese. We teach children to move ' +
+      'fluidly between two worlds of thought.',
   },
 ]
 
-function ThreeTruths() {
+// Belief icons — Brain, Sparkles, Globe — as inline SVG
+function BeliefIcon({ id }) {
+  const base = {
+    width:             28,
+    height:            28,
+    viewBox:           '0 0 24 24',
+    fill:              'none',
+    stroke:            'currentColor',
+    strokeWidth:       1.5,
+    strokeLinecap:     'round',
+    strokeLinejoin:    'round',
+    'aria-hidden':     true,
+  }
+  if (id === 'belief-1') return (
+    <svg {...base}>
+      <path d="M9.5 2a4.5 4.5 0 0 0 0 9M14.5 2a4.5 4.5 0 0 1 0 9" />
+      <path d="M5 10a4 4 0 0 0 4 4v6M19 10a4 4 0 0 1-4 4v6M9 20h6" />
+    </svg>
+  )
+  if (id === 'belief-2') return (
+    <svg {...base}>
+      <path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z" />
+      <path d="M5 17l.75 2.25L8 20l-2.25.75L5 23" />
+      <path d="M19 2l.5 1.5L21 4l-1.5.5L19 6" />
+    </svg>
+  )
+  return (
+    <svg {...base}>
+      <circle cx="12" cy="12" r="10" />
+      <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+    </svg>
+  )
+}
+
+function WhatWeBelieve() {
   return (
     <section
       className="section-light"
-      aria-labelledby="truths-heading"
+      aria-labelledby="beliefs-heading"
     >
       <div className="container-section">
 
-        <div className="max-w-2xl mb-14">
-          <p className="eyebrow mb-4">The Three Brand Truths</p>
-          {/* migrate → content/en/about.json > truths.heading */}
-          <h2 id="truths-heading">
-            What we believe about language, learning, and your child.
-          </h2>
-          <p
-            className="mt-4 text-base md:text-lg leading-relaxed"
-            style={{ color: '#3D4452' }}
-          >
-            These are not marketing claims. They are the principles every
-            Navigator works from, every session, with every student.
-          </p>
+        {/* Figma: text-center, mb-20 */}
+        <div className="mb-20 text-center">
+          <BilingualHeading en="What We Believe" cn="我们的信念" center />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          {BRAND_TRUTHS.map((truth) => (
+        {/* Figma: space-y-0, horizontal rows */}
+        <div>
+          {BELIEFS.map((item, i) => (
             <div
-              key={truth.id}
-              className="card p-8 flex flex-col gap-5 accent-top"
+              key={item.id}
+              className="items-start py-12"
+              style={{
+                display:             'grid',
+                gridTemplateColumns: '2.5rem 3.5rem 1fr 1fr',
+                gap:                 '2rem',
+                borderBottom:        i < BELIEFS.length - 1
+                  ? '1px solid rgba(14,14,18,0.08)'
+                  : 'none',
+              }}
+              aria-label={`Belief ${item.num}: ${item.belief}`}
             >
-              {/* Number chip */}
-              <span
-                className="loop-step-number self-start"
-                aria-hidden="true"
-                style={{ width: 40, height: 40, fontSize: '0.875rem' }}
-              >
-                {truth.number}
-              </span>
+              {/* Figma: col-span-1 — number */}
+              <div className="flex items-center pt-1">
+                <span style={{ fontSize: '14px', fontWeight: 600, color: '#b7b5fe' }}>
+                  {item.num}
+                </span>
+              </div>
 
-              {/* migrate → content/en/about.json > truths[n].heading */}
-              <h3
-                className="text-xl font-bold leading-snug"
-                style={{ color: '#212830' }}
-              >
-                {truth.heading}
-              </h3>
+              {/* Figma: col-span-1 — icon in w-12 h-12 rounded-full bg-[#b7b5fe]/10 */}
+              <div className="flex items-center">
+                <div
+                  className="flex items-center justify-center"
+                  style={{
+                    width:           48,
+                    height:          48,
+                    borderRadius:    '50%',
+                    backgroundColor: 'rgba(183,181,254,0.1)',
+                    color:           '#b7b5fe',
+                    flexShrink:      0,
+                  }}
+                  aria-hidden="true"
+                >
+                  <BeliefIcon id={item.id} />
+                </div>
+              </div>
 
-              {/* migrate → content/en/about.json > truths[n].body */}
-              <p
-                className="text-sm leading-relaxed flex-1"
-                style={{ color: '#3D4452' }}
-              >
-                {truth.body}
+              {/* Figma: col-span-5 — quote fontSize 20 fw 600 + Chinese subtitle */}
+              <div>
+                <p style={{ fontSize: '20px', fontWeight: 600, lineHeight: 1.3, color: '#0E0E12' }}>
+                  &ldquo;{item.belief}&rdquo;
+                </p>
+                <p
+                  className="mt-2"
+                  style={{ fontFamily: 'var(--font-cjk)', fontSize: '14px', color: '#b7b5fe' }}
+                >
+                  {item.beliefCn}
+                </p>
+              </div>
+
+              {/* Figma: col-span-5 — body text #2E3848 fontSize 15 lineHeight 1.8 */}
+              <p style={{ fontSize: '15px', lineHeight: 1.8, color: '#2E3848' }}>
+                {item.body}
               </p>
+
             </div>
           ))}
         </div>
@@ -396,369 +609,325 @@ function ThreeTruths() {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// SECTION 4 — WHO WE SERVE
+// SECTION 4 — THE LOOP
 // ═══════════════════════════════════════════════════════════════
-// WHITE (#ffffff) — breathing room after two dense sections.
-// Three family profiles: their real fear / what DODO solves.
-// Mirrors PhotoIntro's white lift on the homepage.
+// Figma: bg-[#212830], py-28
+//   Header: flex lg:flex-row lg:items-end lg:justify-between gap-6 mb-16
+//     BilingualHeadingB (light) left + body right (#F0F0F0/40 max-w-md)
+//   Steps: relative container
+//     Connecting line: absolute top-14 left-[12.5%] right-[12.5%] h-px gradient
+//     grid sm:grid-cols-2 lg:grid-cols-4 gap-0
+//     Each step: text-center px-8 py-8
+//       icon w-14 h-14 rounded-full bg-[#b7b5fe]/10 border-[#b7b5fe]/20 mx-auto mb-6
+//       h3 text-white fontSize 24 fw 600 letterSpacing -0.01em
+//       Chinese #b7b5fe/50 font-chinese fontSize 14 mb-4
+//       body #F0F0F0/50 fontSize 14 lineHeight 1.7
+//   Footer: centred "Explore Methodology" link + ChevronRight
 
-const FAMILY_PROFILES = [
+const LOOP_STEPS = [
   {
-    id:       'family-1',
-    eyebrow:  'Newly Arrived',
-    heading:  'My child speaks English but can\'t hold their own in class.',
-    fear:
-      'Survival English and academic English are two different languages. ' +
-      'Your child can order lunch and navigate the playground. But when the ' +
-      'teacher asks them to argue a position in writing, the gap opens.',
-    solve:
-      'We close the gap between survival English and academic fluency. ' +
-      'The Loop gives them the vocabulary depth, the reading stamina, and the ' +
-      'writing precision their classroom demands.',
+    id:     'read',
+    step:   'Read',
+    stepCn: '阅读',
+    desc:
+      'Encounter ideas worth thinking about. Not textbooks — real stories, ' +
+      'real arguments, real questions.',
   },
   {
-    id:       'family-2',
-    eyebrow:  'Planning to Move',
-    heading:  'My child will fall behind the moment they land.',
-    fear:
-      'You\'ve seen it happen to other families. The first semester is lost to ' +
-      'adjustment. Your child spends a year catching up instead of moving ' +
-      'ahead. You don\'t want that.',
-    solve:
-      'We build academic language infrastructure before arrival. A student who ' +
-      'lands at Lexile 780 with 6+1 Trait writing skills doesn\'t catch up — ' +
-      'they start at the front.',
+    id:     'think',
+    step:   'Think',
+    stepCn: '思考',
+    desc:
+      'Process what you\'ve read. Form opinions. Make connections. ' +
+      'This is where language becomes thinking.',
   },
   {
-    id:       'family-3',
-    eyebrow:  'Staying, Thinking Globally',
-    heading:  'My child will be outcompeted by truly bilingual peers.',
-    fear:
-      'You see the next generation of globally mobile talent. You know that ' +
-      'operational English is not enough. Your child needs the double-track ' +
-      'mind that sets them apart in university admissions and beyond.',
-    solve:
-      'We develop the cognitive identity that makes the difference — a student ' +
-      'whose thinking is genuinely bilingual, not translated. That is the ' +
-      'competitive advantage that compounds.',
+    id:     'speak',
+    step:   'Speak',
+    stepCn: '表达',
+    desc:
+      'Articulate your ideas aloud. Defend them. Refine them. ' +
+      'Speaking isn\'t output — it\'s processing.',
+  },
+  {
+    id:     'write',
+    step:   'Write',
+    stepCn: '书写',
+    desc:
+      'Commit your thinking to paper. Writing is the proof that a language ' +
+      'truly belongs to you.',
   },
 ]
 
-function WhoWeServe() {
+function LoopStepIcon({ id }) {
+  const base = {
+    width: 24, height: 24, viewBox: '0 0 24 24',
+    fill: 'none', stroke: 'currentColor',
+    strokeWidth: 1.5, strokeLinecap: 'round', strokeLinejoin: 'round',
+  }
+  if (id === 'read') return (
+    <svg {...base} aria-hidden="true">
+      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+    </svg>
+  )
+  if (id === 'think') return (
+    <svg {...base} aria-hidden="true">
+      <path d="M9.5 2a4.5 4.5 0 0 0 0 9M14.5 2a4.5 4.5 0 0 1 0 9" />
+      <path d="M5 10a4 4 0 0 0 4 4v6M19 10a4 4 0 0 1-4 4v6M9 20h6" />
+    </svg>
+  )
+  if (id === 'speak') return (
+    <svg {...base} aria-hidden="true">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+    </svg>
+  )
   return (
-    <section
-      className="section-white"
-      aria-labelledby="who-heading"
-    >
-      <div className="container-section">
-
-        <div className="max-w-2xl mb-14">
-          <p className="eyebrow mb-4">Who We Serve</p>
-          {/* migrate → content/en/about.json > who.heading */}
-          <h2 id="who-heading">
-            Three families. One real fear.
-            One precise solution.
-          </h2>
-          <p
-            className="mt-4 text-base md:text-lg leading-relaxed"
-            style={{ color: '#3D4452' }}
-          >
-            DODO is built for Chinese-speaking diaspora families at a specific
-            moment — when their child&rsquo;s English needs to move beyond
-            fluency and into academic leadership.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
-          {FAMILY_PROFILES.map((profile) => (
-            <article
-              key={profile.id}
-              className="card p-8 flex flex-col gap-5"
-              aria-label={`Family profile: ${profile.eyebrow}`}
-            >
-              <p className="eyebrow">{profile.eyebrow}</p>
-
-              {/* migrate → content/en/about.json > who[n].heading */}
-              <h3
-                className="text-xl font-bold leading-snug"
-                style={{ color: '#212830' }}
-              >
-                {profile.heading}
-              </h3>
-
-              {/* The fear */}
-              <div>
-                <p
-                  className="text-xs font-semibold uppercase tracking-widest mb-2"
-                  style={{ color: 'rgba(123,132,148,0.7)' }}
-                >
-                  The real fear
-                </p>
-                {/* migrate → content/en/about.json > who[n].fear */}
-                <p
-                  className="text-sm leading-relaxed"
-                  style={{ color: '#7B8494' }}
-                >
-                  {profile.fear}
-                </p>
-              </div>
-
-              {/* The solve */}
-              <div
-                className="rounded-xl p-5 mt-auto"
-                style={{ backgroundColor: 'rgba(183,181,254,0.08)', border: '1px solid rgba(183,181,254,0.2)' }}
-              >
-                <p
-                  className="text-xs font-semibold uppercase tracking-widest mb-2"
-                  style={{ color: '#7c79e8' }}
-                >
-                  What DODO solves
-                </p>
-                {/* migrate → content/en/about.json > who[n].solve */}
-                <p
-                  className="text-sm leading-relaxed"
-                  style={{ color: '#3D4452' }}
-                >
-                  {profile.solve}
-                </p>
-              </div>
-
-            </article>
-          ))}
-        </div>
-
-        {/* Cities strip */}
-        <div
-          className="mt-14 pt-10 flex flex-wrap gap-x-8 gap-y-3 items-center"
-          style={{ borderTop: '1px solid rgba(14,14,18,0.08)' }}
-        >
-          <p
-            className="text-xs font-semibold uppercase tracking-widest"
-            style={{ color: '#7c79e8' }}
-          >
-            Serving families in
-          </p>
-          {[
-            'Vancouver',
-            'Richmond BC',
-            'Markham',
-            'Toronto',
-            'San Francisco Bay Area',
-            'Los Angeles',
-          ].map((city) => (
-            <span
-              key={city}
-              className="text-sm font-medium"
-              style={{ color: '#7B8494' }}
-            >
-              {city}
-            </span>
-          ))}
-        </div>
-
-      </div>
-    </section>
+    <svg {...base} aria-hidden="true">
+      <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+    </svg>
   )
 }
 
-// ═══════════════════════════════════════════════════════════════
-// SECTION 5 — MISSION & THE FULL BRAND NARRATIVE
-// ═══════════════════════════════════════════════════════════════
-// DARK (#212830) — prose-heavy, authoritative. The "putting it all
-// together" section. Two columns on desktop: the narrative left,
-// key claims callout right.
-
-const BRAND_CLAIMS = [
-  {
-    id:    'claim-1',
-    stat:  '16',
-    unit:  'weeks',
-    label: 'From Lexile baseline to measurable exit growth — every student, every time.',
-  },
-  {
-    id:    'claim-2',
-    stat:  '1',
-    unit:  'grade level',
-    label: 'Average reading growth in 16 weeks, measured by Lexile re-assessment.',
-  },
-  {
-    id:    'claim-3',
-    stat:  '2×',
-    unit:  'writing scores',
-    label: 'Average 6+1 Trait score improvement from entry to exit evaluation.',
-  },
-]
-
-function MissionSection() {
+function TheLoop() {
   return (
     <section
       className="section-dark"
-      aria-labelledby="mission-heading"
+      aria-labelledby="loop-section-heading"
     >
       <div className="container-section">
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-start">
+        {/* Figma: flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16 */}
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
+          <BilingualHeading en="The Loop" cn="学习循环" light />
+          <p
+            className="max-w-md"
+            style={{ fontSize: '15px', lineHeight: 1.7, color: 'rgba(240,240,240,0.4)' }}
+          >
+            Every session follows the same cycle. Simple in structure.
+            Profound in effect.
+          </p>
+        </div>
 
-          {/* Left — narrative prose */}
-          <div>
-            <p
-              className="eyebrow mb-4"
-              style={{ color: 'rgba(183,181,254,0.6)' }}
+        {/* Figma: relative container for absolute connecting line */}
+        <div className="relative">
+
+          {/* Figma: absolute top-14 left-[12.5%] right-[12.5%] h-px gradient */}
+          <div
+            aria-hidden="true"
+            className="hidden lg:block absolute"
+            style={{
+              top:        '3.5rem',
+              left:       '12.5%',
+              right:      '12.5%',
+              height:     '1px',
+              background: 'linear-gradient(to right, rgba(183,181,254,0) 0%, rgba(183,181,254,0.2) 50%, rgba(183,181,254,0) 100%)',
+            }}
+          />
+
+          {/* Figma: grid sm:grid-cols-2 lg:grid-cols-4 gap-0 */}
+          <ol
+            className="grid sm:grid-cols-2 lg:grid-cols-4"
+            aria-label="The Loop methodology"
+          >
+            {LOOP_STEPS.map((item) => (
+              <li key={item.id} className="text-center px-8 py-8">
+
+                {/* Figma: w-14 h-14 rounded-full bg-[#b7b5fe]/10 border border-[#b7b5fe]/20 mx-auto mb-6 relative z-10 */}
+                <div
+                  className="flex items-center justify-center mx-auto mb-6 relative z-10"
+                  style={{
+                    width:           56,
+                    height:          56,
+                    borderRadius:    '50%',
+                    backgroundColor: 'rgba(183,181,254,0.1)',
+                    border:          '1px solid rgba(183,181,254,0.2)',
+                    color:           '#b7b5fe',
+                  }}
+                  aria-hidden="true"
+                >
+                  <LoopStepIcon id={item.id} />
+                </div>
+
+                {/* Figma: h3 text-white fontSize 24 fontWeight 600 letterSpacing -0.01em mb-1 */}
+                <h3
+                  style={{
+                    fontSize:      '24px',
+                    fontWeight:    600,
+                    letterSpacing: '-0.01em',
+                    color:         '#ffffff',
+                    marginBottom:  '4px',
+                  }}
+                >
+                  {item.step}
+                </h3>
+
+                {/* Figma: Chinese label font-chinese fontSize 14 #b7b5fe/50 mb-4 */}
+                <p
+                  className="mb-4"
+                  style={{
+                    fontFamily: 'var(--font-cjk)',
+                    fontSize:   '14px',
+                    color:      'rgba(183,181,254,0.5)',
+                  }}
+                >
+                  {item.stepCn}
+                </p>
+
+                {/* Figma: body #F0F0F0/50 fontSize 14 lineHeight 1.7 */}
+                <p style={{ fontSize: '14px', lineHeight: 1.7, color: 'rgba(240,240,240,0.5)' }}>
+                  {item.desc}
+                </p>
+
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        {/* Figma: text-center mt-12, uppercase link with ChevronRight */}
+        <div className="text-center mt-12">
+          <Link
+            href="/methodology"
+            className="inline-flex items-center gap-2"
+            style={{
+              fontSize:      '13px',
+              fontWeight:    600,
+              letterSpacing: '0.05em',
+              textTransform: 'uppercase',
+              color:         '#b7b5fe',
+              textDecoration:'none',
+            }}
+          >
+            Explore Methodology
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M6 3l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </Link>
+        </div>
+
+      </div>
+    </section>
+  )
+}
+
+// ═══════════════════════════════════════════════════════════════
+// SECTION 5 — WHO NAVIGATORS ARE
+// ═══════════════════════════════════════════════════════════════
+// Figma: bg-[#F5F5FF] text-[#0E0E12], py-28
+//   grid lg:grid-cols-2 gap-16 items-center
+// Left (order-2 lg:order-1): rounded-3xl image h-[520px] + absolute chip
+//   chip: absolute -bottom-6 -right-6, bg-[#b7b5fe], rounded-2xl px-6 py-4
+//   "Not teachers." (fw 600 #0E0E12) / "Navigators." (fw 500 #0E0E12/70)
+// Right (order-1 lg:order-2): BilingualHeadingB + body (#2E3848) + trait pills
+//   Pills: bg-[#0E0E12] text-white rounded-full, symbol in #b7b5fe
+
+const NAVIGATOR_TRAITS = [
+  { trait: 'Curious',            symbol: '?' },
+  { trait: 'Patient',            symbol: '~' },
+  { trait: 'Bilingual Thinkers', symbol: 'AB' },
+  { trait: 'Empathetic',         symbol: '♡' },
+  { trait: 'Rigorous',           symbol: '◈' },
+]
+
+function WhoNavigatorsAre() {
+  return (
+    <section
+      className="section-light"
+      aria-labelledby="navigators-heading"
+    >
+      <div className="container-section">
+
+        {/* Figma: grid lg:grid-cols-2 gap-16 items-center */}
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+
+          {/* ── Left — image (order-2 mobile, order-1 lg) ── */}
+          <div className="order-2 lg:order-1">
+            <div className="relative">
+
+              {/* Figma: rounded-3xl overflow-hidden, h-[520px] */}
+              <div
+                className="rounded-3xl overflow-hidden"
+                style={{ height: '520px' }}
+                aria-label="A DODO Navigator in session"
+              >
+                {/* Image placeholder — replace with <Image> */}
+                <div
+                  className="w-full h-full"
+                  style={{
+                    background:
+                      'linear-gradient(135deg, #e8e7f8 0%, #d4d3f0 40%, #c0bfea 100%)',
+                  }}
+                  aria-hidden="true"
+                />
+              </div>
+
+              {/* Figma: absolute -bottom-6 -right-6, bg-[#b7b5fe], rounded-2xl px-6 py-4 */}
+              <div
+                className="absolute rounded-2xl px-6 py-4"
+                style={{ bottom: -24, right: -24, backgroundColor: '#b7b5fe' }}
+                aria-hidden="true"
+              >
+                <p style={{ fontSize: '14px', fontWeight: 600, color: '#0E0E12' }}>
+                  Not teachers.
+                </p>
+                <p style={{ fontSize: '14px', fontWeight: 500, color: 'rgba(14,14,18,0.7)' }}>
+                  Navigators.
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+          {/* ── Right — text (order-1 mobile, order-2 lg) ── */}
+          <div className="order-1 lg:order-2">
+
+            <BilingualHeading en="Who Navigators Are" cn="关于领航员" />
+
+            {/* Figma: space-y-5, fontSize 16, lineHeight 1.85, color #2E3848 */}
+            <div
+              className="mt-8 space-y-5"
+              style={{ fontSize: '16px', lineHeight: 1.85, color: '#2E3848' }}
             >
-              Our Mission
-            </p>
-
-            {/* migrate → content/en/about.json > mission.heading */}
-            <h2 id="mission-heading" className="mb-8">
-              We exist for families who have crossed borders — or are about to.
-            </h2>
-
-            {/* migrate → content/en/about.json > mission.body — full brand narrative */}
-            <div className="space-y-5">
-              <p
-                className="text-base md:text-lg leading-relaxed"
-                style={{ color: '#94A3B8' }}
-              >
-                For children who wake up in one world and go to sleep in another.
-                For parents who know that fluency is not enough.
+              <p>
+                We don&rsquo;t call them teachers. We call them{' '}
+                <strong style={{ color: '#0E0E12' }}>Navigators</strong> — because
+                they don&rsquo;t stand at the front and lecture. They sit beside
+                your child and guide.
               </p>
-              <p
-                className="text-base leading-relaxed"
-                style={{ color: '#94A3B8' }}
-              >
-                We build Bilingual Thinkers. Students who don&rsquo;t just speak
-                English — they wield it. Students who don&rsquo;t lose their first
-                language — they leverage it. Students who move through The Loop —
-                Read, Think, Speak, Write — until the loop becomes instinct.
+              <p>
+                A Navigator is the kind of person who asks questions they don&rsquo;t
+                already know the answer to. Who gets genuinely curious about what a
+                seven-year-old thinks about fairness.
               </p>
-              <p
-                className="text-base leading-relaxed"
-                style={{ color: '#94A3B8' }}
-              >
-                Our Navigators don&rsquo;t teach. They guide. They know your
-                child&rsquo;s Lexile baseline. They know their 6+1 Trait profile.
-                They know the gap between where your child is and where they&rsquo;re
-                going — and they close it, week by week, session by session.
-              </p>
-              <p
-                className="text-base leading-relaxed"
-                style={{ color: '#94A3B8' }}
-              >
-                We measure everything. We show you the numbers. We let the growth
-                speak. In sixteen weeks, we don&rsquo;t promise fluency. We deliver
-                a grade level of literacy growth, a measurable writing progression,
-                and a student who knows what it feels like to think — and lead —
-                in two languages.
+              <p>
+                They&rsquo;re readers. They&rsquo;re thinkers. They care about language
+                not because it&rsquo;s their job, but because it&rsquo;s how they make
+                sense of everything.
               </p>
             </div>
 
-            {/* Loop reference */}
-            <div
-              className="mt-10 flex items-center gap-3 text-sm font-semibold"
-              style={{ color: '#b7b5fe' }}
-              aria-label="The Loop methodology: Read, Think, Speak, Write"
-            >
-              {['Read', 'Think', 'Speak', 'Write'].map((step, i, arr) => (
-                <span key={step} className="flex items-center gap-3">
-                  <span>{step}</span>
-                  {i < arr.length - 1 && (
-                    <span
-                      className="loop-arrow"
-                      aria-hidden="true"
-                    >
-                      →
-                    </span>
-                  )}
+            {/* Figma: flex-wrap gap-3 mt-10, pill chips bg-[#0E0E12] text-white */}
+            <div className="flex flex-wrap gap-3 mt-10" aria-label="Navigator traits">
+              {NAVIGATOR_TRAITS.map((item) => (
+                <span
+                  key={item.trait}
+                  className="inline-flex items-center gap-2 rounded-full"
+                  style={{
+                    padding:         '10px 20px',
+                    backgroundColor: '#0E0E12',
+                    color:           '#ffffff',
+                    fontSize:        '13px',
+                    fontWeight:      500,
+                  }}
+                >
+                  <span aria-hidden="true" style={{ fontSize: '11px', color: '#b7b5fe' }}>
+                    {item.symbol}
+                  </span>
+                  {item.trait}
                 </span>
               ))}
             </div>
 
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/methodology"
-                className="btn btn-ghost text-sm px-6 py-3"
-                aria-label="Read the full Loop methodology"
-              >
-                Read the full methodology →
-              </Link>
-              <Link
-                href="/navigators"
-                className="btn btn-ghost text-sm px-6 py-3"
-                aria-label="Meet the Navigators"
-              >
-                Meet the Navigators →
-              </Link>
-            </div>
-          </div>
-
-          {/* Right — claims sidebar */}
-          <div className="flex flex-col gap-6 lg:pt-16">
-
-            {/* Differentiator callout */}
-            <div
-              className="rounded-2xl p-8"
-              style={{
-                background: 'rgba(183,181,254,0.06)',
-                border: '1px solid rgba(183,181,254,0.12)',
-              }}
-            >
-              <p
-                className="text-xs font-semibold uppercase tracking-widest mb-4"
-                style={{ color: 'rgba(183,181,254,0.5)' }}
-              >
-                The One True Differentiator
-              </p>
-              <p
-                className="text-lg md:text-xl font-semibold leading-relaxed"
-                style={{ color: '#b7b5fe', letterSpacing: '-0.01em' }}
-              >
-                &ldquo;Bilingual children don&rsquo;t have half a language twice.
-                They have twice a mind.&rdquo;
-              </p>
-            </div>
-
-            {/* Stats */}
-            <dl className="flex flex-col gap-5">
-              {BRAND_CLAIMS.map((claim) => (
-                <div
-                  key={claim.id}
-                  className="flex items-start gap-5 rounded-xl p-6"
-                  style={{
-                    background: 'rgba(183,181,254,0.04)',
-                    border: '1px solid rgba(183,181,254,0.08)',
-                  }}
-                >
-                  <div className="shrink-0 text-right" style={{ minWidth: '3.5rem' }}>
-                    <span
-                      className="block font-bold leading-none"
-                      style={{
-                        fontSize: 'clamp(1.75rem, 2.5vw, 2.25rem)',
-                        color: '#b7b5fe',
-                        letterSpacing: '-0.03em',
-                      }}
-                    >
-                      {claim.stat}
-                    </span>
-                    <span
-                      className="block text-xs font-semibold mt-0.5"
-                      style={{ color: 'rgba(183,181,254,0.6)' }}
-                    >
-                      {claim.unit}
-                    </span>
-                  </div>
-                  <div>
-                    <dt className="sr-only">{claim.stat} {claim.unit}</dt>
-                    <dd
-                      className="text-sm leading-relaxed"
-                      style={{ color: '#94A3B8' }}
-                    >
-                      {claim.label}
-                    </dd>
-                  </div>
-                </div>
-              ))}
-            </dl>
-
           </div>
         </div>
       </div>
@@ -767,86 +936,272 @@ function MissionSection() {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// SECTION 6 — THINK ONCE STAMP / CLOSING CTA
+// SECTION 6 — THE FAMILIES WE SERVE
 // ═══════════════════════════════════════════════════════════════
-// Void Black (#0E0E12) — deepest tone, final conversion.
-// Matches homepage ClosingCTA pattern exactly.
-// Brand tagline stamped prominently — "Think Once. In Both Languages."
+// Figma: bg-[#0E0E12], py-28
+//   Centred BilingualHeadingB (light), mb-16
+//   grid lg:grid-cols-3 gap-6
+//   Cards: rounded-3xl overflow-hidden bg-[#212830] border border-white/5
+//     hover:border-[#b7b5fe]/20
+//   h-52 image, p-8 body:
+//     Gilt italic quote (fontSize 13 fontStyle italic)
+//     h3 text-white fontSize 20 fw 600
+//     Chinese subtitle #b7b5fe/50 font-chinese fontSize 13 mb-4
+//     body #F0F0F0/50 fontSize 14 lineHeight 1.75
 
-function ThinkOnceClosing() {
+const FAMILIES = [
+  {
+    id:       'family-1',
+    title:    'The Bilingual Home',
+    titleCn:  '双语家庭',
+    quote:    '"That\'s us — two languages, one family."',
+    desc:
+      'You speak two languages at home and you want your child to feel equally ' +
+      'powerful in both. Not just conversational — intellectually fluent.',
+    imgBg:    'linear-gradient(135deg, #142318 0%, #1e3526 60%, #142318 100%)',
+  },
+  {
+    id:       'family-2',
+    title:    'The Global Family',
+    titleCn:  '国际化家庭',
+    quote:    '"We move between worlds. So does our child."',
+    desc:
+      'You\'ve moved countries — maybe more than once. Your child navigates cultures ' +
+      'daily, and you want their English to match the complexity of their life.',
+    imgBg:    'linear-gradient(135deg, #131c2e 0%, #1e2a40 60%, #131c2e 100%)',
+  },
+  {
+    id:       'family-3',
+    title:    'The Ambitious Learner',
+    titleCn:  '志向远大的学习者',
+    quote:    '"Good isn\'t enough. We want depth."',
+    desc:
+      'Your child is already good at English. Maybe even great. But you sense ' +
+      'there\'s a ceiling — and the current system isn\'t going to break through it.',
+    imgBg:    'linear-gradient(135deg, #2a1218 0%, #3a1e24 60%, #2a1218 100%)',
+  },
+]
+
+function FamiliesWeServe() {
   return (
     <section
-      className="section-darker relative overflow-hidden"
-      aria-labelledby="about-closing-heading"
-      style={{ paddingTop: 'var(--section-lg)', paddingBottom: 'var(--section-lg)' }}
+      className="section-darker"
+      aria-labelledby="families-heading"
     >
-      {/* Gilt ambient glow — Charter enrollment moment */}
+      <div className="container-section">
+
+        {/* Figma: centred BilingualHeadingB (light) mb-16 */}
+        <div className="mb-16">
+          <BilingualHeading
+            en="The Families We Serve"
+            cn="我们服务的家庭"
+            light
+            center
+          />
+        </div>
+
+        {/* Figma: grid lg:grid-cols-3 gap-6 */}
+        <div className="grid lg:grid-cols-3 gap-6">
+          {FAMILIES.map((family) => (
+            <article
+              key={family.id}
+              className="group relative rounded-3xl overflow-hidden transition-all duration-300"
+              style={{
+                backgroundColor: '#212830',
+                border:          '1px solid rgba(255,255,255,0.05)',
+              }}
+              aria-label={`Family: ${family.title}`}
+            >
+              {/* Figma: h-52 image, brightness-75, hover brightness-90 scale-105 */}
+              <div
+                className="overflow-hidden"
+                style={{ height: '13rem' }}
+                aria-hidden="true"
+              >
+                {/* Placeholder — swap for <Image> with production photo */}
+                <div
+                  className="w-full h-full"
+                  style={{ background: family.imgBg }}
+                />
+              </div>
+
+              {/* Figma: p-8 card body */}
+              <div className="p-8">
+
+                {/* Figma: Gilt italic quote fontSize 13 fontStyle italic mb-3 */}
+                <p
+                  className="mb-3"
+                  style={{
+                    fontSize:  '13px',
+                    fontWeight: 500,
+                    fontStyle: 'italic',
+                    color:     '#F5C842',
+                  }}
+                >
+                  {family.quote}
+                </p>
+
+                {/* Figma: h3 text-white fontSize 20 fontWeight 600 */}
+                <h3 style={{ fontSize: '20px', fontWeight: 600, color: '#ffffff' }}>
+                  {family.title}
+                </h3>
+
+                {/* Figma: Chinese subtitle #b7b5fe/50 font-chinese fontSize 13 mb-4 */}
+                <p
+                  className="mb-4"
+                  style={{
+                    fontFamily: 'var(--font-cjk)',
+                    fontSize:   '13px',
+                    color:      'rgba(183,181,254,0.5)',
+                  }}
+                >
+                  {family.titleCn}
+                </p>
+
+                {/* Figma: body #F0F0F0/50 fontSize 14 lineHeight 1.75 */}
+                <p style={{ fontSize: '14px', lineHeight: 1.75, color: 'rgba(240,240,240,0.5)' }}>
+                  {family.desc}
+                </p>
+
+              </div>
+            </article>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  )
+}
+
+// ═══════════════════════════════════════════════════════════════
+// SECTION 7 — CLOSING STAMP
+// ═══════════════════════════════════════════════════════════════
+// Figma: relative overflow-hidden, py-40, max-w-4xl mx-auto, text-center
+//   BG: absolute bg-gradient-to-b from-[#0E0E12] via-[#212830] to-[#0E0E12]
+//   + absolute radial-gradient lavender glow
+//   Heart icon: w-16 h-16 rounded-full bg-[#b7b5fe]/10 border-[#b7b5fe]/20 mb-10
+//   h2 "Think Once." — fontWeight 300, color #ffffff, mb-0.5rem
+//   h2 "In Both Languages." — fontWeight 700, gradient #b7b5fe → #F5C842, mb-6
+//   Chinese subtitle: #b7b5fe/50 font-chinese fontSize 22, mb-6
+//   Body: #F0F0F0/40 fontSize 16 lineHeight 1.9 max-w-lg mb-12
+//   CTA: bg-[#F5C842] text-[#0E0E12] rounded-full hover:shadow-gilt
+
+function ClosingStamp() {
+  return (
+    <section
+      className="relative overflow-hidden"
+      aria-labelledby="about-closing-heading"
+    >
+      {/* Figma: absolute bg-gradient-to-b from-[#0E0E12] via-[#212830] to-[#0E0E12] */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0"
+        className="absolute inset-0"
         style={{
-          background:
-            'radial-gradient(ellipse 45% 55% at 50% 50%, rgba(245,200,66,0.05) 0%, transparent 65%)',
+          background: 'linear-gradient(to bottom, #0E0E12 0%, #212830 50%, #0E0E12 100%)',
+        }}
+      />
+      {/* Figma: absolute radial-gradient lavender glow */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0"
+        style={{
+          background: 'radial-gradient(circle at 50% 50%, rgba(183,181,254,0.08) 0%, transparent 60%)',
         }}
       />
 
-      <div className="container-section relative z-10 text-center max-w-3xl mx-auto">
+      {/* Figma: max-w-4xl mx-auto px-6 py-40 text-center */}
+      <div
+        className="relative z-10 text-center mx-auto"
+        style={{ maxWidth: '56rem', padding: '10rem 1.5rem' }}
+      >
 
-        {/* Brand tagline — the stamp at the heart of the page */}
-        {/* migrate → content/en/about.json > closing.tagline */}
-        <p
-          className="text-xs font-bold uppercase tracking-[0.2em] mb-8"
-          style={{ color: 'rgba(183,181,254,0.4)' }}
-          aria-label="DODO Learning brand tagline"
+        {/* Figma: Heart icon circle — w-16 h-16 bg-[#b7b5fe]/10 border-[#b7b5fe]/20 mb-10 */}
+        <div
+          className="flex items-center justify-center mx-auto mb-10"
+          style={{
+            width:           64,
+            height:          64,
+            borderRadius:    '50%',
+            backgroundColor: 'rgba(183,181,254,0.1)',
+            border:          '1px solid rgba(183,181,254,0.2)',
+            color:           '#b7b5fe',
+          }}
+          aria-hidden="true"
         >
-          Think Once. In Both Languages.
-        </p>
-
-        {/* migrate → content/en/about.json > closing.heading */}
-        <h2
-          id="about-closing-heading"
-          className="mb-6"
-          style={{ color: '#b7b5fe' }}
-        >
-          The diagnostic consultation is where
-          we find out exactly where your child is.
-        </h2>
-
-        {/* migrate → content/en/about.json > closing.body */}
-        <p
-          className="text-base md:text-lg leading-relaxed mb-10 max-w-xl mx-auto"
-          style={{ color: '#94A3B8' }}
-        >
-          Not where their school says they are. We measure their Lexile level,
-          identify the specific gap, and tell you exactly what the first 16
-          weeks looks like for a student exactly like yours.
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-            href="/consult"
-            className="btn btn-charter text-base px-10 py-4 justify-center"
-            aria-label="Book your diagnostic consultation — Charter Enrollment"
-          >
-            Book Your Consultation
-          </Link>
-          <Link
-            href="/results"
-            className="btn btn-ghost text-base px-10 py-4 justify-center"
-            aria-label="View student results and Lexile data"
-          >
-            See Student Results
-          </Link>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+          </svg>
         </div>
 
-        {/* Trust strip */}
-        <p
-          className="mt-10 text-xs"
-          style={{ color: 'rgba(148,163,184,0.45)' }}
+        {/* Figma: TWO separate h2 elements */}
+        {/* First: fontWeight 300, color white, fontSize clamp(2rem,5vw,3.5rem) */}
+        <h2
+          id="about-closing-heading"
+          style={{
+            fontSize:      'clamp(2rem, 5vw, 3.5rem)',
+            fontWeight:    300,
+            lineHeight:    1.15,
+            letterSpacing: '-0.02em',
+            color:         '#ffffff',
+            marginBottom:  '0.5rem',
+          }}
         >
-          Lexile-measured progress &nbsp;·&nbsp; 6+1 Trait writing framework
-          &nbsp;·&nbsp; Live Navigator-led sessions
+          Think Once.
+        </h2>
+        {/* Second: fontWeight 700, gradient text #b7b5fe → #F5C842 */}
+        <h2
+          className="mb-6"
+          style={{
+            fontSize:              'clamp(2rem, 5vw, 3.5rem)',
+            fontWeight:            700,
+            lineHeight:            1.15,
+            letterSpacing:         '-0.02em',
+            background:            'linear-gradient(135deg, #b7b5fe 0%, #F5C842 100%)',
+            WebkitBackgroundClip:  'text',
+            WebkitTextFillColor:   'transparent',
+            backgroundClip:        'text',
+          }}
+          aria-label="In Both Languages."
+        >
+          In Both Languages.
+        </h2>
+
+        {/* Figma: Chinese subtitle — font-chinese fontSize 22 #b7b5fe/50 mb-6 */}
+        <p
+          className="mb-6"
+          style={{
+            fontFamily: 'var(--font-cjk)',
+            fontSize:   '22px',
+            color:      'rgba(183,181,254,0.5)',
+          }}
+        >
+          一次思考，两种语言。
         </p>
+
+        {/* Figma: body — #F0F0F0/40 fontSize 16 lineHeight 1.9 max-w-lg mb-12 */}
+        <p
+          className="mx-auto mb-12"
+          style={{
+            fontSize:   '16px',
+            lineHeight: 1.9,
+            color:      'rgba(240,240,240,0.4)',
+            maxWidth:   '32rem',
+          }}
+        >
+          Not a tagline. A philosophy. Every session, every conversation, every
+          written word at DODO is built on this single truth: real bilingualism
+          means thinking — not translating.
+        </p>
+
+        {/* Figma: bg-[#F5C842] text-[#0E0E12] rounded-full hover:shadow-[0_0_40px_rgba(245,200,66,0.3)] */}
+        <Link
+          href="/consult"
+          className="btn btn-charter"
+          style={{ fontSize: '15px', fontWeight: 700, letterSpacing: '0.02em', padding: '1rem 2.5rem' }}
+          aria-label="Start your child's journey — book a consultation"
+        >
+          Start Your Child&rsquo;s Journey
+        </Link>
 
       </div>
     </section>
@@ -860,12 +1215,13 @@ function ThinkOnceClosing() {
 export default function AboutPage() {
   return (
     <>
-      <AboutHero />
+      <Hero />
       <TheNameSection />
-      <ThreeTruths />
-      <WhoWeServe />
-      <MissionSection />
-      <ThinkOnceClosing />
+      <WhatWeBelieve />
+      <TheLoop />
+      <WhoNavigatorsAre />
+      <FamiliesWeServe />
+      <ClosingStamp />
     </>
   )
 }

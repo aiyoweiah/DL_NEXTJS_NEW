@@ -374,6 +374,15 @@
     top: 1rem;
   }
 
+  /* ── Nav logo — explicit override. globals img reset has height:auto
+     which fights inline styles. This class wins unconditionally. ── */
+  .nav-logo {
+    height: 28px !important;
+    width: auto !important;
+    max-width: none !important;
+    display: block !important;
+  }
+
   /* ── Nav — dark (#0E0E12) glass ────────────────────────────────
      Background is set inline on the element in Navbar.jsx so it can
      never be overridden by CSS load order or hydration timing.

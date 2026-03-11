@@ -10,7 +10,6 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react'
 import Link                                          from 'next/link'
-import Image                                         from 'next/image'
 import { usePathname }                               from 'next/navigation'
 
 // ── Nav link definitions ──────────────────────────────────────
@@ -94,14 +93,16 @@ function Wordmark() {
       className="flex items-center shrink-0 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b7b5fe] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0E0E12]"
       aria-label="DODO Learning — home"
     >
-      <Image
+      {/*
+        Plain <img> — Next.js <Image> overrides inline height via its own
+        sizing logic, making pixel-level control impossible for SVGs.
+        SVGs get zero optimisation benefit from <Image> anyway.
+        height/width here are CSS values, not intrinsic dimensions.
+      */}
+      <img
         src="/logo-dark.svg"
         alt="DODO Learning"
-        width={360}
-        height={108}
-        priority
-        className="w-auto"
-        style={{ height: 'calc(var(--nav-height) * 0.42)' }}
+        className="nav-logo"
       />
     </Link>
   )
