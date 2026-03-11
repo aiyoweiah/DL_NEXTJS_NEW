@@ -1,0 +1,1054 @@
+/* ─────────────────────────────────────────────────────────────
+   DODO Learning — globals.css
+   Variant B: Light & Credentialed
+
+   Whisper (#F5F5FF) is the default register. The brand reads
+   like an authoritative academic credential. Dark sections are
+   deliberate strikes of Deep Void — hero, CTA bands, footer.
+   Lavender Signal anchors headings on light pages via Deep Void
+   subheadings. Gilt only appears at Charter Enrollment moments.
+
+   Structure:
+   1.  Tailwind directives
+   2.  CSS custom properties (design tokens)
+   3.  Base resets & defaults
+   4.  Typography system
+   5.  Component layer — shared primitives
+   6.  Utility layer — one-off helpers
+   7.  Accessibility overrides
+   8.  Reduced-motion gate
+───────────────────────────────────────────────────────────── */
+
+/* ── 1. TAILWIND ──────────────────────────────────────────── */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── 2. DESIGN TOKENS ─────────────────────────────────────── */
+:root {
+  /* ── Brand primitives ── */
+  --color-lavender-signal: #b7b5fe;
+  --color-deep-void:       #212830;
+  --color-gilt:            #F5C842;
+  --color-void-black:      #0E0E12;
+  --color-whisper:         #F5F5FF;
+  --color-platinum:        #F0F0F0;
+  --color-midnight:        #2E3848;
+
+  /* ── Semantic surface tokens — LIGHT default ── */
+  --surface-base:          var(--color-whisper);    /* default page bg */
+  --surface-raised:        #ffffff;                 /* cards, panels */
+  --surface-sunken:        #EAEAF8;                 /* input wells */
+  --surface-tinted:        #f0efff;                 /* subtle lavender tint */
+  --surface-dark:          var(--color-deep-void);
+  --surface-darker:        var(--color-void-black);
+  --surface-mid:           var(--color-midnight);
+
+  /* ── Semantic text tokens — LIGHT default ── */
+  --text-body:             #3D4452;                 /* body on light */
+  --text-body-dark:        var(--color-void-black); /* darker body on light */
+  --text-heading:          var(--color-deep-void);  /* headings on light = Deep Void */
+  --text-accent:           var(--color-lavender-signal); /* accent labels */
+  --text-muted:            #7B8494;
+  --text-inverse:          var(--color-platinum);   /* body on dark */
+  --text-inverse-heading:  var(--color-lavender-signal); /* headings on dark */
+  --text-gilt-light:       #C49400;                 /* gilt on light bg — passes AA */
+  --text-gilt-dark:        var(--color-gilt);       /* gilt on dark bg */
+
+  /* ── Border tokens ── */
+  --border-light:          rgba(14,14,18,0.1);
+  --border-medium:         rgba(14,14,18,0.18);
+  --border-lavender:       rgba(183,181,254,0.35);
+  --border-dark:           rgba(183,181,254,0.12);
+
+  /* ── Focus ring ── */
+  --focus-ring-color:      rgba(183,181,254,0.55);
+  --focus-ring-width:      3px;
+
+  /* ── Spacing rhythm ── */
+  --section-xs: 3rem;
+  --section-sm: 5rem;
+  --section-md: 7rem;
+  --section-lg: 9rem;
+  --section-xl: 11rem;
+
+  /* ── Radius scale ── */
+  --radius-sm:   0.25rem;
+  --radius-md:   0.625rem;
+  --radius-lg:   0.875rem;
+  --radius-xl:   1.25rem;
+  --radius-2xl:  2rem;
+  --radius-pill: 9999px;
+
+  /* ── Typography ── */
+  --font-latin: 'DM Sans', system-ui, sans-serif;
+  --font-cjk:   'Noto Sans SC', system-ui, sans-serif;
+
+  /* ── Transitions ── */
+  --transition-fast:   150ms cubic-bezier(0.25,1,0.5,1);
+  --transition-base:   220ms cubic-bezier(0.4,0,0.2,1);
+  --transition-slow:   320ms cubic-bezier(0.4,0,0.2,1);
+  --transition-spring: 400ms cubic-bezier(0.34,1.56,0.64,1);
+
+  /* ── Nav ── */
+  --nav-height:    64px;
+  --nav-height-md: 72px;
+
+  /* ── LexileBar ── */
+  --lexile-width: 0%;
+}
+
+/* ── 3. BASE RESETS ───────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  /* Document defaults — LIGHT background, dark text */
+  html {
+    font-family: var(--font-latin);
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--text-body);
+    background-color: var(--color-whisper);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    min-height: 100dvh;
+    background-color: var(--color-whisper);
+    color: var(--text-body);
+    font-family: var(--font-latin);
+    overflow-x: hidden;
+  }
+
+  /* Main content offset */
+  #main-content {
+    padding-top: var(--nav-height);
+  }
+
+  @media (min-width: 768px) {
+    #main-content {
+      padding-top: var(--nav-height-md);
+    }
+  }
+
+  /* ── Headings — DEEP VOID on light, LAVENDER on dark ── */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-latin);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    color: var(--color-deep-void);  /* Deep Void on light is the V-B default */
+    text-wrap: balance;
+  }
+
+  /* Dark section headings — flip to Lavender */
+  .section-dark h1,
+  .section-dark h2,
+  .section-dark h3,
+  .section-dark h4,
+  .section-darker h1,
+  .section-darker h2,
+  .section-darker h3,
+  .section-mid h1,
+  .section-mid h2,
+  .section-mid h3,
+  .section-hero h1,
+  .section-hero h2,
+  .section-hero h3 {
+    color: var(--color-lavender-signal);
+  }
+
+  h1 { font-size: clamp(2.5rem, 4.5vw + 0.5rem, 4.5rem);   letter-spacing: -0.03em; }
+  h2 { font-size: clamp(1.75rem, 3vw + 0.25rem, 2.75rem);   letter-spacing: -0.025em; }
+  h3 { font-size: clamp(1.375rem, 2vw + 0.25rem, 2rem);     letter-spacing: -0.02em; }
+  h4 { font-size: clamp(1.25rem, 1.5vw + 0.2rem, 1.625rem); font-weight: 600; }
+  h5 { font-size: 1.125rem; font-weight: 600; letter-spacing: 0; }
+  h6 { font-size: 1rem;     font-weight: 600; letter-spacing: 0; }
+
+  /* ── Body copy ── */
+  p {
+    max-width: 72ch;
+    color: var(--text-body);
+    line-height: 1.75;
+  }
+
+  .section-dark p,
+  .section-darker p,
+  .section-mid p,
+  .section-hero p {
+    color: var(--color-platinum);
+  }
+
+  /* ── Links — lavender on light, lavender-tint on dark ── */
+  a {
+    color: #7c79e8; /* lavender-signal shifted darker for AA on white */
+    text-decoration: none;
+    transition: color var(--transition-fast), opacity var(--transition-fast);
+  }
+
+  a:hover {
+    color: var(--color-lavender-signal);
+    text-decoration: underline;
+    text-decoration-color: rgba(183,181,254,0.5);
+    text-underline-offset: 3px;
+  }
+
+  .section-dark a,
+  .section-darker a,
+  .section-hero a {
+    color: var(--color-lavender-signal);
+  }
+
+  .section-dark a:hover,
+  .section-darker a:hover {
+    color: #d4d3ff;
+    text-decoration: none;
+  }
+
+  /* ── Images ── */
+  img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* ── HR — subtle on light, lavender-tint on dark ── */
+  hr {
+    border: none;
+    border-top: 1px solid var(--border-light);
+    margin: 2.5rem 0;
+  }
+
+  .section-dark hr {
+    border-top-color: var(--border-dark);
+  }
+
+  /* ── Lists ── */
+  ul, ol {
+    padding-left: 1.5em;
+  }
+
+  li {
+    margin-bottom: 0.4em;
+    color: var(--text-body);
+  }
+
+  /* ── Selection ── */
+  ::selection {
+    background-color: rgba(183,181,254,0.25);
+    color: var(--color-void-black);
+  }
+
+  .section-dark ::selection {
+    background-color: rgba(183,181,254,0.35);
+    color: var(--color-platinum);
+  }
+
+  /* ── Scrollbar — minimal, neutral ── */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-whisper);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(183,181,254,0.35);
+    border-radius: var(--radius-pill);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(183,181,254,0.55);
+  }
+}
+
+/* ── 4. TYPOGRAPHY SYSTEM ─────────────────────────────────── */
+@layer base {
+  :lang(zh) {
+    font-family: var(--font-cjk);
+    letter-spacing: 0;
+    word-break: break-all;
+    line-height: 1.8; /* CJK benefits from slightly more leading */
+  }
+
+  /* ── Prose context ── */
+  .prose-dodo {
+    color: var(--text-body);
+    max-width: 72ch;
+    font-size: 1.0625rem;
+    line-height: 1.8;
+  }
+
+  .prose-dodo strong {
+    color: var(--color-void-black);
+    font-weight: 600;
+  }
+
+  .prose-dodo em {
+    color: #7c79e8;
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  .prose-dodo h2,
+  .prose-dodo h3 {
+    color: var(--color-deep-void);
+    margin-top: 2em;
+    margin-bottom: 0.75em;
+  }
+
+  .prose-dodo code {
+    background: var(--surface-tinted);
+    border: 1px solid var(--border-lavender);
+    border-radius: var(--radius-sm);
+    padding: 0.15em 0.4em;
+    font-size: 0.875em;
+    color: #7c79e8;
+  }
+
+  .prose-dodo blockquote {
+    border-left: 3px solid var(--color-lavender-signal);
+    padding-left: 1.25em;
+    margin: 2em 0;
+    color: var(--text-muted);
+    font-style: italic;
+    font-size: 1.0625em;
+  }
+
+  .prose-dodo a {
+    color: #7c79e8;
+    text-decoration: underline;
+    text-decoration-color: rgba(183,181,254,0.4);
+    text-underline-offset: 3px;
+  }
+
+  /* Dark prose (for dark-bg sections) */
+  .prose-dodo.prose-dark {
+    color: var(--color-platinum);
+  }
+
+  .prose-dodo.prose-dark strong {
+    color: var(--color-lavender-signal);
+  }
+
+  .prose-dodo.prose-dark h2,
+  .prose-dodo.prose-dark h3 {
+    color: var(--color-lavender-signal);
+  }
+}
+
+/* ── 5. COMPONENT LAYER ───────────────────────────────────── */
+@layer components {
+
+  /* ── Skip Link (a11y) ── */
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    z-index: 999;
+    background: var(--color-gilt);
+    color: var(--color-void-black);
+    font-weight: 700;
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: top var(--transition-fast);
+  }
+
+  .skip-link:focus {
+    top: 1rem;
+  }
+
+  /* ── Nav — light by default, transparent on hero ── */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--nav-height);
+    background-color: rgba(245,245,255,0.9);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border-bottom: 1px solid var(--border-light);
+    z-index: var(--z-nav, 100);
+    transition:
+      background-color var(--transition-slow),
+      border-color var(--transition-slow),
+      box-shadow var(--transition-slow);
+  }
+
+  @media (min-width: 768px) {
+    .nav { height: var(--nav-height-md); }
+  }
+
+  /* Nav scrolled on light pages */
+  .nav.scrolled {
+    background-color: rgba(245,245,255,0.97);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.04);
+  }
+
+  /* Nav on hero (dark) — flip to dark glass */
+  .nav.on-hero {
+    background-color: rgba(14,14,18,0.7);
+    border-bottom-color: var(--border-dark);
+  }
+
+  .nav.on-hero.scrolled {
+    background-color: rgba(33,40,48,0.95);
+  }
+
+  .nav-link {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-deep-void);
+    transition: color var(--transition-fast);
+    position: relative;
+  }
+
+  .nav.on-hero .nav-link {
+    color: var(--color-platinum);
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--color-lavender-signal);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition-base);
+    border-radius: var(--radius-pill);
+  }
+
+  .nav-link:hover,
+  .nav-link[aria-current="page"] {
+    color: #7c79e8;
+  }
+
+  .nav.on-hero .nav-link:hover,
+  .nav.on-hero .nav-link[aria-current="page"] {
+    color: var(--color-lavender-signal);
+  }
+
+  .nav-link:hover::after,
+  .nav-link[aria-current="page"]::after {
+    transform: scaleX(1);
+  }
+
+  /* ── Section Wrappers ── */
+  .section-dark {
+    background-color: var(--color-deep-void);
+    color: var(--color-platinum);
+    padding-top: var(--section-md);
+    padding-bottom: var(--section-md);
+  }
+
+  .section-darker {
+    background-color: var(--color-void-black);
+    color: var(--color-platinum);
+    padding-top: var(--section-md);
+    padding-bottom: var(--section-md);
+  }
+
+  .section-mid {
+    background-color: var(--color-midnight);
+    color: var(--color-platinum);
+    padding-top: var(--section-md);
+    padding-bottom: var(--section-md);
+  }
+
+  /* LIGHT — this is the V-B default */
+  .section-light {
+    background-color: var(--color-whisper);
+    color: var(--text-body);
+    padding-top: var(--section-md);
+    padding-bottom: var(--section-md);
+  }
+
+  .section-white {
+    background-color: #ffffff;
+    color: var(--text-body);
+    padding-top: var(--section-md);
+    padding-bottom: var(--section-md);
+  }
+
+  .section-tinted {
+    background-color: #EAEAF8;
+    color: var(--text-body);
+    padding-top: var(--section-md);
+    padding-bottom: var(--section-md);
+  }
+
+  .section-report {
+    background-color: #ffffff;
+    color: var(--color-void-black);
+    padding-top: var(--section-md);
+    padding-bottom: var(--section-md);
+  }
+
+  /* Hero — always dark, full-bleed */
+  .section-hero {
+    min-height: 100dvh;
+    background-color: var(--color-void-black);
+    background-image:
+      radial-gradient(ellipse 65% 65% at 65% 35%, rgba(183,181,254,0.13) 0%, transparent 70%),
+      linear-gradient(155deg, #0E0E12 0%, #212830 60%, #2E3848 100%);
+    color: var(--color-platinum);
+    display: flex;
+    align-items: center;
+    padding-top: var(--nav-height);
+  }
+
+  /* ── Buttons ── */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: var(--font-latin);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    line-height: 1;
+    border-radius: var(--radius-pill);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 0.8125rem 2rem;  /* slightly more padding than V-A */
+    transition:
+      background-color var(--transition-base),
+      box-shadow var(--transition-base),
+      transform var(--transition-fast),
+      opacity var(--transition-fast);
+    white-space: nowrap;
+    user-select: none;
+  }
+
+  .btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 var(--focus-ring-width) var(--focus-ring-color);
+  }
+
+  .btn:disabled {
+    opacity: 0.45;
+    pointer-events: none;
+  }
+
+  /* Primary — Lavender Signal */
+  .btn-primary {
+    background-color: var(--color-lavender-signal);
+    color: var(--color-void-black);
+  }
+
+  .btn-primary:hover {
+    background-color: #c8c7ff;
+    box-shadow: 0 2px 20px rgba(183,181,254,0.4);
+    transform: translateY(-1px);
+    color: var(--color-void-black);
+    text-decoration: none;
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+
+  /* Charter — Gilt (enrollment only) */
+  .btn-charter {
+    background-color: var(--color-gilt);
+    color: var(--color-void-black);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+
+  .btn-charter:hover {
+    background-color: #f7d261;
+    box-shadow: 0 2px 20px rgba(245,200,66,0.45);
+    transform: translateY(-1px);
+    color: var(--color-void-black);
+    text-decoration: none;
+  }
+
+  .btn-charter:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+
+  /* Outline — on light pages */
+  .btn-outline {
+    background-color: transparent;
+    color: #7c79e8;
+    border: 1.5px solid rgba(183,181,254,0.5);
+  }
+
+  .btn-outline:hover {
+    background-color: rgba(183,181,254,0.08);
+    border-color: var(--color-lavender-signal);
+    color: var(--color-lavender-signal);
+    text-decoration: none;
+  }
+
+  /* Ghost — on dark sections */
+  .btn-ghost {
+    background-color: transparent;
+    color: var(--color-lavender-signal);
+    border: 1.5px solid var(--border-dark);
+  }
+
+  .btn-ghost:hover {
+    background-color: rgba(183,181,254,0.1);
+    border-color: rgba(183,181,254,0.35);
+    color: var(--color-lavender-signal);
+    text-decoration: none;
+  }
+
+  /* Secondary — on light pages (Dark Void bg) */
+  .btn-secondary {
+    background-color: var(--color-deep-void);
+    color: var(--color-platinum);
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--color-midnight);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(33,40,48,0.2);
+    color: var(--color-platinum);
+    text-decoration: none;
+  }
+
+  /* ── Badge ── */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    border-radius: var(--radius-pill);
+    padding: 0.275rem 0.875rem;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+
+  /* On light */
+  .badge-lavender {
+    background-color: rgba(183,181,254,0.18);
+    color: #7c79e8;
+    border: 1px solid rgba(183,181,254,0.4);
+  }
+
+  .badge-gilt {
+    background-color: rgba(245,200,66,0.15);
+    color: var(--text-gilt-light);
+    border: 1px solid rgba(245,200,66,0.3);
+  }
+
+  .badge-neutral {
+    background-color: rgba(14,14,18,0.06);
+    color: var(--text-muted);
+    border: 1px solid var(--border-light);
+  }
+
+  /* On dark sections */
+  .badge-lavender-dark {
+    background-color: rgba(183,181,254,0.15);
+    color: var(--color-lavender-signal);
+    border: 1px solid rgba(183,181,254,0.3);
+  }
+
+  /* ── Card — V-B default is white on whisper ── */
+  .card {
+    background-color: #ffffff;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    transition:
+      border-color var(--transition-base),
+      box-shadow var(--transition-base),
+      transform var(--transition-slow);
+  }
+
+  .card:hover {
+    border-color: rgba(183,181,254,0.5);
+    box-shadow: 0 8px 32px rgba(183,181,254,0.18), 0 2px 8px rgba(0,0,0,0.06);
+    transform: translateY(-2px);
+  }
+
+  /* Card on dark bg */
+  .card-dark {
+    background-color: var(--color-midnight);
+    border: 1px solid var(--border-dark);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  }
+
+  .card-dark:hover {
+    border-color: rgba(183,181,254,0.28);
+    box-shadow: 0 0 0 1px rgba(183,181,254,0.1), 0 8px 32px rgba(0,0,0,0.5);
+    transform: translateY(-2px);
+  }
+
+  /* ── Loop Diagram ── */
+  .loop-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.625rem;
+    position: relative;
+  }
+
+  .loop-step-number {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(183,181,254,0.12);
+    border: 1.5px solid rgba(183,181,254,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: #7c79e8;  /* darker lavender on white — AA */
+    transition: background var(--transition-base), box-shadow var(--transition-base);
+  }
+
+  .section-dark .loop-step-number,
+  .section-hero .loop-step-number {
+    color: var(--color-lavender-signal);
+    background: rgba(183,181,254,0.1);
+  }
+
+  .loop-step:hover .loop-step-number {
+    background: rgba(183,181,254,0.2);
+    box-shadow: 0 0 24px rgba(183,181,254,0.25);
+  }
+
+  .loop-step-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #7c79e8;
+  }
+
+  .section-dark .loop-step-label {
+    color: var(--color-lavender-signal);
+  }
+
+  .loop-arrow {
+    color: rgba(183,181,254,0.4);
+    flex-shrink: 0;
+  }
+
+  /* ── LexileBar ── */
+  .lexile-track {
+    background-color: rgba(183,181,254,0.12);
+    border-radius: var(--radius-pill);
+    height: 10px;
+    overflow: hidden;
+  }
+
+  .lexile-fill {
+    height: 100%;
+    border-radius: var(--radius-pill);
+    background: linear-gradient(90deg, var(--color-lavender-signal) 0%, #c8c7ff 100%);
+    width: var(--lexile-width);
+    animation: lexile-fill 1.2s cubic-bezier(0.25,1,0.5,1) both;
+  }
+
+  .lexile-label {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: #7c79e8;
+  }
+
+  .section-dark .lexile-label {
+    color: var(--color-lavender-signal);
+  }
+
+  /* ── Proof strip (stats bar) ── */
+  /* V-B: proof strip is a DARK band cutting through the light page */
+  .proof-strip {
+    background-color: var(--color-deep-void);
+    padding: 3rem 0;
+  }
+
+  .proof-stat-number {
+    font-size: clamp(2.25rem, 3vw + 0.5rem, 3.25rem);
+    font-weight: 700;
+    color: var(--color-lavender-signal);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  .proof-stat-label {
+    font-size: 0.9375rem;
+    color: var(--text-muted);
+    margin-top: 0.375rem;
+  }
+
+  /* ── Forms (for /consult — highest a11y risk page) ── */
+  .form-label {
+    display: block;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-void-black);
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+
+  /* Required star */
+  .form-label .required-mark {
+    color: #c0392b;
+    margin-left: 0.2em;
+    aria-hidden: true;
+  }
+
+  .form-input {
+    display: block;
+    width: 100%;
+    background-color: #ffffff;
+    border: 1.5px solid var(--border-medium);
+    border-radius: var(--radius-md);
+    color: var(--color-void-black);
+    font-family: var(--font-latin);
+    font-size: 1rem;
+    padding: 0.8125rem 1.125rem;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  }
+
+  .form-input::placeholder {
+    color: var(--text-muted);
+  }
+
+  .form-input:focus {
+    outline: none;
+    border-color: var(--color-lavender-signal);
+    box-shadow: 0 0 0 var(--focus-ring-width) var(--focus-ring-color), 0 1px 2px rgba(0,0,0,0.05);
+    background-color: #ffffff;
+  }
+
+  .form-input[aria-invalid="true"] {
+    border-color: #c0392b;
+    box-shadow: 0 0 0 3px rgba(192,57,43,0.2);
+  }
+
+  .form-hint {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    margin-top: 0.375rem;
+    line-height: 1.5;
+  }
+
+  .form-error {
+    font-size: 0.8125rem;
+    color: #c0392b;
+    margin-top: 0.375rem;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    line-height: 1.4;
+  }
+
+  /* ── Charter band — Gilt accent row ── */
+  .charter-band {
+    background-color: var(--color-gilt);
+    padding: 1.25rem 0;
+    text-align: center;
+  }
+
+  .charter-band-text {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--color-void-black);
+    letter-spacing: 0.02em;
+  }
+}
+
+/* ── 6. UTILITY LAYER ─────────────────────────────────────── */
+@layer utilities {
+  /* ── Text gradient — lavender, for dark sections ── */
+  .text-gradient {
+    background: linear-gradient(135deg, var(--color-lavender-signal) 0%, #e8e7ff 60%, #ffffff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── Gilt text — dark version for light bg (AA) ── */
+  .text-gilt {
+    color: var(--text-gilt-light);
+  }
+
+  .section-dark .text-gilt,
+  .section-darker .text-gilt {
+    color: var(--text-gilt-dark);
+  }
+
+  /* ── Elevated card on light ── */
+  .elevated {
+    background: #ffffff;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.05);
+    border-radius: var(--radius-xl);
+  }
+
+  /* ── Tinted surface ── */
+  .tinted {
+    background-color: #EAEAF8;
+    border-radius: var(--radius-xl);
+  }
+
+  /* ── Animation delay helpers ── */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+  .delay-600 { animation-delay: 600ms; }
+  .delay-700 { animation-delay: 700ms; }
+  .delay-800 { animation-delay: 800ms; }
+
+  /* ── Container ── */
+  .container-section {
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+  }
+
+  @media (min-width: 1024px) {
+    .container-section { padding-left: 2.5rem; padding-right: 2.5rem; }
+  }
+
+  @media (min-width: 1440px) {
+    .container-section { padding-left: 4rem; padding-right: 4rem; }
+  }
+
+  /* ── Eyebrow label — on light ── */
+  .eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #7c79e8;
+  }
+
+  .section-dark .eyebrow {
+    color: var(--color-lavender-signal);
+  }
+
+  /* ── Divider ── */
+  .divider {
+    width: 36px;
+    height: 2px;
+    background: var(--color-lavender-signal);
+    border-radius: var(--radius-pill);
+    margin: 1.25rem 0;
+  }
+
+  .divider-center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ── Lavender accent line (top border of card etc.) ── */
+  .accent-top {
+    border-top: 3px solid var(--color-lavender-signal);
+  }
+
+  /* ── Gilt accent line ── */
+  .accent-top-gilt {
+    border-top: 3px solid var(--color-gilt);
+  }
+
+  /* ── Separator: light hairline ── */
+  .hairline {
+    border-top: 1px solid var(--border-light);
+    margin: 2rem 0;
+  }
+
+  /* ── Two-column with sticky sidebar ── */
+  .layout-sidebar {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  @media (min-width: 1024px) {
+    .layout-sidebar {
+      grid-template-columns: 1fr 360px;
+      align-items: start;
+    }
+  }
+}
+
+/* ── 7. ACCESSIBILITY OVERRIDES ───────────────────────────── */
+
+:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.not-sr-only {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* ── 8. REDUCED MOTION GATE ───────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .lexile-fill {
+    animation: none;
+    width: var(--lexile-width);
+    transition: none;
+  }
+}
