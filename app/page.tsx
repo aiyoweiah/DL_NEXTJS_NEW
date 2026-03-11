@@ -1,21 +1,22 @@
 // app/page.jsx  —  /
 //
 // Homepage. SEO priority: Highest.
-// Sections (Figma Make order):
-//   1.  Hero              — dark, full-viewport, headline + two CTAs
-//   2.  ProofStrip        — three quantified social proof stats
-//   3.  PhotoIntro        — who Navigators are, what DODO is
-//   4.  LoopSection       — Read → Think → Speak → Write
-//   5.  ConfidenceSection — methodology credibility + Lexile proof
-//   6.  ParentTrustSection— anonymised student results + parent voice
-//   7.  ClosingCTA        — Charter Enrollment, final conversion moment
+// Sections:
+//   1.  Hero              — LIGHT (Whisper #F5F5FF) — credentialed, authoritative
+//   2.  ProofStrip        — DARK  (#212830) — sharp contrast strike after light hero
+//   3.  PhotoIntro        — WHITE (#ffffff) — breathing room, image panel
+//   4.  LoopSection       — DARK  (#212830) — methodology on dark = gravitas
+//   5.  ConfidenceSection — LIGHT (#F5F5FF) — structured cards, airy
+//   6.  ParentTrustSection— DARK  (#212830) — results on dark = authority
+//   7.  ClosingCTA        — DARKER (#0E0E12) — deepest conversion moment
+//
+// Colour rhythm: Light → Dark → White → Dark → Light → Dark → Darkest
+// This creates a deliberate alternating cadence after the light hero.
+// No two same-tone sections are adjacent.
 //
 // This is a pure server component. Every section is self-contained.
 // Content is hardcoded here until content/en/home.json is built —
 // comments mark each value that migrates to JSON.
-//
-// JSON-LD: educationOrgSchema is injected in app/layout.jsx (site-wide).
-// No additional page-level schema is needed on the homepage.
 
 import Link from 'next/link'
 import { buildMetadata } from '@/lib/metadata'
@@ -34,28 +35,36 @@ export const metadata = buildMetadata({
 // ═══════════════════════════════════════════════════════════════
 // SECTION 1 — HERO
 // ═══════════════════════════════════════════════════════════════
-// Full-viewport dark section. Lavender Signal headline.
-// Two CTAs: Book Your Consultation (Gilt / charter) + See The Program (ghost).
-// Eyebrow chip frames the audience.
-// Subhead is the single brand differentiator sentence.
+// LIGHT section — Whisper (#F5F5FF) background with soft lavender glow.
+// Heading: Deep Void (#212830) — authoritative on light, high contrast.
+// Chinese accent line: Lavender Signal — bilingual identity marker.
+// CTAs: btn-charter (Gilt) + btn-secondary (Deep Void solid).
+// This section flows directly into the ProofStrip dark band below.
 
 function Hero() {
   return (
     <section
-      className="section-hero relative overflow-hidden"
+      className="section-light relative overflow-hidden"
       aria-labelledby="hero-heading"
+      style={{
+        // #main-content already offsets by --nav-height via globals.css.
+        // Subtract it so the hero fills exactly the visible viewport.
+        minHeight: 'calc(100dvh - var(--nav-height))',
+        display: 'flex',
+        alignItems: 'center',
+      }}
     >
-      {/* Ambient glow — purely decorative */}
+      {/* Ambient lavender glow — reads on light bg */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            'radial-gradient(ellipse 65% 60% at 65% 38%, rgba(183,181,254,0.13) 0%, transparent 68%)',
+            'radial-gradient(ellipse 60% 55% at 70% 40%, rgba(183,181,254,0.22) 0%, transparent 65%)',
         }}
       />
 
-      <div className="container-section relative z-10 py-24 md:py-32 lg:py-40">
+      <div className="container-section relative z-10">
         <div className="max-w-3xl">
 
           {/* Eyebrow */}
@@ -69,7 +78,7 @@ function Hero() {
             {/* migrate to home.json > hero.eyebrowSecondary */}
             <span
               className="hidden sm:flex items-center gap-1.5 text-xs font-medium"
-              style={{ color: 'rgba(183,181,254,0.5)' }}
+              style={{ color: 'rgba(124,121,232,0.7)' }}
             >
               <span
                 className="inline-block w-1.5 h-1.5 rounded-full"
@@ -80,23 +89,26 @@ function Hero() {
             </span>
           </div>
 
-          {/* H1 — answers the question "what is this?" */}
+          {/* H1 — Deep Void on light background. No text-gradient (designed for dark). */}
+          {/* Chinese line rendered in Lavender Signal as the bilingual identity accent. */}
           {/* migrate to home.json > hero.heading */}
           <h1
             id="hero-heading"
-            className="mb-6 text-gradient"
-            style={{ fontWeight: 700 }}
+            className="mb-6"
+            style={{ color: '#212830', fontWeight: 700 }}
           >
-            Build the edge. <br></br>Own both languages.{' '}
+            Build the edge.{' '}
+            <br />
+            Own both languages.{' '}
             <br className="hidden sm:block" />
-            不是追赶。是领跑。
+            <span style={{ color: '#b7b5fe' }}>不是追赶。是领跑。</span>
           </h1>
 
           {/* Differentiator — one sentence */}
           {/* migrate to home.json > hero.differentiator */}
           <p
             className="mb-4 text-lg md:text-xl leading-relaxed max-w-2xl"
-            style={{ color: '#F0F0F0' }}
+            style={{ color: '#3D4452' }}
           >
             其他课程教孩子说什么。我们教孩子怎么双语思考。
           </p>
@@ -105,12 +117,17 @@ function Hero() {
           {/* migrate to home.json > hero.consultHook */}
           <p
             className="mb-10 text-base md:text-lg leading-relaxed max-w-xl"
-            style={{ color: '#94A3B8' }}
+            style={{ color: '#7B8494' }}
           >
-            The only live, high-touch program that trains the full <br></br>Read → Think → Speak → Write loop — for families <br></br>who live between two languages.
+            The only live, high-touch program that trains the full{' '}
+            <br />
+            Read → Think → Speak → Write loop — for families{' '}
+            <br />
+            who live between two languages.
           </p>
 
-          {/* CTAs */}
+          {/* CTAs — btn-charter (Gilt) is always primary conversion */}
+          {/* btn-secondary (Deep Void solid) reads clearly on Whisper bg */}
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
               href="/consult"
@@ -121,17 +138,17 @@ function Hero() {
             </Link>
             <Link
               href="/program"
-              className="btn btn-ghost text-base px-8 py-4 justify-center"
+              className="btn btn-secondary text-base px-8 py-4 justify-center"
               aria-label="Learn about The 16-Week Program"
             >
               See The 16-Week Program
             </Link>
           </div>
 
-          {/* Trust micro-line */}
+          {/* Trust micro-line — dark muted on light bg */}
           <p
             className="mt-8 text-xs"
-            style={{ color: 'rgba(148,163,184,0.7)' }}
+            style={{ color: 'rgba(123,132,148,0.8)' }}
           >
             Lexile-measured progress &nbsp;·&nbsp; 6+1 Trait writing framework
             &nbsp;·&nbsp; Live Navigator-led sessions
@@ -146,9 +163,8 @@ function Hero() {
 // ═══════════════════════════════════════════════════════════════
 // SECTION 2 — PROOF STRIP
 // ═══════════════════════════════════════════════════════════════
-// Dark mid-tone band. Three quantified outcomes.
-// Numbers are specific — brand rule: "always cite specific numbers."
-// Migrate values to home.json > proofStrip.stats[]
+// Dark mid-tone band directly after the light hero — maximum contrast.
+// This is the first "strike of dark" that anchors the page rhythm.
 
 const PROOF_STATS = [
   {
@@ -205,14 +221,13 @@ function ProofStrip() {
 // ═══════════════════════════════════════════════════════════════
 // SECTION 3 — PHOTO INTRO
 // ═══════════════════════════════════════════════════════════════
-// Light section. Who Navigators are + what the program is.
-// Two-column on desktop: text left, image placeholder right.
-// Image slot is ready for a real photo — currently a styled placeholder.
+// White (#ffffff) section — slightly lifted from Whisper to create
+// a clean visual step after the dark ProofStrip.
 
 function PhotoIntro() {
   return (
     <section
-      className="section-light"
+      className="section-white"
       aria-labelledby="photo-intro-heading"
     >
       <div className="container-section">
@@ -222,7 +237,7 @@ function PhotoIntro() {
           <div>
             <p className="eyebrow mb-4">Who We Are</p>
             <h2 id="photo-intro-heading">
-            The difference between a teacher and a Navigator is a map.
+              The difference between a teacher and a Navigator is a map.
             </h2>
             <p className="mt-6 text-base md:text-lg leading-relaxed"
                style={{ color: '#3D4452' }}>
@@ -298,10 +313,8 @@ function PhotoIntro() {
 // ═══════════════════════════════════════════════════════════════
 // SECTION 4 — THE LOOP
 // ═══════════════════════════════════════════════════════════════
-// Dark section. The Loop methodology spelled out.
-// Four steps in order — never reordered, never renamed.
-// Each step has a description so LLMs and screen readers
-// get the full methodology, not just the label.
+// Dark (#212830) — methodology lands with weight and focus.
+// Cards use .card-dark variant for dark-bg context.
 
 const LOOP_STEPS = [
   {
@@ -379,7 +392,7 @@ function LoopSection() {
                 />
               )}
 
-              <div className="card h-full p-6 flex flex-col gap-4">
+              <div className="card card-dark h-full p-6 flex flex-col gap-4">
                 <div className="flex items-center gap-3">
                   <span
                     className="loop-step-number"
@@ -432,6 +445,8 @@ function LoopSection() {
 // ═══════════════════════════════════════════════════════════════
 // SECTION 5 — CONFIDENCE SECTION
 // ═══════════════════════════════════════════════════════════════
+// Light (#F5F5FF) — returns to Whisper after the dark Loop section.
+// .card-light cards with .accent-top lavender border.
 
 const CONFIDENCE_PILLARS = [
   {
@@ -469,7 +484,7 @@ const CONFIDENCE_PILLARS = [
 function ConfidenceSection() {
   return (
     <section
-      className="section-white"
+      className="section-light"
       aria-labelledby="confidence-heading"
     >
       <div className="container-section">
@@ -491,7 +506,7 @@ function ConfidenceSection() {
           {CONFIDENCE_PILLARS.map((pillar) => (
             <div
               key={pillar.id}
-              className="card card-light p-8 flex flex-col gap-4 accent-top"
+              className="card p-8 flex flex-col gap-4 accent-top"
             >
               <p className="eyebrow">{pillar.eyebrow}</p>
               <h3
@@ -522,6 +537,7 @@ function ConfidenceSection() {
 // ═══════════════════════════════════════════════════════════════
 // SECTION 6 — PARENT TRUST SECTION
 // ═══════════════════════════════════════════════════════════════
+// Dark (#212830) — results feel most authoritative on dark.
 
 const STUDENT_RESULTS = [
   {
@@ -638,7 +654,7 @@ function ParentTrustSection() {
           {STUDENT_RESULTS.map((result) => (
             <article
               key={result.id}
-              className="card p-6 flex flex-col gap-5"
+              className="card card-dark p-6 flex flex-col gap-5"
               aria-label={`Student result: ${result.student}, ${result.detail}`}
             >
               <div>
@@ -659,7 +675,7 @@ function ParentTrustSection() {
                 label={`Reading progress: Lexile ${result.start} to Lexile ${result.end} in ${result.weeks} weeks`}
               />
 
-              <span className="badge badge-lavender self-start">
+              <span className="badge badge-lavender-dark self-start">
                 6+1 {result.trait}
               </span>
 
@@ -689,6 +705,8 @@ function ParentTrustSection() {
 // ═══════════════════════════════════════════════════════════════
 // SECTION 7 — CLOSING CTA
 // ═══════════════════════════════════════════════════════════════
+// Void Black (#0E0E12) — deepest tone, final conversion moment.
+// Comes after dark ParentTrust — a subtle step down, not a reset.
 
 function ClosingCTA() {
   return (

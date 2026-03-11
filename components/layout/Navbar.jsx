@@ -85,8 +85,8 @@ function LocaleSwitcherSlot() {
 }
 
 // ── Wordmark ──────────────────────────────────────────────────
-// logo-dark.svg — high-contrast variant for the dark (#0E0E12) navbar background.
-// When a light navbar variant is needed, swap src to "/logo.svg".
+// Nav is dark (#0E0E12). logo-dark.svg is the high-contrast variant
+// designed for dark backgrounds.
 function Wordmark() {
   return (
     <Link
@@ -101,7 +101,7 @@ function Wordmark() {
         height={108}
         priority
         className="w-auto"
-        style={{ height: 'calc(var(--nav-height) * 0.65)' }}
+        style={{ height: 'calc(var(--nav-height) * 0.42)' }}
       />
     </Link>
   )
@@ -172,13 +172,16 @@ export default function Navbar() {
     [pathname]
   )
 
+  // ── Link components — dark nav, light text ───────────────────
+  // Active/hover: Lavender Signal #b7b5fe — high contrast on #0E0E12
+  // Inactive: Platinum #F0F0F0 — readable on dark bg
   const DesktopNavLink = ({ href, label }) => {
     const active = isActive(href)
     return (
       <Link
         href={href}
         aria-current={active ? 'page' : undefined}
-        className={`nav-link text-sm font-medium transition-colors duration-150 ${
+        className={`nav-link text-sm font-medium whitespace-nowrap transition-colors duration-150 ${
           active ? 'text-[#b7b5fe]' : 'text-[#F0F0F0] hover:text-[#b7b5fe]'
         }`}
       >
@@ -254,6 +257,7 @@ export default function Navbar() {
               </Link>
             )}
 
+            {/* Hamburger — Platinum on dark nav */}
             <button
               ref={hamburgerRef}
               type="button"
@@ -280,7 +284,7 @@ export default function Navbar() {
         />
       )}
 
-      {/* ── Mobile drawer ──────────────────────────────────── */}
+      {/* ── Mobile drawer — stays dark, works as a contrast overlay ── */}
       <div
         id="mobile-nav-drawer"
         ref={drawerRef}
@@ -331,11 +335,12 @@ export default function Navbar() {
             )}
           </div>
 
+          {/* FIXED: "Think Once." not "Think Twice." — brand doc §0 clarification */}
           <p
             className="mt-8 text-xs font-medium tracking-widest uppercase text-center"
             style={{ color: 'rgba(183,181,254,0.4)' }}
           >
-            Think Twice. In Both Languages.
+            Think Once. In Both Languages.
           </p>
 
         </div>
