@@ -1,4 +1,4 @@
-// app/layout.jsx
+// app/layout.tsx
 //
 // Root layout — wraps every route in the site.
 //
@@ -9,6 +9,8 @@
 //   4. Restore alternates.languages in lib/metadata.js
 
 import '@/styles/globals.css'
+
+import { ReactNode } from 'react'
 
 import { fontLatin, fontCJK } from '@/lib/fonts'
 import { buildMetadata }      from '@/lib/metadata'
@@ -31,7 +33,7 @@ export const metadata = buildMetadata({
 })
 
 // ── Root layout ───────────────────────────────────────────────
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="en"
