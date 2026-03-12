@@ -581,7 +581,7 @@ const STUDENT_RESULTS = [
   },
 ]
 
-function LexileProgressBar({ start, end, label }) {
+function LexileProgressBar({ start, end, label }: { start: number; end: number; label: string }) {
   const startPct = Math.round((start / 1200) * 100)
   const endPct   = Math.round((end   / 1200) * 100)
   const gainPct  = endPct - startPct
