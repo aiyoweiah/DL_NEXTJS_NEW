@@ -25,6 +25,12 @@
 //   No changes needed here. /en/* and /zh/* will be crawlable
 //   by default once the locale routes exist.
 
+export const dynamic = 'force-static'
+
+export default function robots() {
+  // ... rest of your existing code unchanged
+}
+
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ||
   'https://www.dodolearning.com'

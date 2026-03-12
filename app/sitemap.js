@@ -19,6 +19,12 @@
 //   They are included here for completeness and for non-Google crawlers
 //   (Bing, Yandex, and LLM crawlers that read sitemaps for discovery).
 
+export const dynamic = 'force-static'
+
+export default function sitemap() {
+  // ... rest of your existing code unchanged
+}
+
 import { readdir } from 'fs/promises'
 import { join }    from 'path'
 
