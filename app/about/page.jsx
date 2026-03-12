@@ -12,9 +12,7 @@
 //   7. ClosingStamp      — gradient dark, split h2 with gradient text
 //
 // Pure server component. Zero 'use client'.
-// Framer-motion animations replaced with CSS (no client bundle).
-// Images: placeholder divs — swap for <Image> once next.config.js allows
-//   images.unsplash.com or client provides production assets.
+// All JSX text entities escaped. No raw " or ' in JSX text nodes.
 
 import Link from 'next/link'
 import { buildMetadata } from '@/lib/metadata'
@@ -172,7 +170,7 @@ function Hero() {
             >
               Most bilingual children learn English as a subject. They pass exams
               and sound fluent. But ask them to argue, to build, to write something
-              original — and the language falls apart. Our founder saw this gap and
+              original &mdash; and the language falls apart. Our founder saw this gap and
               built DODO to close it.
             </p>
 
@@ -288,14 +286,14 @@ function TheNameSection() {
                 <strong style={{ color: '#F0F0F0' }}>Do + Do.</strong>
               </p>
               <p>
-                Learning isn&rsquo;t passive. It&rsquo;s not about absorbing — it&rsquo;s
+                Learning isn&rsquo;t passive. It&rsquo;s not about absorbing &mdash; it&rsquo;s
                 about doing. Reading is doing. Thinking is doing. Speaking is doing.
                 Writing is doing.
               </p>
               <p>
                 The double &ldquo;Do&rdquo; is also a nod to the iterative nature of
                 mastery. You don&rsquo;t learn a language once. You learn it by doing,
-                then doing again — each time deeper, each time more your own.
+                then doing again &mdash; each time deeper, each time more your own.
               </p>
             </div>
 
@@ -399,7 +397,12 @@ const BELIEFS = [
 ]
 
 function BeliefIcon({ id }) {
-  const base = { width: 28, height: 28, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.5, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true }
+  const base = {
+    width: 28, height: 28, viewBox: '0 0 24 24', fill: 'none',
+    stroke: 'currentColor', strokeWidth: 1.5,
+    strokeLinecap: 'round', strokeLinejoin: 'round',
+    'aria-hidden': true,
+  }
   if (id === 'belief-1') return (
     <svg {...base}>
       <path d="M9.5 2a4.5 4.5 0 0 0 0 9M14.5 2a4.5 4.5 0 0 1 0 9" />
@@ -450,7 +453,11 @@ function WhatWeBelieve() {
               <div className="flex items-center">
                 <div
                   className="flex items-center justify-center"
-                  style={{ width: 48, height: 48, borderRadius: '50%', backgroundColor: 'rgba(183,181,254,0.1)', color: '#b7b5fe', flexShrink: 0 }}
+                  style={{
+                    width: 48, height: 48, borderRadius: '50%',
+                    backgroundColor: 'rgba(183,181,254,0.1)',
+                    color: '#b7b5fe', flexShrink: 0,
+                  }}
                   aria-hidden="true"
                 >
                   <BeliefIcon id={item.id} />
@@ -490,11 +497,11 @@ const LOOP_STEPS = [
   },
   {
     id: 'think', step: 'Think', stepCn: '思考',
-    desc: "Process what you've read. Form opinions. Make connections. This is where language becomes thinking.",
+    desc: 'Process what you\'ve read. Form opinions. Make connections. This is where language becomes thinking.',
   },
   {
     id: 'speak', step: 'Speak', stepCn: '表达',
-    desc: "Articulate your ideas aloud. Defend them. Refine them. Speaking isn't output — it's processing.",
+    desc: 'Articulate your ideas aloud. Defend them. Refine them. Speaking isn\'t output — it\'s processing.',
   },
   {
     id: 'write', step: 'Write', stepCn: '书写',
@@ -503,11 +510,33 @@ const LOOP_STEPS = [
 ]
 
 function LoopStepIcon({ id }) {
-  const base = { width: 24, height: 24, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.5, strokeLinecap: 'round', strokeLinejoin: 'round' }
-  if (id === 'read') return <svg {...base} aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" /><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" /></svg>
-  if (id === 'think') return <svg {...base} aria-hidden="true"><path d="M9.5 2a4.5 4.5 0 0 0 0 9M14.5 2a4.5 4.5 0 0 1 0 9" /><path d="M5 10a4 4 0 0 0 4 4v6M19 10a4 4 0 0 1-4 4v6M9 20h6" /></svg>
-  if (id === 'speak') return <svg {...base} aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
-  return <svg {...base} aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" /></svg>
+  const base = {
+    width: 24, height: 24, viewBox: '0 0 24 24', fill: 'none',
+    stroke: 'currentColor', strokeWidth: 1.5,
+    strokeLinecap: 'round', strokeLinejoin: 'round',
+  }
+  if (id === 'read') return (
+    <svg {...base} aria-hidden="true">
+      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+    </svg>
+  )
+  if (id === 'think') return (
+    <svg {...base} aria-hidden="true">
+      <path d="M9.5 2a4.5 4.5 0 0 0 0 9M14.5 2a4.5 4.5 0 0 1 0 9" />
+      <path d="M5 10a4 4 0 0 0 4 4v6M19 10a4 4 0 0 1-4 4v6M9 20h6" />
+    </svg>
+  )
+  if (id === 'speak') return (
+    <svg {...base} aria-hidden="true">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+    </svg>
+  )
+  return (
+    <svg {...base} aria-hidden="true">
+      <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+    </svg>
+  )
 }
 
 function TheLoop() {
@@ -537,7 +566,12 @@ function TheLoop() {
               <li key={item.id} className="text-center px-8 py-8">
                 <div
                   className="flex items-center justify-center mx-auto mb-6 relative z-10"
-                  style={{ width: 56, height: 56, borderRadius: '50%', backgroundColor: 'rgba(183,181,254,0.1)', border: '1px solid rgba(183,181,254,0.2)', color: '#b7b5fe' }}
+                  style={{
+                    width: 56, height: 56, borderRadius: '50%',
+                    backgroundColor: 'rgba(183,181,254,0.1)',
+                    border: '1px solid rgba(183,181,254,0.2)',
+                    color: '#b7b5fe',
+                  }}
                   aria-hidden="true"
                 >
                   <LoopStepIcon id={item.id} />
@@ -560,7 +594,11 @@ function TheLoop() {
           <Link
             href="/methodology"
             className="inline-flex items-center gap-2"
-            style={{ fontSize: '13px', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase', color: '#b7b5fe', textDecoration: 'none' }}
+            style={{
+              fontSize: '13px', fontWeight: 600,
+              letterSpacing: '0.05em', textTransform: 'uppercase',
+              color: '#b7b5fe', textDecoration: 'none',
+            }}
           >
             Explore Methodology
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -595,10 +633,22 @@ function WhoNavigatorsAre() {
           {/* ── Left — image ── */}
           <div className="order-2 lg:order-1">
             <div className="relative">
-              <div className="rounded-3xl overflow-hidden" style={{ height: '520px' }} aria-label="A DODO Navigator in session">
-                <div className="w-full h-full" style={{ background: 'linear-gradient(135deg, #e8e7f8 0%, #d4d3f0 40%, #c0bfea 100%)' }} aria-hidden="true" />
+              <div
+                className="rounded-3xl overflow-hidden"
+                style={{ height: '520px' }}
+                aria-label="A DODO Navigator in session"
+              >
+                <div
+                  className="w-full h-full"
+                  style={{ background: 'linear-gradient(135deg, #e8e7f8 0%, #d4d3f0 40%, #c0bfea 100%)' }}
+                  aria-hidden="true"
+                />
               </div>
-              <div className="absolute rounded-2xl px-6 py-4" style={{ bottom: -24, right: -24, backgroundColor: '#b7b5fe' }} aria-hidden="true">
+              <div
+                className="absolute rounded-2xl px-6 py-4"
+                style={{ bottom: -24, right: -24, backgroundColor: '#b7b5fe' }}
+                aria-hidden="true"
+              >
                 <p style={{ fontSize: '14px', fontWeight: 600, color: '#0E0E12' }}>Not teachers.</p>
                 <p style={{ fontSize: '14px', fontWeight: 500, color: 'rgba(14,14,18,0.7)' }}>Navigators.</p>
               </div>
@@ -611,7 +661,7 @@ function WhoNavigatorsAre() {
             <div className="mt-8 space-y-5" style={{ fontSize: '16px', lineHeight: 1.85, color: '#2E3848' }}>
               <p>
                 We don&rsquo;t call them teachers. We call them{' '}
-                <strong style={{ color: '#0E0E12' }}>Navigators</strong> — because
+                <strong style={{ color: '#0E0E12' }}>Navigators</strong> &mdash; because
                 they don&rsquo;t stand at the front and lecture. They sit beside
                 your child and guide.
               </p>
@@ -631,7 +681,13 @@ function WhoNavigatorsAre() {
                 <span
                   key={item.trait}
                   className="inline-flex items-center gap-2 rounded-full"
-                  style={{ padding: '10px 20px', backgroundColor: '#0E0E12', color: '#ffffff', fontSize: '13px', fontWeight: 500 }}
+                  style={{
+                    padding: '10px 20px',
+                    backgroundColor: '#0E0E12',
+                    color: '#ffffff',
+                    fontSize: '13px',
+                    fontWeight: 500,
+                  }}
                 >
                   <span aria-hidden="true" style={{ fontSize: '11px', color: '#b7b5fe' }}>{item.symbol}</span>
                   {item.trait}
@@ -649,20 +705,16 @@ function WhoNavigatorsAre() {
 // ═══════════════════════════════════════════════════════════════
 // SECTION 6 — THE FAMILIES WE SERVE
 // ═══════════════════════════════════════════════════════════════
-// FIX: raw " chars in quote strings replaced with Unicode curly quotes
-// (\u201c / \u201d) so they render as typographic characters in JSX
-// without triggering react/no-unescaped-entities.
 
 const FAMILIES = [
   {
     id:      'family-1',
     title:   'The Bilingual Home',
     titleCn: '双语家庭',
-    // \u201c = " \u201d = " \u2014 = — \u2019 = '
     quote:   '\u201cThat\u2019s us \u2014 two languages, one family.\u201d',
     desc:
       'You speak two languages at home and you want your child to feel equally ' +
-      'powerful in both. Not just conversational — intellectually fluent.',
+      'powerful in both. Not just conversational \u2014 intellectually fluent.',
     imgBg:   'linear-gradient(135deg, #142318 0%, #1e3526 60%, #142318 100%)',
   },
   {
@@ -671,7 +723,7 @@ const FAMILIES = [
     titleCn: '国际化家庭',
     quote:   '\u201cWe move between worlds. So does our child.\u201d',
     desc:
-      'You\'ve moved countries — maybe more than once. Your child navigates cultures ' +
+      'You\u2019ve moved countries \u2014 maybe more than once. Your child navigates cultures ' +
       'daily, and you want their English to match the complexity of their life.',
     imgBg:   'linear-gradient(135deg, #131c2e 0%, #1e2a40 60%, #131c2e 100%)',
   },
@@ -682,7 +734,7 @@ const FAMILIES = [
     quote:   '\u201cGood isn\u2019t enough. We want depth.\u201d',
     desc:
       'Your child is already good at English. Maybe even great. But you sense ' +
-      'there\'s a ceiling — and the current system isn\'t going to break through it.',
+      'there\u2019s a ceiling \u2014 and the current system isn\u2019t going to break through it.',
     imgBg:   'linear-gradient(135deg, #2a1218 0%, #3a1e24 60%, #2a1218 100%)',
   },
 ]
@@ -738,43 +790,79 @@ function FamiliesWeServe() {
 function ClosingStamp() {
   return (
     <section className="relative overflow-hidden" aria-labelledby="about-closing-heading">
-      <div aria-hidden="true" className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, #0E0E12 0%, #212830 50%, #0E0E12 100%)' }} />
-      <div aria-hidden="true" className="absolute inset-0" style={{ background: 'radial-gradient(circle at 50% 50%, rgba(183,181,254,0.08) 0%, transparent 60%)' }} />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0"
+        style={{ background: 'linear-gradient(to bottom, #0E0E12 0%, #212830 50%, #0E0E12 100%)' }}
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0"
+        style={{ background: 'radial-gradient(circle at 50% 50%, rgba(183,181,254,0.08) 0%, transparent 60%)' }}
+      />
 
-      <div className="relative z-10 text-center mx-auto" style={{ maxWidth: '56rem', padding: '10rem 1.5rem' }}>
+      <div
+        className="relative z-10 text-center mx-auto"
+        style={{ maxWidth: '56rem', padding: '10rem 1.5rem' }}
+      >
 
         <div
           className="flex items-center justify-center mx-auto mb-10"
-          style={{ width: 64, height: 64, borderRadius: '50%', backgroundColor: 'rgba(183,181,254,0.1)', border: '1px solid rgba(183,181,254,0.2)', color: '#b7b5fe' }}
+          style={{
+            width: 64, height: 64, borderRadius: '50%',
+            backgroundColor: 'rgba(183,181,254,0.1)',
+            border: '1px solid rgba(183,181,254,0.2)',
+            color: '#b7b5fe',
+          }}
           aria-hidden="true"
         >
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <svg
+            width="28" height="28" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" strokeWidth="1.5"
+            strokeLinecap="round" strokeLinejoin="round"
+          >
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
           </svg>
         </div>
 
         <h2
           id="about-closing-heading"
-          style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 300, lineHeight: 1.15, letterSpacing: '-0.02em', color: '#ffffff', marginBottom: '0.5rem' }}
+          style={{
+            fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 300,
+            lineHeight: 1.15, letterSpacing: '-0.02em',
+            color: '#ffffff', marginBottom: '0.5rem',
+          }}
         >
           Think Once.
         </h2>
         <h2
           className="mb-6"
-          style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 700, lineHeight: 1.15, letterSpacing: '-0.02em', background: 'linear-gradient(135deg, #b7b5fe 0%, #F5C842 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}
+          style={{
+            fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 700,
+            lineHeight: 1.15, letterSpacing: '-0.02em',
+            background: 'linear-gradient(135deg, #b7b5fe 0%, #F5C842 100%)',
+            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+          }}
           aria-label="In Both Languages."
         >
           In Both Languages.
         </h2>
 
-        <p className="mb-6" style={{ fontFamily: 'var(--font-cjk)', fontSize: '22px', color: 'rgba(183,181,254,0.5)' }}>
+        <p
+          className="mb-6"
+          style={{ fontFamily: 'var(--font-cjk)', fontSize: '22px', color: 'rgba(183,181,254,0.5)' }}
+        >
           一次思考，两种语言。
         </p>
 
-        <p className="mx-auto mb-12" style={{ fontSize: '16px', lineHeight: 1.9, color: 'rgba(240,240,240,0.4)', maxWidth: '32rem' }}>
+        <p
+          className="mx-auto mb-12"
+          style={{ fontSize: '16px', lineHeight: 1.9, color: 'rgba(240,240,240,0.4)', maxWidth: '32rem' }}
+        >
           Not a tagline. A philosophy. Every session, every conversation, every
           written word at DODO is built on this single truth: real bilingualism
-          means thinking — not translating.
+          means thinking &mdash; not translating.
         </p>
 
         <Link
