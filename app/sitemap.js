@@ -19,14 +19,10 @@
 //   They are included here for completeness and for non-Google crawlers
 //   (Bing, Yandex, and LLM crawlers that read sitemaps for discovery).
 
-export const dynamic = 'force-static'
-
-export default function sitemap() {
-  // ... rest of your existing code unchanged
-}
-
 import { readdir } from 'fs/promises'
 import { join }    from 'path'
+
+export const dynamic = 'force-static'
 
 // ── Site constant — mirrors lib/metadata.js ───────────────────
 const SITE_URL =
@@ -81,9 +77,6 @@ async function getBlogSlugs() {
       .filter((f) => f.endsWith('.mdx'))
       .map((f) => ({
         slug:         f.replace(/\.mdx$/, ''),
-        // Use file mtime for lastModified when available — more accurate
-        // than build time for frequently updated articles.
-        // Stat calls are deferred to avoid slowing the build for large blogs.
         lastModified: BUILD_DATE,
       }))
   } catch {
@@ -135,8 +128,6 @@ export default async function sitemap() {
     url:             `${SITE_URL}/blog/${slug}`,
     lastModified,
     changeFrequency: 'monthly',
-    // Blog posts rank lower than core program pages individually,
-    // but compound over time — 0.65 is intentional.
     priority:        0.65,
 
     // alternates: {
