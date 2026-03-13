@@ -1,704 +1,1151 @@
-'use client'
-
-// components/UnderConstruction.jsx
+// app/[locale]/program/page.jsx
 //
-// Standalone under-construction page.
-// Direct translation of Figma UnderConstruction component.
+// The 16-Week Program page.
+// Pure server component — no 'use client'.
 //
-// Usage: drop into any not-yet-built route, e.g.:
-//   app/[locale]/lexile/page.jsx → export { default } from '@/components/UnderConstruction'
-//
-// IMPORTANT — this page has its own minimal nav + footer.
-// It should be rendered inside a layout that suppresses the site Navbar + Footer.
-// Option A: create app/[locale]/[page]/layout.jsx that returns children directly.
-// Option B: wrap with a dedicated blank layout at the route level.
-//
-// Framer-motion animations → CSS keyframes (no client bundle cost beyond useState).
-// Link/router → Next.js <Link href="/">.
-// form onSubmit → standard React event handler.
+// Design source: Figma Make — ProgramPage.tsx
+// Token map (Figma Tailwind config → globals.css / hex):
+//   bg-light-bg    → #F5F5FF  (Whisper)
+//   bg-dark-ui     → #212830  (Deep Void)
+//   bg-body-light  → #0E0E12  (Void Black)
+//   bg-mid-surface → #2E3848  (Midnight)
+//   text-primary   → #b7b5fe on dark / #7c79e8 AA on small light text
+//   bg-primary     → #b7b5fe  (Lavender Signal)
+//   text-gilt      → #F5C842
+//   bg-gilt        → #F5C842
+//   text-body-light → #0E0E12 (body on light)
+//   text-body-dark  → #F0F0F0 (body on dark)
+//   font-dm-sans   → var(--font-latin)
+//   font-noto-sans-sc → var(--font-cjk)
 
-import { useState }  from 'react'
-import Link          from 'next/link'
+import Link from 'next/link'
+import { buildMetadata } from '@/lib/metadata'
+import { courseSchema }  from '@/lib/schema'
+import {
+  ArrowRight,
+  BookOpen,
+  Edit3,
+  Lightbulb,
+  MessageCircle,
+  PlayCircle,
+  Sparkles,
+  Heart,
+  Target,
+  Users,
+} from 'lucide-react'
 
-// ═══════════════════════════════════════════════════════════════
-// CSS ANIMATIONS
-// ═══════════════════════════════════════════════════════════════
-// Injected via <style> tag — replaces framer-motion variants.
-// float, floatSlow → translateY loops (4s / 5s)
-// pulse → opacity + scale loop (3s)
-// fadeUp → opacity + translateY enter (0.7s)
-// progressFill → width 0 → 65% (1.5s, delay 0.5s)
-
-const KEYFRAMES = `
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50%       { transform: translateY(-12px); }
-  }
-  @keyframes floatSlow {
-    0%, 100% { transform: translateY(0px); }
-    50%       { transform: translateY(-8px); }
-  }
-  @keyframes pulseBlob {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50%       { opacity: 0.6; transform: scale(1.05); }
-  }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes progressFill {
-    from { width: 0%; }
-    to   { width: 65%; }
-  }
-  @keyframes scaleIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to   { opacity: 1; transform: scale(1); }
-  }
-`
-
-// Animation style helpers
-const fadeUpStyle = (delay = 0) => ({
-  animation:    `fadeUp 0.7s ease-out both`,
-  animationDelay: `${delay}ms`,
+// ── Page metadata ─────────────────────────────────────────────
+export const metadata = buildMetadata({
+  title:       'The 16-Week Program',
+  description:
+    'A structured, Navigator-led 16-week bilingual thinking program. ' +
+    'Entrance Lexile assessment, weekly Read → Think → Speak → Write sessions, ' +
+    'and a measurable exit result for Chinese-speaking families in Canada and the US.',
+  path: '/program',
 })
 
-export default function UnderConstruction() {
-  const [email,     setEmail]     = useState('')
-  const [submitted, setSubmitted] = useState(false)
+// ─────────────────────────────────────────────────────────────
+// SHARED SUB-COMPONENTS
+// All pure JSX, server-safe.
+// ─────────────────────────────────────────────────────────────
 
-  function handleSubmit(e) {
-    e.preventDefault()
-    if (email.trim()) {
-      setSubmitted(true)
-      setEmail('')
-    }
-  }
-
+/** Bilingual stacked headline — eng + zho */
+function Headline({ eng, zho, dark = true, center = false }) {
   return (
-    <>
-      <style dangerouslySetInnerHTML={{ __html: KEYFRAMES }} />
-
-      {/* Figma: min-h-screen bg-[#F5F5FF] text-[#0E0E12] relative overflow-hidden */}
-      <div
-        className="relative overflow-hidden"
+    <div className={center ? 'text-center' : ''}>
+      <h2
+        className="font-bold text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.15]"
         style={{
-          minHeight:       '100dvh',
-          backgroundColor: '#F5F5FF',
-          color:           '#0E0E12',
-          fontFamily:      'var(--font-latin)',
+          fontFamily: 'var(--font-latin)',
+          color: dark ? '#b7b5fe' : '#0E0E12',
         }}
       >
+        {eng}
+      </h2>
+      <h3
+        className="font-medium text-base md:text-xl tracking-wider mt-2"
+        style={{
+          fontFamily: 'var(--font-cjk)',
+          color: dark ? '#F0F0F0' : '#0E0E12',
+          opacity: 0.5,
+        }}
+      >
+        {zho}
+      </h3>
+    </div>
+  )
+}
 
-        {/* ── Background blobs ────────────────────────────────
-            Figma: three absolute blobs — lavender top-left, lavender bottom-right, gilt centre
-            All use blur-3xl + pulseBlob animation
-        ── */}
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          {/* Figma: top-[15%] left-[10%] w-72 h-72 bg-[#b7b5fe]/10 blur-3xl */}
-          <div
-            style={{
-              position:        'absolute',
-              top:             '15%',
-              left:            '10%',
-              width:           288,
-              height:          288,
-              borderRadius:    '50%',
-              backgroundColor: 'rgba(183,181,254,0.1)',
-              filter:          'blur(48px)',
-              animation:       'pulseBlob 3s ease-in-out infinite',
-            }}
-          />
-          {/* Figma: bottom-[20%] right-[8%] w-96 h-96 bg-[#b7b5fe]/8 blur-3xl delay-1.5s */}
-          <div
-            style={{
-              position:        'absolute',
-              bottom:          '20%',
-              right:           '8%',
-              width:           384,
-              height:          384,
-              borderRadius:    '50%',
-              backgroundColor: 'rgba(183,181,254,0.08)',
-              filter:          'blur(48px)',
-              animation:       'pulseBlob 3s ease-in-out infinite',
-              animationDelay:  '1.5s',
-            }}
-          />
-          {/* Figma: top-[60%] left-[50%] w-48 h-48 bg-[#F5C842]/8 blur-3xl */}
-          <div
-            style={{
-              position:        'absolute',
-              top:             '60%',
-              left:            '50%',
-              width:           192,
-              height:          192,
-              borderRadius:    '50%',
-              backgroundColor: 'rgba(245,200,66,0.08)',
-              filter:          'blur(48px)',
-              animation:       'pulseBlob 3s ease-in-out infinite',
-              animationDelay:  '0.75s',
-            }}
-          />
-        </div>
+/** Small-caps section label */
+function Eyebrow({ children, dark = false, center = false }) {
+  return (
+    <span
+      className={`inline-block text-xs tracking-[0.2em] uppercase font-medium mb-4${center ? ' block text-center' : ''}`}
+      style={{ color: dark ? '#b7b5fe' : '#7c79e8' }}
+    >
+      {children}
+    </span>
+  )
+}
 
-        {/* ── Grid pattern overlay ─────────────────────────────
-            Figma: opacity-[0.03], 60px grid, #b7b5fe lines
-        ── */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          aria-hidden="true"
-          style={{
-            opacity:         0.03,
-            backgroundImage:
-              'linear-gradient(#b7b5fe 1px, transparent 1px), linear-gradient(90deg, #b7b5fe 1px, transparent 1px)',
-            backgroundSize:  '60px 60px',
-          }}
-        />
+/** 6+1 Trait progress bar row */
+function TraitBar({ trait, entry, exit }) {
+  return (
+    <div className="flex items-center gap-3 text-sm">
+      <span
+        className="w-32 truncate"
+        style={{ color: 'rgba(14,14,18,0.7)', fontFamily: 'var(--font-latin)' }}
+      >
+        {trait}
+      </span>
+      <div className="flex-1 flex items-center gap-1.5">
+        {[1, 2, 3, 4, 5, 6].map((n) => (
+          <div key={n} className="flex-1 h-7 rounded-lg relative overflow-hidden">
+            {/* Entry fill */}
+            <div
+              className="absolute inset-0 rounded-lg"
+              style={{ backgroundColor: n <= entry ? 'rgba(14,14,18,0.12)' : 'rgba(0,0,0,0.03)' }}
+            />
+            {/* Exit fill — layered on top */}
+            <div
+              className="absolute inset-0 rounded-lg"
+              style={{ backgroundColor: n <= exit ? 'rgba(183,181,254,0.75)' : 'transparent' }}
+            />
+          </div>
+        ))}
+      </div>
+      <span className="w-14 text-right font-mono">
+        <span style={{ color: 'rgba(14,14,18,0.35)' }}>{entry}</span>
+        <span style={{ color: 'rgba(14,14,18,0.2)', margin: '0 4px' }}>→</span>
+        <span className="font-bold" style={{ color: '#b7b5fe' }}>{exit}</span>
+      </span>
+    </div>
+  )
+}
 
-        {/* ── Mini Nav ─────────────────────────────────────────
-            Figma: bg-[#F5F5FF]/80 backdrop-blur-md border-b border-[#b7b5fe]/10
-            Logo left (square lavender badge + DODO wordmark) + Back link right
-        ── */}
-        <nav
-          className="relative z-10"
-          aria-label="Under construction navigation"
-          style={{
-            backgroundColor: 'rgba(245,245,255,0.8)',
-            backdropFilter:  'blur(12px)',
-            borderBottom:    '1px solid rgba(183,181,254,0.1)',
-          }}
+/** The Loop circular SVG diagram */
+function LoopDiagram() {
+  return (
+    <div className="relative w-full max-w-md mx-auto" style={{ aspectRatio: '1 / 1' }}>
+      <svg viewBox="0 0 400 400" className="w-full h-full" fill="none" aria-label="The Loop: Read, Think, Speak, Write" role="img">
+        {/* Outer rings */}
+        <circle cx="200" cy="200" r="160" stroke="#b7b5fe" strokeWidth="1.5" opacity="0.2" />
+        <circle cx="200" cy="200" r="145" stroke="#b7b5fe" strokeWidth="0.5" opacity="0.08" />
+
+        {/* Connecting arcs */}
+        <path d="M200 40 A160 160 0 0 1 360 200"  stroke="#b7b5fe" strokeWidth="2.5" opacity="0.35" strokeLinecap="round" />
+        <path d="M360 200 A160 160 0 0 1 200 360" stroke="#b7b5fe" strokeWidth="2.5" opacity="0.35" strokeLinecap="round" />
+        <path d="M200 360 A160 160 0 0 1 40 200"  stroke="#b7b5fe" strokeWidth="2.5" opacity="0.35" strokeLinecap="round" />
+        <path d="M40 200 A160 160 0 0 1 200 40"   stroke="#b7b5fe" strokeWidth="2.5" opacity="0.35" strokeLinecap="round" />
+
+        {/* READ — top */}
+        <circle cx="200" cy="40"  r="36" fill="#F5F5FF" stroke="#b7b5fe"  strokeWidth="2" />
+        <text x="200" y="37"  textAnchor="middle" fill="#0E0E12" fontSize="12" fontWeight="700" fontFamily="DM Sans, sans-serif">READ</text>
+        <text x="200" y="53"  textAnchor="middle" fill="#0E0E12" fontSize="9"  opacity="0.4"  fontFamily="Noto Sans SC, sans-serif">阅读</text>
+
+        {/* THINK — right */}
+        <circle cx="360" cy="200" r="36" fill="#F5F5FF" stroke="#b7b5fe"  strokeWidth="2" />
+        <text x="360" y="197" textAnchor="middle" fill="#0E0E12" fontSize="12" fontWeight="700" fontFamily="DM Sans, sans-serif">THINK</text>
+        <text x="360" y="213" textAnchor="middle" fill="#0E0E12" fontSize="9"  opacity="0.4"  fontFamily="Noto Sans SC, sans-serif">思考</text>
+
+        {/* SPEAK — bottom (gilt accent) */}
+        <circle cx="200" cy="360" r="36" fill="#F5F5FF" stroke="#F5C842"  strokeWidth="2" />
+        <text x="200" y="357" textAnchor="middle" fill="#0E0E12" fontSize="12" fontWeight="700" fontFamily="DM Sans, sans-serif">SPEAK</text>
+        <text x="200" y="373" textAnchor="middle" fill="#0E0E12" fontSize="9"  opacity="0.4"  fontFamily="Noto Sans SC, sans-serif">表达</text>
+
+        {/* WRITE — left */}
+        <circle cx="40"  cy="200" r="36" fill="#F5F5FF" stroke="#b7b5fe"  strokeWidth="2" />
+        <text x="40"  y="197" textAnchor="middle" fill="#0E0E12" fontSize="12" fontWeight="700" fontFamily="DM Sans, sans-serif">WRITE</text>
+        <text x="40"  y="213" textAnchor="middle" fill="#0E0E12" fontSize="9"  opacity="0.4"  fontFamily="Noto Sans SC, sans-serif">写作</text>
+
+        {/* Centre label */}
+        <text x="200" y="193" textAnchor="middle" fill="#0E0E12"  fontSize="13" fontWeight="700" fontFamily="DM Sans, sans-serif"      opacity="0.6">THE LOOP</text>
+        <text x="200" y="210" textAnchor="middle" fill="#b7b5fe"  fontSize="10" fontFamily="Noto Sans SC, sans-serif" opacity="0.5">学习闭环</text>
+      </svg>
+    </div>
+  )
+}
+
+// ─────────────────────────────────────────────────────────────
+// PAGE STATS DATA
+// ─────────────────────────────────────────────────────────────
+const STATS = [
+  { num: '16', label: 'Weeks',        sub: 'A real commitment',          Icon: Target     },
+  { num: '4',  label: 'Skills',       sub: 'Read · Think · Speak · Write', Icon: Sparkles   },
+  { num: '2',  label: 'Assessments',  sub: 'Before + After',             Icon: BookOpen   },
+  { num: '1',  label: 'Navigator',    sub: 'Who knows your child',       Icon: Heart      },
+  { num: '1',  label: 'Cohort',       sub: 'Small & intentional',        Icon: Users      },
+  { num: '∞',  label: 'The Full Loop', sub: 'Every single session',      Icon: ArrowRight },
+]
+
+const LOOP_PANELS = [
+  {
+    num:    '01',
+    title:  'Read',
+    Icon:   BookOpen,
+    accent: '#b7b5fe',
+    numCol: 'rgba(183,181,254,0.35)',
+    border: 'rgba(0,0,0,0.06)',
+    badge:  'LEXILE 740',
+    img:    'https://images.unsplash.com/photo-1612650699397-a47b20e57ca5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=800&q=80',
+    imgAlt: 'Student reading in natural light',
+    body:   'Texts chosen above their comfort zone — just enough to stretch. Comprehension is tracked by Lexile level, not guesswork.',
+  },
+  {
+    num:    '02',
+    title:  'Think',
+    Icon:   Lightbulb,
+    accent: '#b7b5fe',
+    numCol: 'rgba(183,181,254,0.35)',
+    border: 'rgba(0,0,0,0.06)',
+    badge:  null,
+    img:    'https://images.unsplash.com/photo-1565665634648-1a036f3a5688?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=800&q=80',
+    imgAlt: 'Brainstorming and ideas on whiteboard',
+    body:   'Before they speak or write, they build the argument. What\u2019s the claim? What\u2019s the evidence? What\u2019s the counter? Structure first.',
+  },
+  {
+    num:    '03',
+    title:  'Speak',
+    Icon:   MessageCircle,
+    accent: '#F5C842',
+    numCol: 'rgba(245,200,66,0.45)',
+    border: 'rgba(245,200,66,0.1)',
+    badge:  null,
+    img:    'https://images.unsplash.com/photo-1580582932707-520aed937b7b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=800&q=80',
+    imgAlt: 'Student presenting confidently',
+    body:   'They take a position and defend it \u2014 live, with their Navigator. This is where confidence is built, not performed.',
+  },
+  {
+    num:    '04',
+    title:  'Write',
+    Icon:   Edit3,
+    accent: '#b7b5fe',
+    numCol: 'rgba(183,181,254,0.35)',
+    border: 'rgba(0,0,0,0.06)',
+    badge:  null,
+    img:    'https://images.unsplash.com/photo-1588561181397-fed38f837e17?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=800&q=80',
+    imgAlt: 'Child writing in notebook',
+    body:   'Everything they\u2019ve read, thought, and said now lands on the page. Draft to revision \u2014 measurable improvement, every time.',
+  },
+]
+
+const TRAIT_BARS = [
+  { trait: 'Ideas',            entry: 2, exit: 4 },
+  { trait: 'Organisation',     entry: 2, exit: 4 },
+  { trait: 'Voice',            entry: 2, exit: 4 },
+  { trait: 'Word Choice',      entry: 2, exit: 5 },
+  { trait: 'Sentence Fluency', entry: 3, exit: 5 },
+  { trait: 'Conventions',      entry: 3, exit: 4 },
+  { trait: 'Presentation',     entry: 2, exit: 4 },
+]
+
+// ─────────────────────────────────────────────────────────────
+// PAGE COMPONENT
+// ─────────────────────────────────────────────────────────────
+export default function ProgramPage() {
+  return (
+    <>
+      {/* Page-scoped JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema()) }}
+      />
+
+      <div className="w-full overflow-hidden">
+
+        {/* ════════════════════════════════════════════════════
+            SECTION 1 — HERO
+            Background: #F5F5FF (Whisper / light-bg)
+        ════════════════════════════════════════════════════ */}
+        <section
+          className="relative w-full min-h-screen flex items-center overflow-hidden"
+          style={{ backgroundColor: '#F5F5FF' }}
         >
-          <div
-            className="flex items-center justify-between"
-            style={{ maxWidth: '72rem', margin: '0 auto', padding: '1rem 1.5rem' }}
-          >
-            {/* Figma: w-9 h-9 rounded-xl bg-[#b7b5fe] + "DODO" wordmark */}
-            <Link
-              href="/"
-              className="flex items-center gap-2"
-              aria-label="DODO Learning — home"
-              style={{ textDecoration: 'none' }}
-            >
-              <div
-                className="flex items-center justify-center"
-                style={{
-                  width:           36,
-                  height:          36,
-                  borderRadius:    '0.75rem',
-                  backgroundColor: '#b7b5fe',
-                  flexShrink:      0,
-                }}
-                aria-hidden="true"
-              >
-                <span style={{ fontWeight: 700, fontSize: '14px', color: '#ffffff' }}>
-                  do
-                </span>
-              </div>
-              <span style={{ fontWeight: 600, fontSize: '20px', color: '#0E0E12' }}>
-                DODO
-              </span>
-            </Link>
-
-            {/* Figma: ArrowLeft + "Back to Home" — color #2E3848 hover:text-[#b7b5fe] */}
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 transition-colors duration-150"
-              style={{
-                fontSize:       '14px',
-                fontWeight:     500,
-                color:          '#2E3848',
-                textDecoration: 'none',
-              }}
-            >
-              {/* Arrow left icon */}
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              Back to Home
-            </Link>
-          </div>
-        </nav>
-
-        {/* ── Main content area ────────────────────────────────
-            Figma: flex flex-col items-center justify-center
-            min-h-[calc(100vh-65px)] px-6 py-16 relative z-10
-        ── */}
-        <div
-          className="relative z-10 flex flex-col items-center justify-center"
-          style={{
-            minHeight: 'calc(100dvh - 65px)',
-            padding:   '4rem 1.5rem',
-          }}
-        >
-
-          {/* ── Floating construction icons ───────────────────
-              Figma: four absolute white-bg squares/circles with icons
-              top-left: Hammer (float 4s)
-              top-right: Sparkles in Gilt (floatSlow 5s, delay 1s)
-              bottom-left: "Do" text (float)
-              bottom-right: "Do" in #b7b5fe (floatSlow)
-          ── */}
-          <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-            {/* Figma: top-[18%] left-[15%] w-12 h-12 rounded-xl */}
+          {/* Soft radial background glows */}
+          <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
             <div
-              className="flex items-center justify-center"
+              className="absolute rounded-full blur-[120px]"
               style={{
-                position:        'absolute',
-                top:             '18%',
-                left:            '15%',
-                width:           48,
-                height:          48,
-                borderRadius:    '0.75rem',
-                backgroundColor: '#ffffff',
-                border:          '1px solid rgba(183,181,254,0.1)',
-                boxShadow:       '0 4px 16px rgba(183,181,254,0.1)',
-                animation:       'float 4s ease-in-out infinite',
+                top: '-20%', right: '-10%',
+                width: '60vw', height: '60vw',
+                backgroundColor: 'rgba(183,181,254,0.06)',
               }}
-            >
-              {/* Hammer icon */}
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b7b5fe" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M15 12l-8.5 8.5a2.121 2.121 0 0 1-3-3L12 9" />
-                <path d="M17.64 15L22 10.36" />
-                <path d="M20.41 8.59l-3-3a2 2 0 0 0-2.83 0L12 8.17l3.83 3.83 2.58-2.58a2 2 0 0 0 0-2.83z" />
-              </svg>
-            </div>
-
-            {/* Figma: top-[25%] right-[18%] w-10 h-10 rounded-lg */}
+            />
             <div
-              className="flex items-center justify-center"
+              className="absolute rounded-full blur-[100px]"
               style={{
-                position:        'absolute',
-                top:             '25%',
-                right:           '18%',
-                width:           40,
-                height:          40,
-                borderRadius:    '0.5rem',
-                backgroundColor: '#ffffff',
-                border:          '1px solid rgba(183,181,254,0.1)',
-                boxShadow:       '0 4px 16px rgba(183,181,254,0.1)',
-                animation:       'floatSlow 5s ease-in-out infinite',
-                animationDelay:  '1s',
+                bottom: '-10%', left: '-5%',
+                width: '40vw', height: '40vw',
+                backgroundColor: 'rgba(245,200,66,0.04)',
               }}
-            >
-              {/* Sparkles icon in Gilt */}
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5C842" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z" />
-                <path d="M5 17l.75 2.25L8 20l-2.25.75L5 23" />
-                <path d="M19 2l.5 1.5L21 4l-1.5.5L19 6" />
-              </svg>
-            </div>
-
-            {/* Figma: bottom-[28%] left-[20%] w-10 h-10 rounded-lg — "Do" text */}
-            <div
-              className="flex items-center justify-center"
-              style={{
-                position:        'absolute',
-                bottom:          '28%',
-                left:            '20%',
-                width:           40,
-                height:          40,
-                borderRadius:    '0.5rem',
-                backgroundColor: '#ffffff',
-                border:          '1px solid rgba(183,181,254,0.1)',
-                boxShadow:       '0 4px 16px rgba(183,181,254,0.1)',
-                animation:       'float 4s ease-in-out infinite',
-                animationDelay:  '0.5s',
-              }}
-            >
-              <span style={{ fontSize: '16px', color: '#0E0E12' }}>Do</span>
-            </div>
-
-            {/* Figma: bottom-[32%] right-[15%] w-11 h-11 rounded-xl — "Do" in lavender */}
-            <div
-              className="flex items-center justify-center"
-              style={{
-                position:        'absolute',
-                bottom:          '32%',
-                right:           '15%',
-                width:           44,
-                height:          44,
-                borderRadius:    '0.75rem',
-                backgroundColor: '#ffffff',
-                border:          '1px solid rgba(183,181,254,0.1)',
-                boxShadow:       '0 4px 16px rgba(183,181,254,0.1)',
-                animation:       'floatSlow 5s ease-in-out infinite',
-                animationDelay:  '0.3s',
-              }}
-            >
-              <span style={{ fontSize: '14px', fontWeight: 700, color: '#b7b5fe' }}>Do</span>
-            </div>
+            />
           </div>
 
-          {/* ── Central content ──────────────────────────────── */}
-          {/* Figma: text-center max-w-2xl, fadeUp animation */}
-          <div
-            className="text-center"
-            style={{ maxWidth: '42rem', ...fadeUpStyle(0) }}
-          >
+          <div className="relative z-10 container-section py-20 md:py-28 w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-center">
 
-            {/* Figma: badge — bg-[#F5C842]/10 border-[#F5C842]/20 rounded-full mb-8 */}
-            {/* Construction icon + "Under Construction" + Chinese dot */}
-            <div
-              className="inline-flex items-center gap-2 rounded-full mb-8"
-              style={{
-                padding:         '8px 16px',
-                backgroundColor: 'rgba(245,200,66,0.1)',
-                border:          '1px solid rgba(245,200,66,0.2)',
-              }}
-            >
-              {/* Construction icon */}
-              <svg
-                width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="#F5C842" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M2 20h20" />
-                <path d="M6 20V10l6-7 6 7v10" />
-                <path d="M10 20v-5h4v5" />
-              </svg>
-              <span style={{ fontSize: '13px', fontWeight: 500, color: '#0E0E12' }}>
-                Under Construction
-              </span>
-              <span
-                style={{
-                  fontFamily: 'var(--font-cjk)',
-                  fontSize:   '12px',
-                  color:      '#b7b5fe',
-                }}
-              >
-                · 建设中
-              </span>
-            </div>
+              {/* Left — copy */}
+              <div className="lg:col-span-3 flex flex-col gap-5">
+                <Eyebrow>The 16-Week Program</Eyebrow>
 
-            {/* Figma: h1 fontWeight 300 clamp(2rem,5vw,3.25rem) lineHeight 1.15 */}
-            {/* "thoughtful" → #b7b5fe fontWeight 600 */}
-            <h1
-              className="mb-4"
-              style={{
-                fontSize:      'clamp(2rem, 5vw, 3.25rem)',
-                fontWeight:    300,
-                lineHeight:    1.15,
-                letterSpacing: '-0.02em',
-                color:         '#0E0E12',
-              }}
-            >
-              Something{' '}
-              <span style={{ fontWeight: 600, color: '#b7b5fe' }}>thoughtful</span>{' '}
-              is being built.
-            </h1>
-
-            {/* Figma: Chinese subtitle — font-chinese fontSize 18 color #b7b5fe mb-6 */}
-            <p
-              className="mb-6"
-              style={{
-                fontFamily: 'var(--font-cjk)',
-                fontSize:   '18px',
-                color:      '#b7b5fe',
-              }}
-            >
-              我们正在精心打造中。
-            </p>
-
-            {/* Figma: body — #2E3848 fontSize 16 lineHeight 1.8 max-w-lg mx-auto mb-4 */}
-            <p
-              className="mx-auto mb-4"
-              style={{
-                fontSize:   '16px',
-                lineHeight: 1.8,
-                color:      '#2E3848',
-                maxWidth:   '32rem',
-              }}
-            >
-              This page isn&rsquo;t ready yet — but we&rsquo;re working on it with the
-              same care we bring to everything at DODO. Real learning takes time.
-              So does building something worth visiting.
-            </p>
-
-            {/* Figma: Chinese body — font-chinese fontSize 14 lineHeight 1.8 #b7b5fe/60 */}
-            <p
-              className="mx-auto"
-              style={{
-                fontFamily: 'var(--font-cjk)',
-                fontSize:   '14px',
-                lineHeight: 1.8,
-                color:      'rgba(183,181,254,0.6)',
-                maxWidth:   '32rem',
-              }}
-            >
-              这个页面还没有准备好，但我们正在用心打造。好的东西值得等待。
-            </p>
-
-          </div>
-
-          {/* ── Progress bar ─────────────────────────────────────
-              Figma: w-full max-w-sm mt-12
-              Label row: "Progress" + "65%" in #b7b5fe
-              Track: bg-[#b7b5fe]/10, h-2, rounded-full
-              Fill: gradient from-[#b7b5fe] to-[#b7b5fe]/70, animated to 65%
-          ── */}
-          <div
-            style={{ marginTop: '3rem', width: '100%', maxWidth: '24rem', ...fadeUpStyle(200) }}
-          >
-            <div className="flex items-center justify-between mb-3">
-              <span style={{ fontSize: '12px', fontWeight: 500, color: '#2E3848' }}>
-                Progress
-              </span>
-              <span style={{ fontSize: '12px', fontWeight: 600, color: '#b7b5fe' }}>
-                65%
-              </span>
-            </div>
-            <div
-              style={{
-                width:           '100%',
-                height:          8,
-                borderRadius:    9999,
-                backgroundColor: 'rgba(183,181,254,0.1)',
-                overflow:        'hidden',
-              }}
-              role="progressbar"
-              aria-valuenow={65}
-              aria-valuemin={0}
-              aria-valuemax={100}
-              aria-label="Page construction progress: 65%"
-            >
-              <div
-                style={{
-                  height:           '100%',
-                  borderRadius:     9999,
-                  background:       'linear-gradient(to right, #b7b5fe 0%, rgba(183,181,254,0.7) 100%)',
-                  animation:        'progressFill 1.5s ease-out both',
-                  animationDelay:   '0.5s',
-                }}
-              />
-            </div>
-          </div>
-
-          {/* ── Email notification form ───────────────────────────
-              Figma: w-full max-w-md mt-12
-              Before submit: white card, Bell icon + label, email input + Gilt button
-              After submit: white card, Bell icon, "You're on the list!" + Chinese
-          ── */}
-          <div
-            style={{ marginTop: '3rem', width: '100%', maxWidth: '28rem', ...fadeUpStyle(350) }}
-          >
-            {submitted ? (
-              // Figma: submitted state — scaleIn animation, text-center
-              <div
-                className="text-center"
-                style={{
-                  backgroundColor: '#ffffff',
-                  borderRadius:    '1rem',
-                  padding:         '1.5rem',
-                  border:          '1px solid rgba(183,181,254,0.15)',
-                  boxShadow:       '0 1px 4px rgba(0,0,0,0.04)',
-                  animation:       'scaleIn 0.3s ease-out both',
-                }}
-              >
-                {/* Bell icon circle */}
-                <div
-                  className="flex items-center justify-center mx-auto mb-4"
-                  style={{
-                    width:           48,
-                    height:          48,
-                    borderRadius:    '50%',
-                    backgroundColor: 'rgba(183,181,254,0.1)',
-                  }}
-                  aria-hidden="true"
+                <h1
+                  className="font-bold text-4xl md:text-6xl lg:text-7xl tracking-tight leading-[1.1]"
+                  style={{ fontFamily: 'var(--font-latin)', color: '#0E0E12' }}
                 >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b7b5fe" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-                    <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-                  </svg>
-                </div>
-                <p style={{ fontSize: '16px', fontWeight: 600, color: '#0E0E12', marginBottom: '4px' }}>
-                  You&rsquo;re on the list!
-                </p>
-                <p style={{ fontSize: '14px', color: '#2E3848' }}>
-                  We&rsquo;ll let you know when this page is ready.
-                </p>
+                  A real plan for your child&rsquo;s next 16&nbsp;weeks.
+                </h1>
+
                 <p
-                  className="mt-2"
-                  style={{ fontFamily: 'var(--font-cjk)', fontSize: '13px', color: '#b7b5fe' }}
+                  className="font-medium text-lg md:text-xl tracking-wider"
+                  style={{ fontFamily: 'var(--font-cjk)', color: '#b7b5fe' }}
                 >
-                  页面准备好后，我们会通知您。
+                  为您孩子定制的十六周成长计划
                 </p>
-              </div>
-            ) : (
-              // Figma: default state — white card, form with input + button
-              <div
-                style={{
-                  backgroundColor: '#ffffff',
-                  borderRadius:    '1rem',
-                  padding:         '1.5rem',
-                  border:          '1px solid rgba(183,181,254,0.1)',
-                  boxShadow:       '0 1px 4px rgba(0,0,0,0.04)',
-                }}
-              >
-                {/* Figma: Bell icon + label row mb-4 */}
-                <div className="flex items-center gap-3 mb-4">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b7b5fe" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-                    <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-                  </svg>
-                  <span style={{ fontSize: '14px', fontWeight: 500, color: '#0E0E12' }}>
-                    Get notified when we launch
-                  </span>
-                </div>
 
-                {/* Figma: flex gap-3, input + Gilt button */}
-                {/* Note: no <form> per artifact rules — using div + onClick */}
-                <div className="flex gap-3">
-                  <label htmlFor="notify-email" className="sr-only">
-                    Your email address
-                  </label>
-                  <input
-                    id="notify-email"
-                    type="email"
-                    placeholder="your@email.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    onKeyDown={(e) => { if (e.key === 'Enter') handleSubmit(e) }}
-                    required
+                <p
+                  className="text-lg md:text-xl font-light max-w-xl leading-relaxed"
+                  style={{ color: 'rgba(14,14,18,0.55)' }}
+                >
+                  We start with a clear baseline — reading level, writing ability —
+                  and build from there. Every week is structured, tracked, and guided
+                  by a dedicated Navigator who knows your child by name.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4 mt-4">
+                  <a
+                    href="#structure"
+                    className="inline-flex items-center justify-center gap-2 font-bold py-4 px-8 rounded-full transition-all hover:shadow-lg"
                     style={{
-                      flex:            1,
-                      padding:         '12px 16px',
-                      borderRadius:    '0.75rem',
-                      backgroundColor: '#F5F5FF',
-                      border:          '1px solid rgba(183,181,254,0.1)',
-                      fontSize:        '14px',
-                      color:           '#0E0E12',
-                      outline:         'none',
                       fontFamily:      'var(--font-latin)',
-                    }}
-                    onFocus={(e) => { e.target.style.borderColor = 'rgba(183,181,254,0.3)' }}
-                    onBlur={(e)  => { e.target.style.borderColor = 'rgba(183,181,254,0.1)' }}
-                  />
-                  {/* Figma: bg-[#F5C842] text-[#0E0E12] px-6 py-3 rounded-xl */}
-                  <button
-                    type="button"
-                    onClick={handleSubmit}
-                    className="btn btn-charter shrink-0"
-                    style={{
-                      fontSize:     '14px',
-                      fontWeight:   600,
-                      padding:      '12px 24px',
-                      borderRadius: '0.75rem',
+                      backgroundColor: '#b7b5fe',
+                      color:           '#0E0E12',
+                      boxShadow:       '0 4px 20px rgba(183,181,254,0.25)',
                     }}
                   >
-                    Notify Me
-                  </button>
+                    See How It Works <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                  </a>
+                  <Link
+                    href="/consult"
+                    className="inline-flex items-center justify-center gap-2 font-bold py-4 px-8 rounded-full transition-colors hover:border-[#b7b5fe] hover:text-[#7c79e8]"
+                    style={{
+                      fontFamily: 'var(--font-latin)',
+                      border:     '1.5px solid rgba(14,14,18,0.15)',
+                      color:      '#0E0E12',
+                    }}
+                  >
+                    Book a Free Consultation
+                  </Link>
+                </div>
+              </div>
+
+              {/* Right — Loop diagram */}
+              <div className="lg:col-span-2">
+                <LoopDiagram />
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* ════════════════════════════════════════════════════
+            SECTION 2 — PROGRAM AT A GLANCE (stats strip)
+            Background: #212830 (Deep Void / dark-ui)
+        ════════════════════════════════════════════════════ */}
+        <section
+          className="w-full py-12 md:py-16"
+          style={{ backgroundColor: '#212830' }}
+          aria-label="Program at a glance"
+        >
+          <div className="container-section">
+            <div className="grid grid-cols-2 md:grid-cols-6 gap-y-10 gap-x-2">
+              {STATS.map(({ num, label, sub, Icon }, i) => (
+                <div
+                  key={label}
+                  className="flex flex-col items-center text-center px-3"
+                  style={i > 0
+                    ? { borderLeft: '1px solid rgba(183,181,254,0.15)' }
+                    : undefined
+                  }
+                >
+                  <Icon className="w-5 h-5 mb-2" style={{ color: 'rgba(183,181,254,0.4)' }} aria-hidden="true" />
+                  <span
+                    className="text-4xl md:text-5xl font-bold tracking-tight mb-1"
+                    style={{ fontFamily: 'var(--font-latin)', color: '#b7b5fe' }}
+                  >
+                    {num}
+                  </span>
+                  <span
+                    className="text-sm font-medium uppercase tracking-[0.15em] mb-1"
+                    style={{ color: 'rgba(240,240,240,0.8)' }}
+                  >
+                    {label}
+                  </span>
+                  <span
+                    className="text-xs font-light leading-snug"
+                    style={{ color: 'rgba(240,240,240,0.4)' }}
+                  >
+                    {sub}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ════════════════════════════════════════════════════
+            SECTION 3 — THE LOOP DEEP DIVE
+            Background: #F5F5FF (light-bg)
+        ════════════════════════════════════════════════════ */}
+        <section
+          id="structure"
+          className="w-full py-20 md:py-28"
+          style={{ backgroundColor: '#F5F5FF' }}
+        >
+          <div className="container-section">
+            <Eyebrow>How The Loop Works</Eyebrow>
+            <div className="mb-14 md:mb-20">
+              <Headline
+                eng="Four skills. Every session."
+                zho="四项技能，贯穿每堂课"
+                dark={false}
+              />
+            </div>
+            <p
+              className="font-light max-w-2xl leading-relaxed -mt-8 md:-mt-12 mb-12 md:mb-16"
+              style={{ color: 'rgba(14,14,18,0.5)' }}
+            >
+              Each session cycles through four connected phases. Your child doesn&rsquo;t
+              just study one skill at a time — they learn how reading fuels thinking,
+              thinking sharpens speaking, and speaking strengthens writing.
+            </p>
+
+            {/* Four panels grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+              {LOOP_PANELS.map(({ num, title, Icon, accent, numCol, border, badge, img, imgAlt, body }) => (
+                <div
+                  key={title}
+                  className="group relative overflow-hidden rounded-3xl flex flex-col justify-end p-8 md:p-10 hover:shadow-lg transition-shadow"
+                  style={{
+                    aspectRatio:     '3 / 4',
+                    backgroundColor: '#ffffff',
+                    border:          `1px solid ${border}`,
+                    boxShadow:       '0 4px 20px rgba(0,0,0,0.04)',
+                  }}
+                >
+                  {/* Background photo */}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={img}
+                    alt={imgAlt}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    style={{ opacity: 0.35 }}
+                  />
+                  {/* White gradient overlay */}
+                  <div
+                    className="absolute inset-0"
+                    style={{ background: 'linear-gradient(to top, #ffffff 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.3) 100%)' }}
+                  />
+                  {/* Optional Lexile badge */}
+                  {badge && (
+                    <div
+                      className="absolute top-6 right-6 z-10 font-mono text-xs tracking-widest border px-3 py-1.5 rounded-lg"
+                      style={{
+                        color:           `rgba(183,181,254,0.7)`,
+                        borderColor:     'rgba(183,181,254,0.25)',
+                        backgroundColor: 'rgba(255,255,255,0.9)',
+                        backdropFilter:  'blur(4px)',
+                      }}
+                    >
+                      {badge}
+                    </div>
+                  )}
+                  {/* Card content */}
+                  <div className="relative z-10">
+                    <span
+                      className="font-light text-sm tracking-widest mb-3 block"
+                      style={{ color: numCol }}
+                    >
+                      {num}
+                    </span>
+                    <h3
+                      className="text-3xl md:text-4xl font-bold mb-3 flex items-center gap-3"
+                      style={{ fontFamily: 'var(--font-latin)', color: '#0E0E12' }}
+                    >
+                      <Icon className="w-6 h-6" style={{ color: accent }} aria-hidden="true" />
+                      {title}
+                    </h3>
+                    <p className="font-light leading-relaxed" style={{ color: 'rgba(14,14,18,0.55)' }}>
+                      {body}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ════════════════════════════════════════════════════
+            SECTION 4 — THE 16-WEEK JOURNEY
+            Background: #212830 (dark-ui)
+        ════════════════════════════════════════════════════ */}
+        <section
+          className="w-full py-20 md:py-28"
+          style={{ backgroundColor: '#212830' }}
+        >
+          <div className="container-section">
+            <Eyebrow dark>The Journey</Eyebrow>
+            <div className="mb-14 md:mb-20">
+              <Headline
+                eng="Where your child starts — and where they'll be."
+                zho="从起点到成长的清晰路径"
+                dark
+              />
+            </div>
+
+            {/* Three-node timeline */}
+            <div className="flex flex-col md:flex-row gap-12 md:gap-8 relative">
+
+              {/* Desktop dashed connector */}
+              <div
+                className="hidden md:block absolute top-[10px] pointer-events-none"
+                style={{
+                  left:       '8.33%',
+                  right:      '8.33%',
+                  borderTop:  '1px dashed rgba(183,181,254,0.25)',
+                }}
+                aria-hidden="true"
+              />
+              {/* Mobile dashed connector */}
+              <div
+                className="md:hidden absolute top-0 bottom-0 left-[10px] pointer-events-none"
+                style={{ borderLeft: '1px dashed rgba(183,181,254,0.25)' }}
+                aria-hidden="true"
+              />
+
+              {/* ── Node 1: Entrance Assessment ── */}
+              <div className="flex-1 relative pl-14 md:pl-0">
+                <div className="flex items-center justify-start mb-4 md:mb-6 relative z-10">
+                  <div
+                    className="w-5 h-5 rounded-full"
+                    style={{
+                      backgroundColor: '#b7b5fe',
+                      boxShadow:       '0 0 16px rgba(183,181,254,0.4)',
+                    }}
+                  />
+                </div>
+                <h4
+                  className="font-semibold text-xl mb-1"
+                  style={{ fontFamily: 'var(--font-latin)', color: '#b7b5fe' }}
+                >
+                  Entrance Assessment
+                </h4>
+                <p
+                  className="text-xs uppercase tracking-widest mb-3"
+                  style={{ color: 'rgba(183,181,254,0.45)' }}
+                >
+                  Week 1 · 第一周
+                </p>
+                <p
+                  className="font-light text-sm leading-relaxed mb-6"
+                  style={{ color: 'rgba(240,240,240,0.65)' }}
+                >
+                  We start by finding out exactly where your child is — their reading level,
+                  their writing strengths, and the specific areas where they need support.
+                  No assumptions.
+                </p>
+                <div
+                  className="rounded-2xl overflow-hidden border"
+                  style={{
+                    aspectRatio:     '4 / 3',
+                    backgroundColor: '#2E3848',
+                    borderColor:     'rgba(255,255,255,0.05)',
+                  }}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="https://images.unsplash.com/photo-1606327054581-899eb5e6d1dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600&q=80"
+                    alt="Student entrance assessment"
+                    className="w-full h-full object-cover"
+                    style={{ opacity: 0.7 }}
+                  />
+                </div>
+                <div
+                  className="mt-3 flex items-center gap-2 font-mono text-xs"
+                  style={{ color: 'rgba(183,181,254,0.45)' }}
+                >
+                  <span
+                    className="border rounded-lg px-2.5 py-1"
+                    style={{ borderColor: 'rgba(183,181,254,0.2)' }}
+                  >
+                    LEXILE 620
+                  </span>
+                  <span>Starting point established</span>
+                </div>
+              </div>
+
+              {/* ── Node 2: Weekly Sessions ── */}
+              <div className="flex-1 relative pl-14 md:pl-0">
+                <div className="flex items-center justify-start mb-4 md:mb-6 relative z-10">
+                  <div
+                    className="w-5 h-5 rounded-full"
+                    style={{ backgroundColor: 'rgba(240,240,240,0.25)' }}
+                  />
+                </div>
+                <h4
+                  className="font-semibold text-xl mb-1"
+                  style={{ fontFamily: 'var(--font-latin)', color: '#F0F0F0' }}
+                >
+                  Weekly Sessions
+                </h4>
+                <p
+                  className="text-xs uppercase tracking-widest mb-3"
+                  style={{ color: 'rgba(240,240,240,0.35)' }}
+                >
+                  Weeks 2–15 · 第二至十五周
+                </p>
+                <p
+                  className="font-light text-sm leading-relaxed mb-6"
+                  style={{ color: 'rgba(240,240,240,0.65)' }}
+                >
+                  Each week, your child works through The Loop with their Navigator —
+                  someone who knows their progress, their challenges, and what to push
+                  next.
+                </p>
+                <div
+                  className="rounded-2xl overflow-hidden border"
+                  style={{
+                    aspectRatio:     '4 / 3',
+                    backgroundColor: '#2E3848',
+                    borderColor:     'rgba(255,255,255,0.05)',
+                  }}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="https://images.unsplash.com/photo-1605915968535-7a95bcd68cab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600&q=80"
+                    alt="Online tutoring session on screen"
+                    className="w-full h-full object-cover"
+                    style={{ opacity: 0.7 }}
+                  />
+                </div>
+              </div>
+
+              {/* ── Node 3: Exit Assessment (gilt) ── */}
+              <div className="flex-1 relative pl-14 md:pl-0">
+                <div className="flex items-center justify-start mb-4 md:mb-6 relative z-10">
+                  <div
+                    className="w-5 h-5 rounded-full"
+                    style={{
+                      backgroundColor: '#F5C842',
+                      boxShadow:       '0 0 16px rgba(245,200,66,0.4)',
+                    }}
+                  />
+                </div>
+                <h4
+                  className="font-semibold text-xl mb-1"
+                  style={{ fontFamily: 'var(--font-latin)', color: '#F5C842' }}
+                >
+                  Exit Assessment
+                </h4>
+                <p
+                  className="text-xs uppercase tracking-widest mb-3"
+                  style={{ color: 'rgba(245,200,66,0.45)' }}
+                >
+                  Week 16 · 第十六周
+                </p>
+                <p
+                  className="font-light text-sm leading-relaxed mb-6"
+                  style={{ color: 'rgba(240,240,240,0.65)' }}
+                >
+                  At the end, you see the growth — not as a vague report card, but as
+                  real numbers. Lexile level, writing scores, side by side with where
+                  they started.
+                </p>
+                <div
+                  className="rounded-2xl overflow-hidden border relative"
+                  style={{
+                    aspectRatio:     '4 / 3',
+                    backgroundColor: '#2E3848',
+                    borderColor:     'rgba(255,255,255,0.05)',
+                  }}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="https://images.unsplash.com/photo-1590019012497-b44f1aaa40d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600&q=80"
+                    alt="Progress measurement chart"
+                    className="w-full h-full object-cover"
+                    style={{ opacity: 0.7 }}
+                  />
+                  {/* Lexile growth overlay */}
+                  <div
+                    className="absolute bottom-4 left-4 right-4 backdrop-blur rounded-xl p-4 border"
+                    style={{
+                      backgroundColor: 'rgba(0,0,0,0.65)',
+                      borderColor:     'rgba(255,255,255,0.1)',
+                    }}
+                  >
+                    <div
+                      className="text-xs font-mono mb-2"
+                      style={{ color: 'rgba(240,240,240,0.45)' }}
+                    >
+                      Lexile Growth
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <span
+                        className="font-mono text-lg"
+                        style={{ color: 'rgba(240,240,240,0.45)' }}
+                      >
+                        620
+                      </span>
+                      <div
+                        className="flex-1 h-2.5 rounded-full overflow-hidden"
+                        style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}
+                      >
+                        <div
+                          className="h-full rounded-full"
+                          style={{
+                            width:      '75%',
+                            background: 'linear-gradient(90deg, #b7b5fe 0%, #F5C842 100%)',
+                          }}
+                        />
+                      </div>
+                      <span
+                        className="font-mono font-bold text-lg"
+                        style={{ color: '#F5C842' }}
+                      >
+                        820
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* ════════════════════════════════════════════════════
+            SECTION 5 — WHAT A SESSION LOOKS LIKE
+            Background: #F5F5FF (light-bg)
+        ════════════════════════════════════════════════════ */}
+        <section
+          className="w-full py-20 md:py-28"
+          style={{ backgroundColor: '#F5F5FF' }}
+        >
+          <div className="container-section">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+              {/* Left — Session screenshot */}
+              <div
+                className="relative rounded-3xl overflow-hidden"
+                style={{
+                  aspectRatio: '4 / 3',
+                  boxShadow:   '0 20px 60px rgba(0,0,0,0.08)',
+                  border:      '1px solid rgba(0,0,0,0.05)',
+                }}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="https://images.unsplash.com/photo-1605915968535-7a95bcd68cab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=800&q=80"
+                  alt="Navigator-led session in progress on screen"
+                  className="w-full h-full object-cover"
+                />
+                {/* Session card overlay */}
+                <div
+                  className="absolute bottom-4 left-4 right-4 backdrop-blur-md rounded-xl p-4 flex items-center justify-between border"
+                  style={{
+                    backgroundColor: 'rgba(33,40,48,0.8)',
+                    borderColor:     'rgba(255,255,255,0.1)',
+                  }}
+                >
+                  <div className="flex items-center gap-3">
+                    <div
+                      className="w-10 h-10 rounded-full flex items-center justify-center"
+                      style={{ backgroundColor: 'rgba(183,181,254,0.2)' }}
+                    >
+                      <span
+                        className="text-xs font-bold"
+                        style={{ color: '#b7b5fe', fontFamily: 'var(--font-latin)' }}
+                      >
+                        NV
+                      </span>
+                    </div>
+                    <div>
+                      <div className="text-sm font-medium text-white">Navigator Sarah</div>
+                      <div className="text-xs" style={{ color: '#b7b5fe' }}>
+                        Read Phase · Lexile 740
+                      </div>
+                    </div>
+                  </div>
+                  <PlayCircle className="w-8 h-8" style={{ color: 'rgba(255,255,255,0.4)' }} aria-hidden="true" />
+                </div>
+              </div>
+
+              {/* Right — narrative copy */}
+              <div>
+                <Eyebrow>A Real Session</Eyebrow>
+                <h2
+                  className="font-bold text-3xl md:text-5xl tracking-tight leading-[1.15] mb-2"
+                  style={{ fontFamily: 'var(--font-latin)', color: '#0E0E12' }}
+                >
+                  Here&rsquo;s what a typical Tuesday looks like.
+                </h2>
+                <h3
+                  className="font-medium text-base tracking-wider mb-8"
+                  style={{ fontFamily: 'var(--font-cjk)', color: '#0E0E12', opacity: 0.35 }}
+                >
+                  一个典型的周二课堂
+                </h3>
+                <div
+                  className="space-y-5 font-light leading-relaxed"
+                  style={{ color: 'rgba(14,14,18,0.6)' }}
+                >
+                  <p style={{ maxWidth: 'none' }}>
+                    The Navigator opens by naming the phase:{' '}
+                    <em
+                      className="not-italic font-medium"
+                      style={{ color: '#0E0E12' }}
+                    >
+                      &ldquo;Today we&rsquo;re in Read. Your text is at Lexile 740 — that&rsquo;s
+                      eight points above where you were last week. Let&rsquo;s see what you can
+                      do.&rdquo;
+                    </em>
+                  </p>
+                  <p style={{ maxWidth: 'none' }}>
+                    Twenty minutes of structured reading. Not silent — annotated, questioned,
+                    discussed together.
+                  </p>
+                  <p style={{ maxWidth: 'none' }}>
+                    Then comes Think. The Navigator asks:{' '}
+                    <em
+                      className="not-italic font-medium"
+                      style={{ color: '#0E0E12' }}
+                    >
+                      what&rsquo;s the author&rsquo;s argument? Do you agree? What&rsquo;s the
+                      strongest counter?
+                    </em>
+                  </p>
+                  <p style={{ maxWidth: 'none' }}>
+                    The session closes looking forward:{' '}
+                    <em
+                      className="not-italic font-medium"
+                      style={{ color: '#0E0E12' }}
+                    >
+                      &ldquo;Next week is Speak. You&rsquo;ll defend your position out loud.
+                      Start getting ready.&rdquo;
+                    </em>
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* ════════════════════════════════════════════════════
+            SECTION 6 — THE HANGAR
+            Background: #0E0E12 (Void Black / bg-body-light)
+        ════════════════════════════════════════════════════ */}
+        <section
+          className="relative w-full py-20 md:py-32 overflow-hidden"
+          style={{ backgroundColor: '#0E0E12' }}
+        >
+          {/* Background photo + dark wash */}
+          <div className="absolute inset-0 z-0" aria-hidden="true">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://images.unsplash.com/photo-1589872880544-76e896b0592c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1200&q=80"
+              alt=""
+              className="w-full h-full object-cover"
+              style={{ opacity: 0.25, mixBlendMode: 'luminosity' }}
+            />
+            <div
+              className="absolute inset-0"
+              style={{ backgroundColor: 'rgba(14,14,18,0.8)' }}
+            />
+          </div>
+
+          <div className="relative z-10 container-section text-center max-w-2xl mx-auto">
+            <Eyebrow dark center>The Hangar</Eyebrow>
+            <h2
+              className="font-bold text-3xl md:text-5xl tracking-tight leading-[1.15] mb-2"
+              style={{ fontFamily: 'var(--font-latin)', color: '#ffffff' }}
+            >
+              Between sessions, they&rsquo;re not alone.
+            </h2>
+            <h3
+              className="font-medium text-base tracking-wider mb-8"
+              style={{ fontFamily: 'var(--font-cjk)', color: '#b7b5fe', opacity: 0.35 }}
+            >
+              课后社区，持续学习
+            </h3>
+            <p
+              className="text-lg md:text-xl font-light leading-relaxed mx-auto"
+              style={{ color: 'rgba(240,240,240,0.75)', maxWidth: '52ch' }}
+            >
+              The Hangar is where DODO learners connect between sessions — not for homework
+              help, but for the kind of peer learning that happens when curious minds find
+              each other. Navigator-supported, student-driven, and a place where good habits
+              stick.
+            </p>
+          </div>
+        </section>
+
+        {/* ════════════════════════════════════════════════════
+            SECTION 7 — ASSESSMENT FRAMEWORK
+            Background: #F5F5FF (light-bg)
+        ════════════════════════════════════════════════════ */}
+        <section
+          className="w-full py-20 md:py-28"
+          style={{ backgroundColor: '#F5F5FF' }}
+        >
+          <div className="container-section">
+            <div className="mb-14 md:mb-20">
+              <Eyebrow center>How We Measure Growth</Eyebrow>
+              <div className="flex justify-center">
+                <Headline
+                  eng="Real numbers, not vague progress reports."
+                  zho="真实数据，告别模糊评语"
+                  dark={false}
+                  center
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+
+              {/* ── Lexile Reading Level card ── */}
+              <div
+                className="rounded-3xl p-8 md:p-12 flex flex-col gap-8 border"
+                style={{
+                  backgroundColor: '#ffffff',
+                  borderColor:     'rgba(0,0,0,0.06)',
+                  boxShadow:       '0 4px 20px rgba(0,0,0,0.04)',
+                }}
+              >
+                <div>
+                  <h3
+                    className="text-2xl md:text-3xl font-bold mb-2"
+                    style={{ fontFamily: 'var(--font-latin)', color: '#0E0E12' }}
+                  >
+                    Lexile Reading Level
+                  </h3>
+                  <p className="font-light leading-relaxed" style={{ color: 'rgba(14,14,18,0.5)' }}>
+                    The same measurement system used by schools across North America —
+                    so you can compare progress directly.
+                  </p>
                 </div>
 
-                {/* Figma: disclaimer — #2E3848/40 fontSize 12 mt-3 */}
+                {/* Vertical bar chart */}
+                <div className="flex gap-6 items-stretch" style={{ minHeight: '200px' }}>
+                  {/* Bar column */}
+                  <div className="relative w-16 flex-shrink-0">
+                    <div
+                      className="absolute inset-0 rounded-full overflow-hidden"
+                      style={{ backgroundColor: 'rgba(14,14,18,0.04)' }}
+                    >
+                      {/* Entry level fill */}
+                      <div
+                        className="absolute bottom-0 left-0 right-0 rounded-b-full"
+                        style={{
+                          height:          `${(620 / 1200) * 100}%`,
+                          backgroundColor: 'rgba(14,14,18,0.08)',
+                        }}
+                      />
+                      {/* Exit level fill */}
+                      <div
+                        className="absolute bottom-0 left-0 right-0 rounded-b-full"
+                        style={{
+                          height:          `${(820 / 1200) * 100}%`,
+                          backgroundColor: 'rgba(183,181,254,0.65)',
+                        }}
+                      />
+                    </div>
+                    {/* Entry label */}
+                    <div
+                      className="absolute left-full ml-2 flex items-center gap-1 text-xs font-mono whitespace-nowrap"
+                      style={{
+                        bottom:    `${(620 / 1200) * 100}%`,
+                        transform: 'translateY(50%)',
+                        color:     'rgba(14,14,18,0.45)',
+                      }}
+                    >
+                      <div className="w-3 h-px" style={{ backgroundColor: 'rgba(14,14,18,0.25)' }} />
+                      <span>620 Start</span>
+                    </div>
+                    {/* Exit label */}
+                    <div
+                      className="absolute left-full ml-2 flex items-center gap-1 text-xs font-mono font-bold whitespace-nowrap"
+                      style={{
+                        bottom:    `${(820 / 1200) * 100}%`,
+                        transform: 'translateY(50%)',
+                        color:     '#b7b5fe',
+                      }}
+                    >
+                      <div className="w-3 h-px" style={{ backgroundColor: '#b7b5fe' }} />
+                      <span>820 After</span>
+                    </div>
+                  </div>
+
+                  {/* Grade scale */}
+                  <div
+                    className="flex flex-col justify-between text-xs font-mono py-2"
+                    style={{ color: 'rgba(14,14,18,0.25)' }}
+                    aria-hidden="true"
+                  >
+                    <span>1200 — Grade 12+</span>
+                    <span>1000 — Grade 9</span>
+                    <span>800 — Grade 6</span>
+                    <span>600 — Grade 4</span>
+                    <span>400 — Grade 2</span>
+                    <span>200 — Grade 1</span>
+                  </div>
+                </div>
+
                 <p
-                  className="mt-3"
-                  style={{ fontSize: '12px', color: 'rgba(46,56,72,0.4)' }}
+                  className="font-light text-sm leading-relaxed mt-auto"
+                  style={{ color: 'rgba(14,14,18,0.55)' }}
                 >
-                  No spam. Just one email when the page goes live.
+                  We don&rsquo;t say your child &ldquo;reads well.&rdquo; We show you they moved
+                  from{' '}
+                  <strong className="font-medium" style={{ color: '#0E0E12' }}>
+                    Lexile 620 to 820
+                  </strong>{' '}
+                  in 16 weeks — that&rsquo;s the difference between Grade 4 and Grade 6
+                  reading territory.
                 </p>
               </div>
-            )}
-          </div>
 
-          {/* ── Back home CTA ─────────────────────────────────────
-              Figma: mt-10, bg-[#0E0E12] text-white rounded-xl px-6 py-3
-              + Chinese label centred below
-          ── */}
+              {/* ── 6+1 Trait Writing card ── */}
+              <div
+                className="rounded-3xl p-8 md:p-12 flex flex-col gap-8 border"
+                style={{
+                  backgroundColor: '#ffffff',
+                  borderColor:     'rgba(0,0,0,0.06)',
+                  boxShadow:       '0 4px 20px rgba(0,0,0,0.04)',
+                }}
+              >
+                <div>
+                  <h3
+                    className="text-2xl md:text-3xl font-bold mb-2"
+                    style={{ fontFamily: 'var(--font-latin)', color: '#0E0E12' }}
+                  >
+                    6+1 Trait Writing
+                  </h3>
+                  <p className="font-light leading-relaxed" style={{ color: 'rgba(14,14,18,0.5)' }}>
+                    The same rubric your child&rsquo;s school uses — so when you see
+                    improvement here, it shows up in the classroom too.
+                  </p>
+                </div>
+
+                <div className="space-y-3">
+                  {TRAIT_BARS.map((bar) => (
+                    <TraitBar key={bar.trait} {...bar} />
+                  ))}
+                </div>
+
+                {/* Legend */}
+                <div
+                  className="flex items-center gap-4 text-xs mt-2"
+                  style={{ color: 'rgba(14,14,18,0.35)' }}
+                >
+                  <div className="flex items-center gap-2">
+                    <div
+                      className="w-4 h-4 rounded-md"
+                      style={{ backgroundColor: 'rgba(14,14,18,0.12)' }}
+                    />
+                    <span>Start</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div
+                      className="w-4 h-4 rounded-md"
+                      style={{ backgroundColor: 'rgba(183,181,254,0.75)' }}
+                    />
+                    <span>After 16 weeks</span>
+                  </div>
+                  <span className="ml-auto font-mono">Scale 1–6</span>
+                </div>
+
+                <p
+                  className="font-light text-sm leading-relaxed mt-auto"
+                  style={{ color: 'rgba(14,14,18,0.55)' }}
+                >
+                  When you ask &ldquo;has the writing improved?&rdquo; — we don&rsquo;t say
+                  yes. We show you each trait score, before and after, so you can see
+                  exactly where the growth happened.
+                </p>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* ════════════════════════════════════════════════════
+            SECTION 8 — CHARTER ENROLLMENT CTA
+            Background: #212830 (dark-ui)
+        ════════════════════════════════════════════════════ */}
+        <section
+          id="cta"
+          className="w-full py-28 md:py-40 text-center relative overflow-hidden"
+          style={{ backgroundColor: '#212830' }}
+        >
+          {/* Central glow */}
           <div
-            style={{ marginTop: '2.5rem', textAlign: 'center', ...fadeUpStyle(500) }}
-          >
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[350px] rounded-full pointer-events-none"
+            style={{
+              backgroundColor: 'rgba(183,181,254,0.12)',
+              filter:          'blur(100px)',
+            }}
+            aria-hidden="true"
+          />
+
+          <div className="relative z-10 container-section max-w-2xl mx-auto flex flex-col items-center gap-6">
+            <Eyebrow dark center>Get Started</Eyebrow>
+
+            <h2
+              className="font-bold text-3xl md:text-5xl tracking-tight leading-[1.15]"
+              style={{ fontFamily: 'var(--font-latin)', color: '#b7b5fe' }}
+            >
+              Ready to see where your child stands?
+            </h2>
+
+            <h3
+              className="font-medium text-base tracking-wider"
+              style={{ fontFamily: 'var(--font-cjk)', color: '#b7b5fe', opacity: 0.35 }}
+            >
+              从一次诊断性对话开始
+            </h3>
+
+            <p
+              className="text-lg md:text-xl font-light leading-relaxed"
+              style={{ color: 'rgba(240,240,240,0.6)', maxWidth: '52ch' }}
+            >
+              It starts with a single conversation — a free diagnostic call where we
+              learn about your child, assess where they are, and map out what 16 weeks
+              could look like for them. Founding Family rates are available for our
+              charter cohorts. Spots are limited.
+            </p>
+
             <Link
-              href="/"
-              className="inline-flex items-center gap-2 transition-colors duration-150"
+              href="/consult"
+              className="mt-4 font-bold text-lg py-5 px-12 rounded-full transition-all hover:scale-105 active:scale-95"
               style={{
-                padding:         '12px 24px',
-                borderRadius:    '0.75rem',
-                backgroundColor: '#0E0E12',
-                color:           '#ffffff',
-                fontSize:        '14px',
-                fontWeight:      500,
-                textDecoration:  'none',
+                fontFamily:      'var(--font-latin)',
+                backgroundColor: '#F5C842',
+                color:           '#0E0E12',
+                boxShadow:       '0 0 30px rgba(245,200,66,0.2)',
               }}
             >
-              {/* ArrowLeft */}
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              Return to Home Page
+              Book a Free Diagnostic Call
             </Link>
 
-            {/* Figma: Chinese label centred, #b7b5fe/50 fontSize 12 mt-3 */}
             <p
-              className="mt-3 text-center"
-              style={{
-                fontFamily: 'var(--font-cjk)',
-                fontSize:   '12px',
-                color:      'rgba(183,181,254,0.5)',
-              }}
+              className="font-light text-sm mt-1"
+              style={{ color: 'rgba(240,240,240,0.35)' }}
             >
-              返回首页
+              Limited charter spots per cohort. Founding Family rate — not a promotion.
             </p>
           </div>
-
-          {/* ── Brand line ────────────────────────────────────────
-              Figma: mt-20, "Think Once. In Both Languages." fontWeight 300
-              letterSpacing 0.05em, #0E0E12/15
-              Chinese subtitle #b7b5fe/20 mt-1
-          ── */}
-          <div
-            style={{ marginTop: '5rem', textAlign: 'center', ...fadeUpStyle(650) }}
-            aria-label="DODO Learning brand tagline"
-          >
-            <p
-              style={{
-                fontSize:      'clamp(1rem, 2.5vw, 1.5rem)',
-                fontWeight:    300,
-                letterSpacing: '0.05em',
-                color:         'rgba(14,14,18,0.15)',
-              }}
-            >
-              Think Once. In Both Languages.
-            </p>
-            <p
-              className="mt-1"
-              style={{
-                fontFamily: 'var(--font-cjk)',
-                fontSize:   '14px',
-                color:      'rgba(183,181,254,0.2)',
-              }}
-            >
-              一次思考，两种语言。
-            </p>
-          </div>
-
-        </div>
-
-        {/* ── Mini Footer ───────────────────────────────────────
-            Figma: border-t border-[#b7b5fe]/10 py-8 bg-[#F5F5FF]/80
-            Copyright left, Chinese tagline right
-        ── */}
-        <footer
-          className="relative z-10"
-          role="contentinfo"
-          style={{
-            borderTop:       '1px solid rgba(183,181,254,0.1)',
-            padding:         '2rem 0',
-            backgroundColor: 'rgba(245,245,255,0.8)',
-          }}
-        >
-          <div
-            className="flex flex-col md:flex-row justify-between items-center gap-4"
-            style={{ maxWidth: '72rem', margin: '0 auto', padding: '0 1.5rem', fontSize: '13px' }}
-          >
-            <p style={{ color: 'rgba(46,56,72,0.4)' }}>
-              &copy; {new Date().getFullYear()} DODO Learning. All rights reserved.
-            </p>
-            <p
-              style={{ fontFamily: 'var(--font-cjk)', color: 'rgba(183,181,254,0.4)' }}
-            >
-              DODO 学习 &middot; 用英语思考的力量
-            </p>
-          </div>
-        </footer>
+        </section>
 
       </div>
     </>
