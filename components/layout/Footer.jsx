@@ -21,11 +21,11 @@ import Image from 'next/image'
 // ── Navigation columns ────────────────────────────────────────
 const NAV_PROGRAM = [
   { href: '/program',     label: 'The 16-Week Program' },
-  { href: '/methodology', label: 'The Loop'            },
-  { href: '/results',     label: 'Results'             },
-  { href: '/lexile',      label: 'Lexile Levels'       },
+  { href: '/assessment',  label: 'Assessment'          },
   { href: '/navigators',  label: 'Navigators'          },
   { href: '/the-hangar',  label: 'The Hangar'          },
+  { href: '/lexile',      label: 'Lexile Levels'       },
+  { href: '/methodology', label: 'The Loop'            },
 ]
 
 const NAV_COMPANY = [

@@ -15,15 +15,15 @@ import { usePathname }                               from 'next/navigation'
 // ── Nav link definitions ──────────────────────────────────────
 const PRIMARY_LINKS = [
   { href: '/program',    label: 'The Program' },
-  { href: '/results',    label: 'Results'     },
   { href: '/navigators', label: 'Navigators'  },
+  { href: '/assessment', label: 'Assessment'  },
   { href: '/the-hangar', label: 'The Hangar'  },
 ]
 
 const SECONDARY_LINKS = [
-  { href: '/methodology', label: 'Methodology' },
-  { href: '/about',       label: 'About'       },
-  { href: '/blog',        label: 'Blog'        },
+  { href: '/about', label: 'About' },
+  { href: '/blog',  label: 'Blog'  },
+  { href: '/faq',   label: 'FAQ'   },
 ]
 
 // ── Hamburger icon ────────────────────────────────────────────
@@ -353,7 +353,6 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* FIXED: "Think Once." not "Think Twice." — brand doc §0 clarification */}
           <p
             className="mt-8 text-xs font-medium tracking-widest uppercase text-center"
             style={{ color: 'rgba(183,181,254,0.4)' }}
