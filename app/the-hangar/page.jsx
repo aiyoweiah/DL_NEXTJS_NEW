@@ -1,706 +1,920 @@
-'use client'
-
-// components/UnderConstruction.jsx
+// app/the-hangar/page.jsx
+// Pure server component — no 'use client', zero external dependencies.
 //
-// Standalone under-construction page.
-// Direct translation of Figma UnderConstruction component.
+// Direct translation of Figma Make Hangar source (tUKokxMK9eHkSortCPKzTX)
+// into Next.js App Router patterns. Every measurement, colour, and type
+// spec taken verbatim from the Figma source.
 //
-// Usage: drop into any not-yet-built route, e.g.:
-//   app/[locale]/lexile/page.jsx → export { default } from '@/components/UnderConstruction'
+// Section map (9 sections — exact from Figma):
+//   S1  Hero                  — #212830 bg-img + gradient overlay, ghost nothing, h1 + sub
+//   S2  The One Reframe       — #0E0E12 (void-black), single centred pull-quote
+//   S3  What It Is            — #212830 (dark), 3-col divider grid with italic question labels
+//   S4  Inside The Loop       — #F5F5FF (whisper), LoopDiagram SVG + caption
+//   S5  Founder Video         — #0E0E12 (void-black), placeholder video embed
+//   S6  Navigator Presence    — #F5F5FF (whisper), 2-col image + copy
+//   S7  The Cohort            — #212830 (dark), 3-col numbered grid
+//   S8  Student Voice         — #0E0E12 (void-black), 2-col student quote cards
+//   S9  Closing CTA           — #212830 (dark), gilt + ghost buttons, microcopy
 //
-// IMPORTANT — this page has its own minimal nav + footer.
-// It should be rendered inside a layout that suppresses the site Navbar + Footer.
-// Option A: create app/[locale]/[page]/layout.jsx that returns children directly.
-// Option B: wrap with a dedicated blank layout at the route level.
+// Figma → Next.js adaptations:
+//   SectionWrapper background props → inline style backgroundColor
+//   LoopDiagram component → inlined SVG (same asset as program/page.jsx)
+//   VideoPlayer component → <figure> placeholder (client embeds need 'use client')
+//   StudentVoiceCard component → inlined server primitive
+//   button → <Link href="..."> (SSR-safe, no onClick needed)
+//   Eyebrow component → inlined primitive (exact Figma spec)
 //
-// Framer-motion animations → CSS keyframes (no client bundle cost beyond useState).
-// Link/router → Next.js <Link href="/">.
-// form onSubmit → standard React event handler.
+// Content: TODO: migrate to content/en/the-hangar.json
 
-import { useState }  from 'react'
-import Link          from 'next/link'
+import Link from 'next/link'
+import { buildMetadata } from '@/lib/metadata'
 
-// ═══════════════════════════════════════════════════════════════
-// CSS ANIMATIONS
-// ═══════════════════════════════════════════════════════════════
-// Injected via <style> tag — replaces framer-motion variants.
-// float, floatSlow → translateY loops (4s / 5s)
-// pulse → opacity + scale loop (3s)
-// fadeUp → opacity + translateY enter (0.7s)
-// progressFill → width 0 → 65% (1.5s, delay 0.5s)
-
-const KEYFRAMES = `
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50%       { transform: translateY(-12px); }
-  }
-  @keyframes floatSlow {
-    0%, 100% { transform: translateY(0px); }
-    50%       { transform: translateY(-8px); }
-  }
-  @keyframes pulseBlob {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50%       { opacity: 0.6; transform: scale(1.05); }
-  }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes progressFill {
-    from { width: 0%; }
-    to   { width: 65%; }
-  }
-  @keyframes scaleIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to   { opacity: 1; transform: scale(1); }
-  }
-`
-
-// Animation style helpers
-const fadeUpStyle = (delay = 0) => ({
-  animation:    `fadeUp 0.7s ease-out both`,
-  animationDelay: `${delay}ms`,
+export const metadata = buildMetadata({
+  title:       'The Hangar — Between-Session Community',
+  description:
+    'The Hangar is where DODO learners continue The Loop between sessions — ' +
+    'Navigator-supported, cohort-driven, and built to turn 16 weeks into a ' +
+    'compounding system. Not homework help. The environment.',
+  path: '/the-hangar',
 })
 
-export default function UnderConstruction() {
-  const [email,     setEmail]     = useState('')
-  const [submitted, setSubmitted] = useState(false)
+// ─────────────────────────────────────────────────────────────
+// PRIMITIVES
+// ─────────────────────────────────────────────────────────────
 
-  function handleSubmit(e) {
-    e.preventDefault()
-    if (email.trim()) {
-      setSubmitted(true)
-      setEmail('')
-    }
-  }
-
+// Eyebrow — exact Figma spec:
+// 12px · fw500 · tracking-[0.1em] · uppercase · #b7b5fe
+function Eyebrow({ children, center = false }) {
   return (
-    <>
-      <style dangerouslySetInnerHTML={{ __html: KEYFRAMES }} />
+    <div
+      style={{
+        fontFamily:    'var(--font-latin)',
+        fontWeight:    500,
+        fontSize:      '12px',
+        letterSpacing: '0.1em',
+        textTransform: 'uppercase',
+        color:         '#b7b5fe',
+        marginBottom:  '16px',
+        textAlign:     center ? 'center' : undefined,
+      }}
+    >
+      {children}
+    </div>
+  )
+}
 
-      {/* Figma: min-h-screen bg-[#F5F5FF] text-[#0E0E12] relative overflow-hidden */}
+// StudentVoiceCard — replaces Figma StudentVoiceCard component.
+// Dark card: #2E3848 bg on #0E0E12 section.
+// Quote italic fw300 #F0F0F0 · meta row: grade · city · weeks
+// hangarDetail: small italic caption below meta
+function StudentVoiceCard({ quote, grade, city, weeksInProgram, hangarDetail }) {
+  return (
+    <div
+      className="rounded-2xl"
+      style={{
+        backgroundColor: '#2E3848',
+        border:          '1px solid rgba(183,181,254,0.10)',
+        padding:         '32px',
+      }}
+    >
+      {/* Opening mark */}
       <div
-        className="relative overflow-hidden"
+        aria-hidden="true"
         style={{
-          minHeight:       '100dvh',
-          backgroundColor: '#F5F5FF',
-          color:           '#0E0E12',
-          fontFamily:      'var(--font-latin)',
+          fontFamily:   'var(--font-latin)',
+          fontSize:     '48px',
+          fontWeight:   700,
+          color:        '#b7b5fe',
+          opacity:      0.25,
+          lineHeight:   1,
+          marginBottom: '12px',
         }}
       >
-
-        {/* ── Background blobs ────────────────────────────────
-            Figma: three absolute blobs — lavender top-left, lavender bottom-right, gilt centre
-            All use blur-3xl + pulseBlob animation
-        ── */}
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          {/* Figma: top-[15%] left-[10%] w-72 h-72 bg-[#b7b5fe]/10 blur-3xl */}
-          <div
-            style={{
-              position:        'absolute',
-              top:             '15%',
-              left:            '10%',
-              width:           288,
-              height:          288,
-              borderRadius:    '50%',
-              backgroundColor: 'rgba(183,181,254,0.1)',
-              filter:          'blur(48px)',
-              animation:       'pulseBlob 3s ease-in-out infinite',
-            }}
-          />
-          {/* Figma: bottom-[20%] right-[8%] w-96 h-96 bg-[#b7b5fe]/8 blur-3xl delay-1.5s */}
-          <div
-            style={{
-              position:        'absolute',
-              bottom:          '20%',
-              right:           '8%',
-              width:           384,
-              height:          384,
-              borderRadius:    '50%',
-              backgroundColor: 'rgba(183,181,254,0.08)',
-              filter:          'blur(48px)',
-              animation:       'pulseBlob 3s ease-in-out infinite',
-              animationDelay:  '1.5s',
-            }}
-          />
-          {/* Figma: top-[60%] left-[50%] w-48 h-48 bg-[#F5C842]/8 blur-3xl */}
-          <div
-            style={{
-              position:        'absolute',
-              top:             '60%',
-              left:            '50%',
-              width:           192,
-              height:          192,
-              borderRadius:    '50%',
-              backgroundColor: 'rgba(245,200,66,0.08)',
-              filter:          'blur(48px)',
-              animation:       'pulseBlob 3s ease-in-out infinite',
-              animationDelay:  '0.75s',
-            }}
-          />
-        </div>
-
-        {/* ── Grid pattern overlay ─────────────────────────────
-            Figma: opacity-[0.03], 60px grid, #b7b5fe lines
-        ── */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          aria-hidden="true"
-          style={{
-            opacity:         0.03,
-            backgroundImage:
-              'linear-gradient(#b7b5fe 1px, transparent 1px), linear-gradient(90deg, #b7b5fe 1px, transparent 1px)',
-            backgroundSize:  '60px 60px',
-          }}
-        />
-
-        {/* ── Mini Nav ─────────────────────────────────────────
-            Figma: bg-[#F5F5FF]/80 backdrop-blur-md border-b border-[#b7b5fe]/10
-            Logo left (square lavender badge + DODO wordmark) + Back link right
-        ── */}
-        <nav
-          className="relative z-10"
-          aria-label="Under construction navigation"
-          style={{
-            backgroundColor: 'rgba(245,245,255,0.8)',
-            backdropFilter:  'blur(12px)',
-            borderBottom:    '1px solid rgba(183,181,254,0.1)',
-          }}
-        >
-          <div
-            className="flex items-center justify-between"
-            style={{ maxWidth: '72rem', margin: '0 auto', padding: '1rem 1.5rem' }}
-          >
-            {/* Figma: w-9 h-9 rounded-xl bg-[#b7b5fe] + "DODO" wordmark */}
-            <Link
-              href="/"
-              className="flex items-center gap-2"
-              aria-label="DODO Learning — home"
-              style={{ textDecoration: 'none' }}
-            >
-              <div
-                className="flex items-center justify-center"
-                style={{
-                  width:           36,
-                  height:          36,
-                  borderRadius:    '0.75rem',
-                  backgroundColor: '#b7b5fe',
-                  flexShrink:      0,
-                }}
-                aria-hidden="true"
-              >
-                <span style={{ fontWeight: 700, fontSize: '14px', color: '#ffffff' }}>
-                  do
-                </span>
-              </div>
-              <span style={{ fontWeight: 600, fontSize: '20px', color: '#0E0E12' }}>
-                DODO
-              </span>
-            </Link>
-
-            {/* Figma: ArrowLeft + "Back to Home" — color #2E3848 hover:text-[#b7b5fe] */}
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 transition-colors duration-150"
-              style={{
-                fontSize:       '14px',
-                fontWeight:     500,
-                color:          '#2E3848',
-                textDecoration: 'none',
-              }}
-            >
-              {/* Arrow left icon */}
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              Back to Home
-            </Link>
-          </div>
-        </nav>
-
-        {/* ── Main content area ────────────────────────────────
-            Figma: flex flex-col items-center justify-center
-            min-h-[calc(100vh-65px)] px-6 py-16 relative z-10
-        ── */}
-        <div
-          className="relative z-10 flex flex-col items-center justify-center"
-          style={{
-            minHeight: 'calc(100dvh - 65px)',
-            padding:   '4rem 1.5rem',
-          }}
-        >
-
-          {/* ── Floating construction icons ───────────────────
-              Figma: four absolute white-bg squares/circles with icons
-              top-left: Hammer (float 4s)
-              top-right: Sparkles in Gilt (floatSlow 5s, delay 1s)
-              bottom-left: "Do" text (float)
-              bottom-right: "Do" in #b7b5fe (floatSlow)
-          ── */}
-          <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-            {/* Figma: top-[18%] left-[15%] w-12 h-12 rounded-xl */}
-            <div
-              className="flex items-center justify-center"
-              style={{
-                position:        'absolute',
-                top:             '18%',
-                left:            '15%',
-                width:           48,
-                height:          48,
-                borderRadius:    '0.75rem',
-                backgroundColor: '#ffffff',
-                border:          '1px solid rgba(183,181,254,0.1)',
-                boxShadow:       '0 4px 16px rgba(183,181,254,0.1)',
-                animation:       'float 4s ease-in-out infinite',
-              }}
-            >
-              {/* Hammer icon */}
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b7b5fe" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M15 12l-8.5 8.5a2.121 2.121 0 0 1-3-3L12 9" />
-                <path d="M17.64 15L22 10.36" />
-                <path d="M20.41 8.59l-3-3a2 2 0 0 0-2.83 0L12 8.17l3.83 3.83 2.58-2.58a2 2 0 0 0 0-2.83z" />
-              </svg>
-            </div>
-
-            {/* Figma: top-[25%] right-[18%] w-10 h-10 rounded-lg */}
-            <div
-              className="flex items-center justify-center"
-              style={{
-                position:        'absolute',
-                top:             '25%',
-                right:           '18%',
-                width:           40,
-                height:          40,
-                borderRadius:    '0.5rem',
-                backgroundColor: '#ffffff',
-                border:          '1px solid rgba(183,181,254,0.1)',
-                boxShadow:       '0 4px 16px rgba(183,181,254,0.1)',
-                animation:       'floatSlow 5s ease-in-out infinite',
-                animationDelay:  '1s',
-              }}
-            >
-              {/* Sparkles icon in Gilt */}
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5C842" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z" />
-                <path d="M5 17l.75 2.25L8 20l-2.25.75L5 23" />
-                <path d="M19 2l.5 1.5L21 4l-1.5.5L19 6" />
-              </svg>
-            </div>
-
-            {/* Figma: bottom-[28%] left-[20%] w-10 h-10 rounded-lg — "Do" text */}
-            <div
-              className="flex items-center justify-center"
-              style={{
-                position:        'absolute',
-                bottom:          '28%',
-                left:            '20%',
-                width:           40,
-                height:          40,
-                borderRadius:    '0.5rem',
-                backgroundColor: '#ffffff',
-                border:          '1px solid rgba(183,181,254,0.1)',
-                boxShadow:       '0 4px 16px rgba(183,181,254,0.1)',
-                animation:       'float 4s ease-in-out infinite',
-                animationDelay:  '0.5s',
-              }}
-            >
-              <span style={{ fontSize: '16px', color: '#0E0E12' }}>Do</span>
-            </div>
-
-            {/* Figma: bottom-[32%] right-[15%] w-11 h-11 rounded-xl — "Do" in lavender */}
-            <div
-              className="flex items-center justify-center"
-              style={{
-                position:        'absolute',
-                bottom:          '32%',
-                right:           '15%',
-                width:           44,
-                height:          44,
-                borderRadius:    '0.75rem',
-                backgroundColor: '#ffffff',
-                border:          '1px solid rgba(183,181,254,0.1)',
-                boxShadow:       '0 4px 16px rgba(183,181,254,0.1)',
-                animation:       'floatSlow 5s ease-in-out infinite',
-                animationDelay:  '0.3s',
-              }}
-            >
-              <span style={{ fontSize: '14px', fontWeight: 700, color: '#b7b5fe' }}>Do</span>
-            </div>
-          </div>
-
-          {/* ── Central content ──────────────────────────────── */}
-          {/* Figma: text-center max-w-2xl, fadeUp animation */}
-          <div
-            className="text-center"
-            style={{ maxWidth: '42rem', ...fadeUpStyle(0) }}
-          >
-
-            {/* Figma: badge — bg-[#F5C842]/10 border-[#F5C842]/20 rounded-full mb-8 */}
-            {/* Construction icon + "Under Construction" + Chinese dot */}
-            <div
-              className="inline-flex items-center gap-2 rounded-full mb-8"
-              style={{
-                padding:         '8px 16px',
-                backgroundColor: 'rgba(245,200,66,0.1)',
-                border:          '1px solid rgba(245,200,66,0.2)',
-              }}
-            >
-              {/* Construction icon */}
-              <svg
-                width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="#F5C842" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M2 20h20" />
-                <path d="M6 20V10l6-7 6 7v10" />
-                <path d="M10 20v-5h4v5" />
-              </svg>
-              <span style={{ fontSize: '13px', fontWeight: 500, color: '#0E0E12' }}>
-                Under Construction
-              </span>
-              <span
-                style={{
-                  fontFamily: 'var(--font-cjk)',
-                  fontSize:   '12px',
-                  color:      '#b7b5fe',
-                }}
-              >
-                · 建设中
-              </span>
-            </div>
-
-            {/* Figma: h1 fontWeight 300 clamp(2rem,5vw,3.25rem) lineHeight 1.15 */}
-            {/* "thoughtful" → #b7b5fe fontWeight 600 */}
-            <h1
-              className="mb-4"
-              style={{
-                fontSize:      'clamp(2rem, 5vw, 3.25rem)',
-                fontWeight:    300,
-                lineHeight:    1.15,
-                letterSpacing: '-0.02em',
-                color:         '#0E0E12',
-              }}
-            >
-              Something{' '}
-              <span style={{ fontWeight: 600, color: '#b7b5fe' }}>thoughtful</span>{' '}
-              is being built.
-            </h1>
-
-            {/* Figma: Chinese subtitle — font-chinese fontSize 18 color #b7b5fe mb-6 */}
-            <p
-              className="mb-6"
-              style={{
-                fontFamily: 'var(--font-cjk)',
-                fontSize:   '18px',
-                color:      '#b7b5fe',
-              }}
-            >
-              我们正在精心打造中。
-            </p>
-
-            {/* Figma: body — #2E3848 fontSize 16 lineHeight 1.8 max-w-lg mx-auto mb-4 */}
-            <p
-              className="mx-auto mb-4"
-              style={{
-                fontSize:   '16px',
-                lineHeight: 1.8,
-                color:      '#2E3848',
-                maxWidth:   '32rem',
-              }}
-            >
-              This page isn&rsquo;t ready yet — but we&rsquo;re working on it with the
-              same care we bring to everything at DODO. Real learning takes time.
-              So does building something worth visiting.
-            </p>
-
-            {/* Figma: Chinese body — font-chinese fontSize 14 lineHeight 1.8 #b7b5fe/60 */}
-            <p
-              className="mx-auto"
-              style={{
-                fontFamily: 'var(--font-cjk)',
-                fontSize:   '14px',
-                lineHeight: 1.8,
-                color:      'rgba(183,181,254,0.6)',
-                maxWidth:   '32rem',
-              }}
-            >
-              这个页面还没有准备好，但我们正在用心打造。好的东西值得等待。
-            </p>
-
-          </div>
-
-          {/* ── Progress bar ─────────────────────────────────────
-              Figma: w-full max-w-sm mt-12
-              Label row: "Progress" + "65%" in #b7b5fe
-              Track: bg-[#b7b5fe]/10, h-2, rounded-full
-              Fill: gradient from-[#b7b5fe] to-[#b7b5fe]/70, animated to 65%
-          ── */}
-          <div
-            style={{ marginTop: '3rem', width: '100%', maxWidth: '24rem', ...fadeUpStyle(200) }}
-          >
-            <div className="flex items-center justify-between mb-3">
-              <span style={{ fontSize: '12px', fontWeight: 500, color: '#2E3848' }}>
-                Progress
-              </span>
-              <span style={{ fontSize: '12px', fontWeight: 600, color: '#b7b5fe' }}>
-                65%
-              </span>
-            </div>
-            <div
-              style={{
-                width:           '100%',
-                height:          8,
-                borderRadius:    9999,
-                backgroundColor: 'rgba(183,181,254,0.1)',
-                overflow:        'hidden',
-              }}
-              role="progressbar"
-              aria-valuenow={65}
-              aria-valuemin={0}
-              aria-valuemax={100}
-              aria-label="Page construction progress: 65%"
-            >
-              <div
-                style={{
-                  height:           '100%',
-                  borderRadius:     9999,
-                  background:       'linear-gradient(to right, #b7b5fe 0%, rgba(183,181,254,0.7) 100%)',
-                  animation:        'progressFill 1.5s ease-out both',
-                  animationDelay:   '0.5s',
-                }}
-              />
-            </div>
-          </div>
-
-          {/* ── Email notification form ───────────────────────────
-              Figma: w-full max-w-md mt-12
-              Before submit: white card, Bell icon + label, email input + Gilt button
-              After submit: white card, Bell icon, "You're on the list!" + Chinese
-          ── */}
-          <div
-            style={{ marginTop: '3rem', width: '100%', maxWidth: '28rem', ...fadeUpStyle(350) }}
-          >
-            {submitted ? (
-              // Figma: submitted state — scaleIn animation, text-center
-              <div
-                className="text-center"
-                style={{
-                  backgroundColor: '#ffffff',
-                  borderRadius:    '1rem',
-                  padding:         '1.5rem',
-                  border:          '1px solid rgba(183,181,254,0.15)',
-                  boxShadow:       '0 1px 4px rgba(0,0,0,0.04)',
-                  animation:       'scaleIn 0.3s ease-out both',
-                }}
-              >
-                {/* Bell icon circle */}
-                <div
-                  className="flex items-center justify-center mx-auto mb-4"
-                  style={{
-                    width:           48,
-                    height:          48,
-                    borderRadius:    '50%',
-                    backgroundColor: 'rgba(183,181,254,0.1)',
-                  }}
-                  aria-hidden="true"
-                >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b7b5fe" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-                    <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-                  </svg>
-                </div>
-                <p style={{ fontSize: '16px', fontWeight: 600, color: '#0E0E12', marginBottom: '4px' }}>
-                  You&rsquo;re on the list!
-                </p>
-                <p style={{ fontSize: '14px', color: '#2E3848' }}>
-                  We&rsquo;ll let you know when this page is ready.
-                </p>
-                <p
-                  className="mt-2"
-                  style={{ fontFamily: 'var(--font-cjk)', fontSize: '13px', color: '#b7b5fe' }}
-                >
-                  页面准备好后，我们会通知您。
-                </p>
-              </div>
-            ) : (
-              // Figma: default state — white card, form with input + button
-              <div
-                style={{
-                  backgroundColor: '#ffffff',
-                  borderRadius:    '1rem',
-                  padding:         '1.5rem',
-                  border:          '1px solid rgba(183,181,254,0.1)',
-                  boxShadow:       '0 1px 4px rgba(0,0,0,0.04)',
-                }}
-              >
-                {/* Figma: Bell icon + label row mb-4 */}
-                <div className="flex items-center gap-3 mb-4">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b7b5fe" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-                    <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-                  </svg>
-                  <span style={{ fontSize: '14px', fontWeight: 500, color: '#0E0E12' }}>
-                    Get notified when we launch
-                  </span>
-                </div>
-
-                {/* Figma: flex gap-3, input + Gilt button */}
-                {/* Note: no <form> per artifact rules — using div + onClick */}
-                <div className="flex gap-3">
-                  <label htmlFor="notify-email" className="sr-only">
-                    Your email address
-                  </label>
-                  <input
-                    id="notify-email"
-                    type="email"
-                    placeholder="your@email.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    onKeyDown={(e) => { if (e.key === 'Enter') handleSubmit(e) }}
-                    required
-                    style={{
-                      flex:            1,
-                      padding:         '12px 16px',
-                      borderRadius:    '0.75rem',
-                      backgroundColor: '#F5F5FF',
-                      border:          '1px solid rgba(183,181,254,0.1)',
-                      fontSize:        '14px',
-                      color:           '#0E0E12',
-                      outline:         'none',
-                      fontFamily:      'var(--font-latin)',
-                    }}
-                    onFocus={(e) => { e.target.style.borderColor = 'rgba(183,181,254,0.3)' }}
-                    onBlur={(e)  => { e.target.style.borderColor = 'rgba(183,181,254,0.1)' }}
-                  />
-                  {/* Figma: bg-[#F5C842] text-[#0E0E12] px-6 py-3 rounded-xl */}
-                  <button
-                    type="button"
-                    onClick={handleSubmit}
-                    className="btn btn-charter shrink-0"
-                    style={{
-                      fontSize:     '14px',
-                      fontWeight:   600,
-                      padding:      '12px 24px',
-                      borderRadius: '0.75rem',
-                    }}
-                  >
-                    Notify Me
-                  </button>
-                </div>
-
-                {/* Figma: disclaimer — #2E3848/40 fontSize 12 mt-3 */}
-                <p
-                  className="mt-3"
-                  style={{ fontSize: '12px', color: 'rgba(46,56,72,0.4)' }}
-                >
-                  No spam. Just one email when the page goes live.
-                </p>
-              </div>
-            )}
-          </div>
-
-          {/* ── Back home CTA ─────────────────────────────────────
-              Figma: mt-10, bg-[#0E0E12] text-white rounded-xl px-6 py-3
-              + Chinese label centred below
-          ── */}
-          <div
-            style={{ marginTop: '2.5rem', textAlign: 'center', ...fadeUpStyle(500) }}
-          >
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 transition-colors duration-150"
-              style={{
-                padding:         '12px 24px',
-                borderRadius:    '0.75rem',
-                backgroundColor: '#0E0E12',
-                color:           '#ffffff',
-                fontSize:        '14px',
-                fontWeight:      500,
-                textDecoration:  'none',
-              }}
-            >
-              {/* ArrowLeft */}
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              Return to Home Page
-            </Link>
-
-            {/* Figma: Chinese label centred, #b7b5fe/50 fontSize 12 mt-3 */}
-            <p
-              className="mt-3 text-center"
-              style={{
-                fontFamily: 'var(--font-cjk)',
-                fontSize:   '12px',
-                color:      'rgba(183,181,254,0.5)',
-              }}
-            >
-              返回首页
-            </p>
-          </div>
-
-          {/* ── Brand line ────────────────────────────────────────
-              Figma: mt-20, "Think Once. In Both Languages." fontWeight 300
-              letterSpacing 0.05em, #0E0E12/15
-              Chinese subtitle #b7b5fe/20 mt-1
-          ── */}
-          <div
-            style={{ marginTop: '5rem', textAlign: 'center', ...fadeUpStyle(650) }}
-            aria-label="DODO Learning brand tagline"
-          >
-            <p
-              style={{
-                fontSize:      'clamp(1rem, 2.5vw, 1.5rem)',
-                fontWeight:    300,
-                letterSpacing: '0.05em',
-                color:         'rgba(14,14,18,0.15)',
-              }}
-            >
-              Think Once. In Both Languages.
-            </p>
-            <p
-              className="mt-1"
-              style={{
-                fontFamily: 'var(--font-cjk)',
-                fontSize:   '14px',
-                color:      'rgba(183,181,254,0.2)',
-              }}
-            >
-              一次思考，两种语言。
-            </p>
-          </div>
-
-        </div>
-
-        {/* ── Mini Footer ───────────────────────────────────────
-            Figma: border-t border-[#b7b5fe]/10 py-8 bg-[#F5F5FF]/80
-            Copyright left, Chinese tagline right
-        ── */}
-        <footer
-          className="relative z-10"
-          role="contentinfo"
-          style={{
-            borderTop:       '1px solid rgba(183,181,254,0.1)',
-            padding:         '2rem 0',
-            backgroundColor: 'rgba(245,245,255,0.8)',
-          }}
-        >
-          <div
-            className="flex flex-col md:flex-row justify-between items-center gap-4"
-            style={{ maxWidth: '72rem', margin: '0 auto', padding: '0 1.5rem', fontSize: '13px' }}
-          >
-            <p style={{ color: 'rgba(46,56,72,0.4)' }}>
-              &copy; {new Date().getFullYear()} DODO Learning. All rights reserved.
-            </p>
-            <p
-              style={{ fontFamily: 'var(--font-cjk)', color: 'rgba(183,181,254,0.4)' }}
-            >
-              DODO 学习 &middot; 用英语思考的力量
-            </p>
-          </div>
-        </footer>
-
+        &ldquo;
       </div>
-    </>
+
+      {/* Quote */}
+      <p
+        style={{
+          fontFamily:   'var(--font-latin)',
+          fontWeight:   300,
+          fontSize:     '16px',
+          fontStyle:    'italic',
+          color:        '#F0F0F0',
+          lineHeight:   1.7,
+          marginBottom: '24px',
+        }}
+      >
+        {quote}
+      </p>
+
+      {/* Meta row */}
+      <div
+        className="flex items-center gap-2"
+        style={{
+          fontFamily: 'var(--font-latin)',
+          fontSize:   '13px',
+          fontWeight: 600,
+          color:      '#b7b5fe',
+          marginBottom: '8px',
+        }}
+      >
+        <span>{grade}</span>
+        <span style={{ opacity: 0.4 }}>·</span>
+        <span>{city}</span>
+        <span style={{ opacity: 0.4 }}>·</span>
+        <span style={{ fontWeight: 400, color: 'rgba(240,240,240,0.5)' }}>
+          {weeksInProgram} weeks in program
+        </span>
+      </div>
+
+      {/* Hangar detail */}
+      {hangarDetail && (
+        <p
+          style={{
+            fontFamily: 'var(--font-latin)',
+            fontSize:   '12px',
+            fontWeight: 400,
+            fontStyle:  'italic',
+            color:      'rgba(183,181,254,0.45)',
+            lineHeight: 1.5,
+          }}
+        >
+          {hangarDetail}
+        </p>
+      )}
+    </div>
+  )
+}
+
+// ─────────────────────────────────────────────────────────────
+// LOOP DIAGRAM SVG
+// Same asset used in program/page.jsx and about/page.jsx.
+// Renders on #F5F5FF (whisper) background — circles use #F5F5FF fill.
+// ─────────────────────────────────────────────────────────────
+function LoopDiagram() {
+  return (
+    <div
+      className="relative w-full max-w-md mx-auto"
+      style={{ aspectRatio: '1 / 1' }}
+    >
+      <svg
+        viewBox="0 0 400 400"
+        className="w-full h-full"
+        fill="none"
+        aria-label="The Loop: Read, Think, Speak, Write"
+        role="img"
+      >
+        <circle cx="200" cy="200" r="160" stroke="#b7b5fe" strokeWidth="1.5" opacity="0.2" />
+        <circle cx="200" cy="200" r="145" stroke="#b7b5fe" strokeWidth="0.5" opacity="0.08" />
+        <path d="M200 40 A160 160 0 0 1 360 200"  stroke="#b7b5fe" strokeWidth="2.5" opacity="0.35" strokeLinecap="round" />
+        <path d="M360 200 A160 160 0 0 1 200 360" stroke="#b7b5fe" strokeWidth="2.5" opacity="0.35" strokeLinecap="round" />
+        <path d="M200 360 A160 160 0 0 1 40 200"  stroke="#b7b5fe" strokeWidth="2.5" opacity="0.35" strokeLinecap="round" />
+        <path d="M40 200 A160 160 0 0 1 200 40"   stroke="#b7b5fe" strokeWidth="2.5" opacity="0.35" strokeLinecap="round" />
+        {/* READ */}
+        <circle cx="200" cy="40"  r="36" fill="#F5F5FF" stroke="#b7b5fe" strokeWidth="2" />
+        <text x="200" y="37"  textAnchor="middle" fill="#0E0E12" fontSize="12" fontWeight="700" fontFamily="DM Sans, sans-serif">READ</text>
+        <text x="200" y="53"  textAnchor="middle" fill="#0E0E12" fontSize="9"  opacity="0.4"  fontFamily="Noto Sans SC, sans-serif">阅读</text>
+        {/* THINK */}
+        <circle cx="360" cy="200" r="36" fill="#F5F5FF" stroke="#b7b5fe" strokeWidth="2" />
+        <text x="360" y="197" textAnchor="middle" fill="#0E0E12" fontSize="12" fontWeight="700" fontFamily="DM Sans, sans-serif">THINK</text>
+        <text x="360" y="213" textAnchor="middle" fill="#0E0E12" fontSize="9"  opacity="0.4"  fontFamily="Noto Sans SC, sans-serif">思考</text>
+        {/* SPEAK — Gilt accent */}
+        <circle cx="200" cy="360" r="36" fill="#F5F5FF" stroke="#F5C842" strokeWidth="2" />
+        <text x="200" y="357" textAnchor="middle" fill="#0E0E12" fontSize="12" fontWeight="700" fontFamily="DM Sans, sans-serif">SPEAK</text>
+        <text x="200" y="373" textAnchor="middle" fill="#0E0E12" fontSize="9"  opacity="0.4"  fontFamily="Noto Sans SC, sans-serif">表达</text>
+        {/* WRITE */}
+        <circle cx="40"  cy="200" r="36" fill="#F5F5FF" stroke="#b7b5fe" strokeWidth="2" />
+        <text x="40"  y="197" textAnchor="middle" fill="#0E0E12" fontSize="12" fontWeight="700" fontFamily="DM Sans, sans-serif">WRITE</text>
+        <text x="40"  y="213" textAnchor="middle" fill="#0E0E12" fontSize="9"  opacity="0.4"  fontFamily="Noto Sans SC, sans-serif">写作</text>
+        {/* Centre */}
+        <text x="200" y="193" textAnchor="middle" fill="#0E0E12" fontSize="13" fontWeight="700" fontFamily="DM Sans, sans-serif" opacity="0.6">THE LOOP</text>
+        <text x="200" y="210" textAnchor="middle" fill="#b7b5fe" fontSize="10" fontFamily="Noto Sans SC, sans-serif" opacity="0.5">学习闭环</text>
+      </svg>
+    </div>
+  )
+}
+
+// ─────────────────────────────────────────────────────────────
+// SECTION WRAPPER — mirrors Figma SectionWrapper background prop
+// ─────────────────────────────────────────────────────────────
+// background values used in this file:
+//   "dark"       → #212830
+//   "void-black" → #0E0E12
+//   "whisper"    → #F5F5FF
+const BG = {
+  dark:        '#212830',
+  'void-black': '#0E0E12',
+  whisper:     '#F5F5FF',
+}
+
+function Section({ bg = 'dark', className = '', children, id }) {
+  return (
+    <section
+      id={id}
+      className={`px-6 py-24 md:py-32 ${className}`}
+      style={{ backgroundColor: BG[bg] }}
+    >
+      <div className="max-w-7xl mx-auto">
+        {children}
+      </div>
+    </section>
+  )
+}
+
+// ─────────────────────────────────────────────────────────────
+// DATA — TODO: migrate to content/en/the-hangar.json
+// ─────────────────────────────────────────────────────────────
+
+// S3 — What It Is columns
+const WHAT_IT_IS = [
+  {
+    question:    'What actually happens here?',
+    title:       'Navigator-supported sessions',
+    body:        'Structured, not supervised. A Navigator poses the question — students do the thinking. Nothing is passive.',
+  },
+  {
+    question:    "Who else is in The Hangar?",
+    title:       'A cohort at the same Loop stage',
+    body:        'Every student in the room is navigating two languages and the same phase of The Loop. The shared context is the point.',
+  },
+  {
+    question:    'What does it produce?',
+    title:       'Between-session momentum',
+    body:        'The Hangar is what turns 16 weeks into a system instead of a schedule. It is where the compounding begins.',
+  },
+]
+
+// S6 — Navigator Presence copy points
+const NAVIGATOR_PRESENCE = [
+  {
+    label: 'Same Navigator',
+    body:  "The Navigator in The Hangar is not a moderator or a support assistant. It is the same Navigator from your child's session — with the same Lexile baseline, the same 6+1 Trait profile, the same session notes.",
+  },
+  {
+    label: 'Calibrated feedback',
+    body:  "Every comment in The Hangar references where that specific student is in The Loop. Not generic encouragement — a named trait, a specific score, a precise next move.",
+  },
+  {
+    label: 'Not generic',
+    body:  "A Navigator does not copy and paste feedback. When they respond to a student's writing draft in The Hangar, they are responding to that draft — the specific sentence that needs to move, the specific score that changes if it does.",
+  },
+  {
+    label: 'Response time',
+    body:  'Hangar responses are delivered within 6 hours on session days and 12 hours on off days.',
+  },
+]
+
+// S7 — The Cohort columns
+const COHORT = [
+  {
+    num:   '01',
+    title: 'Same stage, not same age',
+    body:  'Cohorts are grouped by Loop phase and Lexile level — not by school year. A Grade 5 and a Grade 7 student at the same Lexile are in the same conversation.',
+  },
+  {
+    num:   '02',
+    title: 'Bilingual by design',
+    body:  'Every student in the cohort is navigating two languages simultaneously. The shared experience is not incidental — it is the foundation of what they build together.',
+  },
+  {
+    num:   '03',
+    title: 'Belonging before performance',
+    body:  'The Hangar is not a place to prove yourself. It is a place to build yourself — in a room where everyone else is doing the same thing, in the same two languages.',
+  },
+]
+
+// S8 — Student Voice cards
+const STUDENT_VOICES = [
+  {
+    quote:            "I used to think I had to wait until my session to ask questions. Now I post my draft in The Hangar and get feedback before the session even starts. It's like having an extra session every week except it's on my schedule.",
+    grade:            'Grade 6',
+    city:             'Shanghai',
+    weeksInProgram:   8,
+    hangarDetail:     'Posted a writing draft at 10pm, received calibrated feedback by morning',
+  },
+  {
+    quote:            "There's this kid in my cohort who's in Grade 9 but we're at the same Lexile. We both struggle with the same stuff and help each other. Nobody at my school gets what it's like doing this in two languages.",
+    grade:            'Grade 7',
+    city:             'Beijing',
+    weeksInProgram:   12,
+    hangarDetail:     'Participated in a peer review exchange in The Hangar between sessions',
+  },
+]
+
+// ─────────────────────────────────────────────────────────────
+// PAGE
+// ─────────────────────────────────────────────────────────────
+export default function TheHangarPage() {
+  return (
+    <div className="w-full overflow-hidden" style={{ fontFamily: 'var(--font-latin)' }}>
+
+      {/* ══ S1 HERO ══════════════════════════════════════════
+          Figma: #212830 bg, full-bleed background image + gradient overlay
+          Gradient: from-[#0E0E12]/55 via-[#0E0E12]/40 to-[#0E0E12]/25 desktop
+                    +[#0E0E12]/60 mobile overlay on top
+          Content: max-w-[700px], Eyebrow + h1 (clamp 38-68px) + sub
+          h1: two inline #b7b5fe spans
+          sub: 18px fw400 #F0F0F0/75
+      ════════════════════════════════════════════════════════ */}
+      <section
+        className="relative min-h-screen flex items-center justify-center px-6 md:px-12"
+        style={{ backgroundColor: '#212830' }}
+      >
+        {/* Background image */}
+        <div className="absolute inset-0 overflow-hidden">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="https://images.unsplash.com/photo-1758270705317-3ef6142d306f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080&q=80"
+            alt=""
+            aria-hidden="true"
+            className="w-full h-full object-cover"
+            style={{ display: 'block' }}
+          />
+          {/* Desktop gradient — stronger left, lighter right */}
+          <div
+            className="absolute inset-0 hidden md:block"
+            style={{
+              background: 'linear-gradient(to right, rgba(14,14,18,0.85) 0%, rgba(14,14,18,0.55) 50%, rgba(14,14,18,0.30) 100%)',
+            }}
+          />
+          {/* Mobile overlay — uniform dark */}
+          <div
+            className="absolute inset-0 md:hidden"
+            style={{ backgroundColor: 'rgba(14,14,18,0.72)' }}
+          />
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 max-w-[700px]">
+          <Eyebrow>The Hangar</Eyebrow>
+
+          <h1
+            className="mb-6"
+            style={{
+              fontFamily:  'var(--font-latin)',
+              fontWeight:  700,
+              fontSize:    'clamp(38px, 5vw, 68px)',
+              lineHeight:  1.2,
+              color:       '#F0F0F0',
+              letterSpacing: '-0.03em',
+              maxWidth:    '700px',
+            }}
+          >
+            Where the work continues — and the people who{' '}
+            <span style={{ color: '#b7b5fe' }}>get it</span> are already there.
+          </h1>
+
+          <p
+            style={{
+              fontFamily:  'var(--font-latin)',
+              fontWeight:  400,
+              fontSize:    '18px',
+              lineHeight:  1.6,
+              color:       'rgba(240,240,240,0.75)',
+              maxWidth:    '520px',
+            }}
+          >
+            Not homework help. Not a study hall. The environment where The Loop becomes a habit.
+          </p>
+        </div>
+      </section>
+
+      {/* ══ S2 THE ONE REFRAME ═══════════════════════════════
+          Figma: void-black (#0E0E12), !py-24 md:!py-32
+          Single centred pull-quote: clamp(26-48px) fw700 #F0F0F0
+          One #b7b5fe inline span: "ready to go further"
+          max-w-[860px] mx-auto
+      ════════════════════════════════════════════════════════ */}
+      <section
+        className="px-6 py-24 md:py-32"
+        style={{ backgroundColor: '#0E0E12' }}
+      >
+        <div className="max-w-7xl mx-auto">
+          <p
+            className="text-center max-w-[860px] mx-auto"
+            style={{
+              fontFamily:    'var(--font-latin)',
+              fontWeight:    700,
+              fontSize:      'clamp(26px, 4vw, 48px)',
+              color:         '#F0F0F0',
+              lineHeight:    1.3,
+              letterSpacing: '-0.025em',
+            }}
+          >
+            The Hangar is not where students go when they are stuck. It is where students go when they are{' '}
+            <span style={{ color: '#b7b5fe' }}>ready to go further</span>.
+          </p>
+        </div>
+      </section>
+
+      {/* ══ S3 WHAT THE HANGAR ACTUALLY IS ═══════════════════
+          Figma: dark (#212830), text-center header + 3-col divider grid
+          Each col: italic question label (13px fw400 #F0F0F0/45)
+                    → h3 (22px fw700 #b7b5fe)
+                    → body (15px fw400 #F0F0F0/70 lineHeight 1.6)
+          Dividers: md:divide-x md:divide-[#b7b5fe]/20
+          Col padding: px-0 md:px-8
+      ════════════════════════════════════════════════════════ */}
+      <Section bg="dark">
+        <div className="text-center mb-16">
+          <Eyebrow center>What It Is</Eyebrow>
+          <h2
+            className="max-w-3xl mx-auto"
+            style={{
+              fontFamily:    'var(--font-latin)',
+              fontWeight:    600,
+              fontSize:      'clamp(28px, 3vw, 42px)',
+              color:         '#F0F0F0',
+              lineHeight:    1.3,
+              letterSpacing: '-0.02em',
+            }}
+          >
+            Three things The Hangar is — that nothing else in your child&rsquo;s week is.
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0">
+          {WHAT_IT_IS.map(({ question, title, body }, i) => (
+            <div
+              key={title}
+              className="px-0 md:px-8"
+              style={
+                i > 0
+                  ? { borderLeft: '1px solid rgba(183,181,254,0.2)' }
+                  : undefined
+              }
+            >
+              {/* Italic question label */}
+              <div
+                className="mb-4"
+                style={{
+                  fontFamily:  'var(--font-latin)',
+                  fontWeight:  400,
+                  fontSize:    '13px',
+                  fontStyle:   'italic',
+                  color:       'rgba(240,240,240,0.45)',
+                }}
+              >
+                {question}
+              </div>
+              {/* Title */}
+              <h3
+                className="mb-3"
+                style={{
+                  fontFamily:  'var(--font-latin)',
+                  fontWeight:  700,
+                  fontSize:    '22px',
+                  color:       '#b7b5fe',
+                }}
+              >
+                {title}
+              </h3>
+              {/* Body */}
+              <p
+                style={{
+                  fontFamily:  'var(--font-latin)',
+                  fontWeight:  400,
+                  fontSize:    '15px',
+                  color:       'rgba(240,240,240,0.70)',
+                  lineHeight:  1.6,
+                }}
+              >
+                {body}
+              </p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* ══ S4 THE HANGAR INSIDE THE LOOP ════════════════════
+          Figma: whisper (#F5F5FF), text-center header
+          h2 (clamp 28-42px fw700 #0E0E12)
+          LoopDiagram SVG centred
+          Caption: 16px fw400 #212830 max-w-[640px] lineHeight 1.7
+      ════════════════════════════════════════════════════════ */}
+      <Section bg="whisper">
+        <div className="text-center mb-8">
+          <Eyebrow center>The Methodology</Eyebrow>
+          <h2
+            className="max-w-3xl mx-auto mb-4"
+            style={{
+              fontFamily:    'var(--font-latin)',
+              fontWeight:    700,
+              fontSize:      'clamp(28px, 3vw, 42px)',
+              color:         '#0E0E12',
+              lineHeight:    1.3,
+              letterSpacing: '-0.02em',
+            }}
+          >
+            The Loop runs in sessions. The Hangar keeps it running between them.
+          </h2>
+        </div>
+
+        <LoopDiagram />
+
+        <div className="text-center mt-8">
+          <p
+            className="max-w-[640px] mx-auto"
+            style={{
+              fontFamily:  'var(--font-latin)',
+              fontWeight:  400,
+              fontSize:    '16px',
+              color:       '#212830',
+              lineHeight:  1.7,
+            }}
+          >
+            A student who only works The Loop during sessions will plateau at the pace
+            of one session per week. A student who lives inside The Hangar between
+            sessions compounds. The Loop becomes instinct, not instruction.
+          </p>
+        </div>
+      </Section>
+
+      {/* ══ S5 FOUNDER VIDEO ═════════════════════════════════
+          Figma: void-black (#0E0E12), text-center header
+          Eyebrow "FROM THE FOUNDER"
+          h2: clamp(22-34px) fw600 #F0F0F0 max-w-[640px]
+          sub: 15px fw400 #F0F0F0/60 max-w-[500px]
+          VideoPlayer → placeholder frame.
+          Real Cal.com-style embed to be wired in by client.
+          Server-safe: no onClick/JS needed for the placeholder.
+      ════════════════════════════════════════════════════════ */}
+      <section
+        className="px-6 py-24 md:py-32"
+        style={{ backgroundColor: '#0E0E12' }}
+      >
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <Eyebrow center>From the Founder</Eyebrow>
+            <h2
+              className="max-w-[640px] mx-auto mb-4"
+              style={{
+                fontFamily:    'var(--font-latin)',
+                fontWeight:    600,
+                fontSize:      'clamp(22px, 3vw, 34px)',
+                color:         '#F0F0F0',
+                lineHeight:    1.3,
+                letterSpacing: '-0.02em',
+              }}
+            >
+              Why The Hangar exists — and why nothing else does what it does.
+            </h2>
+            <p
+              className="max-w-[500px] mx-auto"
+              style={{
+                fontFamily:  'var(--font-latin)',
+                fontWeight:  400,
+                fontSize:    '15px',
+                color:       'rgba(240,240,240,0.60)',
+                lineHeight:  1.6,
+              }}
+            >
+              Unscripted. Eight minutes. The concept in full.
+            </p>
+          </div>
+
+          {/* Video player placeholder — wire in real embed URL */}
+          {/* TODO: replace src with production YouTube/Vimeo embed URL */}
+          <figure
+            className="max-w-[800px] mx-auto rounded-2xl overflow-hidden"
+            style={{
+              aspectRatio:     '16 / 9',
+              backgroundColor: '#2E3848',
+              border:          '1px solid rgba(183,181,254,0.12)',
+              position:        'relative',
+              display:         'flex',
+              alignItems:      'center',
+              justifyContent:  'center',
+            }}
+          >
+            {/* Play icon placeholder */}
+            <div
+              className="flex flex-col items-center gap-4"
+              style={{ pointerEvents: 'none' }}
+            >
+              <div
+                className="flex items-center justify-center rounded-full"
+                style={{
+                  width:           '72px',
+                  height:          '72px',
+                  backgroundColor: 'rgba(183,181,254,0.15)',
+                  border:          '1.5px solid rgba(183,181,254,0.3)',
+                }}
+              >
+                {/* Play triangle */}
+                <svg
+                  width="28" height="28" viewBox="0 0 24 24"
+                  fill="#b7b5fe" aria-hidden="true"
+                >
+                  <polygon points="5 3 19 12 5 21 5 3" />
+                </svg>
+              </div>
+              <div style={{ textAlign: 'center' }}>
+                <p
+                  style={{
+                    fontFamily:  'var(--font-latin)',
+                    fontWeight:  600,
+                    fontSize:    '15px',
+                    color:       '#F0F0F0',
+                    marginBottom: '4px',
+                  }}
+                >
+                  Sarah Chen — Founder &amp; Lead Navigator
+                </p>
+                <p
+                  style={{
+                    fontFamily:  'var(--font-latin)',
+                    fontWeight:  300,
+                    fontSize:    '12px',
+                    color:       'rgba(183,181,254,0.5)',
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  Video embed — replace with production URL
+                </p>
+              </div>
+            </div>
+          </figure>
+        </div>
+      </section>
+
+      {/* ══ S6 NAVIGATOR PRESENCE ════════════════════════════
+          Figma: whisper (#F5F5FF), 2-col grid
+          Image: order-2 md:order-1, rounded-lg
+          Copy: order-1 md:order-2
+          Eyebrow, h2 (clamp 28-38px fw700 #0E0E12)
+          4 strong-labelled paragraphs, 16px fw400 #212830 lineHeight 1.6
+      ════════════════════════════════════════════════════════ */}
+      <Section bg="whisper">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+
+          {/* Left — Image */}
+          <div className="order-2 md:order-1">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://images.unsplash.com/photo-1688646545293-2755ea04cd8e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080&q=80"
+              alt="Navigator providing personalised feedback on a student's writing"
+              className="rounded-lg w-full"
+              style={{ display: 'block' }}
+            />
+          </div>
+
+          {/* Right — Copy */}
+          <div className="order-1 md:order-2">
+            <Eyebrow>Navigator Presence</Eyebrow>
+
+            <h2
+              className="mb-8 max-w-[480px]"
+              style={{
+                fontFamily:    'var(--font-latin)',
+                fontWeight:    700,
+                fontSize:      'clamp(28px, 3vw, 38px)',
+                color:         '#0E0E12',
+                lineHeight:    1.3,
+                letterSpacing: '-0.02em',
+              }}
+            >
+              The same Navigator. In The Hangar. Knowing exactly where your child is.
+            </h2>
+
+            <div className="space-y-5">
+              {NAVIGATOR_PRESENCE.map(({ label, body }) => (
+                <p
+                  key={label}
+                  style={{
+                    fontFamily:  'var(--font-latin)',
+                    fontWeight:  400,
+                    fontSize:    '16px',
+                    color:       '#212830',
+                    lineHeight:  1.6,
+                  }}
+                >
+                  <strong style={{ fontWeight: 600, color: '#0E0E12' }}>
+                    {label}:
+                  </strong>{' '}
+                  {body}
+                </p>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </Section>
+
+      {/* ══ S7 THE COHORT ════════════════════════════════════
+          Figma: dark (#212830), text-center header + 3-col numbered grid
+          Step num: 11px fw300 #b7b5fe/40 mb-3
+          h3: 20px fw700 #b7b5fe
+          body: 15px fw400 #F0F0F0/70 lineHeight 1.6
+          Dividers: md:divide-x md:divide-[#b7b5fe]/20
+      ════════════════════════════════════════════════════════ */}
+      <Section bg="dark">
+        <div className="text-center mb-16">
+          <Eyebrow center>The Cohort</Eyebrow>
+          <h2
+            className="max-w-3xl mx-auto"
+            style={{
+              fontFamily:    'var(--font-latin)',
+              fontWeight:    600,
+              fontSize:      'clamp(28px, 3vw, 42px)',
+              color:         '#F0F0F0',
+              lineHeight:    1.3,
+              letterSpacing: '-0.02em',
+            }}
+          >
+            Who else is in The Hangar — and why it matters that they&rsquo;re there.
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0">
+          {COHORT.map(({ num, title, body }, i) => (
+            <div
+              key={num}
+              className="px-0 md:px-8"
+              style={
+                i > 0
+                  ? { borderLeft: '1px solid rgba(183,181,254,0.2)' }
+                  : undefined
+              }
+            >
+              {/* Step number */}
+              <div
+                className="mb-3"
+                style={{
+                  fontFamily:  'var(--font-latin)',
+                  fontWeight:  300,
+                  fontSize:    '11px',
+                  color:       'rgba(183,181,254,0.40)',
+                }}
+              >
+                {num}
+              </div>
+              <h3
+                className="mb-3"
+                style={{
+                  fontFamily:  'var(--font-latin)',
+                  fontWeight:  700,
+                  fontSize:    '20px',
+                  color:       '#b7b5fe',
+                }}
+              >
+                {title}
+              </h3>
+              <p
+                style={{
+                  fontFamily:  'var(--font-latin)',
+                  fontWeight:  400,
+                  fontSize:    '15px',
+                  color:       'rgba(240,240,240,0.70)',
+                  lineHeight:  1.6,
+                }}
+              >
+                {body}
+              </p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* ══ S8 STUDENT VOICE ═════════════════════════════════
+          Figma: void-black (#0E0E12), text-center header
+          "In their words — not ours." — fw600 clamp(28-42px) #F0F0F0
+          2-col grid, max-w-5xl mx-auto
+          StudentVoiceCard: dark card #2E3848
+      ════════════════════════════════════════════════════════ */}
+      <section
+        className="px-6 py-24 md:py-32"
+        style={{ backgroundColor: '#0E0E12' }}
+      >
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <Eyebrow center>Student Voice</Eyebrow>
+            <h2
+              style={{
+                fontFamily:    'var(--font-latin)',
+                fontWeight:    600,
+                fontSize:      'clamp(28px, 3vw, 42px)',
+                color:         '#F0F0F0',
+                lineHeight:    1.3,
+                letterSpacing: '-0.02em',
+              }}
+            >
+              In their words — not ours.
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {STUDENT_VOICES.map((voice) => (
+              <StudentVoiceCard key={voice.grade + voice.city} {...voice} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══ S9 CLOSING CTA ═══════════════════════════════════
+          Figma: dark (#212830), text-center, max-w-2xl mx-auto
+          h2: clamp(28-42px) fw700 #b7b5fe lineHeight 1.3
+          sub: 16px fw400 #F0F0F0/75 max-w-[520px] mb-8
+          Primary button: gilt #F5C842 #0E0E12 fw700 16px
+          Secondary button: border-[#F0F0F0]/50 #F0F0F0 bg-transparent fw500
+          Microcopy: 13px fw400 #b7b5fe mt-4
+          Figma uses md:w-auto md:min-w-[280px] on buttons — preserved
+      ════════════════════════════════════════════════════════ */}
+      <Section bg="dark">
+        <div className="text-center max-w-2xl mx-auto">
+
+          <h2
+            className="mb-5"
+            style={{
+              fontFamily:    'var(--font-latin)',
+              fontWeight:    700,
+              fontSize:      'clamp(28px, 3vw, 42px)',
+              color:         '#b7b5fe',
+              lineHeight:    1.3,
+              letterSpacing: '-0.02em',
+            }}
+          >
+            The Hangar is included in every 16-Week Program enrollment. It is not an add-on. It is the environment.
+          </h2>
+
+          <p
+            className="max-w-[520px] mx-auto mb-8"
+            style={{
+              fontFamily:  'var(--font-latin)',
+              fontWeight:  400,
+              fontSize:    '16px',
+              color:       'rgba(240,240,240,0.75)',
+              lineHeight:  1.6,
+            }}
+          >
+            When your child enrolls in The 16-Week Program, The Hangar is where the
+            program lives between sessions. One Navigator. One cohort. One continuous loop.
+          </p>
+
+          {/* Button row */}
+          <div className="flex flex-col md:flex-row items-center justify-center gap-3">
+
+            {/* Primary — gilt */}
+            <Link
+              href="/consult"
+              className="w-full md:w-auto rounded-lg transition-all hover:opacity-90"
+              style={{
+                fontFamily:      'var(--font-latin)',
+                fontWeight:      700,
+                fontSize:        '16px',
+                backgroundColor: '#F5C842',
+                color:           '#0E0E12',
+                padding:         '16px 32px',
+                textDecoration:  'none',
+                display:         'inline-block',
+                textAlign:       'center',
+                minWidth:        '280px',
+              }}
+            >
+              Book a Diagnostic Call
+            </Link>
+
+            {/* Secondary — ghost */}
+            <Link
+              href="/program"
+              className="w-full md:w-auto rounded-lg transition-all hover:border-white"
+              style={{
+                fontFamily:      'var(--font-latin)',
+                fontWeight:      500,
+                fontSize:        '16px',
+                backgroundColor: 'transparent',
+                color:           '#F0F0F0',
+                border:          '1.5px solid rgba(240,240,240,0.50)',
+                padding:         '14px 32px',
+                textDecoration:  'none',
+                display:         'inline-block',
+                textAlign:       'center',
+                minWidth:        '280px',
+              }}
+            >
+              See the Full Program
+            </Link>
+
+          </div>
+
+          {/* Microcopy */}
+          <p
+            className="mt-4"
+            style={{
+              fontFamily:  'var(--font-latin)',
+              fontWeight:  400,
+              fontSize:    '13px',
+              color:       '#b7b5fe',
+            }}
+          >
+            The Hangar is included in every 16-Week Program enrollment. It is not an add-on.
+          </p>
+
+        </div>
+      </Section>
+
+    </div>
   )
 }
