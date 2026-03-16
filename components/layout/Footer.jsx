@@ -33,7 +33,7 @@ const NAV_COMPANY = [
   { href: '/compare', label: 'How We Compare'     },
   { href: '/faq',     label: 'FAQ'                },
   { href: '/blog',    label: 'Blog'               },
-  { href: '/consult', label: 'Book a Consult'     },
+  { href: '/consult', label: 'Watch Demo Class'   },
   { href: '/enroll',  label: 'Charter Enrollment' },
 ]
 

@@ -15,9 +15,9 @@ import { usePathname }                               from 'next/navigation'
 // ── Nav link definitions ──────────────────────────────────────
 const PRIMARY_LINKS = [
   { href: '/program',    label: 'The Program' },
-  { href: '/navigators', label: 'Navigators'  },
-  { href: '/assessment', label: 'Assessment'  },
   { href: '/the-hangar', label: 'The Hangar'  },
+  { href: '/assessment', label: 'Assessment'  },
+  { href: '/navigators', label: 'Navigators'  },
 ]
 
 const SECONDARY_LINKS = [
@@ -260,9 +260,9 @@ export default function Navbar() {
             <Link
               href="/consult"
               className="btn btn-primary hidden md:inline-flex text-sm px-5 py-2.5"
-              aria-label="Book a diagnostic consultation"
+              aria-label="Watch a free demo class"
             >
-              Book a Consult
+              Watch Demo Class
             </Link>
 
             {showCharterCTA && (
@@ -338,9 +338,9 @@ export default function Navbar() {
             <Link
               href="/consult"
               className="btn btn-primary w-full justify-center text-base py-3.5"
-              aria-label="Book a diagnostic consultation"
+              aria-label="Watch a free demo class"
             >
-              Book a Consult
+              Watch Demo Class
             </Link>
             {showCharterCTA && (
               <Link
