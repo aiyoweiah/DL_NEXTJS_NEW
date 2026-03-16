@@ -101,7 +101,7 @@ function Wordmark() {
       */}
       <div
         style={{
-          height:   '28px',
+          height:   '32px',
           overflow: 'hidden',
           display:  'flex',
           alignItems: 'center',
@@ -113,9 +113,9 @@ function Wordmark() {
           src="/logo-dark.svg"
           alt="DODO Learning"
           style={{
-            height:    '28px',
+            height:    '32px',
             width:     'auto',
-            maxHeight: '28px',
+            maxHeight: '32px',
             display:   'block',
             flexShrink: 0,
           }}
