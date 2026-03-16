@@ -6,7 +6,7 @@
 // Route: /results (Master Reference §12)
 
 import { buildMetadata } from '@/lib/metadata'
-import AssessmentClient  from '@/components/results/AssessmentClient'
+import AssessmentClient  from '@/components/assessment/AssessmentClient'
 
 export const metadata = buildMetadata({
   title:       'Results — Assessment at DODO Learning',
