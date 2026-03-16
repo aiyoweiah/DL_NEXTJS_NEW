@@ -26,7 +26,7 @@
 
 import Link        from 'next/link'
 import { buildMetadata } from '@/lib/metadata'
-import BlogClient  from '@/components/blog/BlogClient'
+import BlogClient from '@/components/blog/BlogClient'
 
 export const metadata = buildMetadata({
   title:       'Blog — Thinking Tools for Bilingual Families',
