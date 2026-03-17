@@ -93,12 +93,6 @@ function Wordmark() {
       className="flex items-center shrink-0 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b7b5fe] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0E0E12]"
       aria-label="DODO Learning — home"
     >
-      {/*
-        Hard-clamped wrapper: 28px tall, overflow hidden.
-        The container is the constraint — nothing inside can exceed it.
-        CSS class and inline style both fight base-layer resets on <img>.
-        A fixed-height parent with overflow:hidden is unconditional.
-      */}
       <div
         style={{
           height:   '32px',
@@ -191,8 +185,6 @@ export default function Navbar() {
   )
 
   // ── Link components — dark nav, light text ───────────────────
-  // Active/hover: Lavender Signal #b7b5fe — high contrast on #0E0E12
-  // Inactive: Platinum #F0F0F0 — readable on dark bg
   const DesktopNavLink = ({ href, label }) => {
     const active = isActive(href)
     return (
@@ -225,6 +217,9 @@ export default function Navbar() {
     )
   }
 
+  // Hide "Watch Demo Class" CTA when already on /demos
+  const showDemoCTA    = pathname !== '/demos'
+  // Hide "Book Your Consultation" CTA when already on /consult
   const showCharterCTA = pathname !== '/consult'
 
   return (
@@ -257,13 +252,15 @@ export default function Navbar() {
 
             <LocaleSwitcherSlot />
 
-            <Link
-              href="/consult"
-              className="btn btn-primary hidden md:inline-flex text-sm px-5 py-2.5"
-              aria-label="Watch a free demo class"
-            >
-              Watch Demo Class
-            </Link>
+            {showDemoCTA && (
+              <Link
+                href="/demos"
+                className="btn btn-primary hidden md:inline-flex text-sm px-5 py-2.5"
+                aria-label="Watch a free demo class"
+              >
+                Watch Demo Class
+              </Link>
+            )}
 
             {showCharterCTA && (
               <Link
@@ -302,7 +299,7 @@ export default function Navbar() {
         />
       )}
 
-      {/* ── Mobile drawer — stays dark, works as a contrast overlay ── */}
+      {/* ── Mobile drawer ── */}
       <div
         id="mobile-nav-drawer"
         ref={drawerRef}
@@ -335,13 +332,15 @@ export default function Navbar() {
           </nav>
 
           <div className="mt-8 flex flex-col gap-3">
-            <Link
-              href="/consult"
-              className="btn btn-primary w-full justify-center text-base py-3.5"
-              aria-label="Watch a free demo class"
-            >
-              Watch Demo Class
-            </Link>
+            {showDemoCTA && (
+              <Link
+                href="/demos"
+                className="btn btn-primary w-full justify-center text-base py-3.5"
+                aria-label="Watch a free demo class"
+              >
+                Watch Demo Class
+              </Link>
+            )}
             {showCharterCTA && (
               <Link
                 href="/consult"

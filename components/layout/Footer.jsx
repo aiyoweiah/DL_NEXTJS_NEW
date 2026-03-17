@@ -29,12 +29,13 @@ const NAV_PROGRAM = [
 ]
 
 const NAV_COMPANY = [
-  { href: '/about',   label: 'About DODO'         },
-  { href: '/compare', label: 'How We Compare'     },
-  { href: '/faq',     label: 'FAQ'                },
-  { href: '/blog',    label: 'Blog'               },
-  { href: '/consult', label: 'Watch Demo Class'   },
-  { href: '/enroll',  label: 'Charter Enrollment' },
+  { href: '/about',   label: 'About DODO'          },
+  { href: '/compare', label: 'How We Compare'      },
+  { href: '/faq',     label: 'FAQ'                 },
+  { href: '/blog',    label: 'Blog'                },
+  { href: '/demos',   label: 'Watch Demo Class'    },
+  { href: '/consult', label: 'Book a Consultation' },
+  { href: '/enroll',  label: 'Charter Enrollment'  },
 ]
 
 const NAV_CITIES = [
@@ -174,7 +175,6 @@ export default function Footer() {
             {/* Column 1: Brand */}
             <div className="sm:col-span-2 lg:col-span-1">
 
-              {/* Logo — /logo.svg is black fill, correct for light bg */}
               <Link
                 href="/"
                 className="inline-flex mb-6 focus-visible:outline-none focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-[#b7b5fe] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5F5FF]"
@@ -252,7 +252,6 @@ export default function Footer() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {TRUST_SIGNALS.map((signal) => (
               <div key={signal.id} className="flex items-start gap-3">
-                {/* Dot — #7c79e8 on #F5F5FF passes AA */}
                 <span
                   className="mt-1.5 shrink-0 w-1.5 h-1.5 rounded-full"
                   style={{ backgroundColor: '#7c79e8' }}
