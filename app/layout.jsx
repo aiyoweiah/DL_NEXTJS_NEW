@@ -22,7 +22,7 @@ import Footer   from '@/components/layout/Footer'
 // Individual pages override this by calling buildMetadata() themselves.
 export const metadata = buildMetadata({
   title:
-    'DODO Learning — Think Twice. In Both Languages.',
+    'DODO Learning — Think Once. In Both Languages.',
   description:
     'A live, Navigator-led bilingual thinking program for globally mobile ' +
     'Chinese-speaking families. The 16-Week Program develops students who ' +
