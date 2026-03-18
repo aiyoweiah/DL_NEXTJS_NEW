@@ -7,18 +7,24 @@
 //   1. Pre-footer CTA band     — stays dark (#212830), conversion moment
 //   2. Main footer grid        — light (#F5F5FF), Brand / Program / Company / Cities
 //   3. Trust strip             — light (#F5F5FF), Lexile + 6+1 credibility signals
-//   4. Legal strip             — light (#F5F5FF), copyright, privacy, terms, locale slot
+//   4. Legal strip             — light (#F5F5FF), copyright, privacy, terms, locale switcher
+//
+// Changes from pre-locale version:
+//   - Accepts `locale` prop from app/[locale]/layout.jsx
+//   - All nav hrefs prefixed with /${locale} so links stay within the
+//     current locale session
+//   - LocaleSwitcherSlot replaced with <LocaleSwitcher locale={locale} />
+//     Server components can render client components — no change to rendering model.
 //
 // Contrast: all text on light bg uses #3D4452 (body) and #7c79e8 (lavender AA).
 // #b7b5fe (2.8:1 on white) is never used as text on light — #7c79e8 is used instead.
-//
-// Bilingual activation:
-//   Replace <LocaleSwitcherSlot /> with <LocaleSwitcher /> when zh is ready.
 
-import Link  from 'next/link'
-import Image from 'next/image'
+import Link           from 'next/link'
+import Image          from 'next/image'
+import LocaleSwitcher from '@/components/layout/LocaleSwitcher'
 
 // ── Navigation columns ────────────────────────────────────────
+// Paths are locale-relative (no prefix). Prefix applied in render.
 const NAV_PROGRAM = [
   { href: '/program',     label: 'The 16-Week Program' },
   { href: '/assessment',  label: 'Assessment'          },
@@ -73,16 +79,6 @@ const TRUST_SIGNALS = [
 
 // ── Sub-components ────────────────────────────────────────────
 
-function LocaleSwitcherSlot() {
-  return (
-    <div
-      aria-hidden="true"
-      className="w-6 h-6"
-      data-locale-slot="true"
-    />
-  )
-}
-
 // FooterLink — light bg variant. #3D4452 body, #7c79e8 hover (AA on #F5F5FF).
 function FooterLink({ href, label }) {
   return (
@@ -110,7 +106,7 @@ function ColHeading({ children }) {
 }
 
 // ── Main component ────────────────────────────────────────────
-export default function Footer() {
+export default function Footer({ locale }) {
   const currentYear = new Date().getFullYear()
 
   return (
@@ -148,14 +144,14 @@ export default function Footer() {
 
             <div className="flex flex-col sm:flex-row gap-3 md:shrink-0">
               <Link
-                href="/consult"
+                href={`/${locale}/consult`}
                 className="btn btn-charter text-sm px-6 py-3 justify-center"
                 aria-label="Book a diagnostic consultation"
               >
                 Book Your Consultation
               </Link>
               <Link
-                href="/program"
+                href={`/${locale}/program`}
                 className="btn btn-ghost text-sm px-6 py-3 justify-center"
                 aria-label="Learn about The 16-Week Program"
               >
@@ -176,7 +172,7 @@ export default function Footer() {
             <div className="sm:col-span-2 lg:col-span-1">
 
               <Link
-                href="/"
+                href={`/${locale}`}
                 className="inline-flex mb-6 focus-visible:outline-none focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-[#b7b5fe] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5F5FF]"
                 aria-label="DODO Learning — home"
               >
@@ -212,7 +208,11 @@ export default function Footer() {
               <ColHeading>Program</ColHeading>
               <ul className="space-y-3">
                 {NAV_PROGRAM.map((link) => (
-                  <FooterLink key={link.href} {...link} />
+                  <FooterLink
+                    key={link.href}
+                    href={`/${locale}${link.href}`}
+                    label={link.label}
+                  />
                 ))}
               </ul>
             </div>
@@ -222,7 +222,11 @@ export default function Footer() {
               <ColHeading>Company</ColHeading>
               <ul className="space-y-3">
                 {NAV_COMPANY.map((link) => (
-                  <FooterLink key={link.href} {...link} />
+                  <FooterLink
+                    key={link.href}
+                    href={`/${locale}${link.href}`}
+                    label={link.label}
+                  />
                 ))}
               </ul>
             </div>
@@ -232,7 +236,11 @@ export default function Footer() {
               <ColHeading>Serving</ColHeading>
               <ul className="space-y-3">
                 {NAV_CITIES.map((link) => (
-                  <FooterLink key={link.href} {...link} />
+                  <FooterLink
+                    key={link.href}
+                    href={`/${locale}${link.href}`}
+                    label={link.label}
+                  />
                 ))}
               </ul>
             </div>
@@ -295,13 +303,17 @@ export default function Footer() {
               {NAV_LEGAL.map((link) => (
                 <Link
                   key={link.href}
-                  href={link.href}
+                  href={`/${locale}${link.href}`}
                   className="text-xs text-[#7B8494] hover:text-[#212830] transition-colors duration-150 focus-visible:outline-none focus-visible:rounded-sm focus-visible:ring-1 focus-visible:ring-[#b7b5fe] focus-visible:ring-offset-1 focus-visible:ring-offset-[#F5F5FF]"
                 >
                   {link.label}
                 </Link>
               ))}
-              <LocaleSwitcherSlot />
+
+              {/* LocaleSwitcher — inverted colours for light background */}
+              <div className="[&_button]:text-[#7c79e8] [&_button]:border-[rgba(124,121,232,0.3)] [&_button]:hover:border-[rgba(124,121,232,0.7)] [&_button]:hover:bg-[rgba(124,121,232,0.08)] [&_button]:focus-visible:ring-offset-[#F5F5FF]">
+                <LocaleSwitcher locale={locale} />
+              </div>
             </div>
 
           </div>

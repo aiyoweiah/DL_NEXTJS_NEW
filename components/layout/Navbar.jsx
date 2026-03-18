@@ -4,15 +4,21 @@
 //
 // Fixed navigation bar. First interactive element after SkipLink.
 //
-// Bilingual activation:
-//   Replace <LocaleSwitcherSlot /> with <LocaleSwitcher /> when zh is ready.
-//   No other changes needed in this file.
+// Changes from pre-locale version:
+//   - Accepts `locale` prop from app/[locale]/layout.jsx
+//   - All nav hrefs prefixed with /${locale} so links stay within the
+//     current locale session (bare /program would edge-redirect to /en/)
+//   - isActive strips the locale prefix from usePathname() before comparing
+//   - LocaleSwitcherSlot replaced with <LocaleSwitcher locale={locale} />
+//     in both desktop bar and mobile drawer
 
 import { useState, useEffect, useRef, useCallback } from 'react'
 import Link                                          from 'next/link'
 import { usePathname }                               from 'next/navigation'
+import LocaleSwitcher                                from '@/components/layout/LocaleSwitcher'
 
 // ── Nav link definitions ──────────────────────────────────────
+// Paths are locale-relative (no prefix). Prefix applied in render.
 const PRIMARY_LINKS = [
   { href: '/program',    label: 'The Program' },
   { href: '/the-hangar', label: 'The Hangar'  },
@@ -72,32 +78,19 @@ function HamburgerIcon({ open }) {
   )
 }
 
-// ── Language switcher slot ────────────────────────────────────
-function LocaleSwitcherSlot() {
-  return (
-    <div
-      aria-hidden="true"
-      className="hidden lg:flex items-center"
-      style={{ width: '2.5rem' }}
-    />
-  )
-}
-
 // ── Wordmark ──────────────────────────────────────────────────
-// Nav is dark (#0E0E12). logo-dark.svg is the high-contrast variant
-// designed for dark backgrounds.
-function Wordmark() {
+function Wordmark({ locale }) {
   return (
     <Link
-      href="/"
+      href={`/${locale}`}
       className="flex items-center shrink-0 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b7b5fe] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0E0E12]"
       aria-label="DODO Learning — home"
     >
       <div
         style={{
-          height:   '32px',
-          overflow: 'hidden',
-          display:  'flex',
+          height:     '32px',
+          overflow:   'hidden',
+          display:    'flex',
           alignItems: 'center',
           flexShrink: 0,
         }}
@@ -107,10 +100,10 @@ function Wordmark() {
           src="/logo-dark.svg"
           alt="DODO Learning"
           style={{
-            height:    '32px',
-            width:     'auto',
-            maxHeight: '32px',
-            display:   'block',
+            height:     '32px',
+            width:      'auto',
+            maxHeight:  '32px',
+            display:    'block',
             flexShrink: 0,
           }}
         />
@@ -120,14 +113,29 @@ function Wordmark() {
 }
 
 // ── Main component ────────────────────────────────────────────
-export default function Navbar() {
-  const pathname = usePathname()
-  const [scrolled,   setScrolled]  = useState(false)
-  const [mobileOpen, setMobileOpen] = useState(false)
+export default function Navbar({ locale }) {
+  const pathname = usePathname() // e.g. /en/program, /zh/the-hangar
+
+  const [scrolled,    setScrolled]  = useState(false)
+  const [mobileOpen,  setMobileOpen] = useState(false)
 
   const drawerRef    = useRef(null)
   const hamburgerRef = useRef(null)
 
+  // ── isActive ─────────────────────────────────────────────────
+  // usePathname returns /en/program. Strip the locale prefix so we can
+  // compare against bare hrefs like /program.
+  const strippedPathname = pathname.replace(/^\/(en|zh)/, '') || '/'
+
+  const isActive = useCallback(
+    (href) =>
+      href === '/'
+        ? strippedPathname === '/'
+        : strippedPathname === href || strippedPathname.startsWith(href + '/'),
+    [strippedPathname]
+  )
+
+  // ── Scroll shadow ─────────────────────────────────────────────
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 16)
     handleScroll()
@@ -135,13 +143,18 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // ── Close drawer on navigation ────────────────────────────────
   useEffect(() => { setMobileOpen(false) }, [pathname])
 
+  // ── Body scroll lock ──────────────────────────────────────────
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [mobileOpen])
 
+  // ── Mobile focus trap ─────────────────────────────────────────
+  // TODO: refactor to useFocusTrap(drawerRef, mobileOpen, () => setMobileOpen(false))
+  // from lib/a11y.js before any new modals are built — see §16 of handoff.
   useEffect(() => {
     if (!mobileOpen || !drawerRef.current) return
 
@@ -176,20 +189,12 @@ export default function Navbar() {
     return () => document.removeEventListener('keydown', handleKeyDown)
   }, [mobileOpen])
 
-  const isActive = useCallback(
-    (href) =>
-      href === '/'
-        ? pathname === '/'
-        : pathname === href || pathname.startsWith(href + '/'),
-    [pathname]
-  )
-
-  // ── Link components — dark nav, light text ───────────────────
+  // ── Link sub-components ───────────────────────────────────────
   const DesktopNavLink = ({ href, label }) => {
     const active = isActive(href)
     return (
       <Link
-        href={href}
+        href={`/${locale}${href}`}
         aria-current={active ? 'page' : undefined}
         className={`nav-link text-sm font-medium whitespace-nowrap transition-colors duration-150 ${
           active ? 'text-[#b7b5fe]' : 'text-[#F0F0F0] hover:text-[#b7b5fe]'
@@ -204,7 +209,7 @@ export default function Navbar() {
     const active = isActive(href)
     return (
       <Link
-        href={href}
+        href={`/${locale}${href}`}
         aria-current={active ? 'page' : undefined}
         className={`block py-4 text-[1.125rem] font-medium border-b transition-colors duration-150 ${
           active
@@ -217,10 +222,9 @@ export default function Navbar() {
     )
   }
 
-  // Hide "Watch Demo Class" CTA when already on /demos
-  const showDemoCTA    = pathname !== '/demos'
-  // Hide "Book Your Consultation" CTA when already on /consult
-  const showCharterCTA = pathname !== '/consult'
+  // Hide CTAs when already on that page
+  const showDemoCTA    = strippedPathname !== '/demos'
+  const showCharterCTA = strippedPathname !== '/consult'
 
   return (
     <>
@@ -228,7 +232,6 @@ export default function Navbar() {
       <header
         role="banner"
         className={`nav ${scrolled ? 'scrolled' : ''}`}
-        data-locale-ready="true"
         style={{
           backgroundColor: '#0E0E12',
           borderBottom: '1px solid rgba(183,181,254,0.10)',
@@ -236,7 +239,7 @@ export default function Navbar() {
       >
         <div className="container-section h-full flex items-center justify-between gap-6">
 
-          <Wordmark />
+          <Wordmark locale={locale} />
 
           <nav aria-label="Primary navigation" className="hidden lg:flex items-center gap-8">
             {PRIMARY_LINKS.map((link) => (
@@ -250,11 +253,12 @@ export default function Navbar() {
 
           <div className="flex items-center gap-3">
 
-            <LocaleSwitcherSlot />
+            {/* LocaleSwitcher — desktop */}
+            <LocaleSwitcher locale={locale} />
 
             {showDemoCTA && (
               <Link
-                href="/demos"
+                href={`/${locale}/demos`}
                 className="btn btn-primary hidden md:inline-flex text-sm px-5 py-2.5"
                 aria-label="Watch a free demo class"
               >
@@ -264,7 +268,7 @@ export default function Navbar() {
 
             {showCharterCTA && (
               <Link
-                href="/consult"
+                href={`/${locale}/consult`}
                 className="btn btn-charter hidden lg:inline-flex text-sm px-5 py-2.5"
                 aria-label="Book your diagnostic consultation — Charter Enrollment"
               >
@@ -299,7 +303,7 @@ export default function Navbar() {
         />
       )}
 
-      {/* ── Mobile drawer ── */}
+      {/* ── Mobile drawer ─────────────────────────────────── */}
       <div
         id="mobile-nav-drawer"
         ref={drawerRef}
@@ -334,7 +338,7 @@ export default function Navbar() {
           <div className="mt-8 flex flex-col gap-3">
             {showDemoCTA && (
               <Link
-                href="/demos"
+                href={`/${locale}/demos`}
                 className="btn btn-primary w-full justify-center text-base py-3.5"
                 aria-label="Watch a free demo class"
               >
@@ -343,7 +347,7 @@ export default function Navbar() {
             )}
             {showCharterCTA && (
               <Link
-                href="/consult"
+                href={`/${locale}/consult`}
                 className="btn btn-charter w-full justify-center text-base py-3.5"
                 aria-label="Book your diagnostic consultation — Charter Enrollment"
               >
@@ -352,8 +356,13 @@ export default function Navbar() {
             )}
           </div>
 
+          {/* LocaleSwitcher — mobile drawer */}
+          <div className="mt-8 flex items-center justify-center">
+            <LocaleSwitcher locale={locale} />
+          </div>
+
           <p
-            className="mt-8 text-xs font-medium tracking-widest uppercase text-center"
+            className="mt-6 text-xs font-medium tracking-widest uppercase text-center"
             style={{ color: 'rgba(183,181,254,0.4)' }}
           >
             Think Once. In Both Languages.

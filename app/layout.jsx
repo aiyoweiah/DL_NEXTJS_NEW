@@ -1,91 +1,70 @@
-import { notFound } from 'next/navigation'
+// app/layout.jsx
+//
+// Root layout — wraps every route in the site.
+//
+// Bilingual activation checklist (do not build yet):
+//   1. Wrap routes inside app/[locale]/layout.jsx
+//   2. Replace lang="en" with lang={locale}
+//   3. Add middleware.js for locale detection
+//   4. Restore alternates.languages in lib/metadata.js
+
+import '@/styles/globals.css'
+
 import { fontLatin, fontCJK } from '@/lib/fonts'
-import { isValidLocale, localeParams } from '@/lib/i18n'
-import { buildMetadata } from '@/lib/metadata'
+import { buildMetadata }      from '@/lib/metadata'
+import { educationOrgSchema } from '@/lib/schema'
+
 import SkipLink from '@/components/layout/SkipLink'
-import Navbar from '@/components/layout/Navbar'
-import Footer from '@/components/layout/Footer'
+import Navbar   from '@/components/layout/Navbar'
+import Footer   from '@/components/layout/Footer'
 
-// ---------------------------------------------------------------------------
-// Static params — pre-renders /en/* and /zh/* at build time.
-// Without this, neither locale variant is emitted in the static export.
-// ---------------------------------------------------------------------------
-export function generateStaticParams() {
-  return localeParams()
-}
-
-// ---------------------------------------------------------------------------
-// Default metadata for the locale shell.
+// ── Site-wide fallback metadata ───────────────────────────────
 // Individual pages override this by calling buildMetadata() themselves.
-// The hreflang alternates block in lib/metadata.js is now active — this
-// layout's existence is what makes locale-aware alternates resolvable.
-// ---------------------------------------------------------------------------
-export async function generateMetadata({ params }) {
-  const { locale } = await params
-  return buildMetadata({
-    locale,
-    path: '/',
-  })
-}
+export const metadata = buildMetadata({
+  title:
+    'DODO Learning — Think Once. In Both Languages.',
+  description:
+    'A live, Navigator-led bilingual thinking program for globally mobile ' +
+    'Chinese-speaking families. The 16-Week Program develops students who ' +
+    'read, think, speak, and write in two languages — measured by Lexile ' +
+    'levels and the 6+1 Trait writing framework.',
+  path: '/',
+})
 
-// ---------------------------------------------------------------------------
-// Layout
-// ---------------------------------------------------------------------------
-export default async function LocaleLayout({ children, params }) {
-  const { locale } = await params
-
-  // Guard: reject unsupported locale segments (e.g. /fr/program → 404).
-  // Prevents a broken EN page from silently rendering at /fr/*.
-  if (!isValidLocale(locale)) {
-    notFound()
-  }
-
-  // BCP 47 lang attribute.
-  // Use 'zh-Hans' for Simplified Chinese — correct for screen readers and
-  // search engines. Not 'zh' or 'zh-CN'.
-  const htmlLang = locale === 'zh' ? 'zh-Hans' : 'en'
-
-  // Font class composition.
-  // fontLatin (DM Sans) is always active.
-  // fontCJK (Noto Sans SC) is always loaded; its CSS variable is applied
-  // globally so Chinese characters render correctly on any page that mixes
-  // scripts (nav, footer, mixed-language headings).
-  //
-  // PRELOAD NOTE: lib/fonts.js initialises fontCJK with preload: false to
-  // avoid preloading a large CJK subset on EN pages. For ZH pages the subset
-  // should be preloaded. Next.js next/font does not support per-render preload
-  // toggling from a single module-level initialisation, so the preload hint is
-  // injected manually below via <link rel="preload"> when locale === 'zh'.
-  const fontClasses = [fontLatin.variable, fontCJK.variable].join(' ')
-
+// ── Root layout ───────────────────────────────────────────────
+export default function RootLayout({ children }) {
   return (
-    <html lang={htmlLang} className={fontClasses}>
+    <html
+      lang="en"
+      className={`${fontLatin.variable} ${fontCJK.variable}`}
+      suppressHydrationWarning
+    >
       <head>
-        {/*
-          Manual CJK preload for ZH locale only.
-          Keeps the EN build from fetching a large Chinese font subset early
-          while ensuring ZH users do not see a flash of unstyled CJK text.
-          The href here targets the woff2 subset Next.js emits for Noto Sans SC.
-          If the hashed filename changes on a font version bump, update this href.
-          Long-term: replace with a next/font-native solution if the API adds
-          per-render preload support.
-        */}
-        {locale === 'zh' && (
-          <link
-            rel="preload"
-            as="font"
-            type="font/woff2"
-            href="/_next/static/media/noto-sans-sc.woff2"
-            crossOrigin="anonymous"
-          />
-        )}
+        {/* Site-wide JSON-LD — educationOrgSchema on every page */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(educationOrgSchema()),
+          }}
+        />
       </head>
+
       <body>
-        {/* A11y: SkipLink must be the first element in <body>. Do not move. */}
+        {/* Must be the absolute first element in <body> */}
         <SkipLink />
-        <Navbar locale={locale} />
-        <main id="main-content">{children}</main>
-        <Footer locale={locale} />
+
+        {/* Fixed — sits outside #main-content so skip link bypasses it */}
+        <Navbar />
+
+        {/*
+          SkipLink target. tabIndex={-1} lets the skip link move focus
+          here without making the element keyboard-tabbable.
+        */}
+        <main id="main-content" tabIndex={-1}>
+          {children}
+        </main>
+
+        <Footer />
       </body>
     </html>
   )
