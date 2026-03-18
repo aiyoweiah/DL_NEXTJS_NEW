@@ -8,11 +8,10 @@
 //   2. City pages          — six priority diaspora markets, priority 0.8
 //   3. Blog posts          — read from content/en/blog/*.mdx at build time
 //
-// Bilingual activation:
-//   When content/zh/ goes live, uncomment the locale URL block below.
-//   Each URL entry gets two additional alternates: /en/... and /zh/...
-//   and the x-default points to the /en/ variant.
-//   The middleware.js redirect handles the bare / → /en or /zh routing.
+// Bilingual:
+//   app/[locale]/ is now active. Every URL entry carries hreflang alternates
+//   for /en/... and /zh/... with x-default pointing to the /en/ variant.
+//   Locale redirects are handled by public/_redirects at the Cloudflare edge.
 //
 // Note on changefreq + priority:
 //   Google has publicly stated it ignores changefreq and priority in sitemaps.
@@ -85,6 +84,20 @@ async function getBlogSlugs() {
   }
 }
 
+// ── Alternates helper ─────────────────────────────────────────
+// Builds the hreflang languages block for a given path.
+// Uses 'zh-Hans' (correct BCP 47 for Simplified Chinese), not 'zh-CN'.
+// x-default points to /en/ — the fallback for unrecognised locales.
+function buildAlternates(path) {
+  return {
+    languages: {
+      'en':        `${SITE_URL}/en${path}`,
+      'zh-Hans':   `${SITE_URL}/zh${path}`,
+      'x-default': `${SITE_URL}/en${path}`,
+    },
+  }
+}
+
 // ── Main export ───────────────────────────────────────────────
 export default async function sitemap() {
   const blogPosts = await getBlogSlugs()
@@ -95,16 +108,7 @@ export default async function sitemap() {
     lastModified:    BUILD_DATE,
     changeFrequency,
     priority,
-
-    // ── Bilingual alternates (deferred) ──────────────────────
-    // Uncomment when app/[locale]/ structure is activated:
-    // alternates: {
-    //   languages: {
-    //     'en':       `${SITE_URL}/en${path}`,
-    //     'zh-CN':    `${SITE_URL}/zh${path}`,
-    //     'x-default':`${SITE_URL}/en${path}`,
-    //   },
-    // },
+    alternates:      buildAlternates(path),
   }))
 
   // ── 2. City pages ─────────────────────────────────────────
@@ -113,14 +117,7 @@ export default async function sitemap() {
     lastModified:    BUILD_DATE,
     changeFrequency: 'monthly',
     priority:        0.8,
-
-    // alternates: {
-    //   languages: {
-    //     'en':       `${SITE_URL}/en/cities/${slug}`,
-    //     'zh-CN':    `${SITE_URL}/zh/cities/${slug}`,
-    //     'x-default':`${SITE_URL}/en/cities/${slug}`,
-    //   },
-    // },
+    alternates:      buildAlternates(`/cities/${slug}`),
   }))
 
   // ── 3. Blog posts ─────────────────────────────────────────
@@ -129,14 +126,7 @@ export default async function sitemap() {
     lastModified,
     changeFrequency: 'monthly',
     priority:        0.65,
-
-    // alternates: {
-    //   languages: {
-    //     'en':       `${SITE_URL}/en/blog/${slug}`,
-    //     'zh-CN':    `${SITE_URL}/zh/blog/${slug}`,
-    //     'x-default':`${SITE_URL}/en/blog/${slug}`,
-    //   },
-    // },
+    alternates:      buildAlternates(`/blog/${slug}`),
   }))
 
   return [...staticEntries, ...cityEntries, ...blogEntries]
