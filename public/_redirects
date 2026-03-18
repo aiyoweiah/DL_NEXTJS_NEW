@@ -1,0 +1,52 @@
+# public/_redirects
+#
+# Cloudflare Pages reads this file natively and applies these rules
+# at the CDN edge before any HTML is served to the browser.
+#
+# Purpose: redirect bare paths to their /en/ equivalent so that
+# every URL has an explicit locale prefix. LocaleSwitcher.jsx
+# handles the EN ↔ ZH toggle from there, persisting the choice
+# in the DODO_LOCALE cookie for all future visits.
+#
+# Why /en/ as the default (not /zh/):
+#   Static files have no access to the Accept-Language header.
+#   English is the safe default — Chinese-speaking users switch
+#   once via LocaleSwitcher and the cookie persists their choice.
+#   On return visits the LocaleSwitcher reads the cookie and
+#   navigates them directly to /zh/ — no redirect needed.
+#
+# Rule syntax: [source] [destination] [status code]
+#   302 = temporary redirect (correct for locale routing —
+#         the canonical page lives at the locale path, not here)
+#
+# ── Root ──────────────────────────────────────────────────────
+/                           /en/                        302
+
+# ── Core pages ────────────────────────────────────────────────
+/program/                   /en/program/                302
+/results/                   /en/results/                302
+/enroll/                    /en/enroll/                 302
+/consult/                   /en/consult/                302
+/methodology/               /en/methodology/            302
+/faq/                       /en/faq/                    302
+/navigators/                /en/navigators/             302
+/the-hangar/                /en/the-hangar/             302
+/lexile/                    /en/lexile/                 302
+/about/                     /en/about/                  302
+/compare/                   /en/compare/                302
+/assessment/                /en/assessment/             302
+/demos/                     /en/demos/                  302
+
+# ── Blog ──────────────────────────────────────────────────────
+/blog/                      /en/blog/                   302
+/blog/:slug/                /en/blog/:slug/             302
+
+# ── City pages ────────────────────────────────────────────────
+/cities/                    /en/cities/                 302
+/cities/:city/              /en/cities/:city/           302
+
+# ── Fallback ──────────────────────────────────────────────────
+# Any path not matched above and not already locale-prefixed
+# redirects to the EN homepage. Prevents bare 404s on unknown paths.
+# Must be last — Cloudflare applies rules top-to-bottom, first match wins.
+/:splat                     /en/:splat                  302
