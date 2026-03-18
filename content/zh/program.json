@@ -1,0 +1,135 @@
+{
+    "meta": {
+      "title": "The 16-Week Program",
+      "description": "A live, Navigator-led bilingual thinking program. Read, think, speak, and write in English — measured by Lexile levels and the 6+1 Trait writing framework. One grade level of growth in sixteen weeks."
+    },
+  
+    "hero": {
+      "eyebrow": "The 16-Week Program",
+      "heading": "What does it take to think — and lead — in two languages?",
+      "subheading": "Not more vocabulary drills. Not another tutor. A structured methodology that trains the full cognitive loop: Read → Think → Speak → Write. Measured from day one.",
+      "ctaPrimary": "Book Your Consultation",
+      "ctaSecondary": "Watch a Demo Class"
+    },
+  
+    "proof": {
+      "stats": [
+        {
+          "id": "lexile",
+          "number": "1.2",
+          "unit": "grade levels",
+          "label": "average Lexile growth in 16 weeks"
+        },
+        {
+          "id": "weeks",
+          "number": "16",
+          "unit": "weeks",
+          "label": "from baseline assessment to exit report"
+        },
+        {
+          "id": "loop",
+          "number": "4",
+          "unit": "phases",
+          "label": "Read, Think, Speak, Write — every session"
+        }
+      ]
+    },
+  
+    "loop": {
+      "eyebrow": "The Methodology",
+      "heading": "The Loop runs in every session.",
+      "body": "Most English programs drill one skill in isolation. DODO trains the full cognitive sequence — because thinking in a language and performing in a language are not the same thing.",
+      "steps": [
+        {
+          "id": "read",
+          "number": "01",
+          "label": "Read",
+          "description": "Texts are selected above the student's current Lexile level — intentionally. We build vocabulary depth and reading stamina, not surface recognition."
+        },
+        {
+          "id": "think",
+          "number": "02",
+          "label": "Think",
+          "description": "Before speaking, students form a position. The Navigator uses structured prompts that activate both language registers — English and mother tongue simultaneously."
+        },
+        {
+          "id": "speak",
+          "number": "03",
+          "label": "Speak",
+          "description": "Ideas are articulated in structured Socratic discussion. Navigators guide — they do not correct in real time. Fluency comes from thinking first."
+        },
+        {
+          "id": "write",
+          "number": "04",
+          "label": "Write",
+          "description": "Students commit their thinking to the page. Writing is assessed using the 6+1 Trait framework — the same rubric used in Canadian and US classrooms."
+        }
+      ]
+    },
+  
+    "structure": {
+      "eyebrow": "Program Structure",
+      "heading": "A beginning, a midpoint, and a measured end.",
+      "body": "The 16-Week Program is a commitment — not a subscription. It has a defined arc with three anchor points that keep students and families oriented.",
+      "phases": [
+        {
+          "id": "entrance",
+          "week": "Week 1",
+          "label": "Entrance Assessment",
+          "description": "Lexile baseline reading assessment and a 6+1 Trait writing snapshot. Before we begin, we find out exactly where your child is — not where their school says they are."
+        },
+        {
+          "id": "midpoint",
+          "week": "Week 8",
+          "label": "Midpoint Check-In",
+          "description": "Navigator review of Lexile trajectory and writing trait scores. Families receive a written progress note. The plan is adjusted if the pace needs to shift."
+        },
+        {
+          "id": "exit",
+          "week": "Week 16",
+          "label": "Exit Assessment",
+          "description": "Full Lexile re-measure and 6+1 Trait re-evaluation. Growth is quantified, visible, and documented. Then you decide what comes next."
+        }
+      ]
+    },
+  
+    "lexile": {
+      "eyebrow": "Measured Progress",
+      "heading": "Every result is a number, not a feeling.",
+      "body": "Lexile levels are the same measurement standard used by North American school systems. When a student's Lexile moves, it means something specific.",
+      "example": {
+        "label": "Typical 16-week result",
+        "start": 620,
+        "end": 820,
+        "weeks": 16,
+        "context": "Grade 4 reading level to Grade 6 — one year of growth in four months."
+      }
+    },
+  
+    "navigators": {
+      "eyebrow": "Your Child's Navigator",
+      "heading": "Not a tutor. A guide who knows exactly where your child is going.",
+      "body": "Navigators are specialists in composition, literature, and academic writing. They work with the same students across all 16 weeks — no handoffs, no substitutes. Longitudinal. Personal. Expert.",
+      "credentials": [
+        "Backgrounds in composition, literature, and academic writing",
+        "Trained in the 6+1 Trait writing assessment framework",
+        "Certified Lexile assessment practitioners",
+        "Native or near-native English fluency",
+        "Experience with bilingual learners in Canadian and US academic contexts"
+      ]
+    },
+  
+    "hangar": {
+      "eyebrow": "The Hangar",
+      "heading": "Where DODO learners belong.",
+      "body": "The Hangar is the DODO community hub — Navigator-supported study sessions, peer discussion, and the shared identity of students who are building something real. Not homework help. Belonging."
+    },
+  
+    "charter": {
+      "eyebrow": "Charter Enrollment",
+      "heading": "Charter families believe in DODO early.",
+      "body": "Charter Enrollment is for families who commit to the full 16-Week Program at the founding rate. It is not a promotional price. It rewards foresight — and it is available now.",
+      "cta": "Reserve Your Charter Spot",
+      "note": "Charter spots are limited per cohort. Consultation required before enrollment."
+    }
+  }
