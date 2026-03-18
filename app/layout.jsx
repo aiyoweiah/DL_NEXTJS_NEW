@@ -1,12 +1,24 @@
 // app/layout.jsx
 //
-// Root layout — wraps every route in the site.
+// Root layout — owns <html> and <body>. These tags must not appear in any
+// nested layout. This file is intentionally minimal.
 //
-// Bilingual activation checklist (do not build yet):
-//   1. Wrap routes inside app/[locale]/layout.jsx
-//   2. Replace lang="en" with lang={locale}
-//   3. Add middleware.js for locale detection
-//   4. Restore alternates.languages in lib/metadata.js
+// Responsibilities:
+//   - Import globals.css (once, site-wide)
+//   - Attach font CSS variables to <html> so they cascade everywhere
+//   - Inject the site-wide educationOrgSchema JSON-LD
+//   - Export the site-wide fallback metadata
+//
+// NOT responsible for:
+//   - <html lang>         — set per-locale in app/[locale]/layout.jsx
+//   - Navbar / Footer     — need locale prop, live in app/[locale]/layout.jsx
+//   - SkipLink            — lives in app/[locale]/layout.jsx (must be first
+//                           in the rendered layout tree, after html/body)
+//
+// suppressHydrationWarning on <html>:
+//   The locale layout sets document.documentElement.lang via an inline script.
+//   suppressHydrationWarning prevents React from warning about the attribute
+//   differing between server render and the first client paint.
 
 import '@/styles/globals.css'
 
@@ -14,12 +26,9 @@ import { fontLatin, fontCJK } from '@/lib/fonts'
 import { buildMetadata }      from '@/lib/metadata'
 import { educationOrgSchema } from '@/lib/schema'
 
-import SkipLink from '@/components/layout/SkipLink'
-import Navbar   from '@/components/layout/Navbar'
-import Footer   from '@/components/layout/Footer'
-
 // ── Site-wide fallback metadata ───────────────────────────────
 // Individual pages override this by calling buildMetadata() themselves.
+// Locale-specific pages pass `locale` — this root call uses the default (en).
 export const metadata = buildMetadata({
   title:
     'DODO Learning — Think Once. In Both Languages.',
@@ -35,7 +44,6 @@ export const metadata = buildMetadata({
 export default function RootLayout({ children }) {
   return (
     <html
-      lang="en"
       className={`${fontLatin.variable} ${fontCJK.variable}`}
       suppressHydrationWarning
     >
@@ -49,22 +57,8 @@ export default function RootLayout({ children }) {
         />
       </head>
 
-      <body>
-        {/* Must be the absolute first element in <body> */}
-        <SkipLink />
-
-        {/* Fixed — sits outside #main-content so skip link bypasses it */}
-        <Navbar />
-
-        {/*
-          SkipLink target. tabIndex={-1} lets the skip link move focus
-          here without making the element keyboard-tabbable.
-        */}
-        <main id="main-content" tabIndex={-1}>
-          {children}
-        </main>
-
-        <Footer />
+      <body suppressHydrationWarning>
+        {children}
       </body>
     </html>
   )
