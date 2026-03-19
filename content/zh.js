@@ -285,10 +285,6 @@ export const results = {
 }
 
 
-// ── Enroll ────────────────────────────────────────────────────
-// TODO: populate when building app/[locale]/enroll/page.jsx
-export const enroll = {}
-
 // ── Consult ───────────────────────────────────────────────────
 // TODO: populate when building app/[locale]/consult/page.jsx
 export const consult = {}
