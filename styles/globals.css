@@ -718,6 +718,19 @@
     transform: translateY(-2px);
   }
 
+  /* Card on light bg — modifier that layers over .card for Whisper / white contexts */
+  .card-light {
+    background-color: #ffffff;
+    border: 1px solid var(--border-medium);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04);
+  }
+
+  .card-light:hover {
+    border-color: rgba(183,181,254,0.45);
+    box-shadow: 0 8px 32px rgba(183,181,254,0.15), 0 2px 8px rgba(0,0,0,0.06);
+    transform: translateY(-2px);
+  }
+
   /* ── Loop Diagram ── */
   .loop-step {
     display: flex;
@@ -892,6 +905,14 @@
     color: var(--color-void-black);
     letter-spacing: 0.02em;
   }
+}
+
+/* ── @keyframes ───────────────────────────────────────────── */
+/* Must live outside @layer blocks so they are not encapsulated */
+
+@keyframes lexile-fill {
+  from { width: 0; }
+  to   { width: var(--lexile-width); }
 }
 
 /* ── 6. UTILITY LAYER ─────────────────────────────────────── */
