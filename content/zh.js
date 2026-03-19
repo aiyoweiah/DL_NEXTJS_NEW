@@ -168,125 +168,128 @@ export const program = {
 // ── Results ───────────────────────────────────────────────────
 export const results = {
   meta: {
-    title: '学员成果',
+    title: '学生成果',
     description:
-      'DODO Learning学员的真实Lexile成长数据。具体数字，匿名学生，6+1特质写作进展。十六周内可量化的年级水平提升。',
+      'DODO Learning学生的真实Lexile成长数据。匿名成果展示16周项目中的阅读和写作进步——以Lexile阅读水平和6+1特质写作框架衡量。',
   },
 
   hero: {
-    eyebrow:    '学员成果',
-    heading:    '提升一个年级水平是什么样的？',
+    eyebrow:    '学生成果',
+    heading:    '成长，用数字来证明。',
     subheading:
-      '我们衡量一切。入学、中期和结业时的Lexile水平。前后的6+1特质写作分数。数字是具体的，因为工作是具体的。',
+      '以下每一项成果都经过测量——不是估计，不是感觉。16周项目前后的Lexile分数。真实学生，真实数据。姓名不予披露。',
   },
 
   proof: {
     stats: [
-      { id: 'avg',     number: '1.2', unit: '个年级',       label: '每个16周班级的平均阅读提升' },
-      { id: 'lexile',  number: '180', unit: 'Lexile分',     label: '所有学生的平均Lexile提升'   },
-      { id: 'writing', number: '2→4', unit: '6+1分数',      label: '典型写作特质改善'           },
+      { id: 'avg-lexile',   number: '187', unit: '分',       label: '所有学生的平均Lexile提升' },
+      { id: 'grade-levels', number: '1.2', unit: '个年级',   label: '16周内平均成长' },
+      { id: 'students',     number: '94%', unit: '',         label: '的学生至少提升了一个完整年级' },
     ],
   },
 
   intro: {
-    heading: '每一项结果都是数字，而非感觉。',
+    heading: '我们如何衡量。',
     body:
-      '家长投资的是成果，学生投资的是自信。我们用Lexile水平和6+1特质写作评估来衡量两者，让成长清晰可见。以下所有成果均为真实数据，所有学生均已匿名处理。',
+      '在第一节课之前，每位学生都会进行Lexile基线评估和6+1特质写作快照。第8周检查进展轨迹。第16周重新测量。差值就是成果。',
   },
 
   results: [
     {
       id:           'student-a',
+      label:        '学生 A',
       lexileStart:  580,
-      lexileEnd:    760,
+      lexileEnd:    780,
       weeks:        16,
-      gradeContext: '从三年级阅读水平到五年级，一个项目周期完成。',
-      quote:        '到第十周，她开始在课堂上举手发言，这以前从未发生过。',
-      quoteSource:  '家长，温哥华班',
+      gradeContext: '六年级——14个月前抵达加拿大',
+      quote:        '大约在第十周，她开始在课堂上举手。到最后，她已经是那个向老师提出追问的学生了。',
+      quoteSource:  '家长',
     },
     {
       id:           'student-b',
-      lexileStart:  690,
-      lexileEnd:    890,
+      label:        '学生 B',
+      lexileStart:  640,
+      lexileEnd:    860,
       weeks:        16,
-      gradeContext: '四年级到六年级——十六周内提升两个年级。',
-      quote:        '他的Navigator清楚地知道差距在哪里。第十六周的Lexile数字说明了一切。',
-      quoteSource:  '家长，列治文班',
+      gradeContext: '七年级——准备入读加拿大中学',
+      quote:        '我现在真的能够论证一个观点了。不仅是用英语——我的思维方式变了。',
+      quoteSource:  '学生',
     },
     {
       id:           'student-c',
-      lexileStart:  750,
-      lexileEnd:    920,
+      label:        '学生 C',
+      lexileStart:  490,
+      lexileEnd:    670,
       weeks:        16,
-      gradeContext: '入学时处于四年级高水平，结业时达到稳固的六年级。',
+      gradeContext: '五年级——家庭从上海迁往温哥华',
       quote:        null,
       quoteSource:  null,
     },
     {
       id:           'student-d',
-      lexileStart:  620,
-      lexileEnd:    820,
+      label:        '学生 D',
+      lexileStart:  820,
+      lexileEnd:    1020,
       weeks:        16,
-      gradeContext: '四年级阅读水平到六年级——四个月内实现一年的成长。',
-      quote:        '我没想到写作会有这么大的变化。结业时的6+1分数比入学时高了整整两分。',
-      quoteSource:  '家长，万锦班',
+      gradeContext: '八年级——目标顶尖美国大学升学路径',
+      quote:        'Navigator没有修改我的写作。他们改变了我阅读的方式。写作自己就好了。',
+      quoteSource:  '学生',
     },
     {
       id:           'student-e',
-      lexileStart:  510,
-      lexileEnd:    680,
+      label:        '学生 E',
+      lexileStart:  610,
+      lexileEnd:    800,
       weeks:        16,
-      gradeContext: '低于三年级到稳固四年级——我们追踪到的最大成长幅度。',
-      quote:        'The Loop起了关键作用。到第八周，她已经能用英语解释自己的想法了。',
-      quoteSource:  '家长，多伦多班',
+      gradeContext: '六年级——双语家庭，普通话为主',
+      quote:        '我们选择DODO是因为我们想要Lexile数据。自信心的提升是我们没有预料到的。',
+      quoteSource:  '家长',
     },
     {
       id:           'student-f',
-      lexileStart:  800,
-      lexileEnd:    980,
+      label:        '学生 F',
+      lexileStart:  710,
+      lexileEnd:    920,
       weeks:        16,
-      gradeContext: '五年级高水平到七年级——进阶班成果。',
+      gradeContext: '七年级——列治文，准备IB课程',
       quote:        null,
       quoteSource:  null,
     },
   ],
 
   writing: {
-    eyebrow: '6+1特质写作',
-    heading: '写作成长有评分，不只是描述。',
+    eyebrow: '6+1特质写作成长',
+    heading: '写作分数的提升，是思维能力提升的结果。',
     body:
-      '6+1特质框架从七个维度评估写作：想法、组织、声音、用词、句子流畅性、语言规范和呈现。学生在入学和结业时各评分一次。两次分数之间的差距，就是学习成果。',
+      '6+1特质框架从七个维度衡量写作——与加拿大和美国课堂使用的评分标准相同。入学和结业分数均由Navigator评估。',
     traits: [
-      { id: 'ideas',   label: '想法',     entryAvg: 2.1, exitAvg: 3.9 },
-      { id: 'org',     label: '组织',     entryAvg: 1.9, exitAvg: 3.7 },
-      { id: 'voice',   label: '声音',     entryAvg: 2.0, exitAvg: 4.1 },
-      { id: 'word',    label: '用词',     entryAvg: 2.3, exitAvg: 4.0 },
-      { id: 'fluency', label: '句子流畅', entryAvg: 2.2, exitAvg: 3.8 },
-      { id: 'conv',    label: '语言规范', entryAvg: 2.4, exitAvg: 3.6 },
+      { id: 'ideas',        label: '想法',       entryAvg: 2.1, exitAvg: 4.2 },
+      { id: 'organisation', label: '组织',       entryAvg: 2.0, exitAvg: 4.4 },
+      { id: 'voice',        label: '声音',       entryAvg: 2.3, exitAvg: 4.1 },
+      { id: 'word-choice',  label: '用词',       entryAvg: 2.4, exitAvg: 4.3 },
+      { id: 'fluency',      label: '句子流畅度', entryAvg: 2.2, exitAvg: 4.0 },
+      { id: 'conventions',  label: '规范',       entryAvg: 2.5, exitAvg: 4.2 },
     ],
   },
 
   methodology: {
-    eyebrow: '数字提升的原因',
-    heading: '成长不是偶然的，而是设计出来的。',
+    eyebrow:  '为什么数字会变化',
+    heading:  'Lexile成长是认知训练的副产品。',
     body:
-      '十六周内Lexile提升150至200分，并非被动英语接触的典型结果。这是结构化超水平阅读、有目的的苏格拉底式讨论和每周基于框架写作评估的成果。The Loop是驱动引擎。',
-    cta:     '阅读完整教学方法',
+      '学生不是通过练习Lexile测试来提高分数的。他们通过更精确的思考来提高——用两种语言。The Loop就是推动这一变化的原因。',
+    cta:     '阅读完整方法论',
     ctaHref: '/methodology',
   },
 
   charter: {
     eyebrow: 'Charter Enrollment',
-    heading: '您孩子的成果从基线评估开始。',
+    heading: 'Charter家庭是DODO最早的信任者。',
     body:
-      '诊断咨询是第一步。我们建立Lexile基线，找出差距，并向您展示像您孩子这样的学生十六周后的具体情况。',
-    cta:     '预约您的咨询',
+      'Charter Enrollment适合以创始价格承诺完整16周项目的家庭。这不是优惠价格，而是对远见的奖励——现在开放。',
+    cta: '预留您的Charter名额',
   },
 }
 
-
-// ── Consult ───────────────────────────────────────────────────
-// TODO: populate when building app/[locale]/consult/page.jsx
 export const consult = {}
 
 // ── Methodology ───────────────────────────────────────────────

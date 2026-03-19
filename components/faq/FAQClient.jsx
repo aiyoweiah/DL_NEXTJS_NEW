@@ -464,7 +464,7 @@ const SECTIONS = [
             research-backed benchmark for intensive intervention. Your child will also show measurable
             improvement in 6+1 Trait writing scores, specifically in Ideas, Organization, and Voice.
             See our{' '}
-            <Link href={`/${locale}/methodology`} style={{ color: '#b7b5fe', fontWeight: 500 }}>
+            <Link href="/methodology" style={{ color: '#b7b5fe', fontWeight: 500 }}>
               methodology
             </Link>{' '}
             page for framework details.
@@ -479,7 +479,7 @@ const SECTIONS = [
             measured using standardized assessments that evaluate sentence complexity, vocabulary demand,
             and conceptual density. DODO uses MetaMetrics-certified Lexile assessment tools. Learn more
             on our{' '}
-            <Link href={`/${locale}/lexile`} style={{ color: '#b7b5fe', fontWeight: 500 }}>
+            <Link href="/lexile" style={{ color: '#b7b5fe', fontWeight: 500 }}>
               Lexile
             </Link>{' '}
             page.
@@ -494,7 +494,7 @@ const SECTIONS = [
             Word Choice, Sentence Fluency, Conventions, and Presentation. Each trait is scored
             independently on a 5-point rubric. DODO focuses on Ideas, Organization, and Voice during
             the 16-week program. Full framework documentation is available on our{' '}
-            <Link href={`/${locale}/methodology`} style={{ color: '#b7b5fe', fontWeight: 500 }}>
+            <Link href="/methodology" style={{ color: '#b7b5fe', fontWeight: 500 }}>
               methodology
             </Link>{' '}
             page.
