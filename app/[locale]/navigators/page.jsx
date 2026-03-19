@@ -17,16 +17,19 @@
 //
 // Figma → Next.js adaptations:
 //   ImageWithFallback → <img> (external Unsplash URLs, no next/image needed)
-//   button onClick (scrollToCalendar) → <Link href="/consult"> (SSR-safe)
+//   button onClick (scrollToCalendar) → <Link href={`/${locale}/consult`}> (SSR-safe)
 //   max-w-7xl mx-auto px-6 → container-section (established project pattern)
 //   py-24 / py-32 → kept verbatim
 //
 // Content: TODO: migrate to content/en/navigators.json + content/zh/navigators.json
 
 import Link from 'next/link'
-import { buildMetadata } from '@/lib/metadata'
+import { notFound }                    from 'next/navigation'
+import { isValidLocale, localeParams } from '@/lib/i18n'
+import { buildMetadata }               from '@/lib/metadata'
 
 export const metadata = buildMetadata({
+  locale,
   title:       'The Navigators',
   description:
     'DODO Navigators are not teachers or tutors. They are longitudinal partners ' +
@@ -231,7 +234,13 @@ const TESTIMONIALS = [
 // ─────────────────────────────────────────────────────────────
 // PAGE
 // ─────────────────────────────────────────────────────────────
-export default function NavigatorsPage() {
+export function generateStaticParams() {
+  return localeParams()
+}
+
+export default function NavigatorsPage({ params }) {
+  const locale = params?.locale ?? 'en'
+  if (!isValidLocale(locale)) notFound()
   return (
     <div className="w-full overflow-hidden" style={{ fontFamily: 'var(--font-latin)' }}>
 
@@ -898,7 +907,7 @@ export default function NavigatorsPage() {
 
           {/* Gilt button — Charter Enrollment moment */}
           <Link
-            href="/consult"
+            href={`/${locale}/consult`}
             className="inline-block transition-all hover:scale-105 active:scale-95 rounded-lg"
             style={{
               backgroundColor: '#F5C842',

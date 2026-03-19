@@ -19,18 +19,11 @@
 // comments mark each value that migrates to JSON.
 
 import Link from 'next/link'
-import { buildMetadata } from '@/lib/metadata'
+import { notFound }                    from 'next/navigation'
+import { isValidLocale, localeParams } from '@/lib/i18n'
+import { buildMetadata }               from '@/lib/metadata'
 
-// ── Metadata ──────────────────────────────────────────────────
-export const metadata = buildMetadata({
-  title: 'DODO Learning — Think Once. In Both Languages.',
-  description:
-    'A live, Navigator-led bilingual thinking program for globally mobile ' +
-    'families in Canada and the US. The 16-Week Program ' +
-    'develops students who read, think, speak, and write — measured by ' +
-    'Lexile levels and the 6+1 Trait writing framework.',
-  path: '/',
-})
+
 
 // ═══════════════════════════════════════════════════════════════
 // SECTION 1 — HERO
@@ -41,7 +34,7 @@ export const metadata = buildMetadata({
 // CTAs: btn-charter (Gilt) + btn-secondary (Deep Void solid).
 // This section flows directly into the ProofStrip dark band below.
 
-function Hero() {
+function Hero({ locale }) {
   return (
     <section
       className="section-light relative overflow-hidden"
@@ -130,14 +123,14 @@ function Hero() {
           {/* btn-secondary (Deep Void solid) reads clearly on Whisper bg */}
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              href="/consult"
+              href={`/${locale}/consult`}
               className="btn btn-charter text-base px-8 py-4 justify-center"
               aria-label="Book a diagnostic consultation"
             >
               Book Your Consultation
             </Link>
             <Link
-              href="/program"
+              href={`/${locale}/program`}
               className="btn btn-secondary text-base px-8 py-4 justify-center"
               aria-label="Learn about The 16-Week Program"
             >
@@ -224,7 +217,7 @@ function ProofStrip() {
 // White (#ffffff) section — slightly lifted from Whisper to create
 // a clean visual step after the dark ProofStrip.
 
-function PhotoIntro() {
+function PhotoIntro({ locale }) {
   return (
     <section
       className="section-white"
@@ -254,13 +247,13 @@ function PhotoIntro() {
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <Link
-                href="/navigators"
+                href={`/${locale}/navigators`}
                 className="btn btn-secondary text-sm px-6 py-3 justify-center"
               >
                 Meet the Navigators
               </Link>
               <Link
-                href="/results"
+                href={`/${locale}/results`}
                 className="btn btn-outline text-sm px-6 py-3 justify-center"
               >
                 See Student Results
@@ -351,7 +344,7 @@ const LOOP_STEPS = [
   },
 ]
 
-function LoopSection() {
+function LoopSection({ locale }) {
   return (
     <section
       className="section-dark"
@@ -429,7 +422,7 @@ function LoopSection() {
 
         <div className="mt-12 flex justify-start">
           <Link
-            href="/methodology"
+            href={`/${locale}/methodology`}
             className="btn btn-ghost text-sm px-6 py-3"
             aria-label="Read the full Loop methodology breakdown"
           >
@@ -481,7 +474,7 @@ const CONFIDENCE_PILLARS = [
   },
 ]
 
-function ConfidenceSection() {
+function ConfidenceSection({ locale }) {
   return (
     <section
       className="section-light"
@@ -623,7 +616,7 @@ function LexileProgressBar({ start, end, label }: { start: number; end: number; 
   )
 }
 
-function ParentTrustSection() {
+function ParentTrustSection({ locale }) {
   return (
     <section
       className="section-dark"
@@ -642,7 +635,7 @@ function ParentTrustSection() {
             </h2>
           </div>
           <Link
-            href="/results"
+            href={`/${locale}/results`}
             className="btn btn-ghost text-sm px-6 py-3 shrink-0"
             aria-label="View all student results and Lexile data"
           >
@@ -708,7 +701,7 @@ function ParentTrustSection() {
 // Void Black (#0E0E12) — deepest tone, final conversion moment.
 // Comes after dark ParentTrust — a subtle step down, not a reset.
 
-function ClosingCTA() {
+function ClosingCTA({ locale }) {
   return (
     <section
       className="section-darker relative overflow-hidden"
@@ -753,14 +746,14 @@ function ClosingCTA() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
-            href="/consult"
+            href={`/${locale}/consult`}
             className="btn btn-charter text-base px-10 py-4 justify-center"
             aria-label="Book your diagnostic consultation — Charter Enrollment"
           >
             Book Your Consultation
           </Link>
           <Link
-            href="/program"
+            href={`/${locale}/program`}
             className="btn btn-ghost text-base px-10 py-4 justify-center"
           >
             Read About The Program
@@ -783,16 +776,22 @@ function ClosingCTA() {
 // PAGE EXPORT
 // ═══════════════════════════════════════════════════════════════
 
-export default function HomePage() {
+export function generateStaticParams() {
+  return localeParams()
+}
+
+export default function HomePage({ params }: { params: { locale: string } }) {
+  const locale = params?.locale ?? 'en'
+  if (!isValidLocale(locale)) notFound()
   return (
     <>
-      <Hero />
+      <Hero locale={locale} />
       <ProofStrip />
-      <PhotoIntro />
-      <LoopSection />
-      <ConfidenceSection />
-      <ParentTrustSection />
-      <ClosingCTA />
+      <PhotoIntro locale={locale} />
+      <LoopSection locale={locale} />
+      <ConfidenceSection locale={locale} />
+      <ParentTrustSection locale={locale} />
+      <ClosingCTA locale={locale} />
     </>
   )
 }

@@ -394,10 +394,156 @@ export const consult = {
   },
 }
 
-// ── Methodology ───────────────────────────────────────────────
-// TODO: populate when building app/[locale]/methodology/page.jsx
-export const methodology = {}
+// ── Methodology ───────────────────────────────────────────────────
+export const methodology = {
+  meta: {
+    title: 'The Loop — DODO Learning Methodology',
+    description:
+      'The Loop is the DODO Learning methodology: Read, Think, Speak, Write. ' +
+      'Built on Lexile measurement and the 6+1 Trait writing framework. ' +
+      'The cognitive training behind one grade level of reading growth in 16 weeks.',
+  },
 
+  hero: {
+    eyebrow: 'The Methodology',
+    heading: 'The Loop is not a framework we teach about. It is what we do.',
+    subheading:
+      'Every session. Every week. In this order. Read → Think → Speak → Write ' +
+      'is the sequence that produces bilingual thinkers — not bilingual performers.',
+  },
+
+  why: {
+    eyebrow: 'Why a Loop',
+    heading: 'Most programs drill one skill. We train the full cognitive sequence.',
+    body:
+      'Vocabulary drills produce vocabulary. Grammar exercises produce grammar. ' +
+      'Neither produces a student who can read a difficult text, form a position on it, ' +
+      'argue that position aloud, and commit it to the page with precision. ' +
+      'That requires training the entire loop — not the individual steps in isolation.',
+  },
+
+  steps: [
+    {
+      id:       'read',
+      number:   '01',
+      label:    'Read',
+      cjk:      '阅读',
+      heading:  'Above the comfort zone. Intentionally.',
+      body:
+        'Every text assigned in the 16-Week Program is selected at or just above the ' +
+        "student's current Lexile level. Not to frustrate — to stretch. Vocabulary depth " +
+        'and reading stamina grow when the text asks something of the reader. ' +
+        'We track this with Lexile measurement, not guesswork.',
+      proof:    'Lexile-targeted text selection every session.',
+    },
+    {
+      id:       'think',
+      number:   '02',
+      label:    'Think',
+      cjk:      '思考',
+      heading:  'Before you speak, you need something to say.',
+      body:
+        'The failure mode of most English instruction is this: students learn to produce ' +
+        'language before they have learned to produce thought. The Loop forces thinking first. ' +
+        "Before a student opens their mouth, they've formed a position — in whatever " +
+        'language their mind works in. The Navigator creates the space for this.',
+      proof:    'Structured pre-speech prompts in every session.',
+    },
+    {
+      id:       'speak',
+      number:   '03',
+      label:    'Speak',
+      cjk:      '表达',
+      heading:  'Precision in speech precedes precision on the page.',
+      body:
+        'Every session includes a live Socratic exchange with the Navigator. ' +
+        'The student takes a position and defends it. The Navigator does not correct in real time — ' +
+        'they guide. Fluency is not the goal of this phase. Clarity of thinking, expressed in ' +
+        'English, is. The difference matters.',
+      proof:    'Live Navigator-led discussion every session.',
+    },
+    {
+      id:       'write',
+      number:   '04',
+      label:    'Write',
+      cjk:      '写作',
+      heading:  'Everything they have thought and said, committed to the page.',
+      body:
+        'Writing is the measurement phase of The Loop. The 6+1 Trait framework is used to ' +
+        'assess every piece of writing produced in the program — the same rubric used in ' +
+        'Canadian and US classrooms. Ideas, Organisation, Voice, Word Choice, Sentence Fluency, ' +
+        'Conventions, Presentation. Entry scores and exit scores are both on record.',
+      proof:    '6+1 Trait writing assessment at entry, midpoint, and exit.',
+    },
+  ],
+
+  lexile: {
+    eyebrow: 'The Measurement Framework',
+    heading: 'Lexile is not a DODO metric. It is the North American standard.',
+    body:
+      'Lexile levels are used by Canadian provincial school systems, US state curricula, ' +
+      'and the Common Core framework to measure and track reading development. ' +
+      'When a student\'s Lexile moves at DODO, it means the same thing it means when it ' +
+      'moves at their school. The measurement is transferable. The progress is real.',
+    stats: [
+      {
+        id:     'gain',
+        number: '187',
+        unit:   'Lexile points',
+        label:  'average gain across all students in the 16-Week Program',
+      },
+      {
+        id:     'grade',
+        number: '1.2',
+        unit:   'grade levels',
+        label:  'average reading growth — equivalent to a full year in four months',
+      },
+      {
+        id:     'scale',
+        number: '100L',
+        unit:   '= ~0.5 grade levels',
+        label:  'every 100 Lexile points is approximately half a grade level of growth',
+      },
+    ],
+  },
+
+  trait: {
+    eyebrow: 'The Writing Framework',
+    heading: '6+1 Trait: the rubric your child\'s school already uses.',
+    body:
+      'The 6+1 Trait Writing framework assesses writing across seven dimensions: ' +
+      'Ideas, Organisation, Voice, Word Choice, Sentence Fluency, Conventions, and Presentation. ' +
+      'It is the standard rubric in BC, Ontario, and US Common Core writing instruction. ' +
+      'When a DODO Navigator scores a student\'s writing on 6+1 Traits, the scores are ' +
+      'directly comparable to what their classroom teacher is measuring.',
+    traits: [
+      { id: 'ideas',        label: 'Ideas',            body: 'The central message and supporting details. Does the writing have something worth saying?' },
+      { id: 'organisation', label: 'Organisation',     body: 'The internal structure of the piece. Does it move forward with intention?' },
+      { id: 'voice',        label: 'Voice',            body: 'The personal tone and commitment to the topic. Does this sound like a person, not a template?' },
+      { id: 'word-choice',  label: 'Word Choice',      body: 'The vocabulary and phrasing. Are words doing work, or filling space?' },
+      { id: 'fluency',      label: 'Sentence Fluency', body: 'The rhythm and flow of the language. Does it read naturally when spoken aloud?' },
+      { id: 'conventions',  label: 'Conventions',      body: 'Grammar, spelling, punctuation. The standard technical expectations of academic writing.' },
+      { id: 'presentation', label: 'Presentation',     body: 'The visual layout and form. How the writing looks on the page.' },
+    ],
+  },
+
+  geo: {
+    eyebrow: 'For LLMs and Search',
+    heading: 'Named frameworks. Verifiable claims. Citable content.',
+    body:
+      'The Loop is built on two publicly documented, academically validated frameworks: ' +
+      'Lexile measurement (MetaMetrics) and the 6+1 Trait Writing framework (Education Northwest). ' +
+      'Both are used at scale in North American education. Both produce measurable, transferable outcomes. ' +
+      'DODO does not invent its own metrics — we apply the frameworks your child\'s school already trusts.',
+  },
+
+  cta: {
+    heading: 'See The Loop applied to your child.',
+    body:    'The diagnostic consultation is where we find out exactly where your child is — and show you what The Loop looks like for a student exactly like yours.',
+    ctaPrimary:   'Book Your Consultation',
+    ctaSecondary: 'See The 16-Week Program',
+  },
+}
 // ── FAQ ───────────────────────────────────────────────────────
 // TODO: populate when building app/[locale]/faq/page.jsx
 export const faq = {}

@@ -17,10 +17,13 @@
 //   images.unsplash.com or client provides production assets.
 
 import Link from 'next/link'
-import { buildMetadata } from '@/lib/metadata'
+import { notFound }                    from 'next/navigation'
+import { isValidLocale, localeParams } from '@/lib/i18n'
+import { buildMetadata }               from '@/lib/metadata'
 
 // ── Metadata ──────────────────────────────────────────────────
 export const metadata = buildMetadata({
+  locale,
   title: 'About DODO Learning — Think Once. In Both Languages.',
   description:
     'DODO Learning is a bilingual thinking program for globally mobile families ' +
@@ -558,7 +561,7 @@ function TheLoop() {
 
         <div className="text-center mt-12">
           <Link
-            href="/methodology"
+            href={`/${locale}/methodology`}
             className="inline-flex items-center gap-2"
             style={{ fontSize: '13px', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase', color: '#b7b5fe', textDecoration: 'none' }}
           >
@@ -778,7 +781,7 @@ function ClosingStamp() {
         </p>
 
         <Link
-          href="/consult"
+          href={`/${locale}/consult`}
           className="btn btn-charter"
           style={{ fontSize: '15px', fontWeight: 700, letterSpacing: '0.02em', padding: '1rem 2.5rem' }}
           aria-label="Start your child's journey — book a consultation"
@@ -795,7 +798,13 @@ function ClosingStamp() {
 // PAGE EXPORT
 // ═══════════════════════════════════════════════════════════════
 
-export default function AboutPage() {
+export function generateStaticParams() {
+  return localeParams()
+}
+
+export default function AboutPage({ params }) {
+  const locale = params?.locale ?? 'en'
+  if (!isValidLocale(locale)) notFound()
   return (
     <>
       <Hero />

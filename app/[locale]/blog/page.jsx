@@ -19,16 +19,19 @@
 //   useState/interactive → BlogClient.jsx
 //   lucide ArrowRight → inline SVG
 //   ImageWithFallback → <img>
-//   button → <Link href="/consult">
+//   button → <Link href={`/${locale}/consult`}>
 //   max-w-7xl mx-auto px-6 → container-section (where padding matches)
 //
 // Content: TODO: migrate to content/en/blog/index.json
 
 import Link        from 'next/link'
-import { buildMetadata } from '@/lib/metadata'
+import { notFound }                    from 'next/navigation'
+import { isValidLocale, localeParams } from '@/lib/i18n'
+import { buildMetadata }               from '@/lib/metadata'
 import BlogClient from '@/components/blog/BlogClient'
 
 export const metadata = buildMetadata({
+  locale,
   title:       'Blog — Thinking Tools for Bilingual Families',
   description:
     'Articles by DODO Navigators and researchers on Lexile growth, ' +
@@ -170,7 +173,13 @@ const GEO_LINKS = [
 // ─────────────────────────────────────────────────────────────
 // PAGE
 // ─────────────────────────────────────────────────────────────
-export default function BlogPage() {
+export function generateStaticParams() {
+  return localeParams()
+}
+
+export default function BlogPage({ params }) {
+  const locale = params?.locale ?? 'en'
+  if (!isValidLocale(locale)) notFound()
   return (
     <div className="w-full overflow-hidden" style={{ fontFamily: 'var(--font-latin)' }}>
 
@@ -736,7 +745,7 @@ export default function BlogPage() {
           </h2>
 
           <Link
-            href="/consult"
+            href={`/${locale}/consult`}
             className="inline-block rounded-lg transition-all hover:opacity-90 mb-4"
             style={{
               fontFamily:      'var(--font-latin)',

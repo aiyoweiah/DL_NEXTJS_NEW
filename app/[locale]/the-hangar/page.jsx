@@ -27,9 +27,12 @@
 // Content: TODO: migrate to content/en/the-hangar.json
 
 import Link from 'next/link'
-import { buildMetadata } from '@/lib/metadata'
+import { notFound }                    from 'next/navigation'
+import { isValidLocale, localeParams } from '@/lib/i18n'
+import { buildMetadata }               from '@/lib/metadata'
 
 export const metadata = buildMetadata({
+  locale,
   title:       'The Hangar — Between-Session Community',
   description:
     'The Hangar is where DODO learners continue The Loop between sessions — ' +
@@ -305,7 +308,13 @@ const STUDENT_VOICES = [
 // ─────────────────────────────────────────────────────────────
 // PAGE
 // ─────────────────────────────────────────────────────────────
-export default function TheHangarPage() {
+export function generateStaticParams() {
+  return localeParams()
+}
+
+export default function TheHangarPage({ params }) {
+  const locale = params?.locale ?? 'en'
+  if (!isValidLocale(locale)) notFound()
   return (
     <div className="w-full overflow-hidden" style={{ fontFamily: 'var(--font-latin)' }}>
 
@@ -858,7 +867,7 @@ export default function TheHangarPage() {
 
             {/* Primary — gilt */}
             <Link
-              href="/consult"
+              href={`/${locale}/consult`}
               className="w-full md:w-auto rounded-lg transition-all hover:opacity-90"
               style={{
                 fontFamily:      'var(--font-latin)',
@@ -878,7 +887,7 @@ export default function TheHangarPage() {
 
             {/* Secondary — ghost */}
             <Link
-              href="/program"
+              href={`/${locale}/program`}
               className="w-full md:w-auto rounded-lg transition-all hover:border-white"
               style={{
                 fontFamily:      'var(--font-latin)',
