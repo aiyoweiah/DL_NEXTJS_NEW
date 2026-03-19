@@ -28,15 +28,18 @@ import { notFound }                    from 'next/navigation'
 import { isValidLocale, localeParams } from '@/lib/i18n'
 import { buildMetadata }               from '@/lib/metadata'
 
-export const metadata = buildMetadata({
-  locale,
-  title:       'The Navigators',
+export async function generateMetadata({ params }) {
+  const { locale } = await params
+  return buildMetadata({
+    locale,
+    title:       'The Navigators',
   description:
     'DODO Navigators are not teachers or tutors. They are longitudinal partners ' +
     'who know your child\'s Lexile baseline, their 6+1 Trait writing profile, ' +
     'and exactly where they need to go next. Meet the Navigators.',
   path: '/navigators',
-})
+  })
+}
 
 // ─────────────────────────────────────────────────────────────
 // INLINE SVG ICON

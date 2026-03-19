@@ -22,16 +22,19 @@ import { isValidLocale, localeParams } from '@/lib/i18n'
 import { buildMetadata }               from '@/lib/metadata'
 
 // ── Metadata ──────────────────────────────────────────────────
-export const metadata = buildMetadata({
-  locale,
-  title: 'About DODO Learning — Think Once. In Both Languages.',
+export async function generateMetadata({ params }) {
+  const { locale } = await params
+  return buildMetadata({
+    locale,
+    title: 'About DODO Learning — Think Once. In Both Languages.',
   description:
     'DODO Learning is a bilingual thinking program for globally mobile families ' +
     'who expect more than fluency. Navigator-led. Lexile-measured. ' +
     'The only live program that trains the full Read → Think → Speak → Write loop ' +
     'for Chinese-speaking diaspora families in Canada and the US.',
   path: '/about',
-})
+  })
+}
 
 // ═══════════════════════════════════════════════════════════════
 // SHARED — BilingualHeading

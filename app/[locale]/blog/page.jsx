@@ -30,15 +30,18 @@ import { isValidLocale, localeParams } from '@/lib/i18n'
 import { buildMetadata }               from '@/lib/metadata'
 import BlogClient from '@/components/blog/BlogClient'
 
-export const metadata = buildMetadata({
-  locale,
-  title:       'Blog — Thinking Tools for Bilingual Families',
+export async function generateMetadata({ params }) {
+  const { locale } = await params
+  return buildMetadata({
+    locale,
+    title:       'Blog — Thinking Tools for Bilingual Families',
   description:
     'Articles by DODO Navigators and researchers on Lexile growth, ' +
     'bilingual development, and what good writing actually looks like. ' +
     'For Chinese-speaking diaspora families in Canada and the US.',
   path: '/blog',
-})
+  })
+}
 
 // ─────────────────────────────────────────────────────────────
 // INLINE SVG
