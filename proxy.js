@@ -1,4 +1,4 @@
-// middleware.js
+// proxy.js
 //
 // ── STATIC EXPORT MODE — THIS FILE IS NOT ACTIVE ────────────
 // The site currently uses output: 'export' for Cloudflare Pages.
