@@ -169,151 +169,131 @@ export const program = {
   },
 }
 
-// ── Results ───────────────────────────────────────────────────
 export const results = {
   meta: {
     title: 'Student Results',
     description:
-      'Real Lexile growth data from DODO Learning students. Anonymised results showing reading and writing progress across The 16-Week Program — measured by Lexile levels and the 6+1 Trait writing framework.',
+      'Real Lexile growth data from DODO Learning students. Anonymised results ' +
+      'showing reading and writing progress across The 16-Week Program — measured ' +
+      'by Lexile levels and the 6+1 Trait writing framework.',
   },
 
   hero: {
-    eyebrow:   'Student Results',
-    heading:   'Growth you can read in a number.',
+    eyebrow:    'Student Results',
+    heading:    'Growth you can read in a number.',
     subheading:
-      'Every result below is measured — not estimated, not felt. Lexile scores before and after The 16-Week Program. Real students. Real data. Names withheld by design.',
+      'Every result below is measured — not estimated, not felt. Lexile scores ' +
+      'before and after The 16-Week Program. Real students. Real data. Names withheld by design.',
+  },
+
+  proof: {
+    stats: [
+      { id: 'avg-lexile',   number: '187', unit: 'points',       label: 'average Lexile gain across all students' },
+      { id: 'grade-levels', number: '1.2', unit: 'grade levels', label: 'average growth in 16 weeks' },
+      { id: 'students',     number: '94%', unit: '',             label: 'of students improved at least one full grade level' },
+    ],
   },
 
   intro: {
     heading: 'How we measure.',
     body:
-      'Before the first session, every student receives a Lexile baseline assessment and a 6+1 Trait writing snapshot. At week 8 we check trajectory. At week 16 we remeasure. The difference is the result.',
-    note:
-      'All results are anonymised. Student identities are never shared. Lexile scores and writing trait ratings are real.',
+      'Before the first session, every student receives a Lexile baseline assessment ' +
+      'and a 6+1 Trait writing snapshot. At week 8 we check trajectory. At week 16 we ' +
+      'remeasure. The difference is the result.',
   },
-
-  stats: [
-    {
-      id:     'avg-lexile',
-      number: '187',
-      unit:   'points',
-      label:  'average Lexile gain across all students',
-    },
-    {
-      id:     'grade-levels',
-      number: '1.2',
-      unit:   'grade levels',
-      label:  'average growth in 16 weeks',
-    },
-    {
-      id:     'students',
-      number: '94%',
-      unit:   '',
-      label:  'of students improved at least one full grade level',
-    },
-  ],
 
   results: [
     {
       id:           'student-a',
-      label:        'Student A',
-      context:      'Grade 6 — arrived in Canada 14 months prior',
       lexileStart:  580,
       lexileEnd:    780,
       weeks:        16,
-      writingBefore: '6+1 Trait: Voice 2 / Organisation 2',
-      writingAfter:  '6+1 Trait: Voice 4 / Organisation 4',
-      quote:
-        'She started raising her hand in class around week ten. By the end she was the one asking the teacher follow-up questions.',
-      quoteAttribution: 'Parent',
+      gradeContext: 'Grade 6 — arrived in Canada 14 months prior',
+      quote:        'She started raising her hand in class around week ten. By the end she was the one asking the teacher follow-up questions.',
+      quoteSource:  'Parent',
     },
     {
       id:           'student-b',
-      label:        'Student B',
-      context:      'Grade 7 — preparing for Canadian secondary school entry',
       lexileStart:  640,
       lexileEnd:    860,
       weeks:        16,
-      writingBefore: '6+1 Trait: Ideas 2 / Word Choice 2',
-      writingAfter:  '6+1 Trait: Ideas 4 / Word Choice 5',
-      quote:
-        'I can actually argue a point now. Not just in English — I think differently.',
-      quoteAttribution: 'Student',
+      gradeContext: 'Grade 7 — preparing for Canadian secondary school entry',
+      quote:        'I can actually argue a point now. Not just in English — I think differently.',
+      quoteSource:  'Student',
     },
     {
       id:           'student-c',
-      label:        'Student C',
-      context:      'Grade 5 — family relocating to Vancouver from Shanghai',
       lexileStart:  490,
       lexileEnd:    670,
       weeks:        16,
-      writingBefore: '6+1 Trait: Conventions 1 / Sentence Fluency 2',
-      writingAfter:  '6+1 Trait: Conventions 3 / Sentence Fluency 4',
+      gradeContext: 'Grade 5 — family relocating to Vancouver from Shanghai',
       quote:        null,
-      quoteAttribution: null,
+      quoteSource:  null,
     },
     {
       id:           'student-d',
-      label:        'Student D',
-      context:      'Grade 8 — targeting top-tier US university pathway',
       lexileStart:  820,
       lexileEnd:    1020,
       weeks:        16,
-      writingBefore: '6+1 Trait: Voice 3 / Organisation 3',
-      writingAfter:  '6+1 Trait: Voice 5 / Organisation 5',
-      quote:
-        'The Navigator didn\'t fix my writing. They changed how I read. The writing fixed itself.',
-      quoteAttribution: 'Student',
+      gradeContext: 'Grade 8 — targeting top-tier US university pathway',
+      quote:        'The Navigator did not fix my writing. They changed how I read. The writing fixed itself.',
+      quoteSource:  'Student',
     },
     {
       id:           'student-e',
-      label:        'Student E',
-      context:      'Grade 6 — bilingual household, Mandarin dominant',
       lexileStart:  610,
       lexileEnd:    800,
       weeks:        16,
-      writingBefore: '6+1 Trait: Ideas 2 / Voice 2',
-      writingAfter:  '6+1 Trait: Ideas 4 / Voice 4',
-      quote:
-        'We chose DODO because we wanted the Lexile data. The confidence was the part we didn\'t expect.',
-      quoteAttribution: 'Parent',
+      gradeContext: 'Grade 6 — bilingual household, Mandarin dominant',
+      quote:        'We chose DODO because we wanted the Lexile data. The confidence was the part we did not expect.',
+      quoteSource:  'Parent',
     },
     {
       id:           'student-f',
-      label:        'Student F',
-      context:      'Grade 7 — Richmond BC, preparing for IB programme',
       lexileStart:  710,
       lexileEnd:    920,
       weeks:        16,
-      writingBefore: '6+1 Trait: Organisation 2 / Word Choice 3',
-      writingAfter:  '6+1 Trait: Organisation 5 / Word Choice 5',
+      gradeContext: 'Grade 7 — Richmond BC, preparing for IB programme',
       quote:        null,
-      quoteAttribution: null,
+      quoteSource:  null,
     },
   ],
 
-  methodology: {
-    eyebrow: 'Why Lexile',
-    heading: 'The same standard North American schools use.',
+  writing: {
+    eyebrow: '6+1 Trait Writing Growth',
+    heading: 'Writing scores move because thinking moves.',
     body:
-      'Lexile levels are not a DODO-proprietary metric. They are the measurement framework used by Canadian and US school systems to track reading development. When we report a Lexile score, it means the same thing your child\'s school means when they report one.',
-    points: [
-      'Lexile measures are text-independent — the same scale applies across all reading material',
-      'A 100-point Lexile gain correlates to approximately half a grade level of reading development',
-      'The 6+1 Trait framework assesses writing across seven dimensions: Ideas, Organisation, Voice, Word Choice, Sentence Fluency, Conventions, and Presentation',
-      'Both frameworks are used in BC, Ontario, and US Common Core curricula',
+      'The 6+1 Trait framework measures writing across seven dimensions — the same rubric ' +
+      'used in Canadian and US classrooms. Entry and exit scores are assessed by the Navigator.',
+    traits: [
+      { id: 'ideas',        label: 'Ideas',            entryAvg: 2.1, exitAvg: 4.2 },
+      { id: 'organisation', label: 'Organisation',     entryAvg: 2.0, exitAvg: 4.4 },
+      { id: 'voice',        label: 'Voice',            entryAvg: 2.3, exitAvg: 4.1 },
+      { id: 'word-choice',  label: 'Word Choice',      entryAvg: 2.4, exitAvg: 4.3 },
+      { id: 'fluency',      label: 'Sentence Fluency', entryAvg: 2.2, exitAvg: 4.0 },
+      { id: 'conventions',  label: 'Conventions',      entryAvg: 2.5, exitAvg: 4.2 },
     ],
   },
 
-  cta: {
-    heading: 'See where your child is starting from.',
+  methodology: {
+    eyebrow:  'Why the numbers move',
+    heading:  'Lexile growth is a byproduct of cognitive training.',
     body:
-      'The entrance assessment is where every result begins. Book a consultation and we\'ll tell you exactly where your child\'s Lexile sits — and what 16 weeks looks like from there.',
-    ctaPrimary:   'Book Your Consultation',
-    ctaSecondary: 'See The Program',
+      'Students do not improve their Lexile score by practising Lexile tests. They improve ' +
+      'by thinking more precisely — in both languages. The Loop is what causes the movement.',
+    cta:     'Read the full methodology',
+    ctaHref: '/methodology',
+  },
+
+  charter: {
+    eyebrow: 'Charter Enrollment',
+    heading: 'Charter families believe in DODO early.',
+    body:
+      'Charter Enrollment is for families who commit to the full 16-Week Program at the ' +
+      'founding rate. It is not a promotional price. It rewards foresight — and it is available now.',
+    cta: 'Reserve Your Charter Spot',
   },
 }
-
 
 // ── Enroll ────────────────────────────────────────────────────
 // TODO: populate when building app/[locale]/enroll/page.jsx
