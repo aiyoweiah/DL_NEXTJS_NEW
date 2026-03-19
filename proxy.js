@@ -62,7 +62,7 @@ function resolveLocale(request) {
 }
 
 // ── Middleware handler ────────────────────────────────────────
-export function middleware(request) {
+export function proxy(request) {
   const { pathname } = request.nextUrl
 
   if (LOCALES.some((locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`))) {
