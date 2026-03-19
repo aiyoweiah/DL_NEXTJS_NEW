@@ -31,18 +31,15 @@ import { notFound }                    from 'next/navigation'
 import { isValidLocale, localeParams } from '@/lib/i18n'
 import { buildMetadata }               from '@/lib/metadata'
 
-export async function generateMetadata({ params }) {
-  const { locale } = await params
-  return buildMetadata({
-    locale,
-    title:       'The Hangar — Between-Session Community',
+export const metadata = buildMetadata({
+  locale,
+  title:       'The Hangar — Between-Session Community',
   description:
     'The Hangar is where DODO learners continue The Loop between sessions — ' +
     'Navigator-supported, cohort-driven, and built to turn 16 weeks into a ' +
     'compounding system. Not homework help. The environment.',
   path: '/the-hangar',
-  })
-}
+})
 
 // ─────────────────────────────────────────────────────────────
 // PRIMITIVES
@@ -315,8 +312,8 @@ export function generateStaticParams() {
   return localeParams()
 }
 
-export default function TheHangarPage({ params }) {
-  const locale = params?.locale ?? 'en'
+export default async function TheHangarPage({ params }) {
+  const { locale } = await params
   if (!isValidLocale(locale)) notFound()
   return (
     <div className="w-full overflow-hidden" style={{ fontFamily: 'var(--font-latin)' }}>

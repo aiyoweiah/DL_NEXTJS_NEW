@@ -30,18 +30,15 @@ import { isValidLocale, localeParams } from '@/lib/i18n'
 import { buildMetadata }               from '@/lib/metadata'
 import BlogClient from '@/components/blog/BlogClient'
 
-export async function generateMetadata({ params }) {
-  const { locale } = await params
-  return buildMetadata({
-    locale,
-    title:       'Blog — Thinking Tools for Bilingual Families',
+export const metadata = buildMetadata({
+  locale,
+  title:       'Blog — Thinking Tools for Bilingual Families',
   description:
     'Articles by DODO Navigators and researchers on Lexile growth, ' +
     'bilingual development, and what good writing actually looks like. ' +
     'For Chinese-speaking diaspora families in Canada and the US.',
   path: '/blog',
-  })
-}
+})
 
 // ─────────────────────────────────────────────────────────────
 // INLINE SVG
@@ -180,8 +177,8 @@ export function generateStaticParams() {
   return localeParams()
 }
 
-export default function BlogPage({ params }) {
-  const locale = params?.locale ?? 'en'
+export default async function BlogPage({ params }) {
+  const { locale } = await params
   if (!isValidLocale(locale)) notFound()
   return (
     <div className="w-full overflow-hidden" style={{ fontFamily: 'var(--font-latin)' }}>
@@ -364,7 +361,7 @@ export default function BlogPage({ params }) {
 
               {/* CTA */}
               <Link
-                href={`/blog/${featuredArticle.slug}`}
+                href={`/${locale}/blog/${featuredArticle.slug}`}
                 className="inline-block rounded-lg transition-all hover:opacity-90 w-fit"
                 style={{
                   backgroundColor: '#b7b5fe',
@@ -420,7 +417,7 @@ export default function BlogPage({ params }) {
             {GEO_LINKS.map(({ route, title, rationale }) => (
               <Link
                 key={route}
-                href={route}
+                href={`/${locale}${route}`}
                 className="group block transition-colors p-6 md:p-8"
                 style={{
                   borderRight:     'none',
@@ -566,7 +563,7 @@ export default function BlogPage({ params }) {
                 </div>
 
                 {/* Content */}
-                <Link href={`/blog/${article.slug}`} className="block p-6 hover:no-underline">
+                <Link href={`/${locale}/blog/${article.slug}`} className="block p-6 hover:no-underline">
                   <h3
                     className="mb-2 line-clamp-2"
                     style={{

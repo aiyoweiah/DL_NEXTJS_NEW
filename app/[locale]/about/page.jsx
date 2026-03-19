@@ -22,19 +22,16 @@ import { isValidLocale, localeParams } from '@/lib/i18n'
 import { buildMetadata }               from '@/lib/metadata'
 
 // ── Metadata ──────────────────────────────────────────────────
-export async function generateMetadata({ params }) {
-  const { locale } = await params
-  return buildMetadata({
-    locale,
-    title: 'About DODO Learning — Think Once. In Both Languages.',
+export const metadata = buildMetadata({
+  locale,
+  title: 'About DODO Learning — Think Once. In Both Languages.',
   description:
     'DODO Learning is a bilingual thinking program for globally mobile families ' +
     'who expect more than fluency. Navigator-led. Lexile-measured. ' +
     'The only live program that trains the full Read → Think → Speak → Write loop ' +
     'for Chinese-speaking diaspora families in Canada and the US.',
   path: '/about',
-  })
-}
+})
 
 // ═══════════════════════════════════════════════════════════════
 // SHARED — BilingualHeading
@@ -516,7 +513,7 @@ function LoopStepIcon({ id }) {
   return <svg {...base} aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" /></svg>
 }
 
-function TheLoop() {
+function TheLoop({ locale }) {
   return (
     <section className="section-dark" aria-labelledby="loop-section-heading">
       <div className="container-section">
@@ -741,7 +738,7 @@ function FamiliesWeServe() {
 // SECTION 7 — CLOSING STAMP
 // ═══════════════════════════════════════════════════════════════
 
-function ClosingStamp() {
+function ClosingStamp({ locale }) {
   return (
     <section className="relative overflow-hidden" aria-labelledby="about-closing-heading">
       <div aria-hidden="true" className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, #0E0E12 0%, #212830 50%, #0E0E12 100%)' }} />
@@ -805,18 +802,18 @@ export function generateStaticParams() {
   return localeParams()
 }
 
-export default function AboutPage({ params }) {
-  const locale = params?.locale ?? 'en'
+export default async function AboutPage({ params }) {
+  const { locale } = await params
   if (!isValidLocale(locale)) notFound()
   return (
     <>
       <Hero />
       <TheNameSection />
       <WhatWeBelieve />
-      <TheLoop />
+      <TheLoop locale={locale} />
       <WhoNavigatorsAre />
       <FamiliesWeServe />
-      <ClosingStamp />
+      <ClosingStamp locale={locale} />
     </>
   )
 }

@@ -780,8 +780,8 @@ export function generateStaticParams() {
   return localeParams()
 }
 
-export default function HomePage({ params }: { params: { locale: string } }) {
-  const locale = params?.locale ?? 'en'
+export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
   if (!isValidLocale(locale)) notFound()
   return (
     <>
