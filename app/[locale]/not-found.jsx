@@ -1,9 +1,11 @@
 'use client'
 
-// app/not-found.jsx
+// app/[locale]/not-found.jsx
 //
-// Root-level 404 fallback — rendered when a route has no match at all
-// (e.g. /unknown-path, stale links with no locale prefix).
+// Locale-aware 404 — rendered when notFound() is called from any page
+// inside app/[locale]/ (e.g. unknown city slug, unknown blog post).
+// Next.js serves the closest not-found.jsx to the failing route — this
+// one catches errors inside the [locale] segment before the root file.
 //
 // Why 'use client':
 //   not-found.jsx is a special Next.js file — params are never passed to it.
@@ -33,7 +35,7 @@ const COPY = {
   },
 }
 
-export default function NotFound() {
+export default function LocaleNotFound() {
   const pathname = usePathname() ?? ''
   const segment  = pathname.split('/')[1] ?? ''
   const locale   = LOCALES.includes(segment) ? segment : 'en'
