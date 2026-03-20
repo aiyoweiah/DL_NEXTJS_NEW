@@ -1,30 +1,7 @@
-// app/the-hangar/page.jsx
+// app/[locale]/the-hangar/page.jsx
+//
 // Pure server component — no 'use client', zero external dependencies.
-//
-// Direct translation of Figma Make Hangar source (tUKokxMK9eHkSortCPKzTX)
-// into Next.js App Router patterns. Every measurement, colour, and type
-// spec taken verbatim from the Figma source.
-//
-// Section map (9 sections — exact from Figma):
-//   S1  Hero                  — #212830 bg-img + gradient overlay, ghost nothing, h1 + sub
-//   S2  The One Reframe       — #0E0E12 (void-black), single centred pull-quote
-//   S3  What It Is            — #212830 (dark), 3-col divider grid with italic question labels
-//   S4  Inside The Loop       — #F5F5FF (whisper), LoopDiagram SVG + caption
-//   S5  Founder Video         — #0E0E12 (void-black), placeholder video embed
-//   S6  Navigator Presence    — #F5F5FF (whisper), 2-col image + copy
-//   S7  The Cohort            — #212830 (dark), 3-col numbered grid
-//   S8  Student Voice         — #0E0E12 (void-black), 2-col student quote cards
-//   S9  Closing CTA           — #212830 (dark), gilt + ghost buttons, microcopy
-//
-// Figma → Next.js adaptations:
-//   SectionWrapper background props → inline style backgroundColor
-//   LoopDiagram component → inlined SVG (same asset as program/page.jsx)
-//   VideoPlayer component → <figure> placeholder (client embeds need 'use client')
-//   StudentVoiceCard component → inlined server primitive
-//   button → <Link href="..."> (SSR-safe, no onClick needed)
-//   Eyebrow component → inlined primitive (exact Figma spec)
-//
-// Content: TODO: migrate to content/en/the-hangar.json
+// Bilingual EN + ZH — all text driven from COPY object below.
 
 import Link from 'next/link'
 import { notFound }                    from 'next/navigation'
@@ -33,167 +10,57 @@ import { buildMetadata }               from '@/lib/metadata'
 
 export async function generateMetadata({ params }) {
   const { locale } = await params
-  return buildMetadata({
-    locale,
-    title:       'The Hangar — Between-Session Community',
-  description:
-    'The Hangar is where DODO learners continue The Loop between sessions — ' +
-    'Navigator-supported, cohort-driven, and built to turn 16 weeks into a ' +
-    'compounding system. Not homework help. The environment.',
-  path: '/the-hangar',
-  })
+  const meta = (COPY[locale] ?? COPY.en).meta
+  return buildMetadata({ locale, title: meta.title, description: meta.description, path: '/the-hangar' })
 }
 
 // ─────────────────────────────────────────────────────────────
 // PRIMITIVES
 // ─────────────────────────────────────────────────────────────
-
-// Eyebrow — exact Figma spec:
-// 12px · fw500 · tracking-[0.1em] · uppercase · #b7b5fe
 function Eyebrow({ children, center = false }) {
   return (
-    <div
-      style={{
-        fontFamily:    'var(--font-latin)',
-        fontWeight:    500,
-        fontSize:      '12px',
-        letterSpacing: '0.1em',
-        textTransform: 'uppercase',
-        color:         '#b7b5fe',
-        marginBottom:  '16px',
-        textAlign:     center ? 'center' : undefined,
-      }}
-    >
+    <div style={{ fontFamily: 'var(--font-latin)', fontWeight: 500, fontSize: '12px', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#b7b5fe', marginBottom: '16px', textAlign: center ? 'center' : undefined }}>
       {children}
     </div>
   )
 }
 
-// StudentVoiceCard — replaces Figma StudentVoiceCard component.
-// Dark card: #2E3848 bg on #0E0E12 section.
-// Quote italic fw300 #F0F0F0 · meta row: grade · city · weeks
-// hangarDetail: small italic caption below meta
 function StudentVoiceCard({ quote, grade, city, weeksInProgram, hangarDetail }) {
   return (
-    <div
-      className="rounded-2xl"
-      style={{
-        backgroundColor: '#2E3848',
-        border:          '1px solid rgba(183,181,254,0.10)',
-        padding:         '32px',
-      }}
-    >
-      {/* Opening mark */}
-      <div
-        aria-hidden="true"
-        style={{
-          fontFamily:   'var(--font-latin)',
-          fontSize:     '48px',
-          fontWeight:   700,
-          color:        '#b7b5fe',
-          opacity:      0.25,
-          lineHeight:   1,
-          marginBottom: '12px',
-        }}
-      >
-        &ldquo;
+    <div className="rounded-2xl" style={{ backgroundColor: '#2E3848', border: '1px solid rgba(183,181,254,0.10)', padding: '32px' }}>
+      <div aria-hidden="true" style={{ fontFamily: 'var(--font-latin)', fontSize: '48px', fontWeight: 700, color: '#b7b5fe', opacity: 0.25, lineHeight: 1, marginBottom: '12px' }}>&ldquo;</div>
+      <p style={{ fontFamily: 'var(--font-latin)', fontWeight: 300, fontSize: '16px', fontStyle: 'italic', color: '#F0F0F0', lineHeight: 1.7, marginBottom: '24px' }}>{quote}</p>
+      <div className="flex items-center gap-2" style={{ fontFamily: 'var(--font-latin)', fontSize: '13px', fontWeight: 600, color: '#b7b5fe', marginBottom: '8px' }}>
+        <span>{grade}</span><span style={{ opacity: 0.4 }}>·</span><span>{city}</span><span style={{ opacity: 0.4 }}>·</span>
+        <span style={{ fontWeight: 400, color: 'rgba(240,240,240,0.5)' }}>{weeksInProgram}</span>
       </div>
-
-      {/* Quote */}
-      <p
-        style={{
-          fontFamily:   'var(--font-latin)',
-          fontWeight:   300,
-          fontSize:     '16px',
-          fontStyle:    'italic',
-          color:        '#F0F0F0',
-          lineHeight:   1.7,
-          marginBottom: '24px',
-        }}
-      >
-        {quote}
-      </p>
-
-      {/* Meta row */}
-      <div
-        className="flex items-center gap-2"
-        style={{
-          fontFamily: 'var(--font-latin)',
-          fontSize:   '13px',
-          fontWeight: 600,
-          color:      '#b7b5fe',
-          marginBottom: '8px',
-        }}
-      >
-        <span>{grade}</span>
-        <span style={{ opacity: 0.4 }}>·</span>
-        <span>{city}</span>
-        <span style={{ opacity: 0.4 }}>·</span>
-        <span style={{ fontWeight: 400, color: 'rgba(240,240,240,0.5)' }}>
-          {weeksInProgram} weeks in program
-        </span>
-      </div>
-
-      {/* Hangar detail */}
-      {hangarDetail && (
-        <p
-          style={{
-            fontFamily: 'var(--font-latin)',
-            fontSize:   '12px',
-            fontWeight: 400,
-            fontStyle:  'italic',
-            color:      'rgba(183,181,254,0.45)',
-            lineHeight: 1.5,
-          }}
-        >
-          {hangarDetail}
-        </p>
-      )}
+      {hangarDetail && <p style={{ fontFamily: 'var(--font-latin)', fontSize: '12px', fontWeight: 400, fontStyle: 'italic', color: 'rgba(183,181,254,0.45)', lineHeight: 1.5 }}>{hangarDetail}</p>}
     </div>
   )
 }
 
-// ─────────────────────────────────────────────────────────────
-// LOOP DIAGRAM SVG
-// Same asset used in program/page.jsx and about/page.jsx.
-// Renders on #F5F5FF (whisper) background — circles use #F5F5FF fill.
-// ─────────────────────────────────────────────────────────────
 function LoopDiagram() {
   return (
-    <div
-      className="relative w-full max-w-md mx-auto"
-      style={{ aspectRatio: '1 / 1' }}
-    >
-      <svg
-        viewBox="0 0 400 400"
-        className="w-full h-full"
-        fill="none"
-        aria-label="The Loop: Read, Think, Speak, Write"
-        role="img"
-      >
+    <div className="relative w-full max-w-md mx-auto" style={{ aspectRatio: '1 / 1' }}>
+      <svg viewBox="0 0 400 400" className="w-full h-full" fill="none" aria-label="The Loop: Read, Think, Speak, Write" role="img">
         <circle cx="200" cy="200" r="160" stroke="#b7b5fe" strokeWidth="1.5" opacity="0.2" />
         <circle cx="200" cy="200" r="145" stroke="#b7b5fe" strokeWidth="0.5" opacity="0.08" />
         <path d="M200 40 A160 160 0 0 1 360 200"  stroke="#b7b5fe" strokeWidth="2.5" opacity="0.35" strokeLinecap="round" />
         <path d="M360 200 A160 160 0 0 1 200 360" stroke="#b7b5fe" strokeWidth="2.5" opacity="0.35" strokeLinecap="round" />
         <path d="M200 360 A160 160 0 0 1 40 200"  stroke="#b7b5fe" strokeWidth="2.5" opacity="0.35" strokeLinecap="round" />
         <path d="M40 200 A160 160 0 0 1 200 40"   stroke="#b7b5fe" strokeWidth="2.5" opacity="0.35" strokeLinecap="round" />
-        {/* READ */}
         <circle cx="200" cy="40"  r="36" fill="#F5F5FF" stroke="#b7b5fe" strokeWidth="2" />
         <text x="200" y="37"  textAnchor="middle" fill="#0E0E12" fontSize="12" fontWeight="700" fontFamily="DM Sans, sans-serif">READ</text>
         <text x="200" y="53"  textAnchor="middle" fill="#0E0E12" fontSize="9"  opacity="0.4"  fontFamily="Noto Sans SC, sans-serif">阅读</text>
-        {/* THINK */}
         <circle cx="360" cy="200" r="36" fill="#F5F5FF" stroke="#b7b5fe" strokeWidth="2" />
         <text x="360" y="197" textAnchor="middle" fill="#0E0E12" fontSize="12" fontWeight="700" fontFamily="DM Sans, sans-serif">THINK</text>
         <text x="360" y="213" textAnchor="middle" fill="#0E0E12" fontSize="9"  opacity="0.4"  fontFamily="Noto Sans SC, sans-serif">思考</text>
-        {/* SPEAK — Gilt accent */}
         <circle cx="200" cy="360" r="36" fill="#F5F5FF" stroke="#F5C842" strokeWidth="2" />
         <text x="200" y="357" textAnchor="middle" fill="#0E0E12" fontSize="12" fontWeight="700" fontFamily="DM Sans, sans-serif">SPEAK</text>
         <text x="200" y="373" textAnchor="middle" fill="#0E0E12" fontSize="9"  opacity="0.4"  fontFamily="Noto Sans SC, sans-serif">表达</text>
-        {/* WRITE */}
         <circle cx="40"  cy="200" r="36" fill="#F5F5FF" stroke="#b7b5fe" strokeWidth="2" />
         <text x="40"  y="197" textAnchor="middle" fill="#0E0E12" fontSize="12" fontWeight="700" fontFamily="DM Sans, sans-serif">WRITE</text>
         <text x="40"  y="213" textAnchor="middle" fill="#0E0E12" fontSize="9"  opacity="0.4"  fontFamily="Noto Sans SC, sans-serif">写作</text>
-        {/* Centre */}
         <text x="200" y="193" textAnchor="middle" fill="#0E0E12" fontSize="13" fontWeight="700" fontFamily="DM Sans, sans-serif" opacity="0.6">THE LOOP</text>
         <text x="200" y="210" textAnchor="middle" fill="#b7b5fe" fontSize="10" fontFamily="Noto Sans SC, sans-serif" opacity="0.5">学习闭环</text>
       </svg>
@@ -201,116 +68,169 @@ function LoopDiagram() {
   )
 }
 
-// ─────────────────────────────────────────────────────────────
-// SECTION WRAPPER — mirrors Figma SectionWrapper background prop
-// ─────────────────────────────────────────────────────────────
-// background values used in this file:
-//   "dark"       → #212830
-//   "void-black" → #0E0E12
-//   "whisper"    → #F5F5FF
-const BG = {
-  dark:        '#212830',
-  'void-black': '#0E0E12',
-  whisper:     '#F5F5FF',
-}
+const BG = { dark: '#212830', 'void-black': '#0E0E12', whisper: '#F5F5FF' }
 
 function Section({ bg = 'dark', className = '', children, id }) {
   return (
-    <section
-      id={id}
-      className={`px-6 py-24 md:py-32 ${className}`}
-      style={{ backgroundColor: BG[bg] }}
-    >
-      <div className="max-w-7xl mx-auto">
-        {children}
-      </div>
+    <section id={id} className={`px-6 py-24 md:py-32 ${className}`} style={{ backgroundColor: BG[bg] }}>
+      <div className="max-w-7xl mx-auto">{children}</div>
     </section>
   )
 }
 
 // ─────────────────────────────────────────────────────────────
-// DATA — TODO: migrate to content/en/the-hangar.json
+// BILINGUAL CONTENT
 // ─────────────────────────────────────────────────────────────
+const COPY = {
+  en: {
+    meta: {
+      title: 'The Hangar \u2014 Between-Session Community',
+      description: 'The Hangar is where DODO learners continue The Loop between sessions \u2014 Navigator-supported, cohort-driven, and built to turn 16 weeks into a compounding system. Not homework help. The environment.',
+    },
+    s1: {
+      eyebrow: 'The Hangar',
+      h1a: 'Where the work continues \u2014 and the people who\u00a0',
+      h1b: 'get it',
+      h1c: '\u00a0are already there.',
+      sub: 'Not homework help. Not a study hall. The environment where The Loop becomes a habit.',
+    },
+    s2: {
+      pull: 'The Hangar is not where students go when they are stuck. It is where students go when they are\u00a0',
+      pullSpan: 'ready to go further',
+      pullEnd: '.',
+    },
+    s3: {
+      eyebrow: 'What It Is',
+      h2: "Three things The Hangar is \u2014 that nothing else in your child\u2019s week is.",
+      cols: [
+        { question: 'What actually happens here?',    title: 'Navigator-supported sessions',     body: 'Structured, not supervised. A Navigator poses the question \u2014 students do the thinking. Nothing is passive.' },
+        { question: 'Who else is in The Hangar?',     title: 'A cohort at the same Loop stage',  body: 'Every student in the room is navigating two languages and the same phase of The Loop. The shared context is the point.' },
+        { question: 'What does it produce?',           title: 'Between-session momentum',         body: 'The Hangar is what turns 16 weeks into a system instead of a schedule. It is where the compounding begins.' },
+      ],
+    },
+    s4: {
+      eyebrow: 'The Methodology',
+      h2: 'The Loop runs in sessions. The Hangar keeps it running between them.',
+      caption: 'A student who only works The Loop during sessions will plateau at the pace of one session per week. A student who lives inside The Hangar between sessions compounds. The Loop becomes instinct, not instruction.',
+    },
+    s5: {
+      eyebrow: 'From the Founder',
+      h2: 'Why The Hangar exists \u2014 and why nothing else does what it does.',
+      sub: 'Unscripted. Eight minutes. The concept in full.',
+      founderName: 'Sarah Chen \u2014 Founder & Lead Navigator',
+      founderNote: 'Video embed \u2014 replace with production URL',
+    },
+    s6: {
+      eyebrow: 'Navigator Presence',
+      h2: 'The same Navigator. In The Hangar. Knowing exactly where your child is.',
+      points: [
+        { label: 'Same Navigator',      body: "The Navigator in The Hangar is not a moderator or a support assistant. It is the same Navigator from your child\u2019s session \u2014 with the same Lexile baseline, the same 6+1 Trait profile, the same session notes." },
+        { label: 'Calibrated feedback', body: "Every comment in The Hangar references where that specific student is in The Loop. Not generic encouragement \u2014 a named trait, a specific score, a precise next move." },
+        { label: 'Not generic',         body: "A Navigator does not copy and paste feedback. When they respond to a student\u2019s writing draft in The Hangar, they are responding to that draft \u2014 the specific sentence that needs to move, the specific score that changes if it does." },
+        { label: 'Response time',       body: 'Hangar responses are delivered within 6 hours on session days and 12 hours on off days.' },
+      ],
+    },
+    s7: {
+      eyebrow: 'The Cohort',
+      h2: "Who else is in The Hangar \u2014 and why it matters that they\u2019re there.",
+      cols: [
+        { num: '01', title: 'Same stage, not same age',  body: 'Cohorts are grouped by Loop phase and Lexile level \u2014 not by school year. A Grade 5 and a Grade 7 student at the same Lexile are in the same conversation.' },
+        { num: '02', title: 'Bilingual by design',       body: 'Every student in the cohort is navigating two languages simultaneously. The shared experience is not incidental \u2014 it is the foundation of what they build together.' },
+        { num: '03', title: 'Belonging before performance', body: 'The Hangar is not a place to prove yourself. It is a place to build yourself \u2014 in a room where everyone else is doing the same thing, in the same two languages.' },
+      ],
+    },
+    s8: {
+      eyebrow: 'Student Voice',
+      h2: 'In their words \u2014 not ours.',
+      voices: [
+        { quote: "I used to think I had to wait until my session to ask questions. Now I post my draft in The Hangar and get feedback before the session even starts. It\u2019s like having an extra session every week except it\u2019s on my schedule.", grade: 'Grade 6', city: 'Shanghai',  weeks: '8 weeks in program',  detail: 'Posted a writing draft at 10pm, received calibrated feedback by morning' },
+        { quote: "There\u2019s this kid in my cohort who\u2019s in Grade 9 but we\u2019re at the same Lexile. We both struggle with the same stuff and help each other. Nobody at my school gets what it\u2019s like doing this in two languages.",          grade: 'Grade 7', city: 'Beijing',   weeks: '12 weeks in program', detail: 'Participated in a peer review exchange in The Hangar between sessions' },
+      ],
+    },
+    s9: {
+      h2: 'The Hangar is included in every 16-Week Program enrollment. It is not an add-on. It is the environment.',
+      sub: 'When your child enrolls in The 16-Week Program, The Hangar is where the program lives between sessions. One Navigator. One cohort. One continuous loop.',
+      ctaPrimary:   'Book a Diagnostic Call',
+      ctaSecondary: 'See the Full Program',
+      note: 'The Hangar is included in every 16-Week Program enrollment. It is not an add-on.',
+    },
+  },
 
-// S3 — What It Is columns
-const WHAT_IT_IS = [
-  {
-    question:    'What actually happens here?',
-    title:       'Navigator-supported sessions',
-    body:        'Structured, not supervised. A Navigator poses the question — students do the thinking. Nothing is passive.',
+  zh: {
+    meta: {
+      title: 'The Hangar \u2014 课程间的社区',
+      description: 'The Hangar是DODO学习者在课程之间继续The Loop的地方——由Navigator支持，以同伴群体为驱动，将16周变成一个复利系统。不是作业辅导，是学习环境本身。',
+    },
+    s1: {
+      eyebrow: 'The Hangar',
+      h1a: '学习在这里继续——而那些\u00a0',
+      h1b: '真正理解的人',
+      h1c: '\u00a0早已在场。',
+      sub: '不是作业辅导，不是自习室。这是让The Loop成为习惯的环境。',
+    },
+    s2: {
+      pull: 'The Hangar不是学生遇到困难时去的地方。它是学生\u00a0',
+      pullSpan: '准备好走得更远时',
+      pullEnd: '\u00a0去的地方。',
+    },
+    s3: {
+      eyebrow: '它是什么',
+      h2: 'The Hangar拥有三种特质——您孩子一周中的其他任何地方都没有。',
+      cols: [
+        { question: '这里实际上发生什么？',     title: 'Navigator支持的学习',   body: '有结构，而非监督。Navigator提出问题——学生完成思考。没有被动环节。' },
+        { question: 'The Hangar里还有谁？',    title: '处于同一Loop阶段的同伴', body: '房间里的每位学生都在同时驾驭两种语言，处于The Loop的同一阶段。共同的背景就是意义所在。' },
+        { question: '它能产生什么？',           title: '课程间的持续动力',       body: 'The Hangar将16周变成一个系统，而非一个日程表。复利就从这里开始。' },
+      ],
+    },
+    s4: {
+      eyebrow: '教学方法',
+      h2: 'The Loop在课程中运行。The Hangar让它在课程之间持续运行。',
+      caption: '只在课程期间进行The Loop的学生，会以每周一节课的节奏停滞不前。而活跃在The Hangar中的学生则会实现复利增长。The Loop从指令变成本能。',
+    },
+    s5: {
+      eyebrow: '创始人说',
+      h2: 'The Hangar为何存在——以及为什么没有其他事物能做到它所做的事。',
+      sub: '无脚本。八分钟。完整阐述这个概念。',
+      founderName: 'Sarah Chen — 创始人 & 首席Navigator',
+      founderNote: '视频链接——请替换为正式URL',
+    },
+    s6: {
+      eyebrow: 'Navigator的存在',
+      h2: '同一位Navigator。在The Hangar中。确切知道您的孩子在哪里。',
+      points: [
+        { label: '同一位Navigator',   body: 'The Hangar中的Navigator不是主持人或支持助手。他是您孩子课程中同一位Navigator——带着同样的Lexile基线、同样的6+1特质档案、同样的课程笔记。' },
+        { label: '有针对性的反馈',   body: 'The Hangar中的每条评论都指向该学生在The Loop中的具体位置。不是泛泛的鼓励——而是具名的特质、具体的分数、精准的下一步。' },
+        { label: '非模板化',         body: 'Navigator不会复制粘贴反馈。当他们在The Hangar中回应学生的写作草稿时，他们在回应那份具体的草稿——需要改动的那个具体句子，以及改动后会变化的那个具体分数。' },
+        { label: '响应时间',         body: '在课程当天，Hangar的反馈在6小时内送达；非课程日则在12小时内。' },
+      ],
+    },
+    s7: {
+      eyebrow: '同伴群体',
+      h2: 'The Hangar里还有谁——以及他们在场为什么重要。',
+      cols: [
+        { num: '01', title: '同一阶段，而非同一年龄', body: '同伴群体按Loop阶段和Lexile水平分组——而非按学年。五年级和七年级的学生如果Lexile相同，就在同一段对话中。' },
+        { num: '02', title: '双语由设计而生',         body: '群体中的每位学生都在同时驾驭两种语言。这种共同经历并非偶然——它是他们共同构建的基础。' },
+        { num: '03', title: '归属感先于表现',         body: 'The Hangar不是一个证明自己的地方。它是一个建构自己的地方——在一个所有人都在做同样事情、用同样两种语言的房间里。' },
+      ],
+    },
+    s8: {
+      eyebrow: '学生的声音',
+      h2: '用他们自己的话——不是我们的。',
+      voices: [
+        { quote: '我以前以为必须等到课程才能提问。现在我把草稿发到The Hangar，课程开始之前就能收到反馈。就像每周多了一节课，只是按我自己的时间安排。', grade: '六年级', city: '上海',  weeks: '已完成8周',  detail: '晚上10点发布写作草稿，次日清晨收到针对性反馈' },
+        { quote: '我的群体里有个九年级的学生，但我们Lexile相同。我们在同样的地方挣扎，互相帮助。我学校里没有人能理解用两种语言学习是什么感觉。',       grade: '七年级', city: '北京',  weeks: '已完成12周', detail: '在课程之间参与了The Hangar中的同伴互评' },
+      ],
+    },
+    s9: {
+      h2: 'The Hangar包含在每一项16周项目注册中。它不是附加项目。它是学习环境本身。',
+      sub: '当您的孩子注册16周项目时，The Hangar就是课程之间项目所在的地方。一位Navigator，一个同伴群体，一个持续的闭环。',
+      ctaPrimary:   '预约诊断咨询',
+      ctaSecondary: '查看完整项目',
+      note: 'The Hangar包含在每一项16周项目注册中。它不是附加项目。',
+    },
   },
-  {
-    question:    "Who else is in The Hangar?",
-    title:       'A cohort at the same Loop stage',
-    body:        'Every student in the room is navigating two languages and the same phase of The Loop. The shared context is the point.',
-  },
-  {
-    question:    'What does it produce?',
-    title:       'Between-session momentum',
-    body:        'The Hangar is what turns 16 weeks into a system instead of a schedule. It is where the compounding begins.',
-  },
-]
+}
 
-// S6 — Navigator Presence copy points
-const NAVIGATOR_PRESENCE = [
-  {
-    label: 'Same Navigator',
-    body:  "The Navigator in The Hangar is not a moderator or a support assistant. It is the same Navigator from your child's session — with the same Lexile baseline, the same 6+1 Trait profile, the same session notes.",
-  },
-  {
-    label: 'Calibrated feedback',
-    body:  "Every comment in The Hangar references where that specific student is in The Loop. Not generic encouragement — a named trait, a specific score, a precise next move.",
-  },
-  {
-    label: 'Not generic',
-    body:  "A Navigator does not copy and paste feedback. When they respond to a student's writing draft in The Hangar, they are responding to that draft — the specific sentence that needs to move, the specific score that changes if it does.",
-  },
-  {
-    label: 'Response time',
-    body:  'Hangar responses are delivered within 6 hours on session days and 12 hours on off days.',
-  },
-]
-
-// S7 — The Cohort columns
-const COHORT = [
-  {
-    num:   '01',
-    title: 'Same stage, not same age',
-    body:  'Cohorts are grouped by Loop phase and Lexile level — not by school year. A Grade 5 and a Grade 7 student at the same Lexile are in the same conversation.',
-  },
-  {
-    num:   '02',
-    title: 'Bilingual by design',
-    body:  'Every student in the cohort is navigating two languages simultaneously. The shared experience is not incidental — it is the foundation of what they build together.',
-  },
-  {
-    num:   '03',
-    title: 'Belonging before performance',
-    body:  'The Hangar is not a place to prove yourself. It is a place to build yourself — in a room where everyone else is doing the same thing, in the same two languages.',
-  },
-]
-
-// S8 — Student Voice cards
-const STUDENT_VOICES = [
-  {
-    quote:            "I used to think I had to wait until my session to ask questions. Now I post my draft in The Hangar and get feedback before the session even starts. It's like having an extra session every week except it's on my schedule.",
-    grade:            'Grade 6',
-    city:             'Shanghai',
-    weeksInProgram:   8,
-    hangarDetail:     'Posted a writing draft at 10pm, received calibrated feedback by morning',
-  },
-  {
-    quote:            "There's this kid in my cohort who's in Grade 9 but we're at the same Lexile. We both struggle with the same stuff and help each other. Nobody at my school gets what it's like doing this in two languages.",
-    grade:            'Grade 7',
-    city:             'Beijing',
-    weeksInProgram:   12,
-    hangarDetail:     'Participated in a peer review exchange in The Hangar between sessions',
-  },
-]
-
-// ─────────────────────────────────────────────────────────────
-// PAGE
-// ─────────────────────────────────────────────────────────────
 export function generateStaticParams() {
   return localeParams()
 }
@@ -318,612 +238,160 @@ export function generateStaticParams() {
 export default async function TheHangarPage({ params }) {
   const { locale } = await params
   if (!isValidLocale(locale)) notFound()
+  const c = COPY[locale] ?? COPY.en
+
   return (
     <div className="w-full overflow-hidden" style={{ fontFamily: 'var(--font-latin)' }}>
 
-      {/* ══ S1 HERO ══════════════════════════════════════════
-          Figma: #212830 bg, full-bleed background image + gradient overlay
-          Gradient: from-[#0E0E12]/55 via-[#0E0E12]/40 to-[#0E0E12]/25 desktop
-                    +[#0E0E12]/60 mobile overlay on top
-          Content: max-w-[700px], Eyebrow + h1 (clamp 38-68px) + sub
-          h1: two inline #b7b5fe spans
-          sub: 18px fw400 #F0F0F0/75
-      ════════════════════════════════════════════════════════ */}
-      <section
-        className="relative min-h-screen flex items-center justify-center px-6 md:px-12"
-        style={{ backgroundColor: '#212830' }}
-      >
-        {/* Background image */}
+      {/* S1 HERO */}
+      <section className="relative min-h-screen flex items-center justify-center px-6 md:px-12" style={{ backgroundColor: '#212830' }}>
         <div className="absolute inset-0 overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="https://images.unsplash.com/photo-1758270705317-3ef6142d306f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080&q=80"
-            alt=""
-            aria-hidden="true"
-            className="w-full h-full object-cover"
-            style={{ display: 'block' }}
-          />
-          {/* Desktop gradient — stronger left, lighter right */}
-          <div
-            className="absolute inset-0 hidden md:block"
-            style={{
-              background: 'linear-gradient(to right, rgba(14,14,18,0.85) 0%, rgba(14,14,18,0.55) 50%, rgba(14,14,18,0.30) 100%)',
-            }}
-          />
-          {/* Mobile overlay — uniform dark */}
-          <div
-            className="absolute inset-0 md:hidden"
-            style={{ backgroundColor: 'rgba(14,14,18,0.72)' }}
-          />
+          <img src="https://images.unsplash.com/photo-1758270705317-3ef6142d306f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080&q=80" alt="" aria-hidden="true" className="w-full h-full object-cover" style={{ display: 'block' }} />
+          <div className="absolute inset-0 hidden md:block" style={{ background: 'linear-gradient(to right, rgba(14,14,18,0.85) 0%, rgba(14,14,18,0.55) 50%, rgba(14,14,18,0.30) 100%)' }} />
+          <div className="absolute inset-0 md:hidden" style={{ backgroundColor: 'rgba(14,14,18,0.72)' }} />
         </div>
-
-        {/* Content */}
         <div className="relative z-10 max-w-[700px]">
-          <Eyebrow>The Hangar</Eyebrow>
-
-          <h1
-            className="mb-6"
-            style={{
-              fontFamily:  'var(--font-latin)',
-              fontWeight:  700,
-              fontSize:    'clamp(38px, 5vw, 68px)',
-              lineHeight:  1.2,
-              color:       '#F0F0F0',
-              letterSpacing: '-0.03em',
-              maxWidth:    '700px',
-            }}
-          >
-            Where the work continues — and the people who{' '}
-            <span style={{ color: '#b7b5fe' }}>get it</span> are already there.
+          <Eyebrow>{c.s1.eyebrow}</Eyebrow>
+          <h1 className="mb-6" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: 'clamp(38px, 5vw, 68px)', lineHeight: 1.2, color: '#F0F0F0', letterSpacing: '-0.03em', maxWidth: '700px' }}>
+            {c.s1.h1a}<span style={{ color: '#b7b5fe' }}>{c.s1.h1b}</span>{c.s1.h1c}
           </h1>
-
-          <p
-            style={{
-              fontFamily:  'var(--font-latin)',
-              fontWeight:  400,
-              fontSize:    '18px',
-              lineHeight:  1.6,
-              color:       'rgba(240,240,240,0.75)',
-              maxWidth:    '520px',
-            }}
-          >
-            Not homework help. Not a study hall. The environment where The Loop becomes a habit.
-          </p>
+          <p style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '18px', lineHeight: 1.6, color: 'rgba(240,240,240,0.75)', maxWidth: '520px' }}>{c.s1.sub}</p>
         </div>
       </section>
 
-      {/* ══ S2 THE ONE REFRAME ═══════════════════════════════
-          Figma: void-black (#0E0E12), !py-24 md:!py-32
-          Single centred pull-quote: clamp(26-48px) fw700 #F0F0F0
-          One #b7b5fe inline span: "ready to go further"
-          max-w-[860px] mx-auto
-      ════════════════════════════════════════════════════════ */}
-      <section
-        className="px-6 py-24 md:py-32"
-        style={{ backgroundColor: '#0E0E12' }}
-      >
+      {/* S2 THE ONE REFRAME */}
+      <section className="px-6 py-24 md:py-32" style={{ backgroundColor: '#0E0E12' }}>
         <div className="max-w-7xl mx-auto">
-          <p
-            className="text-center max-w-[860px] mx-auto"
-            style={{
-              fontFamily:    'var(--font-latin)',
-              fontWeight:    700,
-              fontSize:      'clamp(26px, 4vw, 48px)',
-              color:         '#F0F0F0',
-              lineHeight:    1.3,
-              letterSpacing: '-0.025em',
-            }}
-          >
-            The Hangar is not where students go when they are stuck. It is where students go when they are{' '}
-            <span style={{ color: '#b7b5fe' }}>ready to go further</span>.
+          <p className="text-center max-w-[860px] mx-auto" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: 'clamp(26px, 4vw, 48px)', color: '#F0F0F0', lineHeight: 1.3, letterSpacing: '-0.025em' }}>
+            {c.s2.pull}<span style={{ color: '#b7b5fe' }}>{c.s2.pullSpan}</span>{c.s2.pullEnd}
           </p>
         </div>
       </section>
 
-      {/* ══ S3 WHAT THE HANGAR ACTUALLY IS ═══════════════════
-          Figma: dark (#212830), text-center header + 3-col divider grid
-          Each col: italic question label (13px fw400 #F0F0F0/45)
-                    → h3 (22px fw700 #b7b5fe)
-                    → body (15px fw400 #F0F0F0/70 lineHeight 1.6)
-          Dividers: md:divide-x md:divide-[#b7b5fe]/20
-          Col padding: px-0 md:px-8
-      ════════════════════════════════════════════════════════ */}
+      {/* S3 WHAT THE HANGAR IS */}
       <Section bg="dark">
         <div className="text-center mb-16">
-          <Eyebrow center>What It Is</Eyebrow>
-          <h2
-            className="max-w-3xl mx-auto"
-            style={{
-              fontFamily:    'var(--font-latin)',
-              fontWeight:    600,
-              fontSize:      'clamp(28px, 3vw, 42px)',
-              color:         '#F0F0F0',
-              lineHeight:    1.3,
-              letterSpacing: '-0.02em',
-            }}
-          >
-            Three things The Hangar is — that nothing else in your child&rsquo;s week is.
-          </h2>
+          <Eyebrow center>{c.s3.eyebrow}</Eyebrow>
+          <h2 className="max-w-3xl mx-auto" style={{ fontFamily: 'var(--font-latin)', fontWeight: 600, fontSize: 'clamp(28px, 3vw, 42px)', color: '#F0F0F0', lineHeight: 1.3, letterSpacing: '-0.02em' }}>{c.s3.h2}</h2>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0">
-          {WHAT_IT_IS.map(({ question, title, body }, i) => (
-            <div
-              key={title}
-              className="px-0 md:px-8"
-              style={
-                i > 0
-                  ? { borderLeft: '1px solid rgba(183,181,254,0.2)' }
-                  : undefined
-              }
-            >
-              {/* Italic question label */}
-              <div
-                className="mb-4"
-                style={{
-                  fontFamily:  'var(--font-latin)',
-                  fontWeight:  400,
-                  fontSize:    '13px',
-                  fontStyle:   'italic',
-                  color:       'rgba(240,240,240,0.45)',
-                }}
-              >
-                {question}
-              </div>
-              {/* Title */}
-              <h3
-                className="mb-3"
-                style={{
-                  fontFamily:  'var(--font-latin)',
-                  fontWeight:  700,
-                  fontSize:    '22px',
-                  color:       '#b7b5fe',
-                }}
-              >
-                {title}
-              </h3>
-              {/* Body */}
-              <p
-                style={{
-                  fontFamily:  'var(--font-latin)',
-                  fontWeight:  400,
-                  fontSize:    '15px',
-                  color:       'rgba(240,240,240,0.70)',
-                  lineHeight:  1.6,
-                }}
-              >
-                {body}
-              </p>
+          {c.s3.cols.map(({ question, title, body }, i) => (
+            <div key={title} className="px-0 md:px-8" style={i > 0 ? { borderLeft: '1px solid rgba(183,181,254,0.2)' } : undefined}>
+              <div className="mb-4" style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '13px', fontStyle: 'italic', color: 'rgba(240,240,240,0.45)' }}>{question}</div>
+              <h3 className="mb-3" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: '22px', color: '#b7b5fe' }}>{title}</h3>
+              <p style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '15px', color: 'rgba(240,240,240,0.70)', lineHeight: 1.6 }}>{body}</p>
             </div>
           ))}
         </div>
       </Section>
 
-      {/* ══ S4 THE HANGAR INSIDE THE LOOP ════════════════════
-          Figma: whisper (#F5F5FF), text-center header
-          h2 (clamp 28-42px fw700 #0E0E12)
-          LoopDiagram SVG centred
-          Caption: 16px fw400 #212830 max-w-[640px] lineHeight 1.7
-      ════════════════════════════════════════════════════════ */}
+      {/* S4 INSIDE THE LOOP */}
       <Section bg="whisper">
         <div className="text-center mb-8">
-          <Eyebrow center>The Methodology</Eyebrow>
-          <h2
-            className="max-w-3xl mx-auto mb-4"
-            style={{
-              fontFamily:    'var(--font-latin)',
-              fontWeight:    700,
-              fontSize:      'clamp(28px, 3vw, 42px)',
-              color:         '#0E0E12',
-              lineHeight:    1.3,
-              letterSpacing: '-0.02em',
-            }}
-          >
-            The Loop runs in sessions. The Hangar keeps it running between them.
-          </h2>
+          <Eyebrow center>{c.s4.eyebrow}</Eyebrow>
+          <h2 className="max-w-3xl mx-auto mb-4" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: 'clamp(28px, 3vw, 42px)', color: '#0E0E12', lineHeight: 1.3, letterSpacing: '-0.02em' }}>{c.s4.h2}</h2>
         </div>
-
         <LoopDiagram />
-
         <div className="text-center mt-8">
-          <p
-            className="max-w-[640px] mx-auto"
-            style={{
-              fontFamily:  'var(--font-latin)',
-              fontWeight:  400,
-              fontSize:    '16px',
-              color:       '#212830',
-              lineHeight:  1.7,
-            }}
-          >
-            A student who only works The Loop during sessions will plateau at the pace
-            of one session per week. A student who lives inside The Hangar between
-            sessions compounds. The Loop becomes instinct, not instruction.
-          </p>
+          <p className="max-w-[640px] mx-auto" style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '16px', color: '#212830', lineHeight: 1.7 }}>{c.s4.caption}</p>
         </div>
       </Section>
 
-      {/* ══ S5 FOUNDER VIDEO ═════════════════════════════════
-          Figma: void-black (#0E0E12), text-center header
-          Eyebrow "FROM THE FOUNDER"
-          h2: clamp(22-34px) fw600 #F0F0F0 max-w-[640px]
-          sub: 15px fw400 #F0F0F0/60 max-w-[500px]
-          VideoPlayer → placeholder frame.
-          Real Cal.com-style embed to be wired in by client.
-          Server-safe: no onClick/JS needed for the placeholder.
-      ════════════════════════════════════════════════════════ */}
-      <section
-        className="px-6 py-24 md:py-32"
-        style={{ backgroundColor: '#0E0E12' }}
-      >
+      {/* S5 FOUNDER VIDEO */}
+      <section className="px-6 py-24 md:py-32" style={{ backgroundColor: '#0E0E12' }}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <Eyebrow center>From the Founder</Eyebrow>
-            <h2
-              className="max-w-[640px] mx-auto mb-4"
-              style={{
-                fontFamily:    'var(--font-latin)',
-                fontWeight:    600,
-                fontSize:      'clamp(22px, 3vw, 34px)',
-                color:         '#F0F0F0',
-                lineHeight:    1.3,
-                letterSpacing: '-0.02em',
-              }}
-            >
-              Why The Hangar exists — and why nothing else does what it does.
-            </h2>
-            <p
-              className="max-w-[500px] mx-auto"
-              style={{
-                fontFamily:  'var(--font-latin)',
-                fontWeight:  400,
-                fontSize:    '15px',
-                color:       'rgba(240,240,240,0.60)',
-                lineHeight:  1.6,
-              }}
-            >
-              Unscripted. Eight minutes. The concept in full.
-            </p>
+            <Eyebrow center>{c.s5.eyebrow}</Eyebrow>
+            <h2 className="max-w-[640px] mx-auto mb-4" style={{ fontFamily: 'var(--font-latin)', fontWeight: 600, fontSize: 'clamp(22px, 3vw, 34px)', color: '#F0F0F0', lineHeight: 1.3, letterSpacing: '-0.02em' }}>{c.s5.h2}</h2>
+            <p className="max-w-[500px] mx-auto" style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '15px', color: 'rgba(240,240,240,0.60)', lineHeight: 1.6 }}>{c.s5.sub}</p>
           </div>
-
-          {/* Video player placeholder — wire in real embed URL */}
-          {/* TODO: replace src with production YouTube/Vimeo embed URL */}
-          <figure
-            className="max-w-[800px] mx-auto rounded-2xl overflow-hidden"
-            style={{
-              aspectRatio:     '16 / 9',
-              backgroundColor: '#2E3848',
-              border:          '1px solid rgba(183,181,254,0.12)',
-              position:        'relative',
-              display:         'flex',
-              alignItems:      'center',
-              justifyContent:  'center',
-            }}
-          >
-            {/* Play icon placeholder */}
-            <div
-              className="flex flex-col items-center gap-4"
-              style={{ pointerEvents: 'none' }}
-            >
-              <div
-                className="flex items-center justify-center rounded-full"
-                style={{
-                  width:           '72px',
-                  height:          '72px',
-                  backgroundColor: 'rgba(183,181,254,0.15)',
-                  border:          '1.5px solid rgba(183,181,254,0.3)',
-                }}
-              >
-                {/* Play triangle */}
-                <svg
-                  width="28" height="28" viewBox="0 0 24 24"
-                  fill="#b7b5fe" aria-hidden="true"
-                >
-                  <polygon points="5 3 19 12 5 21 5 3" />
-                </svg>
+          <figure className="max-w-[800px] mx-auto rounded-2xl overflow-hidden"
+            style={{ aspectRatio: '16 / 9', backgroundColor: '#2E3848', border: '1px solid rgba(183,181,254,0.12)', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div className="flex flex-col items-center gap-4" style={{ pointerEvents: 'none' }}>
+              <div className="flex items-center justify-center rounded-full"
+                style={{ width: '72px', height: '72px', backgroundColor: 'rgba(183,181,254,0.15)', border: '1.5px solid rgba(183,181,254,0.3)' }}>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="#b7b5fe" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3" /></svg>
               </div>
               <div style={{ textAlign: 'center' }}>
-                <p
-                  style={{
-                    fontFamily:  'var(--font-latin)',
-                    fontWeight:  600,
-                    fontSize:    '15px',
-                    color:       '#F0F0F0',
-                    marginBottom: '4px',
-                  }}
-                >
-                  Sarah Chen — Founder &amp; Lead Navigator
-                </p>
-                <p
-                  style={{
-                    fontFamily:  'var(--font-latin)',
-                    fontWeight:  300,
-                    fontSize:    '12px',
-                    color:       'rgba(183,181,254,0.5)',
-                    letterSpacing: '0.08em',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  Video embed — replace with production URL
-                </p>
+                <p style={{ fontFamily: 'var(--font-latin)', fontWeight: 600, fontSize: '15px', color: '#F0F0F0', marginBottom: '4px' }}>{c.s5.founderName}</p>
+                <p style={{ fontFamily: 'var(--font-latin)', fontWeight: 300, fontSize: '12px', color: 'rgba(183,181,254,0.5)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{c.s5.founderNote}</p>
               </div>
             </div>
           </figure>
         </div>
       </section>
 
-      {/* ══ S6 NAVIGATOR PRESENCE ════════════════════════════
-          Figma: whisper (#F5F5FF), 2-col grid
-          Image: order-2 md:order-1, rounded-lg
-          Copy: order-1 md:order-2
-          Eyebrow, h2 (clamp 28-38px fw700 #0E0E12)
-          4 strong-labelled paragraphs, 16px fw400 #212830 lineHeight 1.6
-      ════════════════════════════════════════════════════════ */}
+      {/* S6 NAVIGATOR PRESENCE */}
       <Section bg="whisper">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-
-          {/* Left — Image */}
           <div className="order-2 md:order-1">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="https://images.unsplash.com/photo-1688646545293-2755ea04cd8e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080&q=80"
-              alt="Navigator providing personalised feedback on a student's writing"
-              className="rounded-lg w-full"
-              style={{ display: 'block' }}
-            />
+            <img src="https://images.unsplash.com/photo-1688646545293-2755ea04cd8e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080&q=80"
+              alt="Navigator providing personalised feedback on a student's writing" className="rounded-lg w-full" style={{ display: 'block' }} />
           </div>
-
-          {/* Right — Copy */}
           <div className="order-1 md:order-2">
-            <Eyebrow>Navigator Presence</Eyebrow>
-
-            <h2
-              className="mb-8 max-w-[480px]"
-              style={{
-                fontFamily:    'var(--font-latin)',
-                fontWeight:    700,
-                fontSize:      'clamp(28px, 3vw, 38px)',
-                color:         '#0E0E12',
-                lineHeight:    1.3,
-                letterSpacing: '-0.02em',
-              }}
-            >
-              The same Navigator. In The Hangar. Knowing exactly where your child is.
-            </h2>
-
+            <Eyebrow>{c.s6.eyebrow}</Eyebrow>
+            <h2 className="mb-8 max-w-[480px]" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: 'clamp(28px, 3vw, 38px)', color: '#0E0E12', lineHeight: 1.3, letterSpacing: '-0.02em' }}>{c.s6.h2}</h2>
             <div className="space-y-5">
-              {NAVIGATOR_PRESENCE.map(({ label, body }) => (
-                <p
-                  key={label}
-                  style={{
-                    fontFamily:  'var(--font-latin)',
-                    fontWeight:  400,
-                    fontSize:    '16px',
-                    color:       '#212830',
-                    lineHeight:  1.6,
-                  }}
-                >
-                  <strong style={{ fontWeight: 600, color: '#0E0E12' }}>
-                    {label}:
-                  </strong>{' '}
-                  {body}
+              {c.s6.points.map(({ label, body }) => (
+                <p key={label} style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '16px', color: '#212830', lineHeight: 1.6 }}>
+                  <strong style={{ fontWeight: 600, color: '#0E0E12' }}>{label}:</strong>{' '}{body}
                 </p>
               ))}
             </div>
           </div>
-
         </div>
       </Section>
 
-      {/* ══ S7 THE COHORT ════════════════════════════════════
-          Figma: dark (#212830), text-center header + 3-col numbered grid
-          Step num: 11px fw300 #b7b5fe/40 mb-3
-          h3: 20px fw700 #b7b5fe
-          body: 15px fw400 #F0F0F0/70 lineHeight 1.6
-          Dividers: md:divide-x md:divide-[#b7b5fe]/20
-      ════════════════════════════════════════════════════════ */}
+      {/* S7 THE COHORT */}
       <Section bg="dark">
         <div className="text-center mb-16">
-          <Eyebrow center>The Cohort</Eyebrow>
-          <h2
-            className="max-w-3xl mx-auto"
-            style={{
-              fontFamily:    'var(--font-latin)',
-              fontWeight:    600,
-              fontSize:      'clamp(28px, 3vw, 42px)',
-              color:         '#F0F0F0',
-              lineHeight:    1.3,
-              letterSpacing: '-0.02em',
-            }}
-          >
-            Who else is in The Hangar — and why it matters that they&rsquo;re there.
-          </h2>
+          <Eyebrow center>{c.s7.eyebrow}</Eyebrow>
+          <h2 className="max-w-3xl mx-auto" style={{ fontFamily: 'var(--font-latin)', fontWeight: 600, fontSize: 'clamp(28px, 3vw, 42px)', color: '#F0F0F0', lineHeight: 1.3, letterSpacing: '-0.02em' }}>{c.s7.h2}</h2>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0">
-          {COHORT.map(({ num, title, body }, i) => (
-            <div
-              key={num}
-              className="px-0 md:px-8"
-              style={
-                i > 0
-                  ? { borderLeft: '1px solid rgba(183,181,254,0.2)' }
-                  : undefined
-              }
-            >
-              {/* Step number */}
-              <div
-                className="mb-3"
-                style={{
-                  fontFamily:  'var(--font-latin)',
-                  fontWeight:  300,
-                  fontSize:    '11px',
-                  color:       'rgba(183,181,254,0.40)',
-                }}
-              >
-                {num}
-              </div>
-              <h3
-                className="mb-3"
-                style={{
-                  fontFamily:  'var(--font-latin)',
-                  fontWeight:  700,
-                  fontSize:    '20px',
-                  color:       '#b7b5fe',
-                }}
-              >
-                {title}
-              </h3>
-              <p
-                style={{
-                  fontFamily:  'var(--font-latin)',
-                  fontWeight:  400,
-                  fontSize:    '15px',
-                  color:       'rgba(240,240,240,0.70)',
-                  lineHeight:  1.6,
-                }}
-              >
-                {body}
-              </p>
+          {c.s7.cols.map(({ num, title, body }, i) => (
+            <div key={num} className="px-0 md:px-8" style={i > 0 ? { borderLeft: '1px solid rgba(183,181,254,0.2)' } : undefined}>
+              <div className="mb-3" style={{ fontFamily: 'var(--font-latin)', fontWeight: 300, fontSize: '11px', color: 'rgba(183,181,254,0.40)' }}>{num}</div>
+              <h3 className="mb-3" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: '20px', color: '#b7b5fe' }}>{title}</h3>
+              <p style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '15px', color: 'rgba(240,240,240,0.70)', lineHeight: 1.6 }}>{body}</p>
             </div>
           ))}
         </div>
       </Section>
 
-      {/* ══ S8 STUDENT VOICE ═════════════════════════════════
-          Figma: void-black (#0E0E12), text-center header
-          "In their words — not ours." — fw600 clamp(28-42px) #F0F0F0
-          2-col grid, max-w-5xl mx-auto
-          StudentVoiceCard: dark card #2E3848
-      ════════════════════════════════════════════════════════ */}
-      <section
-        className="px-6 py-24 md:py-32"
-        style={{ backgroundColor: '#0E0E12' }}
-      >
+      {/* S8 STUDENT VOICE */}
+      <section className="px-6 py-24 md:py-32" style={{ backgroundColor: '#0E0E12' }}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <Eyebrow center>Student Voice</Eyebrow>
-            <h2
-              style={{
-                fontFamily:    'var(--font-latin)',
-                fontWeight:    600,
-                fontSize:      'clamp(28px, 3vw, 42px)',
-                color:         '#F0F0F0',
-                lineHeight:    1.3,
-                letterSpacing: '-0.02em',
-              }}
-            >
-              In their words — not ours.
-            </h2>
+            <Eyebrow center>{c.s8.eyebrow}</Eyebrow>
+            <h2 style={{ fontFamily: 'var(--font-latin)', fontWeight: 600, fontSize: 'clamp(28px, 3vw, 42px)', color: '#F0F0F0', lineHeight: 1.3, letterSpacing: '-0.02em' }}>{c.s8.h2}</h2>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {STUDENT_VOICES.map((voice) => (
-              <StudentVoiceCard key={voice.grade + voice.city} {...voice} />
+            {c.s8.voices.map((v) => (
+              <StudentVoiceCard key={v.grade + v.city} quote={v.quote} grade={v.grade} city={v.city} weeksInProgram={v.weeks} hangarDetail={v.detail} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* ══ S9 CLOSING CTA ═══════════════════════════════════
-          Figma: dark (#212830), text-center, max-w-2xl mx-auto
-          h2: clamp(28-42px) fw700 #b7b5fe lineHeight 1.3
-          sub: 16px fw400 #F0F0F0/75 max-w-[520px] mb-8
-          Primary button: gilt #F5C842 #0E0E12 fw700 16px
-          Secondary button: border-[#F0F0F0]/50 #F0F0F0 bg-transparent fw500
-          Microcopy: 13px fw400 #b7b5fe mt-4
-          Figma uses md:w-auto md:min-w-[280px] on buttons — preserved
-      ════════════════════════════════════════════════════════ */}
+      {/* S9 CLOSING CTA */}
       <Section bg="dark">
         <div className="text-center max-w-2xl mx-auto">
-
-          <h2
-            className="mb-5"
-            style={{
-              fontFamily:    'var(--font-latin)',
-              fontWeight:    700,
-              fontSize:      'clamp(28px, 3vw, 42px)',
-              color:         '#b7b5fe',
-              lineHeight:    1.3,
-              letterSpacing: '-0.02em',
-            }}
-          >
-            The Hangar is included in every 16-Week Program enrollment. It is not an add-on. It is the environment.
-          </h2>
-
-          <p
-            className="max-w-[520px] mx-auto mb-8"
-            style={{
-              fontFamily:  'var(--font-latin)',
-              fontWeight:  400,
-              fontSize:    '16px',
-              color:       'rgba(240,240,240,0.75)',
-              lineHeight:  1.6,
-            }}
-          >
-            When your child enrolls in The 16-Week Program, The Hangar is where the
-            program lives between sessions. One Navigator. One cohort. One continuous loop.
-          </p>
-
-          {/* Button row */}
+          <h2 className="mb-5" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: 'clamp(28px, 3vw, 42px)', color: '#b7b5fe', lineHeight: 1.3, letterSpacing: '-0.02em' }}>{c.s9.h2}</h2>
+          <p className="max-w-[520px] mx-auto mb-8" style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '16px', color: 'rgba(240,240,240,0.75)', lineHeight: 1.6 }}>{c.s9.sub}</p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-3">
-
-            {/* Primary — gilt */}
-            <Link
-              href={`/${locale}/consult`}
-              className="w-full md:w-auto rounded-lg transition-all hover:opacity-90"
-              style={{
-                fontFamily:      'var(--font-latin)',
-                fontWeight:      700,
-                fontSize:        '16px',
-                backgroundColor: '#F5C842',
-                color:           '#0E0E12',
-                padding:         '16px 32px',
-                textDecoration:  'none',
-                display:         'inline-block',
-                textAlign:       'center',
-                minWidth:        '280px',
-              }}
-            >
-              Book a Diagnostic Call
+            <Link href={`/${locale}/consult`} className="w-full md:w-auto rounded-lg transition-all hover:opacity-90"
+              style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: '16px', backgroundColor: '#F5C842', color: '#0E0E12', padding: '16px 32px', textDecoration: 'none', display: 'inline-block', textAlign: 'center', minWidth: '280px' }}>
+              {c.s9.ctaPrimary}
             </Link>
-
-            {/* Secondary — ghost */}
-            <Link
-              href={`/${locale}/program`}
-              className="w-full md:w-auto rounded-lg transition-all hover:border-white"
-              style={{
-                fontFamily:      'var(--font-latin)',
-                fontWeight:      500,
-                fontSize:        '16px',
-                backgroundColor: 'transparent',
-                color:           '#F0F0F0',
-                border:          '1.5px solid rgba(240,240,240,0.50)',
-                padding:         '14px 32px',
-                textDecoration:  'none',
-                display:         'inline-block',
-                textAlign:       'center',
-                minWidth:        '280px',
-              }}
-            >
-              See the Full Program
+            <Link href={`/${locale}/program`} className="w-full md:w-auto rounded-lg transition-all hover:border-white"
+              style={{ fontFamily: 'var(--font-latin)', fontWeight: 500, fontSize: '16px', backgroundColor: 'transparent', color: '#F0F0F0', border: '1.5px solid rgba(240,240,240,0.50)', padding: '14px 32px', textDecoration: 'none', display: 'inline-block', textAlign: 'center', minWidth: '280px' }}>
+              {c.s9.ctaSecondary}
             </Link>
-
           </div>
-
-          {/* Microcopy */}
-          <p
-            className="mt-4"
-            style={{
-              fontFamily:  'var(--font-latin)',
-              fontWeight:  400,
-              fontSize:    '13px',
-              color:       '#b7b5fe',
-            }}
-          >
-            The Hangar is included in every 16-Week Program enrollment. It is not an add-on.
-          </p>
-
+          <p className="mt-4" style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '13px', color: '#b7b5fe' }}>{c.s9.note}</p>
         </div>
       </Section>
 
