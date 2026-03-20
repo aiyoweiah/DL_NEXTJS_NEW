@@ -133,16 +133,6 @@
     overflow-x: hidden;
   }
 
-  /* Main content offset */
-  #main-content {
-    padding-top: var(--nav-height);
-  }
-
-  @media (min-width: 768px) {
-    #main-content {
-      padding-top: var(--nav-height-md);
-    }
-  }
 
   /* ── Headings ──────────────────────────────────────────────
      Default: Deep Void on light — authoritative, high contrast.
