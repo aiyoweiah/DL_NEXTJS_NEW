@@ -216,14 +216,14 @@ export default async function BlogPage({ params }) {
           style={{ backgroundImage: 'radial-gradient(circle, #b7b5fe 1px, transparent 1px)', backgroundSize: '32px 32px', opacity: 0.08 }} />
 
         <div className="relative max-w-7xl mx-auto px-6 text-center" style={{ paddingTop: '100px', paddingBottom: '80px' }}>
-          <div style={{ fontFamily: 'var(--font-latin)', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 500, fontSize: '12px', color: '#b7b5fe', marginBottom: '24px' }}>
+          <div style={{ fontFamily: 'var(--font-latin)', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 500, fontSize: '12px', color: '#5856cc', marginBottom: '24px' }}>
             {ui.eyebrow}
           </div>
 
           <h1 className="mb-6 max-w-[720px] mx-auto"
             style={{ color: '#0E0E12', fontSize: 'clamp(36px, 5vw, 60px)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-0.03em' }}>
             {ui.h1a}
-            {ui.h1highlight ? <span style={{ color: '#b7b5fe' }}>{ui.h1highlight}</span> : null}
+            {ui.h1highlight ? <span style={{ color: '#5856cc' }}>{ui.h1highlight}</span> : null}
             {ui.h1b}
           </h1>
 
@@ -316,7 +316,7 @@ export default async function BlogPage({ params }) {
       {/* ══ S6 NAVIGATOR PICKS ═══════════════════════════════ */}
       <section className="py-16 px-6" style={{ backgroundColor: '#F5F5FF' }}>
         <div className="max-w-7xl mx-auto">
-          <div style={{ fontFamily: 'var(--font-latin)', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 500, fontSize: '12px', color: '#b7b5fe', marginBottom: '32px' }}>
+          <div style={{ fontFamily: 'var(--font-latin)', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 500, fontSize: '12px', color: '#5856cc', marginBottom: '32px' }}>
             {ui.navigatorPicksEyebrow}
           </div>
 
@@ -360,7 +360,7 @@ export default async function BlogPage({ params }) {
       {/* ══ S7 NEWSLETTER SIGNUP ═════════════════════════════ */}
       <section className="py-20 px-6" style={{ backgroundColor: '#ffffff' }}>
         <div className="max-w-[480px] mx-auto text-center">
-          <div style={{ fontFamily: 'var(--font-latin)', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 500, fontSize: '12px', color: '#b7b5fe', marginBottom: '24px' }}>
+          <div style={{ fontFamily: 'var(--font-latin)', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 500, fontSize: '12px', color: '#5856cc', marginBottom: '24px' }}>
             {ui.newsletterEyebrow}
           </div>
           <h2 className="mb-4" style={{ color: '#0E0E12', fontSize: '26px', fontWeight: 600, lineHeight: 1.3, letterSpacing: '-0.02em' }}>

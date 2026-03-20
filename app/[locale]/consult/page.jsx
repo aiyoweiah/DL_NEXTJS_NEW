@@ -354,7 +354,7 @@ function BilingualH2({ primary, secondary, light = false, center = false, id }) 
           fontFamily: 'var(--font-cjk)',
           fontSize:   '15px',
           fontWeight: 500,
-          color:      '#b7b5fe',
+          color:      light ? '#b7b5fe' : '#5856cc',
           lineHeight: 1.5,
         }}
       >
@@ -364,7 +364,7 @@ function BilingualH2({ primary, secondary, light = false, center = false, id }) 
   )
 }
 
-function Eyebrow({ children, center = false }) {
+function Eyebrow({ children, center = false, dark = false }) {
   return (
     <p
       style={{
@@ -372,7 +372,7 @@ function Eyebrow({ children, center = false }) {
         fontWeight:    600,
         letterSpacing: '0.12em',
         textTransform: 'uppercase',
-        color:         '#b7b5fe',
+        color:         dark ? '#b7b5fe' : '#5856cc',
         marginBottom:  '0.875rem',
         textAlign:     center ? 'center' : undefined,
       }}
@@ -398,7 +398,6 @@ function Hero({ locale, c }) {
       aria-labelledby="consult-hero-heading"
       style={{
         backgroundColor: '#0E0E12',
-        minHeight:       '100dvh',
         display:         'flex',
         flexDirection:   'column',
         position:        'relative',
@@ -597,14 +596,14 @@ function WhatHappens({ locale, c }) {
                       backgroundColor: 'rgba(183,181,254,0.1)',
                       border: '1.5px solid rgba(183,181,254,0.3)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      fontSize: '11px', fontWeight: 700, color: '#7c79e8', flexShrink: 0,
+                      fontSize: '11px', fontWeight: 700, color: '#5856cc', flexShrink: 0,
                     }}
                   >
                     {step.num}
                   </span>
                   <div>
                     <p style={{ fontSize: '1rem', fontWeight: 700, color: '#0E0E12', lineHeight: 1.2 }}>{step.label}</p>
-                    <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '11px', color: '#b7b5fe', lineHeight: 1.2 }}>{step.labelZh}</p>
+                    <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '11px', color: '#5856cc', lineHeight: 1.2 }}>{step.labelZh}</p>
                   </div>
                 </div>
                 <p style={{ fontSize: '0.8125rem', lineHeight: 1.72, color: '#3D4452' }}>{step.desc}</p>
@@ -686,7 +685,7 @@ function CallMilestones({ locale, c }) {
               </div>
               <div style={{ padding: '1rem 1rem 1.25rem' }}>
                 <p style={{ fontSize: '1rem', fontWeight: 700, color: '#0E0E12', marginBottom: '2px' }}>{step.label}</p>
-                <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '11px', color: '#b7b5fe', marginBottom: '0.5rem' }}>{step.labelZh}</p>
+                <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '11px', color: '#5856cc', marginBottom: '0.5rem' }}>{step.labelZh}</p>
                 <p style={{ fontSize: '0.8125rem', lineHeight: 1.72, color: '#3D4452' }}>{step.desc}</p>
               </div>
             </article>
@@ -700,7 +699,7 @@ function CallMilestones({ locale, c }) {
             border: '1px solid rgba(14,14,18,0.07)', maxWidth: '440px',
           }}
         >
-          <p style={{ fontSize: '9px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#7c79e8', marginBottom: '0.875rem' }}>
+          <p style={{ fontSize: '9px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#5856cc', marginBottom: '0.875rem' }}>
             Typical Lexile Gap Identified
           </p>
           <LexileBar start={580} end={780} weeks={16} light />
@@ -761,7 +760,7 @@ function RealCall({ locale, c }) {
             </div>
           </div>
 
-          <Eyebrow>{c.call.eyebrow}</Eyebrow>
+          <Eyebrow dark>{c.call.eyebrow}</Eyebrow>
           <BilingualH2 id="call-heading" primary={c.call.h2} secondary={c.call.h2zh} light />
 
           <div style={{ marginTop: '1.75rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -799,7 +798,7 @@ function TrustSection({ locale, c }) {
           className="lg:grid-cols-2"
         >
           <div>
-            <Eyebrow>{c.trust.eyebrow}</Eyebrow>
+            <Eyebrow dark>{c.trust.eyebrow}</Eyebrow>
             <BilingualH2 id="trust-heading" primary={c.trust.h2} secondary={c.trust.h2zh} light />
             <p style={{ fontSize: '1rem', lineHeight: 1.82, color: 'rgba(240,240,240,0.55)', marginTop: '1.125rem' }}>
               {c.trust.body}
@@ -874,7 +873,7 @@ function WhatYoullLearn({ locale, c }) {
     >
       <div className="container-section">
         <div style={{ marginBottom: '3.5rem' }}>
-          <Eyebrow>{c.learn.eyebrow}</Eyebrow>
+          <Eyebrow dark>{c.learn.eyebrow}</Eyebrow>
           <BilingualH2 id="learn-heading" primary={c.learn.h2} secondary={c.learn.h2zh} light />
         </div>
 

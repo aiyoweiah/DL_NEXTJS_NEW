@@ -316,7 +316,7 @@ function BilingualH2({ primary, secondary, light = false, center = false, id }) 
           fontFamily: 'var(--font-cjk)',
           fontSize:   '15px',
           fontWeight: 500,
-          color:      '#b7b5fe',
+          color:      light ? '#b7b5fe' : '#5856cc',
           lineHeight: 1.5,
         }}
       >
@@ -326,7 +326,7 @@ function BilingualH2({ primary, secondary, light = false, center = false, id }) 
   )
 }
 
-function Eyebrow({ children, center = false }) {
+function Eyebrow({ children, center = false, dark = false }) {
   return (
     <p
       style={{
@@ -334,7 +334,7 @@ function Eyebrow({ children, center = false }) {
         fontWeight:    600,
         letterSpacing: '0.12em',
         textTransform: 'uppercase',
-        color:         '#b7b5fe',
+        color:         dark ? '#b7b5fe' : '#5856cc',
         marginBottom:  '0.875rem',
         textAlign:     center ? 'center' : undefined,
       }}
@@ -675,7 +675,7 @@ function LoopSection({ locale, c }) {
                       justifyContent:  'center',
                       fontSize:        '11px',
                       fontWeight:      700,
-                      color:           '#7c79e8',
+                      color:           '#5856cc',
                       flexShrink:      0,
                     }}
                   >
@@ -685,7 +685,7 @@ function LoopSection({ locale, c }) {
                     <p style={{ fontSize: '1rem', fontWeight: 700, color: '#0E0E12', lineHeight: 1.2 }}>
                       {step.label}
                     </p>
-                    <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '11px', color: '#b7b5fe', lineHeight: 1.2 }}>
+                    <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '11px', color: '#5856cc', lineHeight: 1.2 }}>
                       {step.labelZh}
                     </p>
                   </div>
@@ -801,7 +801,7 @@ function JourneySection({ locale, c }) {
                 <p style={{ fontSize: '1rem', fontWeight: 700, color: '#0E0E12', marginBottom: '2px' }}>
                   {step.label}
                 </p>
-                <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '11px', color: '#b7b5fe', marginBottom: '0.5rem' }}>
+                <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '11px', color: '#5856cc', marginBottom: '0.5rem' }}>
                   {step.labelZh}
                 </p>
                 <p style={{ fontSize: '0.8125rem', lineHeight: 1.72, color: '#3D4452' }}>
@@ -829,7 +829,7 @@ function JourneySection({ locale, c }) {
               fontWeight:    700,
               letterSpacing: '0.12em',
               textTransform: 'uppercase',
-              color:         '#7c79e8',
+              color:         '#5856cc',
               marginBottom:  '0.875rem',
             }}
           >
@@ -923,7 +923,7 @@ function SessionSection({ locale, c }) {
             </div>
           </div>
 
-          <Eyebrow>{c.session.eyebrow}</Eyebrow>
+          <Eyebrow dark>{c.session.eyebrow}</Eyebrow>
           <BilingualH2
             id="session-heading"
             primary={c.session.h2}
@@ -966,7 +966,7 @@ function HangarSection({ locale, c }) {
     >
       <div className="container-section">
         <div style={{ maxWidth: '40rem' }}>
-          <Eyebrow>{c.hangar.eyebrow}</Eyebrow>
+          <Eyebrow dark>{c.hangar.eyebrow}</Eyebrow>
           <BilingualH2 id="hangar-heading" primary={c.hangar.h2} secondary={c.hangar.h2zh} light />
           <p style={{ fontSize: '1rem', lineHeight: 1.82, color: 'rgba(240,240,240,0.55)', marginTop: '1.125rem', marginBottom: '1.875rem' }}>
             {c.hangar.body}
@@ -1095,7 +1095,7 @@ function GrowthSection({ locale, c }) {
       <div className="container-section">
 
         <div style={{ marginBottom: '3.5rem' }}>
-          <Eyebrow>{c.growth.eyebrow}</Eyebrow>
+          <Eyebrow dark>{c.growth.eyebrow}</Eyebrow>
           <BilingualH2 id="growth-heading" primary={c.growth.h2} secondary={c.growth.h2zh} light />
         </div>
 

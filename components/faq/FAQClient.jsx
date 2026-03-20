@@ -40,10 +40,10 @@ function IconChevron({ open }) {
 }
 
 // ─── PRIMITIVES ─────────────────────────────────────────────
-function Eyebrow({ children }) {
+function Eyebrow({ children, dark = false }) {
   return (
     <div style={{ fontFamily: 'var(--font-latin)', fontSize: '12px', fontWeight: 500,
-      letterSpacing: '0.1em', textTransform: 'uppercase', color: '#b7b5fe', marginBottom: '12px' }}>
+      letterSpacing: '0.1em', textTransform: 'uppercase', color: dark ? '#b7b5fe' : '#5856cc', marginBottom: '12px' }}>
       {children}
     </div>
   )
@@ -72,7 +72,7 @@ function AccordionItem({ question, answer, open, onToggle, variant = 'light', id
           background: 'none', border: 'none', cursor: 'pointer', padding: '20px 0' }}
       >
         <span style={{ flex: 1 }}>{question}</span>
-        <span style={{ color: '#b7b5fe', marginTop: '2px' }}><IconChevron open={open} /></span>
+        <span style={{ color: isDark ? '#b7b5fe' : '#5856cc', marginTop: '2px' }}><IconChevron open={open} /></span>
       </button>
       <div id={`faq-panel-${id}`} role="region" aria-labelledby={`faq-btn-${id}`}
         style={{ overflow: 'hidden', maxHeight: open ? '1200px' : '0px',
@@ -172,7 +172,7 @@ function SearchResults({ results, query, ui }) {
     <div style={{ backgroundColor: '#F5F5FF' }}>
       <div className="max-w-[800px] mx-auto px-6 py-12">
         <p style={{ fontFamily: 'var(--font-latin)', fontSize: '13px', fontWeight: 500,
-          color: '#b7b5fe', marginBottom: '24px', letterSpacing: '0.05em' }}>
+          color: '#5856cc', marginBottom: '24px', letterSpacing: '0.05em' }}>
           {ui.searchCount(results.length, query)}
         </p>
         {results.map((item, i) => (
@@ -564,7 +564,7 @@ export default function FAQClient({ locale = 'en' }) {
               <section key={section.id} id={section.id} className="px-6 py-16"
                 style={{ backgroundColor: section.bg }}>
                 <div className="max-w-[800px] mx-auto">
-                  <Eyebrow>{section.label}</Eyebrow>
+                  <Eyebrow dark={isDark}>{section.label}</Eyebrow>
                   <SectionH2 dark={isDark}>{section.heading}</SectionH2>
                   <AccordionGroup items={section.items} variant={section.variant} groupId={section.id} />
                 </div>
@@ -593,7 +593,7 @@ export default function FAQClient({ locale = 'en' }) {
           </Link>
           <div style={{ marginTop: '14px' }}>
             <a href="mailto:hello@dodolearning.com"
-              style={{ fontFamily: 'var(--font-latin)', fontSize: '14px', fontWeight: 400, color: '#b7b5fe' }}>
+              style={{ fontFamily: 'var(--font-latin)', fontSize: '14px', fontWeight: 400, color: '#5856cc' }}>
               {ui.emailLink}
             </a>
           </div>

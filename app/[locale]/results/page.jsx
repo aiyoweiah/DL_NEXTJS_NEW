@@ -63,7 +63,7 @@ export default async function ResultsPage({ params }) {
 
           <p
             className="text-lg md:text-xl leading-relaxed max-w-2xl"
-            style={{ color: '#94A3B8' }}
+            style={{ color: '#3D4452' }}
           >
             {t.hero.subheading}
           </p>
@@ -144,7 +144,7 @@ export default async function ResultsPage({ params }) {
                     {result.quoteSource && (
                       <p
                         className="text-xs font-medium uppercase tracking-widest"
-                        style={{ color: '#7c79e8' }}
+                        style={{ color: '#5856cc' }}
                       >
                         {result.quoteSource}
                       </p>
@@ -238,7 +238,7 @@ export default async function ResultsPage({ params }) {
             <div>
               <p
                 className="eyebrow mb-4"
-                style={{ color: '#7c79e8' }}
+                style={{ color: '#5856cc' }}
               >
                 {t.methodology.eyebrow}
               </p>
@@ -275,7 +275,7 @@ export default async function ResultsPage({ params }) {
                   </span>
                   <span
                     className="text-lg font-bold tracking-tight"
-                    style={{ color: '#b7b5fe' }}
+                    style={{ color: '#5856cc' }}
                   >
                     {step}
                   </span>

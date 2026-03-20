@@ -63,7 +63,7 @@ export default async function ComparePage({ params }) {
           >
             {t.hero.heading}
           </h1>
-          <p className="text-lg md:text-xl leading-relaxed max-w-2xl" style={{ color: '#94A3B8' }}>
+          <p className="text-lg md:text-xl leading-relaxed max-w-2xl" style={{ color: '#3D4452' }}>
             {t.hero.subheading}
           </p>
         </div>
@@ -148,7 +148,7 @@ export default async function ComparePage({ params }) {
                       border: `1.5px solid ${isDark ? 'rgba(183,181,254,0.18)' : 'rgba(183,181,254,0.3)'}`,
                     }}>
                     <p className="text-xs font-semibold uppercase tracking-[0.1em] mb-4"
-                      style={{ color: '#b7b5fe' }}>
+                      style={{ color: isDark ? '#b7b5fe' : '#5856cc' }}>
                       {locale === 'zh' ? 'DODO 的位置' : 'Where DODO Fits'}
                     </p>
                     <p className="text-base leading-relaxed font-medium"

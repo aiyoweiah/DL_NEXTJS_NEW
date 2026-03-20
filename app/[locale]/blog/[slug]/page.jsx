@@ -107,7 +107,7 @@ export default async function BlogPostPage({ params }) {
           <Link
             href={`/${locale}/blog`}
             className="inline-block mb-8 text-sm font-medium"
-            style={{ color: '#b7b5fe' }}
+            style={{ color: '#5856cc' }}
           >
             {ui.backLabel}
           </Link>
@@ -118,7 +118,7 @@ export default async function BlogPostPage({ params }) {
               style={{
                 background: 'rgba(183,181,254,0.1)',
                 border:     '1px solid rgba(183,181,254,0.25)',
-                color:      '#7c79e8',
+                color:      '#5856cc',
               }}
             >
               {ui.fallbackNotice}

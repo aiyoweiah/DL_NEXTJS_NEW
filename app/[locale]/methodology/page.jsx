@@ -72,7 +72,7 @@ export default async function MethodologyPage({ params }) {
           >
             {t.hero.heading}
           </h1>
-          <p className="text-lg md:text-xl leading-relaxed max-w-2xl" style={{ color: '#94A3B8' }}>
+          <p className="text-lg md:text-xl leading-relaxed max-w-2xl" style={{ color: '#3D4452' }}>
             {t.hero.subheading}
           </p>
         </div>
@@ -81,7 +81,7 @@ export default async function MethodologyPage({ params }) {
       {/* ── 2. Why a Loop ─────────────────────────────────── */}
       <SectionWrapper white>
         <div className="py-20 md:py-24 max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.15em] mb-4" style={{ color: '#7c79e8' }}>
+          <p className="text-xs font-semibold uppercase tracking-[0.15em] mb-4" style={{ color: '#5856cc' }}>
             {t.why.eyebrow}
           </p>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6" style={{ color: '#0E0E12', letterSpacing: '-0.025em' }}>
@@ -157,7 +157,7 @@ export default async function MethodologyPage({ params }) {
                     />
                     <p
                       className="text-sm font-medium"
-                      style={{ color: stepBg[index] ? '#b7b5fe' : '#7c79e8' }}
+                      style={{ color: stepBg[index] ? '#b7b5fe' : '#5856cc' }}
                     >
                       {step.proof}
                     </p>
@@ -220,7 +220,7 @@ export default async function MethodologyPage({ params }) {
         <div className="py-20 md:py-24">
 
           <div className="max-w-2xl mb-12">
-            <p className="text-xs font-semibold uppercase tracking-[0.15em] mb-4" style={{ color: '#7c79e8' }}>
+            <p className="text-xs font-semibold uppercase tracking-[0.15em] mb-4" style={{ color: '#5856cc' }}>
               {t.trait.eyebrow}
             </p>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5" style={{ color: '#0E0E12', letterSpacing: '-0.025em' }}>

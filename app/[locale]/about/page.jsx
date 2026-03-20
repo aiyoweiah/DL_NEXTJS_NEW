@@ -141,7 +141,7 @@ function BilingualHeading({ en, cn, light = false, center = false }) {
       <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 600, lineHeight: 1.2, color: light ? '#F0F0F0' : '#0E0E12' }}>
         {en}
       </h2>
-      <p className="mt-2" style={{ fontFamily: 'var(--font-cjk)', fontSize: '16px', fontWeight: 500, color: '#b7b5fe' }}>
+      <p className="mt-2" style={{ fontFamily: 'var(--font-cjk)', fontSize: '16px', fontWeight: 500, color: light ? '#b7b5fe' : '#5856cc' }}>
         {cn}
       </p>
     </div>
@@ -302,7 +302,7 @@ function WhatWeBelieve({ c }) {
               style={{ display: 'grid', gridTemplateColumns: '2.5rem 3.5rem 1fr 1fr', gap: '2rem', borderBottom: i < BELIEFS_BASE.length - 1 ? '1px solid rgba(14,14,18,0.08)' : 'none' }}
               aria-label={`Belief ${item.num}: ${item.belief}`}>
               <div className="flex items-center pt-1">
-                <span style={{ fontSize: '14px', fontWeight: 600, color: '#b7b5fe' }}>{item.num}</span>
+                <span style={{ fontSize: '14px', fontWeight: 600, color: '#5856cc' }}>{item.num}</span>
               </div>
               <div className="flex items-center">
                 <div className="flex items-center justify-center"
@@ -312,7 +312,7 @@ function WhatWeBelieve({ c }) {
               </div>
               <div>
                 <p style={{ fontSize: '20px', fontWeight: 600, lineHeight: 1.3, color: '#0E0E12' }}>&ldquo;{item.belief}&rdquo;</p>
-                <p className="mt-2" style={{ fontFamily: 'var(--font-cjk)', fontSize: '14px', color: '#b7b5fe' }}>{item.beliefCn}</p>
+                <p className="mt-2" style={{ fontFamily: 'var(--font-cjk)', fontSize: '14px', color: '#5856cc' }}>{item.beliefCn}</p>
               </div>
               <p style={{ fontSize: '15px', lineHeight: 1.8, color: '#2E3848' }}>{c.beliefs.bodies[i]}</p>
             </div>
