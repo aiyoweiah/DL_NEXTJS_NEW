@@ -100,6 +100,7 @@ function Wordmark({ locale }) {
         <img
           src="/logo-dark.svg"
           alt="DODO Learning"
+          className="nav-logo"
           style={{
             height:     '32px',
             width:      'auto',

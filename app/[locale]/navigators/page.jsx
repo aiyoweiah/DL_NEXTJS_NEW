@@ -219,8 +219,8 @@ export default async function NavigatorsPage({ params }) {
     <div className="w-full overflow-hidden" style={{ fontFamily: 'var(--font-latin)' }}>
 
       {/* S1 HERO */}
-      <section className="min-h-screen flex items-center justify-center px-6 py-20 relative overflow-hidden"
-        style={{ background: 'linear-gradient(to bottom, #2E3848 0%, #212830 60%)' }}>
+      <section className="flex items-center justify-center px-6 py-20 relative overflow-hidden"
+        style={{ background: 'linear-gradient(to bottom, #2E3848 0%, #212830 60%)', minHeight: '100dvh', paddingTop: 'calc(var(--nav-height-md) + 3rem)', paddingBottom: '5rem' }}>
         <div className="absolute bottom-0 right-0 select-none pointer-events-none" aria-hidden="true"
           style={{ fontSize: '280px', fontWeight: 700, color: '#b7b5fe', opacity: 0.04, lineHeight: 1, transform: 'translateX(15%)' }}>
           NAVIGATOR

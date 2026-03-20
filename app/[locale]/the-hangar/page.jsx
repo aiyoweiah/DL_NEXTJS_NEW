@@ -244,7 +244,7 @@ export default async function TheHangarPage({ params }) {
     <div className="w-full overflow-hidden" style={{ fontFamily: 'var(--font-latin)' }}>
 
       {/* S1 HERO */}
-      <section className="relative min-h-screen flex items-center justify-center px-6 md:px-12" style={{ backgroundColor: '#212830' }}>
+      <section className="relative flex items-center justify-center px-6 md:px-12" style={{ backgroundColor: '#212830', minHeight: '100dvh', paddingTop: 'calc(var(--nav-height-md) + 3rem)', paddingBottom: '5rem' }}>
         <div className="absolute inset-0 overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="https://images.unsplash.com/photo-1758270705317-3ef6142d306f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080&q=80" alt="" aria-hidden="true" className="w-full h-full object-cover" style={{ display: 'block' }} />
