@@ -634,8 +634,87 @@ export const lexile = {
 export const about = {}
 
 // ── Compare ───────────────────────────────────────────────────
-// TODO: populate when building app/[locale]/compare/page.jsx
-export const compare = {}
+export const compare = {
+  meta: {
+    title:       'DODO Learning vs. The Alternatives',
+    description:
+      'How DODO Learning compares to private tutoring, Kumon, after-school English classes, and reading apps. The differences that matter for bilingual children in grades 3–8.',
+  },
+
+  hero: {
+    eyebrow:    'How We Compare',
+    heading:    'The question every parent asks before enrolling.',
+    subheading:
+      'Parents researching English programs for bilingual children are choosing between very different things. This page explains the differences — precisely, without attacking alternatives — so you can decide what your child actually needs.',
+  },
+
+  intro: {
+    heading: 'Most programs solve the wrong problem.',
+    body:
+      'Private tutoring remediates specific gaps. Kumon builds procedural fluency through repetition. Reading apps provide access to texts. After-school English classes build conversational confidence. Each of these solves something real. None of them build the underlying cognitive architecture that bilingual academic performance requires: the ability to read a complex text, reason about it, argue a position, and write it down with precision — in English, from a bilingual mind. That is what DODO is built to do.',
+  },
+
+  alternatives: [
+    {
+      id:       'tutoring',
+      label:    'Private Tutoring',
+      what:     'A teacher works with your child one-on-one to address specific homework, test prep, or subject gaps.',
+      strength: 'Immediate relief for a specific, known problem. Effective when the gap is narrow and the subject is clear.',
+      limit:    'Tutoring is reactive. It responds to gaps after they appear rather than building the structural capacity that prevents them. A child who is tutored through Grade 5 English still faces the same underlying challenge in Grade 6.',
+      dodo:     'DODO is not remediation. It builds the cognitive infrastructure — reading depth, analytical reasoning, structured writing — that prevents the gaps tutoring fills.',
+    },
+    {
+      id:       'kumon',
+      label:    'Kumon',
+      what:     'A self-paced, worksheet-based program that develops procedural fluency in reading and math through daily repetition.',
+      strength: 'Builds disciplined daily practice habits. Effective at developing decoding fluency and basic comprehension at early reading levels.',
+      limit:    'Kumon’s reading program develops word-recognition and sentence-level comprehension. It does not train analytical reasoning, argumentative writing, or the ability to process dense academic texts. Students who complete Kumon reading often remain below grade level in academic English.',
+      dodo:     'DODO begins where Kumon ends. The Loop trains reading comprehension at the paragraph and argument level, not the sentence level — then builds through spoken reasoning and structured writing.',
+    },
+    {
+      id:       'after-school',
+      label:    'After-School English Classes',
+      what:     'Group instruction in English conversation, grammar, or general literacy — typically 1–2 hours per week.',
+      strength: 'Builds conversational confidence and social vocabulary. Reduces anxiety in English-speaking environments.',
+      limit:    'Conversational English and academic English are different cognitive tasks. A child can be socially fluent in English while still processing complex texts, writing structured arguments, or analysing an unfamiliar passage entirely in Chinese. Group classes rarely have the intensity or measurement rigour to shift academic performance.',
+      dodo:     'DODO targets academic language, not conversational language. The Loop trains reading comprehension, structured oral reasoning, and academic writing — all measured by Lexile and 6+1 Trait frameworks.',
+    },
+    {
+      id:       'reading-apps',
+      label:    'Reading Apps and Platforms',
+      what:     'Digital tools that provide access to levelled reading content, often with comprehension quizzes and progress tracking.',
+      strength: 'Accessible, affordable, and self-paced. Useful for sustained independent reading and vocabulary exposure.',
+      limit:    'Apps provide content but not instruction. They cannot identify why a student struggles with a specific text, model the thinking process of a skilled reader, or give feedback on written reasoning. Growth on an app is limited by the student’s existing ceiling.',
+      dodo:     'DODO provides what apps cannot: a Navigator who diagnoses how a student thinks, not just what they can decode. The Hangar supplements the live work — it does not replace it.',
+    },
+    {
+      id:       'school',
+      label:    'The School Curriculum',
+      what:     'Your child’s regular English classes in their Canadian or American school.',
+      strength: 'Provides consistent exposure to grade-level content, peer discussion, and teacher feedback within an academic context.',
+      limit:    'School curricula assume monolingual cognition. They are not designed for students who are simultaneously developing academic proficiency in two languages. A bilingual student may receive an A in English class while Lexile scores reveal they are reading one to two grade levels below standard.',
+      dodo:     'DODO does not replace school. It builds the bilingual cognitive layer that school cannot address: the ability to think, reason, and write academically in English without losing Chinese as a cognitive anchor.',
+    },
+  ],
+
+  decision: {
+    eyebrow: 'The Right Question',
+    heading: 'The question is not which program is better. It is what your child actually needs.',
+    rows: [
+      { need: 'Help with a specific assignment or test', answer: 'Private tutoring is the right tool.' },
+      { need: 'Daily reading habit and decoding fluency', answer: 'Kumon or a reading app will help.' },
+      { need: 'Conversational confidence in English', answer: 'An after-school class is appropriate.' },
+      { need: 'Academic reading, reasoning, and writing in English from a bilingual foundation', answer: 'That is what DODO is built for.' },
+    ],
+  },
+
+  cta: {
+    heading:      'Not sure what your child needs? The assessment will tell you.',
+    body:         'The entrance assessment takes 30 minutes and produces a Lexile score and a 6+1 Trait writing snapshot. That data tells us — and you — exactly what kind of support will produce measurable results.',
+    ctaPrimary:   'Book a Diagnostic Call',
+    ctaSecondary: 'See How We Measure Growth',
+  },
+}
 
 // ── Assessment ────────────────────────────────────────────────
 // TODO: populate when building app/[locale]/assessment/page.jsx
