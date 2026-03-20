@@ -80,7 +80,9 @@ export default function BlogClient({ articles, categories, locale = 'en', ui }) 
     searchPlaceholder: 'Search articles, topics, questions...',
     filterAriaLabel:   'Filter articles by category',
     loadMore:          'Load More Articles',
-    noResults:         (q, cat) => `No articles match \u201c${q}\u201d${cat !== categories[0] ? ` in ${cat}` : ''}.`,
+    noResultsPrefix:   'No articles match \u201c',
+    noResultsSuffix:   '\u201d',
+    noResultsIn:       ' in ',
   }
 
   const filtered = useMemo(() => {
@@ -151,7 +153,8 @@ export default function BlogClient({ articles, categories, locale = 'en', ui }) 
           {visible.length === 0 && (
             <div className="text-center py-20">
               <p style={{ color: 'rgba(33,40,48,0.5)', fontSize: '16px', fontWeight: 400 }}>
-                {t.noResults(searchQuery, activeCategory)}
+                {t.noResultsPrefix}{searchQuery}{t.noResultsSuffix}
+                {activeCategory !== categories[0] ? `${t.noResultsIn}${activeCategory})` : ''}
               </p>
             </div>
           )}

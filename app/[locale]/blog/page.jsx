@@ -88,8 +88,9 @@ const BLOG_UI = {
       searchPlaceholder: 'Search articles, topics, questions...',
       filterAriaLabel:   'Filter articles by category',
       loadMore:          'Load More Articles',
-      noResults:         (q, cat) =>
-        `No articles match \u201c${q}\u201d${cat !== 'All' ? ` in ${cat}` : ''}.`,
+      noResultsPrefix:   'No articles match \u201c',
+      noResultsSuffix:   '\u201d',
+      noResultsIn:       ' in ',
     },
   },
   zh: {
@@ -139,8 +140,9 @@ const BLOG_UI = {
       searchPlaceholder: '\u641c\u7d22\u6587\u7ae0\u3001\u4e3b\u9898\u3001\u95ee\u9898\u2026',
       filterAriaLabel:   '\u6309\u5206\u7c7b\u7b5b\u9009\u6587\u7ae0',
       loadMore:          '\u52a0\u8f7d\u66f4\u591a\u6587\u7ae0',
-      noResults:         (q, cat) =>
-        `\u672a\u627e\u5230\u4e0e\u201c${q}\u201d${cat !== 'All' ? `\uff08${cat}\uff09` : ''}\u76f8\u5173\u7684\u6587\u7ae0\u3002`,
+      noResultsPrefix:   '\u672a\u627e\u5230\u4e0e\u201c',
+      noResultsSuffix:   '\u201d\u76f8\u5173\u7684\u6587\u7ae0\u3002',
+      noResultsIn:       '\uff08',
     },
   },
 }
