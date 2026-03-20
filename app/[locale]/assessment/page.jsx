@@ -12,7 +12,7 @@ export async function generateMetadata({ params }) {
   return buildMetadata({
     locale,
     title:       'Assessment',
-    description: 'Measure your child's reading level with a Lexile baseline assessment. DODO Learning bilingual thinking program.',
+    description: "Measure your child's reading level with a Lexile baseline assessment. DODO Learning bilingual thinking program.",
     path:        '/assessment',
   })
 }
