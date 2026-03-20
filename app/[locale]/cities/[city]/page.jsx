@@ -31,10 +31,6 @@ import Badge          from '@/components/ui/Badge'
 import Button         from '@/components/ui/Button'
 
 // ── City data ─────────────────────────────────────────────────
-// Single source of truth for all city slugs, display names, and
-// locale-specific copy. Add a new city here and it is automatically
-// included in generateStaticParams and the schema.
-
 const CITIES = {
   'vancouver': {
     name:       'Vancouver',
@@ -188,9 +184,6 @@ const CITIES = {
 }
 
 // ── Static params ─────────────────────────────────────────────
-// Returns all 12 combos explicitly — 2 locales × 6 cities.
-// Explicit enumeration is required for output: 'export' on both
-// Cloudflare Pages and Vercel — do not rely on parent param inheritance.
 export function generateStaticParams() {
   return LOCALES.flatMap((locale) =>
     Object.keys(CITIES).map((city) => ({ locale, city }))
@@ -206,7 +199,7 @@ export async function generateMetadata({ params }) {
   return buildCityMetadata(city, locale, cityName)
 }
 
-// ── Proof stats (same across all city pages) ──────────────────
+// ── Proof stats ───────────────────────────────────────────────
 const PROOF_STATS = {
   en: [
     { number: '1.2', unit: 'grade levels', label: 'average Lexile growth in 16 weeks' },
@@ -220,7 +213,7 @@ const PROOF_STATS = {
   ],
 }
 
-// ── Loop steps (condensed for city pages) ─────────────────────
+// ── Loop steps ────────────────────────────────────────────────
 const LOOP_STEPS = {
   en: [
     { number: '01', label: 'Read',  body: 'Texts selected above the student\'s current Lexile level. Vocabulary depth and reading stamina built intentionally.' },
@@ -236,7 +229,7 @@ const LOOP_STEPS = {
   ],
 }
 
-// ── Program phases (condensed) ────────────────────────────────
+// ── Program phases ────────────────────────────────────────────
 const PHASES = {
   en: [
     { week: 'Week 1',  label: 'Entrance Assessment', body: 'Lexile baseline and 6+1 Trait writing snapshot. We find out exactly where your child is — not where their school says they are.' },
@@ -464,7 +457,7 @@ export default async function CityPage({ params }) {
               >
                 <p
                   className="text-xs font-semibold uppercase tracking-widest"
-                  style={{ color: '#b7b5fe' }}
+                  style={{ color: '#5856cc' }}
                 >
                   {phase.week}
                 </p>

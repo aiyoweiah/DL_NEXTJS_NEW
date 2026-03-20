@@ -175,7 +175,7 @@ const HOMEPAGE_COPY: Record<string, any> = {
       body:     '\u6bcf\u8282\u8bfe\u3002\u6bcf\u4e00\u5468\u3002\u59cb\u7ec8\u6309\u8fd9\u4e2a\u987a\u5e8f\u3002\u9605\u8bfb\u00a0\u2192\u00a0\u601d\u8003\u00a0\u2192\u00a0\u8868\u8fbe\u00a0\u2192\u00a0\u5199\u4f5c\u4e0d\u662f\u6211\u4eec\u6559\u6388\u7684\u6846\u67b6\u2014\u2014\u800c\u662f\u6211\u4eec\u5b9e\u9645\u7684\u505a\u6cd5\u3002',
       cta:      '\u9605\u8bfb\u5b8c\u6574\u6559\u5b66\u65b9\u6cd5 \u2192',
       steps: [
-        { id: 'read',  number: '01', label: 'Read',  description: '\u5b66\u751f\u9605\u8bfb\u7cbe\u5fc3\u9009\u5b9a\u5728\u5f53\u524dLexile\u6c34\u5e73\u6216\u7565\u9ad8\u4e00\u7b79\u7684\u6587\u672c\u3002\u6587\u672c\u662f\u539f\u6750\u6599\u2014\u2014\u6ca1\u6709\u4efb\u4f55\u7b80\u5316\u3002' },
+        { id: 'read',  number: '01', label: 'Read',  description: '\u5b66\u751f\u9605\u8bfb\u7cbe\u5fc3\u9009\u5b9a\u5728\u5f53\u524dLexile\u6c34\u5e73\u6216\u7565\u9ad8\u4e00\u7b51\u7684\u6587\u672c\u3002\u6587\u672c\u662f\u539f\u6750\u6599\u2014\u2014\u6ca1\u6709\u4efb\u4f55\u7b80\u5316\u3002' },
         { id: 'think', number: '02', label: 'Think', description: '\u5728\u5f00\u53e3\u4e4b\u524d\uff0c\u5b66\u751f\u9996\u5148\u88ab\u8bad\u7ec3\u5f62\u6210\u4e00\u4e2a\u7acb\u573a\u3002\u4ed6\u4eec\u771f\u6b63\u8ba4\u4e3a\u4ec0\u4e48\uff1f\u800c\u975e\u4ed6\u4eec\u8ba4\u4e3a\u5e94\u8be5\u8ba4\u4e3a\u4ec0\u4e48\u3002' },
         { id: 'speak', number: '03', label: 'Speak', description: '\u5b66\u751f\u5728\u4e0e\u5bfc\u5e08\u7684\u5b9e\u65f6\u82cf\u683c\u62c9\u5f0f\u5bf9\u8bdd\u4e2d\u8868\u8fbe\u81ea\u5df1\u7684\u601d\u8003\u3002\u53e3\u5934\u8868\u8fbe\u7684\u7cbe\u786e\u6027\u5148\u4e8e\u4e66\u9762\u7684\u7cbe\u786e\u6027\u3002' },
         { id: 'write', number: '04', label: 'Write', description: '\u5b66\u751f\u4ea7\u51fa\u4e66\u9762\u4f5c\u54c1\uff0c\u4f7f\u75286+1\u7279\u8d28\u6846\u67b6\u8fdb\u884c\u8bc4\u4f30\u3002\u5bfc\u5e08\u8bc4\u5206\u6bcf\u4e00\u7bc7\u4f5c\u54c1\u3002\u6210\u957f\u53ef\u89c1\u53ef\u91cf\u5316\u3002' },
@@ -249,7 +249,7 @@ function Hero({ locale, c }) {
         <div className="max-w-3xl">
           <div className="flex items-center gap-3 mb-8">
             <span className="badge badge-lavender" aria-label="Program audience">{c.hero.eyebrow}</span>
-            <span className="hidden sm:flex items-center gap-1.5 text-xs font-medium" style={{ color: 'rgba(124,121,232,0.7)' }}>
+            <span className="hidden sm:flex items-center gap-1.5 text-xs font-medium" style={{ color: '#5856cc' }}>
               <span className="inline-block w-1.5 h-1.5 rounded-full" style={{ backgroundColor: '#F5C842' }} aria-hidden="true" />
               {c.hero.eyebrow2}
             </span>
@@ -257,7 +257,7 @@ function Hero({ locale, c }) {
 
           <h1 id="hero-heading" className="mb-6" style={{ color: '#212830', fontWeight: 700 }}>
             {c.hero.h1[0]}<br />{c.hero.h1[1]}<br className="hidden sm:block" />
-            <span style={{ color: '#b7b5fe' }}>{c.hero.h1Chinese}</span>
+            <span style={{ color: '#5856cc' }}>{c.hero.h1Chinese}</span>
           </h1>
 
           <p className="mb-4 text-lg md:text-xl leading-relaxed max-w-2xl" style={{ color: '#3D4452' }}>
@@ -328,10 +328,10 @@ function PhotoIntro({ locale, c }) {
             <div className="absolute inset-0 flex items-center justify-center"
               style={{ background: 'linear-gradient(135deg, #EAEAF8 0%, #f0efff 50%, #e8e7ff 100%)' }}>
               <div className="text-center">
-                <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: 'rgba(124,121,232,0.5)' }}>
+                <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: '#5856cc' }}>
                   {c.photoIntro.imgLabel}
                 </p>
-                <div className="flex items-center gap-2 text-sm font-semibold" style={{ color: 'rgba(124,121,232,0.6)' }}>
+                <div className="flex items-center gap-2 text-sm font-semibold" style={{ color: '#5856cc' }}>
                   <span>Read</span><span style={{ color: 'rgba(183,181,254,0.4)' }}>\u2192</span>
                   <span>Think</span><span style={{ color: 'rgba(183,181,254,0.4)' }}>\u2192</span>
                   <span>Speak</span><span style={{ color: 'rgba(183,181,254,0.4)' }}>\u2192</span>
@@ -410,7 +410,7 @@ function ConfidenceSection({ locale, c }) {
               <h3 className="text-xl font-bold leading-snug" style={{ color: '#212830' }}>{pillar.heading}</h3>
               <p className="text-sm leading-relaxed flex-1" style={{ color: '#3D4452' }}>{pillar.body}</p>
               <Link href={`/${locale}${pillar.linkHref}`}
-                className="text-sm font-semibold text-[#7c79e8] hover:text-[#b7b5fe] transition-colors duration-150 focus-visible:outline-none focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-[#b7b5fe]">
+                className="text-sm font-semibold text-[#5856cc] hover:text-[#3d3baa] transition-colors duration-150 focus-visible:outline-none focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-[#b7b5fe]">
                 {pillar.linkLabel} \u2192
               </Link>
             </div>

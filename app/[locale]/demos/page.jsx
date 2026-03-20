@@ -309,7 +309,7 @@ function BilingualH2({ primary, secondary, light = false, center = false, id }) 
           fontFamily: 'var(--font-cjk)',
           fontSize:   '15px',
           fontWeight: 500,
-          color:      '#b7b5fe',
+          color:      light ? '#b7b5fe' : '#5856cc',
           lineHeight: 1.5,
         }}
       >
@@ -319,7 +319,7 @@ function BilingualH2({ primary, secondary, light = false, center = false, id }) 
   )
 }
 
-function Eyebrow({ children, center = false }) {
+function Eyebrow({ children, center = false, dark = false }) {
   return (
     <p
       style={{
@@ -327,7 +327,7 @@ function Eyebrow({ children, center = false }) {
         fontWeight:    600,
         letterSpacing: '0.12em',
         textTransform: 'uppercase',
-        color:         '#b7b5fe',
+        color:         dark ? '#b7b5fe' : '#5856cc',
         marginBottom:  '0.875rem',
         textAlign:     center ? 'center' : undefined,
       }}
@@ -602,7 +602,7 @@ function WhatYoullSee({ locale, c }) {
                       justifyContent:  'center',
                       fontSize:        '11px',
                       fontWeight:      700,
-                      color:           '#7c79e8',
+                      color:           '#5856cc',
                       flexShrink:      0,
                     }}
                   >
@@ -610,7 +610,7 @@ function WhatYoullSee({ locale, c }) {
                   </span>
                   <div>
                     <p style={{ fontSize: '1rem', fontWeight: 700, color: '#0E0E12', lineHeight: 1.2 }}>{step.label}</p>
-                    <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '11px', color: '#b7b5fe', lineHeight: 1.2 }}>{step.labelZh}</p>
+                    <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '11px', color: '#5856cc', lineHeight: 1.2 }}>{step.labelZh}</p>
                   </div>
                 </div>
                 <p style={{ fontSize: '0.8125rem', lineHeight: 1.72, color: '#3D4452' }}>{step.desc}</p>
@@ -704,7 +704,7 @@ function DemoTypes({ locale, c }) {
 
               <div style={{ padding: '1rem 1rem 1.25rem' }}>
                 <p style={{ fontSize: '1rem', fontWeight: 700, color: '#0E0E12', marginBottom: '2px' }}>{step.label}</p>
-                <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '11px', color: '#b7b5fe', marginBottom: '0.5rem' }}>{step.labelZh}</p>
+                <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '11px', color: '#5856cc', marginBottom: '0.5rem' }}>{step.labelZh}</p>
                 <p style={{ fontSize: '0.8125rem', lineHeight: 1.72, color: '#3D4452' }}>{step.desc}</p>
               </div>
             </article>
@@ -722,8 +722,8 @@ function DemoTypes({ locale, c }) {
             maxWidth:        '440px',
           }}
         >
-          <p style={{ fontSize: '9px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#7c79e8', marginBottom: '0.875rem' }}>
-            Lexile Growth
+          <p style={{ fontSize: '9px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#5856cc', marginBottom: '0.875rem' }}>
+          Lexile Growth
           </p>
           <LexileBar start={650} end={820} weeks={16} light />
         </div>
@@ -784,7 +784,7 @@ function InsideSession({ locale, c }) {
             </div>
           </div>
 
-          <Eyebrow>{c.session.eyebrow}</Eyebrow>
+          <Eyebrow dark>{c.session.eyebrow}</Eyebrow>
           <BilingualH2 id="session-heading" primary={c.session.h2} secondary={c.session.h2zh} light />
 
           <div style={{ marginTop: '1.75rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -818,7 +818,7 @@ function AfterDemo({ locale, c }) {
     >
       <div className="container-section">
         <div style={{ maxWidth: '40rem' }}>
-          <Eyebrow>{c.after.eyebrow}</Eyebrow>
+          <Eyebrow dark>{c.after.eyebrow}</Eyebrow>
           <BilingualH2 id="after-heading" primary={c.after.h2} secondary={c.after.h2zh} light />
           <p style={{ fontSize: '1rem', lineHeight: 1.82, color: 'rgba(240,240,240,0.55)', marginTop: '1.125rem', marginBottom: '1.875rem' }}>
             {c.after.body}
@@ -899,7 +899,7 @@ function ResultsSection({ locale, c }) {
     >
       <div className="container-section">
         <div style={{ marginBottom: '3.5rem' }}>
-          <Eyebrow>{c.growth.eyebrow}</Eyebrow>
+          <Eyebrow dark>{c.growth.eyebrow}</Eyebrow>
           <BilingualH2 id="results-heading" primary={c.growth.h2} secondary={c.growth.h2zh} light />
         </div>
 

@@ -17,9 +17,9 @@ export async function generateMetadata({ params }) {
 // ─────────────────────────────────────────────────────────────
 // PRIMITIVES
 // ─────────────────────────────────────────────────────────────
-function Eyebrow({ children, center = false }) {
+function Eyebrow({ children, center = false, dark = false }) {
   return (
-    <div style={{ fontFamily: 'var(--font-latin)', fontWeight: 500, fontSize: '12px', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#b7b5fe', marginBottom: '16px', textAlign: center ? 'center' : undefined }}>
+    <div style={{ fontFamily: 'var(--font-latin)', fontWeight: 500, fontSize: '12px', letterSpacing: '0.1em', textTransform: 'uppercase', color: dark ? '#b7b5fe' : '#5856cc', marginBottom: '16px', textAlign: center ? 'center' : undefined }}>
       {children}
     </div>
   )
@@ -252,7 +252,7 @@ export default async function TheHangarPage({ params }) {
           <div className="absolute inset-0 md:hidden" style={{ backgroundColor: 'rgba(14,14,18,0.72)' }} />
         </div>
         <div className="relative z-10 max-w-[700px]">
-          <Eyebrow>{c.s1.eyebrow}</Eyebrow>
+          <Eyebrow dark>{c.s1.eyebrow}</Eyebrow>
           <h1 className="mb-6" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: 'clamp(38px, 5vw, 68px)', lineHeight: 1.2, color: '#F0F0F0', letterSpacing: '-0.03em', maxWidth: '700px' }}>
             {c.s1.h1a}<span style={{ color: '#b7b5fe' }}>{c.s1.h1b}</span>{c.s1.h1c}
           </h1>
@@ -272,7 +272,7 @@ export default async function TheHangarPage({ params }) {
       {/* S3 WHAT THE HANGAR IS */}
       <Section bg="dark">
         <div className="text-center mb-16">
-          <Eyebrow center>{c.s3.eyebrow}</Eyebrow>
+          <Eyebrow dark center>{c.s3.eyebrow}</Eyebrow>
           <h2 className="max-w-3xl mx-auto" style={{ fontFamily: 'var(--font-latin)', fontWeight: 600, fontSize: 'clamp(28px, 3vw, 42px)', color: '#F0F0F0', lineHeight: 1.3, letterSpacing: '-0.02em' }}>{c.s3.h2}</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0">
@@ -302,7 +302,7 @@ export default async function TheHangarPage({ params }) {
       <section className="px-6 py-24 md:py-32" style={{ backgroundColor: '#0E0E12' }}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <Eyebrow center>{c.s5.eyebrow}</Eyebrow>
+            <Eyebrow dark center>{c.s5.eyebrow}</Eyebrow>
             <h2 className="max-w-[640px] mx-auto mb-4" style={{ fontFamily: 'var(--font-latin)', fontWeight: 600, fontSize: 'clamp(22px, 3vw, 34px)', color: '#F0F0F0', lineHeight: 1.3, letterSpacing: '-0.02em' }}>{c.s5.h2}</h2>
             <p className="max-w-[500px] mx-auto" style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '15px', color: 'rgba(240,240,240,0.60)', lineHeight: 1.6 }}>{c.s5.sub}</p>
           </div>
@@ -347,7 +347,7 @@ export default async function TheHangarPage({ params }) {
       {/* S7 THE COHORT */}
       <Section bg="dark">
         <div className="text-center mb-16">
-          <Eyebrow center>{c.s7.eyebrow}</Eyebrow>
+          <Eyebrow dark center>{c.s7.eyebrow}</Eyebrow>
           <h2 className="max-w-3xl mx-auto" style={{ fontFamily: 'var(--font-latin)', fontWeight: 600, fontSize: 'clamp(28px, 3vw, 42px)', color: '#F0F0F0', lineHeight: 1.3, letterSpacing: '-0.02em' }}>{c.s7.h2}</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0">
@@ -365,7 +365,7 @@ export default async function TheHangarPage({ params }) {
       <section className="px-6 py-24 md:py-32" style={{ backgroundColor: '#0E0E12' }}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <Eyebrow center>{c.s8.eyebrow}</Eyebrow>
+            <Eyebrow dark center>{c.s8.eyebrow}</Eyebrow>
             <h2 style={{ fontFamily: 'var(--font-latin)', fontWeight: 600, fontSize: 'clamp(28px, 3vw, 42px)', color: '#F0F0F0', lineHeight: 1.3, letterSpacing: '-0.02em' }}>{c.s8.h2}</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
