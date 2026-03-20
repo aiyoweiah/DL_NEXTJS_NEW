@@ -543,8 +543,91 @@ export const navigators = {}
 export const theHangar = {}
 
 // ── Lexile ────────────────────────────────────────────────────
-// TODO: populate when building app/[locale]/lexile/page.jsx
-export const lexile = {}
+export const lexile = {
+  meta: {
+    title:       'What Is a Lexile Level? A Parent’s Complete Guide',
+    description:
+      'Lexile levels explained for parents of bilingual children. How Lexile measures reading comprehension, grade-level benchmarks, and how DODO Learning uses Lexile to track real growth.',
+  },
+
+  hero: {
+    eyebrow:    'The Lexile Framework',
+    heading:    'What is a Lexile level — and what does the number actually mean?',
+    subheading:
+      'Lexile is the most precise reading measurement tool available to parents. One number tells you exactly where your child reads today, how far they are from grade level, and how much they have grown after a structured program.',
+  },
+
+  what: {
+    eyebrow: 'Understanding the Scale',
+    heading: 'One number. Reading ability placed precisely on a scale from 0L to 2000L.',
+    body:
+      'A Lexile reading level measures reading comprehension ability on a standardized scale from 0L to 2000L. The number reflects three things simultaneously: vocabulary complexity, sentence density, and how abstract the concepts are. A student at Lexile 650L can independently understand texts at that level; a text at 750L is slightly above them — appropriate for guided challenge, but not independent reading. At DODO, every session uses texts set 80L to 120L above the student’s current Lexile — precisely inside the zone where real growth happens.',
+  },
+
+  grades: {
+    eyebrow: 'Grade-Level Benchmarks',
+    heading: 'What Lexile range corresponds to each grade.',
+    note:
+      'The ranges below reflect typical North American English-speaking students. Bilingual students often score below these ranges — not because of lower ability, but because Lexile measures academic English specifically. Closing that gap is what The Loop is built to do.',
+    rows: [
+      { grade: 'Grade 3', range: '415L – 760L', midpoint: '520L' },
+      { grade: 'Grade 4', range: '635L – 950L', midpoint: '740L' },
+      { grade: 'Grade 5', range: '770L – 1080L', midpoint: '860L' },
+      { grade: 'Grade 6', range: '855L – 1165L', midpoint: '1010L' },
+      { grade: 'Grade 7', range: '925L – 1235L', midpoint: '1065L' },
+      { grade: 'Grade 8', range: '985L – 1295L', midpoint: '1130L' },
+    ],
+  },
+
+  bilingual: {
+    eyebrow: 'Bilingual Learners',
+    heading: 'Why bilingual children often score below grade level — and why that is not the whole story.',
+    body:
+      'Lexile scores measure academic English comprehension — not intelligence, oral fluency, or effort. A child who speaks English confidently and receives strong school grades may still score below grade level on a Lexile assessment. That gap is not failure. It reflects the difference between conversational language and academic language. Conversational fluency develops naturally through daily social interaction. Academic language — the ability to process dense texts, follow abstract arguments, extract meaning from unfamiliar vocabulary — requires structured, intentional practice. That is what The Loop trains.',
+  },
+
+  dodo: {
+    eyebrow: 'How DODO Uses Lexile',
+    heading: 'Three assessments. One clear growth trajectory.',
+    body:
+      'DODO uses MetaMetrics-certified Lexile assessment tools at three points in the 16-week program. Results are shared with parents within 72 hours of each assessment. You always receive a specific number — never a vague progress update.',
+    points: [
+      {
+        id:    'week0',
+        label: 'Week 0 — Entrance Assessment',
+        body:  'Completed before the first session. Establishes your child’s Lexile baseline and determines the content difficulty for weeks 1 through 4. A 6+1 Trait writing snapshot is taken at the same time.',
+      },
+      {
+        id:    'week8',
+        label: 'Week 8 — Mid-Program Check',
+        body:  'Progress assessment at the halfway point. If growth is on track, content difficulty increases accordingly. If 8-week growth is below 50L, we initiate a diagnostic review and adjust immediately — not at the end of the program.',
+      },
+      {
+        id:    'week16',
+        label: 'Week 16 — Exit Assessment',
+        body:  'The final Lexile measurement. Students typically advance 100L to 150L — roughly one full grade level of reading growth. The exit assessment also includes a complete 6+1 Trait writing evaluation and a written progress report.',
+      },
+    ],
+  },
+
+  examples: {
+    eyebrow: 'Typical Results',
+    heading: '16 weeks of growth, shown in Lexile numbers.',
+    note:    'Data from students completing the 16-week program. Results reflect consistent session attendance and regular Hangar engagement.',
+    bars: [
+      { start: 510, end: 670, weeks: 16, label: 'Grade 3 student — Vancouver' },
+      { start: 650, end: 820, weeks: 16, label: 'Grade 5 student — Toronto' },
+      { start: 770, end: 950, weeks: 16, label: 'Grade 7 student — San Francisco Bay Area' },
+    ],
+  },
+
+  cta: {
+    heading:      'Find out exactly where your child reads right now.',
+    body:         'The entrance assessment takes about 30 minutes and produces a specific Lexile number. That number is the beginning of a growth trajectory you can track after every session.',
+    ctaPrimary:   'Book a Diagnostic Call',
+    ctaSecondary: 'See the Methodology',
+  },
+}
 
 // ── About ─────────────────────────────────────────────────────
 // TODO: populate when building app/[locale]/about/page.jsx
