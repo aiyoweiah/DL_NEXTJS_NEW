@@ -22,6 +22,7 @@ import Link from 'next/link'
 import { notFound }                    from 'next/navigation'
 import { isValidLocale, localeParams } from '@/lib/i18n'
 import { buildMetadata }               from '@/lib/metadata'
+import LexileBar                        from '@/components/ui/LexileBar'
 
 
 
@@ -574,48 +575,6 @@ const STUDENT_RESULTS = [
   },
 ]
 
-function LexileProgressBar({ start, end, label }: { start: number; end: number; label: string }) {
-  const startPct = Math.round((start / 1200) * 100)
-  const endPct   = Math.round((end   / 1200) * 100)
-  const gainPct  = endPct - startPct
-
-  return (
-    <div aria-label={label}>
-      <div className="flex justify-between items-center mb-2">
-        <span className="text-xs font-semibold" style={{ color: '#94A3B8' }}>
-          Lexile {start}
-        </span>
-        <span
-          className="text-xs font-bold"
-          style={{ color: '#b7b5fe' }}
-        >
-          Lexile {end}
-        </span>
-      </div>
-
-      <div
-        className="w-full h-2 rounded-full overflow-hidden"
-        style={{ backgroundColor: 'rgba(183,181,254,0.1)' }}
-        role="img"
-        aria-label={label}
-      >
-        <div
-          className="h-full relative"
-          style={{ width: `${endPct}%`, backgroundColor: 'rgba(183,181,254,0.2)', borderRadius: 9999 }}
-        >
-          <div
-            className="absolute right-0 top-0 h-full rounded-full"
-            style={{
-              width: `${Math.round((gainPct / endPct) * 100)}%`,
-              background: 'linear-gradient(90deg, #b7b5fe 0%, #d4d3ff 100%)',
-            }}
-          />
-        </div>
-      </div>
-    </div>
-  )
-}
-
 function ParentTrustSection({ locale }) {
   return (
     <section
@@ -662,10 +621,10 @@ function ParentTrustSection({ locale }) {
                 </p>
               </div>
 
-              <LexileProgressBar
+              <LexileBar
                 start={result.start}
                 end={result.end}
-                label={`Reading progress: Lexile ${result.start} to Lexile ${result.end} in ${result.weeks} weeks`}
+                weeks={result.weeks}
               />
 
               <span className="badge badge-lavender-dark self-start">

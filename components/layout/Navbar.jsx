@@ -16,6 +16,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import Link                                          from 'next/link'
 import { usePathname }                               from 'next/navigation'
 import LocaleSwitcher                                from '@/components/layout/LocaleSwitcher'
+import { useFocusTrap }                              from '@/lib/a11y'
 
 // ── Nav link definitions ──────────────────────────────────────
 // Paths are locale-relative (no prefix). Prefix applied in render.
@@ -153,41 +154,7 @@ export default function Navbar({ locale }) {
   }, [mobileOpen])
 
   // ── Mobile focus trap ─────────────────────────────────────────
-  // TODO: refactor to useFocusTrap(drawerRef, mobileOpen, () => setMobileOpen(false))
-  // from lib/a11y.js before any new modals are built — see §16 of handoff.
-  useEffect(() => {
-    if (!mobileOpen || !drawerRef.current) return
-
-    const selectors = [
-      'a[href]',
-      'button:not([disabled])',
-      'input:not([disabled])',
-      '[tabindex]:not([tabindex="-1"])',
-    ].join(', ')
-
-    const focusable = Array.from(drawerRef.current.querySelectorAll(selectors))
-    if (focusable.length === 0) return
-    focusable[0].focus()
-
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape') {
-        setMobileOpen(false)
-        hamburgerRef.current?.focus()
-        return
-      }
-      if (e.key !== 'Tab') return
-      const first = focusable[0]
-      const last  = focusable[focusable.length - 1]
-      if (e.shiftKey) {
-        if (document.activeElement === first) { e.preventDefault(); last.focus() }
-      } else {
-        if (document.activeElement === last)  { e.preventDefault(); first.focus() }
-      }
-    }
-
-    document.addEventListener('keydown', handleKeyDown)
-    return () => document.removeEventListener('keydown', handleKeyDown)
-  }, [mobileOpen])
+  useFocusTrap(drawerRef, mobileOpen, () => setMobileOpen(false))
 
   // ── Link sub-components ───────────────────────────────────────
   const DesktopNavLink = ({ href, label }) => {
