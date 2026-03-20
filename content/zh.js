@@ -290,11 +290,228 @@ export const results = {
   },
 }
 
-export const consult = {}
+export const consult = {
+  meta: {
+    title: '预约诊断和询',
+    description:
+      '预约与DODO Learning的‒20分钟诊断和询。我们确切了解您的孩子实际在哪里——而不是学校评语说的在哪里。无需承诺。',
+  },
+
+  hero: {
+    eyebrow:    '诊断和询',
+    heading:    '我们确切了解您的孩子目前在哪里。',
+    subheading:
+      '不是学校成绩单告诉您的在哪里。和询时20分钟。全程由导师主导——而非销售通话。',
+    badge:      '20分钟 · 无需承诺',
+  },
+
+  what: {
+    eyebrow: '和询进行的四个阶段',
+    phases: [
+      {
+        id:    'diagnose',
+        time:  '5分钟',
+        label: '诊断',
+        body:  '我们会了解孩子当前的学校体验——而不是英语水平。一节典型的英语课对他们来说是什么感受？',
+      },
+      {
+        id:    'identify',
+        time:  '5分钟',
+        label: '确定差距',
+        body:  '我们精确命名具体的差距。词汇深度差距、流利度差距和写作自信差距需要不同的解决方案。',
+      },
+      {
+        id:    'prescribe',
+        time:  '5分钟',
+        label: '制定方案',
+        body:  '我们会描述与您孩子情况完全一致的学生，前16周具体是什么样子——包括具体的Lexile目标。',
+      },
+      {
+        id:    'commit',
+        time:  '5分钟',
+        label: '做决定',
+        body:  '如果Charter报名适合您的孩子，我们会说明创始家庭价格和后续步骤。没有压力，条款清晰。',
+      },
+    ],
+  },
+
+  trust: {
+    eyebrow: '预约前请了解',
+    heading: '这是一个诊断式和询，不是销售电话。',
+    body:
+      'DODO和询由导师主持——也就是实际执行课程的同一批人。如果16周课程目前不适合您的孩子，他们会如实告知您。',
+    points: [
+      '由导师主持，而非销售代表',
+      '和询结束前确定Lexile水平',
+      '诚实的适合性评估——我们只招收我们真正能帮助的学生',
+      '无需任何承诺即可预约',
+    ],
+  },
+
+  cta: {
+    heading: '预约您的和询。',
+    body:    '填写表格，我们将在一个工作日内确认时间。',
+    form: {
+      parentName:    '家长姓名',
+      email:         '电子邮件地址',
+      phone:         '电话号码',
+      childName:     '孩子姓名',
+      childGrade:    '孩子当前年级',
+      city:          '城市',
+      message:       '您目前对孩子英语最主要的担忧是什么？',
+      submit:        '预约和询',
+      submitting:    '提交中…',
+      successTitle:  '我们将与您联系。',
+      successBody:   '请期待在一个工作日内收到回复，确认和询时间。',
+      errorBody:     '出现错误，请重试或直接发邮件联系我们。',
+    },
+  },
+}
 
 // ── Methodology ───────────────────────────────────────────────
-// TODO: populate when building app/[locale]/methodology/page.jsx
-export const methodology = {}
+export const methodology = {
+  meta: {
+    title: 'The Loop — DODO Learning 教学方法',
+    description:
+      'The Loop是DODO Learning的核心教学法：阅读、思考、表达、写作。' +
+      '以Lexile测量和6+1特质写作框架为支擔。' +
+      '16周内提升一个年级阅读水平背后的认知训练体系。',
+  },
+
+  hero: {
+    eyebrow: '教学方法',
+    heading: 'The Loop不是我们教授的框架，而是我们实際的做法。',
+    subheading:
+      '每节课。每一周。始终按这个顺序。Read → Think → Speak → Write ' +
+      '是培养双语思维者的序列——而非双语表演者。',
+  },
+
+  why: {
+    eyebrow: '为什么是循环',
+    heading: '大多数课程只训练一项技能。我们训练完整的认知序列。',
+    body:
+      '词汇操练产生词汇量。语法练习产生语法能力。' +
+      '但两者都不能培养一个能够阅读难度文本、形成观点、' +
+      '口头论证并精确落笔的学生。' +
+      '这需要训练完整的循环——而非各个阅读训练独立的单一步骤。',
+  },
+
+  steps: [
+    {
+      id:      'read',
+      number:  '01',
+      label:   'Read',
+      cjk:     '阅读',
+      heading: '超出舒适区。有意为之。',
+      body:
+        '16周课程中指定的每一篇文本，都根据学生当前Lexile水平浮成选定，' +
+        '处于其Lexile水平或略高的层次。目的不是亭制，而是拉伸。' +
+        '词汇深度和阅读耐力在文本对读者有所要求时才能建立。' +
+        '我们用Lexile测量追踪，而非猜测。',
+      proof: '每节课均进行Lexile定向文本选定。',
+    },
+    {
+      id:      'think',
+      number:  '02',
+      label:   'Think',
+      cjk:     '思考',
+      heading: '开口之前，需要先有要说的内容。',
+      body:
+        '大多数英语教学的失败模式是：学生在形成思想之前就学会了产出语言。' +
+        'The Loop强制先思考。在学生开口之前，他们已经形成了一个立场——' +
+        '用任何语言思维都可以。导师为此创造空间。',
+      proof: '每节课均有结构化的口语前提示。',
+    },
+    {
+      id:      'speak',
+      number:  '03',
+      label:   'Speak',
+      cjk:     '表达',
+      heading: '口头表达的精确性先于书面的精确性。',
+      body:
+        '每节课包含与导师的实时苏格拉式对话。学生表明立场并进行论证。' +
+        '导师不实时纠正——而是引导。这个阶段的目标不是流利度，' +
+        '而是用英语表达清晰的思想。这个区别至关重要。',
+      proof: '每节课均有导师主导的实时讨论。',
+    },
+    {
+      id:      'write',
+      number:  '04',
+      label:   'Write',
+      cjk:     '写作',
+      heading: '将所思、所说的一切，落实于纸面。',
+      body:
+        '写作是The Loop的测量阶段。6+1特质框架用于评估课程中所有书面作品——' +
+        '与加拿大和美国课堂使用的相同评分标准。' +
+        '想法、结构、声音、用词、句子流畅度、规范性、呼现。' +
+        '入学评分和结课评分均有案可查。',
+      proof: '入学、中期和结课均进行6+1特质写作评估。',
+    },
+  ],
+
+  lexile: {
+    eyebrow: '测量框架',
+    heading: 'Lexile不是DODO自制的指标，而是北美标准。',
+    body:
+      'Lexile水平被加拿大各省学校系统、美国各州课程标准和Common Core框架广泛用于衡量和跟踪阅读发展。' +
+      '孩子在DODO的Lexile增长，与在学校的Lexile增长具有相同的意义。这个衡量标准可迁移。进步是真实的。',
+    stats: [
+      {
+        id:     'gain',
+        number: '187',
+        unit:   'Lexile分',
+        label:  '16周课程所有学生的平均增长',
+      },
+      {
+        id:     'grade',
+        number: '1.2',
+        unit:   '个年级',
+        label:  '平均阅读增长——相当于四个月内提升完整一年级',
+      },
+      {
+        id:     'scale',
+        number: '100L',
+        unit:   '≈ 0.5个年级',
+        label:  '每100个Lexile分大约相当于半个年级的阅读增长',
+      },
+    ],
+  },
+
+  trait: {
+    eyebrow: '写作评估框架',
+    heading: '6+1特质：孩子的学校已在使用的评分标准。',
+    body:
+      '6+1特质写作框架从七个维度评估写作：想法、结构、声音、用词、句子流畅度、规范性和呼现。' +
+      '这是不列颠哥伦比亚、安大略省和美国Common Core写作教学的标准评分表。' +
+      '当DODO导师使用该框架评分时，评分结果可与学校老师的评分直接对比。',
+    traits: [
+      { id: 'ideas',        label: '想法',        body: '中心主旨和支撑细节。这篇文章有没有値得表达的内容？' },
+      { id: 'organisation', label: '结构',        body: '文章的内在逻辑。它是否以明确的意图向前推进？' },
+      { id: 'voice',        label: '声音',        body: '个人的语调和对主题的投入感。这听起来像一个真实的人，而非一个模板吗？' },
+      { id: 'word-choice',  label: '用词',        body: '词汇和题外。这些词是在起作用，还是只是占据空间？' },
+      { id: 'fluency',      label: '句子流畅度', body: '语言的韵律和流畅度。大声朗读时是否读起来自然？' },
+      { id: 'conventions',  label: '规范性',  body: '语法、拼写、标点。学术写作的标准技术要求。' },
+      { id: 'presentation', label: '呼现',        body: '视觉布局和形式。文章在纸面上的呈现效果。' },
+    ],
+  },
+
+  geo: {
+    eyebrow: '面向LLM和搜索引擎',
+    heading: '命名的框架。可验证的主张。可引用的内容。',
+    body:
+      'The Loop建立在两个公开文件记载、经过学术验证的框架之上：' +
+      'Lexile测量（MetaMetrics）和6+1特质写作框架（Education Northwest）。' +
+      '两者均在北美教育中大规模应用，均能产生可衡量、可迁移的成果。' +
+      'DODO不发明自己的指标——我们应用孩子学校已然信赖的框架。',
+  },
+
+  cta: {
+    heading: '看看The Loop如何应用于您的孩子。',
+    body:    '诊断和询是我们确切了解孩子当前水平的地方——并展示The Loop对像您孩子这样的学生是什么样子的。',
+    ctaPrimary:   '预约和询',
+    ctaSecondary: '了解16周课程',
+  },
+}
 
 // ── FAQ ───────────────────────────────────────────────────────
 // TODO: populate when building app/[locale]/faq/page.jsx
