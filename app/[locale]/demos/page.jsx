@@ -80,82 +80,21 @@ const COPY = {
         { value: '\u221e', unit: 'Free',          desc: 'No sign-up required'           },
       ],
     },
-    featured: {
-      eyebrow:  'Featured Demo Class',
-      label:    'Grade 7\u20138 \u00b7 Independent Reader',
-      labelZh:  '\u4e03\u81f3\u516b\u5e74\u7ea7 \u00b7 \u72ec\u7acb\u9605\u8bfb\u8005',
-      lexile:   'Lexile 820\u2013980',
-      duration: '20 min \u00b7 Unedited',
-      h2:       'The complete Loop, start to finish.',
-      h2zh:     '\u5b8c\u6574\u7684\u5b66\u4e60\u5faa\u73af\uff0c\u4ece\u5f00\u59cb\u5230\u7ed3\u675f',
-      desc:     'A Grade 7\u20138 student works through an argumentative text with a Navigator. The session covers all four Loop phases: annotation-led reading, pre-speech reasoning, a live Socratic exchange, and structured writing with 6+1 Trait feedback. Nothing is edited out.',
-      phases:   ['Read', 'Think', 'Speak', 'Write'],
-    },
-    demoGrid: {
-      eyebrow: 'All Demo Class Recordings',
-      h2:      'Three grade bands. Choose the closest to your child.',
-      h2zh:    '\u4e09\u4e2a\u5e74\u7ea7\u7ec4\u2014\u2014\u9009\u62e9\u6700\u63a5\u8fd1\u60a8\u5b69\u5b50\u7684',
+    videos: {
+      eyebrow:   'Watch Before You Decide',
+      h2:        'Demo classes and program explainers.',
+      h2zh:      '\u793a\u8303\u8bfe\u4e0e\u8bfe\u7a0b\u4ecb\u7ecd',
+      row1Label: 'Demo Class Recordings',
+      row2Label: 'About the Program',
       cards: [
-        {
-          videoId:  YOUTUBE_IDS.demoGr46,
-          grades:   'Grades 4\u20136',
-          gradesZh: '\u56db\u81f3\u516d\u5e74\u7ea7',
-          label:    'Emerging Reader',
-          labelZh:  '\u6210\u957f\u671f\u8bfb\u8005',
-          lexile:   'Lexile 580\u2013720',
-          loop:     'Read \u00b7 Think \u00b7 Write',
-          duration: '20 min',
-          desc:     'Narrative text, annotation-led reading, claim-building, and first-draft writing with live 6+1 Trait feedback.',
-          badge:    'LEXILE 650',
-        },
-        {
-          videoId:  YOUTUBE_IDS.demoGr78,
-          grades:   'Grades 7\u20138',
-          gradesZh: '\u4e03\u81f3\u516b\u5e74\u7ea7',
-          label:    'Independent Reader',
-          labelZh:  '\u72ec\u7acb\u9605\u8bfb\u8005',
-          lexile:   'Lexile 820\u2013980',
-          loop:     'Full Loop',
-          duration: '20 min',
-          desc:     'Argumentative text. Full Loop including counter-argument development, live Socratic exchange, and revision.',
-          badge:    null,
-        },
-        {
-          videoId:  YOUTUBE_IDS.demoGr9plus,
-          grades:   'Grades 9+',
-          gradesZh: '\u4e5d\u5e74\u7ea7\u4ee5\u4e0a',
-          label:    'Advanced Reader',
-          labelZh:  '\u9ad8\u7ea7\u9605\u8bfb\u8005',
-          lexile:   'Lexile 1020+',
-          loop:     'Full Loop \u00b7 Extended',
-          duration: '20 min',
-          desc:     'Complex non-fiction. Extended Socratic exchange, close-reading annotation, and structured academic writing.',
-          badge:    null,
-        },
-      ],
-    },
-    brand: {
-      eyebrow: 'About the Program',
-      h2:      'What makes The Loop different.',
-      h2zh:    '\u5b66\u4e60\u5faa\u73af\u7684\u4e0d\u540c\u4e4b\u5904',
-      sub:     'Short videos explaining the method and the people behind it.',
-      cards: [
-        {
-          videoId:  YOUTUBE_IDS.brandLoop,
-          label:    'The Loop Explained',
-          labelZh:  '\u5b66\u4e60\u5faa\u73af\u89e3\u6790',
-          sub:      '4 phases. One session. Why bilingual students need all of them to build real English fluency.',
-          duration: '5 min',
-          tag:      'Method',
-        },
-        {
-          videoId:  YOUTUBE_IDS.brandNavigator,
-          label:    'Meet a Navigator',
-          labelZh:  '\u8ba4\u8bc6\u9886\u822a\u5458',
-          sub:      'Who teaches the sessions, what they look for, and what makes a Navigator different from a tutor.',
-          duration: '3 min',
-          tag:      'People',
-        },
+        // Row 1 — demo classes
+        { videoId: YOUTUBE_IDS.demoGr46,       label: 'Emerging Reader',    labelZh: '\u6210\u957f\u671f\u8bfb\u8005', tag1: 'Grades 4\u20136', tag2: 'Lexile 580\u2013720', tag3: 'Read \u00b7 Think \u00b7 Write' },
+        { videoId: YOUTUBE_IDS.demoGr78,       label: 'Independent Reader', labelZh: '\u72ec\u7acb\u9605\u8bfb\u8005', tag1: 'Grades 7\u20138', tag2: 'Lexile 820\u2013980', tag3: 'Full Loop' },
+        { videoId: YOUTUBE_IDS.demoGr9plus,    label: 'Advanced Reader',    labelZh: '\u9ad8\u7ea7\u9605\u8bfb\u8005', tag1: 'Grades 9+',       tag2: 'Lexile 1020+',      tag3: 'Full Loop \u00b7 Extended' },
+        // Row 2 — about
+        { videoId: YOUTUBE_IDS.featured,       label: 'The Full Loop',      labelZh: '\u5b8c\u6574\u5faa\u73af\u5c55\u793a', tag1: 'Featured',   tag2: '20 min',  tag3: 'Grades 7\u20138' },
+        { videoId: YOUTUBE_IDS.brandLoop,      label: 'The Loop Explained', labelZh: '\u5b66\u4e60\u5faa\u73af\u89e3\u6790', tag1: 'Method',     tag2: '5 min',   tag3: null },
+        { videoId: YOUTUBE_IDS.brandNavigator, label: 'Meet a Navigator',   labelZh: '\u8ba4\u8bc6\u9886\u822a\u5458',       tag1: 'People',     tag2: '3 min',   tag3: null },
       ],
     },
     session: {
@@ -235,35 +174,19 @@ const COPY = {
         { value: '\u221e', unit: '\u514d\u8d39',             desc: '\u65e0\u9700\u6ce8\u518c'                                 },
       ],
     },
-    featured: {
-      eyebrow:  '\u7cbe\u9009\u793a\u8303\u8bfe',
-      label:    'Grades 7\u20138 \u00b7 \u72ec\u7acb\u9605\u8bfb\u8005',
-      labelZh:  'Independent Reader',
-      lexile:   'Lexile 820\u2013980',
-      duration: '20 \u5206\u949f \u00b7 \u672a\u526a\u8f91',
-      h2:       '\u5b8c\u6574\u7684\u5b66\u4e60\u5faa\u73af\uff0c\u4ece\u5f00\u59cb\u5230\u7ed3\u675f',
-      h2zh:     'The complete Loop, start to finish.',
-      desc:     '\u89c2\u770b\u4e00\u4f4d\u4e03\u516b\u5e74\u7ea7\u5b66\u751f\u5982\u4f55\u4e0e\u9886\u822a\u5458\u4e00\u8d77\u9605\u8bfb\u8bba\u8bc1\u6027\u6587\u672c\u3002\u8bfe\u7a0b\u6db5\u76d6\u56db\u4e2a\u9636\u6bb5\uff1a\u6ce8\u91ca\u9605\u8bfb\u3001\u8bfa\u65ad\u524d\u601d\u7ef4\u3001\u73b0\u573a\u82cf\u683c\u62c9\u5e95\u5f0f\u5bf9\u8bdd\u548c6+1\u5199\u4f5c\u53cd\u9988\u4e0b\u7684\u7ed3\u6784\u5316\u5199\u4f5c\u3002\u672a\u526a\u8f91\u4efb\u4f55\u5185\u5bb9\u3002',
-      phases:   ['\u9605\u8bfb', '\u601d\u8003', '\u8868\u8fbe', '\u5199\u4f5c'],
-    },
-    demoGrid: {
-      eyebrow: '\u5168\u90e8\u793a\u8303\u8bfe\u5f55\u50cf',
-      h2:      '\u4e09\u4e2a\u5e74\u7ea7\u7ec4\u2014\u2014\u9009\u62e9\u6700\u63a5\u8fd1\u60a8\u5b69\u5b50\u7684',
-      h2zh:    'Three grade bands. Choose the closest to your child.',
+    videos: {
+      eyebrow:   '\u89c2\u770b\u540e\u518d\u51b3\u5b9a',
+      h2:        '\u793a\u8303\u8bfe\u4e0e\u8bfe\u7a0b\u4ecb\u7ecd',
+      h2zh:      'Demo classes and program explainers.',
+      row1Label: '\u793a\u8303\u8bfe\u5f55\u50cf',
+      row2Label: '\u5173\u4e8e\u8bfe\u7a0b',
       cards: [
-        { videoId: YOUTUBE_IDS.demoGr46,    grades: 'Grades 4\u20136', gradesZh: '\u56db\u81f3\u516d\u5e74\u7ea7', label: '\u6210\u957f\u671f\u8bfb\u8005', labelZh: 'Emerging Reader',    lexile: 'Lexile 580\u2013720', loop: '\u9605\u8bfb \u00b7 \u601d\u8003 \u00b7 \u5199\u4f5c', duration: '20 \u5206\u949f', desc: '\u53d9\u4e8b\u6587\u672c\uff0c\u6ce8\u91ca\u9605\u8bfb\uff0c\u8bba\u70b9\u6784\u5efa\uff0c6+1\u5b9e\u65f6\u53cd\u9988\u7684\u521d\u7a3f\u5199\u4f5c\u3002', badge: 'LEXILE 650' },
-        { videoId: YOUTUBE_IDS.demoGr78,    grades: 'Grades 7\u20138', gradesZh: '\u4e03\u81f3\u516b\u5e74\u7ea7', label: '\u72ec\u7acb\u9605\u8bfb\u8005', labelZh: 'Independent Reader', lexile: 'Lexile 820\u2013980', loop: '\u5b8c\u6574\u5faa\u73af',                                   duration: '20 \u5206\u949f', desc: '\u8bba\u8bc1\u6027\u6587\u672c\u3002\u5b8c\u6574\u5faa\u73af\uff0c\u5305\u542b\u53cd\u9a73\u5f00\u53d1\u3001\u5bf9\u8bdd\u548c\u4fee\u6539\u3002',                    badge: null  },
-        { videoId: YOUTUBE_IDS.demoGr9plus, grades: 'Grades 9+',       gradesZh: '\u4e5d\u5e74\u7ea7\u4ee5\u4e0a', label: '\u9ad8\u7ea7\u9605\u8bfb\u8005', labelZh: 'Advanced Reader',    lexile: 'Lexile 1020+',     loop: '\u5b8c\u6574\u5faa\u73af \u00b7 \u5ef6\u4f38',              duration: '20 \u5206\u949f', desc: '\u590d\u6742\u975e\u865a\u6784\u6587\u672c\u3002\u5ef6\u4f38\u5bf9\u8bdd\u3001\u7cbe\u8bfb\u6ce8\u91ca\u548c\u7ed3\u6784\u5316\u5b66\u672f\u5199\u4f5c\u3002',        badge: null  },
-      ],
-    },
-    brand: {
-      eyebrow: '\u5173\u4e8e\u8bfe\u7a0b',
-      h2:      '\u5b66\u4e60\u5faa\u73af\u7684\u4e0d\u540c\u4e4b\u5904',
-      h2zh:    'What makes The Loop different.',
-      sub:     '\u77ed\u89c6\u9891\u89e3\u91ca\u8bfe\u7a0b\u65b9\u6cd5\u548c\u80cc\u540e\u7684\u4eba\u3002',
-      cards: [
-        { videoId: YOUTUBE_IDS.brandLoop,      label: '\u5b66\u4e60\u5faa\u73af\u89e3\u6790', labelZh: 'The Loop Explained', sub: '\u56db\u4e2a\u9636\u6bb5\uff0c\u4e00\u6b21\u8bfe\u5802\u3002\u4e3a\u4ec0\u4e48\u53cc\u8bed\u5b66\u751f\u9700\u8981\u6240\u6709\u9636\u6bb5\u3002', duration: '5 \u5206\u949f', tag: '\u65b9\u6cd5' },
-        { videoId: YOUTUBE_IDS.brandNavigator, label: '\u8ba4\u8bc6\u9886\u822a\u5458',       labelZh: 'Meet a Navigator',   sub: '\u8bfe\u7a0b\u7531\u8c01\u6765\u6388\u8bfe\uff0c\u4ed6\u4eec\u5728\u5bfb\u627e\u4ec0\u4e48\uff0c\u9886\u822a\u5458\u4e0e\u666e\u901a\u8f85\u5bfc\u8001\u5e08\u6709\u4f55\u4e0d\u540c\u3002', duration: '3 \u5206\u949f', tag: '\u4eba\u7269' },
+        { videoId: YOUTUBE_IDS.demoGr46,       label: '\u6210\u957f\u671f\u8bfb\u8005', labelZh: 'Emerging Reader',    tag1: 'Grades 4\u20136', tag2: 'Lexile 580\u2013720', tag3: '\u9605\u8bfb \u00b7 \u601d\u8003 \u00b7 \u5199\u4f5c' },
+        { videoId: YOUTUBE_IDS.demoGr78,       label: '\u72ec\u7acb\u9605\u8bfb\u8005', labelZh: 'Independent Reader', tag1: 'Grades 7\u20138', tag2: 'Lexile 820\u2013980', tag3: '\u5b8c\u6574\u5faa\u73af' },
+        { videoId: YOUTUBE_IDS.demoGr9plus,    label: '\u9ad8\u7ea7\u9605\u8bfb\u8005', labelZh: 'Advanced Reader',    tag1: 'Grades 9+',       tag2: 'Lexile 1020+',      tag3: '\u5b8c\u6574\u5faa\u73af \u00b7 \u5ef6\u4f38' },
+        { videoId: YOUTUBE_IDS.featured,       label: '\u5b8c\u6574\u5faa\u73af\u5c55\u793a', labelZh: 'The Full Loop',      tag1: '\u7cbe\u9009',    tag2: '20 \u5206\u949f', tag3: 'Grades 7\u20138' },
+        { videoId: YOUTUBE_IDS.brandLoop,      label: '\u5b66\u4e60\u5faa\u73af\u89e3\u6790', labelZh: 'The Loop Explained', tag1: '\u65b9\u6cd5',    tag2: '5 \u5206\u949f',  tag3: null },
+        { videoId: YOUTUBE_IDS.brandNavigator, label: '\u8ba4\u8bc6\u9886\u822a\u5458',       labelZh: 'Meet a Navigator',   tag1: '\u4eba\u7269',    tag2: '3 \u5206\u949f',  tag3: null },
       ],
     },
     session: {
@@ -366,128 +289,86 @@ function Hero({ locale, c }) {
 }
 
 // ─────────────────────────────────────────────────────────────
-// SECTION 2 — FEATURED DEMO (video 60% / metadata 40%)
+// SECTIONS 2–4 — VIDEO GALLERY (3-per-row, 2 labelled rows)
 // ─────────────────────────────────────────────────────────────
 
-function FeaturedDemo({ locale, c }) {
-  return (
-    <section id="demo-videos" aria-labelledby="featured-heading" style={{ backgroundColor: '#ffffff', padding: 'var(--section-md) 0' }}>
-      <div className="container-section">
-        <div style={{ marginBottom: '2rem' }}>
-          <Eyebrow>{c.featured.eyebrow}</Eyebrow>
-        </div>
-        {/* Card: video left (60%), metadata right (40%) */}
-        <div
-          style={{ display: 'grid', gridTemplateColumns: '1fr', borderRadius: '1.5rem', overflow: 'hidden', border: '1px solid rgba(14,14,18,0.08)', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', backgroundColor: '#0E0E12' }}
-          className="lg:grid-cols-[60fr_40fr]"
-        >
-          {/* Video pane — flush, no padding */}
-          <div style={{ position: 'relative', minHeight: '260px' }}>
-            <YoutubeEmbed videoId={YOUTUBE_IDS.featured} title={`${c.featured.label} — ${c.featured.labelZh}`} rounded="0" />
+function VideoGallery({ locale, c }) {
+  const row1 = c.videos.cards.slice(0, 3)
+  const row2 = c.videos.cards.slice(3, 6)
+
+  function VideoCard({ card }) {
+    return (
+      <article
+        aria-label={`${card.label} — ${card.labelZh}`}
+        style={{
+          backgroundColor: '#ffffff',
+          border:          '1px solid rgba(14,14,18,0.08)',
+          borderRadius:    '0.875rem',
+          overflow:        'hidden',
+          boxShadow:       '0 1px 3px rgba(0,0,0,0.05)',
+          display:         'flex',
+          flexDirection:   'column',
+        }}
+      >
+        {/* Thumbnail — flush, no internal padding */}
+        <YoutubeEmbed videoId={card.videoId} title={`${card.label} — ${card.labelZh}`} rounded="0" />
+
+        {/* Compact metadata strip */}
+        <div style={{ padding: '0.625rem 0.75rem 0.875rem' }}>
+          {/* Pill row */}
+          <div style={{ display: 'flex', gap: '0.3rem', flexWrap: 'wrap', marginBottom: '0.5rem' }}>
+            <Tag variant="violet">{card.tag1}</Tag>
+            <Tag variant="default">{card.tag2}</Tag>
+            {card.tag3 && <Tag variant="default">{card.tag3}</Tag>}
           </div>
-          {/* Metadata pane */}
-          <div style={{ padding: 'clamp(1.5rem, 3vw, 2.5rem)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', borderTop: '1px solid rgba(183,181,254,0.08)', backgroundColor: '#0E0E12' }} className="lg:border-top-0 lg:border-left">
-            <div>
-              <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '1.25rem' }}>
-                <Tag variant="violet">{c.featured.label}</Tag>
-                <Tag variant="dark">{c.featured.lexile}</Tag>
-                <Tag variant="dark">{c.featured.duration}</Tag>
-              </div>
-              <h2 id="featured-heading" style={{ fontSize: 'clamp(1.375rem, 2.5vw, 2rem)', fontWeight: 700, lineHeight: 1.18, letterSpacing: '-0.025em', color: '#F0F0F0', marginBottom: '0.375rem', textWrap: 'balance' }}>{c.featured.h2}</h2>
-              <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '13px', fontWeight: 500, color: 'rgba(183,181,254,0.4)', marginBottom: '1.125rem', lineHeight: 1.5 }}>{c.featured.h2zh}</p>
-              <p style={{ fontSize: '0.9rem', lineHeight: 1.8, color: 'rgba(240,240,240,0.45)' }}>{c.featured.desc}</p>
-            </div>
-            <div style={{ marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(183,181,254,0.07)' }}>
-              <p style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(183,181,254,0.35)', marginBottom: '0.75rem' }}>Loop Phases Covered</p>
-              <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', alignItems: 'center' }}>
-                {c.featured.phases.map((phase, i) => (
-                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <span style={{ padding: '4px 12px', backgroundColor: 'rgba(183,181,254,0.08)', border: '1px solid rgba(183,181,254,0.18)', borderRadius: '9999px', fontSize: '11px', fontWeight: 700, color: '#b7b5fe' }}>{phase}</span>
-                    {i < c.featured.phases.length - 1 && <span style={{ fontSize: '10px', color: 'rgba(183,181,254,0.2)' }}>→</span>}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+          {/* Title */}
+          <p style={{ fontSize: '0.875rem', fontWeight: 700, color: '#0E0E12', lineHeight: 1.3, marginBottom: '1px' }}>
+            {card.label}
+          </p>
+          <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '10px', color: '#5856cc', lineHeight: 1.3 }}>
+            {card.labelZh}
+          </p>
         </div>
-      </div>
-    </section>
-  )
-}
+      </article>
+    )
+  }
 
-// ─────────────────────────────────────────────────────────────
-// SECTION 3 — DEMO GRID (3-col supporting cards)
-// ─────────────────────────────────────────────────────────────
-
-function DemoGrid({ locale, c }) {
   return (
-    <section aria-labelledby="demo-grid-heading" style={{ backgroundColor: '#ffffff', paddingTop: 0, paddingBottom: 'var(--section-md)' }}>
+    <section id="demo-videos" aria-labelledby="video-gallery-heading" style={{ backgroundColor: '#ffffff', padding: 'var(--section-md) 0' }}>
       <div className="container-section">
-        <div style={{ borderTop: '1px solid rgba(14,14,18,0.07)', paddingTop: '2.75rem', marginBottom: '2rem' }}>
-          <Eyebrow>{c.demoGrid.eyebrow}</Eyebrow>
-          <BilingualH2 id="demo-grid-heading" primary={c.demoGrid.h2} secondary={c.demoGrid.h2zh} />
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '1.25rem' }} className="md:grid-cols-3">
-          {c.demoGrid.cards.map((card, i) => (
-            <article key={i} aria-label={`${card.label} demo — ${card.grades}`} style={{ backgroundColor: '#ffffff', border: '1px solid rgba(14,14,18,0.08)', borderRadius: '1.125rem', overflow: 'hidden', boxShadow: '0 1px 4px rgba(0,0,0,0.05)', display: 'flex', flexDirection: 'column' }}>
-              <div style={{ flexShrink: 0 }}>
-                <YoutubeEmbed videoId={card.videoId} title={`${card.label} — ${card.grades}`} rounded="0" />
-              </div>
-              <div style={{ padding: '1rem 1.125rem 1.375rem', display: 'flex', flexDirection: 'column', flex: 1 }}>
-                <div style={{ display: 'flex', gap: '0.375rem', flexWrap: 'wrap', marginBottom: '0.75rem' }}>
-                  <Tag variant="violet">{card.grades}</Tag>
-                  <Tag variant="default">{card.lexile}</Tag>
-                  {card.badge && <Tag variant="dark">{card.badge}</Tag>}
-                  <Tag variant="default">{card.duration}</Tag>
-                </div>
-                <p style={{ fontSize: '1rem', fontWeight: 700, color: '#0E0E12', lineHeight: 1.25, marginBottom: '2px' }}>{card.label}</p>
-                <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '11px', color: '#5856cc', lineHeight: 1.3, marginBottom: '0.625rem' }}>{card.labelZh}</p>
-                <p style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.06em', color: 'rgba(88,86,204,0.55)', textTransform: 'uppercase', marginBottom: '0.5rem' }}>{card.loop}</p>
-                <p style={{ fontSize: '0.8125rem', lineHeight: 1.72, color: '#3D4452', flex: 1 }}>{card.desc}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
 
-// ─────────────────────────────────────────────────────────────
-// SECTION 4 — BRAND VIDEOS (2-col, max-width 960px)
-// ─────────────────────────────────────────────────────────────
-
-function BrandVideos({ locale, c }) {
-  return (
-    <section aria-labelledby="brand-heading" style={{ backgroundColor: '#F5F5FF', padding: 'var(--section-md) 0' }}>
-      <div className="container-section">
+        {/* Section header */}
         <div style={{ marginBottom: '2.5rem' }}>
-          <Eyebrow>{c.brand.eyebrow}</Eyebrow>
-          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
-            <BilingualH2 id="brand-heading" primary={c.brand.h2} secondary={c.brand.h2zh} />
-            <p style={{ fontSize: '0.875rem', color: '#7B8494', maxWidth: '22rem', lineHeight: 1.65 }}>{c.brand.sub}</p>
+          <Eyebrow>{c.videos.eyebrow}</Eyebrow>
+          <BilingualH2 id="video-gallery-heading" primary={c.videos.h2} secondary={c.videos.h2zh} />
+        </div>
+
+        {/* Row 1 — Demo Classes */}
+        <div style={{ marginBottom: '2.5rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+            <p style={{ fontSize: '0.6875rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#5856cc' }}>
+              {c.videos.row1Label}
+            </p>
+            <div style={{ flex: 1, height: '1px', backgroundColor: 'rgba(14,14,18,0.07)' }} aria-hidden="true" />
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '1rem' }} className="md:grid-cols-3">
+            {row1.map((card, i) => <VideoCard key={i} card={card} />)}
           </div>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '1.5rem', maxWidth: '960px' }} className="md:grid-cols-2">
-          {c.brand.cards.map((card, i) => (
-            <article key={i} aria-label={`${card.label} — ${card.labelZh}`} style={{ backgroundColor: '#ffffff', border: '1px solid rgba(14,14,18,0.07)', borderRadius: '1.25rem', overflow: 'hidden', boxShadow: '0 1px 6px rgba(0,0,0,0.05)', display: 'flex', flexDirection: 'column' }}>
-              <YoutubeEmbed videoId={card.videoId} title={`${card.label} — ${card.labelZh}`} rounded="0" />
-              <div style={{ padding: '1rem 1.25rem 1.375rem', display: 'flex', flexDirection: 'column', gap: '0.375rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.75rem' }}>
-                  <div>
-                    <p style={{ fontSize: '1rem', fontWeight: 700, color: '#0E0E12', lineHeight: 1.25 }}>{card.label}</p>
-                    <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '11px', color: '#5856cc', lineHeight: 1.4, marginTop: '2px' }}>{card.labelZh}</p>
-                  </div>
-                  <div style={{ display: 'flex', gap: '0.375rem', flexShrink: 0 }}>
-                    <Tag variant="default">{card.tag}</Tag>
-                    <Tag variant="default">{card.duration}</Tag>
-                  </div>
-                </div>
-                <p style={{ fontSize: '0.875rem', lineHeight: 1.7, color: '#3D4452', marginTop: '0.25rem' }}>{card.sub}</p>
-              </div>
-            </article>
-          ))}
+
+        {/* Row 2 — About */}
+        <div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+            <p style={{ fontSize: '0.6875rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#5856cc' }}>
+              {c.videos.row2Label}
+            </p>
+            <div style={{ flex: 1, height: '1px', backgroundColor: 'rgba(14,14,18,0.07)' }} aria-hidden="true" />
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '1rem' }} className="md:grid-cols-3">
+            {row2.map((card, i) => <VideoCard key={i} card={card} />)}
+          </div>
         </div>
+
       </div>
     </section>
   )
@@ -688,9 +569,7 @@ export default async function DemosPage({ params }) {
   return (
     <>
       <Hero           locale={locale} c={c} />
-      <FeaturedDemo   locale={locale} c={c} />
-      <DemoGrid       locale={locale} c={c} />
-      <BrandVideos    locale={locale} c={c} />
+      <VideoGallery   locale={locale} c={c} />
       <InsideSession  locale={locale} c={c} />
       <AfterDemo      locale={locale} c={c} />
       <ResultsSection locale={locale} c={c} />
