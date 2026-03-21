@@ -254,18 +254,18 @@ function Hero({ locale, c }) {
       <div aria-hidden="true" className="pointer-events-none absolute inset-0"
         style={{ background: 'radial-gradient(ellipse 60% 55% at 70% 40%, rgba(183,181,254,0.22) 0%, transparent 65%)' }} />
 
-      {/* Logo icon — large editorial background element, right side, partially cropped */}
+      {/* Logo icon — oversized, bleeds off right edge, underlaps text */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute select-none"
         style={{
-          right:     '-6%',
+          right:     '-12%',
           top:       '50%',
           transform: 'translateY(-50%)',
-          width:     '54%',
-          maxWidth:  '620px',
-          minWidth:  '320px',
-          opacity:   0.13,
+          width:     '80%',
+          maxWidth:  '900px',
+          minWidth:  '480px',
+          opacity:   0.08,
         }}
       >
         <svg
