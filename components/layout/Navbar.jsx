@@ -89,7 +89,7 @@ function Wordmark({ locale }) {
     >
       <div
         style={{
-          height:     '42px',
+          height:     'calc(var(--nav-height) - 12px)',
           overflow:   'hidden',
           display:    'flex',
           alignItems: 'center',
@@ -101,9 +101,9 @@ function Wordmark({ locale }) {
           src="/logo-dark.svg"
           alt="DODO Learning"
           style={{
-            height:     '42px',
+            height:     'calc(var(--nav-height) - 12px)',
             width:      'auto',
-            maxHeight:  '42px',
+            maxHeight:  'calc(var(--nav-height) - 12px)',
             display:    'block',
             flexShrink: 0,
           }}
