@@ -1,27 +1,31 @@
 // app/[locale]/consult/page.jsx
 //
-// Diagnostic Consultation — identical design pattern to program/page.jsx.
-// ConsultForm (client component, a11y-complete) is preserved exactly.
+// Diagnostic Consultation — redesigned around Cal.com booking embed.
+// ConsultCalEmbed (client component) owns all Cal.com initialisation.
 //
-// A11y note (§4 of handoff): /consult is highest a11y risk.
-// All form a11y lives in ConsultForm.jsx — do not move it.
+// A11y note (§4): /consult is highest a11y risk.
+// Form a11y is now handled by Cal.com embed; all custom a11y is in
+// surrounding sections of this file.
 //
 // Sections (top → bottom):
-//   1. Hero         — dark void, ticker strip, h1, 6 stat pills
-//   2. WhatHappens  — white, 4 phase cards (Diagnose/Identify/Prescribe/Decide)
-//   3. CallTypes    — whisper, 3 milestone cards + LexileBar
-//   4. RealCall     — dark bg image, narrative overlay
-//   5. Trust        — dark, Navigator-not-sales + bullet points
+//   1. Hero           — dark void, ticker strip, h1, 6 stat pills
+//   2. WhatHappens    — white, 4 phase cards (Diagnose/Identify/Prescribe/Decide)
+//   3. CallMilestones — whisper, 3 milestone cards + LexileBar
+//   4. RealCall       — dark bg image, narrative overlay
+//   5. TrustSection   — dark, Navigator-not-sales + bullet points
 //   6. WhatYoullLearn — darker, Lexile scale + 6+1 Trait
-//   7. Form         — light, ConsultForm
-//   8. Charter      — dark, dual-CTA footer band
+//   7. CalendarSection — light whisper, Cal.com inline embed
+//   8. CharterSection  — dark, dual-CTA footer band
 
-import Link from 'next/link'
-import { notFound }                    from 'next/navigation'
-import { isValidLocale, localeParams } from '@/lib/i18n'
-import { buildMetadata }               from '@/lib/metadata'
-import ConsultForm                     from '@/components/consult/ConsultForm'
-import LexileBar                       from '@/components/ui/LexileBar'
+import Link            from 'next/link'
+import { notFound }   from 'next/navigation'
+import {
+  isValidLocale,
+  localeParams,
+}                      from '@/lib/i18n'
+import { buildMetadata } from '@/lib/metadata'
+import ConsultCalEmbed   from '@/components/consult/ConsultCalEmbed'
+import LexileBar         from '@/components/ui/LexileBar'
 
 // ─────────────────────────────────────────────────────────────
 // STATIC STRUCTURAL DATA
@@ -50,13 +54,13 @@ const LEXILE_SCALE = [
 ]
 
 const TRAITS = [
-  { id: 'ideas',        en: 'Ideas',            zh: '\u60f3\u6cd5',     start: 2, end: 4 },
-  { id: 'organisation', en: 'Organisation',     zh: '\u7ed3\u6784',     start: 2, end: 4 },
-  { id: 'voice',        en: 'Voice',            zh: '\u58f0\u97f3',     start: 2, end: 4 },
-  { id: 'word-choice',  en: 'Word Choice',      zh: '\u8bcd\u6c47\u9009\u62e9', start: 2, end: 5 },
-  { id: 'fluency',      en: 'Sentence Fluency', zh: '\u53e5\u5b50\u6d41\u7545', start: 3, end: 5 },
-  { id: 'conventions',  en: 'Conventions',      zh: '\u5199\u4f5c\u89c4\u8303', start: 3, end: 4 },
-  { id: 'presentation', en: 'Presentation',     zh: '\u5448\u73b0',     start: 2, end: 4 },
+  { id: 'ideas',        en: 'Ideas',            zh: '\u60f3\u6cd5',                   start: 2, end: 4 },
+  { id: 'organisation', en: 'Organisation',     zh: '\u7ed3\u6784',                   start: 2, end: 4 },
+  { id: 'voice',        en: 'Voice',            zh: '\u58f0\u97f3',                   start: 2, end: 4 },
+  { id: 'word-choice',  en: 'Word Choice',      zh: '\u8bcd\u6c47\u9009\u62e9',       start: 2, end: 5 },
+  { id: 'fluency',      en: 'Sentence Fluency', zh: '\u53e5\u5b50\u6d41\u7545',       start: 3, end: 5 },
+  { id: 'conventions',  en: 'Conventions',      zh: '\u5199\u4f5c\u89c4\u8303',       start: 3, end: 4 },
+  { id: 'presentation', en: 'Presentation',     zh: '\u5448\u73b0',                   start: 2, end: 4 },
 ]
 
 // ─────────────────────────────────────────────────────────────
@@ -78,12 +82,12 @@ const COPY = {
       cta1: 'Book My Consultation',
       cta2: 'See The Program',
       stats: [
-        { value: '20',  unit: 'Minutes',       desc: 'Focused, no filler'         },
-        { value: '1',   unit: 'Navigator',     desc: 'Not a sales rep'            },
-        { value: '4',   unit: 'Phases',        desc: 'Diagnose \u00b7 Identify \u00b7 Prescribe \u00b7 Decide' },
-        { value: '1',   unit: 'Lexile Score',  desc: 'Identified before call ends' },
-        { value: '0',   unit: 'Obligation',    desc: 'No commitment to book'      },
-        { value: '\u221e', unit: 'Free',        desc: 'Always, no sign-up'        },
+        { value: '20',    unit: 'Minutes',      desc: 'Focused, no filler'             },
+        { value: '1',     unit: 'Navigator',    desc: 'Not a sales rep'                },
+        { value: '4',     unit: 'Phases',       desc: 'Diagnose \u00b7 Identify \u00b7 Prescribe \u00b7 Decide' },
+        { value: '1',     unit: 'Lexile Score', desc: 'Identified before call ends'    },
+        { value: '0',     unit: 'Obligation',   desc: 'No commitment to book'          },
+        { value: '\u221e', unit: 'Free',         desc: 'Always, no sign-up'            },
       ],
     },
     phases: {
@@ -91,13 +95,13 @@ const COPY = {
       h2:      'Four phases. Twenty minutes. A real answer.',
       h2zh:    '\u56db\u4e2a\u9636\u6bb5\uff0c\u4e8c\u5341\u5206\u949f\uff0c\u771f\u5b9e\u7684\u7b54\u6848',
       steps: [
-        { num: '01', label: 'Diagnose',          labelZh: '\u8bca\u65ad',  badge: '5 min',
+        { num: '01', label: 'Diagnose',         labelZh: '\u8bfa\u65ad',        badge: '5 min',
           desc: 'We ask about your child\u2019s current school experience \u2014 not their English level. What does a typical English class feel like for them? Not the grade \u2014 the feeling.' },
-        { num: '02', label: 'Identify the Gap',  labelZh: '\u786e\u5b9a\u5dee\u8ddd', badge: '5 min',
+        { num: '02', label: 'Identify the Gap', labelZh: '\u786e\u5b9a\u5dee\u8ddd', badge: '5 min',
           desc: 'We name the specific gap with precision. A vocabulary depth gap, a fluency gap, and a writing confidence gap require different solutions. We identify which one.' },
-        { num: '03', label: 'Prescribe',         labelZh: '\u5236\u5b9a\u65b9\u6848', badge: '5 min',
+        { num: '03', label: 'Prescribe',        labelZh: '\u5236\u5b9a\u65b9\u6848', badge: '5 min',
           desc: 'We describe what the first 16 weeks looks like for a student exactly like yours \u2014 with specific Lexile targets and a 6+1 Trait writing baseline.' },
-        { num: '04', label: 'Decide',            labelZh: '\u505a\u51b3\u5b9a',  badge: '5 min',
+        { num: '04', label: 'Decide',           labelZh: '\u505a\u51b3\u5b9a',    badge: '5 min',
           desc: 'If Charter Enrollment is the right fit, we explain the founding rate and next steps. No pressure. Clear terms. You decide when you\u2019re ready.' },
       ],
     },
@@ -107,8 +111,8 @@ const COPY = {
       h2zh:    '\u901a\u8bdd\u524d\u3001\u4e2d\u3001\u540e',
       steps: [
         { timing: 'Before the call',  timingZh: '\u901a\u8bdd\u524d',
-          label: 'You fill in the form',  labelZh: '\u586b\u5199\u8868\u683c',
-          desc:  'Name, child\u2019s grade, your city, and one sentence about your main concern. That\u2019s all we need. We read it before the call so we don\u2019t waste your time.',
+          label: 'You pick a time',        labelZh: '\u9009\u62e9\u65f6\u95f4',
+          desc:  'Use the booking calendar below to choose a 20-minute slot. Pick whatever works. We read your submitted notes before the call so we don\u2019t waste your time.',
           badge: null, badgeSub: null },
         { timing: 'During the call',  timingZh: '\u901a\u8bdd\u4e2d',
           label: 'The Navigator listens first', labelZh: '\u9886\u822a\u5458\u5148\u503c\u542c',
@@ -166,25 +170,17 @@ const COPY = {
         note:       'The writing snapshot gives us a baseline for Ideas, Organisation, and Voice \u2014 the three traits that predict academic writing performance most reliably.',
       },
     },
-    form: {
+    calendar: {
       eyebrow: 'Book Your Consultation',
-      h2:      'Book your consultation.',
-      h2zh:    '\u9884\u7ea6\u60a8\u7684\u548b\u8be2',
-      sub:     'Fill in the form and we will confirm a time within one business day.',
-      labels: {
-        parentName:   'Parent or Guardian Name',
-        email:        'Email Address',
-        phone:        'Phone Number',
-        childName:    'Child\u2019s Name',
-        childGrade:   'Child\u2019s Current Grade',
-        city:         'City',
-        message:      'What is your main concern about your child\u2019s English right now?',
-        submit:       'Book My Consultation',
-        submitting:   'Submitting\u2026',
-        successTitle: 'We\u2019ll be in touch.',
-        successBody:  'Expect a response within one business day to confirm your consultation time.',
-        errorBody:    'Something went wrong. Please try again or email us directly.',
-      },
+      h2:      'Pick a time. We\u2019ll do the rest.',
+      h2zh:    '\u9009\u62e9\u65f6\u95f4\uff0c\u6211\u4eec\u6765\u5b89\u6392',
+      sub:     'Choose any available 20-minute slot below. A Navigator will confirm and be ready with your child\u2019s profile in mind.',
+      badge:   'Navigator Available',
+      points: [
+        'Confirmation within one business day',
+        'Available in English and Mandarin',
+        'Reschedule any time \u2014 no penalty',
+      ],
     },
     charter: {
       badge: 'Charter Enrollment Open',
@@ -209,12 +205,12 @@ const COPY = {
       cta1: '\u9884\u7ea6\u6211\u7684\u548b\u8be2',
       cta2: '\u67e5\u770b\u8bfe\u7a0b',
       stats: [
-        { value: '20',  unit: '\u5206\u949f',      desc: '\u7cbe\u51c6\u9ad8\u6548'                 },
-        { value: '1',   unit: '\u4f4d\u9886\u822a\u5458', desc: '\u4e0d\u662f\u9500\u552e\u4ee3\u8868' },
-        { value: '4',   unit: '\u4e2a\u9636\u6bb5', desc: '\u8bfa\u65ad \u00b7 \u786e\u5dee\u8ddd \u00b7 \u5236\u65b9\u6848 \u00b7 \u505a\u51b3\u5b9a' },
-        { value: '1',   unit: 'Lexile\u5206\u6570', desc: '\u901a\u8bdd\u7ed3\u675f\u524d\u786e\u5b9a' },
-        { value: '0',   unit: '\u627f\u8bfa\u8981\u6c42', desc: '\u9884\u7ea6\u65e0\u9700\u627f\u8bfa' },
-        { value: '\u221e', unit: '\u514d\u8d39',   desc: '\u59cb\u7ec8\u514d\u8d39\uff0c\u65e0\u9700\u6ce8\u518c' },
+        { value: '20',     unit: '\u5206\u949f',          desc: '\u7cbe\u51c6\u9ad8\u6548'                              },
+        { value: '1',      unit: '\u4f4d\u9886\u822a\u5458', desc: '\u4e0d\u662f\u9500\u552e\u4ee3\u8868'             },
+        { value: '4',      unit: '\u4e2a\u9636\u6bb5',    desc: '\u8bfa\u65ad \u00b7 \u786e\u5dee\u8ddd \u00b7 \u5236\u65b9\u6848 \u00b7 \u505a\u51b3\u5b9a' },
+        { value: '1',      unit: 'Lexile\u5206\u6570',    desc: '\u901a\u8bdd\u7ed3\u675f\u524d\u786e\u5b9a'           },
+        { value: '0',      unit: '\u627f\u8bfa\u8981\u6c42', desc: '\u9884\u7ea6\u65e0\u9700\u627f\u8bfa'             },
+        { value: '\u221e', unit: '\u514d\u8d39',          desc: '\u59cb\u7ec8\u514d\u8d39\uff0c\u65e0\u9700\u6ce8\u518c' },
       ],
     },
     phases: {
@@ -222,13 +218,13 @@ const COPY = {
       h2:      '\u56db\u4e2a\u9636\u6bb5\uff0c\u4e8c\u5341\u5206\u949f\uff0c\u771f\u5b9e\u7684\u7b54\u6848',
       h2zh:    'Four phases. Twenty minutes. A real answer.',
       steps: [
-        { num: '01', label: '\u8bfa\u65ad',      labelZh: 'Diagnose',         badge: '5 \u5206\u949f',
+        { num: '01', label: '\u8bfa\u65ad',          labelZh: 'Diagnose',         badge: '5 \u5206\u949f',
           desc: '\u6211\u4eec\u8be2\u95ee\u5b69\u5b50\u7684\u5b66\u6821\u4f53\u9a8c\u2014\u2014\u800c\u975e\u82f1\u8bed\u6c34\u5e73\u3002\u82f1\u8bed\u8bfe\u5bf9\u4ed6\u4eec\u6765\u8bf4\u662f\u4ec0\u4e48\u611f\u89c9\uff1f\u4e0d\u770b\u6210\u7ee9\u2014\u2014\u770b\u611f\u53d7\u3002' },
         { num: '02', label: '\u786e\u5b9a\u5dee\u8ddd', labelZh: 'Identify the Gap', badge: '5 \u5206\u949f',
           desc: '\u6211\u4eec\u7cbe\u786e\u547d\u540d\u5177\u4f53\u7684\u5dee\u8ddd\u3002\u8bcd\u6c47\u6df1\u5ea6\u5dee\u8ddd\u3001\u6d41\u7545\u5ea6\u5dee\u8ddd\u548c\u5199\u4f5c\u4fe1\u5fc3\u5dee\u8ddd\u9700\u8981\u4e0d\u540c\u7684\u89e3\u51b3\u65b9\u6848\u3002\u6211\u4eec\u786e\u5b9a\u7684\u662f\u54ea\u4e00\u79cd\u3002' },
         { num: '03', label: '\u5236\u5b9a\u65b9\u6848', labelZh: 'Prescribe',        badge: '5 \u5206\u949f',
-          desc: '\u6211\u4eec\u63cf\u8ff0\u4e0e\u60a8\u5b69\u5b50\u5b8c\u5168\u76f8\u540c\u7684\u5b66\u751f\u7684\u524d\u5341\u516d\u5468\u662f\u4ec0\u4e48\u6837\u5b50\u2014\u2014\u5305\u62ec\u5177\u4f53\u7684Lexile\u76ee\u6807\u548c6+1\u5199\u4f5c\u7279\u8d28\u57fa\u7ebf\u3002' },
-        { num: '04', label: '\u505a\u51b3\u5b9a',   labelZh: 'Decide',          badge: '5 \u5206\u949f',
+          desc: '\u6211\u4eec\u63cf\u8ff0\u4e0e\u60a8\u5b69\u5b50\u5b8c\u5168\u76f8\u540c\u7684\u5b66\u751f\u7684\u524d\u5341\u516d\u5468\u662f\u4ec0\u4e48\u6837\u5b50\u2014\u2014\u5305\u62ecLexile\u76ee\u6807\u548c6+1\u5199\u4f5c\u7279\u8d28\u57fa\u7ebf\u3002' },
+        { num: '04', label: '\u505a\u51b3\u5b9a',      labelZh: 'Decide',          badge: '5 \u5206\u949f',
           desc: '\u5982\u679c\u521b\u59cb\u62a5\u540d\u9002\u5408\u60a8\uff0c\u6211\u4eec\u4ecb\u7ecd\u521b\u59cb\u8d39\u7387\u548c\u540e\u7eed\u6b65\u9aa4\u3002\u6ca1\u6709\u538b\u529b\uff0c\u6761\u6b3e\u6e05\u6670\u3002\u60a8\u51b3\u5b9a\u65f6\u6211\u4eec\u5c31\u51c6\u5907\u597d\u4e86\u3002' },
       ],
     },
@@ -238,8 +234,8 @@ const COPY = {
       h2zh:    'Before, during, and after the call.',
       steps: [
         { timing: '\u901a\u8bdd\u524d',  timingZh: 'Before the call',
-          label: '\u586b\u5199\u8868\u683c',            labelZh: 'You fill in the form',
-          desc:  '\u59d3\u540d\u3001\u5b69\u5b50\u5e74\u7ea7\u3001\u60a8\u6240\u5728\u57ce\u5e02\uff0c\u4ee5\u53ca\u4e00\u53e5\u8bdd\u8bf4\u660e\u60a8\u6700\u5173\u5fc3\u7684\u95ee\u9898\u3002\u8fd9\u5c31\u8db3\u591f\u4e86\u3002\u6211\u4eec\u5728\u901a\u8bdd\u524d\u4f1a\u8bfb\u53d6\uff0c\u8282\u7701\u60a8\u7684\u65f6\u95f4\u3002',
+          label: '\u9009\u62e9\u65f6\u95f4',           labelZh: 'You pick a time',
+          desc:  '\u5728\u4e0b\u65b9\u7684\u9884\u7ea6\u65e5\u5386\u4e2d\u9009\u62e9\u4e00\u4e2a20\u5206\u949f\u7684\u65f6\u6bb5\u3002\u6211\u4eec\u5728\u901a\u8bdd\u524d\u4f1a\u9605\u8bfb\u60a8\u63d0\u4ea4\u7684\u5907\u6ce8\uff0c\u8282\u7701\u60a8\u7684\u65f6\u95f4\u3002',
           badge: null, badgeSub: null },
         { timing: '\u901a\u8bdd\u4e2d',  timingZh: 'During the call',
           label: '\u9886\u822a\u5458\u5148\u503c\u542c', labelZh: 'The Navigator listens first',
@@ -297,25 +293,17 @@ const COPY = {
         note:       '\u5199\u4f5c\u5feb\u7167\u4e3a\u6211\u4eec\u5efa\u7acb\u60f3\u6cd5\u3001\u7ed3\u6784\u548c\u58f0\u97f3\u7684\u57fa\u7ebf\u2014\u2014\u8fd9\u4e09\u4e2a\u7279\u8d28\u662f\u9884\u6d4b\u5b66\u672f\u5199\u4f5c\u8868\u73b0\u6700\u53ef\u9760\u7684\u6307\u6807\u3002',
       },
     },
-    form: {
+    calendar: {
       eyebrow: '\u9884\u7ea6\u548b\u8be2',
-      h2:      '\u9884\u7ea6\u60a8\u7684\u548b\u8be2',
-      h2zh:    'Book your consultation.',
-      sub:     '\u586b\u5199\u8868\u683c\uff0c\u6211\u4eec\u5c06\u5728\u4e00\u4e2a\u5de5\u4f5c\u65e5\u5185\u786e\u8ba4\u65f6\u95f4\u3002',
-      labels: {
-        parentName:   '\u5bb6\u957f\u59d3\u540d',
-        email:        '\u7535\u5b50\u90ae\u7b71',
-        phone:        '\u7535\u8bdd\u53f7\u7801',
-        childName:    '\u5b69\u5b50\u59d3\u540d',
-        childGrade:   '\u5b69\u5b50\u5f53\u524d\u5e74\u7ea7',
-        city:         '\u6240\u5728\u57ce\u5e02',
-        message:      '\u60a8\u76ee\u524d\u5bf9\u5b69\u5b50\u82f1\u8bed\u6700\u5927\u7684\u62c5\u5fe7\u662f\u4ec0\u4e48\uff1f',
-        submit:       '\u9884\u7ea6\u6211\u7684\u548b\u8be2',
-        submitting:   '\u63d0\u4ea4\u4e2d\u2026',
-        successTitle: '\u6211\u4eec\u5c06\u5c3d\u5feb\u8054\u7cfb\u60a8\u3002',
-        successBody:  '\u8bf7\u5728\u4e00\u4e2a\u5de5\u4f5c\u65e5\u5185\u67e5\u6536\u786e\u8ba4\u90ae\u4ef6\u3002',
-        errorBody:    '\u51fa\u9519\u4e86\u3002\u8bf7\u91cd\u8bd5\u6216\u76f4\u63a5\u53d1\u90ae\u4ef6\u8054\u7cfb\u6211\u4eec\u3002',
-      },
+      h2:      '\u9009\u62e9\u65f6\u95f4\uff0c\u6211\u4eec\u6765\u5b89\u6392',
+      h2zh:    'Pick a time. We\u2019ll do the rest.',
+      sub:     '\u5728\u4e0b\u65b9\u9009\u62e9\u4efb\u610f\u4e00\u4e2a20\u5206\u949f\u7684\u53ef\u7528\u65f6\u6bb5\u3002\u9886\u822a\u5458\u5c06\u786e\u8ba4\u5e76\u63d0\u524d\u4e86\u89e3\u60a8\u5b69\u5b50\u7684\u60c5\u51b5\u3002',
+      badge:   '\u9886\u822a\u5458\u5f85\u547d',
+      points: [
+        '\u4e00\u4e2a\u5de5\u4f5c\u65e5\u5185\u786e\u8ba4',
+        '\u53ef\u7528\u82f1\u8bed\u6216\u666e\u901a\u8bdd\u8fdb\u884c',
+        '\u53ef\u968f\u65f6\u91cd\u65b0\u5b89\u6392\uff0c\u65e0\u9700\u7f5a\u6b3e',
+      ],
     },
     charter: {
       badge: 'Charter Enrollment Open',
@@ -328,7 +316,7 @@ const COPY = {
 }
 
 // ─────────────────────────────────────────────────────────────
-// SHARED PRIMITIVES (identical to program/demos)
+// SHARED PRIMITIVES
 // ─────────────────────────────────────────────────────────────
 
 function BilingualH2({ primary, secondary, light = false, center = false, id }) {
@@ -485,7 +473,7 @@ function Hero({ locale, c }) {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3">
-            <a href="#consult-form" className="btn btn-charter" style={{ fontWeight: 700 }}>
+            <a href="#consult-calendar" className="btn btn-charter" style={{ fontWeight: 700 }}>
               {c.hero.cta1}
             </a>
             <Link href={`/${locale}/program`} className="btn btn-ghost">
@@ -814,12 +802,8 @@ function TrustSection({ locale, c }) {
                 <span
                   aria-hidden="true"
                   style={{
-                    width:           '6px',
-                    height:          '6px',
-                    borderRadius:    '50%',
-                    backgroundColor: '#b7b5fe',
-                    flexShrink:      0,
-                    marginTop:       '0.45rem',
+                    width: '6px', height: '6px', borderRadius: '50%',
+                    backgroundColor: '#b7b5fe', flexShrink: 0, marginTop: '0.45rem',
                   }}
                 />
                 <span style={{ fontSize: '0.9375rem', lineHeight: 1.7, color: 'rgba(240,240,240,0.6)' }}>
@@ -937,27 +921,90 @@ function WhatYoullLearn({ locale, c }) {
 }
 
 // ─────────────────────────────────────────────────────────────
-// SECTION 7 — FORM
+// SECTION 7 — CALENDAR BOOKING (Cal.com embed)
 // ─────────────────────────────────────────────────────────────
 
-function FormSection({ locale, c }) {
+function CalendarSection({ locale, c }) {
   return (
     <section
-      id="consult-form"
-      aria-labelledby="form-heading"
+      id="consult-calendar"
+      aria-labelledby="calendar-heading"
       style={{ backgroundColor: '#F5F5FF', padding: 'var(--section-md) 0' }}
     >
       <div className="container-section">
-        <div style={{ maxWidth: '560px', margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-            <Eyebrow center>{c.form.eyebrow}</Eyebrow>
-            <BilingualH2 id="form-heading" primary={c.form.h2} secondary={c.form.h2zh} center />
-            <p style={{ fontSize: '0.9375rem', lineHeight: 1.75, color: '#3D4452', marginTop: '0.75rem' }}>
-              {c.form.sub}
+
+        {/* Header row */}
+        <div
+          style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '2.5rem', marginBottom: '3rem' }}
+          className="lg:grid-cols-2 lg:items-end"
+        >
+          <div>
+            <Eyebrow>{c.calendar.eyebrow}</Eyebrow>
+            <BilingualH2 id="calendar-heading" primary={c.calendar.h2} secondary={c.calendar.h2zh} />
+            <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#3D4452', marginTop: '0.875rem', maxWidth: '32rem' }}>
+              {c.calendar.sub}
             </p>
           </div>
-          <ConsultForm labels={c.form.labels} variant="consult" />
+
+          {/* Quick-trust strip */}
+          <div
+            style={{
+              display:         'flex',
+              flexDirection:   'column',
+              gap:             '0.75rem',
+              padding:         '1.5rem',
+              backgroundColor: '#ffffff',
+              borderRadius:    '1rem',
+              border:          '1px solid rgba(14,14,18,0.07)',
+              boxShadow:       '0 1px 4px rgba(0,0,0,0.04)',
+            }}
+          >
+            <div
+              className="inline-flex items-center gap-2 self-start rounded-full"
+              style={{ padding: '4px 12px', backgroundColor: 'rgba(183,181,254,0.08)', border: '1px solid rgba(183,181,254,0.2)' }}
+            >
+              <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: '#b7b5fe' }} />
+              <span style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#5856cc' }}>
+                {c.calendar.badge}
+              </span>
+            </div>
+            <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.625rem', margin: 0, padding: 0, listStyle: 'none' }}>
+              {c.calendar.points.map((pt, i) => (
+                <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.625rem' }}>
+                  <span
+                    aria-hidden="true"
+                    style={{
+                      width: '18px', height: '18px', borderRadius: '50%', flexShrink: 0,
+                      backgroundColor: 'rgba(183,181,254,0.12)',
+                      border: '1px solid rgba(183,181,254,0.25)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    }}
+                  >
+                    <svg width="8" height="6" viewBox="0 0 8 6" fill="none" aria-hidden="true">
+                      <path d="M1 3l2 2 4-4" stroke="#b7b5fe" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </span>
+                  <span style={{ fontSize: '0.875rem', color: '#3D4452', lineHeight: 1.5 }}>{pt}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
+
+        {/* Cal.com embed container */}
+        <div
+          style={{
+            backgroundColor: '#ffffff',
+            borderRadius:    '1.25rem',
+            border:          '1px solid rgba(14,14,18,0.07)',
+            boxShadow:       '0 2px 12px rgba(0,0,0,0.06)',
+            overflow:        'hidden',
+            padding:         '0.5rem',
+          }}
+        >
+          <ConsultCalEmbed />
+        </div>
+
       </div>
     </section>
   )
@@ -994,7 +1041,7 @@ function CharterSection({ locale, c }) {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3">
-            <a href="#consult-form" className="btn btn-charter">{c.charter.btn1}</a>
+            <a href="#consult-calendar" className="btn btn-charter">{c.charter.btn1}</a>
             <Link href={`/${locale}/program`} className="btn btn-ghost">{c.charter.btn2}</Link>
           </div>
 
@@ -1041,7 +1088,7 @@ export default async function ConsultPage({ params }) {
       <RealCall         locale={locale} c={c} />
       <TrustSection     locale={locale} c={c} />
       <WhatYoullLearn   locale={locale} c={c} />
-      <FormSection      locale={locale} c={c} />
+      <CalendarSection  locale={locale} c={c} />
       <CharterSection   locale={locale} c={c} />
     </>
   )
