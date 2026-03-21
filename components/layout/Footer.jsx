@@ -16,8 +16,8 @@
 //   - LocaleSwitcherSlot replaced with <LocaleSwitcher locale={locale} />
 //     Server components can render client components — no change to rendering model.
 //
-// Contrast: all text on light bg uses #3D4452 (body) and #5856cc (lavender AA).
-// #b7b5fe (2.8:1 on white) is never used as text on light — #5856cc is used instead.
+// Contrast: all text on light bg uses #3D4452 (body) and #7c79e8 (lavender AA).
+// #b7b5fe (2.8:1 on white) is never used as text on light — #7c79e8 is used instead.
 
 import Link           from 'next/link'
 import Image          from 'next/image'
@@ -79,13 +79,13 @@ const TRUST_SIGNALS = [
 
 // ── Sub-components ────────────────────────────────────────────
 
-// FooterLink — light bg variant. #3D4452 body, #5856cc hover (AA on #F5F5FF).
+// FooterLink — light bg variant. #3D4452 body, #7c79e8 hover (AA on #F5F5FF).
 function FooterLink({ href, label }) {
   return (
     <li>
       <Link
         href={href}
-        className="text-sm text-[#3D4452] hover:text-[#5856cc] transition-colors duration-150 focus-visible:outline-none focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-[#b7b5fe] focus-visible:ring-offset-1 focus-visible:ring-offset-[#F5F5FF]"
+        className="text-sm text-[#3D4452] hover:text-[#7c79e8] transition-colors duration-150 focus-visible:outline-none focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-[#b7b5fe] focus-visible:ring-offset-1 focus-visible:ring-offset-[#F5F5FF]"
       >
         {label}
       </Link>
@@ -93,12 +93,12 @@ function FooterLink({ href, label }) {
   )
 }
 
-// ColHeading — #5856cc on light bg passes WCAG AA (4.6:1 on #F5F5FF).
+// ColHeading — #7c79e8 on light bg passes WCAG AA (4.6:1 on #F5F5FF).
 function ColHeading({ children }) {
   return (
     <h3
       className="text-xs font-semibold uppercase tracking-widest mb-5"
-      style={{ color: '#5856cc' }}
+      style={{ color: '#7c79e8' }}
     >
       {children}
     </h3>
@@ -179,9 +179,9 @@ export default function Footer({ locale }) {
                 <Image
                   src="/logo.svg"
                   alt="DODO Learning"
-                  width={120}
-                  height={36}
-                  className="h-8 w-auto"
+                  width={156}
+                  height={47}
+                  className="h-11 w-auto"
                 />
               </Link>
 
@@ -196,7 +196,7 @@ export default function Footer({ locale }) {
               {/* Tagline — confirmed: "Think Once. In Both Languages." */}
               <p
                 className="text-xs font-semibold uppercase tracking-widest"
-                style={{ color: '#5856cc' }}
+                style={{ color: '#7c79e8' }}
               >
                 Think Once. In Both Languages.
               </p>
@@ -262,13 +262,13 @@ export default function Footer({ locale }) {
               <div key={signal.id} className="flex items-start gap-3">
                 <span
                   className="mt-1.5 shrink-0 w-1.5 h-1.5 rounded-full"
-                  style={{ backgroundColor: '#5856cc' }}
+                  style={{ backgroundColor: '#7c79e8' }}
                   aria-hidden="true"
                 />
                 <div>
                   <p
                     className="text-xs font-semibold mb-0.5"
-                    style={{ color: '#5856cc' }}
+                    style={{ color: '#7c79e8' }}
                   >
                     {signal.label}
                   </p>
@@ -311,7 +311,7 @@ export default function Footer({ locale }) {
               ))}
 
               {/* LocaleSwitcher — inverted colours for light background */}
-              <div className="[&_button]:text-[#5856cc] [&_button]:border-[rgba(124,121,232,0.3)] [&_button]:hover:border-[rgba(124,121,232,0.7)] [&_button]:hover:bg-[rgba(124,121,232,0.08)] [&_button]:focus-visible:ring-offset-[#F5F5FF]">
+              <div className="[&_button]:text-[#7c79e8] [&_button]:border-[rgba(124,121,232,0.3)] [&_button]:hover:border-[rgba(124,121,232,0.7)] [&_button]:hover:bg-[rgba(124,121,232,0.08)] [&_button]:focus-visible:ring-offset-[#F5F5FF]">
                 <LocaleSwitcher locale={locale} />
               </div>
             </div>

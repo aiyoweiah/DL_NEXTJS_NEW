@@ -32,7 +32,6 @@
     { "source": "/cities",        "destination": "/en/cities/",       "statusCode": 302 },
     { "source": "/cities/",       "destination": "/en/cities/",       "statusCode": 302 },
     { "source": "/cities/:city",  "destination": "/en/cities/:city/", "statusCode": 302 },
-    { "source": "/cities/:city/", "destination": "/en/cities/:city/", "statusCode": 302 },
+    { "source": "/cities/:city/", "destination": "/en/cities/:city/", "statusCode": 302 }
   ]
-  // Note: no catchall /:path+ — it intercepts static assets before Vercel serves them.
 }
