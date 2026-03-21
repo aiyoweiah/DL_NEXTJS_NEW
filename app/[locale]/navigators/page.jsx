@@ -14,9 +14,9 @@ export async function generateMetadata({ params }) {
   return buildMetadata({ locale, title: meta.title, description: meta.description, path: '/navigators' })
 }
 
-function Eyebrow({ children, center = false }) {
+function Eyebrow({ children, center = false, dark = false }) {
   return (
-    <div style={{ fontFamily: 'var(--font-latin)', fontWeight: 500, fontSize: '12px', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#b7b5fe', marginBottom: '16px', textAlign: center ? 'center' : undefined }}>
+    <div style={{ fontFamily: 'var(--font-latin)', fontWeight: 500, fontSize: '12px', letterSpacing: '0.1em', textTransform: 'uppercase', color: dark ? '#b7b5fe' : '#5856cc', marginBottom: '16px', textAlign: center ? 'center' : undefined }}>
       {children}
     </div>
   )
@@ -226,7 +226,7 @@ export default async function NavigatorsPage({ params }) {
           NAVIGATOR
         </div>
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <Eyebrow center>{c.hero.eyebrow}</Eyebrow>
+          <Eyebrow dark center>{c.hero.eyebrow}</Eyebrow>
           <h1 className="mb-8 mx-auto"
             style={{ fontSize: 'clamp(38px, 5vw, 68px)', fontWeight: 700, color: '#F0F0F0', lineHeight: 1.2, maxWidth: '760px' }}>
             {c.hero.h1a}<span style={{ color: '#b7b5fe' }}>{c.hero.h1b}</span>{c.hero.h1c}<span style={{ color: '#b7b5fe' }}>{c.hero.h1d}</span>{c.hero.h1e}
@@ -240,7 +240,7 @@ export default async function NavigatorsPage({ params }) {
       {/* S2 WHAT A NAVIGATOR IS NOT */}
       <section className="px-6 py-24" style={{ backgroundColor: '#0E0E12' }}>
         <div className="container-section">
-          <Eyebrow center>{c.s2.eyebrow}</Eyebrow>
+          <Eyebrow dark center>{c.s2.eyebrow}</Eyebrow>
           <h2 className="text-center mb-16" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 600, color: '#F0F0F0', lineHeight: 1.3 }}>
             {c.s2.h2}
           </h2>
@@ -260,7 +260,7 @@ export default async function NavigatorsPage({ params }) {
       {/* S3 WHAT A NAVIGATOR DOES */}
       <section className="px-6 py-24" style={{ backgroundColor: '#212830' }}>
         <div className="container-section">
-          <Eyebrow center>{c.s3.eyebrow}</Eyebrow>
+          <Eyebrow dark center>{c.s3.eyebrow}</Eyebrow>
           <h2 className="text-center mb-16" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 600, color: '#F0F0F0', lineHeight: 1.3 }}>
             {c.s3.h2}
           </h2>
@@ -307,7 +307,7 @@ export default async function NavigatorsPage({ params }) {
       {/* S5 NAVIGATOR PROFILES */}
       <section className="px-6 py-24" style={{ backgroundColor: '#0E0E12' }}>
         <div className="container-section">
-          <Eyebrow center>{c.s5.eyebrow}</Eyebrow>
+          <Eyebrow dark center>{c.s5.eyebrow}</Eyebrow>
           <h2 className="text-center mb-16" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 600, color: '#F0F0F0', lineHeight: 1.3 }}>
             {c.s5.h2}
           </h2>
@@ -339,7 +339,7 @@ export default async function NavigatorsPage({ params }) {
             <div className="space-y-6">
               {c.s6.timeline.map(({ label, body }) => (
                 <div key={label}>
-                  <div className="mb-2" style={{ fontSize: '14px', fontWeight: 600, color: '#b7b5fe', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{label}</div>
+                  <div className="mb-2" style={{ fontSize: '14px', fontWeight: 600, color: '#5856cc', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{label}</div>
                   <p style={{ fontSize: '16px', fontWeight: 400, color: '#212830', lineHeight: 1.6 }}>{body}</p>
                 </div>
               ))}
@@ -351,7 +351,7 @@ export default async function NavigatorsPage({ params }) {
       {/* S7 WHAT FAMILIES SAY */}
       <section className="px-6 py-24" style={{ backgroundColor: '#212830' }}>
         <div className="container-section">
-          <Eyebrow center>{c.s7.eyebrow}</Eyebrow>
+          <Eyebrow dark center>{c.s7.eyebrow}</Eyebrow>
           <h2 className="text-center mb-16" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 600, color: '#F0F0F0', lineHeight: 1.3 }}>{c.s7.h2}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {c.s7.testimonials.map(({ quote, city, detail }) => (

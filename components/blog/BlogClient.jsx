@@ -108,7 +108,7 @@ export default function BlogClient({ articles, categories, locale = 'en', ui }) 
         <form role="search" onSubmit={(e) => e.preventDefault()}>
           <label htmlFor="blog-search" className="sr-only">{t.searchPlaceholder}</label>
           <div className="relative">
-            <IconSearch style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#b7b5fe', pointerEvents: 'none' }} />
+            <IconSearch style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#5856cc', pointerEvents: 'none' }} />
             <input
               id="blog-search" type="search" value={searchQuery}
               onChange={(e) => { setSearchQuery(e.target.value); setVisibleCount(6) }}
@@ -117,7 +117,7 @@ export default function BlogClient({ articles, categories, locale = 'en', ui }) 
               style={{ border: '1.5px solid rgba(183,181,254,0.4)', color: '#212830', fontSize: '15px', fontWeight: 400, outline: 'none', fontFamily: 'var(--font-latin)' }}
               onFocus={(e)  => { e.target.style.borderColor = '#b7b5fe' }}
               onBlur={(e)   => { e.target.style.borderColor = 'rgba(183,181,254,0.4)' }} />
-            <IconArrowRight style={{ position: 'absolute', right: '16px', top: '50%', transform: 'translateY(-50%)', color: '#b7b5fe', pointerEvents: 'none' }} />
+            <IconArrowRight style={{ position: 'absolute', right: '16px', top: '50%', transform: 'translateY(-50%)', color: '#5856cc', pointerEvents: 'none' }} />
           </div>
         </form>
       </div>
