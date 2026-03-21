@@ -375,12 +375,6 @@ function Eyebrow({ children, center = false, dark = false }) {
 // ─────────────────────────────────────────────────────────────
 
 function Hero({ locale, c }) {
-  const tickerItems = [
-    'DIAGNOSE \u8bfa\u65ad', 'IDENTIFY \u786e\u5dee\u8ddd', 'PRESCRIBE \u5236\u65b9\u6848',
-    'DECIDE \u505a\u51b3\u5b9a', 'THE LOOP \u5b66\u4e60\u95ed\u73af',
-  ]
-  const repeated = [...tickerItems, ...tickerItems, ...tickerItems, ...tickerItems]
-
   return (
     <section
       aria-labelledby="consult-hero-heading"
@@ -402,40 +396,10 @@ function Hero({ locale, c }) {
         }}
       />
 
-      {/* Ticker */}
-      <div
-        aria-hidden="true"
-        style={{
-          borderBottom:  '1px solid rgba(183,181,254,0.07)',
-          paddingTop:    'var(--nav-height)',
-          paddingBottom: '10px',
-          paddingLeft:   '1.25rem',
-          overflow:      'hidden',
-          flexShrink:    0,
-        }}
-      >
-        <div style={{ display: 'flex', gap: '2.5rem', whiteSpace: 'nowrap' }}>
-          {repeated.map((item, i) => (
-            <span
-              key={i}
-              style={{
-                fontSize:      '10px',
-                fontWeight:    600,
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
-                color:         'rgba(183,181,254,0.3)',
-              }}
-            >
-              {item}
-            </span>
-          ))}
-        </div>
-      </div>
-
       {/* Main content */}
       <div
         className="container-section relative z-10"
-        style={{ flex: 1, display: 'flex', alignItems: 'center', paddingTop: '3.5rem', paddingBottom: '2.5rem' }}
+        style={{ flex: 1, display: 'flex', alignItems: 'center', paddingTop: 'calc(var(--nav-height) + 3.5rem)', paddingBottom: '2.5rem' }}
       >
         <div style={{ maxWidth: '46rem' }}>
 

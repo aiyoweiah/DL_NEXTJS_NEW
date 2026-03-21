@@ -246,17 +246,11 @@ function Tag({ children, variant = 'default' }) {
 // ─────────────────────────────────────────────────────────────
 
 function Hero({ locale, c }) {
-  const ticker = ['WATCH \u89c2\u770b','READ \u9605\u8bfb','THINK \u601d\u8003','SPEAK \u8868\u8fbe','WRITE \u5199\u4f5c','THE LOOP \u5b66\u4e60\u95ed\u73af']
-  const repeated = [...ticker,...ticker,...ticker,...ticker]
   return (
     <section aria-labelledby="demos-hero-heading" style={{ backgroundColor: '#0E0E12', display: 'flex', flexDirection: 'column', position: 'relative', overflow: 'hidden' }}>
       <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 65% 50% at 80% 30%, rgba(183,181,254,0.07) 0%, transparent 60%)', pointerEvents: 'none' }} />
-      <div aria-hidden="true" style={{ borderBottom: '1px solid rgba(183,181,254,0.07)', paddingTop: 'var(--nav-height)', paddingBottom: '10px', paddingLeft: '1.25rem', overflow: 'hidden', flexShrink: 0 }}>
-        <div style={{ display: 'flex', gap: '2.5rem', whiteSpace: 'nowrap' }}>
-          {repeated.map((item, i) => <span key={i} style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(183,181,254,0.3)' }}>{item}</span>)}
-        </div>
-      </div>
-      <div className="container-section relative z-10" style={{ flex: 1, display: 'flex', alignItems: 'center', paddingTop: '3.5rem', paddingBottom: '2.5rem' }}>
+
+      <div className="container-section relative z-10" style={{ flex: 1, display: 'flex', alignItems: 'center', paddingTop: 'calc(var(--nav-height) + 3.5rem)', paddingBottom: '2.5rem' }}>
         <div style={{ maxWidth: '46rem' }}>
           <div className="inline-flex items-center gap-2 mb-7 rounded-full" style={{ padding: '5px 14px', border: '1px solid rgba(183,181,254,0.18)', backgroundColor: 'rgba(183,181,254,0.05)' }}>
             <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: '#b7b5fe' }} />
@@ -351,7 +345,7 @@ function VideoGallery({ locale, c }) {
             </p>
             <div style={{ flex: 1, height: '1px', backgroundColor: 'rgba(14,14,18,0.07)' }} aria-hidden="true" />
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '1rem' }} className="md:grid-cols-3">
+          <div style={{ display: 'grid', gap: '1rem' }} className="md:grid-cols-3">
             {row1.map((card, i) => <VideoCard key={i} card={card} />)}
           </div>
         </div>
@@ -364,7 +358,7 @@ function VideoGallery({ locale, c }) {
             </p>
             <div style={{ flex: 1, height: '1px', backgroundColor: 'rgba(14,14,18,0.07)' }} aria-hidden="true" />
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '1rem' }} className="md:grid-cols-3">
+          <div style={{ display: 'grid', gap: '1rem' }} className="md:grid-cols-3">
             {row2.map((card, i) => <VideoCard key={i} card={card} />)}
           </div>
         </div>
