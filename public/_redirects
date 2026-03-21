@@ -45,7 +45,8 @@
 /cities/:city/              /en/cities/:city/           302
 
 # ── Fallback ──────────────────────────────────────────────────
-# Any path not matched above and not already locale-prefixed
-# redirects to the EN homepage. Prevents bare 404s on unknown paths.
-# Must be last — Cloudflare applies rules top-to-bottom, first match wins.
-/:splat                     /en/:splat                  302
+# NOTE: No splat catchall. Cloudflare Pages applies redirects BEFORE
+# serving static assets, so /:splat would intercept /logo-dark.svg,
+# /logo.svg, /og-default.png, favicon.ico etc and 404 them.
+# All real page routes are explicitly listed above — unknown paths
+# correctly return 404 rather than silently redirecting.
