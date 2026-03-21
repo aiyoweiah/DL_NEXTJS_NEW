@@ -55,9 +55,9 @@ const HOMEPAGE_COPY: Record<string, any> = {
       trustLine:     'Lexile-measured progress\u00a0\u00b7\u00a06+1 Trait writing framework\u00a0\u00b7\u00a0Live Navigator-led sessions',
     },
     proof: [
-      { id: 'lexile',  number: '1',    unit: 'grade level',           label: 'average reading growth in 16 weeks, measured by Lexile' },
-      { id: 'writing', number: '2\u00d7', unit: 'writing score improvement', label: 'average 6+1 Trait score gain from entry to exit assessment' },
-      { id: 'live',    number: '100%', unit: 'live sessions',          label: 'no pre-recorded content \u2014 every session is Navigator-led' },
+      { id: 'lexile',  number: '1',       unit: 'grade level',                label: 'average reading growth in 16 weeks, measured by Lexile' },
+      { id: 'writing', number: '2\u00d7', unit: 'writing score improvement',  label: 'average 6+1 Trait score gain from entry to exit assessment' },
+      { id: 'live',    number: '100%',    unit: 'live sessions',              label: 'no pre-recorded content \u2014 every session is Navigator-led' },
     ],
     photoIntro: {
       eyebrow:  'Who We Are',
@@ -88,50 +88,50 @@ const HOMEPAGE_COPY: Record<string, any> = {
       body:     'In 16 weeks. Measured by Lexile. Shown in writing scores. Every claim we make is a number we can prove.',
       pillars: [
         {
-          id:      'assessment',
-          eyebrow: 'Before We Begin',
-          heading: 'We find out exactly where your child is.',
-          body:    'Not where their school report says they are. Before the first session, every student receives a Lexile reading assessment and a baseline 6+1 Trait writing evaluation. We prescribe from data, not from guesswork.',
+          id:        'assessment',
+          eyebrow:   'Before We Begin',
+          heading:   'We find out exactly where your child is.',
+          body:      'Not where their school report says they are. Before the first session, every student receives a Lexile reading assessment and a baseline 6+1 Trait writing evaluation. We prescribe from data, not from guesswork.',
           linkHref:  '/program',
           linkLabel: 'How the assessment works',
         },
         {
-          id:      'loop',
-          eyebrow: 'During The Program',
-          heading: 'Every session runs The Loop.',
-          body:    'Read. Think. Speak. Write. Your child\u2019s Navigator tracks their movement through each phase every week. Nothing is guessed. Everything is guided. The Hangar provides structured support between sessions.',
+          id:        'loop',
+          eyebrow:   'During The Program',
+          heading:   'Every session runs The Loop.',
+          body:      'Read. Think. Speak. Write. Your child\u2019s Navigator tracks their movement through each phase every week. Nothing is guessed. Everything is guided. The Hangar provides structured support between sessions.',
           linkHref:  '/the-hangar',
           linkLabel: 'About The Hangar',
         },
         {
-          id:      'results',
-          eyebrow: 'After 16 Weeks',
-          heading: 'We show you the numbers.',
-          body:    'Every student receives an exit Lexile assessment and a re-evaluated 6+1 Trait writing score. We show you the before and after. Then you decide what comes next.',
+          id:        'results',
+          eyebrow:   'After 16 Weeks',
+          heading:   'We show you the numbers.',
+          body:      'Every student receives an exit Lexile assessment and a re-evaluated 6+1 Trait writing score. We show you the before and after. Then you decide what comes next.',
           linkHref:  '/results',
           linkLabel: 'View student results',
         },
       ],
     },
     trust: {
-      eyebrow:   'Student Results',
-      heading1:  'The numbers speak first.',
-      heading2:  'Then the parents.',
-      viewAll:   'View all results \u2192',
+      eyebrow:    'Student Results',
+      heading1:   'The numbers speak first.',
+      heading2:   'Then the parents.',
+      viewAll:    'View all results \u2192',
       weeksLabel: 'weeks',
       results: [
-        { id: 'result-1', student: 'Student A', detail: 'Grade 5 \u00b7 Vancouver',          start: 620, end: 820, weeks: 16, trait: 'Voice: 2 \u2192 4',        quote: 'She started raising her hand in class by week eight. By week twelve she was leading the discussion.',     source: 'Parent, Vancouver' },
-        { id: 'result-2', student: 'Student B', detail: 'Grade 6 \u00b7 Markham',            start: 540, end: 720, weeks: 16, trait: 'Organization: 2 \u2192 5',  quote: 'His teacher told us his writing had transformed. The 6+1 scores made it easy to see exactly what changed.', source: 'Parent, Markham' },
-        { id: 'result-3', student: 'Student C', detail: 'Grade 7 \u00b7 San Francisco Bay Area', start: 710, end: 940, weeks: 16, trait: 'Ideas: 3 \u2192 5', quote: 'She went from dreading writing assignments to submitting them early. The Navigator knew exactly where she was stuck.', source: 'Parent, Bay Area' },
+        { id: 'result-1', student: 'Student A', detail: 'Grade 5 \u00b7 Vancouver',              start: 620, end: 820, weeks: 16, trait: 'Voice: 2 \u2192 4',        quote: 'She started raising her hand in class by week eight. By week twelve she was leading the discussion.',                           source: 'Parent, Vancouver' },
+        { id: 'result-2', student: 'Student B', detail: 'Grade 6 \u00b7 Markham',                start: 540, end: 720, weeks: 16, trait: 'Organization: 2 \u2192 5',  quote: 'His teacher told us his writing had transformed. The 6+1 scores made it easy to see exactly what changed.',                   source: 'Parent, Markham' },
+        { id: 'result-3', student: 'Student C', detail: 'Grade 7 \u00b7 San Francisco Bay Area', start: 710, end: 940, weeks: 16, trait: 'Ideas: 3 \u2192 5',          quote: 'She went from dreading writing assignments to submitting them early. The Navigator knew exactly where she was stuck.',           source: 'Parent, Bay Area' },
       ],
     },
     closing: {
-      eyebrow:   'Charter Enrollment',
-      heading:   'The diagnostic consultation is where we find out exactly where your child is.',
-      body:      'Not where their school says they are. We measure their Lexile level, identify the specific gap, and tell you exactly what the first 16 weeks looks like for a student exactly like yours.',
-      cta1:      'Book Your Consultation',
-      cta2:      'Read About The Program',
-      tagline:   'Think Once. In Both Languages.',
+      eyebrow:  'Charter Enrollment',
+      heading:  'The diagnostic consultation is where we find out exactly where your child is.',
+      body:     'Not where their school says they are. We measure their Lexile level, identify the specific gap, and tell you exactly what the first 16 weeks looks like for a student exactly like yours.',
+      cta1:     'Book Your Consultation',
+      cta2:     'Read About The Program',
+      tagline:  'Think Once. In Both Languages.',
     },
   },
 
@@ -154,9 +154,9 @@ const HOMEPAGE_COPY: Record<string, any> = {
       trustLine:     'Lexile\u6d4b\u91cf\u8fdb\u5ea6\u00a0\u00b7\u00a06+1\u7279\u8d28\u5199\u4f5c\u6846\u67b6\u00a0\u00b7\u00a0\u5bfc\u5e08\u5b9e\u65f6\u4e3b\u5bfc',
     },
     proof: [
-      { id: 'lexile',  number: '1',    unit: '\u4e2a\u5e74\u7ea7',   label: '16\u5468\u5185Lexile\u6d4b\u91cf\u7684\u5e73\u5747\u9605\u8bfb\u589e\u957f' },
+      { id: 'lexile',  number: '1',       unit: '\u4e2a\u5e74\u7ea7',          label: '16\u5468\u5185Lexile\u6d4b\u91cf\u7684\u5e73\u5747\u9605\u8bfb\u589e\u957f' },
       { id: 'writing', number: '2\u00d7', unit: '\u5199\u4f5c\u8bc4\u5206\u63d0\u5347', label: '\u5165\u5b66\u81f3\u7ed3\u8bfe\u8bc4\u4f306+1\u7279\u8d28\u5e73\u5747\u5f97\u5206\u589e\u957f' },
-      { id: 'live',    number: '100%', unit: '\u5b9e\u65f6\u8bfe\u7a0b', label: '\u6ca1\u6709\u9884\u5f55\u5185\u5bb9\u2014\u2014\u6bcf\u8282\u8bfe\u5747\u7531\u5bfc\u5e08\u4e3b\u5bfc' },
+      { id: 'live',    number: '100%',    unit: '\u5b9e\u65f6\u8bfe\u7a0b',    label: '\u6ca1\u6709\u9884\u5f55\u5185\u5bb9\u2014\u2014\u6bcf\u8282\u8bfe\u5747\u7531\u5bfc\u5e08\u4e3b\u5bfc' },
     ],
     photoIntro: {
       eyebrow:  '\u6211\u4eec\u662f\u8c01',
@@ -219,18 +219,18 @@ const HOMEPAGE_COPY: Record<string, any> = {
       viewAll:    '\u67e5\u770b\u5168\u90e8\u6210\u679c \u2192',
       weeksLabel: '\u5468',
       results: [
-        { id: 'result-1', student: '\u5b66\u751fA', detail: '\u4e94\u5e74\u7ea7 \u00b7 \u6e29\u54e5\u534e',       start: 620, end: 820, weeks: 16, trait: '\u58f0\u97f3: 2 \u2192 4', quote: '\u5979\u5230\u4e86\u7b2c\u516b\u5468\u5f00\u59cb\u4e3b\u52a8\u4e3e\u624b\u53d1\u8a00\u3002\u5230\u7b2c\u5341\u4e8c\u5468\u65f6\uff0c\u5979\u5df2\u7ecf\u5f15\u9886\u8bfe\u5802\u8ba8\u8bba\u4e86\u3002',     source: '\u5bb6\u957f\uff0c\u6e29\u54e5\u534e' },
-        { id: 'result-2', student: '\u5b66\u751fB', detail: '\u516d\u5e74\u7ea7 \u00b7 \u4e07\u9526\u5e02',       start: 540, end: 720, weeks: 16, trait: '\u7ed3\u6784: 2 \u2192 5', quote: '\u5b69\u5b50\u7684\u8001\u5e08\u544a\u8bc9\u6211\u4eec\u4ed6\u7684\u5199\u4f5c\u53d1\u751f\u4e86\u8d28\u7684\u53d8\u5316\u30026+1\u8bc4\u5206\u8ba9\u6211\u4eec\u6e05\u6670\u5730\u770b\u5230\u5177\u4f53\u6539\u53d8\u4e86\u4ec0\u4e48\u3002', source: '\u5bb6\u957f\uff0c\u4e07\u9526\u5e02' },
-        { id: 'result-3', student: '\u5b66\u751fC', detail: '\u4e03\u5e74\u7ea7 \u00b7 \u65e7\u91d1\u5c71\u6e7e\u533a', start: 710, end: 940, weeks: 16, trait: '\u60f3\u6cd5: 3 \u2192 5', quote: '\u5979\u4ece\u5bb3\u6015\u5199\u4f5c\u4efb\u52a1\uff0c\u5230\u63d0\u524d\u4ea4\u4f5c\u4e1a\u3002\u5bfc\u5e08\u786e\u5207\u5730\u77e5\u9053\u5979\u5361\u5728\u54ea\u91cc\u4e86\u3002',         source: '\u5bb6\u957f\uff0c\u6e7e\u533a' },
+        { id: 'result-1', student: '\u5b66\u751fA', detail: '\u4e94\u5e74\u7ea7 \u00b7 \u6e29\u54e5\u534e',           start: 620, end: 820, weeks: 16, trait: '\u58f0\u97f3: 2 \u2192 4', quote: '\u5979\u5230\u4e86\u7b2c\u516b\u5468\u5f00\u59cb\u4e3b\u52a8\u4e3e\u624b\u53d1\u8a00\u3002\u5230\u7b2c\u5341\u4e8c\u5468\u65f6\uff0c\u5979\u5df2\u7ecf\u5f15\u9886\u8bfe\u5802\u8ba8\u8bba\u4e86\u3002',                   source: '\u5bb6\u957f\uff0c\u6e29\u54e5\u534e' },
+        { id: 'result-2', student: '\u5b66\u751fB', detail: '\u516d\u5e74\u7ea7 \u00b7 \u4e07\u9526\u5e02',           start: 540, end: 720, weeks: 16, trait: '\u7ed3\u6784: 2 \u2192 5', quote: '\u5b69\u5b50\u7684\u8001\u5e08\u544a\u8bc9\u6211\u4eec\u4ed6\u7684\u5199\u4f5c\u53d1\u751f\u4e86\u8d28\u7684\u53d8\u5316\u30026+1\u8bc4\u5206\u8ba9\u6211\u4eec\u6e05\u6670\u5730\u770b\u5230\u5177\u4f53\u6539\u53d8\u4e86\u4ec0\u4e48\u3002', source: '\u5bb6\u957f\uff0c\u4e07\u9526\u5e02' },
+        { id: 'result-3', student: '\u5b66\u751fC', detail: '\u4e03\u5e74\u7ea7 \u00b7 \u65e7\u91d1\u5c71\u6e7e\u533a', start: 710, end: 940, weeks: 16, trait: '\u60f3\u6cd5: 3 \u2192 5', quote: '\u5979\u4ece\u5bb3\u6015\u5199\u4f5c\u4efb\u52a1\uff0c\u5230\u63d0\u524d\u4ea4\u4f5c\u4e1a\u3002\u5bfc\u5e08\u786e\u5207\u5730\u77e5\u9053\u5979\u5361\u5728\u54ea\u91cc\u4e86\u3002',                 source: '\u5bb6\u957f\uff0c\u6e7e\u533a' },
       ],
     },
     closing: {
-      eyebrow:   'Charter \u62a5\u540d',
-      heading:   '\u8bca\u65ad\u548c\u8be2\u662f\u6211\u4eec\u786e\u5207\u4e86\u89e3\u60a8\u5b69\u5b50\u76ee\u524d\u5728\u54ea\u91cc\u7684\u8d77\u70b9\u3002',
-      body:      '\u4e0d\u662f\u5b66\u6821\u8bf4\u7684\u5728\u54ea\u91cc\u3002\u6211\u4eec\u6d4b\u91cf\u5b69\u5b50\u7684Lexile\u6c34\u5e73\uff0c\u786e\u5b9a\u5177\u4f53\u7684\u5dee\u8ddd\uff0c\u5e76\u544a\u8bc9\u60a8\u5bf9\u4e8e\u50cf\u60a8\u5b69\u5b50\u8fd9\u6837\u7684\u5b66\u751f\uff0c\u6700\u521d16\u5468\u5177\u4f53\u662f\u4ec0\u4e48\u6837\u5b50\u7684\u3002',
-      cta1:      '\u9884\u7ea6\u548c\u8be2',
-      cta2:      '\u4e86\u89e3\u8bfe\u7a0b\u8be6\u60c5',
-      tagline:   'Think Once. In Both Languages.',
+      eyebrow:  'Charter \u62a5\u540d',
+      heading:  '\u8bca\u65ad\u548c\u8be2\u662f\u6211\u4eec\u786e\u5207\u4e86\u89e3\u60a8\u5b69\u5b50\u76ee\u524d\u5728\u54ea\u91cc\u7684\u8d77\u70b9\u3002',
+      body:     '\u4e0d\u662f\u5b66\u6821\u8bf4\u7684\u5728\u54ea\u91cc\u3002\u6211\u4eec\u6d4b\u91cf\u5b69\u5b50\u7684Lexile\u6c34\u5e73\uff0c\u786e\u5b9a\u5177\u4f53\u7684\u5dee\u8ddd\uff0c\u5e76\u544a\u8bc9\u60a8\u5bf9\u4e8e\u50cf\u60a8\u5b69\u5b50\u8fd9\u6837\u7684\u5b66\u751f\uff0c\u6700\u521d16\u5468\u5177\u4f53\u662f\u4ec0\u4e48\u6837\u5b50\u7684\u3002',
+      cta1:     '\u9884\u7ea6\u548c\u8be2',
+      cta2:     '\u4e86\u89e3\u8bfe\u7a0b\u8be6\u60c5',
+      tagline:  'Think Once. In Both Languages.',
     },
   },
 }
@@ -240,8 +240,16 @@ const HOMEPAGE_COPY: Record<string, any> = {
 // ═══════════════════════════════════════════════════════════════
 function Hero({ locale, c }) {
   return (
-    <section className="section-light relative overflow-hidden" aria-labelledby="hero-heading"
-      style={{ minHeight: 'calc(100dvh - var(--nav-height))', display: 'flex', alignItems: 'center' }}>
+    <section
+      className="section-light relative overflow-hidden"
+      aria-labelledby="hero-heading"
+      style={{
+        minHeight:  'calc(100dvh - var(--nav-height))',
+        display:    'flex',
+        alignItems: 'center',
+        paddingTop: 'var(--nav-height)', // push content below the fixed navbar
+      }}
+    >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0"
         style={{ background: 'radial-gradient(ellipse 60% 55% at 70% 40%, rgba(183,181,254,0.22) 0%, transparent 65%)' }} />
 
@@ -409,8 +417,10 @@ function ConfidenceSection({ locale, c }) {
               <p className="eyebrow">{pillar.eyebrow}</p>
               <h3 className="text-xl font-bold leading-snug" style={{ color: '#212830' }}>{pillar.heading}</h3>
               <p className="text-sm leading-relaxed flex-1" style={{ color: '#3D4452' }}>{pillar.body}</p>
-              <Link href={`/${locale}${pillar.linkHref}`}
-                className="text-sm font-semibold text-[#5856cc] hover:text-[#3d3baa] transition-colors duration-150 focus-visible:outline-none focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-[#b7b5fe]">
+              <Link
+                href={`/${locale}${pillar.linkHref}`}
+                className="text-sm font-semibold text-[#5856cc] hover:text-[#3d3baa] transition-colors duration-150 focus-visible:outline-none focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-[#b7b5fe]"
+              >
                 {pillar.linkLabel} \u2192
               </Link>
             </div>
