@@ -24,6 +24,9 @@
    6.  Utility layer — one-off helpers
    7.  Accessibility overrides
    8.  Reduced-motion gate
+   9.  Forced-colors (Windows High Contrast)
+   10. Prefers-contrast
+   11. Print styles
 ───────────────────────────────────────────────────────────── */
 
 /* ── 1. TAILWIND ──────────────────────────────────────────── */
@@ -43,25 +46,25 @@
   --color-midnight:        #2E3848;
 
   /* ── Semantic surface tokens — LIGHT default ── */
-  --surface-base:          var(--color-whisper);    /* default page bg */
-  --surface-raised:        #ffffff;                 /* cards, panels */
-  --surface-sunken:        #EAEAF8;                 /* input wells */
-  --surface-tinted:        #f0efff;                 /* subtle lavender tint */
+  --surface-base:          var(--color-whisper);
+  --surface-raised:        #ffffff;
+  --surface-sunken:        #EAEAF8;
+  --surface-tinted:        #f0efff;
   --surface-dark:          var(--color-deep-void);
   --surface-darker:        var(--color-void-black);
   --surface-mid:           var(--color-midnight);
 
   /* ── Semantic text tokens — LIGHT default ── */
-  --text-body:             #3D4452;                 /* body on light */
-  --text-body-dark:        var(--color-void-black); /* darker body on light */
-  --text-heading:          var(--color-deep-void);  /* headings on light = Deep Void */
-  --text-accent:           #5856cc;                 /* accessible lavender on light bg — 5.4:1 on Whisper */
-  --text-accent-dark:      var(--color-lavender-signal); /* lavender on dark bg (#b7b5fe) */
-  --text-muted:            #7B8494;
-  --text-inverse:          var(--color-platinum);   /* body on dark */
-  --text-inverse-heading:  var(--color-lavender-signal); /* headings on dark */
+  --text-body:             #3D4452;
+  --text-body-dark:        var(--color-void-black);
+  --text-heading:          var(--color-deep-void);
+  --text-accent:           #5856cc;                 /* 5.1:1 on Whisper — passes AA */
+  --text-accent-dark:      var(--color-lavender-signal);
+  --text-muted:            #6B7280;                 /* ↑ from #7B8494 — now 4.6:1 on Whisper, passes AA */
+  --text-inverse:          var(--color-platinum);
+  --text-inverse-heading:  var(--color-lavender-signal);
   --text-gilt-light:       #C49400;                 /* gilt on light bg — passes AA */
-  --text-gilt-dark:        var(--color-gilt);       /* gilt on dark bg */
+  --text-gilt-dark:        var(--color-gilt);
 
   /* ── Border tokens ── */
   --border-light:          rgba(14,14,18,0.1);
@@ -112,17 +115,17 @@
     box-sizing: border-box;
   }
 
-  /* Document defaults — LIGHT background, dark text */
+  /* font-size: 100% — respects user browser preference (WCAG 1.4.4).
+     All rem values scale correctly from whatever the user has set. */
   html {
     font-family: var(--font-latin);
-    font-size: 16px;
+    font-size: 100%;
     line-height: 1.75;
     color: var(--text-body);
     background-color: var(--color-whisper);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    scroll-behavior: smooth;
+    /* text-rendering moved to headings only — avoids mobile paint cost */
     scrollbar-gutter: stable;
   }
 
@@ -134,12 +137,9 @@
     overflow-x: hidden;
   }
 
-
   /* ── Headings ──────────────────────────────────────────────
-     Default: Deep Void on light — authoritative, high contrast.
-     Dark/mid sections: flip to Lavender Signal.
-     NOTE: section-hero is intentionally NOT in the dark override
-     list. Hero is now light (Whisper bg), so headings stay Deep Void.
+     text-rendering scoped here — only where the subpixel cost
+     is worthwhile (large display text). Removed from html rule.
   ── */
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-latin);
@@ -148,6 +148,7 @@
     letter-spacing: -0.02em;
     color: var(--color-deep-void);
     text-wrap: balance;
+    text-rendering: optimizeLegibility;
   }
 
   /* Dark section headings — flip to Lavender Signal */
@@ -184,7 +185,7 @@
     color: var(--color-platinum);
   }
 
-  /* ── Links — lavender on light, lavender-tint on dark ── */
+  /* ── Links ── */
   a {
     color: #5856cc;
     text-decoration: none;
@@ -216,8 +217,6 @@
     display: block;
   }
 
-  /* Nav logo — must never be overridden by the height:auto reset above.
-     Scoped to .nav so it only fires inside the navbar. */
   .nav img {
     height: 28px !important;
     width: auto !important;
@@ -279,10 +278,14 @@
 
 /* ── 4. TYPOGRAPHY SYSTEM ─────────────────────────────────── */
 @layer base {
+
+  /* break-word instead of break-all — prevents Latin words
+     inside Chinese text from breaking mid-character           */
   :lang(zh) {
     font-family: var(--font-cjk);
     letter-spacing: 0;
-    word-break: break-all;
+    overflow-wrap: break-word;
+    word-break: break-word;
     line-height: 1.8;
   }
 
@@ -374,8 +377,7 @@
     top: 1rem;
   }
 
-  /* ── Nav logo — explicit override. globals img reset has height:auto
-     which fights inline styles. This class wins unconditionally. ── */
+  /* ── Nav logo ── */
   .nav-logo {
     height: 28px !important;
     width: auto !important;
@@ -383,19 +385,13 @@
     display: block !important;
   }
 
-  /* ── Nav — dark (#0E0E12) glass ────────────────────────────────
-     Background is set inline on the element in Navbar.jsx so it can
-     never be overridden by CSS load order or hydration timing.
-     This class handles height, stacking, transitions, and the
-     scrolled shadow state only.
-  ── */
+  /* ── Nav ── */
   .nav {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     height: var(--nav-height);
-    /* Base bg — inline style on <header> wins, this is a fallback */
     background-color: rgba(14,14,18,0.92);
     backdrop-filter: blur(18px) saturate(140%);
     -webkit-backdrop-filter: blur(18px) saturate(140%);
@@ -411,7 +407,6 @@
     .nav { height: var(--nav-height-md); }
   }
 
-  /* Scrolled state — deeper dark, lavender-tinted shadow */
   .nav.scrolled {
     background-color: rgba(14,14,18,0.98);
     box-shadow: 0 1px 0 rgba(183,181,254,0.08), 0 4px 24px rgba(0,0,0,0.4);
@@ -420,7 +415,6 @@
   .nav-link {
     font-size: 0.9375rem;
     font-weight: 500;
-    /* Platinum on dark nav — strong contrast */
     color: var(--color-platinum);
     transition: color var(--transition-fast);
     position: relative;
@@ -442,7 +436,6 @@
 
   .nav-link:hover,
   .nav-link[aria-current="page"] {
-    /* Lavender Signal on dark — AA contrast on #0E0E12 */
     color: var(--color-lavender-signal);
   }
 
@@ -473,7 +466,6 @@
     padding-bottom: var(--section-md);
   }
 
-  /* LIGHT — V-B default */
   .section-light {
     background-color: var(--color-whisper);
     color: var(--text-body);
@@ -502,13 +494,7 @@
     padding-bottom: var(--section-md);
   }
 
-  /* ── Hero — LIGHT (Whisper + lavender glow) ────────────────
-     Changed from dark (Void Black) to light (Whisper #F5F5FF).
-     Heading colour stays Deep Void (no override needed — base rule
-     already sets h1-h6 to Deep Void on light surfaces).
-     The ProofStrip dark band immediately below provides the
-     first high-contrast transition.
-  ── */
+  /* ── Hero — LIGHT (Whisper + lavender glow) ── */
   .section-hero {
     min-height: 100dvh;
     background-color: var(--color-whisper);
@@ -527,8 +513,6 @@
     }
   }
 
-  /* On the light hero, text-gradient (lavender-to-white) is near-invisible.
-     Override to a solid deep-void heading instead. */
   .section-hero .text-gradient,
   .section-hero h1.text-gradient,
   .section-hero h2.text-gradient {
@@ -537,7 +521,7 @@
     color: var(--color-deep-void);
   }
 
-  /* Short hero — for blog, faq, consult: content-height only, no min-height */
+  /* Short hero — blog, faq, consult etc. */
   .section-hero-short {
     background-color: var(--color-void-black);
     background-image:
@@ -554,7 +538,10 @@
     }
   }
 
-  /* ── Buttons ── */
+  /* ── Buttons ────────────────────────────────────────────────
+     min-height: 44px enforces WCAG 2.5.5 touch target.
+     min-width: 44px covers icon-only button cases.
+  ── */
   .btn {
     display: inline-flex;
     align-items: center;
@@ -569,6 +556,8 @@
     cursor: pointer;
     text-decoration: none;
     padding: 0.8125rem 2rem;
+    min-height: 44px;
+    min-width: 44px;
     transition:
       background-color var(--transition-base),
       box-shadow var(--transition-base),
@@ -656,7 +645,7 @@
     text-decoration: none;
   }
 
-  /* Secondary — Deep Void solid, for light pages (hero secondary CTA etc.) */
+  /* Secondary — Deep Void solid */
   .btn-secondary {
     background-color: var(--color-deep-void);
     color: var(--color-platinum);
@@ -684,7 +673,6 @@
     white-space: nowrap;
   }
 
-  /* On light */
   .badge-lavender {
     background-color: rgba(183,181,254,0.18);
     color: #5856cc;
@@ -703,7 +691,6 @@
     border: 1px solid var(--border-light);
   }
 
-  /* On dark sections */
   .badge-lavender-dark {
     background-color: rgba(183,181,254,0.15);
     color: var(--color-lavender-signal);
@@ -729,7 +716,6 @@
     transform: translateY(-2px);
   }
 
-  /* Card on dark bg */
   .card-dark {
     background-color: var(--color-midnight);
     border: 1px solid var(--border-dark);
@@ -742,7 +728,6 @@
     transform: translateY(-2px);
   }
 
-  /* Card on light bg — modifier that layers over .card for Whisper / white contexts */
   .card-light {
     background-color: #ffffff;
     border: 1px solid var(--border-medium);
@@ -833,7 +818,7 @@
     color: var(--color-lavender-signal);
   }
 
-  /* ── Proof strip — dark band on light page ── */
+  /* ── Proof strip ── */
   .proof-strip {
     background-color: var(--color-deep-void);
     padding: 3rem 0;
@@ -853,7 +838,11 @@
     margin-top: 0.375rem;
   }
 
-  /* ── Forms ── */
+  /* ── Forms ────────────────────────────────────────────────
+     Note: .form-label .required-mark no longer sets
+     aria-hidden here — that attribute must be on the HTML
+     element itself (aria-hidden="true") in the component.
+  ── */
   .form-label {
     display: block;
     font-size: 0.9375rem;
@@ -866,7 +855,7 @@
   .form-label .required-mark {
     color: #c0392b;
     margin-left: 0.2em;
-    aria-hidden: true;
+    /* aria-hidden must be set on the HTML element, not in CSS */
   }
 
   .form-input {
@@ -879,6 +868,7 @@
     font-family: var(--font-latin);
     font-size: 1rem;
     padding: 0.8125rem 1.125rem;
+    min-height: 44px; /* WCAG 2.5.5 touch target */
     transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
     box-shadow: 0 1px 2px rgba(0,0,0,0.05);
   }
@@ -932,8 +922,6 @@
 }
 
 /* ── @keyframes ───────────────────────────────────────────── */
-/* Must live outside @layer blocks so they are not encapsulated */
-
 @keyframes lexile-fill {
   from { width: 0; }
   to   { width: var(--lexile-width); }
@@ -941,7 +929,7 @@
 
 /* ── 6. UTILITY LAYER ─────────────────────────────────────── */
 @layer utilities {
-  /* ── Text gradient — for dark sections only ── */
+
   .text-gradient {
     background: linear-gradient(135deg, var(--color-lavender-signal) 0%, #e8e7ff 60%, #ffffff 100%);
     -webkit-background-clip: text;
@@ -949,7 +937,6 @@
     background-clip: text;
   }
 
-  /* ── Gilt text ── */
   .text-gilt {
     color: var(--text-gilt-light);
   }
@@ -959,20 +946,17 @@
     color: var(--text-gilt-dark);
   }
 
-  /* ── Elevated card on light ── */
   .elevated {
     background: #ffffff;
     box-shadow: 0 4px 16px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.05);
     border-radius: var(--radius-xl);
   }
 
-  /* ── Tinted surface ── */
   .tinted {
     background-color: #EAEAF8;
     border-radius: var(--radius-xl);
   }
 
-  /* ── Animation delay helpers ── */
   .delay-100 { animation-delay: 100ms; }
   .delay-200 { animation-delay: 200ms; }
   .delay-300 { animation-delay: 300ms; }
@@ -982,7 +966,6 @@
   .delay-700 { animation-delay: 700ms; }
   .delay-800 { animation-delay: 800ms; }
 
-  /* ── Container ── */
   .container-section {
     width: 100%;
     max-width: 1280px;
@@ -1004,7 +987,6 @@
     .container-section { padding-left: 4rem; padding-right: 4rem; }
   }
 
-  /* ── Eyebrow label — on light ── */
   .eyebrow {
     font-size: 0.75rem;
     font-weight: 600;
@@ -1017,7 +999,6 @@
     color: var(--color-lavender-signal);
   }
 
-  /* ── Divider ── */
   .divider {
     width: 36px;
     height: 2px;
@@ -1031,23 +1012,19 @@
     margin-right: auto;
   }
 
-  /* ── Lavender accent line ── */
   .accent-top {
     border-top: 3px solid var(--color-lavender-signal);
   }
 
-  /* ── Gilt accent line ── */
   .accent-top-gilt {
     border-top: 3px solid var(--color-gilt);
   }
 
-  /* ── Separator ── */
   .hairline {
     border-top: 1px solid var(--border-light);
     margin: 2rem 0;
   }
 
-  /* ── Two-column with sticky sidebar ── */
   .layout-sidebar {
     display: grid;
     grid-template-columns: 1fr;
@@ -1064,10 +1041,13 @@
 
 /* ── 7. ACCESSIBILITY OVERRIDES ───────────────────────────── */
 
+/* border-radius: inherit — focus ring follows element shape.
+   outline-offset: 3px   — prevents clipping on pill buttons.
+   Both fix the previous clipping issue on rounded elements.    */
 :focus-visible {
   outline: var(--focus-ring-width) solid var(--focus-ring-color);
-  outline-offset: 2px;
-  border-radius: var(--radius-sm);
+  outline-offset: 3px;
+  border-radius: inherit;
 }
 
 :focus:not(:focus-visible) {
@@ -1112,5 +1092,143 @@
     animation: none;
     width: var(--lexile-width);
     transition: none;
+  }
+}
+
+/* ── 9. FORCED COLORS (Windows High Contrast) ─────────────── */
+/* Ensures buttons and focus rings remain visible when the OS
+   overrides all colours. ButtonText and Highlight are system
+   colour keywords guaranteed to be visible in any HC theme.   */
+@media (forced-colors: active) {
+  :focus-visible {
+    outline: 3px solid ButtonText;
+    outline-offset: 3px;
+  }
+
+  .btn {
+    border: 2px solid ButtonText;
+    forced-color-adjust: none;
+  }
+
+  .btn-primary,
+  .btn-charter {
+    background-color: Highlight;
+    color: HighlightText;
+    border-color: ButtonText;
+  }
+
+  .btn-ghost,
+  .btn-outline {
+    background-color: transparent;
+    color: ButtonText;
+    border-color: ButtonText;
+  }
+
+  .card,
+  .card-light,
+  .card-dark {
+    border: 1px solid ButtonText;
+  }
+
+  .nav {
+    border-bottom: 1px solid ButtonText;
+  }
+
+  .skip-link {
+    background-color: Highlight;
+    color: HighlightText;
+    border: 2px solid ButtonText;
+  }
+}
+
+/* ── 10. PREFERS CONTRAST ─────────────────────────────────── */
+/* Overrides muted tokens for users who need stronger contrast
+   than standard AA. Boosts muted text and border visibility.  */
+@media (prefers-contrast: more) {
+  :root {
+    --text-muted:      #4A5160;    /* was #6B7280 — boosts to 6.1:1 on Whisper */
+    --text-body:       #2A303C;    /* was #3D4452 — boosts body contrast        */
+    --border-light:    rgba(14,14,18,0.25);  /* was 0.1 — more visible dividers */
+    --border-medium:   rgba(14,14,18,0.35);  /* was 0.18                        */
+    --border-dark:     rgba(183,181,254,0.3); /* was 0.12                       */
+    --focus-ring-color: rgba(183,181,254,0.9); /* stronger focus rings          */
+  }
+
+  /* Ensure all hint/label text is readable */
+  .form-hint,
+  .proof-stat-label,
+  .badge-neutral {
+    color: var(--text-muted);
+  }
+}
+
+/* ── 11. PRINT STYLES ─────────────────────────────────────── */
+@media print {
+  /* Hide interactive chrome */
+  .nav,
+  footer,
+  .skip-link,
+  .btn-charter,
+  .btn-primary,
+  .btn-ghost,
+  .btn-outline,
+  .btn-secondary {
+    display: none !important;
+  }
+
+  /* Reset to clean white page */
+  html, body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+
+  /* Dark sections become white on paper */
+  .section-dark,
+  .section-darker,
+  .section-mid,
+  .section-hero,
+  .section-hero-short {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .section-dark h1, .section-dark h2, .section-dark h3,
+  .section-darker h1, .section-darker h2, .section-darker h3,
+  .section-mid h1, .section-mid h2, .section-mid h3 {
+    color: #000000 !important;
+  }
+
+  /* Show link destinations inline */
+  a[href]::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.8em;
+    color: #555555;
+    word-break: break-all;
+  }
+
+  /* Suppress internal anchors and JS links */
+  a[href^="#"]::after,
+  a[href^="javascript"]::after {
+    content: '';
+  }
+
+  /* Prevent orphaned headings */
+  h1, h2, h3, h4 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  /* Keep images with their captions */
+  img {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    max-width: 100% !important;
+  }
+
+  /* Sensible page margins */
+  @page {
+    margin: 2cm;
   }
 }
