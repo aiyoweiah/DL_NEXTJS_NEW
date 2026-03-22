@@ -94,13 +94,13 @@ const COPY = {
       h2:      'Where your child starts \u2014 and where they\u2019ll be.',
       h2zh:    '\u4ece\u8d77\u70b9\u5230\u6210\u957f\u7684\u6e05\u6670\u8def\u5f84',
       steps: [
-        { week: 'Week 1 \u00b7 \u7b2c\u4e00\u5468',            label: 'Entrance Assessment', labelZh: '\u5165\u5b66\u8bc4\u4f30',
+        { week: 'Week 1',       label: 'Entrance Assessment', labelZh: '\u5165\u5b66\u8bc4\u4f30',
           desc: 'We start by finding out exactly where your child is \u2014 their reading level, their writing strengths, and the specific areas where they need support. No assumptions.',
-          badge: 'LEXILE 620', badgeSub: 'Starting point established' },
-        { week: 'Weeks 2\u201315 \u00b7 \u7b2c\u4e8c\u81f3\u5341\u4e94\u5468', label: 'Weekly Sessions', labelZh: '\u6bcf\u5468\u8bfe\u7a0b',
+          badge: 'Baseline', badgeSub: 'Lexile 620L' },
+        { week: 'Weeks 2\u201315', label: 'Weekly Sessions', labelZh: '\u6bcf\u5468\u8bfe\u7a0b',
           desc: 'Each week, your child works through The Loop with their Navigator \u2014 someone who knows their progress, their challenges, and what to push next.',
           badge: null, badgeSub: null },
-        { week: 'Week 16 \u00b7 \u7b2c\u5341\u516d\u5468',     label: 'Exit Assessment',    labelZh: '\u7ed3\u4e1a\u8bc4\u4f30',
+        { week: 'Week 16',     label: 'Exit Assessment',    labelZh: '\u7ed3\u4e1a\u8bc4\u4f30',
           desc: 'At the end, you see the growth \u2014 not as a vague report card, but as real numbers. Lexile level, writing scores, side by side with where they started.',
           badge: null, badgeSub: null },
       ],
@@ -205,13 +205,13 @@ const COPY = {
       h2:      '\u4ece\u8d77\u70b9\u5230\u6210\u957f\u7684\u6e05\u6670\u8def\u5f84',
       h2zh:    'Where your child starts \u2014 and where they\u2019ll be.',
       steps: [
-        { week: 'Week 1 \u00b7 \u7b2c\u4e00\u5468',            label: '\u5165\u5b66\u8bc4\u4f30', labelZh: 'Entrance Assessment',
+        { week: '\u7b2c\u4e00\u5468',            label: '\u5165\u5b66\u8bc4\u4f30', labelZh: 'Entrance Assessment',
           desc: '\u6211\u4eec\u4ece\u7cbe\u51c6\u4e86\u89e3\u5b69\u5b50\u73b0\u72b6\u5f00\u59cb\u2014\u2014\u9605\u8bfb\u7b49\u7ea7\u3001\u5199\u4f5c\u4f18\u52bf\uff0c\u4ee5\u53ca\u9700\u8981\u652f\u6301\u7684\u5177\u4f53\u65b9\u9762\u3002\u4e0d\u4f5c\u5047\u8bbe\u3002',
-          badge: 'LEXILE 620', badgeSub: '\u8d77\u59cb\u70b9\u5df2\u786e\u5b9a' },
-        { week: 'Weeks 2\u201315 \u00b7 \u7b2c\u4e8c\u81f3\u5341\u4e94\u5468', label: '\u6bcf\u5468\u8bfe\u7a0b', labelZh: 'Weekly Sessions',
+          badge: '\u57fa\u7ebf', badgeSub: 'Lexile 620L' },
+        { week: '\u7b2c\u4e8c\u81f3\u5341\u4e94\u5468', label: '\u6bcf\u5468\u8bfe\u7a0b', labelZh: 'Weekly Sessions',
           desc: '\u6bcf\u5468\uff0c\u5b69\u5b50\u4e0e\u4e13\u5c5e\u9886\u822a\u5458\u5171\u540c\u5b8c\u6210\u5b8c\u6574\u7684\u5b66\u4e60\u5faa\u73af\u2014\u2014\u9886\u822a\u5458\u4e86\u89e3\u5b69\u5b50\u7684\u8fdb\u5c55\u3001\u6311\u6218\uff0c\u4ee5\u53ca\u4e0b\u4e00\u6b65\u5982\u4f55\u63a8\u8fdb\u3002',
           badge: null, badgeSub: null },
-        { week: 'Week 16 \u00b7 \u7b2c\u5341\u516d\u5468',     label: '\u7ed3\u4e1a\u8bc4\u4f30', labelZh: 'Exit Assessment',
+        { week: '\u7b2c\u5341\u516d\u5468',     label: '\u7ed3\u4e1a\u8bc4\u4f30', labelZh: 'Exit Assessment',
           desc: '\u8bfe\u7a0b\u7ed3\u675f\u65f6\uff0c\u60a8\u5c06\u770b\u5230\u771f\u5b9e\u7684\u6210\u957f\u6570\u636e\u2014\u2014\u4e0d\u662f\u6a21\u7cca\u7684\u6210\u7ee9\u5355\uff0c\u800c\u662f\u5177\u4f53\u7684\u6570\u5b57\uff1aLexile\u7b49\u7ea7\u3001\u5199\u4f5c\u8bc4\u5206\uff0c\u4e0e\u8d77\u70b9\u5e76\u6392\u5448\u73b0\u3002',
           badge: null, badgeSub: null },
       ],
@@ -836,24 +836,31 @@ function JourneySection({ locale, c }) {
                   {step.week}
                 </span>
 
-                {/* Lexile badge */}
+                {/* Lexile badge + sub label */}
                 {step.badge && (
-                  <span
-                    style={{
-                      marginLeft:      'auto',
-                      padding:         '2px 8px',
-                      backgroundColor: 'rgba(183,181,254,0.1)',
-                      borderRadius:    '9999px',
-                      border:          '1px solid rgba(183,181,254,0.28)',
-                      fontSize:        '9px',
-                      fontWeight:      700,
-                      letterSpacing:   '0.06em',
-                      color:           '#5856cc',
-                      whiteSpace:      'nowrap',
-                    }}
-                  >
-                    {step.badge}
-                  </span>
+                  <div style={{ marginLeft: 'auto', textAlign: 'right' }}>
+                    <span
+                      style={{
+                        display:         'inline-block',
+                        padding:         '2px 8px',
+                        backgroundColor: 'rgba(183,181,254,0.1)',
+                        borderRadius:    '9999px',
+                        border:          '1px solid rgba(183,181,254,0.28)',
+                        fontSize:        '9px',
+                        fontWeight:      700,
+                        letterSpacing:   '0.06em',
+                        color:           '#5856cc',
+                        whiteSpace:      'nowrap',
+                      }}
+                    >
+                      {step.badge}
+                    </span>
+                    {step.badgeSub && (
+                      <p style={{ fontSize: '8px', color: 'rgba(88,86,204,0.5)', marginTop: '2px', whiteSpace: 'nowrap' }}>
+                        {step.badgeSub}
+                      </p>
+                    )}
+                  </div>
                 )}
               </div>
 
@@ -1456,7 +1463,6 @@ export default async function ProgramPage({ params }) {
       <HangarSection     locale={locale} c={c} />
       <GrowthSection     locale={locale} c={c} />
       <GetStartedSection locale={locale} c={c} />
-      <CharterSection    locale={locale} c={c} />
     </>
   )
 }
