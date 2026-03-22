@@ -4,8 +4,13 @@
 // Bilingual EN + ZH — all text driven from COPY object below.
 //
 // Hero bg: /public/thehangar-book-bg.jpeg (local)
-//   Replaces Unsplash placeholder. Overlays unchanged —
-//   gradient already spec'd for left-dark / right-open composition.
+//   objectPosition: '70% center' — anchors book detail to right.
+//   Single unified overlay (no separate mobile/desktop divs) for
+//   consistent rendering across all breakpoints.
+//   Opacity reduced 15% from original: 0.72 → 0.47 → 0.26 gradient.
+//
+// Hero layout: matches program/page.jsx and homepage —
+//   section has no horizontal padding; container-section on content div.
 
 import Link from 'next/link'
 import { notFound }                    from 'next/navigation'
@@ -247,20 +252,84 @@ export default async function TheHangarPage({ params }) {
   return (
     <div className="w-full overflow-hidden" style={{ fontFamily: 'var(--font-latin)' }}>
 
-      {/* S1 HERO */}
-      <section className="relative flex items-center px-6 md:px-12" style={{ backgroundColor: '#212830', minHeight: '100dvh', paddingTop: 'calc(var(--nav-height) + 3rem)', paddingBottom: '5rem' }}>
+      {/* ─────────────────────────────────────────────────────
+          S1 HERO
+          Layout matches program/page.jsx and homepage:
+            - section has no horizontal padding
+            - container-section on the content wrapper
+            - paddingTop accounts for fixed navbar
+          ───────────────────────────────────────────────────── */}
+      <section
+        className="relative flex items-center"
+        style={{
+          backgroundColor: '#212830',
+          minHeight:       '100dvh',
+          paddingTop:      'calc(var(--nav-height) + 3.5rem)',
+          paddingBottom:   '5rem',
+        }}
+      >
+        {/* Background image */}
         <div className="absolute inset-0 overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/thehangar-book-bg.jpeg" alt="" aria-hidden="true" className="w-full h-full object-cover" style={{ display: 'block' }} />
-          <div className="absolute inset-0 hidden md:block" style={{ background: 'linear-gradient(to right, rgba(14,14,18,0.85) 0%, rgba(14,14,18,0.55) 50%, rgba(14,14,18,0.30) 100%)' }} />
-          <div className="absolute inset-0 md:hidden" style={{ backgroundColor: 'rgba(14,14,18,0.72)' }} />
+          <img
+            src="/thehangar-book-bg.jpeg"
+            alt=""
+            aria-hidden="true"
+            style={{
+              width:          '100%',
+              height:         '100%',
+              objectFit:      'cover',
+              objectPosition: '70% center',
+              display:        'block',
+            }}
+          />
+          {/*
+            Single unified overlay — no separate mobile/desktop divs.
+            Consistent across all breakpoints.
+            Opacity reduced 15% from original (×0.85):
+              0.72 left (was 0.85) → 0.47 mid → 0.26 right (was 0.30)
+          */}
+          <div
+            aria-hidden="true"
+            style={{
+              position:   'absolute',
+              inset:      0,
+              background: 'linear-gradient(to right, rgba(14,14,18,0.72) 0%, rgba(14,14,18,0.47) 50%, rgba(14,14,18,0.26) 100%)',
+            }}
+          />
         </div>
-        <div className="relative z-10 max-w-[700px]">
-          <Eyebrow dark>{c.s1.eyebrow}</Eyebrow>
-          <h1 className="mb-6" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: 'clamp(38px, 5vw, 68px)', lineHeight: 1.2, color: '#F0F0F0', letterSpacing: '-0.03em', maxWidth: '700px' }}>
-            {c.s1.h1a}<span style={{ color: '#b7b5fe' }}>{c.s1.h1b}</span>{c.s1.h1c}
-          </h1>
-          <p style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '18px', lineHeight: 1.6, color: 'rgba(240,240,240,0.75)', maxWidth: '520px' }}>{c.s1.sub}</p>
+
+        {/* Content — container-section matches program and homepage */}
+        <div className="container-section relative z-10">
+          <div style={{ maxWidth: '700px' }}>
+            <Eyebrow dark>{c.s1.eyebrow}</Eyebrow>
+            <h1
+              className="mb-6"
+              style={{
+                fontFamily:    'var(--font-latin)',
+                fontWeight:    700,
+                fontSize:      'clamp(38px, 5vw, 68px)',
+                lineHeight:    1.2,
+                color:         '#F0F0F0',
+                letterSpacing: '-0.03em',
+                textWrap:      'balance',
+              }}
+            >
+              {c.s1.h1a}<span style={{ color: '#b7b5fe' }}>{c.s1.h1b}</span>{c.s1.h1c}
+            </h1>
+            <p
+              style={{
+                fontFamily: 'var(--font-latin)',
+                fontWeight: 400,
+                fontSize:   '18px',
+                lineHeight: 1.6,
+                color:      'rgba(240,240,240,0.75)',
+                maxWidth:   '520px',
+              }}
+            >
+              {c.s1.sub}
+            </p>
+          </div>
         </div>
       </section>
 
