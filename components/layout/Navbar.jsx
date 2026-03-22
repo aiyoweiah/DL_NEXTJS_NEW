@@ -92,6 +92,7 @@ function Wordmark({ locale }) {
       href={`/${locale}`}
       className="flex items-center shrink-0 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b7b5fe] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0E0E12]"
       aria-label="DODO Learning — home"
+      style={{ overflow: 'visible' }}
     >
       {/*
         logo-dark.svg — white fill (#FFFFFF), correct for dark nav bg (#0E0E12).
@@ -199,10 +200,11 @@ export default function Navbar({ locale }) {
         className={`nav ${scrolled ? 'scrolled' : ''}`}
         style={{
           backgroundColor: '#0E0E12',
-          borderBottom: '1px solid rgba(183,181,254,0.10)',
+          borderBottom:    '1px solid rgba(183,181,254,0.10)',
+          overflow:        'visible', // prevent .nav overflow:hidden from clipping logo
         }}
       >
-        <div className="container-section h-full flex items-center justify-between gap-6">
+        <div className="container-section h-full flex items-center justify-between gap-6" style={{ overflow: 'visible' }}>
 
           <Wordmark locale={locale} />
 

@@ -416,19 +416,21 @@ function Hero({ locale, c }) {
             {c.hero.h1}
           </h1>
 
-          {/* Bilingual subtitle */}
-          <p
-            style={{
-              fontFamily:   'var(--font-cjk)',
-              fontSize:     '17px',
-              fontWeight:   500,
-              color:        'rgba(183,181,254,0.45)',
-              marginBottom: '1.25rem',
-              lineHeight:   1.5,
-            }}
-          >
-            {c.hero.h1zh}
-          </p>
+          {/* Bilingual subtitle — ZH only */}
+          {locale === 'zh' && (
+            <p
+              style={{
+                fontFamily:   'var(--font-cjk)',
+                fontSize:     '17px',
+                fontWeight:   500,
+                color:        'rgba(183,181,254,0.45)',
+                marginBottom: '1.25rem',
+                lineHeight:   1.5,
+              }}
+            >
+              {c.hero.h1zh}
+            </p>
+          )}
 
           {/* Subheading */}
           <p
@@ -563,7 +565,7 @@ function LoopSection({ locale, c }) {
             <BilingualH2
               id="loop-heading"
               primary={c.loop.h2}
-              secondary={c.loop.h2zh}
+              secondary={locale === 'zh' ? c.loop.h2zh : null}
             />
           </div>
           {/* Loop connector label — desktop only */}
@@ -653,18 +655,20 @@ function LoopSection({ locale, c }) {
                   {step.label}
                 </p>
 
-                {/* ZH label */}
-                <p
-                  style={{
-                    fontFamily: 'var(--font-cjk)',
-                    fontSize:   '11px',
-                    color:      LOOP_ACCENT_COLORS[i],
-                    lineHeight: 1.1,
-                    opacity:    0.75,
-                  }}
-                >
-                  {step.labelZh}
-                </p>
+                {/* ZH label — ZH only */}
+                {locale === 'zh' && (
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-cjk)',
+                      fontSize:   '11px',
+                      color:      LOOP_ACCENT_COLORS[i],
+                      lineHeight: 1.1,
+                      opacity:    0.75,
+                    }}
+                  >
+                    {step.labelZh}
+                  </p>
+                )}
 
                 {/* Badge — pushed to end */}
                 {step.badge && (
@@ -730,7 +734,7 @@ function JourneySection({ locale, c }) {
             <BilingualH2
               id="journey-heading"
               primary={c.journey.h2}
-              secondary={c.journey.h2zh}
+              secondary={locale === 'zh' ? c.journey.h2zh : null}
             />
           </div>
 
@@ -866,19 +870,21 @@ function JourneySection({ locale, c }) {
                 {step.label}
               </p>
 
-              {/* ZH label */}
-              <p
-                style={{
-                  fontFamily:   'var(--font-cjk)',
-                  fontSize:     '11px',
-                  color:        '#5856cc',
-                  opacity:      0.75,
-                  marginBottom: '0.375rem',
-                  lineHeight:   1.3,
-                }}
-              >
-                {step.labelZh}
-              </p>
+              {/* ZH label — ZH only */}
+              {locale === 'zh' && (
+                <p
+                  style={{
+                    fontFamily:   'var(--font-cjk)',
+                    fontSize:     '11px',
+                    color:        '#5856cc',
+                    opacity:      0.75,
+                    marginBottom: '0.375rem',
+                    lineHeight:   1.3,
+                  }}
+                >
+                  {step.labelZh}
+                </p>
+              )}
 
               {/* Description */}
               <p style={{ fontSize: '0.8125rem', lineHeight: 1.65, color: '#3D4452' }}>
@@ -977,7 +983,7 @@ function SessionSection({ locale, c }) {
           <BilingualH2
             id="session-heading"
             primary={c.session.h2}
-            secondary={c.session.h2zh}
+            secondary={locale === 'zh' ? c.session.h2zh : null}
             light
           />
 
@@ -1017,7 +1023,12 @@ function HangarSection({ locale, c }) {
       <div className="container-section">
         <div style={{ maxWidth: '40rem' }}>
           <Eyebrow dark>{c.hangar.eyebrow}</Eyebrow>
-          <BilingualH2 id="hangar-heading" primary={c.hangar.h2} secondary={c.hangar.h2zh} light />
+          <BilingualH2
+            id="hangar-heading"
+            primary={c.hangar.h2}
+            secondary={locale === 'zh' ? c.hangar.h2zh : null}
+            light
+          />
           <p style={{ fontSize: '1rem', lineHeight: 1.82, color: 'rgba(240,240,240,0.55)', marginTop: '1.125rem', marginBottom: '1.875rem' }}>
             {c.hangar.body}
           </p>
@@ -1146,7 +1157,12 @@ function GrowthSection({ locale, c }) {
 
         <div style={{ marginBottom: '3.5rem' }}>
           <Eyebrow dark>{c.growth.eyebrow}</Eyebrow>
-          <BilingualH2 id="growth-heading" primary={c.growth.h2} secondary={c.growth.h2zh} light />
+          <BilingualH2
+            id="growth-heading"
+            primary={c.growth.h2}
+            secondary={locale === 'zh' ? c.growth.h2zh : null}
+            light
+          />
         </div>
 
         <div
@@ -1300,7 +1316,6 @@ function GrowthSection({ locale, c }) {
 
 // ─────────────────────────────────────────────────────────────
 // SECTION 7 — GET STARTED
-// Bilingual echo line removed — BilingualH2 called without secondary.
 // ─────────────────────────────────────────────────────────────
 
 function GetStartedSection({ locale, c }) {
@@ -1312,7 +1327,6 @@ function GetStartedSection({ locale, c }) {
       <div className="container-section">
         <div style={{ maxWidth: '40rem' }}>
           <Eyebrow>{c.cta.eyebrow}</Eyebrow>
-          {/* secondary omitted intentionally — removes 从一次诊断性对话开始 echo */}
           <BilingualH2 id="get-started-heading" primary={c.cta.h2} />
           <p style={{ fontSize: '1rem', lineHeight: 1.82, color: '#3D4452', marginTop: '1.125rem', marginBottom: '1.875rem' }}>
             {c.cta.body}
@@ -1442,6 +1456,7 @@ export default async function ProgramPage({ params }) {
       <HangarSection     locale={locale} c={c} />
       <GrowthSection     locale={locale} c={c} />
       <GetStartedSection locale={locale} c={c} />
+      <CharterSection    locale={locale} c={c} />
     </>
   )
 }
