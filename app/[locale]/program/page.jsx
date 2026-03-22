@@ -79,7 +79,7 @@ const COPY = {
       h2:      'Four skills. Every session.',
       h2zh:    '\u56db\u9879\u6280\u80fd\uff0c\u8d2f\u7a7f\u6bcf\u5802\u8bfe',
       steps: [
-        { num: '01', label: 'Read',  labelZh: '\u9605\u8bfb', badge: 'LEXILE 740',
+        { num: '01', label: 'Read',  labelZh: '\u9605\u8bfb', badge: null,
           desc: 'Texts chosen above their comfort zone \u2014 just enough to stretch. Comprehension is tracked by Lexile level, not guesswork.' },
         { num: '02', label: 'Think', labelZh: '\u601d\u8003', badge: null,
           desc: 'Before they speak or write, they build the argument. What\u2019s the claim? What\u2019s the evidence? What\u2019s the counter? Structure first.' },
@@ -190,7 +190,7 @@ const COPY = {
       h2:      '\u56db\u9879\u6280\u80fd\uff0c\u8d2f\u7a7f\u6bcf\u5802\u8bfe',
       h2zh:    'Four skills. Every session.',
       steps: [
-        { num: '01', label: '\u9605\u8bfb', labelZh: 'Read',  badge: 'LEXILE 740',
+        { num: '01', label: '\u9605\u8bfb', labelZh: 'Read',  badge: null,
           desc: '\u7cbe\u9009\u7565\u9ad8\u4e8e\u8212\u9002\u533a\u7684\u6587\u7ae0\u2014\u2014\u6070\u5230\u597d\u5904\u5730\u5ef6\u5c55\u3002\u9605\u8bfb\u7406\u89e3\u901a\u8fc7Lexile\u7b49\u7ea7\u8ffd\u8e2a\uff0c\u800c\u975e\u51ed\u611f\u89c9\u3002' },
         { num: '02', label: '\u601d\u8003', labelZh: 'Think', badge: null,
           desc: '\u5728\u5f00\u53e3\u6216\u52a8\u7b14\u4e4b\u524d\uff0c\u5148\u641e\u5efa\u8bba\u70b9\u6846\u67b6\u3002\u8bba\u70b9\u662f\u4ec0\u4e48\uff1f\u4f9d\u636e\u662f\u4ec0\u4e48\uff1f\u53cd\u9a73\u662f\u4ec0\u4e48\uff1f\u7ed3\u6784\u5148\u884c\u3002' },
@@ -718,66 +718,30 @@ function JourneySection({ locale, c }) {
     >
       <div className="container-section">
 
-        {/* Header row — heading left, LexileBar right */}
-        <div
-          style={{
-            display:        'flex',
-            flexWrap:       'wrap',
-            alignItems:     'flex-end',
-            justifyContent: 'space-between',
-            gap:            '1.25rem',
-            marginBottom:   '1.5rem',
-          }}
-        >
-          <div>
-            <Eyebrow>{c.journey.eyebrow}</Eyebrow>
-            <BilingualH2
-              id="journey-heading"
-              primary={c.journey.h2}
-              secondary={locale === 'zh' ? c.journey.h2zh : null}
-            />
-          </div>
-
-          {/* LexileBar — inline card */}
-          <div
-            style={{
-              padding:         '0.875rem 1.25rem',
-              backgroundColor: '#ffffff',
-              borderRadius:    '0.75rem',
-              border:          '1px solid rgba(14,14,18,0.07)',
-              flexShrink:      0,
-              boxShadow:       '0 1px 4px rgba(0,0,0,0.04)',
-            }}
-          >
-            <p
-              style={{
-                fontSize:      '9px',
-                fontWeight:    700,
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
-                color:         '#5856cc',
-                marginBottom:  '0.5rem',
-              }}
-            >
-              Lexile Growth
-            </p>
-            <LexileBar start={620} end={820} weeks={16} light />
-          </div>
+        {/* Header */}
+        <div style={{ marginBottom: '1.5rem' }}>
+          <Eyebrow>{c.journey.eyebrow}</Eyebrow>
+          <BilingualH2
+            id="journey-heading"
+            primary={c.journey.h2}
+            secondary={locale === 'zh' ? c.journey.h2zh : null}
+          />
         </div>
 
-        {/* 3-step timeline — no images */}
+        {/* Single unified grid — 3 steps + LexileBar cell */}
         <div
           style={{
-            display:         'grid',
+            display:             'grid',
             gridTemplateColumns: 'repeat(1, 1fr)',
-            gap:             '1px',
-            backgroundColor: 'rgba(14,14,18,0.07)',
-            borderRadius:    '0.875rem',
-            overflow:        'hidden',
-            border:          '1px solid rgba(14,14,18,0.07)',
+            gap:                 '1px',
+            backgroundColor:     'rgba(14,14,18,0.07)',
+            borderRadius:        '0.875rem',
+            overflow:            'hidden',
+            border:              '1px solid rgba(14,14,18,0.07)',
           }}
-          className="md:grid-cols-3"
+          className="sm:grid-cols-2 lg:grid-cols-4"
         >
+          {/* 3 journey step cards */}
           {c.journey.steps.map((step, i) => (
             <article
               key={step.label}
@@ -793,7 +757,6 @@ function JourneySection({ locale, c }) {
                   alignItems:   'center',
                   gap:          '0.5rem',
                   marginBottom: '0.625rem',
-                  flexWrap:     'wrap',
                 }}
               >
                 {/* Numbered circle */}
@@ -810,14 +773,7 @@ function JourneySection({ locale, c }) {
                     flexShrink:      0,
                   }}
                 >
-                  <span
-                    style={{
-                      fontSize:   '10px',
-                      fontWeight: 800,
-                      color:      '#5856cc',
-                      lineHeight: 1,
-                    }}
-                  >
+                  <span style={{ fontSize: '10px', fontWeight: 800, color: '#5856cc', lineHeight: 1 }}>
                     {i + 1}
                   </span>
                 </span>
@@ -835,60 +791,16 @@ function JourneySection({ locale, c }) {
                 >
                   {step.week}
                 </span>
-
-                {/* Lexile badge + sub label */}
-                {step.badge && (
-                  <div style={{ marginLeft: 'auto', textAlign: 'right' }}>
-                    <span
-                      style={{
-                        display:         'inline-block',
-                        padding:         '2px 8px',
-                        backgroundColor: 'rgba(183,181,254,0.1)',
-                        borderRadius:    '9999px',
-                        border:          '1px solid rgba(183,181,254,0.28)',
-                        fontSize:        '9px',
-                        fontWeight:      700,
-                        letterSpacing:   '0.06em',
-                        color:           '#5856cc',
-                        whiteSpace:      'nowrap',
-                      }}
-                    >
-                      {step.badge}
-                    </span>
-                    {step.badgeSub && (
-                      <p style={{ fontSize: '8px', color: 'rgba(88,86,204,0.5)', marginTop: '2px', whiteSpace: 'nowrap' }}>
-                        {step.badgeSub}
-                      </p>
-                    )}
-                  </div>
-                )}
               </div>
 
               {/* Step title */}
-              <p
-                style={{
-                  fontSize:     '0.9375rem',
-                  fontWeight:   700,
-                  color:        '#0E0E12',
-                  lineHeight:   1.2,
-                  marginBottom: '2px',
-                }}
-              >
+              <p style={{ fontSize: '0.9375rem', fontWeight: 700, color: '#0E0E12', lineHeight: 1.2, marginBottom: '2px' }}>
                 {step.label}
               </p>
 
               {/* ZH label — ZH only */}
               {locale === 'zh' && (
-                <p
-                  style={{
-                    fontFamily:   'var(--font-cjk)',
-                    fontSize:     '11px',
-                    color:        '#5856cc',
-                    opacity:      0.75,
-                    marginBottom: '0.375rem',
-                    lineHeight:   1.3,
-                  }}
-                >
+                <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '11px', color: '#5856cc', opacity: 0.75, marginBottom: '0.375rem', lineHeight: 1.3 }}>
                   {step.labelZh}
                 </p>
               )}
@@ -899,6 +811,37 @@ function JourneySection({ locale, c }) {
               </p>
             </article>
           ))}
+
+          {/* LexileBar cell — 4th column, same visual weight as the step cards */}
+          <div
+            style={{
+              backgroundColor: '#f0efff',
+              padding:         '1rem 1.25rem 1.125rem',
+              display:         'flex',
+              flexDirection:   'column',
+              justifyContent:  'center',
+              gap:             '0.75rem',
+            }}
+          >
+            <p
+              style={{
+                fontSize:      '9px',
+                fontWeight:    700,
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                color:         '#5856cc',
+              }}
+            >
+              {locale === 'zh' ? 'Lexile 成长' : 'Lexile Growth'}
+            </p>
+            <LexileBar start={620} end={820} weeks={16} light />
+            <p style={{ fontSize: '0.75rem', lineHeight: 1.5, color: '#5856cc', opacity: 0.6 }}>
+              {locale === 'zh'
+                ? '典型16周成果：620L → 820L'
+                : 'Typical 16-week result: 620L → 820L'}
+            </p>
+          </div>
+
         </div>
 
       </div>
