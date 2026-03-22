@@ -349,8 +349,6 @@ function Eyebrow({ children, center = false, dark = false }) {
 // ─────────────────────────────────────────────────────────────
 
 function Hero({ locale, c }) {
-  const tickerItems = ['READ \u9605\u8bfb', 'THINK \u601d\u8003', 'SPEAK \u8868\u8fbe', 'WRITE \u5199\u4f5c', 'THE LOOP \u5b66\u4e60\u95ed\u73af']
-  const repeated    = [...tickerItems, ...tickerItems, ...tickerItems, ...tickerItems]
 
   return (
     <section
@@ -375,36 +373,6 @@ function Hero({ locale, c }) {
         }}
       />
 
-      {/* ── Ticker strip — sits flush at nav-height ── */}
-      <div
-        aria-hidden="true"
-        style={{
-          borderBottom:  '1px solid rgba(183,181,254,0.07)',
-          paddingTop:    'var(--nav-height)',
-          paddingBottom: '10px',
-          paddingLeft:   '1.25rem',
-          overflow:      'hidden',
-          flexShrink:    0,
-        }}
-      >
-        <div style={{ display: 'flex', gap: '2.5rem', whiteSpace: 'nowrap' }}>
-          {repeated.map((item, i) => (
-            <span
-              key={i}
-              style={{
-                fontSize:      '10px',
-                fontWeight:    600,
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
-                color:         'rgba(183,181,254,0.3)',
-              }}
-            >
-              {item}
-            </span>
-          ))}
-        </div>
-      </div>
-
       {/* ── Main content ── */}
       <div
         className="container-section relative z-10"
@@ -412,7 +380,7 @@ function Hero({ locale, c }) {
           flex:          1,
           display:       'flex',
           alignItems:    'center',
-          paddingTop:    '3.5rem',
+          paddingTop:    'calc(var(--nav-height) + 3.5rem)',
           paddingBottom: '2.5rem',
         }}
       >

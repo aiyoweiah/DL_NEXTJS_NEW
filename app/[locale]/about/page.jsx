@@ -206,7 +206,7 @@ function Hero({ c }) {
       <div aria-hidden="true" className="pointer-events-none absolute inset-0"
         style={{ background: 'linear-gradient(to bottom, rgba(183,181,254,0.05) 0%, transparent 50%)' }} />
       <div className="container-section relative z-10 w-full"
-        style={{ paddingTop: 'calc(var(--nav-height-md) + 3.5rem)', paddingBottom: '5rem' }}>
+        style={{ paddingTop: 'calc(var(--nav-height) + 3.5rem)', paddingBottom: '5rem' }}>
         <div className="grid lg:grid-cols-5 gap-12 items-center">
           <div className="lg:col-span-3">
             <div className="inline-flex items-center gap-2 mb-10 rounded-full"

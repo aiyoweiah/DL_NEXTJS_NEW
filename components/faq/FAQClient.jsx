@@ -516,7 +516,7 @@ export default function FAQClient({ locale = 'en' }) {
       {/* ── S1 HERO + SEARCH ────────────────────────────────── */}
       <section style={{ backgroundColor: '#212830' }}>
         <div className="max-w-[680px] mx-auto text-center px-6"
-          style={{ paddingTop: '80px', paddingBottom: '64px' }}>
+          style={{ paddingTop: 'calc(var(--nav-height) + 2rem)', paddingBottom: '64px' }}>
           <div style={{ fontFamily: 'var(--font-latin)', fontSize: '12px', fontWeight: 500,
             letterSpacing: '0.1em', textTransform: 'uppercase', color: '#b7b5fe', marginBottom: '24px' }}>
             {ui.eyebrow}

@@ -23,14 +23,14 @@ import { useFocusTrap }                              from '@/lib/a11y'
 const PRIMARY_LINKS = [
   { href: '/program',    label: 'The Program' },
   { href: '/the-hangar', label: 'The Hangar'  },
+  { href: '/about',      label: 'About'       },
   { href: '/assessment', label: 'Assessment'  },
   { href: '/navigators', label: 'Navigators'  },
 ]
 
 const SECONDARY_LINKS = [
-  { href: '/about', label: 'About' },
-  { href: '/blog',  label: 'Blog'  },
-  { href: '/faq',   label: 'FAQ'   },
+  { href: '/blog', label: 'Blog' },
+  { href: '/faq',  label: 'FAQ'  },
 ]
 
 // ── Hamburger icon ────────────────────────────────────────────

@@ -10,7 +10,6 @@
 //   4.  LoopSection       — DARK   (#212830)
 //   5.  ConfidenceSection — LIGHT  (#F5F5FF)
 //   6.  ParentTrustSection— DARK   (#212830)
-//   7.  ClosingCTA        — DARKER (#0E0E12)
 //
 // Pure server component. Zero 'use client'.
 
@@ -46,8 +45,8 @@ const HOMEPAGE_COPY: Record<string, any> = {
       eyebrow:       'For Globally Mobile Families',
       eyebrow2:      'Charter Enrollment',
       h1:            ['Build the edge.\u00a0', 'Own both languages.\u00a0'],
-      h1Chinese:     '\u4e0d\u662f\u8ffd\u8d76\u3002\u662f\u9886\u8dd1\u3002',
-      differentiator: '\u5176\u4ed6\u8bfe\u7a0b\u6559\u5b69\u5b50\u8bf4\u4ec0\u4e48\u3002\u6211\u4eec\u6559\u5b69\u5b50\u600e\u4e48\u53cc\u8bed\u601d\u8003\u3002',
+      h1Chinese:     '',
+      differentiator: '',
       consultHook:
         'The only live, high-touch program that trains the full\u00a0Read \u2192 Think \u2192 Speak \u2192 Write loop \u2014 for families who live between two languages.',
       cta1:          'Book Your Consultation',
@@ -68,7 +67,7 @@ const HOMEPAGE_COPY: Record<string, any> = {
         'Every Navigator tracks one thing per student: the distance between their current Lexile level and their goal \u2014 and closes it, week by week, through The Loop.',
       cta1:     'Meet the Navigators',
       cta2:     'See Student Results',
-      imgLabel: 'Navigator Session',
+      imgAlt:   'A mother watches her child pause mid-thought after finishing a reading passage at home',
     },
     loop: {
       eyebrow:  'The Methodology',
@@ -167,7 +166,7 @@ const HOMEPAGE_COPY: Record<string, any> = {
         '\u6bcf\u4f4d\u5bfc\u5e08\u53ea\u8ffd\u8e2a\u6bcf\u4f4d\u5b66\u751f\u7684\u4e00\u4ef6\u4e8b\uff1a\u5f53\u524dLexile\u6c34\u5e73\u4e0e\u76ee\u6807\u4e4b\u95f4\u7684\u8ddd\u79bb\u2014\u2014\u5e76\u901a\u8fc7The Loop\u9010\u5468\u7f29\u5c0f\u8fd9\u4e2a\u8ddd\u79bb\u3002',
       cta1:     '\u8ba4\u8bc6\u5bfc\u5e08\u56e2\u961f',
       cta2:     '\u67e5\u770b\u5b66\u751f\u6210\u679c',
-      imgLabel: '\u5bfc\u5e08\u5728\u7ebf\u8bfe',
+      imgAlt:   '\u4e00\u4f4d\u6bcd\u4eb2\u6ce8\u89c6\u5b69\u5b50\u5728\u5bb6\u4e2d\u9605\u8bfb\u540e\u505c\u987f\u601d\u8003\u7684\u77ac\u95f4',
     },
     loop: {
       eyebrow:  '\u6559\u5b66\u65b9\u6cd5',
@@ -278,7 +277,7 @@ function Hero({ locale, c }) {
         </svg>
       </div>
 
-      <div className="container-section relative z-10">
+      <div className="container-section relative z-10" style={{ paddingTop: 'clamp(3rem, 6vh, 5rem)', paddingBottom: 'clamp(2rem, 4vh, 4rem)' }}>
         <div className="max-w-3xl">
           <div className="flex items-center gap-3 mb-8">
             <span className="badge badge-lavender" aria-label="Program audience">{c.hero.eyebrow}</span>
@@ -289,13 +288,15 @@ function Hero({ locale, c }) {
           </div>
 
           <h1 id="hero-heading" className="mb-6" style={{ color: '#212830', fontWeight: 700 }}>
-            {c.hero.h1[0]}<br />{c.hero.h1[1]}<br className="hidden sm:block" />
-            <span style={{ color: '#5856cc' }}>{c.hero.h1Chinese}</span>
+            {c.hero.h1[0]}<br />{c.hero.h1[1]}
+            {c.hero.h1Chinese && <><br className="hidden sm:block" /><span style={{ color: '#5856cc' }}>{c.hero.h1Chinese}</span></>}
           </h1>
 
-          <p className="mb-4 text-lg md:text-xl leading-relaxed max-w-2xl" style={{ color: '#3D4452' }}>
-            {c.hero.differentiator}
-          </p>
+          {c.hero.differentiator && (
+            <p className="mb-4 text-lg md:text-xl leading-relaxed max-w-2xl" style={{ color: '#3D4452' }}>
+              {c.hero.differentiator}
+            </p>
+          )}
           <p className="mb-10 text-base md:text-lg leading-relaxed max-w-xl" style={{ color: '#7B8494' }}>
             {c.hero.consultHook}
           </p>
@@ -357,21 +358,21 @@ function PhotoIntro({ locale, c }) {
             </div>
           </div>
 
-          <div className="relative w-full rounded-2xl overflow-hidden" style={{ aspectRatio: '4/3' }} aria-hidden="true">
-            <div className="absolute inset-0 flex items-center justify-center"
-              style={{ background: 'linear-gradient(135deg, #EAEAF8 0%, #f0efff 50%, #e8e7ff 100%)' }}>
-              <div className="text-center">
-                <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: '#5856cc' }}>
-                  {c.photoIntro.imgLabel}
-                </p>
-                <div className="flex items-center gap-2 text-sm font-semibold" style={{ color: '#5856cc' }}>
-                  <span>Read</span><span style={{ color: 'rgba(183,181,254,0.4)' }}>\u2192</span>
-                  <span>Think</span><span style={{ color: 'rgba(183,181,254,0.4)' }}>\u2192</span>
-                  <span>Speak</span><span style={{ color: 'rgba(183,181,254,0.4)' }}>\u2192</span>
-                  <span>Write</span>
-                </div>
-              </div>
-            </div>
+          {/* ── Photo — place homepage-mom-daughter-thinking.jpeg in /public ── */}
+          <div className="relative w-full rounded-2xl overflow-hidden" style={{ aspectRatio: '4/3' }}>
+            <img
+              src="/homepage-mom-daughter-thinking.jpeg"
+              alt={c.photoIntro.imgAlt}
+              width={1600}
+              height={1200}
+              style={{
+                width:      '100%',
+                height:     '100%',
+                objectFit:  'cover',
+                objectPosition: 'center',
+                display:    'block',
+              }}
+            />
           </div>
         </div>
       </div>
@@ -396,10 +397,6 @@ function LoopSection({ locale, c }) {
         <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" aria-label="The Loop — DODO Learning methodology">
           {steps.map((step, index) => (
             <li key={step.id} className="relative">
-              {index < steps.length - 1 && (
-                <div aria-hidden="true" className="hidden lg:block absolute top-6 left-[calc(100%+0.75rem)] right-[-0.75rem] h-px"
-                  style={{ background: 'linear-gradient(90deg, rgba(183,181,254,0.3) 0%, rgba(183,181,254,0.1) 100%)', width: 'calc(100% - 3rem)', zIndex: 1 }} />
-              )}
               <div className="card card-dark h-full p-6 flex flex-col gap-4">
                 <div className="flex items-center gap-3">
                   <span className="loop-step-number" aria-hidden="true" style={{ width: 40, height: 40, fontSize: '0.875rem' }}>{step.number}</span>
@@ -446,7 +443,7 @@ function ConfidenceSection({ locale, c }) {
                 href={`/${locale}${pillar.linkHref}`}
                 className="text-sm font-semibold text-[#5856cc] hover:text-[#3d3baa] transition-colors duration-150 focus-visible:outline-none focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-[#b7b5fe]"
               >
-                {pillar.linkLabel} \u2192
+                {pillar.linkLabel}
               </Link>
             </div>
           ))}
@@ -495,33 +492,6 @@ function ParentTrustSection({ locale, c }) {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// SECTION 7 — CLOSING CTA
-// ═══════════════════════════════════════════════════════════════
-function ClosingCTA({ locale, c }) {
-  return (
-    <section className="section-darker relative overflow-hidden" aria-labelledby="closing-cta-heading"
-      style={{ paddingTop: 'var(--section-lg)', paddingBottom: 'var(--section-lg)' }}>
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0"
-        style={{ background: 'radial-gradient(ellipse 50% 60% at 50% 50%, rgba(245,200,66,0.06) 0%, transparent 70%)' }} />
-
-      <div className="container-section relative z-10 text-center max-w-3xl mx-auto">
-        <p className="eyebrow mb-6" style={{ color: 'rgba(183,181,254,0.5)' }}>{c.closing.eyebrow}</p>
-        <h2 id="closing-cta-heading" className="mb-6" style={{ color: '#b7b5fe' }}>{c.closing.heading}</h2>
-        <p className="text-base md:text-lg leading-relaxed mb-10 max-w-xl mx-auto" style={{ color: '#94A3B8' }}>{c.closing.body}</p>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link href={`/${locale}/consult`} className="btn btn-charter text-base px-10 py-4 justify-center"
-            aria-label="Book your diagnostic consultation — Charter Enrollment">{c.closing.cta1}</Link>
-          <Link href={`/${locale}/program`} className="btn btn-ghost text-base px-10 py-4 justify-center">{c.closing.cta2}</Link>
-        </div>
-
-        <p className="mt-8 text-xs" style={{ color: 'rgba(148,163,184,0.5)' }}>{c.closing.tagline}</p>
-      </div>
-    </section>
-  )
-}
-
-// ═══════════════════════════════════════════════════════════════
 // PAGE EXPORT
 // ═══════════════════════════════════════════════════════════════
 export function generateStaticParams() {
@@ -540,7 +510,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <LoopSection locale={locale} c={c} />
       <ConfidenceSection locale={locale} c={c} />
       <ParentTrustSection locale={locale} c={c} />
-      <ClosingCTA locale={locale} c={c} />
     </>
   )
 }

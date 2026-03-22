@@ -215,7 +215,7 @@ export default async function BlogPage({ params }) {
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true"
           style={{ backgroundImage: 'radial-gradient(circle, #b7b5fe 1px, transparent 1px)', backgroundSize: '32px 32px', opacity: 0.08 }} />
 
-        <div className="relative max-w-7xl mx-auto px-6 text-center" style={{ paddingTop: '100px', paddingBottom: '80px' }}>
+        <div className="relative max-w-7xl mx-auto px-6 text-center" style={{ paddingTop: 'calc(var(--nav-height) + 3rem)', paddingBottom: '80px' }}>
           <div style={{ fontFamily: 'var(--font-latin)', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 500, fontSize: '12px', color: '#5856cc', marginBottom: '24px' }}>
             {ui.eyebrow}
           </div>

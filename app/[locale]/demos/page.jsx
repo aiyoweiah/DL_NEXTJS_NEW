@@ -247,7 +247,7 @@ function Tag({ children, variant = 'default' }) {
 
 function Hero({ locale, c }) {
   return (
-    <section aria-labelledby="demos-hero-heading" style={{ backgroundColor: '#0E0E12', display: 'flex', flexDirection: 'column', position: 'relative', overflow: 'hidden' }}>
+    <section aria-labelledby="demos-hero-heading" style={{ backgroundColor: '#0E0E12', minHeight: '100dvh', display: 'flex', flexDirection: 'column', position: 'relative', overflow: 'hidden' }}>
       <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 65% 50% at 80% 30%, rgba(183,181,254,0.07) 0%, transparent 60%)', pointerEvents: 'none' }} />
 
       <div className="container-section relative z-10" style={{ flex: 1, display: 'flex', alignItems: 'center', paddingTop: 'calc(var(--nav-height) + 3.5rem)', paddingBottom: '2.5rem' }}>

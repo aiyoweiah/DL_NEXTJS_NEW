@@ -103,6 +103,7 @@ export default function LocaleSwitcher({ locale }) {
       type="button"
       onClick={handleSwitch}
       aria-label={label}
+      style={{ writingMode: 'horizontal-tb', whiteSpace: 'nowrap' }}
       className="
         inline-flex items-center justify-center
         h-8 px-2.5 rounded-md

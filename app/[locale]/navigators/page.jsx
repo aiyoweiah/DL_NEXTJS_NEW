@@ -219,19 +219,19 @@ export default async function NavigatorsPage({ params }) {
     <div className="w-full overflow-hidden" style={{ fontFamily: 'var(--font-latin)' }}>
 
       {/* S1 HERO */}
-      <section className="flex items-center justify-center px-6 py-20 relative overflow-hidden"
-        style={{ background: 'linear-gradient(to bottom, #2E3848 0%, #212830 60%)', minHeight: '100dvh', paddingTop: 'calc(var(--nav-height-md) + 3rem)', paddingBottom: '5rem' }}>
+      <section className="flex items-center px-6 py-20 relative overflow-hidden"
+        style={{ background: 'linear-gradient(to bottom, #2E3848 0%, #212830 60%)', minHeight: '100dvh', paddingTop: 'calc(var(--nav-height) + 3rem)', paddingBottom: '5rem' }}>
         <div className="absolute bottom-0 right-0 select-none pointer-events-none" aria-hidden="true"
           style={{ fontSize: '280px', fontWeight: 700, color: '#b7b5fe', opacity: 0.04, lineHeight: 1, transform: 'translateX(15%)' }}>
           NAVIGATOR
         </div>
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <Eyebrow dark center>{c.hero.eyebrow}</Eyebrow>
-          <h1 className="mb-8 mx-auto"
+        <div className="max-w-4xl relative z-10">
+          <Eyebrow dark>{c.hero.eyebrow}</Eyebrow>
+          <h1 className="mb-8"
             style={{ fontSize: 'clamp(38px, 5vw, 68px)', fontWeight: 700, color: '#F0F0F0', lineHeight: 1.2, maxWidth: '760px' }}>
             {c.hero.h1a}<span style={{ color: '#b7b5fe' }}>{c.hero.h1b}</span>{c.hero.h1c}<span style={{ color: '#b7b5fe' }}>{c.hero.h1d}</span>{c.hero.h1e}
           </h1>
-          <p className="mx-auto" style={{ fontSize: 'clamp(16px, 2vw, 20px)', fontWeight: 400, color: '#F0F0F0', opacity: 0.8, maxWidth: '580px', lineHeight: 1.6 }}>
+          <p style={{ fontSize: 'clamp(16px, 2vw, 20px)', fontWeight: 400, color: '#F0F0F0', opacity: 0.8, maxWidth: '580px', lineHeight: 1.6 }}>
             {c.hero.sub}
           </p>
         </div>
