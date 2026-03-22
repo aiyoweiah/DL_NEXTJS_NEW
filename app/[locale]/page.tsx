@@ -246,38 +246,44 @@ function Hero({ locale, c }) {
         minHeight:  'calc(100dvh - var(--nav-height))',
         display:    'flex',
         alignItems: 'center',
-        paddingTop: 'var(--nav-height)', // push content below the fixed navbar
+        paddingTop: 'var(--nav-height)',
       }}
     >
       {/* Radial glow */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0"
-        style={{ background: 'radial-gradient(ellipse 60% 55% at 70% 40%, rgba(183,181,254,0.22) 0%, transparent 65%)' }} />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+        style={{ background: 'radial-gradient(ellipse 60% 55% at 70% 40%, rgba(183,181,254,0.22) 0%, transparent 65%)' }}
+      />
 
-      {/* Logo icon — anchored behind text, oversized, crops at right viewport edge */}
+      {/* O glyph watermark — top-right, viewBox crops to tooth region only */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute select-none"
         style={{
-          left:    '-2%',
-          bottom:  '-8%',
-          width:   '110%',
-          opacity: 0.07,
+          top:   '-25px',
+          right: '-180px',
+          zIndex: 1,
         }}
       >
         <svg
-          viewBox="0 0 600 338"
+          width="500"
+          viewBox="280 55 200 195"
           xmlns="http://www.w3.org/2000/svg"
           fill="#b7b5fe"
-          style={{ width: '100%', height: 'auto', display: 'block' }}
+          opacity="0.12"
+          style={{ display: 'block' }}
         >
           <g transform="translate(0,338) scale(0.1,-0.1)" stroke="none">
             <path d="M3650 2626 c-413 -124 -743 -651 -744 -1186 0 -209 37 -313 169 -472 187 -227 711 -313 1054 -174 195 79 426 287 502 451 122 262 102 632 -47 903 -83 152 -247 339 -348 397 -169 98 -417 132 -586 81z m113 -393 c7 -237 14 -219 -93 -227 -41 -4 -99 -8 -127 -10 l-53 -5 0 160 0 159 43 31 c62 46 174 97 213 99 7 0 13 -67 17 -207z m320 155 c37 -17 72 -37 79 -45 9 -11 14 -261 5 -270 -9 -9 -190 -17 -192 -9 -2 6 -5 91 -8 189 l-4 178 26 -6 c14 -3 56 -20 94 -37z m357 -421 c60 -153 78 -325 50 -475 -20 -115 -18 -112 -109 -112 -99 0 -217 -22 -285 -53 -48 -22 -54 -23 -91 -9 -173 63 -480 -8 -701 -163 -80 -55 -75 -56 -114 6 -122 189 -103 463 54 814 l31 70 6 -77 c8 -91 32 -138 86 -163 54 -26 334 -16 443 15 45 13 127 25 204 30 277 19 356 58 356 181 l1 64 19 -23 c10 -12 33 -60 50 -105z m-120 -801 c0 -3 -33 -31 -72 -62 -213 -167 -457 -211 -755 -137 -35 8 -63 19 -63 23 0 12 147 86 218 109 134 45 243 44 351 -4 l60 -27 52 33 c74 47 209 89 209 65z" />
-            <path d="M1705 2613 c-80 -6 -268 -35 -291 -44 -14 -5 -47 -30 -74 -55 l-50 -47 0 -793 0 -794 145 0 145 0 0 754 0 754 73 13 c347 61 623 -67 777 -362 68 -132 85 -209 85 -399 -1 -189 -12 -244 -76 -377 -120 -251 -314 -302 -639 -169 -24 10 -140 -161 -119 -175 67 -43 253 -90 385 -96 443 -22 722 270 741 777 24 662 -419 1070 -1102 1013z" />
           </g>
         </svg>
       </div>
 
-      <div className="container-section relative z-10" style={{ paddingTop: 'clamp(3rem, 6vh, 5rem)', paddingBottom: 'clamp(2rem, 4vh, 4rem)' }}>
+      <div
+        className="container-section relative z-10"
+        style={{ paddingTop: 'clamp(3rem, 6vh, 5rem)', paddingBottom: 'clamp(2rem, 4vh, 4rem)' }}
+      >
         <div className="max-w-3xl">
           <div className="flex items-center gap-3 mb-8">
             <span className="badge badge-lavender" aria-label="Program audience">{c.hero.eyebrow}</span>
@@ -289,7 +295,9 @@ function Hero({ locale, c }) {
 
           <h1 id="hero-heading" className="mb-6" style={{ color: '#212830', fontWeight: 700 }}>
             {c.hero.h1[0]}<br />{c.hero.h1[1]}
-            {c.hero.h1Chinese && <><br className="hidden sm:block" /><span style={{ color: '#5856cc' }}>{c.hero.h1Chinese}</span></>}
+            {c.hero.h1Chinese && (
+              <><br className="hidden sm:block" /><span style={{ color: '#5856cc' }}>{c.hero.h1Chinese}</span></>
+            )}
           </h1>
 
           {c.hero.differentiator && (
@@ -297,15 +305,26 @@ function Hero({ locale, c }) {
               {c.hero.differentiator}
             </p>
           )}
+
           <p className="mb-10 text-base md:text-lg leading-relaxed max-w-xl" style={{ color: '#7B8494' }}>
             {c.hero.consultHook}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href={`/${locale}/consult`} className="btn btn-charter text-base px-8 py-4 justify-center"
-              aria-label="Book a diagnostic consultation">{c.hero.cta1}</Link>
-            <Link href={`/${locale}/program`} className="btn btn-secondary text-base px-8 py-4 justify-center"
-              aria-label="Learn about The 16-Week Program">{c.hero.cta2}</Link>
+            <Link
+              href={`/${locale}/consult`}
+              className="btn btn-charter text-base px-8 py-4 justify-center"
+              aria-label="Book a diagnostic consultation"
+            >
+              {c.hero.cta1}
+            </Link>
+            <Link
+              href={`/${locale}/program`}
+              className="btn btn-secondary text-base px-8 py-4 justify-center"
+              aria-label="Learn about The 16-Week Program"
+            >
+              {c.hero.cta2}
+            </Link>
           </div>
 
           <p className="mt-8 text-xs" style={{ color: 'rgba(123,132,148,0.8)' }}>{c.hero.trustLine}</p>
@@ -366,11 +385,11 @@ function PhotoIntro({ locale, c }) {
               width={1600}
               height={1200}
               style={{
-                width:      '100%',
-                height:     '100%',
-                objectFit:  'cover',
+                width:          '100%',
+                height:         '100%',
+                objectFit:      'cover',
                 objectPosition: 'center',
-                display:    'block',
+                display:        'block',
               }}
             />
           </div>
@@ -412,8 +431,13 @@ function LoopSection({ locale, c }) {
         </ol>
 
         <div className="mt-12 flex justify-start">
-          <Link href={`/${locale}/methodology`} className="btn btn-ghost text-sm px-6 py-3"
-            aria-label="Read the full Loop methodology breakdown">{c.loop.cta}</Link>
+          <Link
+            href={`/${locale}/methodology`}
+            className="btn btn-ghost text-sm px-6 py-3"
+            aria-label="Read the full Loop methodology breakdown"
+          >
+            {c.loop.cta}
+          </Link>
         </div>
       </div>
     </section>
@@ -465,14 +489,22 @@ function ParentTrustSection({ locale, c }) {
             <p className="eyebrow mb-4" style={{ color: 'rgba(183,181,254,0.6)' }}>{c.trust.eyebrow}</p>
             <h2 id="results-heading">{c.trust.heading1}<br />{c.trust.heading2}</h2>
           </div>
-          <Link href={`/${locale}/results`} className="btn btn-ghost text-sm px-6 py-3 shrink-0"
-            aria-label="View all student results and Lexile data">{c.trust.viewAll}</Link>
+          <Link
+            href={`/${locale}/results`}
+            className="btn btn-ghost text-sm px-6 py-3 shrink-0"
+            aria-label="View all student results and Lexile data"
+          >
+            {c.trust.viewAll}
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {c.trust.results.map((result) => (
-            <article key={result.id} className="card card-dark p-6 flex flex-col gap-5"
-              aria-label={`${result.student}, ${result.detail}`}>
+            <article
+              key={result.id}
+              className="card card-dark p-6 flex flex-col gap-5"
+              aria-label={`${result.student}, ${result.detail}`}
+            >
               <div>
                 <p className="text-sm font-semibold" style={{ color: '#b7b5fe' }}>{result.student}</p>
                 <p className="text-xs mt-0.5" style={{ color: '#94A3B8' }}>{result.detail} &nbsp;&middot;&nbsp; {result.weeks} {c.trust.weeksLabel}</p>

@@ -96,7 +96,7 @@ const COPY = {
       steps: [
         { week: 'Week 1',       label: 'Entrance Assessment', labelZh: '\u5165\u5b66\u8bc4\u4f30',
           desc: 'We start by finding out exactly where your child is \u2014 their reading level, their writing strengths, and the specific areas where they need support. No assumptions.',
-          badge: 'Baseline', badgeSub: 'Lexile 620L' },
+          badge: null, badgeSub: null },
         { week: 'Weeks 2\u201315', label: 'Weekly Sessions', labelZh: '\u6bcf\u5468\u8bfe\u7a0b',
           desc: 'Each week, your child works through The Loop with their Navigator \u2014 someone who knows their progress, their challenges, and what to push next.',
           badge: null, badgeSub: null },
@@ -207,7 +207,7 @@ const COPY = {
       steps: [
         { week: '\u7b2c\u4e00\u5468',            label: '\u5165\u5b66\u8bc4\u4f30', labelZh: 'Entrance Assessment',
           desc: '\u6211\u4eec\u4ece\u7cbe\u51c6\u4e86\u89e3\u5b69\u5b50\u73b0\u72b6\u5f00\u59cb\u2014\u2014\u9605\u8bfb\u7b49\u7ea7\u3001\u5199\u4f5c\u4f18\u52bf\uff0c\u4ee5\u53ca\u9700\u8981\u652f\u6301\u7684\u5177\u4f53\u65b9\u9762\u3002\u4e0d\u4f5c\u5047\u8bbe\u3002',
-          badge: '\u57fa\u7ebf', badgeSub: 'Lexile 620L' },
+          badge: null, badgeSub: null },
         { week: '\u7b2c\u4e8c\u81f3\u5341\u4e94\u5468', label: '\u6bcf\u5468\u8bfe\u7a0b', labelZh: 'Weekly Sessions',
           desc: '\u6bcf\u5468\uff0c\u5b69\u5b50\u4e0e\u4e13\u5c5e\u9886\u822a\u5458\u5171\u540c\u5b8c\u6210\u5b8c\u6574\u7684\u5b66\u4e60\u5faa\u73af\u2014\u2014\u9886\u822a\u5458\u4e86\u89e3\u5b69\u5b50\u7684\u8fdb\u5c55\u3001\u6311\u6218\uff0c\u4ee5\u53ca\u4e0b\u4e00\u6b65\u5982\u4f55\u63a8\u8fdb\u3002',
           badge: null, badgeSub: null },
