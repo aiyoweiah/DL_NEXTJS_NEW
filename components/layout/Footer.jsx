@@ -16,11 +16,14 @@
 //   - LocaleSwitcherSlot replaced with <LocaleSwitcher locale={locale} />
 //     Server components can render client components — no change to rendering model.
 //
+// Logo: uses logo.svg (black fill #000000) — correct for light #F5F5FF background.
+//   Dimensions reflect trimmed viewBox="58 45 484 240" → 2.02:1 aspect ratio.
+//   Plain <img> used (not next/image) — images: { unoptimized: true } gives no benefit.
+//
 // Contrast: all text on light bg uses #3D4452 (body) and #7c79e8 (lavender AA).
 // #b7b5fe (2.8:1 on white) is never used as text on light — #7c79e8 is used instead.
 
 import Link           from 'next/link'
-import Image          from 'next/image'
 import LocaleSwitcher from '@/components/layout/LocaleSwitcher'
 
 // ── Navigation columns ────────────────────────────────────────
@@ -176,12 +179,18 @@ export default function Footer({ locale }) {
                 className="inline-flex mb-6 focus-visible:outline-none focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-[#b7b5fe] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5F5FF]"
                 aria-label="DODO Learning — home"
               >
-                <Image
+                {/*
+                  logo.svg — black fill (#000000), correct for light bg (#F5F5FF).
+                  viewBox trimmed to content: 484×240 → 2.02:1 ratio.
+                  width/height are intrinsic hints only; h-10 w-auto drives render size.
+                  At h=40px → rendered width ≈ 81px.
+                */}
+                <img
                   src="/logo.svg"
                   alt="DODO Learning"
-                  width={156}
-                  height={47}
-                  className="h-11 w-auto"
+                  width={81}
+                  height={40}
+                  style={{ height: '40px', width: 'auto', display: 'block' }}
                 />
               </Link>
 
