@@ -333,23 +333,49 @@ function Eyebrow({ children, center = false, dark = false }) {
 
 // ─────────────────────────────────────────────────────────────
 // SECTION 1 — HERO
+// Background: public/program-background.jpeg
+// Pattern: same as SessionSection (absolute img + gradient overlay)
 // ─────────────────────────────────────────────────────────────
 
 function Hero({ locale, c }) {
-
   return (
     <section
       aria-labelledby="program-hero-heading"
       style={{
-        backgroundColor: '#0E0E12',
-        minHeight:       '100dvh',
-        display:         'flex',
-        flexDirection:   'column',
-        position:        'relative',
-        overflow:        'hidden',
+        minHeight:     '100dvh',
+        display:       'flex',
+        flexDirection: 'column',
+        position:      'relative',
+        overflow:      'hidden',
       }}
     >
-      {/* Ambient glow */}
+      {/* Background image */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/program-background.jpeg"
+        alt=""
+        aria-hidden="true"
+        style={{
+          position:  'absolute',
+          inset:     0,
+          width:     '100%',
+          height:    '100%',
+          objectFit: 'cover',
+          display:   'block',
+        }}
+      />
+
+      {/* Dark overlay — keeps text readable over any image */}
+      <div
+        aria-hidden="true"
+        style={{
+          position:   'absolute',
+          inset:      0,
+          background: 'linear-gradient(105deg, rgba(14,14,18,0.96) 0%, rgba(14,14,18,0.88) 50%, rgba(14,14,18,0.65) 100%)',
+        }}
+      />
+
+      {/* Ambient lavender glow — preserved from original */}
       <div
         aria-hidden="true"
         style={{

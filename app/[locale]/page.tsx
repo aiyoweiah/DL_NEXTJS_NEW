@@ -256,15 +256,15 @@ function Hero({ locale, c }) {
         style={{ background: 'radial-gradient(ellipse 60% 55% at 70% 40%, rgba(183,181,254,0.22) 0%, transparent 65%)' }}
       />
 
-      {/* O glyph watermark — top-right, viewBox crops to tooth region only.
-          SVG is oversized at ~160vw so the O body bleeds off right/bottom,
-          leaving the tooth prominently in the upper-right corner. */}
+      {/* O glyph watermark — sized to section height via dvh so it stays
+          proportionally consistent at every viewport width and resolution.
+          right: 0 anchors the SVG right edge at the viewport edge. */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute select-none"
         style={{
-          top:   '-30px',
-          right: '-68vw',
+          top:   '0',
+          right: '0',
           zIndex: 1,
         }}
       >
@@ -273,7 +273,7 @@ function Hero({ locale, c }) {
           xmlns="http://www.w3.org/2000/svg"
           fill="#b7b5fe"
           opacity="0.12"
-          style={{ display: 'block', width: 'clamp(1800px, 160vw, 2600px)', height: 'auto' }}
+          style={{ display: 'block', height: '100dvh', width: 'auto' }}
         >
           <g transform="translate(0,338) scale(0.1,-0.1)" stroke="none">
             <path d="M3650 2626 c-413 -124 -743 -651 -744 -1186 0 -209 37 -313 169 -472 187 -227 711 -313 1054 -174 195 79 426 287 502 451 122 262 102 632 -47 903 -83 152 -247 339 -348 397 -169 98 -417 132 -586 81z m113 -393 c7 -237 14 -219 -93 -227 -41 -4 -99 -8 -127 -10 l-53 -5 0 160 0 159 43 31 c62 46 174 97 213 99 7 0 13 -67 17 -207z m320 155 c37 -17 72 -37 79 -45 9 -11 14 -261 5 -270 -9 -9 -190 -17 -192 -9 -2 6 -5 91 -8 189 l-4 178 26 -6 c14 -3 56 -20 94 -37z m357 -421 c60 -153 78 -325 50 -475 -20 -115 -18 -112 -109 -112 -99 0 -217 -22 -285 -53 -48 -22 -54 -23 -91 -9 -173 63 -480 -8 -701 -163 -80 -55 -75 -56 -114 6 -122 189 -103 463 54 814 l31 70 6 -77 c8 -91 32 -138 86 -163 54 -26 334 -16 443 15 45 13 127 25 204 30 277 19 356 58 356 181 l1 64 19 -23 c10 -12 33 -60 50 -105z m-120 -801 c0 -3 -33 -31 -72 -62 -213 -167 -457 -211 -755 -137 -35 8 -63 19 -63 23 0 12 147 86 218 109 134 45 243 44 351 -4 l60 -27 52 33 c74 47 209 89 209 65z" />
