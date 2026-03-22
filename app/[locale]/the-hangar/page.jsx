@@ -2,6 +2,10 @@
 //
 // Pure server component — no 'use client', zero external dependencies.
 // Bilingual EN + ZH — all text driven from COPY object below.
+//
+// Hero bg: /public/thehangar-book-bg.jpeg (local)
+//   Replaces Unsplash placeholder. Overlays unchanged —
+//   gradient already spec'd for left-dark / right-open composition.
 
 import Link from 'next/link'
 import { notFound }                    from 'next/navigation'
@@ -134,8 +138,8 @@ const COPY = {
       eyebrow: 'The Cohort',
       h2: "Who else is in The Hangar \u2014 and why it matters that they\u2019re there.",
       cols: [
-        { num: '01', title: 'Same stage, not same age',  body: 'Cohorts are grouped by Loop phase and Lexile level \u2014 not by school year. A Grade 5 and a Grade 7 student at the same Lexile are in the same conversation.' },
-        { num: '02', title: 'Bilingual by design',       body: 'Every student in the cohort is navigating two languages simultaneously. The shared experience is not incidental \u2014 it is the foundation of what they build together.' },
+        { num: '01', title: 'Same stage, not same age',     body: 'Cohorts are grouped by Loop phase and Lexile level \u2014 not by school year. A Grade 5 and a Grade 7 student at the same Lexile are in the same conversation.' },
+        { num: '02', title: 'Bilingual by design',          body: 'Every student in the cohort is navigating two languages simultaneously. The shared experience is not incidental \u2014 it is the foundation of what they build together.' },
         { num: '03', title: 'Belonging before performance', body: 'The Hangar is not a place to prove yourself. It is a place to build yourself \u2014 in a room where everyone else is doing the same thing, in the same two languages.' },
       ],
     },
@@ -143,7 +147,7 @@ const COPY = {
       eyebrow: 'Student Voice',
       h2: 'In their words \u2014 not ours.',
       voices: [
-        { quote: "I used to think I had to wait until my session to ask questions. Now I post my draft in The Hangar and get feedback before the session even starts. It\u2019s like having an extra session every week except it\u2019s on my schedule.", grade: 'Grade 6', city: 'Shanghai',  weeks: '8 weeks in program',  detail: 'Posted a writing draft at 10pm, received calibrated feedback by morning' },
+        { quote: "I used to think I had to wait until my session to ask questions. Now I post my draft in The Hangar and get feedback before the session even starts. It\u2019s like having an extra session every week except it\u2019s on my schedule.", grade: 'Grade 6', city: 'Shanghai', weeks: '8 weeks in program',  detail: 'Posted a writing draft at 10pm, received calibrated feedback by morning' },
         { quote: "There\u2019s this kid in my cohort who\u2019s in Grade 9 but we\u2019re at the same Lexile. We both struggle with the same stuff and help each other. Nobody at my school gets what it\u2019s like doing this in two languages.",          grade: 'Grade 7', city: 'Beijing',   weeks: '12 weeks in program', detail: 'Participated in a peer review exchange in The Hangar between sessions' },
       ],
     },
@@ -177,9 +181,9 @@ const COPY = {
       eyebrow: '它是什么',
       h2: 'The Hangar拥有三种特质——您孩子一周中的其他任何地方都没有。',
       cols: [
-        { question: '这里实际上发生什么？',     title: 'Navigator支持的学习',   body: '有结构，而非监督。Navigator提出问题——学生完成思考。没有被动环节。' },
-        { question: 'The Hangar里还有谁？',    title: '处于同一Loop阶段的同伴', body: '房间里的每位学生都在同时驾驭两种语言，处于The Loop的同一阶段。共同的背景就是意义所在。' },
-        { question: '它能产生什么？',           title: '课程间的持续动力',       body: 'The Hangar将16周变成一个系统，而非一个日程表。复利就从这里开始。' },
+        { question: '这里实际上发生什么？',  title: 'Navigator支持的学习',   body: '有结构，而非监督。Navigator提出问题——学生完成思考。没有被动环节。' },
+        { question: 'The Hangar里还有谁？', title: '处于同一Loop阶段的同伴', body: '房间里的每位学生都在同时驾驭两种语言，处于The Loop的同一阶段。共同的背景就是意义所在。' },
+        { question: '它能产生什么？',        title: '课程间的持续动力',       body: 'The Hangar将16周变成一个系统，而非一个日程表。复利就从这里开始。' },
       ],
     },
     s4: {
@@ -198,10 +202,10 @@ const COPY = {
       eyebrow: 'Navigator的存在',
       h2: '同一位Navigator。在The Hangar中。确切知道您的孩子在哪里。',
       points: [
-        { label: '同一位Navigator',   body: 'The Hangar中的Navigator不是主持人或支持助手。他是您孩子课程中同一位Navigator——带着同样的Lexile基线、同样的6+1特质档案、同样的课程笔记。' },
-        { label: '有针对性的反馈',   body: 'The Hangar中的每条评论都指向该学生在The Loop中的具体位置。不是泛泛的鼓励——而是具名的特质、具体的分数、精准的下一步。' },
-        { label: '非模板化',         body: 'Navigator不会复制粘贴反馈。当他们在The Hangar中回应学生的写作草稿时，他们在回应那份具体的草稿——需要改动的那个具体句子，以及改动后会变化的那个具体分数。' },
-        { label: '响应时间',         body: '在课程当天，Hangar的反馈在6小时内送达；非课程日则在12小时内。' },
+        { label: '同一位Navigator', body: 'The Hangar中的Navigator不是主持人或支持助手。他是您孩子课程中同一位Navigator——带着同样的Lexile基线、同样的6+1特质档案、同样的课程笔记。' },
+        { label: '有针对性的反馈', body: 'The Hangar中的每条评论都指向该学生在The Loop中的具体位置。不是泛泛的鼓励——而是具名的特质、具体的分数、精准的下一步。' },
+        { label: '非模板化',       body: 'Navigator不会复制粘贴反馈。当他们在The Hangar中回应学生的写作草稿时，他们在回应那份具体的草稿——需要改动的那个具体句子，以及改动后会变化的那个具体分数。' },
+        { label: '响应时间',       body: '在课程当天，Hangar的反馈在6小时内送达；非课程日则在12小时内。' },
       ],
     },
     s7: {
@@ -217,8 +221,8 @@ const COPY = {
       eyebrow: '学生的声音',
       h2: '用他们自己的话——不是我们的。',
       voices: [
-        { quote: '我以前以为必须等到课程才能提问。现在我把草稿发到The Hangar，课程开始之前就能收到反馈。就像每周多了一节课，只是按我自己的时间安排。', grade: '六年级', city: '上海',  weeks: '已完成8周',  detail: '晚上10点发布写作草稿，次日清晨收到针对性反馈' },
-        { quote: '我的群体里有个九年级的学生，但我们Lexile相同。我们在同样的地方挣扎，互相帮助。我学校里没有人能理解用两种语言学习是什么感觉。',       grade: '七年级', city: '北京',  weeks: '已完成12周', detail: '在课程之间参与了The Hangar中的同伴互评' },
+        { quote: '我以前以为必须等到课程才能提问。现在我把草稿发到The Hangar，课程开始之前就能收到反馈。就像每周多了一节课，只是按我自己的时间安排。', grade: '六年级', city: '上海', weeks: '已完成8周',  detail: '晚上10点发布写作草稿，次日清晨收到针对性反馈' },
+        { quote: '我的群体里有个九年级的学生，但我们Lexile相同。我们在同样的地方挣扎，互相帮助。我学校里没有人能理解用两种语言学习是什么感觉。',       grade: '七年级', city: '北京', weeks: '已完成12周', detail: '在课程之间参与了The Hangar中的同伴互评' },
       ],
     },
     s9: {
@@ -247,7 +251,7 @@ export default async function TheHangarPage({ params }) {
       <section className="relative flex items-center px-6 md:px-12" style={{ backgroundColor: '#212830', minHeight: '100dvh', paddingTop: 'calc(var(--nav-height) + 3rem)', paddingBottom: '5rem' }}>
         <div className="absolute inset-0 overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="https://images.unsplash.com/photo-1758270705317-3ef6142d306f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080&q=80" alt="" aria-hidden="true" className="w-full h-full object-cover" style={{ display: 'block' }} />
+          <img src="/thehangar-book-bg.jpeg" alt="" aria-hidden="true" className="w-full h-full object-cover" style={{ display: 'block' }} />
           <div className="absolute inset-0 hidden md:block" style={{ background: 'linear-gradient(to right, rgba(14,14,18,0.85) 0%, rgba(14,14,18,0.55) 50%, rgba(14,14,18,0.30) 100%)' }} />
           <div className="absolute inset-0 md:hidden" style={{ backgroundColor: 'rgba(14,14,18,0.72)' }} />
         </div>
