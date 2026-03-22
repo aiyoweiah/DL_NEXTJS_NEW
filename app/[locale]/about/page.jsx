@@ -135,15 +135,17 @@ const COPY = {
 // ─────────────────────────────────────────────────────────────
 // SHARED PRIMITIVES
 // ─────────────────────────────────────────────────────────────
-function BilingualHeading({ en, cn, light = false, center = false }) {
+function BilingualHeading({ en, cn, light = false, center = false, locale = 'en' }) {
   return (
     <div className={center ? 'text-center' : ''}>
       <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 600, lineHeight: 1.2, color: light ? '#F0F0F0' : '#0E0E12' }}>
         {en}
       </h2>
-      <p className="mt-2" style={{ fontFamily: 'var(--font-cjk)', fontSize: '16px', fontWeight: 500, color: light ? '#b7b5fe' : '#5856cc' }}>
-        {cn}
-      </p>
+      {locale === 'zh' && (
+        <p className="mt-2" style={{ fontFamily: 'var(--font-cjk)', fontSize: '16px', fontWeight: 500, color: light ? '#b7b5fe' : '#5856cc' }}>
+          {cn}
+        </p>
+      )}
     </div>
   )
 }
@@ -199,7 +201,7 @@ function LoopStepIcon({ id }) {
 // ─────────────────────────────────────────────────────────────
 // SECTIONS
 // ─────────────────────────────────────────────────────────────
-function Hero({ c }) {
+function Hero({ c, locale }) {
   return (
     <section className="relative overflow-hidden" aria-labelledby="about-hero-heading"
       style={{ backgroundColor: '#0E0E12', minHeight: '100dvh', display: 'flex', alignItems: 'center' }}>
@@ -221,7 +223,7 @@ function Hero({ c }) {
               {c.hero.h1d}<em className="not-italic" style={{ fontWeight: 600, color: '#F5C842' }}>{c.hero.h1em2}</em>{c.hero.h1e}
             </h1>
             <p className="mb-8" style={{ fontFamily: 'var(--font-cjk)', fontSize: '20px', color: 'rgba(183,181,254,0.5)' }}>
-              会说英语的孩子，和用英语思考的孩子，是不一样的。
+              {locale === 'zh' ? '会说英语的孩子，和用英语思考的孩子，是不一样的。' : null}
             </p>
             <p style={{ fontSize: '16px', lineHeight: 1.9, color: 'rgba(240,240,240,0.5)', maxWidth: '32rem' }}>{c.hero.sub}</p>
           </div>
@@ -250,7 +252,7 @@ function Hero({ c }) {
   )
 }
 
-function TheNameSection({ c }) {
+function TheNameSection({ c, locale }) {
   return (
     <section className="relative" aria-labelledby="name-heading" style={{ padding: 'var(--section-md) 0' }}>
       <div aria-hidden="true" className="absolute inset-0"
@@ -258,15 +260,17 @@ function TheNameSection({ c }) {
       <div className="container-section relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <BilingualHeading en="The Name" cn="名字的故事" light />
+            <BilingualHeading en="The Name" cn="名字的故事" light locale={locale} />
             <div className="mt-10 space-y-5" style={{ fontSize: '17px', lineHeight: 1.9, color: 'rgba(240,240,240,0.7)' }}>
               <p>{c.name.p1}<strong style={{ color: '#F0F0F0' }}>{c.name.p1strong}</strong></p>
               <p>{c.name.p2}</p>
               <p>{c.name.p3}</p>
             </div>
-            <p className="mt-6" style={{ fontFamily: 'var(--font-cjk)', fontSize: '15px', lineHeight: 1.8, color: 'rgba(183,181,254,0.5)' }}>
-              DODO，源于"做"与"再做"。学习不是被动的吸收，而是主动的行动与反复的深化。
-            </p>
+            {locale === 'zh' && (
+              <p className="mt-6" style={{ fontFamily: 'var(--font-cjk)', fontSize: '15px', lineHeight: 1.8, color: 'rgba(183,181,254,0.5)' }}>
+                DODO，源于"做"与"再做"。学习不是被动的吸收，而是主动的行动与反复的深化。
+              </p>
+            )}
           </div>
           <div className="flex items-center justify-center">
             <div className="relative">
@@ -289,12 +293,12 @@ function TheNameSection({ c }) {
   )
 }
 
-function WhatWeBelieve({ c }) {
+function WhatWeBelieve({ c, locale }) {
   return (
     <section className="section-light" aria-labelledby="beliefs-heading">
       <div className="container-section">
         <div className="mb-20 text-center">
-          <BilingualHeading en="What We Believe" cn="我们的信念" center />
+          <BilingualHeading en="What We Believe" cn="我们的信念" center locale={locale} />
         </div>
         <div>
           {BELIEFS_BASE.map((item, i) => (
@@ -315,7 +319,9 @@ function WhatWeBelieve({ c }) {
                 {/* Belief statement */}
                 <div className="flex-1 md:flex-none min-w-0">
                   <p style={{ fontSize: '18px', fontWeight: 600, lineHeight: 1.3, color: '#0E0E12' }}>&ldquo;{item.belief}&rdquo;</p>
-                  <p className="mt-1" style={{ fontFamily: 'var(--font-cjk)', fontSize: '13px', color: '#5856cc' }}>{item.beliefCn}</p>
+                  {locale === 'zh' && (
+                    <p className="mt-1" style={{ fontFamily: 'var(--font-cjk)', fontSize: '13px', color: '#5856cc' }}>{item.beliefCn}</p>
+                  )}
                   {/* Body text stacks below on mobile */}
                   <p className="mt-3 md:hidden" style={{ fontSize: '15px', lineHeight: 1.8, color: '#2E3848' }}>{c.beliefs.bodies[i]}</p>
                 </div>
@@ -337,7 +343,7 @@ function TheLoop({ locale, c }) {
     <section className="section-dark" aria-labelledby="loop-section-heading">
       <div className="container-section">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
-          <BilingualHeading en="The Loop" cn="学习循环" light />
+          <BilingualHeading en="The Loop" cn="学习循环" light locale={locale} />
           <p className="max-w-md" style={{ fontSize: '15px', lineHeight: 1.7, color: 'rgba(240,240,240,0.4)' }}>{c.loop.sub}</p>
         </div>
         <div className="relative">
@@ -351,7 +357,9 @@ function TheLoop({ locale, c }) {
                   <LoopStepIcon id={item.id} />
                 </div>
                 <h3 style={{ fontSize: '24px', fontWeight: 600, letterSpacing: '-0.01em', color: '#ffffff', marginBottom: '4px' }}>{item.step}</h3>
-                <p className="mb-4" style={{ fontFamily: 'var(--font-cjk)', fontSize: '14px', color: 'rgba(183,181,254,0.5)' }}>{item.stepCn}</p>
+                {locale === 'zh' && (
+                  <p className="mb-4" style={{ fontFamily: 'var(--font-cjk)', fontSize: '14px', color: 'rgba(183,181,254,0.5)' }}>{item.stepCn}</p>
+                )}
                 <p style={{ fontSize: '14px', lineHeight: 1.7, color: 'rgba(240,240,240,0.5)' }}>{c.loop.descs[i]}</p>
               </li>
             ))}
@@ -388,7 +396,7 @@ function WhoNavigatorsAre({ locale, c }) {
             </div>
           </div>
           <div className="order-1 lg:order-2">
-            <BilingualHeading en="Who Navigators Are" cn="关于领航员" />
+            <BilingualHeading en="Who Navigators Are" cn="关于领航员" locale={locale} />
             <div className="mt-8 space-y-5" style={{ fontSize: '16px', lineHeight: 1.85, color: '#2E3848' }}>
               <p>{c.navigators.p1pre}<strong style={{ color: '#0E0E12' }}>{c.navigators.p1strong}</strong>{c.navigators.p1post}</p>
               <p>{c.navigators.p2}</p>
@@ -410,12 +418,12 @@ function WhoNavigatorsAre({ locale, c }) {
   )
 }
 
-function FamiliesWeServe({ c }) {
+function FamiliesWeServe({ c, locale }) {
   return (
     <section className="section-darker" aria-labelledby="families-heading">
       <div className="container-section">
         <div className="mb-16">
-          <BilingualHeading en="The Families We Serve" cn="我们服务的家庭" light center />
+          <BilingualHeading en="The Families We Serve" cn="我们服务的家庭" light center locale={locale} />
         </div>
         <div className="grid lg:grid-cols-3 gap-6">
           {FAMILIES_BASE.map((family, i) => (
@@ -428,7 +436,9 @@ function FamiliesWeServe({ c }) {
               <div className="p-8">
                 <p className="mb-3" style={{ fontSize: '13px', fontWeight: 500, fontStyle: 'italic', color: '#F5C842' }}>{c.families.items[i].quote}</p>
                 <h3 style={{ fontSize: '20px', fontWeight: 600, color: '#ffffff' }}>{family.title}</h3>
-                <p className="mb-4" style={{ fontFamily: 'var(--font-cjk)', fontSize: '13px', color: 'rgba(183,181,254,0.5)' }}>{family.titleCn}</p>
+                {locale === 'zh' && (
+                  <p className="mb-4" style={{ fontFamily: 'var(--font-cjk)', fontSize: '13px', color: 'rgba(183,181,254,0.5)' }}>{family.titleCn}</p>
+                )}
                 <p style={{ fontSize: '14px', lineHeight: 1.75, color: 'rgba(240,240,240,0.5)' }}>{c.families.items[i].desc}</p>
               </div>
             </article>
@@ -458,9 +468,11 @@ function ClosingStamp({ locale, c }) {
           style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 700, lineHeight: 1.15, letterSpacing: '-0.02em', background: 'linear-gradient(135deg, #b7b5fe 0%, #F5C842 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
           In Both Languages.
         </h2>
-        <p className="mb-6" style={{ fontFamily: 'var(--font-cjk)', fontSize: '22px', color: 'rgba(183,181,254,0.5)' }}>
-          一次思考，两种语言。
-        </p>
+        {locale === 'zh' && (
+          <p className="mb-6" style={{ fontFamily: 'var(--font-cjk)', fontSize: '22px', color: 'rgba(183,181,254,0.5)' }}>
+            一次思考，两种语言。
+          </p>
+        )}
         <p className="mx-auto mb-12" style={{ fontSize: '16px', lineHeight: 1.9, color: 'rgba(240,240,240,0.4)', maxWidth: '32rem' }}>{c.closing.sub}</p>
         <Link href={`/${locale}/consult`} className="btn btn-charter"
           style={{ fontSize: '15px', fontWeight: 700, letterSpacing: '0.02em', padding: '1rem 2.5rem' }}
@@ -485,12 +497,12 @@ export default async function AboutPage({ params }) {
   const c = COPY[locale] ?? COPY.en
   return (
     <>
-      <Hero c={c} />
-      <TheNameSection c={c} />
-      <WhatWeBelieve c={c} />
+      <Hero c={c} locale={locale} />
+      <TheNameSection c={c} locale={locale} />
+      <WhatWeBelieve c={c} locale={locale} />
       <TheLoop locale={locale} c={c} />
       <WhoNavigatorsAre locale={locale} c={c} />
-      <FamiliesWeServe c={c} />
+      <FamiliesWeServe c={c} locale={locale} />
       <ClosingStamp locale={locale} c={c} />
     </>
   )

@@ -24,5 +24,5 @@ export function generateStaticParams() {
 export default async function Page({ params }) {
   const { locale } = await params
   if (!isValidLocale(locale)) notFound()
-  return <UnderConstruction />
+  return <UnderConstruction locale={locale} />
 }

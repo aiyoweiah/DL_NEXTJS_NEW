@@ -116,12 +116,14 @@ export default async function MethodologyPage({ params }) {
                     >
                       {step.label}
                     </p>
-                    <p
-                      className="text-sm mt-0.5"
-                      style={{ fontFamily: 'var(--font-cjk)', color: stepBg[index] ? 'rgba(183,181,254,0.5)' : 'rgba(183,181,254,0.7)', letterSpacing: '0.1em' }}
-                    >
-                      {step.cjk}
-                    </p>
+                    {locale === 'zh' && (
+                      <p
+                        className="text-sm mt-0.5"
+                        style={{ fontFamily: 'var(--font-cjk)', color: stepBg[index] ? 'rgba(183,181,254,0.5)' : 'rgba(183,181,254,0.7)', letterSpacing: '0.1em' }}
+                      >
+                        {step.cjk}
+                      </p>
+                    )}
                   </div>
                 </div>
 

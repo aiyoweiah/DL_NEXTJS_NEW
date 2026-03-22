@@ -49,7 +49,7 @@ const fadeUpStyle = (delay = 0) => ({
   animationDelay: `${delay}ms`,
 })
 
-export default function UnderConstruction() {
+export default function UnderConstruction({ locale = 'en' }) {
   const [email,     setEmail]     = useState('')
   const [submitted, setSubmitted] = useState(false)
 
@@ -102,19 +102,22 @@ export default function UnderConstruction() {
           <div className="text-center" style={{ maxWidth: '42rem', ...fadeUpStyle(0) }}>
             <div className="inline-flex items-center gap-2 rounded-full mb-8" style={{ padding: '8px 16px', backgroundColor: 'rgba(245,200,66,0.1)', border: '1px solid rgba(245,200,66,0.2)' }}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5C842" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M2 20h20" /><path d="M6 20V10l6-7 6 7v10" /><path d="M10 20v-5h4v5" /></svg>
-              <span style={{ fontSize: '13px', fontWeight: 500, color: '#0E0E12' }}>Under Construction</span>
-              <span style={{ fontFamily: 'var(--font-cjk)', fontSize: '12px', color: '#b7b5fe' }}>· 建设中</span>
+              <span style={{ fontSize: '13px', fontWeight: 500, color: '#0E0E12' }}>
+                {locale === 'zh' ? '建设中' : 'Under Construction'}
+              </span>
             </div>
 
             <h1 className="mb-4" style={{ fontSize: 'clamp(2rem, 5vw, 3.25rem)', fontWeight: 300, lineHeight: 1.15, letterSpacing: '-0.02em', color: '#0E0E12' }}>
-              Something <span style={{ fontWeight: 600, color: '#b7b5fe' }}>thoughtful</span> is being built.
+              {locale === 'zh'
+                ? <><span style={{ fontWeight: 600, color: '#b7b5fe' }}>精心打造中。</span></>
+                : <>Something <span style={{ fontWeight: 600, color: '#b7b5fe' }}>thoughtful</span> is being built.</>
+              }
             </h1>
-            <p className="mb-6" style={{ fontFamily: 'var(--font-cjk)', fontSize: '18px', color: '#b7b5fe' }}>我们正在精心打造中。</p>
             <p className="mx-auto mb-4" style={{ fontSize: '16px', lineHeight: 1.8, color: '#2E3848', maxWidth: '32rem' }}>
-              This page isn&rsquo;t ready yet — but we&rsquo;re working on it with the same care we bring to everything at DODO.
-            </p>
-            <p className="mx-auto" style={{ fontFamily: 'var(--font-cjk)', fontSize: '14px', lineHeight: 1.8, color: 'rgba(183,181,254,0.6)', maxWidth: '32rem' }}>
-              这个页面还没有准备好，但我们正在用心打造。好的东西值得等待。
+              {locale === 'zh'
+                ? '这个页面还没有准备好，但我们正在用心打造。好的东西值得等待。'
+                : <>This page isn&rsquo;t ready yet — but we&rsquo;re working on it with the same care we bring to everything at DODO.</>
+              }
             </p>
           </div>
 
@@ -136,39 +139,49 @@ export default function UnderConstruction() {
                 <div className="flex items-center justify-center mx-auto mb-4" style={{ width: 48, height: 48, borderRadius: '50%', backgroundColor: 'rgba(183,181,254,0.1)' }} aria-hidden="true">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b7b5fe" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" /><path d="M13.73 21a2 2 0 0 1-3.46 0" /></svg>
                 </div>
-                <p style={{ fontSize: '16px', fontWeight: 600, color: '#0E0E12', marginBottom: '4px' }}>You&rsquo;re on the list!</p>
-                <p style={{ fontSize: '14px', color: '#2E3848' }}>We&rsquo;ll let you know when this page is ready.</p>
-                <p className="mt-2" style={{ fontFamily: 'var(--font-cjk)', fontSize: '13px', color: '#b7b5fe' }}>页面准备好后，我们会通知您。</p>
+                <p style={{ fontSize: '16px', fontWeight: 600, color: '#0E0E12', marginBottom: '4px' }}>
+                  {locale === 'zh' ? '已加入通知名单！' : "You're on the list!"}
+                </p>
+                <p style={{ fontSize: '14px', color: '#2E3848' }}>
+                  {locale === 'zh' ? '页面准备好后，我们会通知您。' : "We'll let you know when this page is ready."}
+                </p>
               </div>
             ) : (
               <div style={{ backgroundColor: '#ffffff', borderRadius: '1rem', padding: '1.5rem', border: '1px solid rgba(183,181,254,0.1)', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}>
                 <div className="flex items-center gap-3 mb-4">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b7b5fe" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" /><path d="M13.73 21a2 2 0 0 1-3.46 0" /></svg>
-                  <span style={{ fontSize: '14px', fontWeight: 500, color: '#0E0E12' }}>Get notified when we launch</span>
+                  <span style={{ fontSize: '14px', fontWeight: 500, color: '#0E0E12' }}>
+                    {locale === 'zh' ? '页面上线时通知我' : 'Get notified when we launch'}
+                  </span>
                 </div>
                 <div className="flex gap-3">
                   <label htmlFor="notify-email" className="sr-only">Your email address</label>
                   <input id="notify-email" type="email" placeholder="your@email.com" value={email} onChange={(e) => setEmail(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter') handleSubmit(e) }} style={{ flex: 1, padding: '12px 16px', borderRadius: '0.75rem', backgroundColor: '#F5F5FF', border: '1px solid rgba(183,181,254,0.1)', fontSize: '14px', color: '#0E0E12', outline: 'none', fontFamily: 'var(--font-latin)' }} />
-                  <button type="button" onClick={handleSubmit} className="btn btn-charter shrink-0" style={{ fontSize: '14px', fontWeight: 600, padding: '12px 24px', borderRadius: '0.75rem' }}>Notify Me</button>
+                  <button type="button" onClick={handleSubmit} className="btn btn-charter shrink-0" style={{ fontSize: '14px', fontWeight: 600, padding: '12px 24px', borderRadius: '0.75rem' }}>
+                    {locale === 'zh' ? '通知我' : 'Notify Me'}
+                  </button>
                 </div>
-                <p className="mt-3" style={{ fontSize: '12px', color: 'rgba(46,56,72,0.4)' }}>No spam. Just one email when the page goes live.</p>
+                <p className="mt-3" style={{ fontSize: '12px', color: 'rgba(46,56,72,0.4)' }}>
+                  {locale === 'zh' ? '不发垃圾邮件。仅在页面上线时发一封邮件。' : 'No spam. Just one email when the page goes live.'}
+                </p>
               </div>
             )}
           </div>
 
           {/* Back home */}
           <div style={{ marginTop: '2.5rem', textAlign: 'center', ...fadeUpStyle(500) }}>
-            <Link href="/" className="inline-flex items-center gap-2 transition-colors duration-150" style={{ padding: '12px 24px', borderRadius: '0.75rem', backgroundColor: '#0E0E12', color: '#ffffff', fontSize: '14px', fontWeight: 500, textDecoration: 'none' }}>
+            <Link href={`/${locale}`} className="inline-flex items-center gap-2 transition-colors duration-150" style={{ padding: '12px 24px', borderRadius: '0.75rem', backgroundColor: '#0E0E12', color: '#ffffff', fontSize: '14px', fontWeight: 500, textDecoration: 'none' }}>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
-              Return to Home Page
+              {locale === 'zh' ? '返回首页' : 'Return to Home Page'}
             </Link>
-            <p className="mt-3" style={{ fontFamily: 'var(--font-cjk)', fontSize: '12px', color: 'rgba(183,181,254,0.5)' }}>返回首页</p>
           </div>
 
           {/* Brand line */}
           <div style={{ marginTop: '5rem', textAlign: 'center', ...fadeUpStyle(650) }}>
             <p style={{ fontSize: 'clamp(1rem, 2.5vw, 1.5rem)', fontWeight: 300, letterSpacing: '0.05em', color: 'rgba(14,14,18,0.15)' }}>Think Once. In Both Languages.</p>
-            <p className="mt-1" style={{ fontFamily: 'var(--font-cjk)', fontSize: '14px', color: 'rgba(183,181,254,0.2)' }}>一次思考，两种语言。</p>
+            {locale === 'zh' && (
+              <p className="mt-1" style={{ fontFamily: 'var(--font-cjk)', fontSize: '14px', color: 'rgba(183,181,254,0.2)' }}>一次思考，两种语言。</p>
+            )}
           </div>
 
         </div>
