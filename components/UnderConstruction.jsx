@@ -67,7 +67,7 @@ export default function UnderConstruction() {
 
       <div
         className="relative overflow-hidden"
-        style={{ minHeight: '80dvh', backgroundColor: '#F5F5FF', color: '#0E0E12', fontFamily: 'var(--font-latin)' }}
+        style={{ minHeight: '100dvh', backgroundColor: '#F5F5FF', color: '#0E0E12', fontFamily: 'var(--font-latin)' }}
       >
         {/* Background blobs */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -80,7 +80,7 @@ export default function UnderConstruction() {
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true" style={{ opacity: 0.03, backgroundImage: 'linear-gradient(#b7b5fe 1px, transparent 1px), linear-gradient(90deg, #b7b5fe 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
 
         {/* Main content */}
-        <div className="relative z-10 flex flex-col items-center justify-center" style={{ minHeight: '80dvh', padding: '4rem 1.5rem' }}>
+        <div className="relative z-10 flex flex-col items-center justify-center" style={{ minHeight: '100dvh', padding: 'calc(var(--nav-height) + 3rem) 1.5rem 4rem' }}>
 
           {/* Floating icons */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
