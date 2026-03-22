@@ -70,7 +70,7 @@ const COPY = {
       h1zh: '\u770b\u770b\u771f\u5b9e\u7684\u8bfe\u5802\u662f\u4ec0\u4e48\u6837\u5b50',
       sub:  'No pitch. No edited highlights. A real Navigator, a real student, working through a real session of The Loop. Watch before you decide.',
       cta1: 'Watch Demo Classes',
-      cta2: 'Book a Free Consultation',
+      cta2: 'Book Your Consultation',
       stats: [
         { value: '3',      unit: 'Grade Bands',  desc: 'Grades 4\u20136, 7\u20138, 9+' },
         { value: '20',     unit: 'Min',          desc: 'Full sessions, unedited'       },
@@ -141,7 +141,7 @@ const COPY = {
       h2:      'Watched the demo. Want to know if it\u2019s right for your child?',
       h2zh:    '\u770b\u5b8c\u793a\u8303\uff0c\u60f3\u77e5\u9053\u662f\u5426\u9002\u5408\u60a8\u7684\u5b69\u5b50\uff1f',
       body:    'The diagnostic consultation is 20 minutes with a Navigator \u2014 not a sales call. We assess your child\u2019s current Lexile level, identify the specific gap, and map out what 16 weeks could look like for them. No commitment required to book.',
-      btn:    'Book a Free Diagnostic Call',
+      btn:    'Book Your Consultation',
       note:   'With a Navigator, not a sales representative. Honest fit assessment \u2014 we only enroll students we can genuinely move.',
     },
     charter: {

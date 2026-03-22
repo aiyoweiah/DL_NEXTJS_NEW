@@ -26,13 +26,6 @@ import LexileBar                       from '@/components/ui/LexileBar'
 // STATIC STRUCTURAL DATA (no locale variants)
 // ─────────────────────────────────────────────────────────────
 
-const LOOP_IMGS = [
-  'https://images.unsplash.com/photo-1612650699397-a47b20e57ca5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=800&q=80',
-  'https://images.unsplash.com/photo-1565665634648-1a036f3a5688?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=800&q=80',
-  'https://images.unsplash.com/photo-1580582932707-520aed937b7b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=800&q=80',
-  'https://images.unsplash.com/photo-1588561181397-fed38f837e17?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=800&q=80',
-]
-
 const JOURNEY_IMGS = [
   'https://images.unsplash.com/photo-1606327054581-899eb5e6d1dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600&q=80',
   'https://images.unsplash.com/photo-1605915968535-7a95bcd68cab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600&q=80',
@@ -77,7 +70,7 @@ const COPY = {
       sub:
         'We start with a clear baseline \u2014 reading level, writing ability \u2014 and build from there. Every week is structured, tracked, and guided by a dedicated Navigator who knows your child by name.',
       cta1: 'See How It Works',
-      cta2: 'Book a Free Consultation',
+      cta2: 'Book Your Consultation',
       stats: [
         { value: '16', unit: 'Weeks',         desc: 'A real commitment'            },
         { value: '4',  unit: 'Skills',        desc: 'Read \u00b7 Think \u00b7 Speak \u00b7 Write' },
@@ -164,7 +157,7 @@ const COPY = {
       h2zh:    '\u4ece\u4e00\u6b21\u8bca\u65ad\u6027\u5bf9\u8bdd\u5f00\u59cb',
       body:
         'It starts with a single conversation \u2014 a free diagnostic call where we learn about your child, assess where they are, and map out what 16 weeks could look like for them. Founding Family rates are available for our charter cohorts. Spots are limited.',
-      btn:  'Book a Free Diagnostic Call',
+      btn:  'Book Your Consultation',
       note: 'Limited charter spots per cohort. Founding Family rate \u2014 not a promotion.',
     },
     charter: {
@@ -189,7 +182,7 @@ const COPY = {
       sub:
         '\u6211\u4eec\u4ece\u6e05\u6670\u7684\u57fa\u7ebf\u51fa\u53d1\u2014\u2014\u9605\u8bfb\u6c34\u5e73\u3001\u5199\u4f5c\u80fd\u529b\u2014\u2014\u7136\u540e\u9010\u6b65\u63d0\u5347\u3002\u6bcf\u5468\u7684\u8bfe\u7a0b\u90fd\u6709\u7ed3\u6784\u3001\u6709\u8ddf\u8e2a\u3001\u7531\u4e13\u5c5e\u9886\u822a\u5458\u6307\u5bfc\uff0c\u9886\u822a\u5458\u719f\u77e5\u60a8\u5b69\u5b50\u7684\u6bcf\u4e00\u6b65\u6210\u957f\u3002',
       cta1: '\u4e86\u89e3\u8bfe\u7a0b\u7ed3\u6784',
-      cta2: '\u9884\u7ea6\u514d\u8d39\u548b\u8be2',
+      cta2: '\u9884\u7ea6\u548c\u548c\u548b\u8be2',
       stats: [
         { value: '16', unit: '\u5468',       desc: '\u771f\u5b9e\u7684\u627f\u8bfa'               },
         { value: '4',  unit: '\u9879\u6280\u80fd', desc: '\u9605\u8bfb \u00b7 \u601d\u8003 \u00b7 \u8868\u8fbe \u00b7 \u5199\u4f5c' },
@@ -472,10 +465,11 @@ function Hero({ locale, c }) {
       {/* ── Stat pills strip ── */}
       <div
         style={{
-          borderTop:  '1px solid rgba(183,181,254,0.07)',
-          flexShrink: 0,
-          position:   'relative',
-          zIndex:     10,
+          borderTop:       '1px solid rgba(183,181,254,0.07)',
+          flexShrink:      0,
+          position:        'relative',
+          zIndex:          10,
+          backgroundColor: '#2E3848',
         }}
       >
         <div className="container-section">
@@ -545,8 +539,10 @@ function Hero({ locale, c }) {
 }
 
 // ─────────────────────────────────────────────────────────────
-// SECTION 2 — THE LOOP (4 image cards)
+// SECTION 2 — THE LOOP (compact connected steps)
 // ─────────────────────────────────────────────────────────────
+
+const LOOP_ACCENT_COLORS = ['#b7b5fe', '#9896e8', '#7b79d4', '#5856cc']
 
 function LoopSection({ locale, c }) {
   return (
@@ -557,111 +553,120 @@ function LoopSection({ locale, c }) {
     >
       <div className="container-section">
 
-        <div style={{ marginBottom: '3rem' }}>
-          <Eyebrow>{c.loop.eyebrow}</Eyebrow>
-          <BilingualH2
-            id="loop-heading"
-            primary={c.loop.h2}
-            secondary={c.loop.h2zh}
-          />
+        {/* Header */}
+        <div
+          style={{
+            display:        'flex',
+            flexWrap:       'wrap',
+            alignItems:     'flex-end',
+            justifyContent: 'space-between',
+            gap:            '1rem',
+            marginBottom:   '2.5rem',
+          }}
+        >
+          <div>
+            <Eyebrow>{c.loop.eyebrow}</Eyebrow>
+            <BilingualH2
+              id="loop-heading"
+              primary={c.loop.h2}
+              secondary={c.loop.h2zh}
+            />
+          </div>
+          {/* Loop connector label — desktop only */}
+          <p
+            aria-hidden="true"
+            style={{
+              fontSize:      '0.6875rem',
+              fontWeight:    600,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              color:         'rgba(88,86,204,0.4)',
+              whiteSpace:    'nowrap',
+            }}
+          >
+            Read → Think → Speak → Write
+          </p>
         </div>
 
+        {/* Steps grid */}
         <div
           style={{
             display:             'grid',
             gridTemplateColumns: 'repeat(1, 1fr)',
-            gap:                 '1.25rem',
+            gap:                 '1px',
+            backgroundColor:     'rgba(14,14,18,0.07)',
+            borderRadius:        '1rem',
+            overflow:            'hidden',
+            border:              '1px solid rgba(14,14,18,0.07)',
           }}
           className="sm:grid-cols-2 lg:grid-cols-4"
         >
           {c.loop.steps.map((step, i) => (
             <article
               key={step.num}
-              aria-label={`${step.label} \u2014 ${step.labelZh}`}
+              aria-label={`${step.label} — ${step.labelZh}`}
               style={{
                 backgroundColor: '#ffffff',
-                border:          '1px solid rgba(14,14,18,0.08)',
-                borderRadius:    '1.125rem',
-                overflow:        'hidden',
-                boxShadow:       '0 1px 4px rgba(0,0,0,0.05), 0 2px 8px rgba(0,0,0,0.04)',
+                padding:         '1.75rem 1.5rem 1.875rem',
+                position:        'relative',
               }}
             >
-              {/* Image */}
-              <div style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden' }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={LOOP_IMGS[i]}
-                  alt=""
-                  aria-hidden="true"
-                  loading="lazy"
-                  decoding="async"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                />
-                <div
-                  aria-hidden="true"
-                  style={{
-                    position:   'absolute',
-                    inset:      0,
-                    background: 'linear-gradient(to top, rgba(14,14,18,0.5) 0%, transparent 45%)',
-                  }}
-                />
+              {/* Step number + accent bar */}
+              <div
+                aria-hidden="true"
+                style={{
+                  width:           '3px',
+                  height:          '2.25rem',
+                  borderRadius:    '9999px',
+                  backgroundColor: LOOP_ACCENT_COLORS[i],
+                  marginBottom:    '1rem',
+                  opacity:         0.75 + i * 0.06,
+                }}
+              />
+
+              {/* Number */}
+              <p
+                aria-hidden="true"
+                style={{
+                  fontSize:      '0.625rem',
+                  fontWeight:    700,
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                  color:         LOOP_ACCENT_COLORS[i],
+                  marginBottom:  '0.375rem',
+                  opacity:       0.7,
+                }}
+              >
+                {step.num}
                 {step.badge && (
                   <span
-                    aria-hidden="true"
                     style={{
-                      position:        'absolute',
-                      top:             '0.625rem',
-                      left:            '0.625rem',
-                      padding:         '3px 8px',
-                      backgroundColor: 'rgba(14,14,18,0.82)',
+                      marginLeft:      '0.5rem',
+                      padding:         '1px 6px',
+                      backgroundColor: 'rgba(183,181,254,0.1)',
                       borderRadius:    '9999px',
-                      fontSize:        '9px',
-                      fontWeight:      700,
-                      letterSpacing:   '0.09em',
-                      color:           '#b7b5fe',
-                      border:          '1px solid rgba(183,181,254,0.28)',
+                      border:          '1px solid rgba(183,181,254,0.25)',
+                      fontSize:        '8px',
+                      letterSpacing:   '0.08em',
                     }}
                   >
                     {step.badge}
                   </span>
                 )}
-              </div>
+              </p>
 
-              {/* Content */}
-              <div style={{ padding: '1rem 1rem 1.25rem' }}>
-                <div className="flex items-center gap-2.5" style={{ marginBottom: '0.5rem' }}>
-                  <span
-                    aria-hidden="true"
-                    style={{
-                      width:           '32px',
-                      height:          '32px',
-                      borderRadius:    '50%',
-                      backgroundColor: 'rgba(183,181,254,0.1)',
-                      border:          '1.5px solid rgba(183,181,254,0.3)',
-                      display:         'flex',
-                      alignItems:      'center',
-                      justifyContent:  'center',
-                      fontSize:        '11px',
-                      fontWeight:      700,
-                      color:           '#5856cc',
-                      flexShrink:      0,
-                    }}
-                  >
-                    {step.num}
-                  </span>
-                  <div>
-                    <p style={{ fontSize: '1rem', fontWeight: 700, color: '#0E0E12', lineHeight: 1.2 }}>
-                      {step.label}
-                    </p>
-                    <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '11px', color: '#5856cc', lineHeight: 1.2 }}>
-                      {step.labelZh}
-                    </p>
-                  </div>
-                </div>
-                <p style={{ fontSize: '0.8125rem', lineHeight: 1.72, color: '#3D4452' }}>
-                  {step.desc}
-                </p>
-              </div>
+              {/* Label */}
+              <p style={{ fontSize: '1.25rem', fontWeight: 700, color: '#0E0E12', lineHeight: 1.1, marginBottom: '0.25rem' }}>
+                {step.label}
+              </p>
+              <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '12px', color: LOOP_ACCENT_COLORS[i], lineHeight: 1.3, marginBottom: '0.875rem', opacity: 0.8 }}>
+                {step.labelZh}
+              </p>
+
+              {/* Description */}
+              <p style={{ fontSize: '0.8125rem', lineHeight: 1.75, color: '#3D4452' }}>
+                {step.desc}
+              </p>
             </article>
           ))}
         </div>
@@ -1358,7 +1363,6 @@ export default async function ProgramPage({ params }) {
       <HangarSection     locale={locale} c={c} />
       <GrowthSection     locale={locale} c={c} />
       <GetStartedSection locale={locale} c={c} />
-      <CharterSection    locale={locale} c={c} />
     </>
   )
 }

@@ -11,6 +11,12 @@
 //   - isActive strips the locale prefix from usePathname() before comparing
 //   - LocaleSwitcherSlot replaced with <LocaleSwitcher locale={locale} />
 //     in both desktop bar and mobile drawer
+//
+// Logo sizing:
+//   --nav-height: 4rem = 64px.
+//   Logo height: 32px = 50% of nav-height → 16px optical padding top/bottom.
+//   Width auto from trimmed viewBox 484×240 (2.02:1) → ~65px at 32px tall.
+//   Previous value calc(var(--nav-height) - 12px) = 52px was 81% of bar — too tall.
 
 import { useState, useEffect, useRef, useCallback } from 'react'
 import Link                                          from 'next/link'
@@ -87,28 +93,20 @@ function Wordmark({ locale }) {
       className="flex items-center shrink-0 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b7b5fe] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0E0E12]"
       aria-label="DODO Learning — home"
     >
-      <div
-        style={{
-          height:     'calc(var(--nav-height) - 12px)',
-          overflow:   'hidden',
-          display:    'flex',
-          alignItems: 'center',
-          flexShrink: 0,
-        }}
-      >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/logo-dark.svg"
-          alt="DODO Learning"
-          style={{
-            height:     'calc(var(--nav-height) - 12px)',
-            width:      'auto',
-            maxHeight:  'calc(var(--nav-height) - 12px)',
-            display:    'block',
-            flexShrink: 0,
-          }}
-        />
-      </div>
+      {/*
+        logo-dark.svg — white fill (#FFFFFF), correct for dark nav bg (#0E0E12).
+        Height: 32px = 50% of --nav-height (64px) → 16px optical padding top/bottom.
+        Width auto from trimmed viewBox 484×240 (2.02:1) → ~65px rendered width.
+        Previous value calc(var(--nav-height) - 12px) = 52px was 81% — too tall.
+      */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/logo-dark.svg"
+        alt="DODO Learning"
+        width={65}
+        height={32}
+        style={{ height: '32px', width: 'auto', display: 'block', flexShrink: 0 }}
+      />
     </Link>
   )
 }
