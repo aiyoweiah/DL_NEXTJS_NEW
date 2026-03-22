@@ -1,11 +1,12 @@
 <svg
   xmlns="http://www.w3.org/2000/svg"
-  viewBox="58 45 484 240"
+  viewBox="54 41 486 254"
   preserveAspectRatio="xMidYMid meet"
   role="img"
   aria-label="DODO Learning"
 >
-<g transform="translate(0,350) scale(0.1,-0.1)" fill="#000000" stroke="none">
+<g transform="translate(0.000000,350.000000) scale(0.100000,-0.100000)"
+fill="#000000" stroke="none">
 <path d="M2350 3006 c-401 -113 -693 -785 -488 -1125 85 -141 184 -201 408
 -247 365 -74 751 156 826 492 55 251 -26 517 -220 722 -133 140 -354 206 -526
 158z m73 -298 l5 -147 -27 -5 c-14 -3 -61 -8 -104 -11 l-78 -7 3 118 3 119 50

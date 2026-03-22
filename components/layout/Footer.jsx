@@ -188,7 +188,7 @@ export default function Footer({ locale }) {
                 <img
                   src="/logo.svg"
                   alt="DODO Learning"
-                  width={81}
+                  width={77}
                   height={40}
                   style={{ height: '40px', width: 'auto', display: 'block' }}
                 />

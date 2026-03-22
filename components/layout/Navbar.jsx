@@ -104,7 +104,7 @@ function Wordmark({ locale }) {
       <img
         src="/logo-dark.svg"
         alt="DODO Learning"
-        width={65}
+        width={61}
         height={32}
         style={{ height: '32px', width: 'auto', display: 'block', flexShrink: 0 }}
       />
