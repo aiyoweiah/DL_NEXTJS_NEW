@@ -77,11 +77,11 @@
   --focus-ring-width:      3px;
 
   /* ── Spacing rhythm ── */
-  --section-xs: 3rem;
-  --section-sm: 5rem;
-  --section-md: 7rem;
-  --section-lg: 9rem;
-  --section-xl: 11rem;
+  --section-xs: 2rem;
+  --section-sm: 3rem;
+  --section-md: 4rem;
+  --section-lg: 5.5rem;
+  --section-xl: 7rem;
 
   /* ── Radius scale ── */
   --radius-sm:   0.25rem;
@@ -979,7 +979,22 @@
     .container-section { padding-left: 1.5rem; padding-right: 1.5rem; }
   }
 
+  @media (min-width: 768px) {
+    :root {
+      --section-xs: 3rem;
+      --section-sm: 5rem;
+      --section-md: 6rem;
+      --section-lg: 8rem;
+      --section-xl: 10rem;
+    }
+  }
+
   @media (min-width: 1024px) {
+    :root {
+      --section-md: 7rem;
+      --section-lg: 9rem;
+      --section-xl: 11rem;
+    }
     .container-section { padding-left: 2.5rem; padding-right: 2.5rem; }
   }
 

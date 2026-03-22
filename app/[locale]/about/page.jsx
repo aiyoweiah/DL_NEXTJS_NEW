@@ -298,23 +298,32 @@ function WhatWeBelieve({ c }) {
         </div>
         <div>
           {BELIEFS_BASE.map((item, i) => (
-            <div key={item.id} className="items-start py-12"
-              style={{ display: 'grid', gridTemplateColumns: '2.5rem 3.5rem 1fr 1fr', gap: '2rem', borderBottom: i < BELIEFS_BASE.length - 1 ? '1px solid rgba(14,14,18,0.08)' : 'none' }}
+            <div key={item.id}
+              className="py-8 md:py-12"
+              style={{ borderBottom: i < BELIEFS_BASE.length - 1 ? '1px solid rgba(14,14,18,0.08)' : 'none' }}
               aria-label={`Belief ${item.num}: ${item.belief}`}>
-              <div className="flex items-center pt-1">
-                <span style={{ fontSize: '14px', fontWeight: 600, color: '#5856cc' }}>{item.num}</span>
-              </div>
-              <div className="flex items-center">
-                <div className="flex items-center justify-center"
-                  style={{ width: 48, height: 48, borderRadius: '50%', backgroundColor: 'rgba(183,181,254,0.1)', color: '#b7b5fe', flexShrink: 0 }} aria-hidden="true">
+
+              {/* Mobile: flex. md+: 3-col grid [icon | statement | body] */}
+              <div className="flex items-start gap-4 md:grid md:grid-cols-[3rem_1fr_1fr] md:gap-8">
+
+                {/* Icon (visible on all sizes) */}
+                <div className="flex items-center justify-center shrink-0"
+                  style={{ width: 44, height: 44, borderRadius: '50%', backgroundColor: 'rgba(183,181,254,0.1)', color: '#b7b5fe' }} aria-hidden="true">
                   <BeliefIcon id={item.id} />
                 </div>
+
+                {/* Belief statement */}
+                <div className="flex-1 md:flex-none min-w-0">
+                  <p style={{ fontSize: '18px', fontWeight: 600, lineHeight: 1.3, color: '#0E0E12' }}>&ldquo;{item.belief}&rdquo;</p>
+                  <p className="mt-1" style={{ fontFamily: 'var(--font-cjk)', fontSize: '13px', color: '#5856cc' }}>{item.beliefCn}</p>
+                  {/* Body text stacks below on mobile */}
+                  <p className="mt-3 md:hidden" style={{ fontSize: '15px', lineHeight: 1.8, color: '#2E3848' }}>{c.beliefs.bodies[i]}</p>
+                </div>
+
+                {/* Body text — desktop separate column */}
+                <p className="hidden md:block" style={{ fontSize: '15px', lineHeight: 1.8, color: '#2E3848' }}>{c.beliefs.bodies[i]}</p>
+
               </div>
-              <div>
-                <p style={{ fontSize: '20px', fontWeight: 600, lineHeight: 1.3, color: '#0E0E12' }}>&ldquo;{item.belief}&rdquo;</p>
-                <p className="mt-2" style={{ fontFamily: 'var(--font-cjk)', fontSize: '14px', color: '#5856cc' }}>{item.beliefCn}</p>
-              </div>
-              <p style={{ fontSize: '15px', lineHeight: 1.8, color: '#2E3848' }}>{c.beliefs.bodies[i]}</p>
             </div>
           ))}
         </div>
