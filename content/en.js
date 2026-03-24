@@ -159,13 +159,15 @@ export const program = {
       'The Hangar is the DODO community hub — Navigator-supported study sessions, peer discussion, and the shared identity of students who are building something real. Not homework help. Belonging.',
   },
 
-  charter: {
-    eyebrow: 'Charter Enrollment',
-    heading: 'Charter families believe in DODO early.',
+  // Founding Family Program — not a promotional price.
+  // Never use: Charter Enrollment, charter cohorts, charter spots, discount, limited-time offer.
+  foundingFamily: {
+    eyebrow: 'Founding Family Program',
+    heading: 'Founding families commit to DODO before it scales.',
     body:
-      'Charter Enrollment is for families who commit to the full 16-Week Program at the founding rate. It is not a promotional price. It rewards foresight — and it is available now.',
-    cta:  'Reserve Your Charter Spot',
-    note: 'Charter spots are limited per cohort. Consultation required before enrollment.',
+      'The Founding Family Program is for families who commit to the full 16-Week Program at the founding rate. It is not a promotional price. It rewards foresight — and it is available now.',
+    cta:  'Reserve Your Founding Family Spot',
+    note: 'Founding Family spots are limited per cohort. Consultation required before enrollment.',
   },
 }
 
@@ -292,13 +294,15 @@ export const results = {
     ctaHref: '/methodology',
   },
 
-  charter: {
-    eyebrow: 'Charter Enrollment',
-    heading: 'Charter families believe in DODO early.',
+  // Founding Family Program — not a promotional price.
+  // Never use: Charter Enrollment, charter cohorts, charter spots, discount, limited-time offer.
+  foundingFamily: {
+    eyebrow: 'Founding Family Program',
+    heading: 'Founding families commit to DODO before it scales.',
     body:
-      'Charter Enrollment is for families who commit to the full 16-Week Program at the ' +
+      'The Founding Family Program is for families who commit to the full 16-Week Program at the ' +
       'founding rate. It is not a promotional price. It rewards foresight — and it is available now.',
-    cta: 'Reserve Your Charter Spot',
+    cta: 'Reserve Your Founding Family Spot',
   },
 }
 
@@ -342,7 +346,7 @@ export const consult = {
         id:    'commit',
         time:  '5 min',
         label: 'Decide',
-        body:  'If Charter Enrollment is the right fit, we explain the founding rate and next steps. No pressure. Clear terms.',
+        body:  'If the Founding Family Program is the right fit, we explain the founding rate and next steps. No pressure. Clear terms.',
       },
     ],
   },
@@ -524,12 +528,13 @@ export const methodology = {
   },
 
   cta: {
-    heading: 'See The Loop applied to your child.',
-    body:    'The diagnostic consultation is where we find out exactly where your child is — and show you what The Loop looks like for a student exactly like yours.',
+    heading:      'See The Loop applied to your child.',
+    body:         'The diagnostic consultation is where we find out exactly where your child is — and show you what The Loop looks like for a student exactly like yours.',
     ctaPrimary:   'Book Your Consultation',
     ctaSecondary: 'See The 16-Week Program',
   },
 }
+
 // ── FAQ ───────────────────────────────────────────────────────
 // TODO: populate when building app/[locale]/faq/page.jsx
 export const faq = {}
@@ -545,7 +550,7 @@ export const theHangar = {}
 // ── Lexile ────────────────────────────────────────────────────
 export const lexile = {
   meta: {
-    title:       'What Is a Lexile Level? A Parent’s Complete Guide',
+    title:       'What Is a Lexile Level? A Parent\'s Complete Guide',
     description:
       'Lexile levels explained for parents of bilingual children. How Lexile measures reading comprehension, grade-level benchmarks, and how DODO Learning uses Lexile to track real growth.',
   },
@@ -561,7 +566,7 @@ export const lexile = {
     eyebrow: 'Understanding the Scale',
     heading: 'One number. Reading ability placed precisely on a scale from 0L to 2000L.',
     body:
-      'A Lexile reading level measures reading comprehension ability on a standardized scale from 0L to 2000L. The number reflects three things simultaneously: vocabulary complexity, sentence density, and how abstract the concepts are. A student at Lexile 650L can independently understand texts at that level; a text at 750L is slightly above them — appropriate for guided challenge, but not independent reading. At DODO, every session uses texts set 80L to 120L above the student’s current Lexile — precisely inside the zone where real growth happens.',
+      'A Lexile reading level measures reading comprehension ability on a standardized scale from 0L to 2000L. The number reflects three things simultaneously: vocabulary complexity, sentence density, and how abstract the concepts are. A student at Lexile 650L can independently understand texts at that level; a text at 750L is slightly above them — appropriate for guided challenge, but not independent reading. At DODO, every session uses texts set 80L to 120L above the student\'s current Lexile — precisely inside the zone where real growth happens.',
   },
 
   grades: {
@@ -570,12 +575,12 @@ export const lexile = {
     note:
       'The ranges below reflect typical North American English-speaking students. Bilingual students often score below these ranges — not because of lower ability, but because Lexile measures academic English specifically. Closing that gap is what The Loop is built to do.',
     rows: [
-      { grade: 'Grade 3', range: '415L – 760L', midpoint: '520L' },
-      { grade: 'Grade 4', range: '635L – 950L', midpoint: '740L' },
-      { grade: 'Grade 5', range: '770L – 1080L', midpoint: '860L' },
-      { grade: 'Grade 6', range: '855L – 1165L', midpoint: '1010L' },
-      { grade: 'Grade 7', range: '925L – 1235L', midpoint: '1065L' },
-      { grade: 'Grade 8', range: '985L – 1295L', midpoint: '1130L' },
+      { grade: 'Grade 3', range: '415L – 760L',   midpoint: '520L'  },
+      { grade: 'Grade 4', range: '635L – 950L',   midpoint: '740L'  },
+      { grade: 'Grade 5', range: '770L – 1080L',  midpoint: '860L'  },
+      { grade: 'Grade 6', range: '855L – 1165L',  midpoint: '1010L' },
+      { grade: 'Grade 7', range: '925L – 1235L',  midpoint: '1065L' },
+      { grade: 'Grade 8', range: '985L – 1295L',  midpoint: '1130L' },
     ],
   },
 
@@ -595,7 +600,7 @@ export const lexile = {
       {
         id:    'week0',
         label: 'Week 0 — Entrance Assessment',
-        body:  'Completed before the first session. Establishes your child’s Lexile baseline and determines the content difficulty for weeks 1 through 4. A 6+1 Trait writing snapshot is taken at the same time.',
+        body:  'Completed before the first session. Establishes your child\'s Lexile baseline and determines the content difficulty for weeks 1 through 4. A 6+1 Trait writing snapshot is taken at the same time.',
       },
       {
         id:    'week8',
@@ -668,7 +673,7 @@ export const compare = {
       label:    'Kumon',
       what:     'A self-paced, worksheet-based program that develops procedural fluency in reading and math through daily repetition.',
       strength: 'Builds disciplined daily practice habits. Effective at developing decoding fluency and basic comprehension at early reading levels.',
-      limit:    'Kumon’s reading program develops word-recognition and sentence-level comprehension. It does not train analytical reasoning, argumentative writing, or the ability to process dense academic texts. Students who complete Kumon reading often remain below grade level in academic English.',
+      limit:    'Kumon\'s reading program develops word-recognition and sentence-level comprehension. It does not train analytical reasoning, argumentative writing, or the ability to process dense academic texts. Students who complete Kumon reading often remain below grade level in academic English.',
       dodo:     'DODO begins where Kumon ends. The Loop trains reading comprehension at the paragraph and argument level, not the sentence level — then builds through spoken reasoning and structured writing.',
     },
     {
@@ -684,13 +689,13 @@ export const compare = {
       label:    'Reading Apps and Platforms',
       what:     'Digital tools that provide access to levelled reading content, often with comprehension quizzes and progress tracking.',
       strength: 'Accessible, affordable, and self-paced. Useful for sustained independent reading and vocabulary exposure.',
-      limit:    'Apps provide content but not instruction. They cannot identify why a student struggles with a specific text, model the thinking process of a skilled reader, or give feedback on written reasoning. Growth on an app is limited by the student’s existing ceiling.',
+      limit:    'Apps provide content but not instruction. They cannot identify why a student struggles with a specific text, model the thinking process of a skilled reader, or give feedback on written reasoning. Growth on an app is limited by the student\'s existing ceiling.',
       dodo:     'DODO provides what apps cannot: a Navigator who diagnoses how a student thinks, not just what they can decode. The Hangar supplements the live work — it does not replace it.',
     },
     {
       id:       'school',
       label:    'The School Curriculum',
-      what:     'Your child’s regular English classes in their Canadian or American school.',
+      what:     'Your child\'s regular English classes in their Canadian or American school.',
       strength: 'Provides consistent exposure to grade-level content, peer discussion, and teacher feedback within an academic context.',
       limit:    'School curricula assume monolingual cognition. They are not designed for students who are simultaneously developing academic proficiency in two languages. A bilingual student may receive an A in English class while Lexile scores reveal they are reading one to two grade levels below standard.',
       dodo:     'DODO does not replace school. It builds the bilingual cognitive layer that school cannot address: the ability to think, reason, and write academically in English without losing Chinese as a cognitive anchor.',
@@ -701,10 +706,10 @@ export const compare = {
     eyebrow: 'The Right Question',
     heading: 'The question is not which program is better. It is what your child actually needs.',
     rows: [
-      { need: 'Help with a specific assignment or test', answer: 'Private tutoring is the right tool.' },
-      { need: 'Daily reading habit and decoding fluency', answer: 'Kumon or a reading app will help.' },
-      { need: 'Conversational confidence in English', answer: 'An after-school class is appropriate.' },
-      { need: 'Academic reading, reasoning, and writing in English from a bilingual foundation', answer: 'That is what DODO is built for.' },
+      { need: 'Help with a specific assignment or test',                                                       answer: 'Private tutoring is the right tool.' },
+      { need: 'Daily reading habit and decoding fluency',                                                      answer: 'Kumon or a reading app will help.' },
+      { need: 'Conversational confidence in English',                                                          answer: 'An after-school class is appropriate.' },
+      { need: 'Academic reading, reasoning, and writing in English from a bilingual foundation',               answer: 'That is what DODO is built for.' },
     ],
   },
 
