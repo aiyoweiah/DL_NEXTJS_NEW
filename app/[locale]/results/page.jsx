@@ -10,7 +10,7 @@
 //   4. Result Cards   — light, grid of anonymised student results with LexileBar
 //   5. Writing        — dark, 6+1 Trait score table
 //   6. Methodology    — light, why the numbers move + link to /methodology
-//   7. CharterCTA     — dark, conversion
+//   7. FoundingFamily — dark, conversion (key was: charter)
 
 import Link from 'next/link'
 
@@ -174,9 +174,9 @@ export default async function ResultsPage({ params }) {
           {/* Trait score table */}
           <div className="max-w-xl flex flex-col gap-4">
             {t.writing.traits.map((trait) => {
-              const maxScore  = 6
-              const entryPct  = (trait.entryAvg / maxScore) * 100
-              const exitPct   = (trait.exitAvg  / maxScore) * 100
+              const maxScore = 6
+              const entryPct = (trait.entryAvg / maxScore) * 100
+              const exitPct  = (trait.exitAvg  / maxScore) * 100
 
               return (
                 <div key={trait.id}>
@@ -300,7 +300,7 @@ export default async function ResultsPage({ params }) {
         </div>
       </SectionWrapper>
 
-      {/* ── 7. Charter CTA ───────────────────────────────── */}
+      {/* ── 7. Founding Family CTA ───────────────────────── */}
       <SectionWrapper darker>
         <div className="py-20 md:py-24 max-w-2xl">
 
@@ -308,22 +308,22 @@ export default async function ResultsPage({ params }) {
             className="text-xs font-semibold uppercase tracking-widest mb-4"
             style={{ color: 'rgba(183,181,254,0.5)' }}
           >
-            {t.charter.eyebrow}
+            {t.foundingFamily.eyebrow}
           </p>
 
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5 text-gradient">
-            {t.charter.heading}
+            {t.foundingFamily.heading}
           </h2>
 
           <p
             className="text-lg leading-relaxed mb-8"
             style={{ color: '#94A3B8' }}
           >
-            {t.charter.body}
+            {t.foundingFamily.body}
           </p>
 
           <Button as={Link} variant="charter" href={`/${locale}/consult`}>
-            {t.charter.cta}
+            {t.foundingFamily.cta}
           </Button>
 
         </div>
