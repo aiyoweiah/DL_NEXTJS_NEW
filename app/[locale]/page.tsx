@@ -37,43 +37,45 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 const HOMEPAGE_COPY: Record<string, any> = {
   en: {
     meta: {
-      title:       'DODO Learning \u2014 Bilingual Thinking Program for Globally Mobile Families',
+      title:       'DODO Learning \u2014 Bilingual Thinking Program for Chinese Families in Canada & the US',
       description:
-        'The only live, Navigator-led program that trains the full Read \u2192 Think \u2192 Speak \u2192 Write loop \u2014 for Chinese-speaking families in Canada and the US. One grade level of reading growth in 16 weeks, measured by Lexile.',
+        'The live, Navigator-led bilingual thinking program that trains the full Read \u2192 Think \u2192 Speak \u2192 Write loop \u2014 for Chinese families in Canada and the US. One grade level of reading growth in 16 weeks, measured by Lexile.',
     },
     hero: {
-      eyebrow:       'For Globally Mobile Families',
-      eyebrow2:      'Charter Enrollment',
-      h1:            ['Build the edge.\u00a0', 'Own both languages.\u00a0'],
-      h1Chinese:     '',
+      eyebrow:        'For Chinese Families in Canada & the US',
+      eyebrow2:       'Founding Family Program',
+      h1:             ['What does a bilingual\u00a0', 'thinking program actually\u00a0do?\u00a0'],
+      h1Chinese:      '',
       differentiator: '',
       consultHook:
-        'The only live, high-touch program that trains the full\u00a0Read \u2192 Think \u2192 Speak \u2192 Write loop \u2014 for families who live between two languages.',
-      cta1:          'Book Your Consultation',
-      cta2:          'See The 16-Week Program',
-      trustLine:     'Lexile-measured progress\u00a0\u00b7\u00a06+1 Trait writing framework\u00a0\u00b7\u00a0Live Navigator-led sessions',
+        'DODO trains the complete\u00a0Read \u2192 Think \u2192 Speak \u2192 Write loop \u2014 live, Navigator-led, for Chinese families raising children in two languages.',
+      cta1:      'Book Your Consultation',
+      cta2:      'See The 16-Week Program',
+      trustLine: 'Lexile-measured progress\u00a0\u00b7\u00a06+1 Trait writing framework\u00a0\u00b7\u00a0Live Navigator-led sessions',
     },
     proof: [
-      { id: 'lexile',  number: '1',       unit: 'grade level',                label: 'average reading growth in 16 weeks, measured by Lexile' },
-      { id: 'writing', number: '2\u00d7', unit: 'writing score improvement',  label: 'average 6+1 Trait score gain from entry to exit assessment' },
-      { id: 'live',    number: '100%',    unit: 'live sessions',              label: 'no pre-recorded content \u2014 every session is Navigator-led' },
+      { id: 'lexile',  number: '1',       unit: 'grade level',               label: 'average reading growth in 16 weeks, measured by Lexile' },
+      { id: 'writing', number: '2\u00d7', unit: 'writing score improvement', label: 'average 6+1 Trait score gain from entry to exit assessment' },
+      { id: 'live',    number: '100%',    unit: 'live sessions',             label: 'no pre-recorded content \u2014 every session is Navigator-led' },
     ],
     photoIntro: {
-      eyebrow:  'Who We Are',
-      heading:  'The difference between a teacher and a Navigator is a map.',
+      eyebrow: 'Who We Are',
+      heading: 'The difference between a teacher and a Navigator is a map.',
+      body0:
+        'Your child\u2019s school knows what grade they\u2019re in. That\u2019s not the same as knowing where they are. Most bilingual children carry a reading gap their report card doesn\u2019t show \u2014 the distance between what they can decode and what they can actually think through.',
       body1:
         'Navigators are not tutors. They are specialists in composition, literature, and academic writing \u2014 trained to close the gap between a student\u2019s current reading level and the level their academic life demands.',
       body2:
         'Every Navigator tracks one thing per student: the distance between their current Lexile level and their goal \u2014 and closes it, week by week, through The Loop.',
-      cta1:     'Meet the Navigators',
-      cta2:     'See Student Results',
-      imgAlt:   'A mother watches her child pause mid-thought after finishing a reading passage at home',
+      cta1:   'Meet the Navigators',
+      cta2:   'See Student Results',
+      imgAlt: 'A mother watches her child pause mid-thought after finishing a reading passage at home',
     },
     loop: {
-      eyebrow:  'The Methodology',
-      heading:  'The Loop',
-      body:     'Every session. Every week. In this order, without exception. Read\u00a0\u2192\u00a0Think\u00a0\u2192\u00a0Speak\u00a0\u2192\u00a0Write is not a framework we teach about \u2014 it is what we do.',
-      cta:      'Read the full methodology \u2192',
+      eyebrow: 'The Methodology',
+      heading: 'The Loop',
+      body:    'Every session. Every week. In this order, without exception. Read\u00a0\u2192\u00a0Think\u00a0\u2192\u00a0Speak\u00a0\u2192\u00a0Write is not a framework we teach about \u2014 it is what we do.',
+      cta:     'Read the full methodology \u2192',
       steps: [
         { id: 'read',  number: '01', label: 'Read',  description: 'Students read texts carefully chosen at or just above their current Lexile level. The text is the raw material \u2014 nothing is simplified.' },
         { id: 'think', number: '02', label: 'Think', description: 'Before speaking, students are trained to form a position. What do they actually think? Not what they think they should think.' },
@@ -82,9 +84,9 @@ const HOMEPAGE_COPY: Record<string, any> = {
       ],
     },
     confidence: {
-      eyebrow:  'How It Works',
-      heading:  'We don\u2019t promise fluency. We deliver a grade level of literacy growth.',
-      body:     'In 16 weeks. Measured by Lexile. Shown in writing scores. Every claim we make is a number we can prove.',
+      eyebrow: 'How It Works',
+      heading: 'We don\u2019t promise fluency. We deliver a grade level of literacy growth.',
+      body:    'In 16 weeks. Measured by Lexile. Shown in writing scores. Every claim we make is a number we can prove.',
       pillars: [
         {
           id:        'assessment',
@@ -119,60 +121,62 @@ const HOMEPAGE_COPY: Record<string, any> = {
       viewAll:    'View all results \u2192',
       weeksLabel: 'weeks',
       results: [
-        { id: 'result-1', student: 'Student A', detail: 'Grade 5 \u00b7 Vancouver',              start: 620, end: 820, weeks: 16, trait: 'Voice: 2 \u2192 4',        quote: 'She started raising her hand in class by week eight. By week twelve she was leading the discussion.',                           source: 'Parent, Vancouver' },
-        { id: 'result-2', student: 'Student B', detail: 'Grade 6 \u00b7 Markham',                start: 540, end: 720, weeks: 16, trait: 'Organization: 2 \u2192 5',  quote: 'His teacher told us his writing had transformed. The 6+1 scores made it easy to see exactly what changed.',                   source: 'Parent, Markham' },
-        { id: 'result-3', student: 'Student C', detail: 'Grade 7 \u00b7 San Francisco Bay Area', start: 710, end: 940, weeks: 16, trait: 'Ideas: 3 \u2192 5',          quote: 'She went from dreading writing assignments to submitting them early. The Navigator knew exactly where she was stuck.',           source: 'Parent, Bay Area' },
+        { id: 'result-1', student: 'Student A', detail: 'Grade 5 \u00b7 Vancouver',              start: 620, end: 820, weeks: 16, trait: 'Voice: 2 \u2192 4',       quote: 'She started raising her hand in class by week eight. By week twelve she was leading the discussion.',                        source: 'Parent, Vancouver' },
+        { id: 'result-2', student: 'Student B', detail: 'Grade 6 \u00b7 Markham',                start: 540, end: 720, weeks: 16, trait: 'Organization: 2 \u2192 5', quote: 'His teacher told us his writing had transformed. The 6+1 scores made it easy to see exactly what changed.',                source: 'Parent, Markham' },
+        { id: 'result-3', student: 'Student C', detail: 'Grade 7 \u00b7 San Francisco Bay Area', start: 710, end: 940, weeks: 16, trait: 'Ideas: 3 \u2192 5',        quote: 'She went from dreading writing assignments to submitting them early. The Navigator knew exactly where she was stuck.',      source: 'Parent, Bay Area' },
       ],
     },
     closing: {
-      eyebrow:  'Charter Enrollment',
-      heading:  'The diagnostic consultation is where we find out exactly where your child is.',
-      body:     'Not where their school says they are. We measure their Lexile level, identify the specific gap, and tell you exactly what the first 16 weeks looks like for a student exactly like yours.',
-      cta1:     'Book Your Consultation',
-      cta2:     'Read About The Program',
-      tagline:  'Think Once. In Both Languages.',
+      eyebrow: 'Founding Family Program',
+      heading: 'Ready to meet your child\u2019s Navigator?',
+      body:    'The diagnostic consultation is where we find out exactly where your child is \u2014 not where their school says they are. We measure their Lexile level, identify the specific gap, and map the first 16 weeks. Founding Family Program spots are still available \u2014 the Lexile assessment is the first step.',
+      cta1:    'Book Your Consultation',
+      cta2:    'Read About The Program',
+      tagline: 'Think Once. In Both Languages.',
     },
   },
 
   zh: {
     meta: {
-      title:       'DODO Learning \u2014 \u9762\u5411\u5168\u7403\u534e\u8bed\u5bb6\u5ead\u7684\u53cc\u8bed\u601d\u7ef4\u8bfe\u7a0b',
+      title:       'DODO Learning \u2014 \u9762\u5411\u52a0\u62ff\u5927\u548c\u7f8e\u56fd\u534e\u8bed\u5bb6\u5ead\u7684\u53cc\u8bed\u601d\u7ef4\u8bfe\u7a0b',
       description:
         '\u552f\u4e00\u7531\u5bfc\u5e08\u4e3b\u5bfc\u7684\u5b9e\u65f6\u8bfe\u7a0b\uff0c\u8bad\u7ec3\u5b8c\u6574\u7684\u9605\u8bfb\u2192\u601d\u8003\u2192\u8868\u8fbe\u2192\u5199\u4f5c\u95ed\u73af\u2014\u2014\u9762\u5411\u52a0\u62ff\u5927\u548c\u7f8e\u56fd\u7684\u534e\u8bed\u5bb6\u5ead\u3002\u516816\u5468\u5185\u63d0\u5347\u4e00\u4e2a\u5e74\u7ea7\u7684\u9605\u8bfb\u6c34\u5e73\uff0c\u4ee5Lexile\u6d4b\u91cf\u3002',
     },
     hero: {
-      eyebrow:       '\u9762\u5411\u5168\u7403\u6d41\u52a8\u5bb6\u5ead',
-      eyebrow2:      'Charter \u62a5\u540d\u5f00\u653e\u4e2d',
-      h1:            ['\u5efa\u7acb\u4f18\u52bf\u3002\u00a0', '\u638c\u63e1\u4e24\u79cd\u8bed\u8a00\u3002\u00a0'],
-      h1Chinese:     '\u4e0d\u662f\u8ffd\u8d76\u3002\u662f\u9886\u8dd1\u3002',
-      differentiator: '\u5176\u4ed6\u8bfe\u7a0b\u6559\u5b69\u5b50\u8bf4\u4ec0\u4e48\u3002\u6211\u4eec\u6559\u5b69\u5b50\u600e\u4e48\u53cc\u8bed\u601d\u8003\u3002',
+      eyebrow:        '\u9762\u5411\u52a0\u62ff\u5927\u548c\u7f8e\u56fd\u7684\u534e\u8bed\u5bb6\u5ead',
+      eyebrow2:       '\u521b\u59cb\u5bb6\u5ead\u8ba1\u5212',
+      h1:             ['\u53cc\u8bed\u601d\u7ef4\u8bfe\u7a0b\u5177\u4f53\u80fd\u505a\u4ec0\u4e48\uff1f\u00a0', ''],
+      h1Chinese:      '',
+      differentiator: '',
       consultHook:
-        '\u552f\u4e00\u80fd\u8bad\u7ec3\u5b8c\u6574\u9605\u8bfb\u2192\u601d\u8003\u2192\u8868\u8fbe\u2192\u5199\u4f5c\u95ed\u73af\u7684\u5b9e\u65f6\u9ad8\u5f3a\u5ea6\u8bfe\u7a0b\u2014\u2014\u4e3a\u751f\u6d3b\u5728\u4e24\u79cd\u8bed\u8a00\u4e4b\u95f4\u7684\u5bb6\u5ead\u800c\u8bbe\u8ba1\u3002',
-      cta1:          '\u9884\u7ea6\u548c\u8be2',
-      cta2:          '\u4e86\u89e316\u5468\u8bfe\u7a0b',
-      trustLine:     'Lexile\u6d4b\u91cf\u8fdb\u5ea6\u00a0\u00b7\u00a06+1\u7279\u8d28\u5199\u4f5c\u6846\u67b6\u00a0\u00b7\u00a0\u5bfc\u5e08\u5b9e\u65f6\u4e3b\u5bfc',
+        'DODO\u8bad\u7ec3\u5b8c\u6574\u7684\u9605\u8bfb\u2192\u601d\u8003\u2192\u8868\u8fbe\u2192\u5199\u4f5c\u95ed\u73af\u2014\u2014\u5b9e\u65f6\u8bfe\u7a0b\uff0c\u5bfc\u5e08\u4e3b\u5bfc\uff0c\u4e13\u4e3a\u5728\u4e24\u79cd\u8bed\u8a00\u4e2d\u517b\u80b2\u5b69\u5b50\u7684\u534e\u8bed\u5bb6\u5ead\u800c\u8bbe\u8ba1\u3002',
+      cta1:      '\u9884\u7ea6\u548c\u8be2',
+      cta2:      '\u4e86\u89e316\u5468\u8bfe\u7a0b',
+      trustLine: 'Lexile\u6d4b\u91cf\u8fdb\u5ea6\u00a0\u00b7\u00a06+1\u7279\u8d28\u5199\u4f5c\u6846\u67b6\u00a0\u00b7\u00a0\u5bfc\u5e08\u5b9e\u65f6\u4e3b\u5bfc',
     },
     proof: [
-      { id: 'lexile',  number: '1',       unit: '\u4e2a\u5e74\u7ea7',          label: '16\u5468\u5185Lexile\u6d4b\u91cf\u7684\u5e73\u5747\u9605\u8bfb\u589e\u957f' },
+      { id: 'lexile',  number: '1',       unit: '\u4e2a\u5e74\u7ea7',                    label: '16\u5468\u5185Lexile\u6d4b\u91cf\u7684\u5e73\u5747\u9605\u8bfb\u589e\u957f' },
       { id: 'writing', number: '2\u00d7', unit: '\u5199\u4f5c\u8bc4\u5206\u63d0\u5347', label: '\u5165\u5b66\u81f3\u7ed3\u8bfe\u8bc4\u4f306+1\u7279\u8d28\u5e73\u5747\u5f97\u5206\u589e\u957f' },
-      { id: 'live',    number: '100%',    unit: '\u5b9e\u65f6\u8bfe\u7a0b',    label: '\u6ca1\u6709\u9884\u5f55\u5185\u5bb9\u2014\u2014\u6bcf\u8282\u8bfe\u5747\u7531\u5bfc\u5e08\u4e3b\u5bfc' },
+      { id: 'live',    number: '100%',    unit: '\u5b9e\u65f6\u8bfe\u7a0b',              label: '\u6ca1\u6709\u9884\u5f55\u5185\u5bb9\u2014\u2014\u6bcf\u8282\u8bfe\u5747\u7531\u5bfc\u5e08\u4e3b\u5bfc' },
     ],
     photoIntro: {
-      eyebrow:  '\u6211\u4eec\u662f\u8c01',
-      heading:  '\u8001\u5e08\u4e0e\u5bfc\u5e08\u7684\u533a\u522b\uff0c\u5728\u4e8e\u4e00\u5f20\u5730\u56fe\u3002',
+      eyebrow: '\u6211\u4eec\u662f\u8c01',
+      heading: '\u8001\u5e08\u4e0e\u5bfc\u5e08\u7684\u533a\u522b\uff0c\u5728\u4e8e\u4e00\u5f20\u5730\u56fe\u3002',
+      body0:
+        '\u5b66\u6821\u77e5\u9053\u5b69\u5b50\u5728\u51e0\u5e74\u7ea7\u3002\u4f46\u90a3\u4e0d\u7b49\u4e8e\u4e86\u89e3\u5b69\u5b50\u771f\u6b63\u5904\u4e8e\u54ea\u4e2a\u4f4d\u7f6e\u3002\u5927\u591a\u6570\u53cc\u8bed\u5b69\u5b50\u90fd\u6709\u4e00\u4e2a\u6210\u7ee9\u5355\u4e0a\u770b\u4e0d\u5230\u7684\u9605\u8bfb\u5dee\u8ddd\u2014\u2014\u5373\u4ed6\u4eec\u80fd\u591f\u8bc6\u5b57\u7684\u5185\u5bb9\u548c\u80fd\u591f\u771f\u6b63\u601d\u8003\u7684\u5185\u5bb9\u4e4b\u95f4\u7684\u8ddd\u79bb\u3002',
       body1:
         '\u5bfc\u5e08\u4e0d\u662f\u8865\u4e60\u8001\u5e08\u3002\u4ed6\u4eec\u662f\u5199\u4f5c\u3001\u6587\u5b66\u548c\u5b66\u672f\u5199\u4f5c\u9886\u57df\u7684\u4e13\u5bb6\u2014\u2014\u62c5\u8d1f\u5f25\u5408\u5b66\u751f\u5f53\u524d\u9605\u8bfb\u6c34\u5e73\u4e0e\u5b66\u4e1a\u9700\u6c42\u4e4b\u95f4\u5dee\u8ddd\u7684\u91cd\u8d23\u3002',
       body2:
         '\u6bcf\u4f4d\u5bfc\u5e08\u53ea\u8ffd\u8e2a\u6bcf\u4f4d\u5b66\u751f\u7684\u4e00\u4ef6\u4e8b\uff1a\u5f53\u524dLexile\u6c34\u5e73\u4e0e\u76ee\u6807\u4e4b\u95f4\u7684\u8ddd\u79bb\u2014\u2014\u5e76\u901a\u8fc7The Loop\u9010\u5468\u7f29\u5c0f\u8fd9\u4e2a\u8ddd\u79bb\u3002',
-      cta1:     '\u8ba4\u8bc6\u5bfc\u5e08\u56e2\u961f',
-      cta2:     '\u67e5\u770b\u5b66\u751f\u6210\u679c',
-      imgAlt:   '\u4e00\u4f4d\u6bcd\u4eb2\u6ce8\u89c6\u5b69\u5b50\u5728\u5bb6\u4e2d\u9605\u8bfb\u540e\u505c\u987f\u601d\u8003\u7684\u77ac\u95f4',
+      cta1:   '\u8ba4\u8bc6\u5bfc\u5e08\u56e2\u961f',
+      cta2:   '\u67e5\u770b\u5b66\u751f\u6210\u679c',
+      imgAlt: '\u4e00\u4f4d\u6bcd\u4eb2\u6ce8\u89c6\u5b69\u5b50\u5728\u5bb6\u4e2d\u9605\u8bfb\u540e\u505c\u987f\u601d\u8003\u7684\u77ac\u95f4',
     },
     loop: {
-      eyebrow:  '\u6559\u5b66\u65b9\u6cd5',
-      heading:  'The Loop',
-      body:     '\u6bcf\u8282\u8bfe\u3002\u6bcf\u4e00\u5468\u3002\u59cb\u7ec8\u6309\u8fd9\u4e2a\u987a\u5e8f\u3002\u9605\u8bfb\u00a0\u2192\u00a0\u601d\u8003\u00a0\u2192\u00a0\u8868\u8fbe\u00a0\u2192\u00a0\u5199\u4f5c\u4e0d\u662f\u6211\u4eec\u6559\u6388\u7684\u6846\u67b6\u2014\u2014\u800c\u662f\u6211\u4eec\u5b9e\u9645\u7684\u505a\u6cd5\u3002',
-      cta:      '\u9605\u8bfb\u5b8c\u6574\u6559\u5b66\u65b9\u6cd5 \u2192',
+      eyebrow: '\u6559\u5b66\u65b9\u6cd5',
+      heading: 'The Loop',
+      body:    '\u6bcf\u8282\u8bfe\u3002\u6bcf\u4e00\u5468\u3002\u59cb\u7ec8\u6309\u8fd9\u4e2a\u987a\u5e8f\u3002\u9605\u8bfb\u00a0\u2192\u00a0\u601d\u8003\u00a0\u2192\u00a0\u8868\u8fbe\u00a0\u2192\u00a0\u5199\u4f5c\u4e0d\u662f\u6211\u4eec\u6559\u6388\u7684\u6846\u67b6\u2014\u2014\u800c\u662f\u6211\u4eec\u5b9e\u9645\u7684\u505a\u6cd5\u3002',
+      cta:     '\u9605\u8bfb\u5b8c\u6574\u6559\u5b66\u65b9\u6cd5 \u2192',
       steps: [
         { id: 'read',  number: '01', label: 'Read',  description: '\u5b66\u751f\u9605\u8bfb\u7cbe\u5fc3\u9009\u5b9a\u5728\u5f53\u524dLexile\u6c34\u5e73\u6216\u7565\u9ad8\u4e00\u7b51\u7684\u6587\u672c\u3002\u6587\u672c\u662f\u539f\u6750\u6599\u2014\u2014\u6ca1\u6709\u4efb\u4f55\u7b80\u5316\u3002' },
         { id: 'think', number: '02', label: 'Think', description: '\u5728\u5f00\u53e3\u4e4b\u524d\uff0c\u5b66\u751f\u9996\u5148\u88ab\u8bad\u7ec3\u5f62\u6210\u4e00\u4e2a\u7acb\u573a\u3002\u4ed6\u4eec\u771f\u6b63\u8ba4\u4e3a\u4ec0\u4e48\uff1f\u800c\u975e\u4ed6\u4eec\u8ba4\u4e3a\u5e94\u8be5\u8ba4\u4e3a\u4ec0\u4e48\u3002' },
@@ -181,9 +185,9 @@ const HOMEPAGE_COPY: Record<string, any> = {
       ],
     },
     confidence: {
-      eyebrow:  '\u5982\u4f55\u8fd0\u4f5c',
-      heading:  '\u6211\u4eec\u4e0d\u627f\u8bfa\u6d41\u5229\u5ea6\u3002\u6211\u4eec\u4ea4\u4ed8\u4e00\u4e2a\u5e74\u7ea7\u7684\u8bfb\u5199\u589e\u957f\u3002',
-      body:     '\u516816\u5468\u5185\u3002\u4ee5Lexile\u6d4b\u91cf\u3002\u5199\u4f5c\u5f97\u5206\u53ef\u89c1\u3002\u6211\u4eec\u6240\u6709\u7684\u4e3b\u5f20\u90fd\u662f\u53ef\u4ee5\u7528\u6570\u5b57\u8bc1\u660e\u7684\u3002',
+      eyebrow: '\u5982\u4f55\u8fd0\u4f5c',
+      heading: '\u6211\u4eec\u4e0d\u627f\u8bfa\u6d41\u5229\u5ea6\u3002\u6211\u4eec\u4ea4\u4ed8\u4e00\u4e2a\u5e74\u7ea7\u7684\u8bfb\u5199\u589e\u957f\u3002',
+      body:    '\u516816\u5468\u5185\u3002\u4ee5Lexile\u6d4b\u91cf\u3002\u5199\u4f5c\u5f97\u5206\u53ef\u89c1\u3002\u6211\u4eec\u6240\u6709\u7684\u4e3b\u5f20\u90fd\u662f\u53ef\u4ee5\u7528\u6570\u5b57\u8bc1\u660e\u7684\u3002',
       pillars: [
         {
           id:        'assessment',
@@ -205,7 +209,7 @@ const HOMEPAGE_COPY: Record<string, any> = {
           id:        'results',
           eyebrow:   '16\u5468\u540e',
           heading:   '\u6211\u4eec\u5c55\u793a\u6570\u5b57\u3002',
-          body:      '\u6bcf\u4f4d\u5b66\u751f\u5c06\u63a5\u53d7\u7ed3\u8bfe Lexile\u8bc4\u4f30\u548c\u91cd\u65b0\u8bc4\u4f30\u76846+1\u7279\u8d28\u5199\u4f5c\u5f97\u5206\u3002\u6211\u4eec\u5c55\u793a\u524d\u540e\u6570\u636e\u5bf9\u6bd4\u3002\u7136\u540e\u7531\u60a8\u51b3\u5b9a\u4e0b\u4e00\u6b65\u3002',
+          body:      '\u6bcf\u4f4d\u5b66\u751f\u5c06\u63a5\u53d7\u7ed3\u8bfeLexile\u8bc4\u4f30\u548c\u91cd\u65b0\u8bc4\u4f30\u76846+1\u7279\u8d28\u5199\u4f5c\u5f97\u5206\u3002\u6211\u4eec\u5c55\u793a\u524d\u540e\u6570\u636e\u5bf9\u6bd4\u3002\u7136\u540e\u7531\u60a8\u51b3\u5b9a\u4e0b\u4e00\u6b65\u3002',
           linkHref:  '/results',
           linkLabel: '\u67e5\u770b\u5b66\u751f\u6210\u679c',
         },
@@ -218,18 +222,18 @@ const HOMEPAGE_COPY: Record<string, any> = {
       viewAll:    '\u67e5\u770b\u5168\u90e8\u6210\u679c \u2192',
       weeksLabel: '\u5468',
       results: [
-        { id: 'result-1', student: '\u5b66\u751fA', detail: '\u4e94\u5e74\u7ea7 \u00b7 \u6e29\u54e5\u534e',           start: 620, end: 820, weeks: 16, trait: '\u58f0\u97f3: 2 \u2192 4', quote: '\u5979\u5230\u4e86\u7b2c\u516b\u5468\u5f00\u59cb\u4e3b\u52a8\u4e3e\u624b\u53d1\u8a00\u3002\u5230\u7b2c\u5341\u4e8c\u5468\u65f6\uff0c\u5979\u5df2\u7ecf\u5f15\u9886\u8bfe\u5802\u8ba8\u8bba\u4e86\u3002',                   source: '\u5bb6\u957f\uff0c\u6e29\u54e5\u534e' },
-        { id: 'result-2', student: '\u5b66\u751fB', detail: '\u516d\u5e74\u7ea7 \u00b7 \u4e07\u9526\u5e02',           start: 540, end: 720, weeks: 16, trait: '\u7ed3\u6784: 2 \u2192 5', quote: '\u5b69\u5b50\u7684\u8001\u5e08\u544a\u8bc9\u6211\u4eec\u4ed6\u7684\u5199\u4f5c\u53d1\u751f\u4e86\u8d28\u7684\u53d8\u5316\u30026+1\u8bc4\u5206\u8ba9\u6211\u4eec\u6e05\u6670\u5730\u770b\u5230\u5177\u4f53\u6539\u53d8\u4e86\u4ec0\u4e48\u3002', source: '\u5bb6\u957f\uff0c\u4e07\u9526\u5e02' },
-        { id: 'result-3', student: '\u5b66\u751fC', detail: '\u4e03\u5e74\u7ea7 \u00b7 \u65e7\u91d1\u5c71\u6e7e\u533a', start: 710, end: 940, weeks: 16, trait: '\u60f3\u6cd5: 3 \u2192 5', quote: '\u5979\u4ece\u5bb3\u6015\u5199\u4f5c\u4efb\u52a1\uff0c\u5230\u63d0\u524d\u4ea4\u4f5c\u4e1a\u3002\u5bfc\u5e08\u786e\u5207\u5730\u77e5\u9053\u5979\u5361\u5728\u54ea\u91cc\u4e86\u3002',                 source: '\u5bb6\u957f\uff0c\u6e7e\u533a' },
+        { id: 'result-1', student: '\u5b66\u751fA', detail: '\u4e94\u5e74\u7ea7 \u00b7 \u6e29\u54e5\u534e',             start: 620, end: 820, weeks: 16, trait: '\u58f0\u97f3: 2 \u2192 4',    quote: '\u5979\u5230\u4e86\u7b2c\u516b\u5468\u5f00\u59cb\u4e3b\u52a8\u4e3e\u624b\u53d1\u8a00\u3002\u5230\u7b2c\u5341\u4e8c\u5468\u65f6\uff0c\u5979\u5df2\u7ecf\u5f15\u9886\u8bfe\u5802\u8ba8\u8bba\u4e86\u3002',                   source: '\u5bb6\u957f\uff0c\u6e29\u54e5\u534e' },
+        { id: 'result-2', student: '\u5b66\u751fB', detail: '\u516d\u5e74\u7ea7 \u00b7 \u4e07\u9526\u5e02',             start: 540, end: 720, weeks: 16, trait: '\u7ed3\u6784: 2 \u2192 5',    quote: '\u5b69\u5b50\u7684\u8001\u5e08\u544a\u8bc9\u6211\u4eec\u4ed6\u7684\u5199\u4f5c\u53d1\u751f\u4e86\u8d28\u7684\u53d8\u5316\u30026+1\u8bc4\u5206\u8ba9\u6211\u4eec\u6e05\u6670\u5730\u770b\u5230\u5177\u4f53\u6539\u53d8\u4e86\u4ec0\u4e48\u3002',  source: '\u5bb6\u957f\uff0c\u4e07\u9526\u5e02' },
+        { id: 'result-3', student: '\u5b66\u751fC', detail: '\u4e03\u5e74\u7ea7 \u00b7 \u65e7\u91d1\u5c71\u6e7e\u533a', start: 710, end: 940, weeks: 16, trait: '\u60f3\u6cd5: 3 \u2192 5',    quote: '\u5979\u4ece\u5bb3\u6015\u5199\u4f5c\u4efb\u52a1\uff0c\u5230\u63d0\u524d\u4ea4\u4f5c\u4e1a\u3002\u5bfc\u5e08\u786e\u5207\u5730\u77e5\u9053\u5979\u5361\u5728\u54ea\u91cc\u4e86\u3002',                  source: '\u5bb6\u957f\uff0c\u6e7e\u533a' },
       ],
     },
     closing: {
-      eyebrow:  'Charter \u62a5\u540d',
-      heading:  '\u8bca\u65ad\u548c\u8be2\u662f\u6211\u4eec\u786e\u5207\u4e86\u89e3\u60a8\u5b69\u5b50\u76ee\u524d\u5728\u54ea\u91cc\u7684\u8d77\u70b9\u3002',
-      body:     '\u4e0d\u662f\u5b66\u6821\u8bf4\u7684\u5728\u54ea\u91cc\u3002\u6211\u4eec\u6d4b\u91cf\u5b69\u5b50\u7684Lexile\u6c34\u5e73\uff0c\u786e\u5b9a\u5177\u4f53\u7684\u5dee\u8ddd\uff0c\u5e76\u544a\u8bc9\u60a8\u5bf9\u4e8e\u50cf\u60a8\u5b69\u5b50\u8fd9\u6837\u7684\u5b66\u751f\uff0c\u6700\u521d16\u5468\u5177\u4f53\u662f\u4ec0\u4e48\u6837\u5b50\u7684\u3002',
-      cta1:     '\u9884\u7ea6\u548c\u8be2',
-      cta2:     '\u4e86\u89e3\u8bfe\u7a0b\u8be6\u60c5',
-      tagline:  'Think Once. In Both Languages.',
+      eyebrow: '\u521b\u59cb\u5bb6\u5ead\u8ba1\u5212',
+      heading: '\u51c6\u5907\u597d\u8ba4\u8bc6\u5b69\u5b50\u7684\u5bfc\u5e08\u4e86\u5417\uff1f',
+      body:    '\u8bca\u65ad\u548c\u8be2\u662f\u6211\u4eec\u786e\u5207\u4e86\u89e3\u5b69\u5b50\u5177\u4f53\u5728\u54ea\u91cc\u7684\u8d77\u70b9\u2014\u2014\u800c\u4e0d\u662f\u5b66\u6821\u8bf4\u7684\u5728\u54ea\u91cc\u3002\u6211\u4eec\u6d4b\u91cfLexile\u6c34\u5e73\uff0c\u786e\u5b9a\u5177\u4f53\u5dee\u8ddd\uff0c\u5e76\u89c4\u5212\u5c5e\u4e8e\u8fd9\u4e2a\u5b69\u5b50\u7684\u524016\u5468\u8def\u5f84\u3002\u521b\u59cb\u5bb6\u5ead\u8ba1\u5212\u540d\u989d\u4ecd\u5728\u5f00\u653e\u4e2d\u2014\u2014Lexile\u8bc4\u4f30\u662f\u7b2c\u4e00\u6b65\u3002',
+      cta1:    '\u9884\u7ea6\u548c\u8be2',
+      cta2:    '\u4e86\u89e3\u8bfe\u7a0b\u8be6\u60c5',
+      tagline: 'Think Once. In Both Languages.',
     },
   },
 }
@@ -256,17 +260,11 @@ function Hero({ locale, c }) {
         style={{ background: 'radial-gradient(ellipse 60% 55% at 70% 40%, rgba(183,181,254,0.22) 0%, transparent 65%)' }}
       />
 
-      {/* O glyph watermark — sized to section height via dvh so it stays
-          proportionally consistent at every viewport width and resolution.
-          right: 0 anchors the SVG right edge at the viewport edge. */}
+      {/* O glyph watermark */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute select-none"
-        style={{
-          top:   '0',
-          right: '0',
-          zIndex: 1,
-        }}
+        style={{ top: '0', right: '0', zIndex: 1 }}
       >
         <svg
           viewBox="280 55 200 195"
@@ -370,7 +368,10 @@ function PhotoIntro({ locale, c }) {
           <div>
             <p className="eyebrow mb-4">{c.photoIntro.eyebrow}</p>
             <h2 id="photo-intro-heading">{c.photoIntro.heading}</h2>
-            <p className="mt-6 text-base md:text-lg leading-relaxed" style={{ color: '#3D4452' }}>{c.photoIntro.body1}</p>
+            {c.photoIntro.body0 && (
+              <p className="mt-6 text-base md:text-lg leading-relaxed" style={{ color: '#3D4452' }}>{c.photoIntro.body0}</p>
+            )}
+            <p className="mt-4 text-base md:text-lg leading-relaxed" style={{ color: '#3D4452' }}>{c.photoIntro.body1}</p>
             <p className="mt-4 text-base leading-relaxed" style={{ color: '#3D4452' }}>{c.photoIntro.body2}</p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <Link href={`/${locale}/navigators`} className="btn btn-secondary text-sm px-6 py-3 justify-center">{c.photoIntro.cta1}</Link>
@@ -421,7 +422,7 @@ function LoopSection({ locale, c }) {
                 <div className="flex items-center gap-3">
                   <span className="loop-step-number" aria-hidden="true" style={{ width: 40, height: 40, fontSize: '0.875rem' }}>{step.number}</span>
                   {index < steps.length - 1 && (
-                    <span className="loop-arrow text-lg hidden sm:block lg:hidden" aria-hidden="true">\u2192</span>
+                    <span className="loop-arrow text-lg hidden sm:block lg:hidden" aria-hidden="true">&rarr;</span>
                   )}
                 </div>
                 <h3 className="text-lg font-bold" style={{ color: '#b7b5fe', letterSpacing: '-0.01em' }}>{step.label}</h3>
