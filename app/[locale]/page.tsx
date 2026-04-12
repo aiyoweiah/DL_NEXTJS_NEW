@@ -32,41 +32,42 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 // ─────────────────────────────────────────────────────────────
-// BILINGUAL COPY
+// BILINGUAL COPY — REVISED APRIL 12, 2026
+// Aligned to DODO Learning Master Content & Brand Prompt v2
 // ─────────────────────────────────────────────────────────────
 const HOMEPAGE_COPY: Record<string, any> = {
   en: {
     meta: {
-      title:       'DODO Learning \u2014 Bilingual Thinking Program for Chinese Families in Canada & the US',
+      title:       'DODO Learning — Bilingual Thinking Program for Chinese Families in Canada & the US',
       description:
-        'The live, Navigator-led bilingual thinking program that trains the full Read \u2192 Think \u2192 Speak \u2192 Write loop \u2014 for Chinese families in Canada and the US. One grade level of reading growth in 16 weeks, measured by Lexile.',
+        'The live, Navigator-led bilingual thinking program that trains the full Read → Think → Speak → Write loop — for Chinese families in Canada and the US. One grade level of reading growth in 16 weeks, measured by Lexile.',
     },
     hero: {
       eyebrow:        'For Chinese Families in Canada & the US',
       eyebrow2:       'Founding Family Program',
-      h1:             ['What does a bilingual\u00a0', 'thinking program actually\u00a0do?\u00a0'],
+      h1:             ['Your child thinks in two languages.\u00a0', 'We train them to think in both.'],
       h1Chinese:      '',
       differentiator: '',
       consultHook:
-        'DODO trains the complete\u00a0Read \u2192 Think \u2192 Speak \u2192 Write loop \u2014 live, Navigator-led, for Chinese families raising children in two languages.',
+        'The Loop — Read → Think → Speak → Write — runs every single session, live with a Navigator who knows your child\'s voice, pace, and gaps. In 16 weeks. Lexile-measured. One grade level of reading growth is the floor, not the dream.',
       cta1:      'Book Your Consultation',
       cta2:      'See The 16-Week Program',
-      trustLine: 'Lexile-measured progress\u00a0\u00b7\u00a06+1 Trait writing framework\u00a0\u00b7\u00a0Live Navigator-led sessions',
+      trustLine: 'Lexile-measured progress · 6+1 Trait writing framework · Live Navigator-led sessions',
     },
     proof: [
       { id: 'lexile',  number: '1',       unit: 'grade level',               label: 'average reading growth in 16 weeks, measured by Lexile' },
       { id: 'writing', number: '2\u00d7', unit: 'writing score improvement', label: 'average 6+1 Trait score gain from entry to exit assessment' },
-      { id: 'live',    number: '100%',    unit: 'live sessions',             label: 'no pre-recorded content \u2014 every session is Navigator-led' },
+      { id: 'live',    number: '100%',    unit: 'live sessions',             label: 'no pre-recorded content — every session is Navigator-led' },
     ],
     photoIntro: {
       eyebrow: 'Who We Are',
-      heading: 'The difference between a teacher and a Navigator is a map.',
+      heading: 'A teacher knows your child\'s grade. A Navigator knows your child.',
       body0:
-        'Your child\u2019s school knows what grade they\u2019re in. That\u2019s not the same as knowing where they are. Most bilingual children carry a reading gap their report card doesn\u2019t show \u2014 the distance between what they can decode and what they can actually think through.',
+        'Your child\'s report card says they\'re reading at grade level. But are they? Most bilingual children carry a reading gap their grades don\'t show — the gap between what they can decode and what they can actually think through.',
       body1:
-        'Navigators are not tutors. They are specialists in composition, literature, and academic writing \u2014 trained to close the gap between a student\u2019s current reading level and the level their academic life demands.',
+        'Navigators are not tutors or teachers. They are specialists in composition, literature, and academic writing — trained to see exactly where the gap is, and to close it.',
       body2:
-        'Every Navigator tracks one thing per student: the distance between their current Lexile level and their goal \u2014 and closes it, week by week, through The Loop.',
+        'Every Navigator commits to one thing: tracking your child\'s Lexile level week by week, and closing the distance between where they are and where they need to be. By the end of 16 weeks, you\'ll see it in the numbers.',
       cta1:   'Meet the Navigators',
       cta2:   'See Student Results',
       imgAlt: 'A mother watches her child pause mid-thought after finishing a reading passage at home',
@@ -74,19 +75,19 @@ const HOMEPAGE_COPY: Record<string, any> = {
     loop: {
       eyebrow: 'The Methodology',
       heading: 'The Loop',
-      body:    'Every session. Every week. In this order, without exception. Read\u00a0\u2192\u00a0Think\u00a0\u2192\u00a0Speak\u00a0\u2192\u00a0Write is not a framework we teach about \u2014 it is what we do.',
-      cta:     'Read the full methodology \u2192',
+      body:    'Every 90-minute session. Every week. Always in this order: Read → Think → Speak → Write. This isn\'t a framework we teach about. It\'s what happens, live, every single time.',
+      cta:     'Read the full methodology →',
       steps: [
-        { id: 'read',  number: '01', label: 'Read',  description: 'Students read texts carefully chosen at or just above their current Lexile level. The text is the raw material \u2014 nothing is simplified.' },
-        { id: 'think', number: '02', label: 'Think', description: 'Before speaking, students are trained to form a position. What do they actually think? Not what they think they should think.' },
-        { id: 'speak', number: '03', label: 'Speak', description: 'Students articulate their thinking in a live Socratic session with their Navigator. Precision in speech precedes precision in writing.' },
-        { id: 'write', number: '04', label: 'Write', description: 'Students produce written work assessed with the 6+1 Trait framework. Their Navigator scores each piece. Growth is visible and measurable.' },
+        { id: 'read',  number: '01', label: 'Read',  description: 'Students read texts carefully chosen at or just above their current Lexile level. Classical literature — Alice, Poe, Treasure Island — not simplified versions.' },
+        { id: 'think', number: '02', label: 'Think', description: 'Before speaking, students form a position. Using Project Zero thinking routines, they learn to ask better questions before they answer them.' },
+        { id: 'speak', number: '03', label: 'Speak', description: 'Students articulate their thinking in a live dialogue with their Navigator. Socratic. Precision in speech comes before precision in writing.' },
+        { id: 'write', number: '04', label: 'Write', description: 'Students produce written work assessed with the 6+1 Trait rubric: Ideas, Organization, Voice, Word Choice, Sentence Fluency, Conventions, Presentation. Growth is visible and measurable.' },
       ],
     },
     confidence: {
       eyebrow: 'How It Works',
-      heading: 'We don\u2019t promise fluency. We deliver a grade level of literacy growth.',
-      body:    'In 16 weeks. Measured by Lexile. Shown in writing scores. Every claim we make is a number we can prove.',
+      heading: 'Measured progress. From day one.',
+      body:    'We don\'t promise fluency. We deliver a grade level of literacy growth in 16 weeks, measured by Lexile, shown in writing scores. Every single claim we make, we can prove.',
       pillars: [
         {
           id:        'assessment',
@@ -99,16 +100,16 @@ const HOMEPAGE_COPY: Record<string, any> = {
         {
           id:        'loop',
           eyebrow:   'During The Program',
-          heading:   'Every session runs The Loop.',
-          body:      'Read. Think. Speak. Write. Your child\u2019s Navigator tracks their movement through each phase every week. Nothing is guessed. Everything is guided. The Hangar provides structured support between sessions.',
-          linkHref:  '/the-hangar',
-          linkLabel: 'About The Hangar',
+          heading:   'Your Navigator owns the full 16 weeks.',
+          body:      'Every session runs The Loop in order: Read. Think. Speak. Write. Your child\'s Navigator tracks their Lexile progress week by week, adjusts text difficulty, and knows exactly when they\'re ready to move forward. Nothing is guessed. Everything is measured.',
+          linkHref:  '/methodology',
+          linkLabel: 'Understand The Loop',
         },
         {
           id:        'results',
           eyebrow:   'After 16 Weeks',
           heading:   'We show you the numbers.',
-          body:      'Every student receives an exit Lexile assessment and a re-evaluated 6+1 Trait writing score. We show you the before and after. Then you decide what comes next.',
+          body:      'Every student receives an exit Lexile assessment and a re-evaluated 6+1 Trait writing score. You see the before. You see the after. Then you decide what comes next.',
           linkHref:  '/results',
           linkLabel: 'View student results',
         },
@@ -118,18 +119,18 @@ const HOMEPAGE_COPY: Record<string, any> = {
       eyebrow:    'Student Results',
       heading1:   'The numbers speak first.',
       heading2:   'Then the parents.',
-      viewAll:    'View all results \u2192',
+      viewAll:    'View all results →',
       weeksLabel: 'weeks',
       results: [
-        { id: 'result-1', student: 'Student A', detail: 'Grade 5 \u00b7 Vancouver',              start: 620, end: 820, weeks: 16, trait: 'Voice: 2 \u2192 4',       quote: 'She started raising her hand in class by week eight. By week twelve she was leading the discussion.',                        source: 'Parent, Vancouver' },
-        { id: 'result-2', student: 'Student B', detail: 'Grade 6 \u00b7 Markham',                start: 540, end: 720, weeks: 16, trait: 'Organization: 2 \u2192 5', quote: 'His teacher told us his writing had transformed. The 6+1 scores made it easy to see exactly what changed.',                source: 'Parent, Markham' },
-        { id: 'result-3', student: 'Student C', detail: 'Grade 7 \u00b7 San Francisco Bay Area', start: 710, end: 940, weeks: 16, trait: 'Ideas: 3 \u2192 5',        quote: 'She went from dreading writing assignments to submitting them early. The Navigator knew exactly where she was stuck.',      source: 'Parent, Bay Area' },
+        { id: 'result-1', student: 'Student A', detail: 'Grade 5 · Vancouver',              start: 620, end: 820, weeks: 16, trait: 'Voice: 2 → 4',       quote: 'She started raising her hand in class by week eight. By week twelve she was leading the discussion.',                        source: 'Parent, Vancouver' },
+        { id: 'result-2', student: 'Student B', detail: 'Grade 6 · Markham',                start: 540, end: 720, weeks: 16, trait: 'Organization: 2 → 5', quote: 'His teacher told us his writing had transformed. The 6+1 scores made it easy to see exactly what changed.',                source: 'Parent, Markham' },
+        { id: 'result-3', student: 'Student C', detail: 'Grade 7 · San Francisco Bay Area', start: 710, end: 940, weeks: 16, trait: 'Ideas: 3 → 5',        quote: 'She went from dreading writing assignments to submitting them early. The Navigator knew exactly where she was stuck.',      source: 'Parent, Bay Area' },
       ],
     },
     closing: {
       eyebrow: 'Founding Family Program',
-      heading: 'Ready to meet your child\u2019s Navigator?',
-      body:    'The diagnostic consultation is where we find out exactly where your child is \u2014 not where their school says they are. We measure their Lexile level, identify the specific gap, and map the first 16 weeks. Founding Family Program spots are still available \u2014 the Lexile assessment is the first step.',
+      heading: 'Ready to start?',
+      body:    'The diagnostic consultation is where we find out exactly where your child is — not where their school says they are. We measure their Lexile level, identify the specific gap between what they can decode and what they can think through, and map out the 16 weeks ahead. Founding Family Program spots are still available. The Lexile assessment is the first step.',
       cta1:    'Book Your Consultation',
       cta2:    'Read About The Program',
       tagline: 'Think Once. In Both Languages.',
@@ -138,101 +139,101 @@ const HOMEPAGE_COPY: Record<string, any> = {
 
   zh: {
     meta: {
-      title:       'DODO Learning \u2014 \u9762\u5411\u52a0\u62ff\u5927\u548c\u7f8e\u56fd\u534e\u8bed\u5bb6\u5ead\u7684\u53cc\u8bed\u601d\u7ef4\u8bfe\u7a0b',
+      title:       'DODO Learning — 面向加拿大和美国华语家庭的双语思维课程',
       description:
-        '\u552f\u4e00\u7531\u5bfc\u5e08\u4e3b\u5bfc\u7684\u5b9e\u65f6\u8bfe\u7a0b\uff0c\u8bad\u7ec3\u5b8c\u6574\u7684\u9605\u8bfb\u2192\u601d\u8003\u2192\u8868\u8fbe\u2192\u5199\u4f5c\u95ed\u73af\u2014\u2014\u9762\u5411\u52a0\u62ff\u5927\u548c\u7f8e\u56fd\u7684\u534e\u8bed\u5bb6\u5ead\u3002\u516816\u5468\u5185\u63d0\u5347\u4e00\u4e2a\u5e74\u7ea7\u7684\u9605\u8bfb\u6c34\u5e73\uff0c\u4ee5Lexile\u6d4b\u91cf\u3002',
+        '由导师实时主导的双语思维课程，训练完整的 阅读→思考→表达→写作 闭环。面向加拿大和美国的华语家庭，16周内提升一个年级的阅读水平，以Lexile评测。',
     },
     hero: {
-      eyebrow:        '\u9762\u5411\u52a0\u62ff\u5927\u548c\u7f8e\u56fd\u7684\u534e\u8bed\u5bb6\u5ead',
-      eyebrow2:       '\u521b\u59cb\u5bb6\u5ead\u8ba1\u5212',
-      h1:             ['\u53cc\u8bed\u601d\u7ef4\u8bfe\u7a0b\u5177\u4f53\u80fd\u505a\u4ec0\u4e48\uff1f\u00a0', ''],
+      eyebrow:        '面向加拿大和美国的华语家庭',
+      eyebrow2:       '创始家庭计划',
+      h1:             ['孩子已经会思考。\u00a0', '我们训练他用两种语言思考。'],
       h1Chinese:      '',
       differentiator: '',
       consultHook:
-        'DODO\u8bad\u7ec3\u5b8c\u6574\u7684\u9605\u8bfb\u2192\u601d\u8003\u2192\u8868\u8fbe\u2192\u5199\u4f5c\u95ed\u73af\u2014\u2014\u5b9e\u65f6\u8bfe\u7a0b\uff0c\u5bfc\u5e08\u4e3b\u5bfc\uff0c\u4e13\u4e3a\u5728\u4e24\u79cd\u8bed\u8a00\u4e2d\u517b\u80b2\u5b69\u5b50\u7684\u534e\u8bed\u5bb6\u5ead\u800c\u8bbe\u8ba1\u3002',
-      cta1:      '\u9884\u7ea6\u548c\u8be2',
-      cta2:      '\u4e86\u89e316\u5468\u8bfe\u7a0b',
-      trustLine: 'Lexile\u6d4b\u91cf\u8fdb\u5ea6\u00a0\u00b7\u00a06+1\u7279\u8d28\u5199\u4f5c\u6846\u67b6\u00a0\u00b7\u00a0\u5bfc\u5e08\u5b9e\u65f6\u4e3b\u5bfc',
+        '闭环——阅读→思考→表达→写作——每堂课都在进行，和一位懂孩子的节奏、知道他的差距的导师一起。16周。用Lexile测量。一个年级的进步是起点，不是目标。',
+      cta1:      '预约诊断通话',
+      cta2:      '了解16周课程',
+      trustLine: 'Lexile测量进度 · 6+1特质写作框架 · 导师实时主导',
     },
     proof: [
-      { id: 'lexile',  number: '1',       unit: '\u4e2a\u5e74\u7ea7',                    label: '16\u5468\u5185Lexile\u6d4b\u91cf\u7684\u5e73\u5747\u9605\u8bfb\u589e\u957f' },
-      { id: 'writing', number: '2\u00d7', unit: '\u5199\u4f5c\u8bc4\u5206\u63d0\u5347', label: '\u5165\u5b66\u81f3\u7ed3\u8bfe\u8bc4\u4f306+1\u7279\u8d28\u5e73\u5747\u5f97\u5206\u589e\u957f' },
-      { id: 'live',    number: '100%',    unit: '\u5b9e\u65f6\u8bfe\u7a0b',              label: '\u6ca1\u6709\u9884\u5f55\u5185\u5bb9\u2014\u2014\u6bcf\u8282\u8bfe\u5747\u7531\u5bfc\u5e08\u4e3b\u5bfc' },
+      { id: 'lexile',  number: '1',       unit: '个年级',                    label: '16周内Lexile测量的平均阅读增长' },
+      { id: 'writing', number: '2\u00d7', unit: '写作评分提升',              label: '入学至结课6+1特质评分的平均增长倍数' },
+      { id: 'live',    number: '100%',    unit: '实时课程',                 label: '没有录播内容——每堂课都是导师主导的实时互动' },
     ],
     photoIntro: {
-      eyebrow: '\u6211\u4eec\u662f\u8c01',
-      heading: '\u8001\u5e08\u4e0e\u5bfc\u5e08\u7684\u533a\u522b\uff0c\u5728\u4e8e\u4e00\u5f20\u5730\u56fe\u3002',
+      eyebrow: '我们是谁',
+      heading: '老师知道孩子在哪个年级。导师知道这个孩子。',
       body0:
-        '\u5b66\u6821\u77e5\u9053\u5b69\u5b50\u5728\u51e0\u5e74\u7ea7\u3002\u4f46\u90a3\u4e0d\u7b49\u4e8e\u4e86\u89e3\u5b69\u5b50\u771f\u6b63\u5904\u4e8e\u54ea\u4e2a\u4f4d\u7f6e\u3002\u5927\u591a\u6570\u53cc\u8bed\u5b69\u5b50\u90fd\u6709\u4e00\u4e2a\u6210\u7ee9\u5355\u4e0a\u770b\u4e0d\u5230\u7684\u9605\u8bfb\u5dee\u8ddd\u2014\u2014\u5373\u4ed6\u4eec\u80fd\u591f\u8bc6\u5b57\u7684\u5185\u5bb9\u548c\u80fd\u591f\u771f\u6b63\u601d\u8003\u7684\u5185\u5bb9\u4e4b\u95f4\u7684\u8ddd\u79bb\u3002',
+        '成绩单说孩子的英文阅读达到了年级水平。可真的是吗？大多数双语孩子都有个成绩单看不到的阅读差距——能认的字和能思考的内容之间的距离。',
       body1:
-        '\u5bfc\u5e08\u4e0d\u662f\u8865\u4e60\u8001\u5e08\u3002\u4ed6\u4eec\u662f\u5199\u4f5c\u3001\u6587\u5b66\u548c\u5b66\u672f\u5199\u4f5c\u9886\u57df\u7684\u4e13\u5bb6\u2014\u2014\u62c5\u8d1f\u5f25\u5408\u5b66\u751f\u5f53\u524d\u9605\u8bfb\u6c34\u5e73\u4e0e\u5b66\u4e1a\u9700\u6c42\u4e4b\u95f4\u5dee\u8ddd\u7684\u91cd\u8d23\u3002',
+        '导师不是补习老师或学校老师。他们是写作、文学、学术写作的专家——能看见差距在哪里，也知道怎么弥合它。',
       body2:
-        '\u6bcf\u4f4d\u5bfc\u5e08\u53ea\u8ffd\u8e2a\u6bcf\u4f4d\u5b66\u751f\u7684\u4e00\u4ef6\u4e8b\uff1a\u5f53\u524dLexile\u6c34\u5e73\u4e0e\u76ee\u6807\u4e4b\u95f4\u7684\u8ddd\u79bb\u2014\u2014\u5e76\u901a\u8fc7The Loop\u9010\u5468\u7f29\u5c0f\u8fd9\u4e2a\u8ddd\u79bb\u3002',
-      cta1:   '\u8ba4\u8bc6\u5bfc\u5e08\u56e2\u961f',
-      cta2:   '\u67e5\u770b\u5b66\u751f\u6210\u679c',
-      imgAlt: '\u4e00\u4f4d\u6bcd\u4eb2\u6ce8\u89c6\u5b69\u5b50\u5728\u5bb6\u4e2d\u9605\u8bfb\u540e\u505c\u987f\u601d\u8003\u7684\u77ac\u95f4',
+        '每位导师的承诺是：逐周追踪孩子的Lexile水平，把孩子"现在在哪里"和"需要到哪里"的距离缩小。16周后，你能在数字上看到。',
+      cta1:   '认识导师团队',
+      cta2:   '查看学生成果',
+      imgAlt: '一位母亲注视孩子在家阅读段落后停顿思考的瞬间',
     },
     loop: {
-      eyebrow: '\u6559\u5b66\u65b9\u6cd5',
+      eyebrow: '教学方法',
       heading: 'The Loop',
-      body:    '\u6bcf\u8282\u8bfe\u3002\u6bcf\u4e00\u5468\u3002\u59cb\u7ec8\u6309\u8fd9\u4e2a\u987a\u5e8f\u3002\u9605\u8bfb\u00a0\u2192\u00a0\u601d\u8003\u00a0\u2192\u00a0\u8868\u8fbe\u00a0\u2192\u00a0\u5199\u4f5c\u4e0d\u662f\u6211\u4eec\u6559\u6388\u7684\u6846\u67b6\u2014\u2014\u800c\u662f\u6211\u4eec\u5b9e\u9645\u7684\u505a\u6cd5\u3002',
-      cta:     '\u9605\u8bfb\u5b8c\u6574\u6559\u5b66\u65b9\u6cd5 \u2192',
+      body:    '每堂课90分钟。每周一次。顺序永远不变：阅读→思考→表达→写作。这不是我们讲授的框架。这是每次都在发生的事。',
+      cta:     '阅读完整教学方法 →',
       steps: [
-        { id: 'read',  number: '01', label: 'Read',  description: '\u5b66\u751f\u9605\u8bfb\u7cbe\u5fc3\u9009\u5b9a\u5728\u5f53\u524dLexile\u6c34\u5e73\u6216\u7565\u9ad8\u4e00\u7b51\u7684\u6587\u672c\u3002\u6587\u672c\u662f\u539f\u6750\u6599\u2014\u2014\u6ca1\u6709\u4efb\u4f55\u7b80\u5316\u3002' },
-        { id: 'think', number: '02', label: 'Think', description: '\u5728\u5f00\u53e3\u4e4b\u524d\uff0c\u5b66\u751f\u9996\u5148\u88ab\u8bad\u7ec3\u5f62\u6210\u4e00\u4e2a\u7acb\u573a\u3002\u4ed6\u4eec\u771f\u6b63\u8ba4\u4e3a\u4ec0\u4e48\uff1f\u800c\u975e\u4ed6\u4eec\u8ba4\u4e3a\u5e94\u8be5\u8ba4\u4e3a\u4ec0\u4e48\u3002' },
-        { id: 'speak', number: '03', label: 'Speak', description: '\u5b66\u751f\u5728\u4e0e\u5bfc\u5e08\u7684\u5b9e\u65f6\u82cf\u683c\u62c9\u5f0f\u5bf9\u8bdd\u4e2d\u8868\u8fbe\u81ea\u5df1\u7684\u601d\u8003\u3002\u53e3\u5934\u8868\u8fbe\u7684\u7cbe\u786e\u6027\u5148\u4e8e\u4e66\u9762\u7684\u7cbe\u786e\u6027\u3002' },
-        { id: 'write', number: '04', label: 'Write', description: '\u5b66\u751f\u4ea7\u51fa\u4e66\u9762\u4f5c\u54c1\uff0c\u4f7f\u75286+1\u7279\u8d28\u6846\u67b6\u8fdb\u884c\u8bc4\u4f30\u3002\u5bfc\u5e08\u8bc4\u5206\u6bcf\u4e00\u7bc7\u4f5c\u54c1\u3002\u6210\u957f\u53ef\u89c1\u53ef\u91cf\u5316\u3002' },
+        { id: 'read',  number: '01', label: 'Read',  description: '学生阅读精心挑选、处于或略高于其当前Lexile水平的文本。古典文学——爱丽丝、爱伦·坡、宝岛——而不是简化版本。' },
+        { id: 'think', number: '02', label: 'Think', description: '开口之前，学生先形成自己的想法。用哈佛Project Zero思考方法，他们学会在回答问题前提出更好的问题。' },
+        { id: 'speak', number: '03', label: 'Speak', description: '学生和导师进行实时对话，表达自己的思考。这是苏格拉底式的互动。口头表达的精准性先于书面表达。' },
+        { id: 'write', number: '04', label: 'Write', description: '学生完成写作，用6+1特质框架评估：想法、组织、声音、措辞、句子流畅性、规范、呈现。进步看得见、数得出。' },
       ],
     },
     confidence: {
-      eyebrow: '\u5982\u4f55\u8fd0\u4f5c',
-      heading: '\u6211\u4eec\u4e0d\u627f\u8bfa\u6d41\u5229\u5ea6\u3002\u6211\u4eec\u4ea4\u4ed8\u4e00\u4e2a\u5e74\u7ea7\u7684\u8bfb\u5199\u589e\u957f\u3002',
-      body:    '\u516816\u5468\u5185\u3002\u4ee5Lexile\u6d4b\u91cf\u3002\u5199\u4f5c\u5f97\u5206\u53ef\u89c1\u3002\u6211\u4eec\u6240\u6709\u7684\u4e3b\u5f20\u90fd\u662f\u53ef\u4ee5\u7528\u6570\u5b57\u8bc1\u660e\u7684\u3002',
+      eyebrow: '如何运作',
+      heading: '从第一天开始，进步看得见。',
+      body:    '我们不承诺流利度。我们交付16周内提升一个年级的读写能力，用Lexile测量，在写作评分中体现。我们说的每一个数字，都是能证明的。',
       pillars: [
         {
           id:        'assessment',
-          eyebrow:   '\u5f00\u59cb\u4e4b\u524d',
-          heading:   '\u6211\u4eec\u786e\u5207\u4e86\u89e3\u60a8\u7684\u5b69\u5b50\u76ee\u524d\u5728\u54ea\u91cc\u3002',
-          body:      '\u4e0d\u662f\u5b66\u6821\u6210\u7ee9\u5355\u8bf4\u7684\u5728\u54ea\u91cc\u3002\u5728\u7b2c\u4e00\u8282\u8bfe\u4e4b\u524d\uff0c\u6bcf\u4f4d\u5b66\u751f\u90fd\u5c06\u63a5\u53d7Lexile\u9605\u8bfb\u8bc4\u4f30\u548c6+1\u7279\u8d28\u5199\u4f5c\u57fa\u51c6\u7ebf\u8bc4\u4f30\u3002\u6211\u4eec\u6839\u636e\u6570\u636e\u5236\u5b9a\u65b9\u6848\uff0c\u800c\u975e\u731c\u6d4b\u3002',
+          eyebrow:   '开始之前',
+          heading:   '我们确切地知道孩子现在在哪里。',
+          body:      '不是学校成绩单说的位置。第一堂课之前，每个学生都会做Lexile阅读评估和6+1特质写作基准评估。我们根据数据开方，而不是猜测。',
           linkHref:  '/program',
-          linkLabel: '\u4e86\u89e3\u8bc4\u4f30\u5982\u4f55\u8fdb\u884c',
+          linkLabel: '了解评估如何进行',
         },
         {
           id:        'loop',
-          eyebrow:   '\u8bfe\u7a0b\u671f\u95f4',
-          heading:   '\u6bcf\u8282\u8bfe\u5747\u8fdb\u884cThe Loop\u3002',
-          body:      '\u9605\u8bfb\u3002\u601d\u8003\u3002\u8868\u8fbe\u3002\u5199\u4f5c\u3002\u5bfc\u5e08\u6bcf\u5468\u8ffd\u8e2a\u5b69\u5b50\u5728\u6bcf\u4e2a\u9636\u6bb5\u7684\u8fdb\u5c55\u3002\u6ca1\u6709\u731c\u6d4b\uff0c\u5168\u7a0b\u5f15\u5bfc\u3002The Hangar\u5728\u8bfe\u7a0b\u95f4\u9694\u63d0\u4f9b\u7ed3\u6784\u5316\u652f\u6301\u3002',
-          linkHref:  '/the-hangar',
-          linkLabel: '\u4e86\u89e3The Hangar',
+          eyebrow:   '课程期间',
+          heading:   '导师拥有整个16周。',
+          body:      '每堂课都完整进行The Loop：阅读。思考。表达。写作。导师逐周追踪孩子的Lexile进度，调整文本难度，精确知道孩子何时准备好向前迈进。没有猜测。一切都有测量。',
+          linkHref:  '/methodology',
+          linkLabel: '理解The Loop',
         },
         {
           id:        'results',
-          eyebrow:   '16\u5468\u540e',
-          heading:   '\u6211\u4eec\u5c55\u793a\u6570\u5b57\u3002',
-          body:      '\u6bcf\u4f4d\u5b66\u751f\u5c06\u63a5\u53d7\u7ed3\u8bfeLexile\u8bc4\u4f30\u548c\u91cd\u65b0\u8bc4\u4f30\u76846+1\u7279\u8d28\u5199\u4f5c\u5f97\u5206\u3002\u6211\u4eec\u5c55\u793a\u524d\u540e\u6570\u636e\u5bf9\u6bd4\u3002\u7136\u540e\u7531\u60a8\u51b3\u5b9a\u4e0b\u4e00\u6b65\u3002',
+          eyebrow:   '16周后',
+          heading:   '我们展示数字。',
+          body:      '每个学生都会获得结课Lexile评估和重新评估的6+1特质写作评分。你看到之前的样子。你看到之后的样子。然后你决定下一步。',
           linkHref:  '/results',
-          linkLabel: '\u67e5\u770b\u5b66\u751f\u6210\u679c',
+          linkLabel: '查看学生成果',
         },
       ],
     },
     trust: {
-      eyebrow:    '\u5b66\u751f\u6210\u679c',
-      heading1:   '\u6570\u5b57\u5148\u8bf4\u8bdd\u3002',
-      heading2:   '\u7136\u540e\u662f\u5bb6\u957f\u3002',
-      viewAll:    '\u67e5\u770b\u5168\u90e8\u6210\u679c \u2192',
-      weeksLabel: '\u5468',
+      eyebrow:    '学生成果',
+      heading1:   '数字先说话。',
+      heading2:   '然后是家长说。',
+      viewAll:    '查看全部成果 →',
+      weeksLabel: '周',
       results: [
-        { id: 'result-1', student: '\u5b66\u751fA', detail: '\u4e94\u5e74\u7ea7 \u00b7 \u6e29\u54e5\u534e',             start: 620, end: 820, weeks: 16, trait: '\u58f0\u97f3: 2 \u2192 4',    quote: '\u5979\u5230\u4e86\u7b2c\u516b\u5468\u5f00\u59cb\u4e3b\u52a8\u4e3e\u624b\u53d1\u8a00\u3002\u5230\u7b2c\u5341\u4e8c\u5468\u65f6\uff0c\u5979\u5df2\u7ecf\u5f15\u9886\u8bfe\u5802\u8ba8\u8bba\u4e86\u3002',                   source: '\u5bb6\u957f\uff0c\u6e29\u54e5\u534e' },
-        { id: 'result-2', student: '\u5b66\u751fB', detail: '\u516d\u5e74\u7ea7 \u00b7 \u4e07\u9526\u5e02',             start: 540, end: 720, weeks: 16, trait: '\u7ed3\u6784: 2 \u2192 5',    quote: '\u5b69\u5b50\u7684\u8001\u5e08\u544a\u8bc9\u6211\u4eec\u4ed6\u7684\u5199\u4f5c\u53d1\u751f\u4e86\u8d28\u7684\u53d8\u5316\u30026+1\u8bc4\u5206\u8ba9\u6211\u4eec\u6e05\u6670\u5730\u770b\u5230\u5177\u4f53\u6539\u53d8\u4e86\u4ec0\u4e48\u3002',  source: '\u5bb6\u957f\uff0c\u4e07\u9526\u5e02' },
-        { id: 'result-3', student: '\u5b66\u751fC', detail: '\u4e03\u5e74\u7ea7 \u00b7 \u65e7\u91d1\u5c71\u6e7e\u533a', start: 710, end: 940, weeks: 16, trait: '\u60f3\u6cd5: 3 \u2192 5',    quote: '\u5979\u4ece\u5bb3\u6015\u5199\u4f5c\u4efb\u52a1\uff0c\u5230\u63d0\u524d\u4ea4\u4f5c\u4e1a\u3002\u5bfc\u5e08\u786e\u5207\u5730\u77e5\u9053\u5979\u5361\u5728\u54ea\u91cc\u4e86\u3002',                  source: '\u5bb6\u957f\uff0c\u6e7e\u533a' },
+        { id: 'result-1', student: '学生A', detail: '五年级 · 温哥华',                start: 620, end: 820, weeks: 16, trait: '声音: 2 → 4',     quote: '到第八周她开始在班上主动举手。第十二周时，她已经在引领班级讨论了。',                        source: '家长，温哥华' },
+        { id: 'result-2', student: '学生B', detail: '六年级 · 万锦市',                start: 540, end: 720, weeks: 16, trait: '组织: 2 → 5',   quote: '孩子老师跟我们说他的写作彻底转变了。6+1评分让我们清楚看到具体改变了什么。',                source: '家长，万锦市' },
+        { id: 'result-3', student: '学生C', detail: '七年级 · 旧金山湾区',          start: 710, end: 940, weeks: 16, trait: '想法: 3 → 5',   quote: '她从害怕写作任务，到主动提前交卷。导师准确知道她卡在哪里。',      source: '家长，湾区' },
       ],
     },
     closing: {
-      eyebrow: '\u521b\u59cb\u5bb6\u5ead\u8ba1\u5212',
-      heading: '\u51c6\u5907\u597d\u8ba4\u8bc6\u5b69\u5b50\u7684\u5bfc\u5e08\u4e86\u5417\uff1f',
-      body:    '\u8bca\u65ad\u548c\u8be2\u662f\u6211\u4eec\u786e\u5207\u4e86\u89e3\u5b69\u5b50\u5177\u4f53\u5728\u54ea\u91cc\u7684\u8d77\u70b9\u2014\u2014\u800c\u4e0d\u662f\u5b66\u6821\u8bf4\u7684\u5728\u54ea\u91cc\u3002\u6211\u4eec\u6d4b\u91cfLexile\u6c34\u5e73\uff0c\u786e\u5b9a\u5177\u4f53\u5dee\u8ddd\uff0c\u5e76\u89c4\u5212\u5c5e\u4e8e\u8fd9\u4e2a\u5b69\u5b50\u7684\u524016\u5468\u8def\u5f84\u3002\u521b\u59cb\u5bb6\u5ead\u8ba1\u5212\u540d\u989d\u4ecd\u5728\u5f00\u653e\u4e2d\u2014\u2014Lexile\u8bc4\u4f30\u662f\u7b2c\u4e00\u6b65\u3002',
-      cta1:    '\u9884\u7ea6\u548c\u8be2',
-      cta2:    '\u4e86\u89e3\u8bfe\u7a0b\u8be6\u60c5',
+      eyebrow: '创始家庭计划',
+      heading: '准备好开始了吗？',
+      body:    '诊断通话是我们确切了解孩子在哪里的时刻——不是学校说的位置。我们测Lexile水平，找出具体差距，规划接下来的16周。创始家庭名额还在开放。Lexile评估是第一步。',
+      cta1:    '预约诊断通话',
+      cta2:    '了解课程详情',
       tagline: 'Think Once. In Both Languages.',
     },
   },
@@ -299,34 +300,18 @@ function Hero({ locale, c }) {
             )}
           </h1>
 
-          {c.hero.differentiator && (
-            <p className="mb-4 text-lg md:text-xl leading-relaxed max-w-2xl" style={{ color: '#3D4452' }}>
-              {c.hero.differentiator}
-            </p>
-          )}
+          <p className="text-base md:text-lg leading-relaxed mb-8" style={{ color: '#5856cc', maxWidth: '42rem' }}>{c.hero.consultHook}</p>
 
-          <p className="mb-10 text-base md:text-lg leading-relaxed max-w-xl" style={{ color: '#7B8494' }}>
-            {c.hero.consultHook}
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link
-              href={`/${locale}/consult`}
-              className="btn btn-charter text-base px-8 py-4 justify-center"
-              aria-label="Book a diagnostic consultation"
-            >
+          <div className="flex flex-col sm:flex-row gap-4 mb-12">
+            <Link href={`/${locale}/consult`} className="btn btn-gilt">
               {c.hero.cta1}
             </Link>
-            <Link
-              href={`/${locale}/program`}
-              className="btn btn-secondary text-base px-8 py-4 justify-center"
-              aria-label="Learn about The 16-Week Program"
-            >
+            <Link href={`/${locale}/program`} className="btn btn-ghost">
               {c.hero.cta2}
             </Link>
           </div>
 
-          <p className="mt-8 text-xs" style={{ color: 'rgba(123,132,148,0.8)' }}>{c.hero.trustLine}</p>
+          <p className="text-xs md:text-sm leading-relaxed" style={{ color: '#3D4452', maxWidth: '42rem' }}>{c.hero.trustLine}</p>
         </div>
       </div>
     </section>
@@ -338,22 +323,26 @@ function Hero({ locale, c }) {
 // ═══════════════════════════════════════════════════════════════
 function ProofStrip({ c }) {
   return (
-    <div className="proof-strip" aria-label="Program outcomes">
+    <section className="section-dark" aria-labelledby="proof-heading">
       <div className="container-section">
-        <dl className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6">
-          {c.proof.map((stat) => (
-            <div key={stat.id} className="flex flex-col items-start sm:items-center sm:text-center">
-              <dt className="sr-only">{stat.label}</dt>
-              <dd>
-                <span className="proof-stat-number" aria-hidden="true">{stat.number}</span>
-                <span className="block text-sm font-semibold mt-1" style={{ color: '#b7b5fe' }} aria-hidden="true">{stat.unit}</span>
-                <span className="proof-stat-label block mt-1">{stat.label}</span>
-              </dd>
-            </div>
+        <h2 id="proof-heading" className="sr-only">Student Progress Proof</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8">
+          {c.proof.map((item) => (
+            <article key={item.id} className="text-center">
+              <p className="text-4xl md:text-5xl font-bold mb-3" style={{ color: '#b7b5fe' }}>
+                {item.number}
+              </p>
+              <p className="text-xs md:text-sm font-semibold uppercase tracking-wider mb-2" style={{ color: '#94A3B8' }}>
+                {item.unit}
+              </p>
+              <p className="text-sm leading-relaxed" style={{ color: '#94A3B8' }}>
+                {item.label}
+              </p>
+            </article>
           ))}
-        </dl>
+        </div>
       </div>
-    </div>
+    </section>
   )
 }
 
@@ -362,37 +351,34 @@ function ProofStrip({ c }) {
 // ═══════════════════════════════════════════════════════════════
 function PhotoIntro({ locale, c }) {
   return (
-    <section className="section-white" aria-labelledby="photo-intro-heading">
+    <section className="section-light" aria-labelledby="photo-intro-heading">
       <div className="container-section">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <div>
-            <p className="eyebrow mb-4">{c.photoIntro.eyebrow}</p>
-            <h2 id="photo-intro-heading">{c.photoIntro.heading}</h2>
-            {c.photoIntro.body0 && (
-              <p className="mt-6 text-base md:text-lg leading-relaxed" style={{ color: '#3D4452' }}>{c.photoIntro.body0}</p>
-            )}
-            <p className="mt-4 text-base md:text-lg leading-relaxed" style={{ color: '#3D4452' }}>{c.photoIntro.body1}</p>
-            <p className="mt-4 text-base leading-relaxed" style={{ color: '#3D4452' }}>{c.photoIntro.body2}</p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <Link href={`/${locale}/navigators`} className="btn btn-secondary text-sm px-6 py-3 justify-center">{c.photoIntro.cta1}</Link>
-              <Link href={`/${locale}/results`} className="btn btn-outline text-sm px-6 py-3 justify-center">{c.photoIntro.cta2}</Link>
-            </div>
-          </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Text column */}
+          <article className="max-w-xl">
+            <p className="eyebrow mb-4" style={{ color: '#5856cc' }}>{c.photoIntro.eyebrow}</p>
+            <h2 id="photo-intro-heading" className="mb-6" style={{ color: '#212830' }}>{c.photoIntro.heading}</h2>
 
-          {/* ── Photo — place homepage-mom-daughter-thinking.jpeg in /public ── */}
-          <div className="relative w-full rounded-2xl overflow-hidden" style={{ aspectRatio: '4/3' }}>
+            <p className="text-base md:text-lg leading-relaxed mb-5" style={{ color: '#3D4452' }}>{c.photoIntro.body0}</p>
+            <p className="text-base md:text-lg leading-relaxed mb-5" style={{ color: '#3D4452' }}>{c.photoIntro.body1}</p>
+            <p className="text-base md:text-lg leading-relaxed mb-8" style={{ color: '#3D4452' }}>{c.photoIntro.body2}</p>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link href={`/${locale}/navigators`} className="btn btn-ghost">
+                {c.photoIntro.cta1}
+              </Link>
+              <Link href={`/${locale}/results`} className="btn btn-ghost">
+                {c.photoIntro.cta2}
+              </Link>
+            </div>
+          </article>
+
+          {/* Image column */}
+          <div className="relative" style={{ aspectRatio: '4/3' }}>
             <img
               src="/homepage-mom-daughter-thinking.jpeg"
               alt={c.photoIntro.imgAlt}
-              width={1600}
-              height={1200}
-              style={{
-                width:          '100%',
-                height:         '100%',
-                objectFit:      'cover',
-                objectPosition: 'center',
-                display:        'block',
-              }}
+              className="w-full h-full object-cover rounded-lg"
             />
           </div>
         </div>
