@@ -1,8 +1,10 @@
 // app/[locale]/about/page.jsx
 //
 // /about — Bilingual EN + ZH.
-// BilingualHeading already shows both languages simultaneously (unchanged).
-// Body copy, section labels, and CTAs are locale-driven via COPY object.
+// Copy rewritten to DODO Learning Master Content & Brand Prompt v2.1 (April 12, 2026)
+// Key changes: English mastery as primary goal · Bilingualism as cognitive outcome ·
+// Positive-forward voice · English Thinker nomenclature · Future positioning + AI differentiation
+//
 // BACKGROUND IMAGE: place bg-about-hero.webp and bg-about-hero.jpg in /public/ (root)
 
 import Link from 'next/link'
@@ -22,126 +24,166 @@ export async function generateMetadata({ params }) {
 const COPY = {
   en: {
     meta: {
-      title:       'What Is DODO Learning? Bilingual Thinking Program for Chinese Families in Canada & the US',
+      title:
+        'What Is DODO Learning? English Literacy at the Cognitive Level — for Chinese Families in Canada & the US',
       description:
-        'DODO Learning is the live, Navigator-led bilingual thinking program for Chinese families in Canada and the US — trained on the full Read \u2192 Think \u2192 Speak \u2192 Write loop, measured by Lexile levels and the 6+1 Trait writing framework. Not just fluency. Thought.',
+        'DODO Learning is the live, Navigator-led English literacy program for Chinese families in Canada and the US — trained on the full Read \u2192 Think \u2192 Speak \u2192 Write loop, measured by Lexile levels and the 6+1 Trait writing framework. We build English thinkers at mastery level. Bilingual depth emerges from that rigor.',
     },
     hero: {
       chip:          'Our Story',
       h1a:           'A child who\u00a0', h1em1: 'speaks', h1b: '\u00a0English',
       h1c:           'is not the same as a child',
       h1d:           'who\u00a0', h1em2: 'thinks', h1e: '\u00a0in it.',
-      sub:           'Built for Chinese families in Canada and the US raising children in two languages. Most bilingual children learn English as a subject \u2014 they pass exams and sound fluent. But ask them to argue, to build, to write something original \u2014 and the language falls apart. Our founder saw this gap and built DODO to close it.',
+      sub:
+        'Built for Chinese families in Canada and the US whose children will lead in English-dominant schools, universities, and boardrooms. Most children in these families learn English as a subject — they pass exams, they sound fluent. Ask them to argue a position, read dense analytical prose, or write something original — and the language reaches its limit. Our founder saw that gap and built DODO to close it. The goal is English mastery at the cognitive level. Bilingual depth is what emerges when that goal is reached.',
       videoLabel:    'Watch: Why DODO Exists',
       videoDuration: '3 min',
     },
     name: {
-      p1:       'DODO comes from a simple, powerful idea:\u00a0',
+      p1:       'DODO comes from a deliberate, two-sided idea:\u00a0',
       p1strong: 'Do + Do.',
-      p2:       "Learning isn\u2019t passive. It\u2019s not about absorbing \u2014 it\u2019s about doing. Reading is doing. Thinking is doing. Speaking is doing. Writing is doing.",
-      p3:       'The double \u201cDo\u201d is also a nod to the iterative nature of mastery. You don\u2019t learn a language once. You learn it by doing, then doing again \u2014 each time deeper, each time more your own.',
+      p2:
+        'DO — the language of academic possibility, of formal argument, of the future your child will lead. DO — the mother tongue, the emotional core, the lens through which the world first made sense. The name is about doing the work in both languages, at every level, simultaneously.',
+      p3:
+        'The double \u201cDo\u201d is also a commitment to iteration. You don\u2019t master a language once. You master it by doing, then doing again \u2014 each cycle deeper, each cycle more precisely your own.',
     },
     beliefs: {
-      sub:    'Every session follows the same three truths.',
+      sub:    'Every session is built on the same three convictions.',
       bodies: [
-        "Fluency isn\u2019t about sounding right. It\u2019s about thinking clearly. We build the architecture of thought \u2014 in both languages.",
-        'The best learning happens between people, not between a child and a screen. Every DODO session is a dialogue, not a lecture.',
-        "We don\u2019t teach English by replacing Chinese. We teach children to move fluidly between two worlds of thought.",
+        'Fluency is not about sounding right. It\u2019s about thinking precisely \u2014 reading complex arguments, defending a position with evidence, writing with intention. That is the standard we build toward. Language is architecture for thought. We build the architecture first; fluency follows.',
+        'The best learning happens between people, not between a child and a screen. Every DODO session is a dialogue. The Navigator\u2019s first move after your child answers is always a better question \u2014 never an evaluation.',
+        'Cognitive depth in English protects thinking in both languages. The more precisely your child reasons in English, the more sophisticated their thinking becomes in every language they use. Bilingual capacity is the natural evidence of intellectual rigor \u2014 not a separate goal to manage.',
       ],
     },
     loop: {
-      sub:         'Every session follows the same cycle. Simple in structure. Profound in effect.',
+      sub:         'Every session follows the same cycle. Consistent in structure. Cumulative in effect.',
       cta:         'Explore Methodology',
       programLink: 'See The 16-Week Program \u2192',
       descs: [
-        'Encounter ideas worth thinking about. Not textbooks \u2014 real stories, real arguments, real questions.',
-        "Process what you\u2019ve read. Form opinions. Make connections. This is where language becomes thinking.",
-        "Articulate your ideas aloud. Defend them. Refine them. Speaking isn\u2019t output \u2014 it\u2019s processing.",
-        'Commit your thinking to paper. Writing is the proof that a language truly belongs to you.',
+        'Classical literature and carefully selected texts \u2014 Alice in Wonderland, Treasure Island, Poe \u2014 read not as school assignments, but as living arguments about how language, character, and consequence work.',
+        'Structure evidence. Map cause and effect. Hold two competing ideas without rushing to resolve them. Every Think step targets a specific type of reasoning \u2014 not a reading skill, not a comprehension worksheet.',
+        'Defend a position. Inhabit a character\u2019s perspective. Articulate exactly where in the text the evidence lives. Speaking is not output \u2014 it is how thinking becomes precise enough to write.',
+        'Writing is the proof that a language truly belongs to you. Progress assessed against the 6+1 Trait rubric \u2014 not by age or grade level, but by the quality and craft of the work itself.',
       ],
     },
     navigators: {
       chipNot:        'Not teachers.',
       chipAre:        'Navigators.',
-      p1pre:          "We don\u2019t call them teachers. We call them\u00a0",
+      p1pre:          'We call them\u00a0',
       p1strong:       'Navigators',
-      p1post:         ' \u2014 because they don\u2019t stand at the front and lecture. They sit beside your child and guide.',
-      p2:             "A Navigator is the kind of person who asks questions they don\u2019t already know the answer to. Who gets genuinely curious about what a seven-year-old thinks about fairness.",
-      p3:             "They\u2019re readers. They\u2019re thinkers. They care about language not because it\u2019s their job, but because it\u2019s how they make sense of everything.",
+      p1post:
+        ' \u2014 longitudinal guides who know this child\u2019s voice, pace, and specific gaps across a full 16 weeks. They sit beside your child and guide. They do not stand at the front and lecture.',
+      p2:
+        'A Navigator asks questions they don\u2019t already know the answer to. They get genuinely curious about what a seven-year-old thinks about fairness, about loyalty, about why a character made the choice they made.',
+      p3:
+        'They are readers. They are thinkers. They care about language because it is how they make sense of everything \u2014 and because they know that a child trained to reason rigorously in English has a mind that will carry them further than any test score ever could.',
       navigatorsLink: 'Meet the Navigators \u2192',
     },
     families: {
       items: [
-        { quote: '\u201cThat\u2019s us \u2014 two languages, one family.\u201d',      desc: 'You speak two languages at home and you want your child to feel equally powerful in both. Not just conversational \u2014 intellectually fluent.' },
-        { quote: '\u201cWe move between worlds. So does our child.\u201d',            desc: "You\u2019ve moved countries \u2014 maybe more than once. Your child navigates cultures daily, and you want their English to match the complexity of their life." },
-        { quote: '\u201cGood isn\u2019t enough. We want depth.\u201d',               desc: "Your child is already good at English. Maybe even great. But you sense there\u2019s a ceiling \u2014 and the current system isn\u2019t going to break through it." },
+        {
+          quote: '\u201cOur child will lead in English. Both languages will be stronger for it.\u201d',
+          desc:
+            'You understand that English mastery and Chinese depth are not competing goals. A child trained to think precisely in one language carries that precision into both. You want the standard set high \u2014 and measured.',
+        },
+        {
+          quote: '\u201cWe move between worlds. Our child\u2019s English needs to match that complexity.\u201d',
+          desc:
+            'You\u2019ve navigated more than one culture. You know the difference between conversational English and the kind of English that opens doors in universities, boardrooms, and leadership rooms. You want your child in that second category.',
+        },
+        {
+          quote: '\u201cGood isn\u2019t the ceiling. Depth is.\u201d',
+          desc:
+            'Your child is already strong in English. But you sense there\u2019s a ceiling \u2014 in how they argue, how they write, how they handle complexity under pressure. The future belongs to children who can reason precisely and write with intention. We build that.',
+        },
       ],
     },
     closing: {
-      sub: 'Not a tagline. A philosophy. Every session, every conversation, every written word at DODO is built on this single truth: real bilingualism means thinking \u2014 not translating.',
+      sub:
+        'Not a tagline. A philosophy. Genuine bilingual depth is not achieved through parallel translation or language-maintenance programs. It emerges when a child is trained to think precisely in English at the highest cognitive level \u2014 to read complexity, argue with evidence, and write with intention. That intellectual rigor transfers. It strengthens thinking in every language. Both languages become stronger because the mind became stronger first.',
       cta: "Start Your Child\u2019s Journey",
     },
   },
 
   zh: {
     meta: {
-      title:       'DODO Learning\u662f\u4ec0\u4e48\uff1f\u9762\u5411\u52a0\u62ff\u5927\u548c\u7f8e\u56fd\u534e\u8bed\u5bb6\u5ead\u7684\u53cc\u8bed\u601d\u7ef4\u8bfe\u7a0b',
+      title:
+        'DODO Learning\u662f\u4ec0\u4e48\uff1f\u9762\u5411\u52a0\u62ff\u5927\u548c\u7f8e\u56fd\u534e\u8bed\u5bb6\u5ead\u7684\u82f1\u8bed\u9ad8\u9636\u601d\u7ef4\u80fd\u529b\u8bad\u7ec3\u9879\u76ee',
       description:
-        'DODO Learning\u662f\u9762\u5411\u52a0\u62ff\u5927\u548c\u7f8e\u56fd\u534e\u8bed\u5bb6\u5ead\u7684\u5b9e\u65f6\u53cc\u8bed\u601d\u7ef4\u8bfe\u7a0b\u2014\u2014\u7531Navigator\u4e3b\u5bfc\uff0c\u8bad\u7ec3\u5b8c\u6574\u7684\u9605\u8bfb\u2192\u601d\u8003\u2192\u8868\u8fbe\u2192\u5199\u4f5c\u95ed\u73af\uff0c\u4ee5Lexile\u6d4b\u91cf\u548c6+1\u7279\u8d28\u5199\u4f5c\u6846\u67b6\u8861\u91cf\u3002\u4e0d\u4ec5\u4ec5\u662f\u6d41\u5229\u5ea6\uff0c\u800c\u662f\u601d\u7ef4\u672c\u8eab\u3002',
+        'DODO Learning\u4e3a\u52a0\u62ff\u5927\u548c\u7f8e\u56fd\u534e\u8bed\u5bb6\u5ead\u800c\u5efa\uff0c\u7531Navigator\u4e3b\u5bfc\uff0c\u8bad\u7ec3\u5b8c\u6574\u7684\u9605\u8bfb\u2192\u601d\u8003\u2192\u8868\u8fbe\u2192\u5199\u4f5c\u95ed\u73af\uff0c\u4ee5Lexile\u548c6+1\u7279\u8d28\u8861\u91cf\u6210\u957f\u3002\u6211\u4eec\u7684\u76ee\u6807\u662f\u82f1\u8bed\u601d\u7ef4\u80fd\u529b\u7684\u6839\u672c\u627f\u8f7d\u3002\u53cc\u8bed\u6df1\u5ea6\uff0c\u662f\u8fd9\u79cd\u80fd\u529b\u7684\u81ea\u7136\u7ed3\u679c\u3002',
     },
     hero: {
       chip:          '\u6211\u4eec\u7684\u6545\u4e8b',
       h1a:           '\u4f1a\u00a0', h1em1: '\u8bf4', h1b: '\u00a0\u82f1\u8bed\u7684\u5b69\u5b50\uff0c',
       h1c:           '\u548c\u7528\u82f1\u8bed',
       h1d:           '', h1em2: '\u601d\u8003', h1e: '\u00a0\u7684\u5b69\u5b50\uff0c\u662f\u4e0d\u4e00\u6837\u7684\u3002',
-      sub:           '\u4e13\u4e3a\u5728\u52a0\u62ff\u5927\u548c\u7f8e\u56fd\u7528\u4e24\u79cd\u8bed\u8a00\u517b\u80b2\u5b69\u5b50\u7684\u534e\u8bed\u5bb6\u5ead\u800c\u5efa\u3002\u5927\u591a\u6570\u53cc\u8bed\u5b69\u5b50\u628a\u82f1\u8bed\u5f53\u4f5c\u4e00\u95e8\u5b66\u79d1\u6765\u5b66\u3002\u4ed6\u4eec\u901a\u8fc7\u8003\u8bd5\uff0c\u542c\u8d77\u6765\u4e5f\u5f88\u6d41\u5229\u3002\u4f46\u5f53\u4f60\u8981\u6c42\u4ed6\u4eec\u53bb\u8bba\u8bc1\u3001\u53bb\u5efa\u6784\u3001\u5199\u51fa\u6709\u72ec\u521b\u6027\u7684\u4e1c\u897f\u2014\u2014\u8bed\u8a00\u5c31\u5d29\u4e86\u3002\u6211\u4eec\u7684\u521b\u59cb\u4eba\u770b\u5230\u4e86\u8fd9\u9053\u88c2\u7f1d\uff0c\u4e8e\u662f\u521b\u5efa\u4e86DODO\u6765\u5f25\u5408\u5b83\u3002',
+      sub:
+        '\u4e13\u4e3a\u5b69\u5b50\u5c06\u5728\u82f1\u8bed\u4e3b\u5bfc\u7684\u5b66\u6821\u3001\u5927\u5b66\u548c\u804c\u573a\u4e2d\u5c55\u793a\u9886\u5bfc\u529b\u7684\u534e\u8bed\u5bb6\u5ead\u800c\u5efa\u3002\u5927\u591a\u6570\u8fd9\u6837\u7684\u5b69\u5b50\u628a\u82f1\u8bed\u5f53\u4f5c\u4e00\u95e8\u5b66\u79d1\u6765\u5b66\u2014\u2014\u4ed6\u4eec\u901a\u8fc7\u8003\u8bd5\uff0c\u542c\u8d77\u6765\u4e5f\u5f88\u6d41\u5229\u3002\u4f46\u8981\u6c42\u4ed6\u4eec\u8bba\u8bc1\u4e00\u4e2a\u89c2\u70b9\u3001\u9605\u8bfb\u5bc6\u96c6\u7684\u5206\u6790\u6027\u6587\u672c\u3001\u5199\u51fa\u6709\u539f\u521b\u6027\u7684\u4e1c\u897f\u2014\u2014\u8bed\u8a00\u5c31\u5230\u8fbe\u4e86\u4e0a\u9650\u3002\u6211\u4eec\u7684\u521b\u59cb\u4eba\u770b\u5230\u4e86\u8fd9\u9053\u7f3a\u53e3\uff0c\u521b\u5efa\u4e86DODO\u6765\u5f25\u5408\u5b83\u3002\u76ee\u6807\u662f\u82f1\u8bed\u601d\u7ef4\u80fd\u529b\u7684\u6839\u672c\u627f\u8f7d\u3002\u53cc\u8bed\u6df1\u5ea6\uff0c\u662f\u8fd9\u79cd\u80fd\u529b\u5230\u8fbe\u4e4b\u540e\u7684\u81ea\u7136\u7ed3\u679c\u3002',
       videoLabel:    '\u89c2\u770b\uff1aDODO\u4e3a\u4f55\u800c\u5b58\u5728',
       videoDuration: '3\u5206\u949f',
     },
     name: {
-      p1:       'DODO\u6765\u81ea\u4e00\u4e2a\u7b80\u5355\u800c\u6709\u529b\u7684\u60f3\u6cd5\uff1a\u00a0',
+      p1:       'DODO\u6765\u81ea\u4e00\u4e2a\u8c03\u7528\u4e86\u4e24\u79cd\u8bed\u8a00\u7684\u60f3\u6cd5\uff1a\u00a0',
       p1strong: 'Do + Do\uff08\u505a+\u518d\u505a\uff09\u3002',
-      p2:       '\u5b66\u4e60\u4e0d\u662f\u88ab\u52a8\u7684\u3002\u5b83\u4e0d\u5173\u4e4e\u5438\u6536\u2014\u2014\u800c\u5173\u4e4e\u884c\u52a8\u3002\u9605\u8bfb\u662f\u884c\u52a8\u3002\u601d\u8003\u662f\u884c\u52a8\u3002\u8868\u8fbe\u662f\u884c\u52a8\u3002\u4e66\u5199\u662f\u884c\u52a8\u3002',
-      p3:       '\u201cDo\u201d\u7684\u91cd\u590d\u4e5f\u662f\u5bf9\u7cbe\u901a\u672c\u8d28\u7684\u81f4\u656c\uff1a\u4f60\u4e0d\u662f\u5b66\u4e00\u6b21\u5c31\u4e60\u5f97\u4e86\u4e00\u95e8\u8bed\u8a00\u3002\u4f60\u662f\u901a\u8fc7\u4e00\u9057\u9057\u5730\u505a\u6765\u5b66\u4e60\u7684\u2014\u2014\u6bcf\u6b21\u90fd\u66f4\u6df1\u5165\uff0c\u6bcf\u6b21\u90fd\u66f4\u5c5e\u4e8e\u81ea\u5df1\u3002',
+      p2:
+        'DO\u2014\u2014\u82f1\u8bed\uff0c\u5b66\u672f\u53ef\u80fd\u6027\u7684\u8bed\u8a00\uff0c\u6b63\u5f0f\u8bba\u8bc1\u548c\u672a\u6765\u9886\u5bfc\u7684\u8bed\u8a00\u3002Do\u2014\u2014\u6bcd\u8bed\uff0c\u60c5\u611f\u7684\u6839\uff0c\u4e16\u754c\u6700\u521d\u6709\u610f\u4e49\u7684\u996e\u9014\u3002\u8fd9\u4e2a\u540d\u5b57\u662f\u5173\u4e8e\u5728\u4e24\u79cd\u8bed\u8a00\u4e2d\u540c\u65f6\u3001\u5728\u6bcf\u4e00\u4e2a\u5c42\u9762\u4e0a\u505a\u771f\u6b63\u7684\u5de5\u4f5c\u3002',
+      p3:
+        '\u201cDo\u201d\u7684\u91cd\u590d\u4e5f\u662f\u5bf9\u8fed\u4ee3\u672c\u8d28\u7684\u627f\u8bfa\uff1a\u638c\u63e1\u4e00\u95e8\u8bed\u8a00\u4e0d\u662f\u4e00\u6b21\u6027\u7684\u4e8b\u3002\u4f60\u901a\u8fc7\u505a\u6765\u5b66\u4e60\uff0c\u7136\u540e\u518d\u505a\u4e00\u9047\u2014\u2014\u6bcf\u4e00\u5faa\u73af\u66f4\u6df1\u5165\uff0c\u6bcf\u4e00\u5faa\u73af\u66f4\u5c5e\u4e8e\u81ea\u5df1\u3002',
     },
     beliefs: {
-      sub:    '\u6bcf\u8282\u8bfe\u90fd\u5efa\u7acb\u5728\u540c\u6837\u7684\u4e09\u4e2a\u771f\u7406\u4e4b\u4e0a\u3002',
+      sub:    '\u6bcf\u8282\u8bfe\u5efa\u7acb\u5728\u540c\u6837\u7684\u4e09\u4e2a\u4fe1\u5ff5\u4e4b\u4e0a\u3002',
       bodies: [
-        '\u6d41\u5229\u5ea6\u4e0d\u662f\u542c\u8d77\u6765\u5bf9\u3002\u5b83\u662f\u60f3\u5f97\u6e05\u695a\u3002\u6211\u4eec\u6784\u5efa\u601d\u7ef4\u7684\u67b6\u6784\u2014\u2014\u5728\u4e24\u79cd\u8bed\u8a00\u4e2d\u540c\u65f6\u8fdb\u884c\u3002',
-        '\u6700\u597d\u7684\u5b66\u4e60\u53d1\u751f\u5728\u4eba\u4e0e\u4eba\u4e4b\u95f4\uff0c\u800c\u975e\u5b69\u5b50\u4e0e\u5c4f\u5e55\u4e4b\u95f4\u3002\u6bcf\u8282DODO\u8bfe\u7a0b\u90fd\u662f\u5bf9\u8bdd\uff0c\u800c\u975e\u8bb2\u6570\u3002',
-        '\u6211\u4eec\u4e0d\u662f\u901a\u8fc7\u53d6\u4ee3\u4e2d\u6587\u6765\u6559\u6388\u82f1\u8bed\u3002\u6211\u4eec\u6559\u5b69\u5b50\u5728\u4e24\u79cd\u601d\u7ef4\u4e16\u754c\u4e4b\u95f4\u81ea\u5982\u6d41\u52a8\u3002',
+        '\u6d41\u5229\u5ea6\u4e0d\u662f\u542c\u8d77\u6765\u5bf9\u3002\u662f\u60f3\u5f97\u6e05\u695a\u2014\u2014\u80fd\u8bfb\u61c2\u590d\u6742\u7684\u8bba\u8bc1\uff0c\u80fd\u7528\u8bc1\u636e\u634d\u536b\u4e00\u4e2a\u89c2\u70b9\uff0c\u80fd\u6709\u610f\u56fe\u5730\u5199\u4f5c\u3002\u8fd9\u624d\u662f\u6211\u4eec\u8bad\u7ec3\u7684\u6807\u51c6\u3002\u8bed\u8a00\u662f\u601d\u7ef4\u7684\u67b6\u6784\u3002\u6211\u4eec\u5148\u5efa\u67b6\u6784\uff0c\u6d41\u5229\u5ea6\u968f\u4e4b\u800c\u6765\u3002',
+        '\u6700\u597d\u7684\u5b66\u4e60\u53d1\u751f\u5728\u4eba\u4e0e\u4eba\u4e4b\u95f4\uff0c\u800c\u975e\u5b69\u5b50\u4e0e\u5c4f\u5e55\u4e4b\u95f4\u3002\u6bcf\u8282DODO\u8bfe\u7a0b\u90fd\u662f\u5bf9\u8bdd\u3002\u5b69\u5b50\u56de\u7b54\u4e4b\u540e\uff0cNavigator\u7684\u7b2c\u4e00\u53cd\u5e94\u6c38\u8fdc\u662f\u4e00\u4e2a\u66f4\u597d\u7684\u95ee\u9898\u2014\u2014\u4e0d\u662f\u8bc4\u5206\uff0c\u4e0d\u662f\u8868\u626c\u3002',
+        '\u82f1\u8bed\u7684\u8ba4\u77e5\u6df1\u5ea6\u4fdd\u62a4\u4e24\u79cd\u8bed\u8a00\u7684\u601d\u7ef4\u80fd\u529b\u3002\u5b69\u5b50\u5728\u82f1\u8bed\u4e2d\u63a8\u7406\u5f97\u8d8a\u7cbe\u786e\uff0c\u4ed6\u5728\u6bcf\u79cd\u8bed\u8a00\u4e2d\u7684\u601d\u8003\u5c31\u8d8a\u6df1\u523b\u3002\u53cc\u8bed\u80fd\u529b\u662f\u8ba4\u77e5\u4e25\u8c28\u6027\u7684\u81ea\u7136\u4f53\u73b0\u2014\u2014\u800c\u4e0d\u662f\u4e00\u4e2a\u9700\u8981\u5355\u72ec\u7ba1\u7406\u7684\u76ee\u6807\u3002',
       ],
     },
     loop: {
-      sub:         '\u6bcf\u8282\u8bfe\u9075\u5faa\u540c\u6837\u7684\u5faa\u73af\u3002\u7ed3\u6784\u7b80\u5355\uff0c\u6548\u679c\u6df1\u8fdc\u3002',
+      sub:         '\u6bcf\u8282\u8bfe\u9075\u5faa\u540c\u6837\u7684\u5faa\u73af\u3002\u7ed3\u6784\u4e00\u81f4\uff0c\u6548\u679c\u79ef\u7d2f\u3002',
       cta:         '\u63a2\u7d22\u6559\u5b66\u65b9\u6cd5',
       programLink: '\u4e86\u89e316\u5468\u8bfe\u7a0b \u2192',
       descs: [
-        '\u63a5\u89e6\u5024\u5f97\u601d\u8003\u7684\u60f3\u6cd5\u3002\u4e0d\u662f\u6559\u79d1\u4e66\u2014\u2014\u800c\u662f\u771f\u5b9e\u7684\u6545\u4e8b\u3001\u771f\u5b9e\u7684\u8bba\u70b9\u3001\u771f\u5b9e\u7684\u95ee\u9898\u3002',
-        '\u5904\u7406\u4f60\u6240\u9605\u8bfb\u7684\u5185\u5bb9\u3002\u5f62\u6210\u89c2\u70b9\u3002\u5efa\u7acb\u8054\u7ed3\u3002\u8fd9\u662f\u8bed\u8a00\u53d8\u6210\u601d\u8003\u7684\u5730\u65b9\u3002',
-        '\u5927\u58f0\u8868\u8fbe\u4f60\u7684\u60f3\u6cd5\u3002\u634d\u536b\u5b83\u4eec\u3002\u6253\u78e8\u5b83\u4eec\u3002\u8868\u8fbe\u4e0d\u662f\u8f93\u51fa\u2014\u2014\u800c\u662f\u52a0\u5de5\u3002',
-        '\u5c06\u601d\u8003\u843d\u5b9e\u4e8e\u7eb8\u9762\u3002\u4e66\u5199\u662f\u8bed\u8a00\u771f\u6b63\u5c5e\u4e8e\u4f60\u7684\u8bc1\u660e\u3002',
+        '\u7ecf\u5178\u6587\u5b66\u4e0e\u7cbe\u9009\u6587\u672c\u2014\u2014\u300a\u7231\u4e3d\u4e1d\u6f2b\u6e38\u4ed9\u5883\u300b\u3001\u300a\u91d1\u94f6\u5c9b\u300b\u3001\u7c21\u00b7\u7231\u4f26\u2014\u2014\u4e0d\u662f\u5f53\u4f5c\u8bfe\u5185\u4f5c\u4e1a\u6765\u9605\u8bfb\uff0c\u800c\u662f\u5f53\u4f5c\u5173\u4e8e\u8bed\u8a00\u3001\u4eba\u7269\u4e0e\u540e\u679c\u7684\u6d3b\u751f\u8bba\u8bc1\u6765\u9605\u8bfb\u3002',
+        '\u6574\u7406\u8bc1\u636e\u3002\u63cf\u7ed8\u56e0\u679c\u5173\u7cfb\u3002\u540c\u65f6\u6301\u6709\u4e24\u4e2a\u76f8\u4e92\u7ade\u4e89\u7684\u60f3\u6cd5\u800c\u4e0d\u6025\u4e8e\u89e3\u51b3\u3002\u6bcf\u4e00\u4e2a\u201c\u601d\u8003\u201d\u73af\u8282\u9488\u5bf9\u7684\u662f\u4e00\u79cd\u5177\u4f53\u7684\u63a8\u7406\u65b9\u5f0f\u2014\u2014\u800c\u4e0d\u662f\u4e00\u9879\u9605\u8bfb\u6280\u80fd\uff0c\u4e0d\u662f\u4e00\u5f20\u7406\u89e3\u5de5\u4f5c\u8868\u3002',
+        '\u634d\u536b\u4e00\u4e2a\u7acb\u573a\u3002\u8fdb\u5165\u4e00\u4e2a\u4eba\u7269\u7684\u89c6\u89d2\u3002\u786e\u5207\u8bf4\u51fa\u6587\u672c\u4e2d\u8bc1\u636e\u7684\u5177\u4f53\u4f4d\u7f6e\u3002\u8868\u8fbe\u4e0d\u662f\u8f93\u51fa\u2014\u2014\u800c\u662f\u8ba9\u601d\u7ef4\u7cbe\u786e\u5230\u8db3\u4ee5\u7528\u6587\u5b57\u8868\u8fbe\u7684\u8fc7\u7a0b\u3002',
+        '\u5199\u4f5c\u662f\u8bed\u8a00\u771f\u6b63\u5c5e\u4e8e\u4f60\u7684\u8bc1\u660e\u3002\u8fdb\u5ea6\u4ee5\u300a6+1\u7279\u8d28\u300b\u8bc4\u5206\u8861\u91cf\u2014\u2014\u4e0d\u6309\u5e74\u9f84\u6216\u5e74\u7ea7\uff0c\u800c\u662f\u6309\u4f5c\u54c1\u672c\u8eab\u7684\u8d28\u91cf\u4e0e\u5de5\u827a\u3002',
       ],
     },
     navigators: {
       chipNot:        '\u4e0d\u662f\u8001\u5e08\u3002',
       chipAre:        'Navigators\u3002',
-      p1pre:          '\u6211\u4eec\u4e0d\u79f0\u4ed6\u4eec\u4e3a\u8001\u5e08\u3002\u6211\u4eec\u79f0\u4ed6\u4eec\u4e3a\u00a0',
+      p1pre:          '\u6211\u4eec\u79f0\u4ed6\u4eec\u4e3a\u00a0',
       p1strong:       'Navigators',
-      p1post:         '\u2014\u2014\u56e0\u4e3a\u4ed6\u4eec\u4e0d\u7ad9\u5728\u524d\u9762\u8bb2\u6388\uff0c\u800c\u662f\u5750\u5728\u60a8\u5b69\u5b50\u8eab\u8fb9\uff0c\u5f15\u5bfc\u3002',
-      p2:             'Navigator\u662f\u90a3\u79cd\u4f1a\u63d0\u51fa\u81ea\u5df1\u4e5f\u4e0d\u77e5\u9053\u7b54\u6848\u7684\u95ee\u9898\u7684\u4eba\u3002\u4f1a\u5bf9\u4e00\u4e2a\u4e03\u5c81\u5b69\u5b50\u5982\u4f55\u770b\u5f85\u516c\u5e73\u8fd9\u4ef6\u4e8b\u771f\u6b63\u611f\u5230\u597d\u5947\u7684\u4eba\u3002',
-      p3:             '\u4ed6\u4eec\u662f\u8bfb\u8005\uff0c\u662f\u601d\u8003\u8005\u3002\u4ed6\u4eec\u5173\u5fc3\u8bed\u8a00\uff0c\u4e0d\u662f\u56e0\u4e3a\u90a3\u662f\u5de5\u4f5c\uff0c\u800c\u662f\u56e0\u4e3a\u90a3\u662f\u4ed6\u4eec\u7406\u89e3\u4e00\u5207\u7684\u65b9\u5f0f\u3002',
+      p1post:
+        '\u2014\u2014\u8de8\u8d8416\u5468\u5168\u7a0b\u6301\u7eed\u4e86\u89e3\u8fd9\u4e2a\u5b69\u5b50\u7684\u8bed\u8a00\u98ce\u683c\u3001\u5b66\u4e60\u8282\u594f\u548c\u5177\u4f53\u77ed\u677f\u7684\u5c55\u671b\u5f0f\u5bfc\u5e08\u3002\u4ed6\u4eec\u5750\u5728\u60a8\u5b69\u5b50\u8eab\u8fb9\uff0c\u5f15\u5bfc\u3002\u4e0d\u662f\u7ad9\u5728\u524d\u9762\u8bb2\u6388\u3002',
+      p2:
+        'Navigator\u4f1a\u63d0\u51fa\u81ea\u5df1\u4e5f\u4e0d\u77e5\u9053\u7b54\u6848\u7684\u95ee\u9898\u3002\u4ed6\u4eec\u4f1a\u5bf9\u4e00\u4e2a\u4e03\u5c81\u5b69\u5b50\u5982\u4f55\u770b\u5f85\u516c\u5e73\u8fd9\u4ef6\u4e8b\u771f\u6b63\u611f\u5230\u597d\u5947\u3002',
+      p3:
+        '\u4ed6\u4eec\u662f\u9605\u8bfb\u8005\uff0c\u662f\u601d\u8003\u8005\u3002\u4ed6\u4eec\u5173\u5fc3\u8bed\u8a00\uff0c\u4e0d\u662f\u56e0\u4e3a\u90a3\u662f\u5de5\u4f5c\u2014\u2014\u800c\u662f\u56e0\u4e3a\u90a3\u662f\u4ed6\u4eec\u7406\u89e3\u4e00\u5207\u7684\u65b9\u5f0f\u3002\u4ed6\u4eec\u77e5\u9053\uff0c\u4e00\u4e2a\u80fd\u5728\u82f1\u8bed\u4e2d\u4e25\u8c28\u63a8\u7406\u7684\u5b69\u5b50\uff0c\u62e5\u6709\u4e00\u4e2a\u4efb\u4f55\u6210\u7ee9\u5355\u90fd\u65e0\u6cd5\u5e26\u5230\u7684\u672a\u6765\u3002',
       navigatorsLink: '\u8ba4\u8bc6\u5bfc\u5e08\u56e2\u961f \u2192',
     },
     families: {
       items: [
-        { quote: '\u201c\u8fd9\u5c31\u662f\u6211\u4eec\u2014\u2014\u4e24\u79cd\u8bed\u8a00\uff0c\u4e00\u4e2a\u5bb6\u5ead\u3002\u201d', desc: '\u60a8\u5728\u5bb6\u91cc\u4f7f\u7528\u4e24\u79cd\u8bed\u8a00\uff0c\u5e0c\u671b\u5b69\u5b50\u5728\u4e24\u79cd\u8bed\u8a00\u4e2d\u90fd\u540c\u6837\u6709\u529b\u91cf\u2014\u2014\u4e0d\u53ea\u662f\u65e5\u5e38\u5bf9\u8bdd\uff0c\u800c\u662f\u5728\u667a\u8bc6\u5c42\u9762\u771f\u6b63\u6d41\u7545\u3002' },
-        { quote: '\u201c\u6211\u4eec\u5728\u4e16\u754c\u4e4b\u95f4\u7a7f\u884c\u3002\u6211\u4eec\u7684\u5b69\u5b50\u4e5f\u662f\u3002\u201d',    desc: '\u60a8\u66fe\u79fb\u5c45\u4ed6\u56fd\u2014\u2014\u4e5f\u8bb8\u4e0d\u6b62\u4e00\u6b21\u3002\u60a8\u7684\u5b69\u5b50\u6bcf\u5929\u5728\u6587\u5316\u4e4b\u95f4\u5207\u6362\uff0c\u60a8\u5e0c\u671b\u4ed6\u4eec\u7684\u82f1\u8bed\u80fd\u5339\u914d\u751f\u6d3b\u7684\u590d\u6742\u7a0b\u5ea6\u3002' },
-        { quote: '\u201c\u591f\u597d\u8fd8\u4e0d\u591f\u3002\u6211\u4eec\u8981\u6df1\u5ea6\u3002\u201d',         desc: '\u60a8\u7684\u5b69\u5b50\u82f1\u8bed\u5df2\u7ecf\u4e0d\u9519\uff0c\u751a\u81f3\u5f88\u597d\u3002\u4f46\u60a8\u611f\u89c9\u5230\u6709\u4e00\u4e2a\u5929\u82b1\u677f\u2014\u2014\u800c\u73b0\u6709\u7684\u4f53\u7cfb\u65e0\u6cd5\u7a81\u7834\u5b83\u3002' },
+        {
+          quote: '\u201c\u6211\u4eec\u7684\u5b69\u5b50\u4f1a\u7528\u82f1\u8bed\u9886\u5bfc\u3002\u4e24\u79cd\u8bed\u8a00\u5c06\u56e0\u6b64\u53d8\u5f97\u66f4\u5f3a\u3002\u201d',
+          desc:
+            '\u60a8\u6e05\u695a\u82f1\u8bed\u7cbe\u901a\u548c\u4e2d\u6587\u6df1\u5ea6\u4e0d\u662f\u76f8\u4e92\u7ade\u4e89\u7684\u76ee\u6807\u3002\u4e00\u4e2a\u88ab\u8bad\u7ec3\u5f97\u5728\u82f1\u8bed\u4e2d\u7cbe\u786e\u601d\u8003\u7684\u5b69\u5b50\uff0c\u5c06\u8fd9\u79cd\u7cbe\u786e\u5ea6\u5e26\u5165\u6bcf\u4e00\u79cd\u4ed6\u4f7f\u7528\u7684\u8bed\u8a00\u3002\u60a8\u8981\u6807\u51c6\u9ad8\u2014\u2014\u800c\u4e14\u53ef\u91cf\u5316\u3002',
+        },
+        {
+          quote: '\u201c\u6211\u4eec\u5728\u4e16\u754c\u4e4b\u95f4\u7a7f\u884c\u3002\u5b69\u5b50\u7684\u82f1\u8bed\u9700\u8981\u5339\u914d\u90a3\u79cd\u590d\u6742\u5ea6\u3002\u201d',
+          desc:
+            '\u60a8\u77e5\u9053\u65e5\u5e38\u82f1\u8bed\u4e0e\u80fd\u5728\u5927\u5b66\u3001\u804c\u573a\u548c\u9886\u5bfc\u7a7f\u4e0a\u8bed\u8a00\u4e4b\u95f4\u7684\u533a\u522b\u3002\u60a8\u5e0c\u671b\u5b69\u5b50\u8fdb\u5165\u7b2c\u4e8c\u4e2a\u7c7b\u522b\u2014\u2014\u8fd9\u5c31\u662f\u6211\u4eec\u6240\u5efa\u7684\u3002',
+        },
+        {
+          quote: '\u201c\u591f\u597d\u4e0d\u662f\u5929\u82b1\u677f\u3002\u6df1\u5ea6\u624d\u662f\u3002\u201d',
+          desc:
+            '\u60a8\u7684\u5b69\u5b50\u82f1\u8bed\u5df2\u7ecf\u5f88\u5f3a\u3002\u4f46\u60a8\u611f\u5230\u6709\u4e00\u4e2a\u5929\u82b1\u677f\u2014\u2014\u5728\u5982\u4f55\u8bba\u8bc1\u3001\u5982\u4f55\u5199\u4f5c\u3001\u5982\u4f55\u5728\u538b\u529b\u4e0b\u5904\u7406\u590d\u6742\u60c5\u5883\u3002\u672a\u6765\u5c5e\u4e8e\u80fd\u7cbe\u786e\u63a8\u7406\u3001\u6709\u610f\u56fe\u5730\u5199\u4f5c\u7684\u5b69\u5b50\u3002\u6211\u4eec\u5efa\u7acb\u8fd9\u79cd\u80fd\u529b\u3002',
+        },
       ],
     },
     closing: {
-      sub: '\u8fd9\u4e0d\u662f\u4e00\u53e5\u53e3\u53f7\uff0c\u800c\u662f\u4e00\u79cd\u54f2\u5b66\u3002DODO\u7684\u6bcf\u8282\u8bfe\u3001\u6bcf\u6bb5\u5bf9\u8bdd\u3001\u6bcf\u4e2a\u4e66\u5199\u7684\u6587\u5b57\uff0c\u90fd\u5efa\u7acb\u5728\u8fd9\u4e00\u771f\u7406\u4e4b\u4e0a\uff1a\u771f\u6b63\u7684\u53cc\u8bed\u610f\u5473\u7740\u601d\u8003\u2014\u2014\u800c\u975e\u7ffb\u8bd1\u3002',
+      sub:
+        '\u8fd9\u4e0d\u662f\u4e00\u53e5\u53e3\u53f7\uff0c\u800c\u662f\u4e00\u79cd\u54f2\u5b66\u3002\u771f\u6b63\u7684\u53cc\u8bed\u6df1\u5ea6\u4e0d\u662f\u901a\u8fc7\u5e76\u884c\u7ffb\u8bd1\u6216\u8bed\u8a00\u7ef4\u62a4\u9879\u76ee\u5b9e\u73b0\u7684\u3002\u5b83\u662f\u5f53\u5b69\u5b50\u88ab\u8bad\u7ec3\u5f97\u5728\u82f1\u8bed\u4e2d\u5728\u6700\u9ad8\u8ba4\u77e5\u5c42\u9762\u7cbe\u786e\u601d\u8003\u2014\u2014\u9605\u8bfb\u590d\u6742\u6027\u3001\u7528\u8bc1\u636e\u8bba\u8bc1\u3001\u6709\u610f\u56fe\u5730\u5199\u4f5c\u2014\u2014\u4e4b\u540e\u7684\u81ea\u7136\u7ed3\u679c\u3002\u8fd9\u79cd\u667a\u8bc6\u4e0a\u7684\u4e25\u8c28\u6027\u53ef\u4ee5\u8fc1\u79fb\u3002\u5b83\u52a0\u5f3a\u6bcf\u4e00\u79cd\u8bed\u8a00\u7684\u601d\u7ef4\u80fd\u529b\u3002\u4e24\u79cd\u8bed\u8a00\u90fd\u53d8\u5f97\u66f4\u5f3a\uff0c\u662f\u56e0\u4e3a\u601d\u7ef4\u672c\u8eab\u5148\u53d8\u5f97\u66f4\u5f3a\u4e86\u3002',
       cta: '\u5f00\u59cb\u60a8\u5b69\u5b50\u7684\u65c5\u7a0b',
     },
   },
@@ -166,12 +208,29 @@ function BilingualHeading({ en, cn, light = false, center = false, locale = 'en'
 }
 
 // ─────────────────────────────────────────────────────────────
-// STATIC DATA (non-text structural data stays universal)
+// STATIC DATA
 // ─────────────────────────────────────────────────────────────
 const BELIEFS_BASE = [
-  { id: 'belief-1', num: '01', belief: 'Language is a thinking tool, not a performance skill.', beliefCn: '\u8bed\u8a00\u662f\u601d\u7ef4\u7684\u5de5\u5177\uff0c\u800c\u975e\u8868\u6f14\u7684\u6280\u80fd\u3002' },
-  { id: 'belief-2', num: '02', belief: "Children don't need more content. They need better conversations.", beliefCn: '\u5b69\u5b50\u4eec\u9700\u8981\u7684\u4e0d\u662f\u66f4\u591a\u5185\u5bb9\uff0c\u800c\u662f\u66f4\u597d\u7684\u5bf9\u8bdd\u3002' },
-  { id: 'belief-3', num: '03', belief: 'Bilingual means both. Not one at the cost of the other.', beliefCn: '\u53cc\u8bed\u610f\u5473\u7740\u4e24\u8005\u517c\u5f97\uff0c\u800c\u975e\u6b64\u6d88\u5f7c\u957f\u3002' },
+  {
+    id:       'belief-1',
+    num:      '01',
+    // Updated: leads with cognitive mastery, not performance
+    belief:   'Language is architecture for thought. We build the architecture first.',
+    beliefCn: '\u8bed\u8a00\u662f\u601d\u7ef4\u7684\u67b6\u6784\u3002\u6211\u4eec\u5148\u5efa\u67b6\u6784\u3002',
+  },
+  {
+    id:       'belief-2',
+    num:      '02',
+    belief:   "Children don\u2019t need more content. They need better conversations.",
+    beliefCn: '\u5b69\u5b50\u9700\u8981\u7684\u4e0d\u662f\u66f4\u591a\u5185\u5bb9\uff0c\u800c\u662f\u66f4\u597d\u7684\u5bf9\u8bdd\u3002',
+  },
+  {
+    id:       'belief-3',
+    num:      '03',
+    // Updated: cognitive depth as the engine, bilingualism as natural outcome
+    belief:   'A rigorous English mind is a bilingual mind \u2014 by nature, not by design.',
+    beliefCn: '\u4e25\u8c28\u7684\u82f1\u8bed\u601d\u7ef4\u8005\uff0c\u5929\u7136\u5c31\u662f\u53cc\u8bed\u8005\u3002',
+  },
 ]
 
 const LOOP_STEPS_BASE = [
@@ -182,21 +241,22 @@ const LOOP_STEPS_BASE = [
 ]
 
 const NAVIGATOR_TRAITS = [
-  { trait: 'Curious',          traitZh: '\u597d\u5947',         symbol: '?' },
-  { trait: 'Patient',          traitZh: '\u8010\u5fc3',         symbol: '~' },
-  { trait: 'Bilingual Thinkers', traitZh: '\u53cc\u8bed\u601d\u8003\u8005', symbol: 'AB' },
-  { trait: 'Empathetic',       traitZh: '\u5171\u60c5',         symbol: '\u2661' },
-  { trait: 'Rigorous',         traitZh: '\u4e25\u8c28',         symbol: '\u25c8' },
+  { trait: 'Curious',          traitZh: '\u597d\u5947',             symbol: '?' },
+  { trait: 'Patient',          traitZh: '\u8010\u5fc3',             symbol: '~' },
+  // Updated: "English Thinkers" replaces "Bilingual Thinkers" per v2.1 nomenclature
+  { trait: 'English Thinkers', traitZh: '\u82f1\u8bed\u601d\u7ef4\u8005', symbol: 'EN' },
+  { trait: 'Empathetic',       traitZh: '\u5171\u60c5',             symbol: '\u2661' },
+  { trait: 'Rigorous',         traitZh: '\u4e25\u8c28',             symbol: '\u25c8' },
 ]
 
 const FAMILIES_BASE = [
-  { id: 'family-1', title: 'The Bilingual Home',    titleCn: '\u53cc\u8bed\u5bb6\u5ead',        imgBg: 'linear-gradient(135deg, #142318 0%, #1e3526 60%, #142318 100%)' },
-  { id: 'family-2', title: 'The Global Family',     titleCn: '\u56fd\u9645\u5316\u5bb6\u5ead',  imgBg: 'linear-gradient(135deg, #131c2e 0%, #1e2a40 60%, #131c2e 100%)' },
-  { id: 'family-3', title: 'The Ambitious Learner', titleCn: '\u5fd7\u5411\u8fdc\u5927\u7684\u5b66\u4e60\u8005', imgBg: 'linear-gradient(135deg, #2a1218 0%, #3a1e24 60%, #2a1218 100%)' },
+  { id: 'family-1', title: 'The High-Standard Home',  titleCn: '\u9ad8\u6807\u51c6\u5bb6\u5ead',      imgBg: 'linear-gradient(135deg, #142318 0%, #1e3526 60%, #142318 100%)' },
+  { id: 'family-2', title: 'The Global Family',        titleCn: '\u56fd\u9645\u5316\u5bb6\u5ead',      imgBg: 'linear-gradient(135deg, #131c2e 0%, #1e2a40 60%, #131c2e 100%)' },
+  { id: 'family-3', title: 'The Ambitious Learner',    titleCn: '\u5fd7\u5411\u8fdc\u5927\u7684\u5b66\u4e60\u8005', imgBg: 'linear-gradient(135deg, #2a1218 0%, #3a1e24 60%, #2a1218 100%)' },
 ]
 
 // ─────────────────────────────────────────────────────────────
-// ICONS
+// ICONS (unchanged)
 // ─────────────────────────────────────────────────────────────
 function BeliefIcon({ id }) {
   const base = { width: 28, height: 28, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.5, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true }
@@ -328,7 +388,7 @@ function TheNameSection({ c, locale }) {
             </div>
             {locale === 'zh' && (
               <p className="mt-6" style={{ fontFamily: 'var(--font-cjk)', fontSize: '15px', lineHeight: 1.8, color: 'rgba(183,181,254,0.5)' }}>
-                DODO，源于"做"与"再做"。学习不是被动的吸收，而是主动的行动与反复的深化。
+                DODO，两个Do，两种语言，同时、同等地去做。
               </p>
             )}
           </div>
@@ -364,6 +424,9 @@ function WhatWeBelieve({ c, locale }) {
       <div className="container-section">
         <div className="mb-20 text-center">
           <BilingualHeading en="What We Believe" cn="我们的信念" center locale={locale} />
+          <p className="mt-4 mx-auto" style={{ fontSize: '15px', color: 'rgba(14,14,18,0.5)', maxWidth: '28rem' }}>
+            {c.beliefs.sub}
+          </p>
         </div>
         <div>
           {BELIEFS_BASE.map((item, i) => (

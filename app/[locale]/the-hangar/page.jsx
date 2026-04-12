@@ -1,16 +1,15 @@
-// app/[locale]/the-hangar/page.jsx
+// app/[locale]/compare/page.jsx
 //
 // Pure server component — no 'use client', zero external dependencies.
 // Bilingual EN + ZH — all text driven from COPY object below.
 //
-// Hero bg: /public/thehangar-book-bg.jpeg (local)
-//   objectPosition: '70% center' — anchors book detail to right.
-//   Single unified overlay (no separate mobile/desktop divs) for
-//   consistent rendering across all breakpoints.
-//   Opacity reduced 15% from original: 0.72 → 0.47 → 0.26 gradient.
+// Hero bg: /public/compare-desk-bg.jpeg (local — swap to production asset)
+//   objectPosition: '60% center'
+//   Single unified overlay, consistent across breakpoints.
 //
-// Hero layout: matches program/page.jsx and homepage —
-//   section has no horizontal padding; container-section on content div.
+// Page purpose: Compare / Why DODO Learning
+//   Positions DODO Learning against tutoring centres, ESL programs,
+//   and test-prep — without deficit framing or "we don't" as default voice.
 
 import Link from 'next/link'
 import { notFound }                    from 'next/navigation'
@@ -20,11 +19,11 @@ import { buildMetadata }               from '@/lib/metadata'
 export async function generateMetadata({ params }) {
   const { locale } = await params
   const meta = (COPY[locale] ?? COPY.en).meta
-  return buildMetadata({ locale, title: meta.title, description: meta.description, path: '/the-hangar' })
+  return buildMetadata({ locale, title: meta.title, description: meta.description, path: '/compare' })
 }
 
 // ─────────────────────────────────────────────────────────────
-// PRIMITIVES
+// PRIMITIVES  (unchanged from hangar/page.jsx)
 // ─────────────────────────────────────────────────────────────
 function Eyebrow({ children, center = false, dark = false }) {
   return (
@@ -60,18 +59,18 @@ function LoopDiagram({ locale = 'en' }) {
         <path d="M40 200 A160 160 0 0 1 200 40"   stroke="#b7b5fe" strokeWidth="2.5" opacity="0.35" strokeLinecap="round" />
         <circle cx="200" cy="40"  r="36" fill="#F5F5FF" stroke="#b7b5fe" strokeWidth="2" />
         <text x="200" y="37"  textAnchor="middle" fill="#0E0E12" fontSize="12" fontWeight="700" fontFamily="DM Sans, sans-serif">READ</text>
-        {locale === 'zh' && <text x="200" y="53"  textAnchor="middle" fill="#0E0E12" fontSize="9"  opacity="0.4"  fontFamily="Noto Sans SC, sans-serif">\u9605\u8bfb</text>}
+        {locale === 'zh' && <text x="200" y="53"  textAnchor="middle" fill="#0E0E12" fontSize="9"  opacity="0.4"  fontFamily="Noto Sans SC, sans-serif">阅读</text>}
         <circle cx="360" cy="200" r="36" fill="#F5F5FF" stroke="#b7b5fe" strokeWidth="2" />
         <text x="360" y="197" textAnchor="middle" fill="#0E0E12" fontSize="12" fontWeight="700" fontFamily="DM Sans, sans-serif">THINK</text>
-        {locale === 'zh' && <text x="360" y="213" textAnchor="middle" fill="#0E0E12" fontSize="9"  opacity="0.4"  fontFamily="Noto Sans SC, sans-serif">\u601d\u8003</text>}
+        {locale === 'zh' && <text x="360" y="213" textAnchor="middle" fill="#0E0E12" fontSize="9"  opacity="0.4"  fontFamily="Noto Sans SC, sans-serif">思考</text>}
         <circle cx="200" cy="360" r="36" fill="#F5F5FF" stroke="#F5C842" strokeWidth="2" />
         <text x="200" y="357" textAnchor="middle" fill="#0E0E12" fontSize="12" fontWeight="700" fontFamily="DM Sans, sans-serif">SPEAK</text>
-        {locale === 'zh' && <text x="200" y="373" textAnchor="middle" fill="#0E0E12" fontSize="9"  opacity="0.4"  fontFamily="Noto Sans SC, sans-serif">\u8868\u8fbe</text>}
+        {locale === 'zh' && <text x="200" y="373" textAnchor="middle" fill="#0E0E12" fontSize="9"  opacity="0.4"  fontFamily="Noto Sans SC, sans-serif">表达</text>}
         <circle cx="40"  cy="200" r="36" fill="#F5F5FF" stroke="#b7b5fe" strokeWidth="2" />
         <text x="40"  y="197" textAnchor="middle" fill="#0E0E12" fontSize="12" fontWeight="700" fontFamily="DM Sans, sans-serif">WRITE</text>
-        {locale === 'zh' && <text x="40"  y="213" textAnchor="middle" fill="#0E0E12" fontSize="9"  opacity="0.4"  fontFamily="Noto Sans SC, sans-serif">\u5199\u4f5c</text>}
+        {locale === 'zh' && <text x="40"  y="213" textAnchor="middle" fill="#0E0E12" fontSize="9"  opacity="0.4"  fontFamily="Noto Sans SC, sans-serif">写作</text>}
         <text x="200" y="193" textAnchor="middle" fill="#0E0E12" fontSize="13" fontWeight="700" fontFamily="DM Sans, sans-serif" opacity="0.6">THE LOOP</text>
-        {locale === 'zh' && <text x="200" y="210" textAnchor="middle" fill="#b7b5fe" fontSize="10" fontFamily="Noto Sans SC, sans-serif" opacity="0.5">\u5b66\u4e60\u95ed\u73af</text>}
+        {locale === 'zh' && <text x="200" y="210" textAnchor="middle" fill="#b7b5fe" fontSize="10" fontFamily="Noto Sans SC, sans-serif" opacity="0.5">学习闭环</text>}
       </svg>
     </div>
   )
@@ -88,182 +87,275 @@ function Section({ bg = 'dark', className = '', children, id }) {
 }
 
 // ─────────────────────────────────────────────────────────────
-// BILINGUAL CONTENT
+// BILINGUAL CONTENT — COMPARE PAGE
 // ─────────────────────────────────────────────────────────────
 const COPY = {
   en: {
     meta: {
-      title:       'What Is The Hangar? Navigator-Supported Community Between DODO Sessions \u2014 DODO Learning',
-      description: 'The Hangar is the Navigator-supported study community included in every DODO 16-Week Program enrollment \u2014 for Chinese families in Canada and the US. Where The Loop becomes a habit between sessions. Not homework help. The environment.',
+      title:       'Why DODO Learning — How It Differs From Tutoring, ESL, and Test-Prep | DODO Learning',
+      description: 'DODO Learning is a cognitive development program for Chinese immigrant families in Canada and the US — not a tutoring centre, not an ESL program, not test-prep. Here is exactly what makes it structurally different, and why that difference compounds over 16 weeks.',
     },
+
     s1: {
-      eyebrow: 'The Hangar',
-      h1a:     'What keeps a bilingual thinking program\u00a0',
-      h1b:     'working between sessions?',
-      h1c:     '',
-      sub:     'Not homework help. Not a study hall. For Chinese families in Canada and the US \u2014 The Hangar is the Navigator-supported community where The Loop becomes a habit.',
+      eyebrow: 'Why DODO Learning',
+      h1a:     'Every English program promises\u00a0',
+      h1b:     'progress.',
+      h1c:     '\u00a0One of them builds the thinker.',
+      sub:     'For Chinese immigrant families in Canada and the US — this is what makes DODO Learning structurally different from every other option available to your child.',
     },
+
     s2: {
-      pull:     'The Hangar is not where students go when they are stuck. It is where students go when they are\u00a0',
-      pullSpan: 'ready to go further',
-      pullEnd:  '.',
+      pull:     'Most programs teach your child to answer the question correctly.\u00a0',
+      pullSpan: 'DODO Learning trains them to ask a better one.',
+      pullEnd:  '',
     },
+
     s3: {
-      eyebrow: 'What It Is',
-      h2:      "Three things The Hangar is \u2014 that nothing else in your child\u2019s week is.",
+      eyebrow: 'The Category Difference',
+      h2:      'Three comparisons that clarify what DODO Learning actually is.',
       cols: [
-        { question: 'What actually happens here?',  title: 'Navigator-supported sessions',    body: 'Structured, not supervised. A Navigator poses the question \u2014 students do the thinking. Nothing is passive.' },
-        { question: 'Who else is in The Hangar?',   title: 'A cohort at the same Loop stage', body: 'Every student in the room is navigating two languages and the same phase of The Loop. The shared context is the point.' },
-        { question: 'What does it produce?',         title: 'Between-session momentum',        body: 'The Hangar is what turns 16 weeks into a system instead of a schedule. It is where the compounding begins.' },
+        {
+          question: 'vs. Tutoring centres & ESL programs',
+          title:    'Cognitive development\u00a0— not language practice',
+          body:     'Tutoring centres fix homework. ESL programs build conversational fluency. DODO Learning develops the reasoning architecture that makes your child capable of reading dense analytical prose, arguing a position with textual evidence, and writing with precision. Different category. Different outcome.',
+        },
+        {
+          question: 'vs. Grade-level school support',
+          title:    'Mastery standard\u00a0— not grade compliance',
+          body:     'School English is calibrated to the average. DODO Learning\u2019s program is grounded in the principles of the MCT Language Arts framework\u00a0\u2014 one of the most rigorous classical ELA programs in North America, built for students capable of genuine mastery. Your child is measured against their own Lexile ceiling, not a classroom mean.',
+        },
+        {
+          question: 'vs. Test-prep companies',
+          title:    'A 16-week arc\u00a0— not a score for next month',
+          body:     'Test-prep optimises for a single exam window. The 16-Week Program builds the cognitive capacity that produces strong results as a natural byproduct\u00a0\u2014 because a student who can read complexity, synthesise evidence, and write with intention will perform on any assessment they face.',
+        },
       ],
     },
+
     s4: {
       eyebrow:         'The Methodology',
-      h2:              'The Loop runs in sessions. The Hangar keeps it running between them.',
-      caption:         'A student who only works The Loop during sessions will plateau at the pace of one session per week. A student who lives inside The Hangar between sessions compounds. The Loop becomes instinct, not instruction.',
+      h2:              'What separates DODO Learning is not the curriculum. It\u2019s The Loop.',
+      caption:         'Read \u2192 Think \u2192 Speak \u2192 Write. Every session follows this exact sequence. Every stage is assessed. The Loop is not a teaching method\u00a0\u2014 it is a compounding system. A student who runs The Loop with a Navigator across 16 weeks does not simply improve their English. They rebuild how they process complexity. That is the difference that becomes visible a decade later.',
       methodologyLink: 'Read the full methodology \u2192',
     },
+
     s5: {
-      eyebrow:      'From the Founder',
-      h2:           'Why The Hangar exists \u2014 and why nothing else does what it does.',
-      sub:          'Unscripted. Eight minutes. The concept in full.',
-      founderName:  'Sarah Chen \u2014 Founder & Lead Navigator',
-      founderNote:  'Video embed \u2014 replace with production URL',
+      eyebrow:     'From the Founder',
+      h2:          'Why we built DODO Learning\u00a0\u2014 and what we decided we would never become.',
+      sub:         'Unscripted. Eight minutes. The decision in full.',
+      founderName: 'Sarah Chen \u2014 Founder & Lead Navigator',
+      founderNote: 'Video embed \u2014 replace with production URL',
     },
+
     s6: {
-      eyebrow:        'Navigator Presence',
-      h2:             'The same Navigator. In The Hangar. Knowing exactly where your child is.',
+      eyebrow: 'The Navigator Difference',
+      h2:      'A Navigator is not a tutor. Here is exactly what that means.',
       points: [
-        { label: 'Same Navigator',      body: "The Navigator in The Hangar is not a moderator or a support assistant. It is the same Navigator from your child\u2019s session \u2014 with the same Lexile baseline, the same 6+1 Trait profile, the same session notes." },
-        { label: 'Calibrated feedback', body: "Every comment in The Hangar references where that specific student is in The Loop. Not generic encouragement \u2014 a named trait, a specific score, a precise next move." },
-        { label: 'Not generic',         body: "A Navigator does not copy and paste feedback. When they respond to a student\u2019s writing draft in The Hangar, they are responding to that draft \u2014 the specific sentence that needs to move, the specific score that changes if it does." },
-        { label: 'Response time',       body: 'Hangar responses are delivered within 6 hours on session days and 12 hours on off days.' },
+        {
+          label: 'Longitudinal knowledge',
+          body:  'A session-by-session tutor meets your child fresh each time. A Navigator carries the full arc\u00a0\u2014 your child\u2019s Lexile baseline, their 6+1 Trait profile from week one, the specific sentence from three sessions ago that still needs to move. That context compounds. The insight it produces cannot be replicated in a one-off session.',
+        },
+        {
+          label: 'A better question\u00a0\u2014 not a faster answer',
+          body:  'The Navigator\u2019s first move after your child responds is always a follow-up question\u00a0\u2014 never an evaluation. This is the structural difference between developing a thinker and training a responder. One builds capacity. The other builds dependence.',
+        },
+        {
+          label: 'Calibrated feedback\u00a0\u2014 not general praise',
+          body:  'Every Navigator response references a specific 6+1 Trait, a specific score, and a specific next move. Not \u201cgood job\u201d\u00a0\u2014 \u201cyour Ideas trait moved from a 2 to a 3 because of this sentence. A 4 requires this.\u201d Your child always knows exactly where they are and what a higher score requires of them.',
+        },
+        {
+          label: 'One Navigator. The full 16-week arc.',
+          body:  'Your child\u2019s Navigator is with them from initial Lexile assessment to final 6+1 Trait evaluation. One relationship. One standard. One set of eyes on every draft, every oral defence, every argument. The relationship itself is part of the program.',
+        },
       ],
       navigatorsLink: 'Meet the Navigators \u2192',
     },
+
     s7: {
-      eyebrow: 'The Cohort',
-      h2:      "Who else is in The Hangar \u2014 and why it matters that they\u2019re there.",
+      eyebrow: 'What Progress Looks Like Here',
+      h2:      'Measurable, specific, and felt\u00a0\u2014 versus everywhere else.',
       cols: [
-        { num: '01', title: 'Same stage, not same age',     body: 'Cohorts are grouped by Loop phase and Lexile level \u2014 not by school year. A Grade 5 and a Grade 7 student at the same Lexile are in the same conversation.' },
-        { num: '02', title: 'Bilingual by design',          body: 'Every student in the cohort is navigating two languages simultaneously. The shared experience is not incidental \u2014 it is the foundation of what they build together.' },
-        { num: '03', title: 'Belonging before performance', body: 'The Hangar is not a place to prove yourself. It is a place to build yourself \u2014 in a room where everyone else is doing the same thing, in the same two languages.' },
+        {
+          num:   '01',
+          title: 'Lexile\u00a0\u2014 not letter grades',
+          body:  'Lexile 620 to Lexile 790 in 16 weeks is a verifiable fact. A letter grade is a school\u2019s assessment of compliance against a class average. DODO Learning measures reading complexity\u00a0\u2014 the actual cognitive demand of the texts your child can independently handle\u00a0\u2014 at entry, at the midpoint, and at completion.',
+        },
+        {
+          num:   '02',
+          title: '6+1 Traits\u00a0\u2014 not impressions',
+          body:  'Writing is scored across seven specific traits: Ideas, Organization, Voice, Word Choice, Sentence Fluency, Conventions, Presentation. Your child knows which trait moved, by how much, and exactly what a higher score requires. Progress is never vague here.',
+        },
+        {
+          num:   '03',
+          title: 'A committed arc\u00a0\u2014 not rolling enrolment',
+          body:  'The 16-Week Program has a beginning, a measurable midpoint, and a confirmed result. Not a monthly subscription. Not open enrolment. A structure\u00a0\u2014 because compounding only works when the work is continuous and the Navigator\u2019s knowledge accumulates.',
+        },
       ],
     },
+
     s8: {
-      eyebrow: 'Student Voice',
-      h2:      'In their words \u2014 not ours.',
+      eyebrow: 'In Their Words',
+      h2:      'Students who came from somewhere else\u00a0\u2014 and what changed.',
       voices: [
         {
-          quote:  "I used to think I had to wait until my session to ask questions. Now I post my draft in The Hangar and get feedback before the session even starts. It\u2019s like having an extra session every week except it\u2019s on my schedule.",
-          grade:  'Grade 6',
-          city:   'Vancouver',
-          weeks:  '8 weeks in program',
-          detail: 'Lexile 640 \u2192 720 at week 8 midpoint \u00b7 6+1 Ideas: 2 \u2192 4 \u00b7 Draft posted at 10pm, calibrated feedback by morning',
+          quote:  'I did three years of English tutoring before this. I could answer the reading comprehension questions but I couldn\u2019t actually tell you what the chapter meant or why it mattered. The first time my Navigator asked me to defend my interpretation, I had nothing. Sixteen weeks later I could argue for two pages.',
+          grade:  'Grade 7',
+          city:   'Calgary',
+          weeks:  '16-week program, completed',
+          detail: 'Lexile 590 \u2192 780 \u00b7 6+1 Ideas: 1 \u2192 4 \u00b7 6+1 Organization: 2 \u2192 4 \u00b7 Entered from two-year tutoring programme',
         },
         {
-          quote:  "There\u2019s this kid in my cohort who\u2019s in Grade 9 but we\u2019re at the same Lexile. We both struggle with the same stuff and help each other. Nobody at my school gets what it\u2019s like doing this in two languages.",
-          grade:  'Grade 7',
-          city:   'Markham',
-          weeks:  '12 weeks in program',
-          detail: 'Lexile 710 \u2192 870 at week 12 \u00b7 6+1 Voice: 2 \u2192 4 \u00b7 Peer review exchange between sessions',
+          quote:  'My parents tried two ESL programs before DODO Learning. My English got more fluent but I still couldn\u2019t write an essay that said anything. Here the Navigator made me re-write the same paragraph six times. Each time I understood something I hadn\u2019t before. That\u2019s a different kind of work.',
+          grade:  'Grade 6',
+          city:   'Vancouver',
+          weeks:  '16-week program, week 14',
+          detail: 'Lexile 610 \u2192 760 at week 14 \u00b7 6+1 Voice: 1 \u2192 3 \u00b7 6+1 Word Choice: 2 \u2192 4 \u00b7 Previously enrolled in two ESL providers',
         },
       ],
     },
+
     s9: {
-      h2:           'The Hangar is included in every 16-Week Program enrollment. It is not an add-on. It is the environment.',
-      sub:          'When your child enrolls in The 16-Week Program, The Hangar is where the program lives between sessions. One Navigator. One cohort. One continuous loop.',
-      ctaPrimary:   'Book a Diagnostic Call',
+      h2:           'The Lexile assessment is where we find out if DODO Learning is the right fit for your child.',
+      sub:          'Every enrollment begins with a free Lexile reading assessment\u00a0\u2014 no commitment, no pressure. A precise starting point, because meaningful progress requires one.',
+      ctaPrimary:   'Book a Free Lexile Assessment',
       ctaSecondary: 'See the Full Program',
-      note:         'The Hangar is included in every 16-Week Program enrollment. It is not an add-on.',
+      note:         'The assessment is free. The 16-Week Program begins with a confirmed Lexile baseline.',
     },
   },
 
+  // ─────────────────────────────────────────────────────────────
+  // ZH
+  // ─────────────────────────────────────────────────────────────
   zh: {
     meta: {
-      title:       'The Hangar\u662f\u4ec0\u4e48\uff1f\u8bfe\u7a0b\u95f4\u9694\u7684Navigator\u652f\u6301\u793e\u533a \u2014 DODO Learning',
-      description: 'The Hangar\u662f\u6bcf\u4e2a16\u5468\u9879\u76ee\u6240\u5305\u542b\u7684Navigator\u652f\u6301\u5b66\u4e60\u793e\u533a\u2014\u2014\u9762\u5411\u52a0\u62ff\u5927\u548c\u7f8e\u56fd\u7684\u534e\u8bed\u5bb6\u5ead\u3002The Loop\u5728\u8bfe\u7a0b\u4e4b\u95f4\u6301\u7eed\u8fd0\u884c\u7684\u5730\u65b9\u3002\u4e0d\u662f\u4f5c\u4e1a\u8f85\u5bfc\u2014\u2014\u800c\u662f\u5b66\u4e60\u73af\u5883\u672c\u8eab\u3002',
+      title:       'DODO Learning有什么不同——与辅导班、ESL和应试培训的本质区别 | 都学书院',
+      description: 'DODO Learning不是英文辅导班，不是ESL项目，不是应试培训。这是一个面向加拿大和美国华人家庭的英语认知发展项目。这里解释它在结构上的不同，以及这种差异如何在16周内形成复利。',
     },
+
     s1: {
-      eyebrow: 'The Hangar',
-      h1a:     '\u4ec0\u4e48\u8ba9\u53cc\u8bed\u601d\u7ef4\u8bfe\u7a0b\u5728\u00a0',
-      h1b:     '\u8bfe\u7a0b\u4e4b\u95f4\u6301\u7eed\u8fd0\u8f6c\uff1f',
-      h1c:     '',
-      sub:     '\u4e0d\u662f\u4f5c\u4e1a\u8f85\u5bfc\uff0c\u4e0d\u662f\u81ea\u4e60\u5ba4\u3002\u9762\u5411\u52a0\u62ff\u5927\u548c\u7f8e\u56fd\u7684\u534e\u8bed\u5bb6\u5ead\u2014\u2014The Hangar\u662f\u7531Navigator\u652f\u6301\u7684\u793e\u533a\uff0c\u8ba9The Loop\u6210\u4e3a\u4e60\u60ef\u3002',
+      eyebrow: '为什么是DODO Learning',
+      h1a:     '每一个英语项目都承诺\u00a0',
+      h1b:     '进步。',
+      h1c:     '\u00a0其中一个培养真正的思考者。',
+      sub:     '面向加拿大和美国的华人家庭——这是DODO Learning在结构上与您孩子所能接触到的其他所有选择的根本区别。',
     },
+
     s2: {
-      pull:     'The Hangar\u4e0d\u662f\u5b66\u751f\u9047\u5230\u56f0\u96be\u65f6\u53bb\u7684\u5730\u65b9\u3002\u5b83\u662f\u5b66\u751f\u00a0',
-      pullSpan: '\u51c6\u5907\u597d\u8d70\u5f97\u66f4\u8fdc\u65f6',
-      pullEnd:  '\u00a0\u53bb\u7684\u5730\u65b9\u3002',
+      pull:     '大多数项目教孩子如何正确回答问题。\u00a0',
+      pullSpan: 'DODO Learning训练他们提出更好的问题。',
+      pullEnd:  '',
     },
+
     s3: {
-      eyebrow: '\u5b83\u662f\u4ec0\u4e48',
-      h2:      'The Hangar\u62e5\u6709\u4e09\u79cd\u7279\u8d28\u2014\u2014\u60a8\u5b69\u5b50\u4e00\u5468\u4e2d\u7684\u5176\u4ed6\u4efb\u4f55\u5730\u65b9\u90fd\u6ca1\u6709\u3002',
+      eyebrow: '类别差异',
+      h2:      '三组对比，说清楚DODO Learning究竟是什么。',
       cols: [
-        { question: '\u8fd9\u91cc\u5b9e\u9645\u4e0a\u53d1\u751f\u4ec0\u4e48\uff1f',  title: 'Navigator\u652f\u6301\u7684\u5b66\u4e60',   body: '\u6709\u7ed3\u6784\uff0c\u800c\u975e\u76d1\u7763\u3002Navigator\u63d0\u51fa\u95ee\u9898\u2014\u2014\u5b66\u751f\u5b8c\u6210\u601d\u8003\u3002\u6ca1\u6709\u88ab\u52a8\u73af\u8282\u3002' },
-        { question: 'The Hangar\u91cc\u8fd8\u6709\u8c01\uff1f',                       title: '\u5904\u4e8e\u540c\u4e00Loop\u9636\u6bb5\u7684\u540c\u4f34', body: '\u623f\u95f4\u91cc\u7684\u6bcf\u4f4d\u5b66\u751f\u90fd\u5728\u540c\u65f6\u9a7e\u9a6d\u4e24\u79cd\u8bed\u8a00\uff0c\u5e76\u5904\u4e8eThe Loop\u7684\u540c\u4e00\u9636\u6bb5\u3002\u5171\u540c\u7684\u80cc\u666f\u5c31\u662f\u610f\u4e49\u6240\u5728\u3002' },
-        { question: '\u5b83\u80fd\u4ea7\u751f\u4ec0\u4e48\uff1f',                     title: '\u8bfe\u7a0b\u95f4\u7684\u6301\u7eed\u52a8\u529b',       body: 'The Hangar\u5c06\u516816\u5468\u53d8\u6210\u4e00\u4e2a\u7cfb\u7edf\uff0c\u800c\u975e\u4e00\u4e2a\u65e5\u7a0b\u8868\u3002\u590d\u5229\u5c31\u4ece\u8fd9\u91cc\u5f00\u59cb\u3002' },
+        {
+          question: '对比辅导班和ESL项目',
+          title:    '认知发展\u00a0——\u00a0不是语言练习',
+          body:     '辅导班解决当天的作业。ESL项目建立日常会话流利度。DODO Learning构建的是推理架构——让孩子能够阅读密度较高的分析性文章、用文本证据为观点辩护、以精准语言完成写作。这是不同的类别，也是不同的结果。',
+        },
+        {
+          question: '对比年级水平的学校支持',
+          title:    '掌握标准\u00a0——\u00a0不是年级合规',
+          body:     '学校英语以平均水平为基准。DODO Learning的课程以MCT语言艺术框架的理念为核心参照——北美最严格的经典ELA课程之一，专为有能力真正掌握语言的学生设计。孩子以自身的Lexile上限为衡量标准，而非班级平均值。',
+        },
+        {
+          question: '对比应试培训机构',
+          title:    '16周完整弧线\u00a0——\u00a0不是下个月的分数',
+          body:     '应试培训为单次考试窗口优化。16周项目构建的认知能力，会自然产生优异的考试成绩——因为一个能读懂复杂文本、综合证据、有意图地写作的学生，面对任何考核都能表现出色。',
+        },
       ],
     },
+
     s4: {
-      eyebrow:         '\u6559\u5b66\u65b9\u6cd5',
-      h2:              'The Loop\u5728\u8bfe\u7a0b\u4e2d\u8fd0\u884c\u3002The Hangar\u8ba9\u5b83\u5728\u8bfe\u7a0b\u4e4b\u95f4\u6301\u7eed\u8fd0\u884c\u3002',
-      caption:         '\u53ea\u5728\u8bfe\u7a0b\u671f\u95f4\u8fdb\u884cThe Loop\u7684\u5b66\u751f\uff0c\u4f1a\u4ee5\u6bcf\u5468\u4e00\u8282\u8bfe\u7684\u8282\u594f\u505c\u6ede\u4e0d\u524d\u3002\u800c\u6d3b\u8dc3\u5728The Hangar\u4e2d\u7684\u5b66\u751f\u5219\u4f1a\u5b9e\u73b0\u590d\u5229\u589e\u957f\u3002The Loop\u4ece\u6307\u4ee4\u53d8\u6210\u672c\u80fd\u3002',
-      methodologyLink: '\u9605\u8bfb\u5b8c\u6574\u6559\u5b66\u65b9\u6cd5 \u2192',
+      eyebrow:         '教学方法',
+      h2:              '区分DODO Learning的不是课程内容。是The Loop。',
+      caption:         '阅读 → 思考 → 表达 → 写作。每一节课都遵循这个确切的顺序。每个阶段都有评估。The Loop不是一种教学方法——它是一个复利系统。一个与Navigator共同完成16周The Loop的学生，不只是英语有所提升。他们重建了处理复杂性的方式。这种差异，十年后才真正显现。',
+      methodologyLink: '阅读完整教学方法 →',
     },
+
     s5: {
-      eyebrow:     '\u521b\u59cb\u4eba\u8bf4',
-      h2:          'The Hangar\u4e3a\u4f55\u5b58\u5728\u2014\u2014\u4ee5\u53ca\u4e3a\u4ec0\u4e48\u6ca1\u6709\u5176\u4ed6\u4e8b\u7269\u80fd\u505a\u5230\u5b83\u6240\u505a\u7684\u3002',
-      sub:         '\u65e0\u811a\u672c\u3002\u516b\u5206\u949f\u3002\u5b8c\u6574\u9610\u8ff0\u8fd9\u4e2a\u6982\u5ff5\u3002',
-      founderName: 'Sarah Chen \u2014 \u521b\u59cb\u4eba & \u9996\u5e2dNavigator',
-      founderNote: '\u89c6\u9891\u94fe\u63a5\u2014\u2014\u8bf7\u66ff\u6362\u4e3a\u6b63\u5f0fURL',
+      eyebrow:     '创始人说',
+      h2:          '我们为什么创立DODO Learning\u00a0——\u00a0以及我们决定永远不会成为什么。',
+      sub:         '无脚本。八分钟。完整阐述这个决定。',
+      founderName: 'Sarah Chen — 创始人 & 首席Navigator',
+      founderNote: '视频链接——请替换为正式URL',
     },
+
     s6: {
-      eyebrow: 'Navigator\u7684\u5b58\u5728',
-      h2:      '\u540c\u4e00\u4f4d Navigator\u3002\u5728The Hangar\u4e2d\u3002\u786e\u5207\u77e5\u9053\u60a8\u7684\u5b69\u5b50\u5728\u54ea\u91cc\u3002',
+      eyebrow: 'Navigator的不同',
+      h2:      'Navigator不是辅导老师。这是确切的区别所在。',
       points: [
-        { label: '\u540c\u4e00\u4f4dNavigator', body: 'The Hangar\u4e2d\u7684Navigator\u4e0d\u662f\u4e3b\u6301\u4eba\u6216\u652f\u6301\u52a9\u624b\u3002\u4ed6\u662f\u60a8\u5b69\u5b50\u8bfe\u7a0b\u4e2d\u7684\u540c\u4e00\u4f4dNavigator\u2014\u2014\u5e26\u7740\u76f8\u540c\u7684Lexile\u57fa\u7ebf\u3001\u76f8\u540c\u76846+1\u7279\u8d28\u6863\u6848\u3001\u76f8\u540c\u7684\u8bfe\u7a0b\u7b14\u8bb0\u3002' },
-        { label: '\u6709\u9488\u5bf9\u6027\u7684\u53cd\u9988', body: 'The Hangar\u4e2d\u7684\u6bcf\u6761\u8bc4\u8bba\u90fd\u6307\u5411\u8be5\u5b66\u751f\u5728The Loop\u4e2d\u7684\u5177\u4f53\u4f4d\u7f6e\u3002\u4e0d\u662f\u6cdb\u6cdb\u7684\u9f13\u52b1\u2014\u2014\u800c\u662f\u5177\u540d\u7684\u7279\u8d28\u3001\u5177\u4f53\u7684\u5206\u6570\u3001\u7cbe\u51c6\u7684\u4e0b\u4e00\u6b65\u3002' },
-        { label: '\u975e\u6a21\u677f\u5316',       body: 'Navigator\u4e0d\u4f1a\u590d\u5236\u7c98\u8d34\u53cd\u9988\u3002\u5f53\u4ed6\u4eec\u5728The Hangar\u4e2d\u56de\u5e94\u5b66\u751f\u7684\u5199\u4f5c\u8349\u7a3f\u65f6\uff0c\u4ed6\u4eec\u5728\u56de\u5e94\u90a3\u4efd\u5177\u4f53\u7684\u8349\u7a3f\u2014\u2014\u9700\u8981\u6539\u52a8\u7684\u90a3\u4e2a\u5177\u4f53\u53e5\u5b50\uff0c\u4ee5\u53ca\u6539\u52a8\u540e\u4f1a\u53d8\u5316\u7684\u90a3\u4e2a\u5177\u4f53\u5206\u6570\u3002' },
-        { label: '\u54cd\u5e94\u65f6\u95f4',       body: '\u5728\u8bfe\u7a0b\u5f53\u5929\uff0cHangar\u7684\u53cd\u9988\u57286\u5c0f\u65f6\u5185\u9001\u8fbe\uff1b\u975e\u8bfe\u7a0b\u65e5\u5219\u572812\u5c0f\u65f6\u5185\u3002' },
+        {
+          label: '纵向知识积累',
+          body:  '按课时收费的辅导老师每次都从零开始了解你的孩子。Navigator携带的是完整的弧线——孩子的Lexile基线、从第一周起的6+1特质档案、三节课前那个仍需改进的具体句子。这些积累形成复利。它产生的洞察，无法在一次性课程中被复制。',
+        },
+        {
+          label: '更好的问题\u00a0——\u00a0而非更快的答案',
+          body:  'Navigator在孩子回答之后的第一个动作，永远是追问——从不是评价。这是培养思考者与训练应答者之间的结构性差异。一个建立能力，另一个建立依赖。',
+        },
+        {
+          label: '有针对性的反馈\u00a0——\u00a0而非泛泛的鼓励',
+          body:  'Navigator的每一条回应都指向具体的6+1特质、具体的分数、以及具体的下一步。不是"不错"——而是"你的想法特质从2分升到3分，是因为这个句子。4分要求你做到这个。"孩子永远清楚自己在哪里，以及更高分数需要什么。',
+        },
+        {
+          label: '一位Navigator。完整的16周弧线。',
+          body:  '孩子的Navigator从最初的Lexile评估陪伴到最终的6+1特质评估。一段关系，一个标准，对每一份草稿、每一次口头表达、每一个论点的全程关注。这段关系本身就是项目的组成部分。',
+        },
       ],
-      navigatorsLink: '\u8ba4\u8bc6\u5bfc\u5e08\u56e2\u961f \u2192',
+      navigatorsLink: '认识Navigator团队 →',
     },
+
     s7: {
-      eyebrow: '\u540c\u4f34\u7fa4\u4f53',
-      h2:      'The Hangar\u91cc\u8fd8\u6709\u8c01\u2014\u2014\u4ee5\u53ca\u4ed6\u4eec\u5728\u573a\u4e3a\u4ec0\u4e48\u91cd\u8981\u3002',
+      eyebrow: '进步在这里意味着什么',
+      h2:      '可量化、具体、可感知\u00a0——\u00a0与其他地方截然不同。',
       cols: [
-        { num: '01', title: '\u540c\u4e00\u9636\u6bb5\uff0c\u800c\u975e\u540c\u4e00\u5e74\u9f84', body: '\u540c\u4f34\u7fa4\u4f53\u6309Loop\u9636\u6bb5\u548cLexile\u6c34\u5e73\u5206\u7ec4\u2014\u2014\u800c\u975e\u6309\u5b66\u5e74\u3002\u4e94\u5e74\u7ea7\u548c\u4e03\u5e74\u7ea7\u7684\u5b66\u751f\u5982\u679cLexile\u76f8\u540c\uff0c\u5c31\u5728\u540c\u4e00\u6bb5\u5bf9\u8bdd\u4e2d\u3002' },
-        { num: '02', title: '\u53cc\u8bed\u7531\u8bbe\u8ba1\u800c\u751f',         body: '\u7fa4\u4f53\u4e2d\u7684\u6bcf\u4f4d\u5b66\u751f\u90fd\u5728\u540c\u65f6\u9a7e\u9a6d\u4e24\u79cd\u8bed\u8a00\u3002\u8fd9\u79cd\u5171\u540c\u7ecf\u5386\u5e76\u975e\u5076\u7136\u2014\u2014\u5b83\u662f\u4ed6\u4eec\u5171\u540c\u6784\u5efa\u7684\u57fa\u7840\u3002' },
-        { num: '03', title: '\u5f52\u5c5e\u611f\u5148\u4e8e\u8868\u73b0',         body: 'The Hangar\u4e0d\u662f\u4e00\u4e2a\u8bc1\u660e\u81ea\u5df1\u7684\u5730\u65b9\u3002\u5b83\u662f\u4e00\u4e2a\u5efa\u6784\u81ea\u5df1\u7684\u5730\u65b9\u2014\u2014\u5728\u4e00\u4e2a\u6240\u6709\u4eba\u90fd\u5728\u505a\u540c\u6837\u7684\u4e8b\u3001\u7528\u540c\u6837\u4e24\u79cd\u8bed\u8a00\u7684\u623f\u95f4\u91cc\u3002' },
+        {
+          num:   '01',
+          title: 'Lexile\u00a0——\u00a0不是字母成绩',
+          body:  '16周内从Lexile 620到790，是可核实的事实。字母成绩是学校对照班级平均水平的合规评估。DODO Learning衡量的是阅读复杂度——孩子能够独立处理的文本的实际认知难度——在入学时、中期和完成时分别测量。',
+        },
+        {
+          num:   '02',
+          title: '6+1特质\u00a0——\u00a0不是模糊印象',
+          body:  '写作在七个具体特质上评分：想法、组织、声音、词汇选择、句子流畅度、规范性、呈现。孩子知道哪个特质提升了，提升了多少，以及更高分数具体要求什么。这里的进步从不含糊。',
+        },
+        {
+          num:   '03',
+          title: '有承诺的弧线\u00a0——\u00a0不是滚动报名',
+          body:  '16周项目有明确的起点、可量化的中期节点和已确认的结果。不是按月续费。不是随时入学。是一种结构——因为复利只在工作持续进行、Navigator的知识不断积累时才能发挥作用。',
+        },
       ],
     },
+
     s8: {
-      eyebrow: '\u5b66\u751f\u7684\u58f0\u97f3',
-      h2:      '\u7528\u4ed6\u4eec\u81ea\u5df1\u7684\u8bdd\u2014\u2014\u4e0d\u662f\u6211\u4eec\u7684\u3002',
+      eyebrow: '他们自己说',
+      h2:      '曾在其他地方学习过的学生\u00a0——\u00a0以及发生了什么变化。',
       voices: [
         {
-          quote:  '\u6211\u4ee5\u524d\u4ee5\u4e3a\u5fc5\u987b\u7b49\u5230\u8bfe\u7a0b\u624d\u80fd\u63d0\u95ee\u3002\u73b0\u5728\u6211\u628a\u8349\u7a3f\u53d1\u5230The Hangar\uff0c\u8bfe\u7a0b\u5f00\u59cb\u4e4b\u524d\u5c31\u80fd\u6536\u5230\u53cd\u9988\u3002\u5c31\u50cf\u6bcf\u5468\u591a\u4e86\u4e00\u8282\u8bfe\uff0c\u53ea\u662f\u6309\u6211\u81ea\u5df1\u7684\u65f6\u95f4\u5b89\u6392\u3002',
-          grade:  '\u516d\u5e74\u7ea7',
-          city:   '\u6e29\u54e5\u534e',
-          weeks:  '\u5df2\u5b8c\u6210\u7b2c8\u5468',
-          detail: 'Lexile 640 \u2192 720\uff08\u7b2c8\u5468\u4e2d\u671f\u6d4b\u8bc4\uff09\u00b76+1\u60f3\u6cd5\uff1a2\u21924\u00b7\u665a10\u70b9\u53d1\u5e03\u8349\u7a3f\uff0c\u6e05\u6668\u6536\u5230\u9488\u5bf9\u6027\u53cd\u9988',
+          quote:  '在这之前我上了三年英文辅导课。阅读理解题我会答，但我真的不知道那章讲了什么，也不知道为什么重要。第一次Navigator让我为自己的理解辩护，我完全说不出来。十六周后，我能写两页来论证。',
+          grade:  '七年级',
+          city:   '卡尔加里',
+          weeks:  '16周项目，已完成',
+          detail: 'Lexile 590 → 780 · 6+1想法：1 → 4 · 6+1组织：2 → 4 · 入学前参加过两年辅导课',
         },
         {
-          quote:  '\u6211\u7684\u7fa4\u4f53\u91cc\u6709\u4e2a\u4e5d\u5e74\u7ea7\u7684\u5b66\u751f\uff0c\u4f46\u6211\u4eecLexile\u76f8\u540c\u3002\u6211\u4eec\u5728\u540c\u6837\u7684\u5730\u65b9\u632a\u624e\uff0c\u4e92\u76f8\u5e2e\u52a9\u3002\u6211\u5b66\u6821\u91cc\u6ca1\u6709\u4eba\u80fd\u7406\u89e3\u7528\u4e24\u79cd\u8bed\u8a00\u5b66\u4e60\u662f\u4ec0\u4e48\u611f\u89c9\u3002',
-          grade:  '\u4e03\u5e74\u7ea7',
-          city:   '\u4e07\u9526\u5e02',
-          weeks:  '\u5df2\u5b8c\u6210\u7b2c12\u5468',
-          detail: 'Lexile 710 \u2192 870\uff08\u7b2c12\u5468\uff09\u00b76+1\u58f0\u97f3\uff1a2\u21924\u00b7\u8bfe\u7a0b\u95f4\u9694\u53c2\u4e0e\u4e86The Hangar\u4e2d\u7684\u540c\u4f34\u4e92\u8bc4',
+          quote:  '我妈给我试过两个ESL项目。英文是流利了，但我还是写不出一篇有观点的文章。在这里Navigator让我把同一段重写了六次。每一次我都理解了之前没理解的东西。那是一种完全不同的工作方式。',
+          grade:  '六年级',
+          city:   '温哥华',
+          weeks:  '16周项目，第14周',
+          detail: 'Lexile 610 → 760（第14周）· 6+1声音：1 → 3 · 6+1词汇选择：2 → 4 · 入学前参加过两家ESL机构',
         },
       ],
     },
+
     s9: {
-      h2:           'The Hangar\u5305\u542b\u5728\u6bcf\u4e00\u987916\u5468\u9879\u76ee\u6ce8\u518c\u4e2d\u3002\u5b83\u4e0d\u662f\u9644\u52a0\u9879\u76ee\u3002\u5b83\u662f\u5b66\u4e60\u73af\u5883\u672c\u8eab\u3002',
-      sub:          '\u5f53\u60a8\u7684\u5b69\u5b50\u6ce8\u518c16\u5468\u9879\u76ee\u65f6\uff0cThe Hangar\u5c31\u662f\u8bfe\u7a0b\u4e4b\u95f4\u9879\u76ee\u6240\u5728\u7684\u5730\u65b9\u3002\u4e00\u4f4dNavigator\u3002\u4e00\u4e2a\u540c\u4f34\u7fa4\u4f53\u3002\u4e00\u4e2a\u6301\u7eed\u7684\u95ed\u73af\u3002',
-      ctaPrimary:   '\u9884\u7ea6\u8bfa\u65ad\u548c\u8be2',
-      ctaSecondary: '\u67e5\u770b\u5b8c\u6574\u9879\u76ee',
-      note:         'The Hangar\u5305\u542b\u5728\u6bcf\u4e00\u9879 16\u5468\u9879\u76ee\u6ce8\u518c\u4e2d\u3002\u5b83\u4e0d\u662f\u9644\u52a0\u9879\u76ee\u3002',
+      h2:           'Lexile评估是我们判断DODO Learning是否适合您孩子的起点。',
+      sub:          '每次入学都从免费Lexile阅读评估开始——无需承诺，没有压力。一个精准的起点，因为有意义的进步需要一个起点。',
+      ctaPrimary:   '预约免费Lexile评估',
+      ctaSecondary: '查看完整项目',
+      note:         '评估免费。16周项目在确认Lexile基线后正式开始。',
     },
   },
 }
@@ -272,7 +364,7 @@ export function generateStaticParams() {
   return localeParams()
 }
 
-export default async function TheHangarPage({ params }) {
+export default async function ComparePage({ params }) {
   const { locale } = await params
   if (!isValidLocale(locale)) notFound()
   const c = COPY[locale] ?? COPY.en
@@ -295,14 +387,14 @@ export default async function TheHangarPage({ params }) {
         <div className="absolute inset-0 overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/thehangar-book-bg.jpeg"
+            src="/compare-desk-bg.jpeg"
             alt=""
             aria-hidden="true"
             style={{
               width:          '100%',
               height:         '100%',
               objectFit:      'cover',
-              objectPosition: '70% center',
+              objectPosition: '60% center',
               display:        'block',
             }}
           />
@@ -349,7 +441,7 @@ export default async function TheHangarPage({ params }) {
         </div>
       </section>
 
-      {/* S2 THE ONE REFRAME */}
+      {/* S2 THE REFRAME */}
       <section className="px-6 py-24 md:py-32" style={{ backgroundColor: '#0E0E12' }}>
         <div className="max-w-7xl mx-auto">
           <p className="text-center max-w-[860px] mx-auto" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: 'clamp(26px, 4vw, 48px)', color: '#F0F0F0', lineHeight: 1.3, letterSpacing: '-0.025em' }}>
@@ -358,7 +450,7 @@ export default async function TheHangarPage({ params }) {
         </div>
       </section>
 
-      {/* S3 WHAT THE HANGAR IS */}
+      {/* S3 THE CATEGORY DIFFERENCE */}
       <Section bg="dark">
         <div className="text-center mb-16">
           <Eyebrow dark center>{c.s3.eyebrow}</Eyebrow>
@@ -375,7 +467,7 @@ export default async function TheHangarPage({ params }) {
         </div>
       </Section>
 
-      {/* S4 INSIDE THE LOOP — adds methodology link */}
+      {/* S4 THE LOOP — METHODOLOGY */}
       <Section bg="whisper">
         <div className="text-center mb-8">
           <Eyebrow center>{c.s4.eyebrow}</Eyebrow>
@@ -384,7 +476,6 @@ export default async function TheHangarPage({ params }) {
         <LoopDiagram locale={locale} />
         <div className="text-center mt-8">
           <p className="max-w-[640px] mx-auto" style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '16px', color: '#212830', lineHeight: 1.7 }}>{c.s4.caption}</p>
-          {/* Methodology link — new */}
           <div style={{ marginTop: '1.25rem' }}>
             <Link
               href={`/${locale}/methodology`}
@@ -424,14 +515,14 @@ export default async function TheHangarPage({ params }) {
         </div>
       </section>
 
-      {/* S6 NAVIGATOR PRESENCE — adds navigators link */}
+      {/* S6 NAVIGATOR DIFFERENCE */}
       <Section bg="whisper">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="https://images.unsplash.com/photo-1688646545293-2755ea04cd8e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080&q=80"
-              alt="Navigator providing personalised feedback on a student's writing"
+              alt="Navigator providing calibrated, longitudinal feedback on a student draft"
               className="rounded-lg w-full"
               style={{ display: 'block' }}
             />
@@ -446,7 +537,6 @@ export default async function TheHangarPage({ params }) {
                 </p>
               ))}
             </div>
-            {/* Navigators link — new */}
             <div style={{ marginTop: '1.5rem' }}>
               <Link
                 href={`/${locale}/navigators`}
@@ -459,7 +549,7 @@ export default async function TheHangarPage({ params }) {
         </div>
       </Section>
 
-      {/* S7 THE COHORT */}
+      {/* S7 MEASUREMENT */}
       <Section bg="dark">
         <div className="text-center mb-16">
           <Eyebrow dark center>{c.s7.eyebrow}</Eyebrow>
