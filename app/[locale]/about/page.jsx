@@ -3,6 +3,7 @@
 // /about — Bilingual EN + ZH.
 // BilingualHeading already shows both languages simultaneously (unchanged).
 // Body copy, section labels, and CTAs are locale-driven via COPY object.
+// BACKGROUND IMAGE: place bg-about-hero.webp and bg-about-hero.jpg in /public/ (root)
 
 import Link from 'next/link'
 import { notFound }                    from 'next/navigation'
@@ -220,7 +221,15 @@ function Hero({ c, locale }) {
     <section
       className="relative overflow-hidden"
       aria-labelledby="about-hero-heading"
-      style={{ backgroundColor: '#0E0E12', minHeight: '100dvh', display: 'flex', alignItems: 'center' }}
+      style={{
+        minHeight: '100dvh',
+        display: 'flex',
+        alignItems: 'center',
+        backgroundColor: '#0E0E12',
+        backgroundImage: 'url(/bg-about-hero.webp)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
     >
       <div
         aria-hidden="true"
@@ -253,7 +262,7 @@ function Hero({ c, locale }) {
             </h1>
             {locale === 'zh' && (
               <p className="mb-8" style={{ fontFamily: 'var(--font-cjk)', fontSize: '20px', color: 'rgba(183,181,254,0.5)' }}>
-                \u4f1a\u8bf4\u82f1\u8bed\u7684\u5b69\u5b50\uff0c\u548c\u7528\u82f1\u8bed\u601d\u8003\u7684\u5b69\u5b50\uff0c\u662f\u4e0d\u4e00\u6837\u7684\u3002
+                会说英语的孩子，和用英语思考的孩子，是不一样的。
               </p>
             )}
             <p style={{ fontSize: '16px', lineHeight: 1.9, color: 'rgba(240,240,240,0.5)', maxWidth: '32rem' }}>
@@ -311,7 +320,7 @@ function TheNameSection({ c, locale }) {
       <div className="container-section relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <BilingualHeading en="The Name" cn="\u540d\u5b57\u7684\u6545\u4e8b" light locale={locale} />
+            <BilingualHeading en="The Name" cn="名字的故事" light locale={locale} />
             <div className="mt-10 space-y-5" style={{ fontSize: '17px', lineHeight: 1.9, color: 'rgba(240,240,240,0.7)' }}>
               <p>{c.name.p1}<strong style={{ color: '#F0F0F0' }}>{c.name.p1strong}</strong></p>
               <p>{c.name.p2}</p>
@@ -319,7 +328,7 @@ function TheNameSection({ c, locale }) {
             </div>
             {locale === 'zh' && (
               <p className="mt-6" style={{ fontFamily: 'var(--font-cjk)', fontSize: '15px', lineHeight: 1.8, color: 'rgba(183,181,254,0.5)' }}>
-                DODO\uff0c\u6e90\u4e8e\u201c\u505a\u201d\u4e0e\u201c\u518d\u505a\u201d\u3002\u5b66\u4e60\u4e0d\u662f\u88ab\u52a8\u7684\u5438\u6536\uff0c\u800c\u662f\u4e3b\u52a8\u7684\u884c\u52a8\u4e0e\u53cd\u590d\u7684\u6df1\u5316\u3002
+                DODO，源于"做"与"再做"。学习不是被动的吸收，而是主动的行动与反复的深化。
               </p>
             )}
           </div>
@@ -349,19 +358,12 @@ function TheNameSection({ c, locale }) {
   )
 }
 
-// ── WhatWeBelieve ─────────────────────────────────────────────
-// Fix: body text was rendering twice — once inside the belief column
-// (md:hidden) and once as a separate grid column (hidden md:block).
-// At certain viewport widths both were visible simultaneously.
-// Replaced with a single <p> that always renders. The flex-col mobile
-// layout stacks it naturally; the 3-column grid places it in column 3
-// on desktop. No duplication possible.
 function WhatWeBelieve({ c, locale }) {
   return (
     <section className="section-light" aria-labelledby="beliefs-heading">
       <div className="container-section">
         <div className="mb-20 text-center">
-          <BilingualHeading en="What We Believe" cn="\u6211\u4eec\u7684\u4fe1\u5ff5" center locale={locale} />
+          <BilingualHeading en="What We Believe" cn="我们的信念" center locale={locale} />
         </div>
         <div>
           {BELIEFS_BASE.map((item, i) => (
@@ -371,10 +373,7 @@ function WhatWeBelieve({ c, locale }) {
               style={{ borderBottom: i < BELIEFS_BASE.length - 1 ? '1px solid rgba(14,14,18,0.08)' : 'none' }}
               aria-label={`Belief ${item.num}: ${item.belief}`}
             >
-              {/* flex-col on mobile, 3-col grid on md+ */}
               <div className="flex flex-col gap-4 md:grid md:grid-cols-[3rem_1fr_1fr] md:gap-8 md:items-start">
-
-                {/* Col 1: icon */}
                 <div
                   className="flex items-center justify-center shrink-0"
                   style={{ width: 44, height: 44, borderRadius: '50%', backgroundColor: 'rgba(183,181,254,0.1)', color: '#b7b5fe' }}
@@ -382,8 +381,6 @@ function WhatWeBelieve({ c, locale }) {
                 >
                   <BeliefIcon id={item.id} />
                 </div>
-
-                {/* Col 2: belief statement */}
                 <div className="min-w-0">
                   <p style={{ fontSize: '18px', fontWeight: 600, lineHeight: 1.3, color: '#0E0E12' }}>
                     &ldquo;{item.belief}&rdquo;
@@ -394,12 +391,9 @@ function WhatWeBelieve({ c, locale }) {
                     </p>
                   )}
                 </div>
-
-                {/* Col 3: body — single render, no duplication */}
                 <p style={{ fontSize: '15px', lineHeight: 1.8, color: '#2E3848' }}>
                   {c.beliefs.bodies[i]}
                 </p>
-
               </div>
             </div>
           ))}
@@ -409,14 +403,12 @@ function WhatWeBelieve({ c, locale }) {
   )
 }
 
-// ── TheLoop ───────────────────────────────────────────────────
-// Fix: adds /program link alongside existing /methodology link
 function TheLoop({ locale, c }) {
   return (
     <section className="section-dark" aria-labelledby="loop-section-heading">
       <div className="container-section">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
-          <BilingualHeading en="The Loop" cn="\u5b66\u4e60\u5faa\u73af" light locale={locale} />
+          <BilingualHeading en="The Loop" cn="学习循环" light locale={locale} />
           <p className="max-w-md" style={{ fontSize: '15px', lineHeight: 1.7, color: 'rgba(240,240,240,0.4)' }}>
             {c.loop.sub}
           </p>
@@ -453,7 +445,6 @@ function TheLoop({ locale, c }) {
           </ol>
         </div>
 
-        {/* Links: methodology (existing) + program (new) */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-12">
           <Link
             href={`/${locale}/methodology`}
@@ -478,8 +469,6 @@ function TheLoop({ locale, c }) {
   )
 }
 
-// ── WhoNavigatorsAre ──────────────────────────────────────────
-// Fix: adds navigators link after trait pills
 function WhoNavigatorsAre({ locale, c }) {
   return (
     <section className="section-light" aria-labelledby="navigators-heading">
@@ -509,7 +498,7 @@ function WhoNavigatorsAre({ locale, c }) {
             </div>
           </div>
           <div className="order-1 lg:order-2">
-            <BilingualHeading en="Who Navigators Are" cn="\u5173\u4e8e\u9886\u822a\u5458" locale={locale} />
+            <BilingualHeading en="Who Navigators Are" cn="关于领航员" locale={locale} />
             <div className="mt-8 space-y-5" style={{ fontSize: '16px', lineHeight: 1.85, color: '#2E3848' }}>
               <p>
                 {c.navigators.p1pre}
@@ -531,7 +520,6 @@ function WhoNavigatorsAre({ locale, c }) {
                 </span>
               ))}
             </div>
-            {/* Navigators link — new */}
             <div style={{ marginTop: '1.5rem' }}>
               <Link
                 href={`/${locale}/navigators`}
@@ -552,7 +540,7 @@ function FamiliesWeServe({ c, locale }) {
     <section className="section-darker" aria-labelledby="families-heading">
       <div className="container-section">
         <div className="mb-16">
-          <BilingualHeading en="The Families We Serve" cn="\u6211\u4eec\u670d\u52a1\u7684\u5bb6\u5ead" light center locale={locale} />
+          <BilingualHeading en="The Families We Serve" cn="我们服务的家庭" light center locale={locale} />
         </div>
         <div className="grid lg:grid-cols-3 gap-6">
           {FAMILIES_BASE.map((family, i) => (
@@ -617,7 +605,7 @@ function ClosingStamp({ locale, c }) {
         </h2>
         {locale === 'zh' && (
           <p className="mb-6" style={{ fontFamily: 'var(--font-cjk)', fontSize: '22px', color: 'rgba(183,181,254,0.5)' }}>
-            \u4e00\u6b21\u601d\u8003\uff0c\u4e24\u79cd\u8bed\u8a00\u3002
+            一次思考，两种语言。
           </p>
         )}
         <p className="mx-auto mb-12" style={{ fontSize: '16px', lineHeight: 1.9, color: 'rgba(240,240,240,0.4)', maxWidth: '32rem' }}>
