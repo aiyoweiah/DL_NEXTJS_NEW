@@ -14,6 +14,11 @@
 //   6. Growth        — darker, Lexile scale + 6+1 Trait table
 //   7. GetStarted    — light, diagnostic CTA
 //   8. Charter       — dark, dual-CTA footer band
+//
+// BACKGROUND UPDATE — April 12 2026
+//   Hero bg: program-background.jpeg → program-background.webp
+//   Hero img: added objectPosition 'center 30%'
+//   Hero overlay: right stop 0.65 → 0.58, midpoint 50% → 45%
 
 import Link from 'next/link'
 import { notFound }                    from 'next/navigation'
@@ -358,17 +363,25 @@ function Hero({ locale, c }) {
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/program-background.jpeg"
+        src="/program-background.webp"
         alt=""
         aria-hidden="true"
-        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+        style={{
+          position:       'absolute',
+          inset:          0,
+          width:          '100%',
+          height:         '100%',
+          objectFit:      'cover',
+          objectPosition: 'center 30%',
+          display:        'block',
+        }}
       />
       <div
         aria-hidden="true"
         style={{
           position:   'absolute',
           inset:      0,
-          background: 'linear-gradient(105deg, rgba(14,14,18,0.96) 0%, rgba(14,14,18,0.88) 50%, rgba(14,14,18,0.65) 100%)',
+          background: 'linear-gradient(105deg, rgba(14,14,18,0.97) 0%, rgba(14,14,18,0.88) 45%, rgba(14,14,18,0.58) 100%)',
         }}
       />
       <div
