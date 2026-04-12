@@ -372,7 +372,7 @@ function Hero({ locale, c }) {
           width:          '100%',
           height:         '100%',
           objectFit:      'cover',
-          objectPosition: 'center top',
+          objectPosition: 'center 40%',
           display:        'block',
         }}
       />
@@ -381,7 +381,7 @@ function Hero({ locale, c }) {
         style={{
           position:   'absolute',
           inset:      0,
-          background: 'linear-gradient(105deg, rgba(14,14,18,0.97) 0%, rgba(14,14,18,0.88) 45%, rgba(14,14,18,0.58) 100%)',
+          background: 'linear-gradient(105deg, rgba(14,14,18,0.82) 0%, rgba(14,14,18,0.60) 45%, rgba(14,14,18,0.20) 100%)',
         }}
       />
       <div
