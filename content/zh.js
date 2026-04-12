@@ -10,7 +10,6 @@
 //   - Brand terms are NOT translated — use them as-is in Chinese copy:
 //     Navigators / The Hangar / The Loop / The 16-Week Program /
 //     Bilingual Thinker / Lexile / 6+1 Trait
-//   - Founding Family Program = 创始家庭计划
 //   - Tagline is always: Think Once. In Both Languages.
 //   - Numbers (Lexile scores, weeks, grade levels) are identical to EN.
 
@@ -156,15 +155,14 @@ export const program = {
       'The Hangar是DODO社区中心——由Navigator支持的学习课程、同伴讨论，以及正在构建真实能力的学生的共同身份认同。不是作业辅导，是归属感。',
   },
 
-  // 创始家庭计划 — 非促销价格。
-  // 禁止使用：Charter Enrollment、charter cohorts、charter spots、折扣、限时优惠。
+  // 咨询CTA
   foundingFamily: {
-    eyebrow: '创始家庭计划',
-    heading: '创始家庭是DODO最早的信任者。',
+    eyebrow: '诊断咨询',
+    heading: '了解您的孩子目前真正的水平。',
     body:
-      '创始家庭计划适合以创始价格承诺完整16周项目的家庭。这不是优惠价格，而是对远见的奖励——现在开放。',
-    cta:  '预留您的创始家庭名额',
-    note: '每期创始家庭名额有限，报名前需完成咨询。',
+      '咨询仅需20分钟。接待您的是Navigator，不是销售。我们测量您孩子的Lexile水平，找出确切的差距，并向您展示The 16周课程对于和您孩子情况一样的学生意味着什么。',
+    cta:  '预约咨询',
+    note: '包含免费诊断评估。无需承诺。',
   },
 }
 
@@ -284,14 +282,13 @@ export const results = {
     ctaHref: '/methodology',
   },
 
-  // 创始家庭计划 — 非促销价格。
-  // 禁止使用：Charter Enrollment、charter cohorts、charter spots、折扣、限时优惠。
+  // 咨询CTA
   foundingFamily: {
-    eyebrow: '创始家庭计划',
-    heading: '创始家庭是DODO最早的信任者。',
+    eyebrow: '诊断咨询',
+    heading: '了解您的孩子目前真正的水平。',
     body:
-      '创始家庭计划适合以创始价格承诺完整16周项目的家庭。这不是优惠价格，而是对远见的奖励——现在开放。',
-    cta: '预留您的创始家庭名额',
+      '咨询仅需20分钟。接待您的是Navigator，不是销售。我们测量您孩子的Lexile水平，找出确切的差距，并向您展示The 16周课程对于和您孩子情况一样的学生意味着什么。',
+    cta: '预约咨询',
   },
 }
 
@@ -335,7 +332,7 @@ export const consult = {
         id:    'commit',
         time:  '5分钟',
         label: '做决定',
-        body:  '如果创始家庭计划适合您的孩子，我们会说明创始价格和后续步骤。没有压力，条款清晰。',
+        body:  '如果课程适合您的孩子，我们会说明费用和后续步骤。没有压力，条款清晰。',
       },
     ],
   },
@@ -527,8 +524,6 @@ export const faq = {}
 export const navigators = {}
 
 // ── The Hangar ────────────────────────────────────────────────
-// TODO: populate when building app/[locale]/the-hangar/page.jsx
-export const theHangar = {}
 
 // ── Lexile ────────────────────────────────────────────────────
 export const lexile = {

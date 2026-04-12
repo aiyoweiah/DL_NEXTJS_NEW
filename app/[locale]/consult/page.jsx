@@ -53,7 +53,7 @@ const COPY = {
         { num: '03', label: 'Prescribe',        labelZh: '\u5236\u5b9a\u65b9\u6848', time: '5 min',
           desc: 'We describe what the first 16 weeks looks like for a student exactly like yours \u2014 with specific Lexile targets and a 6+1 Trait writing baseline.' },
         { num: '04', label: 'Decide',           labelZh: '\u505a\u51b3\u5b9a',       time: '5 min',
-          desc: 'If Charter Enrollment is the right fit, we explain the founding rate and next steps. No pressure. Clear terms. You decide when you\u2019re ready.' },
+          desc: 'If the program is the right fit, we explain the cost and next steps. No pressure. Clear terms. You decide when you\u2019re ready.' },
       ],
     },
     call: {

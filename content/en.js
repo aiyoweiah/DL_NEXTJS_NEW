@@ -14,7 +14,7 @@
 //
 // Page build order follows §1 of the handoff:
 //   program ✓ | results | enroll | consult | methodology | faq
-//   navigators | the-hangar | lexile | about | compare
+//   navigators | lexile | about | compare
 //   cities (via citySchema, not a content key) | blog (MDX)
 
 // ── Program ───────────────────────────────────────────────────
@@ -159,15 +159,14 @@ export const program = {
       'The Hangar is the DODO community hub — Navigator-supported study sessions, peer discussion, and the shared identity of students who are building something real. Not homework help. Belonging.',
   },
 
-  // Founding Family Program — not a promotional price.
-  // Never use: Charter Enrollment, charter cohorts, charter spots, discount, limited-time offer.
+  // Consultation CTA
   foundingFamily: {
-    eyebrow: 'Founding Family Program',
-    heading: 'Founding families commit to DODO before it scales.',
+    eyebrow: 'Diagnostic Consultation',
+    heading: 'Find out exactly where your child stands.',
     body:
-      'The Founding Family Program is for families who commit to the full 16-Week Program at the founding rate. It is not a promotional price. It rewards foresight — and it is available now.',
-    cta:  'Reserve Your Founding Family Spot',
-    note: 'Founding Family spots are limited per cohort. Consultation required before enrollment.',
+      'The consultation is 20 minutes. A Navigator — not a sales call. We measure your child\'s Lexile level, identify the exact gaps, and show you what The 16-Week Program looks like for a student exactly like yours.',
+    cta:  'Book Your Consultation',
+    note: 'Free diagnostic assessment included. No obligation.',
   },
 }
 
@@ -294,15 +293,13 @@ export const results = {
     ctaHref: '/methodology',
   },
 
-  // Founding Family Program — not a promotional price.
-  // Never use: Charter Enrollment, charter cohorts, charter spots, discount, limited-time offer.
+  // Consultation CTA
   foundingFamily: {
-    eyebrow: 'Founding Family Program',
-    heading: 'Founding families commit to DODO before it scales.',
+    eyebrow: 'Diagnostic Consultation',
+    heading: 'Find out exactly where your child stands.',
     body:
-      'The Founding Family Program is for families who commit to the full 16-Week Program at the ' +
-      'founding rate. It is not a promotional price. It rewards foresight — and it is available now.',
-    cta: 'Reserve Your Founding Family Spot',
+      'The consultation is 20 minutes. A Navigator — not a sales call. We measure your child\'s Lexile level, identify the exact gaps, and show you what The 16-Week Program looks like for a student exactly like yours.',
+    cta: 'Book Your Consultation',
   },
 }
 
@@ -346,7 +343,7 @@ export const consult = {
         id:    'commit',
         time:  '5 min',
         label: 'Decide',
-        body:  'If the Founding Family Program is the right fit, we explain the founding rate and next steps. No pressure. Clear terms.',
+        body:  'If the program is the right fit, we explain the cost and next steps. No pressure. Clear terms. You decide when you\'re ready.',
       },
     ],
   },
@@ -543,9 +540,6 @@ export const faq = {}
 // TODO: populate when building app/[locale]/navigators/page.jsx
 export const navigators = {}
 
-// ── The Hangar ────────────────────────────────────────────────
-// TODO: populate when building app/[locale]/the-hangar/page.jsx
-export const theHangar = {}
 
 // ── Lexile ────────────────────────────────────────────────────
 export const lexile = {

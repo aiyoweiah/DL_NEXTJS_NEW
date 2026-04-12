@@ -300,7 +300,7 @@ export default async function ResultsPage({ params }) {
         </div>
       </SectionWrapper>
 
-      {/* ── 7. Founding Family CTA ───────────────────────── */}
+      {/* ── 7. Consultation CTA ──────────────────────────── */}
       <SectionWrapper darker>
         <div className="py-20 md:py-24 max-w-2xl">
 
