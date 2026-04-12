@@ -95,9 +95,9 @@ const COPY = {
       ],
     },
     charter: {
-      badge: 'Charter Enrollment Open',
+      badge: 'The 16-Week Program',
       h2:    'Ready to start after the call?',
-      sub:   'Charter families commit to The 16-Week Program at the founding rate. Not a promotion \u2014 a reward for deciding early.',
+      sub:   'Every student begins with a Navigator who knows their Lexile baseline, their 6+1 Trait writing profile, and exactly where they need to go next.',
       btn1:  'Book Your Consultation',
       btn2:  'See The Program',
     },
@@ -178,9 +178,9 @@ const COPY = {
       ],
     },
     charter: {
-      badge: 'Charter Enrollment Open',
+      badge: '16\u5468\u8bfe\u7a0b',
       h2:    '\u548b\u8be2\u540e\u51b3\u5b9a\u5f00\u59cb\uff1f',
-      sub:   '\u521b\u59cb\u5bb6\u5ead\u4ee5\u521b\u59cb\u8d39\u7387\u627f\u8bfa\u53c2\u52a0\u5341\u516d\u5468\u8bfe\u7a0b\u3002\u4e0d\u662f\u4fc3\u9500\u2014\u2014\u662f\u5bf9\u65e9\u51b3\u5b9a\u8005\u7684\u56de\u62a5\u3002',
+      sub:   '\u6bcf\u4f4d\u5b66\u751f\u90fd\u4ece\u4e00\u4f4d\u4e86\u89e3\u5176Lexile\u57fa\u7ebf\u3001\u516b\u52a0\u4e00\u7279\u8d28\u5199\u4f5c\u6863\u6848\uff0c\u4ee5\u53ca\u786e\u5207\u4e0b\u4e00\u6b65\u76ee\u6807\u7684Navigator\u5f00\u59cb\u3002',
       btn1:  '\u9884\u7ea6\u548b\u8be2',
       btn2:  '\u67e5\u770b\u8bfe\u7a0b',
     },

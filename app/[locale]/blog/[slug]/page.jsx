@@ -39,7 +39,7 @@ const UI = {
   en: {
     backLabel:      '← All articles',
     fallbackNotice: 'This article is available in English only.',
-    charterEyebrow: 'Charter Enrollment',
+    charterEyebrow: 'Diagnostic Consultation',
     charterHeading: 'Ready to apply this to your child specifically?',
     charterBody:    'The diagnostic consultation is 20 minutes. A Navigator — not a sales call. We find out exactly where your child is and show you what The Loop looks like for a student exactly like yours.',
     charterCta:     'Book Your Consultation',
@@ -47,7 +47,7 @@ const UI = {
   zh: {
     backLabel:      '← 所有文章',
     fallbackNotice: '本文暂无中文版本，以下为英文原文。',
-    charterEyebrow: 'Charter Enrollment',
+    charterEyebrow: '诊断咨询',
     charterHeading: '准备好将这些应用到您孩子身上了吗？',
     charterBody:    '诊断咨询只需20分钟。接待您的是Navigator，不是销售——我们确切地找出您孩子的位置，并展示The Loop对于和您孩子情况一样的学生意味着什么。',
     charterCta:     '预约咨询',

@@ -12,8 +12,8 @@
 //   4. Session       — dark bg image, narrative overlay + navigators link
 //   5. Hangar        — dark, community CTA
 //   6. Growth        — darker, Lexile scale + 6+1 Trait table
-//   7. GetStarted    — light, diagnostic CTA (Founding Family Program framing)
-//   8. Charter       — dark, dual-CTA footer band (Founding Family Program badge)
+//   7. GetStarted    — light, diagnostic CTA
+//   8. Charter       — dark, dual-CTA footer band
 
 import Link from 'next/link'
 import { notFound }                    from 'next/navigation'
@@ -150,15 +150,15 @@ const COPY = {
       },
     },
     cta: {
-      eyebrow: 'Founding Family Program',
+      eyebrow: 'Diagnostic Consultation',
       h2:      'Ready to see where your child stands?',
       body:
-        'It starts with a single conversation \u2014 a free diagnostic call where we learn about your child, measure their Lexile level, and map out what the first 16 weeks looks like for a student exactly like yours. Founding Family Program spots are still available \u2014 the Lexile assessment is the first step.',
+        'The consultation is 20 minutes. A Navigator \u2014 not a sales call. We measure your child\u2019s Lexile level, identify the exact gaps, and show you what the first 16 weeks looks like for a student exactly like yours.',
       btn:  'Book Your Consultation',
-      note: 'Founding Family Program \u2014 not a promotional price. Rewards foresight.',
+      note: 'Free diagnostic assessment included. No obligation.',
     },
     charter: {
-      badge: 'Founding Family Program',
+      badge: 'Diagnostic Consultation',
       h2:    'Ready to meet your child\u2019s Navigator?',
       sub:   'The diagnostic consultation is where we find out exactly where your child is \u2014 not where their school says they are.',
       btn1:  'Book Your Consultation',
@@ -266,15 +266,15 @@ const COPY = {
       },
     },
     cta: {
-      eyebrow: '\u521b\u59cb\u5bb6\u5ead\u8ba1\u5212',
+      eyebrow: '\u8bfa\u65ad\u548c\u8be2',
       h2:      '\u51c6\u5907\u597d\u4e86\u89e3\u5b69\u5b50\u7684\u5b66\u4e60\u8d77\u70b9\u4e86\u5417\uff1f',
       body:
-        '\u4e00\u5207\u4ece\u4e00\u6b21\u5bf9\u8bdd\u5f00\u59cb\u2014\u2014\u514d\u8d39\u8bfa\u65ad\u6027\u548c\u8be2\uff0c\u6211\u4eec\u4e86\u89e3\u60a8\u5b69\u5b50\u7684\u60c5\u51b5\u3001\u6d4b\u91cfLexile\u7b49\u7ea7\uff0c\u5e76\u89c4\u5212\u5c5e\u4e8e\u8fd9\u4e2a\u5b69\u5b50\u7684\u524d16\u5468\u8def\u5f84\u3002\u521b\u59cb\u5bb6\u5ead\u8ba1\u5212\u540d\u989d\u4ecd\u5728\u5f00\u653e\u4e2d\u2014\u2014Lexile\u8bc4\u4f30\u662f\u7b2c\u4e00\u6b65\u3002',
+        '\u548c\u8be2\u4ec520\u5206\u949f\u3002\u63a5\u5f85\u60a8\u7684\u662fNavigator\uff0c\u4e0d\u662f\u9500\u552e\u3002\u6211\u4eec\u6d4b\u91cf\u60a8\u5b69\u5b50\u7684Lexile\u7b49\u7ea7\uff0c\u627e\u51fa\u786e\u5207\u7684\u5deE\u8ddd\uff0c\u5e76\u5c55\u793a\u5c5e\u4e8e\u8fd9\u4e2a\u5b69\u5b50\u7684\u524d16\u5468\u8def\u5f84\u3002',
       btn:  '\u9884\u7ea6\u514d\u8d39\u8bfa\u65ad\u548c\u8be2',
-      note: '\u521b\u59cb\u5bb6\u5ead\u8ba1\u5212\u2014\u2014\u975e\u4fc3\u9500\u4f18\u60e0\uff0c\u5956\u52b1\u5148\u884c\u8005\u3002',
+      note: '\u5305\u542b\u514d\u8d39\u8bfa\u65ad\u8bc4\u4f30\u3002\u65e0\u9700\u627f\u8bfa\u3002',
     },
     charter: {
-      badge: '\u521b\u59cb\u5bb6\u5ead\u8ba1\u5212',
+      badge: '\u8bfa\u65ad\u548c\u8be2',
       h2:    '\u51c6\u5907\u597d\u8ba4\u8bc6\u5b69\u5b50\u7684\u5bfc\u5e08\u4e86\u5417\uff1f',
       sub:   '\u8bfa\u65ad\u548c\u8be2\u662f\u6211\u4eec\u7cbe\u786e\u4e86\u89e3\u5b69\u5b50\u5177\u4f53\u5728\u54ea\u91cc\u7684\u8d77\u70b9\u2014\u2014\u800c\u975e\u4f9d\u8d56\u5b66\u6821\u7684\u8bc4\u4f30\u62a5\u544a\u3002',
       btn1:  '\u9884\u7ea6\u548c\u8be2',
@@ -859,7 +859,7 @@ function GrowthSection({ locale, c }) {
 }
 
 // ─────────────────────────────────────────────────────────────
-// SECTION 7 — GET STARTED (Founding Family Program framing)
+// SECTION 7 — GET STARTED (Diagnostic Consultation CTA)
 // ─────────────────────────────────────────────────────────────
 
 function GetStartedSection({ locale, c }) {
@@ -881,7 +881,7 @@ function GetStartedSection({ locale, c }) {
 }
 
 // ─────────────────────────────────────────────────────────────
-// SECTION 8 — CHARTER FOOTER BAND (Founding Family Program badge)
+// SECTION 8 — CONSULTATION FOOTER BAND
 // ─────────────────────────────────────────────────────────────
 
 function CharterSection({ locale, c }) {

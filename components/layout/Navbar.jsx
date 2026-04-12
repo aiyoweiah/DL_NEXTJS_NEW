@@ -34,8 +34,9 @@ const PRIMARY_LINKS = [
 ]
 
 const SECONDARY_LINKS = [
-  { href: '/blog', label: 'Blog' },
-  { href: '/faq',  label: 'FAQ'  },
+  { href: '/compare', label: 'Compare' },
+  { href: '/blog',    label: 'Blog'    },
+  { href: '/faq',     label: 'FAQ'     },
 ]
 
 // ── Hamburger icon ────────────────────────────────────────────
@@ -236,7 +237,7 @@ export default function Navbar({ locale }) {
               <Link
                 href={`/${locale}/consult`}
                 className="btn btn-charter hidden lg:inline-flex text-sm px-5 py-2.5"
-                aria-label="Book your diagnostic consultation — Charter Enrollment"
+                aria-label="Book a free diagnostic consultation"
               >
                 Book Your Consultation
               </Link>
@@ -315,7 +316,7 @@ export default function Navbar({ locale }) {
               <Link
                 href={`/${locale}/consult`}
                 className="btn btn-charter w-full justify-center text-base py-3.5"
-                aria-label="Book your diagnostic consultation — Charter Enrollment"
+                aria-label="Book a free diagnostic consultation"
               >
                 Book Your Consultation
               </Link>

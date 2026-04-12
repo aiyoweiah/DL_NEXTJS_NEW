@@ -43,7 +43,7 @@ const NAV_COMPANY = [
   { href: '/blog',    label: 'Blog'                },
   { href: '/demos',   label: 'Watch Demo Class'    },
   { href: '/consult', label: 'Book a Consultation' },
-  { href: '/enroll',  label: 'Charter Enrollment'  },
+  { href: '/results',  label: 'Results'              },
 ]
 
 const NAV_CITIES = [
@@ -127,7 +127,7 @@ export default function Footer({ locale }) {
                 className="text-xs font-semibold uppercase tracking-widest mb-3"
                 style={{ color: 'rgba(183,181,254,0.5)' }}
               >
-                Charter Enrollment Open
+                Diagnostic Consultation
               </p>
               <h2
                 className="text-2xl md:text-3xl font-bold leading-tight tracking-tight"
