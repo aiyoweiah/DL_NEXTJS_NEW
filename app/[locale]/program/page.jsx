@@ -2,7 +2,7 @@
 //
 // The 16-Week Program — full visual rebuild to match pre-locale reference.
 // Uses inline COPY pattern (bilingual EN/ZH) — same approach as about, navigators,
-// the-hangar, and cities pages. Richer visual structure than the previous
+// the-loop, session, growth, and cities pages. Richer visual structure than the previous
 // getContent() version.
 //
 // Sections (top → bottom):
@@ -130,14 +130,6 @@ const COPY = {
       q4: '\u201cNext week is Speak. You\u2019ll defend your position out loud. Start getting ready.\u201d',
       navigatorsLink: 'Meet the Navigators \u2192',
     },
-    hangar: {
-      eyebrow: 'The Hangar',
-      h2:      'Between sessions, they\u2019re not alone.',
-      h2zh:    null,
-      body:
-        'The Hangar is where DODO learners connect between sessions \u2014 not for homework help, but for the kind of peer learning that happens when curious minds find each other. Navigator-supported, student-driven, and a place where good habits stick.',
-      cta: 'Learn About The Hangar',
-    },
     growth: {
       eyebrow: 'How We Measure Growth',
       h2:      'Real numbers, not vague progress reports.',
@@ -253,14 +245,6 @@ const COPY = {
       p4: '\u8bfe\u7a0b\u7ed3\u675f\u65f6\uff0c\u76ee\u5149\u6295\u5411\u524d\u65b9\uff1a',
       q4: '\u201c\u4e0b\u5468\u662f\u8868\u8fbe\u9636\u6bb5\u3002\u4f60\u8981\u73b0\u573a\u634d\u536b\u4f60\u7684\u7acb\u573a\u3002\u4ece\u73b0\u5728\u5f00\u59cb\u51c6\u5907\u3002\u201d',
       navigatorsLink: '\u8ba4\u8bc6\u5bfc\u5e08\u56e2\u961f \u2192',
-    },
-    hangar: {
-      eyebrow: 'The Hangar',
-      h2:      '\u8bfe\u540e\u793e\u533a\uff0c\u6301\u7eed\u5b66\u4e60',
-      h2zh:    'Between sessions, they\u2019re not alone.',
-      body:
-        'The Hangar\u662fDODO\u5b66\u5458\u5728\u8bfe\u95f4\u4fdd\u6301\u8054\u7cfb\u7684\u793e\u533a\u2014\u2014\u4e0d\u662f\u4f5c\u4e1a\u8f85\u5bfc\uff0c\u800c\u662f\u6709\u597d\u5947\u5fc3\u7684\u5b69\u5b50\u76f8\u9047\u65f6\u53d1\u751f\u7684\u540c\u4f34\u5b66\u4e60\u3002\u7531\u5bfc\u5e08\u652f\u6301\u3001\u7531\u5b66\u751f\u4e3b\u5bfc\uff0c\u662f\u8ba9\u597d\u4e60\u60ef\u6301\u7eed\u751f\u957f\u7684\u5730\u65b9\u3002',
-      cta: '\u4e86\u89e3 The Hangar',
     },
     growth: {
       eyebrow: '\u6211\u4eec\u5982\u4f55\u8861\u91cf\u6210\u957f',
@@ -769,28 +753,7 @@ function SessionSection({ locale, c }) {
 }
 
 // ─────────────────────────────────────────────────────────────
-// SECTION 5 — THE HANGAR
-// ─────────────────────────────────────────────────────────────
-
-function HangarSection({ locale, c }) {
-  return (
-    <section aria-labelledby="hangar-heading" style={{ backgroundColor: '#212830', padding: 'var(--section-md) 0' }}>
-      <div className="container-section">
-        <div style={{ maxWidth: '40rem' }}>
-          <Eyebrow dark>{c.hangar.eyebrow}</Eyebrow>
-          <BilingualH2 id="hangar-heading" primary={c.hangar.h2} secondary={c.hangar.h2zh} light />
-          <p style={{ fontSize: '1rem', lineHeight: 1.82, color: 'rgba(240,240,240,0.55)', marginTop: '1.125rem', marginBottom: '1.875rem' }}>
-            {c.hangar.body}
-          </p>
-          <Link href={`/${locale}/the-hangar`} className="btn btn-primary">{c.hangar.cta}</Link>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-// ─────────────────────────────────────────────────────────────
-// SECTION 6 — HOW WE MEASURE GROWTH
+// SECTION 5 — HOW WE MEASURE GROWTH
 // ─────────────────────────────────────────────────────────────
 
 function LexileScaleViz({ start, end }) {
@@ -997,7 +960,6 @@ export default async function ProgramPage({ params }) {
       <LoopSection       locale={locale} c={c} />
       <JourneySection    locale={locale} c={c} />
       <SessionSection    locale={locale} c={c} />
-      <HangarSection     locale={locale} c={c} />
       <GrowthSection     locale={locale} c={c} />
       <GetStartedSection locale={locale} c={c} />
       <CharterSection    locale={locale} c={c} />

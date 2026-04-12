@@ -29,10 +29,16 @@
 /methodology/               /en/methodology/            302
 /faq/                       /en/faq/                    302
 /navigators/                /en/navigators/             302
-/the-hangar/                /en/the-hangar/             302
+/compare/                   /en/compare/                302
 /lexile/                    /en/lexile/                 302
 /about/                     /en/about/                  302
-/compare/                   /en/compare/                302
+
+# ── Legacy redirects (permanent) ──────────────────────────────
+# /the-hangar was retired April 2026. Permanent 301s preserve any
+# indexed or bookmarked links and pass full link equity to /compare/.
+/the-hangar/                /en/compare/                301
+/en/the-hangar/             /en/compare/                301
+/zh/the-hangar/             /zh/compare/                301
 /assessment/                /en/assessment/             302
 /demos/                     /en/demos/                  302
 

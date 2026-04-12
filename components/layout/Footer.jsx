@@ -32,7 +32,6 @@ const NAV_PROGRAM = [
   { href: '/program',     label: 'The 16-Week Program' },
   { href: '/assessment',  label: 'Assessment'          },
   { href: '/navigators',  label: 'Navigators'          },
-  { href: '/the-hangar',  label: 'The Hangar'          },
   { href: '/lexile',      label: 'Lexile Levels'       },
   { href: '/methodology', label: 'The Loop'            },
 ]

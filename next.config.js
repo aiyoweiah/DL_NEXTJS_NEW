@@ -11,6 +11,14 @@ const nextConfig = {
   //
   // If the project ever moves to Cloudflare Workers or Vercel (server
   // mode), remove this line and middleware.js takes over automatically.
+  // ── Redirects ─────────────────────────────────────────────
+  // NOTE: output: 'export' disables Next.js server-side redirects.
+  // Redirects are handled at the CDN edge instead:
+  //   • Cloudflare Pages: public/_redirects
+  //   • Vercel:           vercel.json → redirects[]
+  // This includes the /the-hangar → /compare 301 redirect
+  // added April 2026 when The Hangar route was retired.
+
   output: 'export',
 
   // ── Trailing slashes ─────────────────────────────────────────

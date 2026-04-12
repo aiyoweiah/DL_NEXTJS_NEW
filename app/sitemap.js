@@ -55,7 +55,6 @@ const STATIC_PAGES = [
   { path: '/faq',          priority: 0.85, changeFrequency: 'monthly' },
   // Medium priority
   { path: '/navigators',   priority: 0.7,  changeFrequency: 'monthly' },
-  { path: '/the-hangar',   priority: 0.7,  changeFrequency: 'monthly' },
   { path: '/lexile',       priority: 0.8,  changeFrequency: 'monthly' },
   { path: '/about',        priority: 0.6,  changeFrequency: 'yearly'  },
   { path: '/compare',      priority: 0.75, changeFrequency: 'monthly' },

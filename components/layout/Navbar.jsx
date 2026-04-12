@@ -28,7 +28,6 @@ import { useFocusTrap }                              from '@/lib/a11y'
 // Paths are locale-relative (no prefix). Prefix applied in render.
 const PRIMARY_LINKS = [
   { href: '/program',    label: 'The Program' },
-  { href: '/the-hangar', label: 'The Hangar'  },
   { href: '/about',      label: 'About'       },
   { href: '/assessment', label: 'Assessment'  },
   { href: '/navigators', label: 'Navigators'  },
@@ -114,7 +113,7 @@ function Wordmark({ locale }) {
 
 // ── Main component ────────────────────────────────────────────
 export default function Navbar({ locale }) {
-  const pathname = usePathname() // e.g. /en/program, /zh/the-hangar
+  const pathname = usePathname() // e.g. /en/program, /zh/compare
 
   const [scrolled,    setScrolled]  = useState(false)
   const [mobileOpen,  setMobileOpen] = useState(false)
