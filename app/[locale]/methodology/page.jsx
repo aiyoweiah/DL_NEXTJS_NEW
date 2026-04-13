@@ -7,13 +7,19 @@
 // Server-rendered — zero 'use client'.
 //
 // Sections:
-//   1. Hero          — dark, tagline + overview
+//   1. Hero          — dark, tagline + overview, waterfall bg illustration
 //   2. Why a Loop    — light, the problem with single-skill drilling
 //   3. The Four Steps — alternating dark/light, one section per step
 //   4. Lexile        — dark, measurement framework + stats
 //   5. 6+1 Trait     — light, writing framework + all 7 traits
 //   6. GEO signal    — dark, named frameworks + verifiability
 //   7. CTA           — dark, book consultation
+//
+// BACKGROUND UPDATE — April 13 2026
+//   Hero bg: methodology-background.webp (waterfall watercolor illustration)
+//   objectPosition: 'center 35%' — centres the waterfall cascade
+//   Overlay: left 0.98/0.97 held to 35%, opens to 0.28 at far right
+//   (same treatment as program page hero)
 
 import Link         from 'next/link'
 import { notFound } from 'next/navigation'
@@ -63,20 +69,102 @@ export default async function MethodologyPage({ params }) {
       />
 
       {/* ── 1. Hero ───────────────────────────────────────── */}
-      <SectionWrapper hero>
-        <div className="py-24 md:py-32 max-w-3xl">
-          <Badge className="mb-6">{t.hero.eyebrow}</Badge>
-          <h1
-            className="font-bold leading-tight tracking-tight mb-6 text-gradient"
-            style={{ fontSize: 'clamp(32px, 5vw, 60px)', letterSpacing: '-0.03em' }}
-          >
-            {t.hero.heading}
-          </h1>
-          <p className="text-lg md:text-xl leading-relaxed max-w-2xl" style={{ color: '#3D4452' }}>
-            {t.hero.subheading}
-          </p>
+      {/*
+        Custom hero with waterfall illustration background.
+        Mirrors program page overlay treatment:
+          • objectPosition 'center 35%' — centres the cascade, keeps
+            the dark left forest in the text zone
+          • 4-stop gradient: near-solid left → opens right
+          • Bottom vignette for clean section transition
+          • Teal radial accent echoes illustration's cool green palette
+      */}
+      <section
+        aria-labelledby="methodology-hero-heading"
+        style={{
+          minHeight:     '80dvh',
+          display:       'flex',
+          flexDirection: 'column',
+          position:      'relative',
+          overflow:      'hidden',
+        }}
+      >
+        {/* Background illustration */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/methodology-background.webp"
+          alt=""
+          aria-hidden="true"
+          style={{
+            position:       'absolute',
+            inset:          0,
+            width:          '100%',
+            height:         '100%',
+            objectFit:      'cover',
+            objectPosition: 'center 35%',
+            display:        'block',
+          }}
+        />
+
+        {/* Primary directional overlay */}
+        <div
+          aria-hidden="true"
+          style={{
+            position:   'absolute',
+            inset:      0,
+            background: 'linear-gradient(108deg, rgba(14,14,18,0.98) 0%, rgba(14,14,18,0.97) 35%, rgba(14,14,18,0.80) 58%, rgba(14,14,18,0.28) 100%)',
+          }}
+        />
+
+        {/* Bottom vignette */}
+        <div
+          aria-hidden="true"
+          style={{
+            position:   'absolute',
+            inset:      0,
+            background: 'linear-gradient(to top, rgba(14,14,18,0.88) 0%, transparent 28%)',
+          }}
+        />
+
+        {/* Teal/green radial accent — echoes the illustration's cool tones */}
+        <div
+          aria-hidden="true"
+          style={{
+            position:      'absolute',
+            inset:         0,
+            background:    'radial-gradient(ellipse 55% 50% at 70% 45%, rgba(80,160,130,0.07) 0%, transparent 65%)',
+            pointerEvents: 'none',
+          }}
+        />
+
+        {/* Content */}
+        <div
+          className="container-section relative z-10"
+          style={{
+            flex:          1,
+            display:       'flex',
+            alignItems:    'center',
+            paddingTop:    'calc(var(--nav-height) + 3.5rem)',
+            paddingBottom: '3.5rem',
+          }}
+        >
+          <div className="py-4 max-w-3xl">
+            <Badge className="mb-6">{t.hero.eyebrow}</Badge>
+            <h1
+              id="methodology-hero-heading"
+              className="font-bold leading-tight tracking-tight mb-6 text-gradient"
+              style={{ fontSize: 'clamp(32px, 5vw, 60px)', letterSpacing: '-0.03em' }}
+            >
+              {t.hero.heading}
+            </h1>
+            <p
+              className="text-lg md:text-xl leading-relaxed max-w-2xl"
+              style={{ color: 'rgba(240,240,240,0.52)' }}
+            >
+              {t.hero.subheading}
+            </p>
+          </div>
         </div>
-      </SectionWrapper>
+      </section>
 
       {/* ── 2. Why a Loop ─────────────────────────────────── */}
       <SectionWrapper white>
