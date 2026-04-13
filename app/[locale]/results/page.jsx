@@ -4,13 +4,19 @@
 // Server-rendered — zero 'use client'.
 //
 // Sections (top → bottom):
-//   1. Hero           — dark, heading
+//   1. Hero           — dark, heading, reading-child bg illustration
 //   2. ProofStrip     — dark, three stat callouts
 //   3. Intro          — light, framing copy
 //   4. Result Cards   — light, grid of anonymised student results with LexileBar
 //   5. Writing        — dark, 6+1 Trait score table
 //   6. Methodology    — light, why the numbers move + link to /methodology
 //   7. FoundingFamily — dark, conversion (key was: charter)
+//
+// BACKGROUND UPDATE — April 13 2026
+//   Hero bg: results-background.webp (child reading by doorstep, watercolor)
+//   objectPosition: 'center 40%' — frames the figure + warm amber glow
+//   Overlay: same 4-stop treatment as program/methodology pages
+//   Warm amber radial accent echoes illustration's doorstep glow
 
 import Link from 'next/link'
 
@@ -52,24 +58,99 @@ export default async function ResultsPage({ params }) {
   return (
     <>
       {/* ── 1. Hero ──────────────────────────────────────── */}
-      <SectionWrapper hero>
-        <div className="py-24 md:py-32 max-w-3xl">
+      {/*
+        Custom hero with reading-child illustration background.
+        Image: dark teal trees left → warm amber doorstep glow right.
+        Left side is naturally very dark — ideal for text legibility.
+        objectPosition 'center 40%' keeps the figure + glow centred.
+        Warm amber radial accent (rgba(200,130,60,…)) echoes the lamp glow.
+      */}
+      <section
+        aria-labelledby="results-hero-heading"
+        style={{
+          minHeight:     '80dvh',
+          display:       'flex',
+          flexDirection: 'column',
+          position:      'relative',
+          overflow:      'hidden',
+        }}
+      >
+        {/* Background illustration */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/results-background.webp"
+          alt=""
+          aria-hidden="true"
+          style={{
+            position:       'absolute',
+            inset:          0,
+            width:          '100%',
+            height:         '100%',
+            objectFit:      'cover',
+            objectPosition: 'center 40%',
+            display:        'block',
+          }}
+        />
 
-          <Badge className="mb-6">{t.hero.eyebrow}</Badge>
+        {/* Primary directional overlay */}
+        <div
+          aria-hidden="true"
+          style={{
+            position:   'absolute',
+            inset:      0,
+            background: 'linear-gradient(108deg, rgba(14,14,18,0.98) 0%, rgba(14,14,18,0.97) 35%, rgba(14,14,18,0.80) 58%, rgba(14,14,18,0.28) 100%)',
+          }}
+        />
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6 text-gradient">
-            {t.hero.heading}
-          </h1>
+        {/* Bottom vignette */}
+        <div
+          aria-hidden="true"
+          style={{
+            position:   'absolute',
+            inset:      0,
+            background: 'linear-gradient(to top, rgba(14,14,18,0.88) 0%, transparent 28%)',
+          }}
+        />
 
-          <p
-            className="text-lg md:text-xl leading-relaxed max-w-2xl"
-            style={{ color: '#3D4452' }}
-          >
-            {t.hero.subheading}
-          </p>
+        {/* Warm amber radial accent — echoes the doorstep lamp glow */}
+        <div
+          aria-hidden="true"
+          style={{
+            position:      'absolute',
+            inset:         0,
+            background:    'radial-gradient(ellipse 50% 55% at 68% 50%, rgba(200,130,60,0.07) 0%, transparent 65%)',
+            pointerEvents: 'none',
+          }}
+        />
 
+        {/* Content */}
+        <div
+          className="container-section relative z-10"
+          style={{
+            flex:          1,
+            display:       'flex',
+            alignItems:    'center',
+            paddingTop:    'calc(var(--nav-height) + 3.5rem)',
+            paddingBottom: '3.5rem',
+          }}
+        >
+          <div className="py-4 max-w-3xl">
+            <Badge className="mb-6">{t.hero.eyebrow}</Badge>
+            <h1
+              id="results-hero-heading"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6 text-gradient"
+            >
+              {t.hero.heading}
+            </h1>
+            <p
+              className="text-lg md:text-xl leading-relaxed max-w-2xl"
+              style={{ color: 'rgba(240,240,240,0.52)' }}
+            >
+              {t.hero.subheading}
+            </p>
+          </div>
         </div>
-      </SectionWrapper>
+      </section>
 
       {/* ── 2. Proof strip ───────────────────────────────── */}
       <div className="proof-strip">
@@ -199,7 +280,6 @@ export default async function ResultsPage({ params }) {
                     </span>
                   </div>
 
-                  {/* Stacked track: entry (muted) + exit growth (lavender) */}
                   <div
                     className="relative h-2 rounded-full overflow-hidden"
                     style={{ backgroundColor: 'rgba(183,181,254,0.08)' }}
