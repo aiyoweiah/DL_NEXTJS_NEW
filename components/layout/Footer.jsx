@@ -14,7 +14,12 @@
 //   - All nav hrefs prefixed with /${locale} so links stay within the
 //     current locale session
 //   - LocaleSwitcherSlot replaced with <LocaleSwitcher locale={locale} />
-//     Server components can render client components — no change to rendering model.
+//
+// Footer nav structure (v3.0 — April 2026):
+//   NAV_PROGRAM — /program, /methodology, /results, /navigators, /lexile
+//   NAV_COMPANY — /about, /compare, /faq, /blog, /demos, /consult
+//   /assessment removed from NAV_PROGRAM — UnderConstruction; reinstated when built
+//   /results moved from NAV_COMPANY → NAV_PROGRAM (it is program evidence, not company info)
 //
 // Logo: uses logo.svg (black fill #000000) — correct for light #F5F5FF background.
 //   Dimensions reflect trimmed viewBox="58 45 484 240" → 2.02:1 aspect ratio.
@@ -28,12 +33,13 @@ import LocaleSwitcher from '@/components/layout/LocaleSwitcher'
 
 // ── Navigation columns ────────────────────────────────────────
 // Paths are locale-relative (no prefix). Prefix applied in render.
+
 const NAV_PROGRAM = [
   { href: '/program',     label: 'The 16-Week Program' },
-  { href: '/assessment',  label: 'Assessment'          },
+  { href: '/methodology', label: 'The Loop'            },
+  { href: '/results',     label: 'Results'             },
   { href: '/navigators',  label: 'Navigators'          },
   { href: '/lexile',      label: 'Lexile Levels'       },
-  { href: '/methodology', label: 'The Loop'            },
 ]
 
 const NAV_COMPANY = [
@@ -43,7 +49,6 @@ const NAV_COMPANY = [
   { href: '/blog',    label: 'Blog'                },
   { href: '/demos',   label: 'Watch Demo Class'    },
   { href: '/consult', label: 'Book a Consultation' },
-  { href: '/results',  label: 'Results'              },
 ]
 
 const NAV_CITIES = [
@@ -197,7 +202,7 @@ export default function Footer({ locale }) {
                 className="text-sm leading-relaxed mb-6 max-w-[26ch]"
                 style={{ color: '#3D4452' }}
               >
-                A live, Navigator-led bilingual thinking program for globally
+                A live, Navigator-led English literacy program for globally
                 mobile families. Read → Think → Speak → Write.
               </p>
 

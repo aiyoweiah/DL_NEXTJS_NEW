@@ -12,11 +12,15 @@
 //   - LocaleSwitcherSlot replaced with <LocaleSwitcher locale={locale} />
 //     in both desktop bar and mobile drawer
 //
+// Nav structure (v3.0 — April 2026):
+//   PRIMARY_LINKS   — /program, /methodology, /results, /navigators
+//   SECONDARY_LINKS — /about, /compare, /lexile, /blog, /faq
+//   /assessment removed — UnderConstruction; reinstated when page is built
+//
 // Logo sizing:
 //   --nav-height: 4rem = 64px.
 //   Logo height: 32px = 50% of nav-height → 16px optical padding top/bottom.
 //   Width auto from trimmed viewBox 484×240 (2.02:1) → ~65px at 32px tall.
-//   Previous value calc(var(--nav-height) - 12px) = 52px was 81% of bar — too tall.
 
 import { useState, useEffect, useRef, useCallback } from 'react'
 import Link                                          from 'next/link'
@@ -26,17 +30,20 @@ import { useFocusTrap }                              from '@/lib/a11y'
 
 // ── Nav link definitions ──────────────────────────────────────
 // Paths are locale-relative (no prefix). Prefix applied in render.
+
 const PRIMARY_LINKS = [
-  { href: '/program',    label: 'The Program' },
-  { href: '/about',      label: 'About'       },
-  { href: '/assessment', label: 'Assessment'  },
-  { href: '/navigators', label: 'Navigators'  },
+  { href: '/program',     label: 'The Program' },
+  { href: '/methodology', label: 'The Loop'    },
+  { href: '/results',     label: 'Results'     },
+  { href: '/navigators',  label: 'Navigators'  },
 ]
 
 const SECONDARY_LINKS = [
-  { href: '/compare', label: 'Compare' },
-  { href: '/blog',    label: 'Blog'    },
-  { href: '/faq',     label: 'FAQ'     },
+  { href: '/about',   label: 'About'          },
+  { href: '/compare', label: 'How We Compare' },
+  { href: '/lexile',  label: 'Lexile Levels'  },
+  { href: '/blog',    label: 'Blog'           },
+  { href: '/faq',     label: 'FAQ'            },
 ]
 
 // ── Hamburger icon ────────────────────────────────────────────
@@ -98,7 +105,6 @@ function Wordmark({ locale }) {
         logo-dark.svg — white fill (#FFFFFF), correct for dark nav bg (#0E0E12).
         Height: 32px = 50% of --nav-height (64px) → 16px optical padding top/bottom.
         Width auto from trimmed viewBox 484×240 (2.02:1) → ~65px rendered width.
-        Previous value calc(var(--nav-height) - 12px) = 52px was 81% — too tall.
       */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
