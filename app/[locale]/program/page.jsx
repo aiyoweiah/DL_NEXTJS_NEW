@@ -10,15 +10,16 @@
 //   2. Loop          — white, 4 compact step cards + Type A/B note + methodology link
 //   3. Journey       — whisper, compact 3-step timeline + inline LexileBar
 //   4. Session       — dark bg image, narrative overlay + navigators link
-//   5. Hangar        — dark, community CTA
-//   6. Growth        — darker, Lexile scale + 6+1 Trait table
-//   7. GetStarted    — light, diagnostic CTA
-//   8. Charter       — dark, dual-CTA footer band
+//   5. Growth        — darker, Lexile scale + 6+1 Trait table
+//   6. GetStarted    — light, diagnostic CTA
+//   7. Charter       — dark, dual-CTA footer band
 //
-// BACKGROUND UPDATE — April 12 2026
-//   Hero bg: program-background.jpeg → program-background.webp
-//   Hero img: added objectPosition 'center 30%'
-//   Hero overlay: right stop 0.65 → 0.58, midpoint 50% → 45%
+// BACKGROUND UPDATE — April 13 2026
+//   Hero bg: program-background.webp (steamboat watercolor illustration)
+//   objectPosition: 'center 28%'   — frames the ship above waterline
+//   Main overlay: left stop 0.88 → softer right stop 0.18 (illustration is already dark)
+//   Radial accent: shifted teal tint to echo illustration palette
+//   Stat rail bg: #212830 (slightly lighter than Void Black — matches illustration darks)
 
 import Link from 'next/link'
 import { notFound }                    from 'next/navigation'
@@ -110,7 +111,7 @@ const COPY = {
         {
           week: 'Weeks 2\u201315',
           label: 'Weekly Sessions', labelZh: '\u6bcf\u5468\u8bfe\u7a0b',
-          desc: 'Each week, your child works through The Loop with their Navigator \u2014 someone who knows their progress, their challenges, and what to push next. Sessions run 50 minutes, once per week. The Hangar provides structured support between sessions.',
+          desc: 'Each week, your child works through The Loop with their Navigator \u2014 someone who knows their progress, their challenges, and what to push next. Sessions run 50 minutes, once per week.',
           badge: null, badgeSub: null,
         },
         {
@@ -175,7 +176,7 @@ const COPY = {
     meta: {
       title: '16\u5468\u53cc\u8bed\u9605\u8bfb\u8bfe\u7a0b\u5177\u4f53\u5305\u542b\u4ec0\u4e48\uff1f\u2014\u2014 DODO Learning',
       description:
-        '\u7531\u5bfc\u5e08\u4e3b\u5bfc\u7684\u5b9e\u65f6\u53cc\u8bed\u9605\u8bfb\u8bfe\u7a0b\uff0c\u8bad\u7ec3\u5b8c\u6574\u7684\u9605\u8bfb\u2192\u601d\u8003\u2192\u8868\u8fbe\u2192\u5199\u4f5c\u95ed\u73af\u2014\u2014\u9762\u5411\u52a0\u62ff\u5927\u548c\u7f8e\u56fd\u7684\u534e\u8bed\u5bb6\u5ead\u3002\u5165\u5b66\u548c\u7ed3\u4e1aLexile\u8bc4\u4f30\u3002\u4e00\u4e2a\u5e74\u7ea7\u7684\u9605\u8bfb\u6210\u957f\uff0c\u6709\u6570\u636e\u4e3a\u8bc1\u3002',
+        '\u7531\u5bfc\u5e08\u4e3b\u5bfc\u7684\u5b9e\u65f6\u53cc\u8bed\u9605\u8bfb\u8bfe\u7a0b\uff0c\u8bad\u7ec3\u5b8c\u6574\u7684\u9605\u8bfb\u2192\u601d\u8003\u2192\u8868\u8fbe\u2192\u5199\u4f5c\u95ed\u73af\u2014\u2014\u9762\u5411\u52a0\u62ff\u5927\u548c\u7f8e\u56fd\u7684\u534e\u8bed\u5bb6\u5ead\u3002\u5165\u5b66\u548c\u7ed3\u4e1aLexile\u8bc4\u4f30\u3002\u4e00\u4e2a\u5e74\u7ea7\u7684\u9605\u8bfb\u6210\u957f\uff0c\u6709\u6570\u636e\u4e3a\u8bc4\u8bc1\u3002',
     },
     hero: {
       chip: 'Think Once. In Both Languages.',
@@ -226,7 +227,7 @@ const COPY = {
         {
           week: '\u7b2c\u4e8c\u81f3\u5341\u4e94\u5468',
           label: '\u6bcf\u5468\u8bfe\u7a0b', labelZh: 'Weekly Sessions',
-          desc: '\u6bcf\u5468\uff0c\u5b69\u5b50\u4e0e\u4e13\u5c5e\u5bfc\u5e08\u5171\u540c\u5b8c\u6210\u5b8c\u6574\u7684\u5b66\u4e60\u5faa\u73af\u3002\u6bcf\u8282\u8bfe50\u5206\u949f\uff0c\u6bcf\u5468\u4e00\u6b21\u3002\u8bfe\u7a0b\u95f4\u9694The Hangar\u63d0\u4f9b\u7ed3\u6784\u5316\u652f\u6301\u3002',
+          desc: '\u6bcf\u5468\uff0c\u5b69\u5b50\u4e0e\u4e13\u5c5e\u5bfc\u5e08\u5171\u540c\u5b8c\u6210\u5b8c\u6574\u7684\u5b66\u4e60\u5faa\u73af\u3002\u6bcf\u8282\u8bfe50\u5206\u949f\uff0c\u6bcf\u5468\u4e00\u6b21\u3002',
           badge: null, badgeSub: null,
         },
         {
@@ -274,7 +275,7 @@ const COPY = {
       eyebrow: '\u8bfa\u65ad\u548c\u8be2',
       h2:      '\u51c6\u5907\u597d\u4e86\u89e3\u5b69\u5b50\u7684\u5b66\u4e60\u8d77\u70b9\u4e86\u5417\uff1f',
       body:
-        '\u548c\u8be2\u4ec520\u5206\u949f\u3002\u63a5\u5f85\u60a8\u7684\u662fNavigator\uff0c\u4e0d\u662f\u9500\u552e\u3002\u6211\u4eec\u6d4b\u91cf\u60a8\u5b69\u5b50\u7684Lexile\u7b49\u7ea7\uff0c\u627e\u51fa\u786e\u5207\u7684\u5deE\u8ddd\uff0c\u5e76\u5c55\u793a\u5c5e\u4e8e\u8fd9\u4e2a\u5b69\u5b50\u7684\u524d16\u5468\u8def\u5f84\u3002',
+        '\u548c\u8be2\u4ec520\u5206\u949f\u3002\u63a5\u5f85\u60a8\u7684\u662fNavigator\uff0c\u4e0d\u662f\u9500\u552e\u3002\u6211\u4eec\u6d4b\u91cf\u60a8\u5b69\u5b50\u7684Lexile\u7b49\u7ea7\uff0c\u627e\u51fa\u786e\u5207\u7684\u5dee\u8ddd\uff0c\u5e76\u5c55\u793a\u5c5e\u4e8e\u8fd9\u4e2a\u5b69\u5b50\u7684\u524d16\u5468\u8def\u5f84\u3002',
       btn:  '\u9884\u7ea6\u514d\u8d39\u8bfa\u65ad\u548c\u8be2',
       note: '\u5305\u542b\u514d\u8d39\u8bfa\u65ad\u8bc4\u4f30\u3002\u65e0\u9700\u627f\u8bfa\u3002',
     },
@@ -347,6 +348,16 @@ function Eyebrow({ children, center = false, dark = false }) {
 
 // ─────────────────────────────────────────────────────────────
 // SECTION 1 — HERO
+// Steamboat watercolor illustration (program-background.webp)
+//
+// Tuning rationale:
+//   • objectPosition 'center 28%' — keeps ship hull and masts in frame,
+//     avoids over-cropping the dock ropes at bottom
+//   • Main overlay: left darkens to 0.88 for text legibility; right opens
+//     to 0.18 so the ship detail reads through (illustration already dark)
+//   • Radial accent: teal tint (rgba(100,180,180,…)) echoes illustration palette
+//   • Stat rail: #1C2330 — darker than Midnight, lighter than Void Black,
+//     matches the illustration's harbour shadow tones
 // ─────────────────────────────────────────────────────────────
 
 function Hero({ locale, c }) {
@@ -361,6 +372,7 @@ function Hero({ locale, c }) {
         overflow:      'hidden',
       }}
     >
+      {/* Background illustration */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/program-background.webp"
@@ -372,28 +384,43 @@ function Hero({ locale, c }) {
           width:          '100%',
           height:         '100%',
           objectFit:      'cover',
-          objectPosition: 'center 40%',
+          objectPosition: 'center 28%',
           display:        'block',
         }}
       />
+
+      {/* Primary directional overlay — left text zone darkened, right opens to show ship */}
       <div
         aria-hidden="true"
         style={{
           position:   'absolute',
           inset:      0,
-          background: 'linear-gradient(105deg, rgba(14,14,18,0.82) 0%, rgba(14,14,18,0.60) 45%, rgba(14,14,18,0.20) 100%)',
+          background: 'linear-gradient(108deg, rgba(14,14,18,0.88) 0%, rgba(14,14,18,0.68) 42%, rgba(14,14,18,0.18) 100%)',
         }}
       />
+
+      {/* Bottom vignette — anchors stat rail transition */}
+      <div
+        aria-hidden="true"
+        style={{
+          position:   'absolute',
+          inset:      0,
+          background: 'linear-gradient(to top, rgba(14,14,18,0.72) 0%, transparent 32%)',
+        }}
+      />
+
+      {/* Teal accent radial — echoes illustration's harbour tones */}
       <div
         aria-hidden="true"
         style={{
           position:      'absolute',
           inset:         0,
-          background:    'radial-gradient(ellipse 65% 50% at 80% 30%, rgba(183,181,254,0.07) 0%, transparent 60%)',
+          background:    'radial-gradient(ellipse 55% 45% at 72% 38%, rgba(100,180,180,0.07) 0%, transparent 65%)',
           pointerEvents: 'none',
         }}
       />
 
+      {/* Content */}
       <div
         className="container-section relative z-10"
         style={{
@@ -405,6 +432,7 @@ function Hero({ locale, c }) {
         }}
       >
         <div style={{ maxWidth: '46rem' }}>
+          {/* Tagline chip */}
           <div
             className="inline-flex items-center gap-2 mb-7 rounded-full"
             style={{
@@ -440,7 +468,7 @@ function Hero({ locale, c }) {
                 fontFamily:   'var(--font-cjk)',
                 fontSize:     '17px',
                 fontWeight:   500,
-                color:        'rgba(183,181,254,0.45)',
+                color:        'rgba(183,181,254,0.40)',
                 marginBottom: '1.25rem',
                 lineHeight:   1.5,
               }}
@@ -449,7 +477,7 @@ function Hero({ locale, c }) {
             </p>
           )}
 
-          <p style={{ fontSize: '1rem', lineHeight: 1.85, color: 'rgba(240,240,240,0.5)', maxWidth: '36rem', marginBottom: '2.25rem' }}>
+          <p style={{ fontSize: '1rem', lineHeight: 1.85, color: 'rgba(240,240,240,0.52)', maxWidth: '36rem', marginBottom: '2.25rem' }}>
             {c.hero.sub}
           </p>
 
@@ -460,8 +488,16 @@ function Hero({ locale, c }) {
         </div>
       </div>
 
-      {/* Stat pills */}
-      <div style={{ borderTop: '1px solid rgba(183,181,254,0.07)', flexShrink: 0, position: 'relative', zIndex: 10, backgroundColor: '#2E3848' }}>
+      {/* Stat pills rail */}
+      <div
+        style={{
+          borderTop:       '1px solid rgba(183,181,254,0.07)',
+          flexShrink:      0,
+          position:        'relative',
+          zIndex:          10,
+          backgroundColor: '#1C2330',
+        }}
+      >
         <div className="container-section">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)' }} className="sm:grid-cols-6">
             {c.hero.stats.map((stat, i) => {
@@ -499,7 +535,6 @@ function Hero({ locale, c }) {
 
 // ─────────────────────────────────────────────────────────────
 // SECTION 2 — THE LOOP
-// Adds: Type A/B paragraph + methodology link after steps grid
 // ─────────────────────────────────────────────────────────────
 
 const LOOP_ACCENT_COLORS = ['#b7b5fe', '#9896e8', '#7b79d4', '#5856cc']
@@ -538,7 +573,6 @@ function LoopSection({ locale, c }) {
           </p>
         </div>
 
-        {/* Steps grid */}
         <div
           style={{
             display:             'grid',
@@ -586,31 +620,16 @@ function LoopSection({ locale, c }) {
           ))}
         </div>
 
-        {/* Type A / Type B paragraph — new */}
         {c.loop.typeAB && (
-          <p
-            style={{
-              marginTop:  '1.25rem',
-              fontSize:   '0.875rem',
-              lineHeight: 1.8,
-              color:      '#3D4452',
-              maxWidth:   '48rem',
-            }}
-          >
+          <p style={{ marginTop: '1.25rem', fontSize: '0.875rem', lineHeight: 1.8, color: '#3D4452', maxWidth: '48rem' }}>
             {c.loop.typeAB}
           </p>
         )}
 
-        {/* Methodology link — new */}
         <div style={{ marginTop: '1.25rem' }}>
           <Link
             href={`/${locale}/methodology`}
-            style={{
-              fontSize:      '0.875rem',
-              fontWeight:    600,
-              color:         '#5856cc',
-              textDecoration: 'none',
-            }}
+            style={{ fontSize: '0.875rem', fontWeight: 600, color: '#5856cc', textDecoration: 'none' }}
           >
             {c.loop.methodologyLink}
           </Link>
@@ -691,7 +710,6 @@ function JourneySection({ locale, c }) {
 
 // ─────────────────────────────────────────────────────────────
 // SECTION 4 — A REAL SESSION
-// Adds: navigators link after session paragraphs
 // ─────────────────────────────────────────────────────────────
 
 const SESSION_IMG = 'https://images.unsplash.com/photo-1589872880544-76e896b0592c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1200&q=80'
@@ -706,7 +724,6 @@ function SessionSection({ locale, c }) {
       <div className="container-section relative z-10" style={{ padding: 'var(--section-md) 1.25rem' }}>
         <div style={{ maxWidth: '40rem' }}>
 
-          {/* Navigator chip */}
           <div
             className="inline-flex items-center gap-2.5 rounded-full mb-7"
             style={{ padding: '7px 14px 7px 7px', backgroundColor: 'rgba(183,181,254,0.07)', border: '1px solid rgba(183,181,254,0.14)' }}
@@ -749,7 +766,6 @@ function SessionSection({ locale, c }) {
             </p>
           </div>
 
-          {/* Navigators link — new */}
           <div style={{ marginTop: '1.5rem' }}>
             <Link
               href={`/${locale}/navigators`}
@@ -839,11 +855,11 @@ function GrowthSection({ locale, c }) {
 
             <div>
               {TRAITS.map((trait) => {
-                const label   = locale === 'zh' ? trait.zh : trait.en
+                const label    = locale === 'zh' ? trait.zh : trait.en
                 const maxScale = 6
-                const sPct    = (trait.start / maxScale) * 100
-                const ePct    = (trait.end   / maxScale) * 100
-                const gainPct = ePct - sPct
+                const sPct     = (trait.start / maxScale) * 100
+                const ePct     = (trait.end   / maxScale) * 100
+                const gainPct  = ePct - sPct
                 return (
                   <div
                     key={trait.id}
@@ -872,7 +888,7 @@ function GrowthSection({ locale, c }) {
 }
 
 // ─────────────────────────────────────────────────────────────
-// SECTION 7 — GET STARTED (Diagnostic Consultation CTA)
+// SECTION 6 — GET STARTED
 // ─────────────────────────────────────────────────────────────
 
 function GetStartedSection({ locale, c }) {
@@ -894,7 +910,7 @@ function GetStartedSection({ locale, c }) {
 }
 
 // ─────────────────────────────────────────────────────────────
-// SECTION 8 — CONSULTATION FOOTER BAND
+// SECTION 7 — CONSULTATION FOOTER BAND
 // ─────────────────────────────────────────────────────────────
 
 function CharterSection({ locale, c }) {
