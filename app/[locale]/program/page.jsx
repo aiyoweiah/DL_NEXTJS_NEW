@@ -389,13 +389,13 @@ function Hero({ locale, c }) {
         }}
       />
 
-      {/* Primary directional overlay — left text zone darkened, right opens to show ship */}
+      {/* Primary directional overlay — left text zone heavily darkened, right opens to show ship */}
       <div
         aria-hidden="true"
         style={{
           position:   'absolute',
           inset:      0,
-          background: 'linear-gradient(108deg, rgba(14,14,18,0.88) 0%, rgba(14,14,18,0.68) 42%, rgba(14,14,18,0.18) 100%)',
+          background: 'linear-gradient(108deg, rgba(14,14,18,0.96) 0%, rgba(14,14,18,0.92) 30%, rgba(14,14,18,0.60) 55%, rgba(14,14,18,0.20) 100%)',
         }}
       />
 
@@ -405,7 +405,7 @@ function Hero({ locale, c }) {
         style={{
           position:   'absolute',
           inset:      0,
-          background: 'linear-gradient(to top, rgba(14,14,18,0.72) 0%, transparent 32%)',
+          background: 'linear-gradient(to top, rgba(14,14,18,0.82) 0%, transparent 28%)',
         }}
       />
 
