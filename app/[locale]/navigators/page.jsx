@@ -2,7 +2,13 @@
 //
 // Pure server component — no 'use client', zero external dependencies.
 // Bilingual EN + ZH — all text driven from COPY object below.
-// BACKGROUND IMAGE: place bg-navigators-hero.webp and bg-navigators-hero.jpg in /public/ (root)
+//
+// BACKGROUND UPDATE — April 13 2026
+//   Hero bg: bg-navigators-hero.webp (banker's lamp desk, watercolor)
+//   Replaced CSS backgroundImage with <img> tag + overlay divs
+//   Same 4-stop overlay treatment as program / methodology / results pages
+//   objectPosition: 'center 45%' — frames lamp, books, and map
+//   Warm amber/green radial accent echoes the banker's lamp glow
 
 import Link from 'next/link'
 import { notFound }                    from 'next/navigation'
@@ -72,7 +78,6 @@ const COPY = {
         { label: 'Matching',     body: "Navigators are matched to students \u2014 not assigned. Before the first session, DODO assesses your child\u2019s Lexile baseline, their 6+1 Trait writing profile, and their communication style. The match is intentional." },
         { label: 'Longitudinal', body: "Your child\u2019s Navigator carries their full history. Every Lexile score. Every session note. Every moment where a concept clicked or didn\u2019t. There is no starting over. There is no new face." },
         { label: 'Gap tracking', body: 'A Navigator does not prepare a lesson plan. They prepare for your specific child \u2014 where they are this week, what the gap is, and which part of The Loop will close it.' },
-        { label: 'The Hangar',  body: "Between sessions, The Hangar extends the relationship \u2014 Navigator-supported, student-driven. The work doesn\u2019t stop when the screen closes." },
       ],
     },
     s5: { eyebrow: 'The Navigators', h2: 'The person your child works with, every week.' },
@@ -84,7 +89,7 @@ const COPY = {
         { label: 'Minute 5\u201320: Read & Think',       body: 'Student reads a Lexile-calibrated text. Navigator asks one open question. Then waits. The silence is intentional \u2014 this is where thinking happens.' },
         { label: 'Minute 20\u201335: Speak & Challenge', body: "Student articulates their position. Navigator listens, then challenges with a Socratic follow-up. The goal isn\u2019t agreement \u2014 it\u2019s precision." },
         { label: 'Minute 35\u201350: Write & Score',     body: 'Student writes their argument. Navigator scores live using 6+1 Traits \u2014 Ideas: 4/6, Organization: 5/6. Feedback is specific, not generic. The score names the gap.' },
-        { label: 'Minute 50\u201360: Next Steps',        body: 'Navigator assigns work in The Hangar \u2014 targeted to the gap identified today. Parent receives session notes with Lexile progress and specific next-session focus.' },
+        { label: 'Minute 50\u201360: Next Steps',        body: 'Navigator assigns targeted work \u2014 specific to the gap identified today. Parent receives session notes with Lexile progress and specific next-session focus.' },
       ],
     },
     s7: {
@@ -94,7 +99,7 @@ const COPY = {
         { quote: "We tried three tutors before DODO. Every time, it was the same: homework help, then back to square one next week. With her Navigator, my daughter finally has someone who remembers her \u2014 what she struggles with, what she\u2019s good at, where she needs to go next. It\u2019s the first time I\u2019ve seen actual progress.", city: 'Parent, Vancouver',  detail: 'Student: Grade 7 \u00b7 16 weeks with Navigator Laura' },
         { quote: "The difference is specificity. Before DODO, teachers would say \u2018needs improvement in writing.\u2019 His Navigator told us exactly where the gap was \u2014 sentence structure, supporting evidence \u2014 and we watched those scores go up week by week. Numbers don\u2019t lie.",                                                 city: 'Parent, Toronto',   detail: 'Student: Grade 6 \u00b7 16 weeks with Navigator James' },
         { quote: "My son doesn\u2019t like talking in class. But with his Navigator, he talks. She knows when to wait, when to push, when to let him think. I\u2019ve never seen him engage like this. It\u2019s not magic \u2014 it\u2019s the relationship.",                                                                                 city: 'Parent, Montreal',  detail: 'Student: Grade 5 \u00b7 16 weeks with Navigator Alicia' },
-        { quote: "The Hangar was the surprise. Between sessions, my daughter\u2019s Navigator leaves her targeted work \u2014 not busywork. She actually does it because it\u2019s connected to what they talked about. The learning doesn\u2019t stop at 60 minutes.",                                                                          city: 'Parent, Calgary',   detail: 'Student: Grade 8 \u00b7 16 weeks with Navigator Laura' },
+        { quote: "Between sessions, my daughter\u2019s Navigator leaves her targeted work \u2014 not busywork. She actually does it because it\u2019s connected to what they talked about. The learning doesn\u2019t stop at 60 minutes.",                                                                                                       city: 'Parent, Calgary',   detail: 'Student: Grade 8 \u00b7 16 weeks with Navigator Laura' },
       ],
     },
     s8: {
@@ -145,10 +150,9 @@ const COPY = {
       eyebrow: '这段关系',
       h2: '同一位Navigator。每节课。十六周。',
       points: [
-        { label: '匹配',       body: 'Navigator与学生是匹配的，而非随机分配的。在第一节课之前，DODO评估您孩子的Lexile基线、6+1特质写作档案以及沟通风格。这次匹配是有意为之的。' },
-        { label: '纵向陪伴',   body: '您孩子的Navigator承载着他们的完整历史。每一个Lexile分数，每一条课程笔记，每一个概念突破或未能突破的瞬间。没有重新开始，没有陌生的面孔。' },
-        { label: '差距追踪',   body: 'Navigator不准备课程计划。他们为您的具体孩子做准备——他们本周在哪里，差距是什么，The Loop的哪个部分能弥合它。' },
-        { label: 'The Hangar', body: '在课程之间，The Hangar延伸了这段关系——由Navigator支持，由学生主导。当屏幕关闭时，学习不会停止。' },
+        { label: '匹配',     body: 'Navigator与学生是匹配的，而非随机分配的。在第一节课之前，DODO评估您孩子的Lexile基线、6+1特质写作档案以及沟通风格。这次匹配是有意为之的。' },
+        { label: '纵向陪伴', body: '您孩子的Navigator承载着他们的完整历史。每一个Lexile分数，每一条课程笔记，每一个概念突破或未能突破的瞬间。没有重新开始，没有陌生的面孔。' },
+        { label: '差距追踪', body: 'Navigator不准备课程计划。他们为您的具体孩子做准备——他们本周在哪里，差距是什么，The Loop的哪个部分能弥合它。' },
       ],
     },
     s5: { eyebrow: 'Navigators', h2: '每周与您孩子共事的那个人。' },
@@ -156,11 +160,11 @@ const COPY = {
       eyebrow: '实际情况',
       h2: '真实课程中发生了什么',
       timeline: [
-        { label: '第0–5分钟：评估',       body: 'Navigator回顾上节课的笔记和The Hangar的活动。他们知道学生在哪里挣扎、什么已经理解，以及今天需要强化什么。' },
-        { label: '第5–20分钟：阅读与思考', body: '学生阅读Lexile校准的文本。Navigator提出一个开放性问题，然后等待。沉默是有意为之的——这是思考发生的地方。' },
+        { label: '第0–5分钟：评估',        body: 'Navigator回顾上节课的笔记和活动。他们知道学生在哪里挣扎、什么已经理解，以及今天需要强化什么。' },
+        { label: '第5–20分钟：阅读与思考',  body: '学生阅读Lexile校准的文本。Navigator提出一个开放性问题，然后等待。沉默是有意为之的——这是思考发生的地方。' },
         { label: '第20–35分钟：表达与挑战', body: '学生阐明自己的立场。Navigator倾听，然后以苏格拉底式追问提出挑战。目标不是达成共识——而是精准。' },
         { label: '第35–50分钟：写作与评分', body: '学生写出论点。Navigator使用6+1特质框架实时评分——想法：4/6，组织：5/6。反馈具体，不笼统。分数指明差距所在。' },
-        { label: '第50–60分钟：下一步',   body: 'Navigator在The Hangar中布置作业——针对今天发现的差距。家长收到包含Lexile进展和具体下节课重点的课程笔记。' },
+        { label: '第50–60分钟：下一步',    body: 'Navigator布置针对性作业——针对今天发现的差距。家长收到包含Lexile进展和具体下节课重点的课程笔记。' },
       ],
     },
     s7: {
@@ -170,7 +174,7 @@ const COPY = {
         { quote: '在DODO之前，我们试过三位家教。每次都一样：解决作业，然后下周重头再来。有了她的Navigator，我的女儿终于有了一个记得她的人——记得她挣扎的地方、她擅长的地方、她下一步需要去的地方。这是我第一次看到真正的进步。', city: '家长，温哥华', detail: '学生：七年级 · 与Navigator Laura共事16周' },
         { quote: '区别在于具体性。在DODO之前，老师会说"写作需要提高"。他的Navigator告诉我们确切的差距在哪里——句子结构、支撑论据——我们看着那些分数一周一周地上升。数字不会说谎。', city: '家长，多伦多', detail: '学生：六年级 · 与Navigator James共事16周' },
         { quote: '我的儿子不喜欢在课堂上发言。但和他的Navigator在一起时，他会说话。她知道什么时候等待，什么时候推动，什么时候让他思考。我从未见过他如此投入。这不是魔法——是这段关系。', city: '家长，蒙特利尔', detail: '学生：五年级 · 与Navigator Alicia共事16周' },
-        { quote: 'The Hangar是意外之喜。在课程之间，我女儿的Navigator给她留有针对性的作业——不是无意义的练习。她确实去做，因为那与他们讨论的内容相关联。学习不在60分钟时停止。', city: '家长，卡尔加里', detail: '学生：八年级 · 与Navigator Laura共事16周' },
+        { quote: '在课程之间，我女儿的Navigator给她留有针对性的作业——不是无意义的练习。她确实去做，因为那与他们讨论的内容相关联。学习不在60分钟时停止。', city: '家长，卡尔加里', detail: '学生：八年级 · 与Navigator Laura共事16周' },
       ],
     },
     s8: {
@@ -219,27 +223,69 @@ export default async function NavigatorsPage({ params }) {
   return (
     <div className="w-full overflow-hidden" style={{ fontFamily: 'var(--font-latin)' }}>
 
-      {/* S1 HERO */}
+      {/* ── S1 HERO ──────────────────────────────────────────
+          Banker's lamp desk illustration.
+          Left side dark (bookcase shadows) — text sits here.
+          Lamp glow is center — opens through on right half.
+          objectPosition 'center 45%' keeps lamp + map in frame.
+          Warm amber/green radial accent echoes the lamp shade.
+      */}
       <section
-        className="relative overflow-hidden flex items-center"
         aria-labelledby="navigators-hero-heading"
         style={{
-          minHeight: '100dvh',
-          display: 'flex',
-          alignItems: 'center',
-          backgroundColor: '#0E0E12',
-          backgroundImage: 'url(/bg-navigators-hero.webp)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          paddingTop: 'calc(var(--nav-height) + 3rem)',
-          paddingBottom: '5rem',
+          minHeight:     '100dvh',
+          display:       'flex',
+          flexDirection: 'column',
+          position:      'relative',
+          overflow:      'hidden',
         }}
       >
-        {/* Dark overlay for readability */}
+        {/* Background illustration */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/bg-navigators-hero.webp"
+          alt=""
+          aria-hidden="true"
+          style={{
+            position:       'absolute',
+            inset:          0,
+            width:          '100%',
+            height:         '100%',
+            objectFit:      'cover',
+            objectPosition: 'center 45%',
+            display:        'block',
+          }}
+        />
+
+        {/* Primary directional overlay */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0"
-          style={{ background: 'rgba(14, 14, 18, 0.55)' }}
+          style={{
+            position:   'absolute',
+            inset:      0,
+            background: 'linear-gradient(108deg, rgba(14,14,18,0.98) 0%, rgba(14,14,18,0.97) 35%, rgba(14,14,18,0.80) 58%, rgba(14,14,18,0.28) 100%)',
+          }}
+        />
+
+        {/* Bottom vignette */}
+        <div
+          aria-hidden="true"
+          style={{
+            position:   'absolute',
+            inset:      0,
+            background: 'linear-gradient(to top, rgba(14,14,18,0.88) 0%, transparent 28%)',
+          }}
+        />
+
+        {/* Warm amber/green radial — echoes the banker's lamp shade */}
+        <div
+          aria-hidden="true"
+          style={{
+            position:      'absolute',
+            inset:         0,
+            background:    'radial-gradient(ellipse 50% 50% at 62% 45%, rgba(180,140,60,0.08) 0%, transparent 65%)',
+            pointerEvents: 'none',
+          }}
         />
 
         {/* Background watermark text */}
@@ -252,22 +298,35 @@ export default async function NavigatorsPage({ params }) {
         </div>
 
         {/* Content */}
-        <div className="px-6 max-w-4xl relative z-10 w-full">
-          <Eyebrow dark>{c.hero.eyebrow}</Eyebrow>
-          <h1
-            id="navigators-hero-heading"
-            className="mb-8"
-            style={{ fontSize: 'clamp(38px, 5vw, 68px)', fontWeight: 700, color: '#F0F0F0', lineHeight: 1.2, maxWidth: '760px' }}
-          >
-            {c.hero.h1a}<span style={{ color: '#b7b5fe' }}>{c.hero.h1b}</span>{c.hero.h1c}<span style={{ color: '#b7b5fe' }}>{c.hero.h1d}</span>{c.hero.h1e}
-          </h1>
-          <p style={{ fontSize: 'clamp(16px, 2vw, 20px)', fontWeight: 400, color: '#F0F0F0', opacity: 0.8, maxWidth: '580px', lineHeight: 1.6 }}>
-            {c.hero.sub}
-          </p>
+        <div
+          className="px-6 relative z-10 w-full"
+          style={{
+            flex:          1,
+            display:       'flex',
+            alignItems:    'center',
+            paddingTop:    'calc(var(--nav-height) + 3rem)',
+            paddingBottom: '5rem',
+            maxWidth:      '1200px',
+            margin:        '0 auto',
+          }}
+        >
+          <div style={{ maxWidth: '760px' }}>
+            <Eyebrow dark>{c.hero.eyebrow}</Eyebrow>
+            <h1
+              id="navigators-hero-heading"
+              className="mb-8"
+              style={{ fontSize: 'clamp(38px, 5vw, 68px)', fontWeight: 700, color: '#F0F0F0', lineHeight: 1.2 }}
+            >
+              {c.hero.h1a}<span style={{ color: '#b7b5fe' }}>{c.hero.h1b}</span>{c.hero.h1c}<span style={{ color: '#b7b5fe' }}>{c.hero.h1d}</span>{c.hero.h1e}
+            </h1>
+            <p style={{ fontSize: 'clamp(16px, 2vw, 20px)', fontWeight: 400, color: 'rgba(240,240,240,0.52)', maxWidth: '580px', lineHeight: 1.6 }}>
+              {c.hero.sub}
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* S2 WHAT A NAVIGATOR IS NOT */}
+      {/* ── S2 WHAT A NAVIGATOR IS NOT ───────────────────── */}
       <section className="px-6 py-24" style={{ backgroundColor: '#0E0E12' }}>
         <div className="container-section">
           <Eyebrow dark center>{c.s2.eyebrow}</Eyebrow>
@@ -287,7 +346,7 @@ export default async function NavigatorsPage({ params }) {
         </div>
       </section>
 
-      {/* S3 WHAT A NAVIGATOR DOES */}
+      {/* ── S3 WHAT A NAVIGATOR DOES ─────────────────────── */}
       <section className="px-6 py-24" style={{ backgroundColor: '#212830' }}>
         <div className="container-section">
           <Eyebrow dark center>{c.s3.eyebrow}</Eyebrow>
@@ -308,7 +367,7 @@ export default async function NavigatorsPage({ params }) {
         </div>
       </section>
 
-      {/* S4 THE NAVIGATOR RELATIONSHIP */}
+      {/* ── S4 THE NAVIGATOR RELATIONSHIP ────────────────── */}
       <section className="px-6 py-24" style={{ backgroundColor: '#F5F5FF' }}>
         <div className="container-section">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -334,7 +393,7 @@ export default async function NavigatorsPage({ params }) {
         </div>
       </section>
 
-      {/* S5 NAVIGATOR PROFILES */}
+      {/* ── S5 NAVIGATOR PROFILES ────────────────────────── */}
       <section className="px-6 py-24" style={{ backgroundColor: '#0E0E12' }}>
         <div className="container-section">
           <Eyebrow dark center>{c.s5.eyebrow}</Eyebrow>
@@ -360,7 +419,7 @@ export default async function NavigatorsPage({ params }) {
         </div>
       </section>
 
-      {/* S6 A REAL SESSION */}
+      {/* ── S6 A REAL SESSION ────────────────────────────── */}
       <section className="px-6 py-24" style={{ backgroundColor: '#F5F5FF' }}>
         <div className="max-w-5xl mx-auto px-0 md:px-6">
           <Eyebrow center>{c.s6.eyebrow}</Eyebrow>
@@ -378,7 +437,7 @@ export default async function NavigatorsPage({ params }) {
         </div>
       </section>
 
-      {/* S7 WHAT FAMILIES SAY */}
+      {/* ── S7 WHAT FAMILIES SAY ─────────────────────────── */}
       <section className="px-6 py-24" style={{ backgroundColor: '#212830' }}>
         <div className="container-section">
           <Eyebrow dark center>{c.s7.eyebrow}</Eyebrow>
@@ -395,7 +454,7 @@ export default async function NavigatorsPage({ params }) {
         </div>
       </section>
 
-      {/* S8 CLOSING CTA */}
+      {/* ── S8 CLOSING CTA ───────────────────────────────── */}
       <section className="px-6 py-32" style={{ backgroundColor: '#0E0E12' }}>
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="mb-6" style={{ fontSize: 'clamp(32px, 5vw, 52px)', fontWeight: 700, color: '#F0F0F0', lineHeight: 1.2 }}>
