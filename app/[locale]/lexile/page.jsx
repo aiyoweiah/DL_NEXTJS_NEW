@@ -7,21 +7,18 @@
 //
 // Server-rendered — zero 'use client'.
 //
-// Sections:
-//   1. Hero            — dark, H1 framed as a question
-//   2. What Is Lexile  — white, scale explained
-//   3. Grade Table     — darker, benchmark rows
-//   4. Bilingual Gap   — light, why bilingual kids score lower
-//   5. How DODO Uses   — dark, 3 assessment points
-//   6. Examples        — darker, LexileBar components
-//   7. CTA             — dark, book call + methodology link
+// BACKGROUND UPDATE — April 13 2026
+//   Hero bg: lexile-background.webp (open book, compass, fountain pen — watercolor)
+//   Inline hero section replaces <SectionWrapper hero>
+//   Same 4-stop overlay treatment as all other pages
+//   objectPosition: 'center 38%' — frames book pages + compass in centre
+//   Warm amber/brown radial accent echoes the aged-paper tones
 
 import Link         from 'next/link'
 import { notFound } from 'next/navigation'
 
 import { isValidLocale, localeParams, getContent } from '@/lib/i18n'
 import { buildMetadata }                           from '@/lib/metadata'
-import { educationOrgSchema }                      from '@/lib/schema'
 
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Button         from '@/components/ui/Button'
@@ -52,8 +49,6 @@ export default async function LexilePage({ params }) {
 
   const t = await getContent(locale, 'lexile')
 
-  // Inline JSON-LD — DefinedTerm for Lexile framework
-  // Gives LLMs a structured definition they can cite directly.
   const lexileSchema = {
     '@context':  'https://schema.org',
     '@type':     'Article',
@@ -62,16 +57,8 @@ export default async function LexilePage({ params }) {
     description: t.meta.description,
     url:         `https://www.dodolearning.com/${locale}/lexile`,
     inLanguage:  locale === 'zh' ? 'zh-Hans' : 'en',
-    author: {
-      '@type': 'EducationalOrganization',
-      name:    'DODO Learning',
-      url:     'https://www.dodolearning.com',
-    },
-    publisher: {
-      '@type': 'EducationalOrganization',
-      name:    'DODO Learning',
-      url:     'https://www.dodolearning.com',
-    },
+    author:    { '@type': 'EducationalOrganization', name: 'DODO Learning', url: 'https://www.dodolearning.com' },
+    publisher: { '@type': 'EducationalOrganization', name: 'DODO Learning', url: 'https://www.dodolearning.com' },
     about: {
       '@type': 'DefinedTerm',
       name:    'Lexile Framework for Reading',
@@ -90,21 +77,100 @@ export default async function LexilePage({ params }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(lexileSchema) }}
       />
 
-      {/* ── 1. Hero ───────────────────────────────────────── */}
-      <SectionWrapper hero>
-        <div className="py-24 md:py-32 max-w-3xl">
-          <Badge className="mb-6">{t.hero.eyebrow}</Badge>
-          <h1
-            className="font-bold leading-tight tracking-tight mb-6 text-gradient"
-            style={{ fontSize: 'clamp(32px, 5vw, 60px)', letterSpacing: '-0.03em' }}
-          >
-            {t.hero.heading}
-          </h1>
-          <p className="text-lg md:text-xl leading-relaxed max-w-2xl" style={{ color: '#3D4452' }}>
-            {t.hero.subheading}
-          </p>
+      {/* ── 1. Hero ───────────────────────────────────────────
+          Open book / compass / fountain pen watercolor illustration.
+          Left wall is naturally very dark (brown wash) — text sits there.
+          Book pages and compass are warm amber centre → open right.
+          objectPosition 'center 38%' keeps book + compass in frame.
+          Warm amber/brown radial accent echoes the aged-paper tones.
+      */}
+      <section
+        aria-labelledby="lexile-hero-heading"
+        style={{
+          minHeight:     '80dvh',
+          display:       'flex',
+          flexDirection: 'column',
+          position:      'relative',
+          overflow:      'hidden',
+        }}
+      >
+        {/* Background illustration */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/lexile-background.webp"
+          alt=""
+          aria-hidden="true"
+          style={{
+            position:       'absolute',
+            inset:          0,
+            width:          '100%',
+            height:         '100%',
+            objectFit:      'cover',
+            objectPosition: 'center 38%',
+            display:        'block',
+          }}
+        />
+
+        {/* Primary directional overlay */}
+        <div
+          aria-hidden="true"
+          style={{
+            position:   'absolute',
+            inset:      0,
+            background: 'linear-gradient(108deg, rgba(14,14,18,0.98) 0%, rgba(14,14,18,0.97) 35%, rgba(14,14,18,0.80) 58%, rgba(14,14,18,0.28) 100%)',
+          }}
+        />
+
+        {/* Bottom vignette */}
+        <div
+          aria-hidden="true"
+          style={{
+            position:   'absolute',
+            inset:      0,
+            background: 'linear-gradient(to top, rgba(14,14,18,0.88) 0%, transparent 28%)',
+          }}
+        />
+
+        {/* Warm amber/brown radial — echoes the aged-paper and compass tones */}
+        <div
+          aria-hidden="true"
+          style={{
+            position:      'absolute',
+            inset:         0,
+            background:    'radial-gradient(ellipse 55% 50% at 65% 45%, rgba(180,130,60,0.08) 0%, transparent 65%)',
+            pointerEvents: 'none',
+          }}
+        />
+
+        {/* Content */}
+        <div
+          className="container-section relative z-10"
+          style={{
+            flex:          1,
+            display:       'flex',
+            alignItems:    'center',
+            paddingTop:    'calc(var(--nav-height) + 3.5rem)',
+            paddingBottom: '3.5rem',
+          }}
+        >
+          <div className="py-4 max-w-3xl">
+            <Badge className="mb-6">{t.hero.eyebrow}</Badge>
+            <h1
+              id="lexile-hero-heading"
+              className="font-bold leading-tight tracking-tight mb-6 text-gradient"
+              style={{ fontSize: 'clamp(32px, 5vw, 60px)', letterSpacing: '-0.03em' }}
+            >
+              {t.hero.heading}
+            </h1>
+            <p
+              className="text-lg md:text-xl leading-relaxed max-w-2xl"
+              style={{ color: 'rgba(240,240,240,0.52)' }}
+            >
+              {t.hero.subheading}
+            </p>
+          </div>
         </div>
-      </SectionWrapper>
+      </section>
 
       {/* ── 2. What Is Lexile ─────────────────────────────── */}
       <SectionWrapper white>
@@ -152,15 +218,9 @@ export default async function LexilePage({ params }) {
               <tbody>
                 {t.grades.rows.map((row, i) => (
                   <tr key={i}>
-                    <td className="pr-6 py-3 font-semibold" style={{ color: '#F0F0F0' }}>
-                      {row.grade}
-                    </td>
-                    <td className="pr-6 py-3 tabular-nums" style={{ color: '#94A3B8' }}>
-                      {row.range}
-                    </td>
-                    <td className="py-3 tabular-nums font-semibold" style={{ color: '#b7b5fe' }}>
-                      {row.midpoint}
-                    </td>
+                    <td className="pr-6 py-3 font-semibold" style={{ color: '#F0F0F0' }}>{row.grade}</td>
+                    <td className="pr-6 py-3 tabular-nums" style={{ color: '#94A3B8' }}>{row.range}</td>
+                    <td className="py-3 tabular-nums font-semibold" style={{ color: '#b7b5fe' }}>{row.midpoint}</td>
                   </tr>
                 ))}
               </tbody>
