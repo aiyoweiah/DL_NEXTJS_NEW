@@ -2,22 +2,16 @@
 //
 // Watch Demo Classes — video-first, properly sized for 1280–1440 px viewports.
 //
+// BACKGROUND UPDATE — April 13 2026
+//   Hero bg: demos-background.webp (two golden retriever puppies on dock at sunset, watercolor)
+//   Added <img> + 4-stop overlay to Hero (was plain #0E0E12 background)
+//   Same overlay treatment as all other pages
+//   objectPosition: 'center 45%' — keeps puppies + sunset horizon centred
+//   Warm amber radial accent echoes the sunset sky
+//
 // ─── VIDEO IDs ───────────────────────────────────────────────────────────────
 // Replace the YOUTUBE_IDS constants below with your real YouTube video IDs.
-// IDs are the 11-character string after ?v= in a YouTube URL.
-// Example: https://www.youtube.com/watch?v=dQw4w9WgXcQ → "dQw4w9WgXcQ"
 // ─────────────────────────────────────────────────────────────────────────────
-//
-// Sections (top → bottom):
-//   1. Hero          — dark, headline + CTAs, stats strip
-//   2. FeaturedDemo  — white, cinema-scale featured video + metadata panel
-//   3. DemoGrid      — white, 3-col grade-band video grid (supporting scale)
-//   4. BrandVideos   — whisper, 2-col brand/culture videos (max-width 960px)
-//   5. InsideSession — dark bg image, narrative overlay
-//   6. AfterDemo     — dark, what to do next
-//   7. Results       — darker, Lexile scale + 6+1 Trait
-//   8. BookCall      — light, diagnostic CTA
-//   9. Charter       — dark, dual-CTA footer band
 
 import Link from 'next/link'
 import { notFound }                    from 'next/navigation'
@@ -25,10 +19,6 @@ import { isValidLocale, localeParams } from '@/lib/i18n'
 import { buildMetadata }               from '@/lib/metadata'
 import LexileBar                       from '@/components/ui/LexileBar'
 import YoutubeEmbed                    from '@/components/demos/YoutubeEmbed'
-
-// ─────────────────────────────────────────────────────────────
-// VIDEO IDs — REPLACE THESE WITH YOUR REAL YOUTUBE VIDEO IDs
-// ─────────────────────────────────────────────────────────────
 
 const YOUTUBE_IDS = {
   featured:       'REPLACE_FEATURED_VIDEO_ID',
@@ -87,11 +77,9 @@ const COPY = {
       row1Label: 'Demo Class Recordings',
       row2Label: 'About the Program',
       cards: [
-        // Row 1 — demo classes
         { videoId: YOUTUBE_IDS.demoGr46,       label: 'Emerging Reader',    labelZh: '\u6210\u957f\u671f\u8bfb\u8005', tag1: 'Grades 4\u20136', tag2: 'Lexile 580\u2013720', tag3: 'Read \u00b7 Think \u00b7 Write' },
         { videoId: YOUTUBE_IDS.demoGr78,       label: 'Independent Reader', labelZh: '\u72ec\u7acb\u9605\u8bfb\u8005', tag1: 'Grades 7\u20138', tag2: 'Lexile 820\u2013980', tag3: 'Full Loop' },
         { videoId: YOUTUBE_IDS.demoGr9plus,    label: 'Advanced Reader',    labelZh: '\u9ad8\u7ea7\u9605\u8bfb\u8005', tag1: 'Grades 9+',       tag2: 'Lexile 1020+',      tag3: 'Full Loop \u00b7 Extended' },
-        // Row 2 — about
         { videoId: YOUTUBE_IDS.featured,       label: 'The Full Loop',      labelZh: '\u5b8c\u6574\u5faa\u73af\u5c55\u793a', tag1: 'Featured',   tag2: '20 min',  tag3: 'Grades 7\u20138' },
         { videoId: YOUTUBE_IDS.brandLoop,      label: 'The Loop Explained', labelZh: '\u5b66\u4e60\u5faa\u73af\u89e3\u6790', tag1: 'Method',     tag2: '5 min',   tag3: null },
         { videoId: YOUTUBE_IDS.brandNavigator, label: 'Meet a Navigator',   labelZh: '\u8ba4\u8bc6\u9886\u822a\u5458',       tag1: 'People',     tag2: '3 min',   tag3: null },
@@ -202,7 +190,7 @@ const COPY = {
       p4: '\u6700\u540e\uff0c\u60a8\u5c06\u542c\u5230\u9886\u822a\u5458\u5e03\u7f6e\u5199\u4f5c\u4efb\u52a1\uff1a',
       q4: '\u201c\u5199\u4e00\u6bb5\u8bdd\uff1a\u516c\u5e73\u9700\u8981\u4ed8\u51fa\u4ec0\u4e48\u4ee3\u4ef7\uff1f\u4ece\u6587\u672c\u4e2d\u627e\u4e24\u4e2a\u4f9d\u636e\u3002\u6211\u5728\u4e0b\u6b21\u8bfe\u524d\u4f1a\u9605\u8bfb\u3002\u201d',
     },
-    after:   { eyebrow: '\u89c2\u770b\u540e', h2: '\u89c2\u770b\u540e\uff0c\u60a8\u5c06\u5fc3\u4e2d\u6709\u6570', h2zh: 'You\u2019ll know within 20 minutes.', body: '\u5927\u591a\u6570\u5bb6\u957f\u544a\u8bc9\u6211\u4eec\uff0c\u793a\u8303\u89e3\u7b54\u4e86\u4ed6\u4eec\u89c2\u770b\u524d\u65e0\u6cd5\u7528\u8bed\u8a00\u8868\u8fbe\u7684\u95ee\u9898\u3002\u89c2\u770b\u793a\u8303\uff0c\u7136\u540e\u9884\u7ea6\u8bfa\u65ad\u901a\u8bdd\u3002', cta: '\u9884\u7ea6\u8bfa\u65ad\u901a\u8bdd' },
+    after: { eyebrow: '\u89c2\u770b\u540e', h2: '\u89c2\u770b\u540e\uff0c\u60a8\u5c06\u5fc3\u4e2d\u6709\u6570', h2zh: 'You\u2019ll know within 20 minutes.', body: '\u5927\u591a\u6570\u5bb6\u957f\u544a\u8bc9\u6211\u4eec\uff0c\u793a\u8303\u89e3\u7b54\u4e86\u4ed6\u4eec\u89c2\u770b\u524d\u65e0\u6cd5\u7528\u8bed\u8a00\u8868\u8fbe\u7684\u95ee\u9898\u3002\u89c2\u770b\u793a\u8303\uff0c\u7136\u540e\u9884\u7ea6\u8bfa\u65ad\u901a\u8bdd\u3002', cta: '\u9884\u7ea6\u8bfa\u65ad\u901a\u8bdd' },
     growth: {
       eyebrow: '\u5b66\u751f\u6210\u679c',
       h2:      '\u6f14\u793a\u5c55\u793a\u65b9\u6cd5\uff0c\u6570\u5b57\u8bc1\u660e\u6210\u679c',
@@ -243,29 +231,109 @@ function Tag({ children, variant = 'default' }) {
 
 // ─────────────────────────────────────────────────────────────
 // SECTION 1 — HERO
+// Two golden retriever puppies playing tug-of-war on a dock at sunset.
+// Sailboat hull is dark teal on the left — natural text zone.
+// Amber sunset sky + puppies + lighthouse open right.
+// objectPosition 'center 45%' keeps puppies + horizon in frame.
+// Warm amber radial accent echoes the sunset sky.
 // ─────────────────────────────────────────────────────────────
 
 function Hero({ locale, c }) {
   return (
-    <section aria-labelledby="demos-hero-heading" style={{ backgroundColor: '#0E0E12', minHeight: '100dvh', display: 'flex', flexDirection: 'column', position: 'relative', overflow: 'hidden' }}>
-      <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 65% 50% at 80% 30%, rgba(183,181,254,0.07) 0%, transparent 60%)', pointerEvents: 'none' }} />
+    <section
+      aria-labelledby="demos-hero-heading"
+      style={{
+        minHeight:     '100dvh',
+        display:       'flex',
+        flexDirection: 'column',
+        position:      'relative',
+        overflow:      'hidden',
+      }}
+    >
+      {/* Background illustration */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/demos-background.webp"
+        alt=""
+        aria-hidden="true"
+        style={{
+          position:       'absolute',
+          inset:          0,
+          width:          '100%',
+          height:         '100%',
+          objectFit:      'cover',
+          objectPosition: 'center 45%',
+          display:        'block',
+        }}
+      />
 
-      <div className="container-section relative z-10" style={{ flex: 1, display: 'flex', alignItems: 'center', paddingTop: 'calc(var(--nav-height) + 3.5rem)', paddingBottom: '2.5rem' }}>
+      {/* Primary directional overlay */}
+      <div
+        aria-hidden="true"
+        style={{
+          position:   'absolute',
+          inset:      0,
+          background: 'linear-gradient(108deg, rgba(14,14,18,0.98) 0%, rgba(14,14,18,0.97) 35%, rgba(14,14,18,0.80) 58%, rgba(14,14,18,0.28) 100%)',
+        }}
+      />
+
+      {/* Bottom vignette */}
+      <div
+        aria-hidden="true"
+        style={{
+          position:   'absolute',
+          inset:      0,
+          background: 'linear-gradient(to top, rgba(14,14,18,0.88) 0%, transparent 28%)',
+        }}
+      />
+
+      {/* Warm amber radial — echoes the sunset sky */}
+      <div
+        aria-hidden="true"
+        style={{
+          position:      'absolute',
+          inset:         0,
+          background:    'radial-gradient(ellipse 55% 50% at 68% 42%, rgba(200,140,40,0.08) 0%, transparent 65%)',
+          pointerEvents: 'none',
+        }}
+      />
+
+      {/* Content */}
+      <div
+        className="container-section relative z-10"
+        style={{
+          flex:          1,
+          display:       'flex',
+          alignItems:    'center',
+          paddingTop:    'calc(var(--nav-height) + 3.5rem)',
+          paddingBottom: '2.5rem',
+        }}
+      >
         <div style={{ maxWidth: '46rem' }}>
-          <div className="inline-flex items-center gap-2 mb-7 rounded-full" style={{ padding: '5px 14px', border: '1px solid rgba(183,181,254,0.18)', backgroundColor: 'rgba(183,181,254,0.05)' }}>
+          <div
+            className="inline-flex items-center gap-2 mb-7 rounded-full"
+            style={{ padding: '5px 14px', border: '1px solid rgba(183,181,254,0.18)', backgroundColor: 'rgba(183,181,254,0.05)' }}
+          >
             <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: '#b7b5fe' }} />
             <span style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#b7b5fe' }}>{c.hero.chip}</span>
           </div>
-          <h1 id="demos-hero-heading" style={{ fontSize: 'clamp(2.25rem, 5vw + 0.5rem, 4rem)', fontWeight: 700, lineHeight: 1.06, letterSpacing: '-0.03em', color: '#F0F0F0', marginBottom: '0.625rem', textWrap: 'balance' }}>{c.hero.h1}</h1>
-          <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '17px', fontWeight: 500, color: 'rgba(183,181,254,0.45)', marginBottom: '1.25rem', lineHeight: 1.5 }}>{c.hero.h1zh}</p>
-          <p style={{ fontSize: '1rem', lineHeight: 1.85, color: 'rgba(240,240,240,0.5)', maxWidth: '36rem', marginBottom: '2.25rem' }}>{c.hero.sub}</p>
+          <h1
+            id="demos-hero-heading"
+            style={{ fontSize: 'clamp(2.25rem, 5vw + 0.5rem, 4rem)', fontWeight: 700, lineHeight: 1.06, letterSpacing: '-0.03em', color: '#F0F0F0', marginBottom: '0.625rem', textWrap: 'balance' }}
+          >
+            {c.hero.h1}
+          </h1>
+          <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '17px', fontWeight: 500, color: 'rgba(183,181,254,0.40)', marginBottom: '1.25rem', lineHeight: 1.5 }}>{c.hero.h1zh}</p>
+          <p style={{ fontSize: '1rem', lineHeight: 1.85, color: 'rgba(240,240,240,0.52)', maxWidth: '36rem', marginBottom: '2.25rem' }}>{c.hero.sub}</p>
           <div className="flex flex-col sm:flex-row gap-3">
             <a href="#demo-videos" className="btn btn-primary" style={{ fontWeight: 700 }}>{c.hero.cta1}</a>
             <Link href={`/${locale}/consult`} className="btn btn-ghost">{c.hero.cta2}</Link>
           </div>
         </div>
       </div>
-      <div style={{ borderTop: '1px solid rgba(183,181,254,0.07)', flexShrink: 0, position: 'relative', zIndex: 10 }}>
+
+      {/* Stat pills rail */}
+      <div style={{ borderTop: '1px solid rgba(183,181,254,0.07)', flexShrink: 0, position: 'relative', zIndex: 10, backgroundColor: '#1C2330' }}>
         <div className="container-section">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)' }} className="sm:grid-cols-6">
             {c.hero.stats.map((stat, i) => (
@@ -283,7 +351,7 @@ function Hero({ locale, c }) {
 }
 
 // ─────────────────────────────────────────────────────────────
-// SECTIONS 2–4 — VIDEO GALLERY (3-per-row, 2 labelled rows)
+// SECTIONS 2–4 — VIDEO GALLERY
 // ─────────────────────────────────────────────────────────────
 
 function VideoGallery({ locale, c }) {
@@ -294,34 +362,17 @@ function VideoGallery({ locale, c }) {
     return (
       <article
         aria-label={`${card.label} — ${card.labelZh}`}
-        style={{
-          backgroundColor: '#ffffff',
-          border:          '1px solid rgba(14,14,18,0.08)',
-          borderRadius:    '0.875rem',
-          overflow:        'hidden',
-          boxShadow:       '0 1px 3px rgba(0,0,0,0.05)',
-          display:         'flex',
-          flexDirection:   'column',
-        }}
+        style={{ backgroundColor: '#ffffff', border: '1px solid rgba(14,14,18,0.08)', borderRadius: '0.875rem', overflow: 'hidden', boxShadow: '0 1px 3px rgba(0,0,0,0.05)', display: 'flex', flexDirection: 'column' }}
       >
-        {/* Thumbnail — flush, no internal padding */}
         <YoutubeEmbed videoId={card.videoId} title={`${card.label} — ${card.labelZh}`} rounded="0" />
-
-        {/* Compact metadata strip */}
         <div style={{ padding: '0.625rem 0.75rem 0.875rem' }}>
-          {/* Pill row */}
           <div style={{ display: 'flex', gap: '0.3rem', flexWrap: 'wrap', marginBottom: '0.5rem' }}>
             <Tag variant="violet">{card.tag1}</Tag>
             <Tag variant="default">{card.tag2}</Tag>
             {card.tag3 && <Tag variant="default">{card.tag3}</Tag>}
           </div>
-          {/* Title */}
-          <p style={{ fontSize: '0.875rem', fontWeight: 700, color: '#0E0E12', lineHeight: 1.3, marginBottom: '1px' }}>
-            {card.label}
-          </p>
-          <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '10px', color: '#5856cc', lineHeight: 1.3 }}>
-            {card.labelZh}
-          </p>
+          <p style={{ fontSize: '0.875rem', fontWeight: 700, color: '#0E0E12', lineHeight: 1.3, marginBottom: '1px' }}>{card.label}</p>
+          <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '10px', color: '#5856cc', lineHeight: 1.3 }}>{card.labelZh}</p>
         </div>
       </article>
     )
@@ -330,39 +381,28 @@ function VideoGallery({ locale, c }) {
   return (
     <section id="demo-videos" aria-labelledby="video-gallery-heading" style={{ backgroundColor: '#ffffff', padding: 'var(--section-md) 0' }}>
       <div className="container-section">
-
-        {/* Section header */}
         <div style={{ marginBottom: '2.5rem' }}>
           <Eyebrow>{c.videos.eyebrow}</Eyebrow>
           <BilingualH2 id="video-gallery-heading" primary={c.videos.h2} secondary={c.videos.h2zh} />
         </div>
-
-        {/* Row 1 — Demo Classes */}
         <div style={{ marginBottom: '2.5rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-            <p style={{ fontSize: '0.6875rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#5856cc' }}>
-              {c.videos.row1Label}
-            </p>
+            <p style={{ fontSize: '0.6875rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#5856cc' }}>{c.videos.row1Label}</p>
             <div style={{ flex: 1, height: '1px', backgroundColor: 'rgba(14,14,18,0.07)' }} aria-hidden="true" />
           </div>
           <div style={{ display: 'grid', gap: '1rem' }} className="md:grid-cols-3">
             {row1.map((card, i) => <VideoCard key={i} card={card} />)}
           </div>
         </div>
-
-        {/* Row 2 — About */}
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-            <p style={{ fontSize: '0.6875rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#5856cc' }}>
-              {c.videos.row2Label}
-            </p>
+            <p style={{ fontSize: '0.6875rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#5856cc' }}>{c.videos.row2Label}</p>
             <div style={{ flex: 1, height: '1px', backgroundColor: 'rgba(14,14,18,0.07)' }} aria-hidden="true" />
           </div>
           <div style={{ display: 'grid', gap: '1rem' }} className="md:grid-cols-3">
             {row2.map((card, i) => <VideoCard key={i} card={card} />)}
           </div>
         </div>
-
       </div>
     </section>
   )

@@ -2,22 +2,24 @@
 //
 // Diagnostic Consultation — Cal.com booking embed.
 // Sections (top → bottom):
-//   1. Hero           — dark, h1, 6 stat pills
+//   1. Hero           — dark bg illustration, h1, 6 stat pills
 //   2. WhatHappens    — white, 4 numbered phase steps (no images)
 //   3. RealCall       — dark bg image, narrative overlay
 //   4. TrustSection   — dark, Navigator-not-sales + bullet points
 //   5. CalendarSection — whisper, Cal.com embed
 //   6. CharterSection  — dark footer band
+//
+// BACKGROUND UPDATE — April 13 2026
+//   Hero bg: consult-background.webp (harbour with sailboat at sunset, watercolor)
+//   Added <img> + 4-stop overlay to Hero (was plain #0E0E12 + radial)
+//   objectPosition: 'center 40%' — centres sailboat + lighthouse + harbour
+//   Warm amber radial accent echoes the sunset sky on the right
 
 import Link            from 'next/link'
 import { notFound }   from 'next/navigation'
 import { isValidLocale, localeParams } from '@/lib/i18n'
 import { buildMetadata }               from '@/lib/metadata'
 import ConsultCalEmbed from '@/components/consult/ConsultCalEmbed'
-
-// ─────────────────────────────────────────────────────────────
-// BILINGUAL COPY
-// ─────────────────────────────────────────────────────────────
 
 const COPY = {
   en: {
@@ -214,25 +216,98 @@ function Eyebrow({ children, center = false, dark = false }) {
 
 // ─────────────────────────────────────────────────────────────
 // SECTION 1 — HERO
+// Harbour with red-sailed boat at sunset, watercolor.
+// Left half: deep teal storm sky — naturally dark for text.
+// Right half: amber sunset + harbour buildings — opens through overlay.
+// objectPosition 'center 40%' keeps sailboat + lighthouse in frame.
+// Warm amber radial accent echoes the sunset sky.
 // ─────────────────────────────────────────────────────────────
 
 function Hero({ locale, c }) {
   return (
-    <section aria-labelledby="consult-hero-heading" style={{ backgroundColor: '#0E0E12', minHeight: '100dvh', display: 'flex', flexDirection: 'column', position: 'relative', overflow: 'hidden' }}>
-      <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 65% 50% at 80% 30%, rgba(183,181,254,0.07) 0%, transparent 60%)', pointerEvents: 'none' }} />
+    <section
+      aria-labelledby="consult-hero-heading"
+      style={{
+        minHeight:     '100dvh',
+        display:       'flex',
+        flexDirection: 'column',
+        position:      'relative',
+        overflow:      'hidden',
+      }}
+    >
+      {/* Background illustration */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/consult-background.webp"
+        alt=""
+        aria-hidden="true"
+        style={{
+          position:       'absolute',
+          inset:          0,
+          width:          '100%',
+          height:         '100%',
+          objectFit:      'cover',
+          objectPosition: 'center 40%',
+          display:        'block',
+        }}
+      />
 
-      <div className="container-section relative z-10" style={{ flex: 1, display: 'flex', alignItems: 'center', paddingTop: 'calc(var(--nav-height) + 3.5rem)', paddingBottom: '2.5rem' }}>
+      {/* Primary directional overlay */}
+      <div
+        aria-hidden="true"
+        style={{
+          position:   'absolute',
+          inset:      0,
+          background: 'linear-gradient(108deg, rgba(14,14,18,0.98) 0%, rgba(14,14,18,0.97) 35%, rgba(14,14,18,0.80) 58%, rgba(14,14,18,0.28) 100%)',
+        }}
+      />
+
+      {/* Bottom vignette */}
+      <div
+        aria-hidden="true"
+        style={{
+          position:   'absolute',
+          inset:      0,
+          background: 'linear-gradient(to top, rgba(14,14,18,0.88) 0%, transparent 28%)',
+        }}
+      />
+
+      {/* Warm amber radial — echoes the harbour sunset */}
+      <div
+        aria-hidden="true"
+        style={{
+          position:      'absolute',
+          inset:         0,
+          background:    'radial-gradient(ellipse 55% 50% at 68% 42%, rgba(195,140,40,0.08) 0%, transparent 65%)',
+          pointerEvents: 'none',
+        }}
+      />
+
+      {/* Content */}
+      <div
+        className="container-section relative z-10"
+        style={{
+          flex:          1,
+          display:       'flex',
+          alignItems:    'center',
+          paddingTop:    'calc(var(--nav-height) + 3.5rem)',
+          paddingBottom: '2.5rem',
+        }}
+      >
         <div style={{ maxWidth: '46rem' }}>
           <div className="inline-flex items-center gap-2 mb-7 rounded-full" style={{ padding: '5px 14px', border: '1px solid rgba(183,181,254,0.18)', backgroundColor: 'rgba(183,181,254,0.05)' }}>
             <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: '#b7b5fe' }} />
             <span style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#b7b5fe' }}>{c.hero.chip}</span>
           </div>
 
-          <h1 id="consult-hero-heading" style={{ fontSize: 'clamp(2.25rem, 5vw + 0.5rem, 4rem)', fontWeight: 700, lineHeight: 1.06, letterSpacing: '-0.03em', color: '#F0F0F0', marginBottom: '0.625rem', textWrap: 'balance' }}>
+          <h1
+            id="consult-hero-heading"
+            style={{ fontSize: 'clamp(2.25rem, 5vw + 0.5rem, 4rem)', fontWeight: 700, lineHeight: 1.06, letterSpacing: '-0.03em', color: '#F0F0F0', marginBottom: '0.625rem', textWrap: 'balance' }}
+          >
             {c.hero.h1}
           </h1>
-          <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '17px', fontWeight: 500, color: 'rgba(183,181,254,0.45)', marginBottom: '1.25rem', lineHeight: 1.5 }}>{c.hero.h1zh}</p>
-          <p style={{ fontSize: '1rem', lineHeight: 1.85, color: 'rgba(240,240,240,0.5)', maxWidth: '36rem', marginBottom: '2.25rem' }}>{c.hero.sub}</p>
+          <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '17px', fontWeight: 500, color: 'rgba(183,181,254,0.40)', marginBottom: '1.25rem', lineHeight: 1.5 }}>{c.hero.h1zh}</p>
+          <p style={{ fontSize: '1rem', lineHeight: 1.85, color: 'rgba(240,240,240,0.52)', maxWidth: '36rem', marginBottom: '2.25rem' }}>{c.hero.sub}</p>
 
           <div className="flex flex-col sm:flex-row gap-3">
             <a href="#consult-calendar" className="btn btn-charter" style={{ fontWeight: 700 }}>{c.hero.cta1}</a>
@@ -242,7 +317,7 @@ function Hero({ locale, c }) {
       </div>
 
       {/* Stats strip */}
-      <div style={{ borderTop: '1px solid rgba(183,181,254,0.07)', flexShrink: 0, position: 'relative', zIndex: 10 }}>
+      <div style={{ borderTop: '1px solid rgba(183,181,254,0.07)', flexShrink: 0, position: 'relative', zIndex: 10, backgroundColor: '#1C2330' }}>
         <div className="container-section">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)' }} className="sm:grid-cols-6">
             {c.hero.stats.map((stat, i) => (
@@ -260,7 +335,7 @@ function Hero({ locale, c }) {
 }
 
 // ─────────────────────────────────────────────────────────────
-// SECTION 2 — WHAT HAPPENS (4 numbered steps, no images)
+// SECTION 2 — WHAT HAPPENS
 // ─────────────────────────────────────────────────────────────
 
 function WhatHappens({ locale, c }) {
@@ -271,36 +346,16 @@ function WhatHappens({ locale, c }) {
           <Eyebrow>{c.phases.eyebrow}</Eyebrow>
           <BilingualH2 id="phases-heading" primary={c.phases.h2} secondary={c.phases.h2zh} />
         </div>
-
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '0' }} className="sm:grid-cols-2 lg:grid-cols-4">
           {c.phases.steps.map((step, i) => (
-            <div
-              key={step.num}
-              style={{
-                padding:     '1.75rem 1.5rem',
-                borderRight: i < 3 ? '1px solid rgba(14,14,18,0.07)' : 'none',
-                borderTop:   '3px solid transparent',
-                position:    'relative',
-              }}
-            >
-              {/* Lavender top accent line */}
-              <div aria-hidden="true" style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', backgroundColor: i === 0 ? '#b7b5fe' : 'rgba(183,181,254,0.15)', borderRadius: '0' }} />
-
-              {/* Step number + time */}
+            <div key={step.num} style={{ padding: '1.75rem 1.5rem', borderRight: i < 3 ? '1px solid rgba(14,14,18,0.07)' : 'none', borderTop: '3px solid transparent', position: 'relative' }}>
+              <div aria-hidden="true" style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', backgroundColor: i === 0 ? '#b7b5fe' : 'rgba(183,181,254,0.15)' }} />
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
-                <span style={{ fontSize: 'clamp(2rem, 3vw, 2.75rem)', fontWeight: 800, letterSpacing: '-0.04em', color: 'rgba(183,181,254,0.18)', lineHeight: 1 }}>
-                  {step.num}
-                </span>
-                <span style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(88,86,204,0.5)', padding: '2px 8px', border: '1px solid rgba(183,181,254,0.2)', borderRadius: '9999px' }}>
-                  {step.time}
-                </span>
+                <span style={{ fontSize: 'clamp(2rem, 3vw, 2.75rem)', fontWeight: 800, letterSpacing: '-0.04em', color: 'rgba(183,181,254,0.18)', lineHeight: 1 }}>{step.num}</span>
+                <span style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(88,86,204,0.5)', padding: '2px 8px', border: '1px solid rgba(183,181,254,0.2)', borderRadius: '9999px' }}>{step.time}</span>
               </div>
-
-              {/* Label */}
               <p style={{ fontSize: '1.0625rem', fontWeight: 700, color: '#0E0E12', lineHeight: 1.25, marginBottom: '2px' }}>{step.label}</p>
               <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '11px', color: '#5856cc', lineHeight: 1.3, marginBottom: '0.875rem' }}>{step.labelZh}</p>
-
-              {/* Description */}
               <p style={{ fontSize: '0.8125rem', lineHeight: 1.75, color: '#3D4452' }}>{step.desc}</p>
             </div>
           ))}
@@ -311,7 +366,7 @@ function WhatHappens({ locale, c }) {
 }
 
 // ─────────────────────────────────────────────────────────────
-// SECTION 3 — A REAL CALL (dark bg image narrative)
+// SECTION 3 — A REAL CALL
 // ─────────────────────────────────────────────────────────────
 
 const CALL_IMG = 'https://images.unsplash.com/photo-1589872880544-76e896b0592c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1200&q=80'
@@ -322,7 +377,6 @@ function RealCall({ locale, c }) {
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={CALL_IMG} alt="" aria-hidden="true" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
       <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(105deg, rgba(14,14,18,0.97) 0%, rgba(14,14,18,0.90) 45%, rgba(14,14,18,0.55) 100%)' }} />
-
       <div className="container-section relative z-10" style={{ padding: 'var(--section-md) 1.25rem' }}>
         <div style={{ maxWidth: '40rem' }}>
           <div className="inline-flex items-center gap-2.5 rounded-full mb-7" style={{ padding: '7px 14px 7px 7px', backgroundColor: 'rgba(183,181,254,0.07)', border: '1px solid rgba(183,181,254,0.14)' }}>
@@ -332,19 +386,13 @@ function RealCall({ locale, c }) {
               <p style={{ fontSize: '10px', color: 'rgba(183,181,254,0.55)', lineHeight: 1.2 }}>{c.call.sessionPhase}</p>
             </div>
           </div>
-
           <Eyebrow dark>{c.call.eyebrow}</Eyebrow>
           <BilingualH2 id="call-heading" primary={c.call.h2} secondary={c.call.h2zh} light />
-
           <div style={{ marginTop: '1.75rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <p style={{ fontSize: '0.9375rem', lineHeight: 1.82, color: 'rgba(240,240,240,0.6)' }}>
-              {c.call.p1}{' '}<em style={{ fontStyle: 'italic', color: 'rgba(183,181,254,0.8)' }}>{c.call.q1}</em>
-            </p>
+            <p style={{ fontSize: '0.9375rem', lineHeight: 1.82, color: 'rgba(240,240,240,0.6)' }}>{c.call.p1}{' '}<em style={{ fontStyle: 'italic', color: 'rgba(183,181,254,0.8)' }}>{c.call.q1}</em></p>
             <p style={{ fontSize: '0.9375rem', lineHeight: 1.82, color: 'rgba(240,240,240,0.6)' }}>{c.call.p2}</p>
             <p style={{ fontSize: '0.9375rem', lineHeight: 1.82, color: 'rgba(240,240,240,0.6)' }}>{c.call.p3}</p>
-            <p style={{ fontSize: '0.9375rem', lineHeight: 1.82, color: 'rgba(240,240,240,0.6)' }}>
-              {c.call.p4}{' '}<em style={{ fontStyle: 'italic', color: 'rgba(183,181,254,0.8)' }}>{c.call.q4}</em>
-            </p>
+            <p style={{ fontSize: '0.9375rem', lineHeight: 1.82, color: 'rgba(240,240,240,0.6)' }}>{c.call.p4}{' '}<em style={{ fontStyle: 'italic', color: 'rgba(183,181,254,0.8)' }}>{c.call.q4}</em></p>
           </div>
         </div>
       </div>
@@ -353,7 +401,7 @@ function RealCall({ locale, c }) {
 }
 
 // ─────────────────────────────────────────────────────────────
-// SECTION 4 — TRUST (dark, 2-col)
+// SECTION 4 — TRUST
 // ─────────────────────────────────────────────────────────────
 
 function TrustSection({ locale, c }) {
@@ -366,7 +414,6 @@ function TrustSection({ locale, c }) {
             <BilingualH2 id="trust-heading" primary={c.trust.h2} secondary={c.trust.h2zh} light />
             <p style={{ fontSize: '1rem', lineHeight: 1.82, color: 'rgba(240,240,240,0.55)', marginTop: '1.125rem' }}>{c.trust.body}</p>
           </div>
-
           <ul style={{ display: 'flex', flexDirection: 'column', gap: '1rem', paddingTop: '0.25rem' }} aria-label="Trust points">
             {c.trust.points.map((point, i) => (
               <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
@@ -389,15 +436,12 @@ function CalendarSection({ locale, c }) {
   return (
     <section id="consult-calendar" aria-labelledby="calendar-heading" style={{ backgroundColor: '#F5F5FF', padding: 'var(--section-md) 0' }}>
       <div className="container-section">
-
         <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '2.5rem', marginBottom: '3rem' }} className="lg:grid-cols-2 lg:items-end">
           <div>
             <Eyebrow>{c.calendar.eyebrow}</Eyebrow>
             <BilingualH2 id="calendar-heading" primary={c.calendar.h2} secondary={c.calendar.h2zh} />
             <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#3D4452', marginTop: '0.875rem', maxWidth: '32rem' }}>{c.calendar.sub}</p>
           </div>
-
-          {/* Trust strip */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', padding: '1.5rem', backgroundColor: '#ffffff', borderRadius: '1rem', border: '1px solid rgba(14,14,18,0.07)', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}>
             <div className="inline-flex items-center gap-2 self-start rounded-full" style={{ padding: '4px 12px', backgroundColor: 'rgba(183,181,254,0.08)', border: '1px solid rgba(183,181,254,0.2)' }}>
               <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: '#b7b5fe' }} />
@@ -417,7 +461,6 @@ function CalendarSection({ locale, c }) {
             </ul>
           </div>
         </div>
-
         <div style={{ backgroundColor: '#ffffff', borderRadius: '1.25rem', border: '1px solid rgba(14,14,18,0.07)', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', overflow: 'hidden', padding: '0.5rem' }}>
           <ConsultCalEmbed />
         </div>
@@ -455,9 +498,7 @@ function CharterSection({ locale, c }) {
 // METADATA + PAGE EXPORT
 // ─────────────────────────────────────────────────────────────
 
-export function generateStaticParams() {
-  return localeParams()
-}
+export function generateStaticParams() { return localeParams() }
 
 export async function generateMetadata({ params }) {
   const { locale } = await params
@@ -468,9 +509,7 @@ export async function generateMetadata({ params }) {
 export default async function ConsultPage({ params }) {
   const { locale } = await params
   if (!isValidLocale(locale)) notFound()
-
   const c = COPY[locale] ?? COPY.en
-
   return (
     <>
       <Hero            locale={locale} c={c} />
