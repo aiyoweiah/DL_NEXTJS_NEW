@@ -1,0 +1,81 @@
+{
+  "_comment": "DODO Learning — Canonical Translation Glossary. Embed this inside DEEPSEEK_BRIEF.md. Update here when terminology evolves.",
+
+  "owned_terms": {
+    "Navigators": "导师（Navigator）",
+    "Navigator": "导师（Navigator）",
+    "The Loop": "The Loop（学习循环）",
+    "Read → Think → Speak → Write": "阅读 → 思考 → 表达 → 写作",
+    "The 16-Week Program": "16周课程",
+    "Founding Family Program": "创始家庭计划",
+    "English Thinker": "英语思维者",
+    "Lexile": "Lexile（蓝思）",
+    "Lexile Level": "Lexile阅读水平",
+    "6+1 Traits": "6+1特质写作评估维度",
+    "6+1 Trait": "6+1特质",
+    "Ideas, Organisation, Voice, Word Choice, Sentence Fluency, Conventions, Presentation": "想法、结构、声音、用词、句子流畅度、规范性、呈现",
+    "Think Once. In Both Languages.": "一次思考。两种语言。",
+    "Harvard Project Zero": "哈佛教育学院零点项目",
+    "MCT Language Arts": "MCT语言艺术课程",
+    "The Hangar": "【已从课程中移除，不要出现在任何翻译内容中】",
+    "MetaMetrics": "MetaMetrics（蓝思官方机构，保留英文）",
+    "Education Northwest": "Education Northwest（保留英文）",
+    "DODO Learning": "DODO Learning（品牌名，保留英文）",
+    "Common Core": "Common Core（保留英文）",
+    "IB": "IB（保留英文）",
+    "BC": "不列颠哥伦比亚省",
+    "Cal.com": "Cal.com（保留英文）"
+  },
+
+  "do_not_translate": [
+    "All id field values — these are CSS/code keys",
+    "All href and ctaHref values — these are URL paths",
+    "All number field values in stats objects (e.g. '1.2', '16', '187', '94%', '100L')",
+    "Lexile scores and ranges (e.g. '580', '780', '415L – 760L', '0L to 2000L')",
+    "JSX interpolation placeholders: {name}, {count}, etc.",
+    "HTML tags within strings: <strong>, <br />, etc.",
+    "Grade numbers: '3', '4', '5', '6', '7', '8'",
+    "Week references used as codes: 'week0', 'week8', 'week16'"
+  ],
+
+  "forbidden_zh_words": [
+    "补习班",
+    "赶上",
+    "英语辅导",
+    "折扣",
+    "优惠",
+    "限时",
+    "综上所述",
+    "毋庸置疑",
+    "由此可见",
+    "综合来看",
+    "ESL",
+    "母语老师",
+    "干预",
+    "强化干预",
+    "介入"
+  ],
+
+  "voice_rules": [
+    "Default voice: confident, warm, precise. Not corporate. Not promotional.",
+    "Bilingualism is a natural outcome of cognitive rigor — never frame as language maintenance.",
+    "Never imply remediation, tutoring, or catch-up.",
+    "导师 is the standard term for Navigators. Never use 老师, 教师, or 辅导老师.",
+    "Founding Family Program = 创始家庭计划. Never 优惠 or 限时.",
+    "English Thinker = 英语思维者. Never 双语学习者 or ESL学生.",
+    "Match register: formal website copy → formal ZH; 小红书 copy → conversational ZH (老母亲, 我们家孩子 acceptable).",
+    "The Hangar has been removed from the program — if it appears in EN source, flag [REMOVED] and omit from ZH output.",
+    "Bilingual Thinker is deprecated — translate as 英语思维者 if it appears.",
+    "Do not produce AI-signature ZH phrases: 综上所述 · 毋庸置疑 · 由此可见 · 综合来看."
+  ],
+
+  "city_name_map": {
+    "Calgary": "卡尔加里",
+    "Vancouver": "温哥华",
+    "Toronto": "多伦多",
+    "Montreal": "蒙特利尔",
+    "Richmond BC": "列治文（不列颠哥伦比亚省）",
+    "San Francisco Bay Area": "旧金山湾区",
+    "Shanghai": "上海"
+  }
+}
