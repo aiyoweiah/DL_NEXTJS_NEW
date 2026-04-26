@@ -1,12 +1,10 @@
 // app/[locale]/partners/page.jsx
 //
-// Partners portal — invite-only. Not in the navbar. Not in the sitemap.
-// noIndex: true — accessed by direct URL only (invitation-based).
+// Partners portal — invite-only. Not in sitemap. noIndex: true.
+// Content: EN + ZH — both locales fully supported via PartnersClient COPY object.
+// PIN gate handled client-side (localStorage-persisted).
 //
-// Content is EN-only regardless of locale param (partner audience is English-speaking).
-// PIN gate handled entirely in PartnersClient (client-side, localStorage-persisted).
-//
-// URL: /en/partners  (or /zh/partners — same EN content renders)
+// URL: /en/partners  |  /zh/partners
 // PIN: dodopartners
 
 import { notFound }                    from 'next/navigation'
@@ -14,14 +12,26 @@ import { isValidLocale, localeParams } from '@/lib/i18n'
 import { buildMetadata }               from '@/lib/metadata'
 import PartnersClient                  from '@/components/partners/PartnersClient'
 
+const META = {
+  en: {
+    title:       'Partner Portal \u2014 DODO Learning',
+    description: 'Invited partners: access DODO Learning\u2019s partner briefing, referral criteria, and program overview.',
+  },
+  zh: {
+    title:       'DODO Learning \u5408\u4f5c\u4f19\u4f34\u4e13\u533a',
+    description: '\u53d7\u9080\u5408\u4f5c\u4f19\u4f34\uff1a\u67e5\u9605DODO Learning\u7684\u5408\u4f5c\u7b80\u4ecb\u3001\u8f6c\u4ecb\u6807\u51c6\u4e0e\u8bfe\u7a0b\u6982\u89c8\u3002',
+  },
+}
+
 export async function generateMetadata({ params }) {
   const { locale } = await params
+  const m = META[locale] ?? META.en
   return buildMetadata({
-    locale:      'en',
-    title:       'Partner Portal — DODO Learning',
-    description: 'Invited partners: access DODO Learning\'s partner briefing, referral criteria, and program overview.',
+    locale,
+    title:       m.title,
+    description: m.description,
     path:        '/partners',
-    noIndex:     true,   // Not discoverable — invitation only
+    noIndex:     true,
   })
 }
 
