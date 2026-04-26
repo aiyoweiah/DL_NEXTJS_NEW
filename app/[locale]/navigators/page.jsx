@@ -85,7 +85,7 @@ const COPY = {
       eyebrow: 'In Practice',
       h2: 'What happens in a real session',
       timeline: [
-        { label: 'Minute 0\u20135: Assessment',          body: "Navigator reviews last session\u2019s notes and the student\u2019s targeted work from the week. They know where the student struggled, what clicked, and what needs reinforcement today." },
+        { label: 'Minute 0\u20135: Assessment',          body: "Navigator reviews last session\u2019s notes and the student\u2019s written work since the previous session. They know where the student struggled, what clicked, and what needs reinforcement today." },
         { label: 'Minute 5\u201320: Read & Think',       body: 'Student reads a Lexile-calibrated text. Navigator asks one open question. Then waits. The silence is intentional \u2014 this is where thinking happens.' },
         { label: 'Minute 20\u201335: Speak & Challenge', body: "Student articulates their position. Navigator listens, then challenges with a Socratic follow-up. The goal isn\u2019t agreement \u2014 it\u2019s precision." },
         { label: 'Minute 35\u201350: Write & Score',     body: 'Student writes their argument. Navigator scores live using 6+1 Traits \u2014 Ideas: 4/6, Organization: 5/6. Feedback is specific, not generic. The score names the gap.' },
@@ -116,23 +116,23 @@ const COPY = {
   zh: {
     meta: {
       title: 'Navigators',
-      description: 'DODO Navigator不是教师，也不是家教。他们是纵向陪伴的伙伴——了解您孩子的Lexile基线、6+1特质写作档案，以及下一步确切需要去向何处。',
+      description: 'DODO Navigator不是教师，也不是家教。他们是持续陪伴的伙伴——了解您孩子的Lexile基线、6+1 Trait写作档案，以及下一步该去哪里。',
     },
     hero: {
       eyebrow: 'Navigators',
-      h1a: '您的孩子不需要又一位老师。他们需要一个确切知道\u00a0',
+      h1a: '您的孩子不需要另一位老师。他们需要一个确切知道\u00a0',
       h1b: '他们在哪里',
       h1c: '\u00a0——以及确切知道\u00a0',
-      h1d: '他们将去向何处',
+      h1d: '他们该去哪里',
       h1e: '\u00a0的人。',
-      sub: '大多数项目教授内容。Navigator教授的是思考者本身。',
+      sub: '大多数项目教授内容。Navigator培养的是思考者本身。',
     },
     s2: {
       eyebrow: '重新认识',
-      h2: '让我们弄清楚Navigator是什么——从他们不是什么开始。',
+      h2: '先说清楚Navigator是什么——从他们不是什么开始。',
       cols: [
-        { strike: '不是教师',   title: '拥有地图的向导',     body: '教师推动全班前进。Navigator推动您的孩子——从他们确切所在的位置出发。' },
-        { strike: '不是家教',   title: '纵向陪伴的伙伴',     body: '家教解决今晚的作业。Navigator追踪您孩子在16周内的具体差距。' },
+        { strike: '不是教师',   title: '拥有地图的向导',     body: '教师推动全班前进。Navigator推动您的孩子——从孩子真正站着的地方出发。' },
+        { strike: '不是家教',   title: '持续陪伴的伙伴',     body: '家教解决今晚的作业。Navigator追踪您孩子在16周内的具体差距。' },
         { strike: '不是辅导员', title: '了解您孩子声音的人', body: '辅导员传授内容。Navigator知道您的孩子何时沉默——以及为什么。' },
       ],
     },
@@ -143,49 +143,49 @@ const COPY = {
         { num: '01', phase: '阅读', headline: '以精确的Lexile水平选择当天的文本——高于舒适区，低于挫败点。', sub: 'Lexile校准的文本选择' },
         { num: '02', phase: '思考', headline: '为学生自己的思考留出空间。不填补沉默。等待想法的出现。',       sub: '苏格拉底式沉默——而非讲授' },
         { num: '03', phase: '表达', headline: '通过苏格拉底式对话引出学生的立场，然后挑战它。',               sub: '口述论点——捍卫，而非表演' },
-        { num: '04', phase: '写作', headline: '实时对照6+1特质框架评估书面回答。分数具体，反馈精准。',       sub: '6+1特质框架——具名评分' },
+        { num: '04', phase: '写作', headline: '实时对照6+1 Trait框架评估书面回答。分数具体，反馈精准。',       sub: '6+1 Trait框架——逐项评分' },
       ],
     },
     s4: {
       eyebrow: '这段关系',
       h2: '同一位Navigator。每节课。十六周。',
       points: [
-        { label: '匹配',     body: 'Navigator与学生是匹配的，而非随机分配的。在第一节课之前，DODO评估您孩子的Lexile基线、6+1特质写作档案以及沟通风格。这次匹配是有意为之的。' },
-        { label: '纵向陪伴', body: '您孩子的Navigator承载着他们的完整历史。每一个Lexile分数，每一条课程笔记，每一个概念突破或未能突破的瞬间。没有重新开始，没有陌生的面孔。' },
+        { label: '匹配',     body: 'Navigator与学生是匹配的，而非随机分配的。在第一节课之前，DODO评估您孩子的Lexile基线、6+1 Trait写作档案以及沟通风格。这是有意安排的。' },
+        { label: '持续陪伴', body: '孩子所有的学习轨迹，这位Navigator都记得。每一个Lexile分数，每一条课程笔记，每一个概念突破或未能突破的瞬间。没有重新开始，没有陌生的面孔。' },
         { label: '差距追踪', body: 'Navigator不准备课程计划。他们为您的具体孩子做准备——他们本周在哪里，差距是什么，The Loop的哪个部分能弥合它。' },
       ],
     },
-    s5: { eyebrow: 'Navigators', h2: '每周与您孩子共事的那个人。' },
+    s5: { eyebrow: 'Navigators', h2: '每周陪伴孩子的那个人。' },
     s6: {
       eyebrow: '实际情况',
       h2: '真实课程中发生了什么',
       timeline: [
-        { label: '第0–5分钟：评估',        body: 'Navigator回顾上节课的笔记和活动。他们知道学生在哪里挣扎、什么已经理解，以及今天需要强化什么。' },
-        { label: '第5–20分钟：阅读与思考',  body: '学生阅读Lexile校准的文本。Navigator提出一个开放性问题，然后等待。沉默是有意为之的——这是思考发生的地方。' },
+        { label: '第0–5分钟：评估',        body: 'Navigator回顾上节课的笔记和学生上次课后的书面练习。他们知道学生在哪里挣扎、什么已经理解，以及今天需要强化什么。' },
+        { label: '第5–20分钟：阅读与思考',  body: '学生阅读Lexile校准的文本。Navigator提出一个开放性问题，然后等待。这段沉默是刻意留下的——这是思考发生的地方。' },
         { label: '第20–35分钟：表达与挑战', body: '学生阐明自己的立场。Navigator倾听，然后以苏格拉底式追问提出挑战。目标不是达成共识——而是精准。' },
-        { label: '第35–50分钟：写作与评分', body: '学生写出论点。Navigator使用6+1特质框架实时评分——想法：4/6，组织：5/6。反馈具体，不笼统。分数指明差距所在。' },
-        { label: '第50–60分钟：下一步',    body: 'Navigator布置针对性作业——针对今天发现的差距。家长收到包含Lexile进展和具体下节课重点的课程笔记。' },
+        { label: '第35–50分钟：写作与评分', body: '学生写出论点。Navigator使用6+1 Trait框架实时评分——想法：4/6，组织：5/6。反馈具体，不笼统。分数指明差距所在。' },
+        { label: '第50–60分钟：下一步',    body: 'Navigator布置针对性作业——针对今天发现的差距。家长收到课程笔记，里面包含Lexile进展和下一节课的具体重点。' },
       ],
     },
     s7: {
       eyebrow: '家长的话',
-      h2: '家庭怎么说',
+      h2: '家长们这样说',
       testimonials: [
         { quote: '在DODO之前，我们试过三位家教。每次都一样：解决作业，然后下周重头再来。有了她的Navigator，我的女儿终于有了一个记得她的人——记得她挣扎的地方、她擅长的地方、她下一步需要去的地方。这是我第一次看到真正的进步。', city: '家长，温哥华', detail: '学生：七年级 · 与Navigator Laura共事16周' },
-        { quote: '区别在于具体性。在DODO之前，老师会说"写作需要提高"。他的Navigator告诉我们确切的差距在哪里——句子结构、支撑论据——我们看着那些分数一周一周地上升。数字不会说谎。', city: '家长，多伦多', detail: '学生：六年级 · 与Navigator James共事16周' },
+        { quote: '最大的不同，是具体。以前老师说的是"写作需要提高"。他的Navigator告诉我们差在哪里——句子结构、怎么用证据支撑论点——然后我们亲眼看着那些分数一周一周涨上来。数字不会说谎。', city: '家长，多伦多', detail: '学生：六年级 · 与Navigator James共事16周' },
         { quote: '我的儿子不喜欢在课堂上发言。但和他的Navigator在一起时，他会说话。她知道什么时候等待，什么时候推动，什么时候让他思考。我从未见过他如此投入。这不是魔法——是这段关系。', city: '家长，蒙特利尔', detail: '学生：五年级 · 与Navigator Alicia共事16周' },
-        { quote: '在课程之间，我女儿的Navigator给她留有针对性的作业——不是无意义的练习。她确实去做，因为那与他们讨论的内容相关联。学习不在60分钟时停止。', city: '家长，卡尔加里', detail: '学生：八年级 · 与Navigator Laura共事16周' },
+        { quote: '在课程之间，我女儿的Navigator给她留有针对性的作业——不是无意义的练习。她确实去做，因为那与他们讨论的内容相关联。60分钟结束了，学习没有停。', city: '家长，卡尔加里', detail: '学生：八年级 · 与Navigator Laura共事16周' },
       ],
     },
     s8: {
-      h2a: '您的孩子值得拥有一位确切知道\u00a0',
+      h2a: '您的孩子需要的，是一位确切知道\u00a0',
       h2b: '他们在哪里',
       h2c: '\u00a0——以及确切知道\u00a0',
-      h2d: '他们将去向何处',
+      h2d: '他们该去哪里',
       h2e: '\u00a0的Navigator。',
       sub: '十六周。一位Navigator。在阅读、思考、表达和写作上可量化的进步。',
       cta: '预约咨询',
-      note: '无长期承诺。16周内见证成果。',
+      note: '无长期承诺。16周，看见变化。',
     },
   },
 }
@@ -207,7 +207,7 @@ const NAVIGATORS = [
     result: 'Student, Grade 8 · Toronto', lexile: 'Lexile 720 → 920 · 16 weeks',
     badges: ['Lexile Specialist', '6+1 Certified'],
     en: { bio: 'Specialized in critical reading and argumentation — extensive work with multilingual learners.', quote: 'The Loop is where the student discovers they already know how to think \u2014 they just needed structure to see it.' },
-    zh: { bio: '专注于批判性阅读与论证——与多语言学习者有大量合作经验。', quote: 'The Loop是学生发现自己已经懂得如何思考的地方——他们只是需要一个结构来看见它。' },
+    zh: { bio: '专注于批判性阅读与论证——与多语言学习者有大量合作经验。', quote: 'The Loop是学生发现自己已经懂得如何思考的地方——只是还没有一个结构帮他们看见这一点。' },
   },
 ]
 
@@ -373,18 +373,8 @@ export default async function NavigatorsPage({ params }) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/navigators-s4-session.webp"
-                srcSet="/navigators-s4-session@0.5x.webp 600w, /navigators-s4-session.webp 1200w"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                alt="A Navigator working with a student through a reading passage"
-                width={1200}
-                height={900}
-                loading="lazy"
-                decoding="async"
-                className="w-full h-auto rounded-lg"
-                style={{ display: 'block' }}
-              />
+              <img src="https://images.unsplash.com/photo-1673515335586-f9f662c01482?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080&q=80"
+                alt="Navigator and student in a live online session" className="w-full h-auto rounded-lg" style={{ display: 'block' }} />
             </div>
             <div className="order-1 md:order-2">
               <Eyebrow>{c.s4.eyebrow}</Eyebrow>
