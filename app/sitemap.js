@@ -9,9 +9,15 @@
 //   3. Blog posts          — read from content/en/blog/*.mdx at build time
 //
 // Bilingual:
-//   app/[locale]/ is now active. Every URL entry carries hreflang alternates
-//   for /en/... and /zh/... with x-default pointing to the /en/ variant.
+//   app/[locale]/ is active. Primary URL uses /en/ (the actual content URL).
+//   Every entry also carries hreflang alternates for /en/... and /zh/...,
+//   with x-default pointing to the /en/ variant.
 //   Locale redirects are handled by public/_redirects at the Cloudflare edge.
+//
+// LLM crawlers:
+//   Primary URLs point to /en/... (actual content) rather than bare paths
+//   that would redirect. LLM crawlers reading the sitemap should hit content
+//   directly without following a redirect chain.
 //
 // Note on changefreq + priority:
 //   Google has publicly stated it ignores changefreq and priority in sitemaps.
@@ -40,6 +46,7 @@ const CITY_SLUGS = [
 
 // ── Static pages with explicit SEO priority ───────────────────
 // Ordered by SEO priority from the brief's page index.
+// /enroll omitted — no route exists at that path.
 // lastModified is set to build time for static pages — appropriate
 // since the content only changes when the page is redeployed.
 const BUILD_DATE = new Date()
@@ -49,17 +56,15 @@ const STATIC_PAGES = [
   { path: '/',             priority: 1.0,  changeFrequency: 'weekly'  },
   { path: '/program',      priority: 0.9,  changeFrequency: 'monthly' },
   { path: '/results',      priority: 0.9,  changeFrequency: 'monthly' },
-  { path: '/enroll',       priority: 0.9,  changeFrequency: 'weekly'  },
   { path: '/consult',      priority: 0.9,  changeFrequency: 'weekly'  },
   { path: '/methodology',  priority: 0.9,  changeFrequency: 'monthly' },
   { path: '/faq',          priority: 0.85, changeFrequency: 'monthly' },
   // Medium priority
-  { path: '/navigators',   priority: 0.7,  changeFrequency: 'monthly' },
   { path: '/lexile',       priority: 0.8,  changeFrequency: 'monthly' },
-  { path: '/about',        priority: 0.6,  changeFrequency: 'yearly'  },
   { path: '/compare',      priority: 0.75, changeFrequency: 'monthly' },
-  // Blog index
+  { path: '/navigators',   priority: 0.7,  changeFrequency: 'monthly' },
   { path: '/blog',         priority: 0.7,  changeFrequency: 'weekly'  },
+  { path: '/about',        priority: 0.6,  changeFrequency: 'yearly'  },
 ]
 
 // ── Blog slug reader ──────────────────────────────────────────
@@ -102,8 +107,9 @@ export default async function sitemap() {
   const blogPosts = await getBlogSlugs()
 
   // ── 1. Static core pages ──────────────────────────────────
+  // Primary URL uses /en/ prefix — actual content URL, not a redirect.
   const staticEntries = STATIC_PAGES.map(({ path, priority, changeFrequency }) => ({
-    url:             `${SITE_URL}${path}`,
+    url:             `${SITE_URL}/en${path}`,
     lastModified:    BUILD_DATE,
     changeFrequency,
     priority,
@@ -112,7 +118,7 @@ export default async function sitemap() {
 
   // ── 2. City pages ─────────────────────────────────────────
   const cityEntries = CITY_SLUGS.map((slug) => ({
-    url:             `${SITE_URL}/cities/${slug}`,
+    url:             `${SITE_URL}/en/cities/${slug}`,
     lastModified:    BUILD_DATE,
     changeFrequency: 'monthly',
     priority:        0.8,
@@ -121,7 +127,7 @@ export default async function sitemap() {
 
   // ── 3. Blog posts ─────────────────────────────────────────
   const blogEntries = blogPosts.map(({ slug, lastModified }) => ({
-    url:             `${SITE_URL}/blog/${slug}`,
+    url:             `${SITE_URL}/en/blog/${slug}`,
     lastModified,
     changeFrequency: 'monthly',
     priority:        0.65,
