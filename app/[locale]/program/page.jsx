@@ -58,13 +58,13 @@ const TRAITS = [
 const COPY = {
   en: {
     meta: {
-      title: 'What Happens in The 16-Week Bilingual Reading Program \u2014 DODO Learning',
+      title: 'What Happens in The 16-Week Program \u2014 DODO Learning',
       description:
-        'The live, Navigator-led bilingual reading program that trains Read \u2192 Think \u2192 Speak \u2192 Write for Chinese families in Canada and the US. Entry and exit Lexile assessments. One grade level of growth, measured.',
+        'The live, Navigator-led program that trains Read \u2192 Think \u2192 Speak \u2192 Write for Chinese families in Canada and the US. Entry and exit Lexile assessments. One grade level of growth, measured.',
     },
     hero: {
       chip: 'Think Once. In Both Languages.',
-      h1:   'What happens in The 16-Week Bilingual Reading Program?',
+      h1:   'What happens inside The 16-Week Program?',
       h1zh: '',
       sub:
         'Designed for Chinese families in Canada and the US. Every session runs The Loop \u2014 structured, tracked, and guided by a dedicated Navigator who knows your child by name.',
@@ -111,7 +111,7 @@ const COPY = {
         {
           week: 'Weeks 2\u201315',
           label: 'Weekly Sessions', labelZh: '\u6bcf\u5468\u8bfe\u7a0b',
-          desc: 'Each week, your child works through The Loop with their Navigator \u2014 someone who knows their progress, their challenges, and what to push next. Sessions run 50 minutes, once per week.',
+          desc: 'Each week, your child works through The Loop with their Navigator \u2014 someone who knows their progress, their challenges, and what to push next. Sessions run 90 minutes, once per week.',
           badge: null, badgeSub: null,
         },
         {
@@ -168,7 +168,7 @@ const COPY = {
       h2:    'Ready to meet your child\u2019s Navigator?',
       sub:   'The diagnostic consultation is where we find out exactly where your child is \u2014 not where their school says they are.',
       btn1:  'Book Your Consultation',
-      btn2:  'See The Program',
+      btn2:  'Read the Methodology',
     },
   },
 
@@ -181,7 +181,7 @@ const COPY = {
     hero: {
       chip: 'Think Once. In Both Languages.',
       h1:   '16\u5468\u53cc\u8bed\u9605\u8bfb\u8bfe\u7a0b\u5177\u4f53\u5305\u542b\u4ec0\u4e48\uff1f',
-      h1zh: 'What happens in The 16-Week Bilingual Reading Program?',
+      h1zh: 'What happens inside The 16-Week Program?',
       sub:
         '\u4e13\u4e3a\u52a0\u62ff\u5927\u548c\u7f8e\u56fd\u7684\u534e\u8bed\u5bb6\u5ead\u8bbe\u8ba1\u3002\u6bcf\u8282\u8bfe\u5747\u8fd0\u884cThe Loop\u2014\u2014\u7ed3\u6784\u5316\u3001\u53ef\u8ddf\u8e2a\uff0c\u7531\u719f\u77e5\u60a8\u5b69\u5b50\u6bcf\u4e00\u6b65\u6210\u957f\u7684\u4e13\u5c5e\u5bfc\u5e08\u5168\u7a0b\u5f15\u5bfc\u3002',
       cta1: '\u4e86\u89e3\u8bfe\u7a0b\u7ed3\u6784',
@@ -221,19 +221,19 @@ const COPY = {
         {
           week: '\u7b2c\u4e00\u5468',
           label: '\u5165\u5b66\u8bc4\u4f30', labelZh: 'Entrance Assessment',
-          desc: '\u6211\u4eec\u4ece\u7cbe\u786e\u4e86\u89e3\u5b69\u5b50\u73b0\u72b6\u5f00\u59cb\u2014\u2014Lexile\u9605\u8bfb\u7b49\u7ea7\u3001\u516b\u79cd6+1\u7279\u8d28\u5199\u4f5c\u57fa\u7ebf\uff0c\u4ee5\u53ca\u9700\u8981\u652f\u6301\u7684\u5177\u4f53\u65b9\u9762\u3002\u4e0d\u4f5c\u5047\u8bbe\u3002',
+          desc: '\u6211\u4eec\u4ece\u7cbe\u786e\u4e86\u89e3\u5b69\u5b50\u73b0\u72b6\u5f00\u59cb\u2014\u2014Lexile\u9605\u8bfb\u7b49\u7ea7\u3001\u4e03\u98796+1 Trait\u5199\u4f5c\u57fa\u7ebf\uff0c\u4ee5\u53ca\u9700\u8981\u652f\u6301\u7684\u5177\u4f53\u65b9\u9762\u3002\u4e0d\u4f5c\u5047\u8bbe\u3002',
           badge: null, badgeSub: null,
         },
         {
           week: '\u7b2c\u4e8c\u81f3\u5341\u4e94\u5468',
           label: '\u6bcf\u5468\u8bfe\u7a0b', labelZh: 'Weekly Sessions',
-          desc: '\u6bcf\u5468\uff0c\u5b69\u5b50\u4e0e\u4e13\u5c5e\u5bfc\u5e08\u5171\u540c\u5b8c\u6210\u5b8c\u6574\u7684\u5b66\u4e60\u5faa\u73af\u3002\u6bcf\u8282\u8bfe50\u5206\u949f\uff0c\u6bcf\u5468\u4e00\u6b21\u3002',
+          desc: '\u6bcf\u5468\uff0c\u5b69\u5b50\u4e0e\u4e13\u5c5e\u5bfc\u5e08\u5171\u540c\u5b8c\u6210\u5b8c\u6574\u7684\u5b66\u4e60\u5faa\u73af\u3002\u6bcf\u8282\u8bfe90\u5206\u949f\uff0c\u6bcf\u5468\u4e00\u6b21\u3002',
           badge: null, badgeSub: null,
         },
         {
           week: '\u7b2c\u5341\u516d\u5468',
           label: '\u7ed3\u4e1a\u8bc4\u4f30\u4e0e\u8fdb\u5ea6\u62a5\u544a', labelZh: 'Exit Assessment + Progress Report',
-          desc: '\u8bfe\u7a0b\u7ed3\u675f\u65f6\uff0c\u60a8\u5c06\u770b\u5230\u771f\u5b9e\u7684\u6210\u957f\u6570\u636e\uff1aLexile\u7b49\u7ea7\u3001\u5168\u90e86+1\u7279\u8d28\u5199\u4f5c\u8bc4\u5206\uff0c\u4e0e\u8d77\u70b9\u5e76\u6392\u5448\u73b0\u3002\u60a8\u5c06\u6536\u5230\u4e66\u9762\u8fdb\u5ea6\u62a5\u544a\u3002\u7136\u540e\u7531\u60a8\u51b3\u5b9a\u4e0b\u4e00\u6b65\u3002',
+          desc: '\u8bfe\u7a0b\u7ed3\u675f\u65f6\uff0c\u60a8\u5c06\u770b\u5230\u771f\u5b9e\u7684\u6210\u957f\u6570\u636e\uff1aLexile\u7b49\u7ea7\u3001\u5168\u90e86+1 Trait\u5199\u4f5c\u8bc4\u5206\uff0c\u4e0e\u8d77\u70b9\u5e76\u6392\u5448\u73b0\u3002\u60a8\u5c06\u6536\u5230\u4e66\u9762\u8fdb\u5ea6\u62a5\u544a\u3002\u7136\u540e\u7531\u60a8\u51b3\u5b9a\u4e0b\u4e00\u6b65\u3002',
           badge: null, badgeSub: null,
         },
       ],
@@ -263,7 +263,7 @@ const COPY = {
         start: 620, end: 820,
       },
       trait: {
-        h3:         '6+1 \u5199\u4f5c\u7279\u8d28',
+        h3:         '6+1 Trait \u5199\u4f5c\u8bc4\u4f30',
         sub:        '\u4e0e\u5b69\u5b50\u5b66\u6821\u4f7f\u7528\u7684\u540c\u4e00\u5957\u8bc4\u5206\u6807\u51c6\u2014\u2014\u5728\u8fd9\u91cc\u770b\u5230\u7684\u8fdb\u6b65\uff0c\u4f1a\u76f4\u63a5\u4f53\u73b0\u5728\u8bfe\u5802\u4e0a\u3002',
         startLabel: '\u8d77\u59cb',
         endLabel:   '16\u5468\u540e',
@@ -284,7 +284,7 @@ const COPY = {
       h2:    '\u51c6\u5907\u597d\u8ba4\u8bc6\u5b69\u5b50\u7684\u5bfc\u5e08\u4e86\u5417\uff1f',
       sub:   '\u8bfa\u65ad\u548c\u8be2\u662f\u6211\u4eec\u7cbe\u786e\u4e86\u89e3\u5b69\u5b50\u5177\u4f53\u5728\u54ea\u91cc\u7684\u8d77\u70b9\u2014\u2014\u800c\u975e\u4f9d\u8d56\u5b66\u6821\u7684\u8bc4\u4f30\u62a5\u544a\u3002',
       btn1:  '\u9884\u7ea6\u548c\u8be2',
-      btn2:  '\u67e5\u770b\u8bfe\u7a0b',
+      btn2:  '\u9605\u8bfb\u6559\u5b66\u65b9\u6cd5',
     },
   },
 }
@@ -941,7 +941,7 @@ function CharterSection({ locale, c }) {
 
           <div className="flex flex-col sm:flex-row gap-3">
             <Link href={`/${locale}/consult`} className="btn btn-charter">{c.charter.btn1}</Link>
-            <Link href={`/${locale}/program`} className="btn btn-ghost">{c.charter.btn2}</Link>
+            <Link href={`/${locale}/methodology`} className="btn btn-ghost">{c.charter.btn2}</Link>
           </div>
 
         </div>
