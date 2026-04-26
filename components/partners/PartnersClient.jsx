@@ -517,6 +517,16 @@ function PartnersContent({ c, locale }) {
     <div style={{ fontFamily: f, width: '100%', overflow: 'hidden' }}>
 
       {/* ── HERO ───────────────────────────────────────────── */}
+      {/*
+          Background: bg-partners-hero.webp — 1920s watercolor main street.
+          Warm brick reds + period-correct blues echo Lavender Signal palette.
+          objectPosition 'center 55%' — keeps building facades + street in frame,
+          cropping residual white sky at top.
+          Overlay stack:
+            1. Primary directional — text side dark, image side reveals at right
+            2. Bottom vignette — grounds the section edge
+            3. Lavender radial — maintains brand warmth over the illustration
+      */}
       <section style={{
         minHeight:       'min(90dvh, 780px)',
         display:         'flex',
@@ -528,11 +538,44 @@ function PartnersContent({ c, locale }) {
         paddingTop:      'calc(var(--nav-height) + 4rem)',
         paddingBottom:   '5rem',
       }}>
+        {/* Background illustration */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/bg-partners-hero.webp"
+          alt=""
+          aria-hidden="true"
+          style={{
+            position:       'absolute',
+            inset:          0,
+            width:          '100%',
+            height:         '100%',
+            objectFit:      'cover',
+            objectPosition: 'center 55%',
+            display:        'block',
+          }}
+        />
+
+        {/* Primary directional overlay — heavy left, reveals right */}
         <div aria-hidden="true" style={{
           position:   'absolute',
           inset:      0,
-          background: 'radial-gradient(ellipse 60% 55% at 18% 65%, rgba(183,181,254,0.09) 0%, transparent 65%)',
+          background: 'linear-gradient(108deg, rgba(14,14,18,0.97) 0%, rgba(14,14,18,0.93) 32%, rgba(14,14,18,0.70) 58%, rgba(14,14,18,0.30) 100%)',
         }} />
+
+        {/* Bottom vignette */}
+        <div aria-hidden="true" style={{
+          position:   'absolute',
+          inset:      0,
+          background: 'linear-gradient(to top, rgba(14,14,18,0.90) 0%, transparent 32%)',
+        }} />
+
+        {/* Lavender radial — brand warmth over the illustration */}
+        <div aria-hidden="true" style={{
+          position:   'absolute',
+          inset:      0,
+          background: 'radial-gradient(ellipse 55% 50% at 15% 62%, rgba(183,181,254,0.10) 0%, transparent 65%)',
+        }} />
+
         <div aria-hidden="true" style={{
           position:      'absolute',
           bottom:        '-40px',
@@ -540,7 +583,7 @@ function PartnersContent({ c, locale }) {
           fontSize:      '320px',
           fontWeight:    700,
           color:         '#b7b5fe',
-          opacity:       0.035,
+          opacity:       0.028,
           lineHeight:    1,
           letterSpacing: '-0.04em',
           userSelect:    'none',
