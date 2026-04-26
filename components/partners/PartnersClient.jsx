@@ -54,7 +54,7 @@ const COPY = {
 
     s2: {
       eyebrow: 'Programs',
-      h2:      'Three programs. Each scoped to the demands your clients actually face.',
+      h2:      '三大课程方向。精准应对您客户的实际需求。',
       sub:     'Partner-referred students have access to program configurations not available to the general public. Every program includes priority assessment, a dedicated Navigator, and progress reporting at structured intervals.',
       programs: [
         {
@@ -208,10 +208,10 @@ const COPY = {
 
     hero: {
       chip: '\u53d7\u9080\u5408\u4f5c\u4f19\u4f34',
-      h1a:  'For the agencies who build futures.',
-      h1b:  '\u00a0We handle the part that',
-      h1c:  '\u00a0makes everything else possible.',
-      sub:  'Your clients come to you with an outcome in mind \u2014 the right school, the right program, the competitive edge. What stands between most students and that outcome isn\u2019t strategy. It\u2019s the literacy gap.\n\nDODO Learning closes that gap.',
+      h1a:  '为那些真正在塑造未来的机构。',
+      h1b:  '而我们负责的那个部分，',
+      h1c:  '让其他一切成为现实。',
+      sub:  '您的客户带着明确的目标找到您——心仪的学校、合适的课程、足够竞争优势。而阻碍大多数学生达成这个目标的，并非策略。真正的障碍是读写能力差距：他们读不懂逻辑严密的分析性文章，无法基于证据论证观点，也达不到大学录取和学术课程所要求的写作精度。\n\nDODO Learning 正是弥合这一差距的方案。我们不是英语培训班。我们是一套认知能力发展课程，旨在构建您客户的学生在顶尖学术赛道上竞争所需的英文思维力。',
       stats: [
         { num: '10,000+', label: '\u6388\u8bfe\u603b\u65f6\u6570'          },
         { num: '300+',    label: '\u5df2\u670d\u52a1\u5b66\u751f'          },
@@ -221,28 +221,28 @@ const COPY = {
 
     s2: {
       eyebrow: '\u8bfe\u7a0b\u914d\u7f6e',
-      h2:      'Three programs. Each scoped to the demands your clients actually face.',
-      sub:     'Partner-referred students have access to program configurations not available to the general public.',
+      h2:      '三大课程方向。精准应对您客户的实际需求。',
+      sub:     '经合作伙伴转介的学生，将获得非公开的课程配置方案。每个课程均包含优先评估、一位专属的Navigator，以及定期结构化进度报告。',
       programs: [
         {
-          grade:       'Grade 9\u201312',
+          grade:       '9–12年级',
           title:       'College Readiness Preparation',
-          body:        'The students your agencies work with face a specific challenge: they may be academically capable, but their writing hasn\u2019t yet reached the register that competitive college admissions requires.\n\nCollege Readiness Preparation is a focused 16-week program for students in Grades 9\u201312.',
-          suitability: 'Suitable for: Grade 9\u201312 students preparing for North American or international college applications.',
+          body:        '您的机构所服务的学生面临一个特定的难题：他们学业上或许很有能力，但写作水准尚未达到顶尖大学录取所要求的学术层次。\n\nCollege Readiness Preparation 是一个为期16周的集中课程，面向9–12年级学生。在专属Navigator的指导下，学生将逐步发展出精英院校招生官真正考察的分析性读写能力——这不是通过申请文书的套路训练或模板化写作，而是通过深度的思维训练，使学生的思考具有独到见解，表达真实而有个人色彩。\n\n课程结束时，学生能够精准阅读复杂的分析性文本，清晰构建基于证据的论点，并驾驭大学课程所要求的各种写作类型——从个人叙事到学术论文。学习进展有据可查：Lexile水平追踪阅读能力的成长，6+1 Trait评分体系记录写作能力的各维度提升。您可以向家庭清晰展示孩子的具体变化。',
+          suitability: '适合人群：准备申请北美或国际大学的9–12年级学生。对于目标院校申请材料中写作要求较高、或涉及IB/AP课程的学生，效果尤其显著。',
           accent:      '#b7b5fe',
         },
         {
-          grade:       'Grade 10\u201312',
+          grade:       '10–12年级',
           title:       'Professional Writing Development',
-          body:        'Academic writing at the college level is a fundamentally different mode of thinking on paper.\n\nProfessional Writing Development is designed for students in Grades 10\u201312 preparing for IB Extended Essays, college application personal statements, and university entrance writing assessments.',
-          suitability: 'Suitable for: Grade 10\u201312 students with IB, AP, or pre-university writing demands.',
+          body:        '大学阶段的学术写作是一种不同的技能——它不是高中作文的升级版，而是一种根本不同的纸上思维方式。\n\nProfessional Writing Development 专为10–12年级学生设计，帮助他们迎战决定录取结果的写作任务：IB Extended Essay、大学申请主文书、大学入学写作评估，以及进入大学第一天就需要的学术论文能力。\n\n本课程培养学生掌握长篇论述能力——能够跨多页篇幅发展一个复杂的论点，分析性地运用资料而非仅作装饰性引用，并以招生委员会和大学教授一眼就能识别的学术层次和精准度进行写作。在专属Navigator的带领下，学生持续浸入严肃的文学和分析性文本，每节课都遵循 Read → Think → Speak → Write 的顺序。这套课程是为那些“只差一步”的学生准备的：他们有想法、有才智、有雄心，只是写作尚未追上他们的思考。',
+          suitability: '适合人群：有IB、AP或大学预科阶段写作任务的10–12年级学生。对于申请材料或学术项目要求体现具有独到见解且论述完整的思考的学生，效果尤其显著。',
           accent:      '#F5C842',
         },
         {
           grade:       '\u5404\u5e74\u7ea7',
           title:       'GPA Navigation',
-          body:        'When a student\u2019s GPA is under pressure \u2014 from course difficulty, a difficult transition, or a gap in foundational skills \u2014 the entire consulting engagement is at risk.\n\nGPA Navigation provides targeted, Navigator-led academic support designed to stabilize and strengthen a student\u2019s performance.',
-          suitability: 'Suitable for: Students at any grade level experiencing academic performance pressure.',
+          body:        '持续的学业表现是所有大学申请要素的基石。当学生GPA因课程难度、阶段过渡不顺或基础能力缺口而承压时，整个顾问委托关系都会面临风险。\n\nGPA Navigation 提供由Navigator主导的针对性学术支持，旨在稳定并强化学生在具体科目上的表现，尤其聚焦于英语课程和写作要求较高的科目。这不是泛泛的技能培训。Navigator会从学生实际的课业入手，精准定位底层的读写或写作能力缺口如何导致成绩差距，并构建缩小差距所需的特定能力。学习进展全程可追踪、可汇报。\n\nGPA Navigation 可作为独立课程，也可与 College Readiness Preparation 组合使用，便于机构管理那些需要多方位支持的学生。',
+          suitability: '适合人群：各年级中面临学业表现压力的学生，尤其是在英语、人文学科或写作要求较高的课程方面。',
           accent:      '#7EC8A0',
         },
       ],
@@ -277,14 +277,14 @@ const COPY = {
       cards: [
         {
           label:    'One-on-One Guidance',
-          headline: 'A Navigator who is actively in the lecture hall.',
-          body:     'Every DODO Learning student works with a dedicated Navigator \u2014 one person, for the full program. Our Navigators are working educators: active faculty with current experience in post-secondary academic writing, literary analysis, and analytical composition.\n\nThey know what universities and selective institutions are demanding of students right now \u2014 because they are in those lecture halls.',
+          headline: 'Navigator 就在课堂一线。',
+          body:     '每位 DODO Learning 的学生都拥有一位专属的 Navigator——全程一对一，始终是同一个人。我们的Navigator与市面上一般的英语课外教师的根本区别在于，他们是真正的在职教育工作者：活跃于一线的高校教师，具备当前大学及以上阶段学术写作、文学分析和分析性写作的实战经验。\n\n他们不是凭记忆教学。他们清楚当下大学和精英院校对学生要求的是什么——因为他们就在那些课堂里。对于您机构所服务的学生而言，这份实时、真切的现实感，至关重要。',
           color:    '#b7b5fe',
         },
         {
           label:    'Gifted Program Navigation',
-          headline: 'Built for the standard selective programs actually use.',
-          body:     'DODO Learning\u2019s curriculum is grounded in the Michael Clay Thompson Language Arts framework \u2014 one of the most widely used ELA curricula across North America\u2019s gifted and honors programs.\n\nStudents arrive at university entrance assessments, IB coursework, and AP seminars having already worked at that register.',
+          headline: '匹配优才项目的真实标准。',
+          body:     'DODO Learning 的课程基于 Michael Clay Thompson Language Arts 框架——这是北美英才及荣誉课程中使用最广泛的英语语言艺术课程之一。完成 DODO 课程周期的学生，在参加大学入学测评、IB课程和AP研讨班之前，就已经达到了相应的学术写作层次。\n\n这不是兴趣拓展。这是直接对标精英院校用于评估您客户学生的智力标准，所做的前置准备。',
           color:    '#F5C842',
         },
         {
