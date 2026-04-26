@@ -12,10 +12,11 @@
 //   - LocaleSwitcherSlot replaced with <LocaleSwitcher locale={locale} />
 //     in both desktop bar and mobile drawer
 //
-// Nav structure (v3.0 — April 2026):
-//   PRIMARY_LINKS   — /program, /methodology, /results, /navigators
-//   SECONDARY_LINKS — /about, /compare, /lexile, /blog, /faq
+// Nav structure (v4.0 — April 2026):
+//   PRIMARY_LINKS   — alphabetical by label: Navigators, Results, The Loop, The Program
+//   SECONDARY_LINKS — alphabetical by label: About, Blog, FAQ, How We Compare, Lexile Levels, Partners
 //   /assessment removed — UnderConstruction; reinstated when page is built
+//   /partners added — invite-only; listed in nav but PIN-gated at the page level
 //
 // Logo sizing:
 //   --nav-height: 4rem = 64px.
@@ -32,18 +33,19 @@ import { useFocusTrap }                              from '@/lib/a11y'
 // Paths are locale-relative (no prefix). Prefix applied in render.
 
 const PRIMARY_LINKS = [
-  { href: '/program',     label: 'The Program' },
-  { href: '/methodology', label: 'The Loop'    },
-  { href: '/results',     label: 'Results'     },
   { href: '/navigators',  label: 'Navigators'  },
+  { href: '/results',     label: 'Results'     },
+  { href: '/methodology', label: 'The Loop'    },
+  { href: '/program',     label: 'The Program' },
 ]
 
 const SECONDARY_LINKS = [
-  { href: '/about',   label: 'About'          },
-  { href: '/compare', label: 'How We Compare' },
-  { href: '/lexile',  label: 'Lexile Levels'  },
-  { href: '/blog',    label: 'Blog'           },
-  { href: '/faq',     label: 'FAQ'            },
+  { href: '/about',    label: 'About'          },
+  { href: '/blog',     label: 'Blog'           },
+  { href: '/faq',      label: 'FAQ'            },
+  { href: '/compare',  label: 'How We Compare' },
+  { href: '/lexile',   label: 'Lexile Levels'  },
+  { href: '/partners', label: 'Partners'       },
 ]
 
 // ── Hamburger icon ────────────────────────────────────────────

@@ -15,11 +15,10 @@
 //     current locale session
 //   - LocaleSwitcherSlot replaced with <LocaleSwitcher locale={locale} />
 //
-// Footer nav structure (v3.0 — April 2026):
-//   NAV_PROGRAM — /program, /methodology, /results, /navigators, /lexile
-//   NAV_COMPANY — /about, /compare, /faq, /blog, /demos, /consult
-//   /assessment removed from NAV_PROGRAM — UnderConstruction; reinstated when built
-//   /results moved from NAV_COMPANY → NAV_PROGRAM (it is program evidence, not company info)
+// Footer nav structure (v4.0 — April 2026):
+//   NAV_PROGRAM — alphabetical: Lexile Levels, Navigators, Results, The 16-Week Program, The Loop
+//   NAV_COMPANY — alphabetical: About DODO, Blog, Book a Consultation, FAQ, How We Compare, Partners, Watch Demo Class
+//   /partners added — invite-only; listed here for partner-referred traffic
 //
 // Logo: uses logo.svg (black fill #000000) — correct for light #F5F5FF background.
 //   Dimensions reflect trimmed viewBox="58 45 484 240" → 2.02:1 aspect ratio.
@@ -43,12 +42,13 @@ const NAV_PROGRAM = [
 ]
 
 const NAV_COMPANY = [
-  { href: '/about',   label: 'About DODO'          },
-  { href: '/compare', label: 'How We Compare'      },
-  { href: '/faq',     label: 'FAQ'                 },
-  { href: '/blog',    label: 'Blog'                },
-  { href: '/demos',   label: 'Watch Demo Class'    },
-  { href: '/consult', label: 'Book a Consultation' },
+  { href: '/about',    label: 'About DODO'          },
+  { href: '/blog',     label: 'Blog'                },
+  { href: '/consult',  label: 'Book a Consultation' },
+  { href: '/faq',      label: 'FAQ'                 },
+  { href: '/compare',  label: 'How We Compare'      },
+  { href: '/partners', label: 'Partners'            },
+  { href: '/demos',    label: 'Watch Demo Class'    },
 ]
 
 const NAV_CITIES = [
