@@ -17,7 +17,7 @@
 //
 // Footer nav structure (v4.0 — April 2026):
 //   NAV_PROGRAM — alphabetical: Lexile Levels, Navigators, Results, The 16-Week Program, The Loop
-//   NAV_COMPANY — alphabetical: About DODO, Blog, Book a Consultation, FAQ, How We Compare, Partners, Watch Demo Class
+//   NAV_COMPANY — alphabetical: About DODO, Blog, Book a Consultation, FAQ, The Difference, Partners, Watch Demo Class
 //   /partners added — invite-only; listed here for partner-referred traffic
 //
 // Logo: uses logo.svg (black fill #000000) — correct for light #F5F5FF background.
@@ -46,7 +46,7 @@ const NAV_COMPANY = [
   { href: '/blog',     label: 'Blog'                },
   { href: '/consult',  label: 'Book a Consultation' },
   { href: '/faq',      label: 'FAQ'                 },
-  { href: '/compare',  label: 'How We Compare'      },
+  { href: '/compare',  label: 'The Difference'      },
   { href: '/partners', label: 'Partners'            },
   { href: '/demos',    label: 'Watch Demo Class'    },
 ]

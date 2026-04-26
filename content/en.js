@@ -641,7 +641,7 @@ export const compare = {
   },
 
   hero: {
-    eyebrow:    'How We Compare',
+    eyebrow:    'The Difference',
     heading:    'The question every parent asks before enrolling.',
     subheading:
       'Parents researching English programs for bilingual children are choosing between very different things. This page explains the differences — precisely, without attacking alternatives — so you can decide what your child actually needs.',
