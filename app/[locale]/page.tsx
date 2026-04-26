@@ -46,48 +46,28 @@ const HOMEPAGE_COPY: Record<string, any> = {
       title:
         'DODO Learning \u2014 English Literacy at the Cognitive Level | Think Once. In Both Languages.',
       description:
-        'The live, Navigator-led English literacy program that trains the full Read \u2192 Think \u2192 Speak \u2192 Write loop. One grade level of reading growth in 16 weeks, measured by Lexile. Bilingual depth as the natural outcome of that rigor.',
+        'Navigator-led English literacy program training the full Read\u2192Think\u2192Speak\u2192Write loop. One grade level of Lexile growth in 16 weeks. Built on the MCT Language Arts framework. Bilingual depth emerges from cognitive rigor.',
     },
 
     hero: {
-      eyebrow:        'For children who will read, think, and lead in English at the highest level',
+      eyebrow:        'For children who will think and lead in English at the highest levels',
       eyebrow2:       '',
-      h1:             ['English thinking at the cognitive level.', 'Bilingual depth as the natural outcome.'],
+      h1:             ['English mastery at the cognitive level.', 'Bilingual depth as the natural outcome.'],
       h1Chinese:      '',
       differentiator: '',
       consultHook:
-        'DODO Learning trains the complete\u00a0Read \u2192 Think \u2192 Speak \u2192 Write loop \u2014 live, Navigator-led, grounded in the MCT Language Arts framework and Harvard Project Zero\u2019s thinking science. When a child learns to read complex text, argue with evidence, and write with intention in English, that cognitive discipline transfers across every language they use.',
+        'DODO Learning trains the complete\u00a0Read\u00a0\u2192\u00a0Think\u00a0\u2192\u00a0Speak\u00a0\u2192\u00a0Write loop, grounded in the MCT Language Arts framework and Harvard Project Zero\u2019s thinking science. When a child learns to read complex text, argue with evidence, and write with intention in English, that cognitive discipline transfers to every language they use \u2014 including Mandarin. The result? A child who thinks precisely in both.',
       cta1:      'Book Your Consultation',
-      cta2:      'See The 16-Week Program',
+      cta2:      'Explore The 16-Week Program',
       trustLine:
         'Lexile-measured progress\u00a0\u00b7\u00a06+1 Trait writing framework\u00a0\u00b7\u00a0Live Navigator-led sessions\u00a0\u00b7\u00a0Think Once. In Both Languages.',
     },
 
     proof: [
-      {
-        id:     'families',
-        number: '100+',
-        unit:   'children & families',
-        label:  'trained since launch \u2014 real Lexile growth, verified results',
-      },
-      {
-        id:     'lexile',
-        number: '1',
-        unit:   'grade level',
-        label:  'average reading growth in 16 weeks, measured by Lexile',
-      },
-      {
-        id:     'writing',
-        number: '2\u00d7',
-        unit:   'writing score improvement',
-        label:  'average 6+1 Trait score gain from entry to exit assessment',
-      },
-      {
-        id:     'repeat',
-        number: '8/10',
-        unit:   'continue after Phase 1',
-        label:  'families see the growth and choose to continue',
-      },
+      { id: 'families', number: '300+', unit: 'children & families', label: 'served since launch \u2014 real Lexile growth, verified results' },
+      { id: 'lexile',   number: '1',    unit: 'grade level',          label: 'average reading growth in 16 weeks, measured by Lexile' },
+      { id: 'writing',  number: '2\u00d7', unit: 'writing score gain', label: 'average 6+1 Trait score gain from entry to exit assessment' },
+      { id: 'repeat',   number: '8/10', unit: 'continue after first 16 weeks', label: 'families see the growth and choose to continue' },
     ],
 
     photoIntro: {
@@ -96,7 +76,7 @@ const HOMEPAGE_COPY: Record<string, any> = {
       body0:
         'Your child\u2019s school knows what grade they\u2019re in. That\u2019s not the same as knowing where they are. Most children in immigrant families carry a reading gap their report card never shows \u2014 the distance between what they can decode and what they can actually think through.',
       body1:
-        'Navigators are not tutors. They are specialists in composition, literature, and academic writing \u2014 trained in the MCT Language Arts tradition and in the structured thinking protocols of Harvard Project Zero. Their role is precise: close the gap between where your child reads now and where their academic life demands.',
+        'Navigators are not tutors. They are specialists in composition, literature, and academic writing \u2014 trained in the MCT Language Arts tradition and in the structured thinking protocols of Harvard Project Zero. They close the gap between where your child reads now and where their academic life demands.',
       body2:
         'Every Navigator tracks one thing per student: the distance between their current Lexile level and their goal \u2014 and closes it, week by week, through The Loop. Bilingual depth emerges from this rigor. It is not taught separately.',
       cta1:   'Meet the Navigators',
@@ -116,7 +96,7 @@ const HOMEPAGE_COPY: Record<string, any> = {
           number:      '01',
           label:       'Read',
           description:
-            'Students read classical and analytical texts chosen at or just above their current Lexile level \u2014 from Alice in Wonderland and Treasure Island to Poe and analytical non-fiction at advancing complexity. No simplified versions. The text is the raw material.',
+            'Students read classical and analytical texts chosen at or just above their current Lexile level \u2014 from Alice in Wonderland and Treasure Island to Poe and analytical non-fiction at progressively greater complexity. No simplified versions. The text is the raw material.',
         },
         {
           id:          'think',
@@ -153,7 +133,7 @@ const HOMEPAGE_COPY: Record<string, any> = {
           eyebrow:   'Before We Begin',
           heading:   'We find out exactly where your child is.',
           body:
-            'Not where their school report says they are. Before the first session, every student receives a Lexile reading assessment and a baseline 6+1 Trait writing evaluation. We prescribe from data, not from guesswork.',
+            'Not where their school report says they are. Before the first session, every student receives a Lexile reading assessment and a baseline 6+1 Trait writing evaluation. We plan from data, not from guesswork.',
           linkHref:  '/program',
           linkLabel: 'How the assessment works',
         },
@@ -224,15 +204,7 @@ const HOMEPAGE_COPY: Record<string, any> = {
       ],
     },
 
-    closing: {
-      eyebrow: 'Next Steps',
-      heading: 'Ready to find out exactly where your child is?',
-      body:
-        'The diagnostic consultation is where we measure your child\u2019s actual Lexile level \u2014 not what their school report says. We identify the specific gap, name it precisely, and map the first 16 weeks. The Lexile assessment is the first step. It\u2019s free.',
-      cta1:    'Book Your Consultation',
-      cta2:    'Read About The Program',
-      tagline: 'Think Once. In Both Languages.',
-    },
+    // closing section removed — no component renders it. Future build item.
   },
 
   // ═══════════════════════════════════════
@@ -241,59 +213,39 @@ const HOMEPAGE_COPY: Record<string, any> = {
   zh: {
     meta: {
       title:
-        'DODO Learning \u2014 \u8ba9\u5b69\u5b50\u771f\u6b63\u638c\u63e1\u82f1\u6587\u601d\u7ef4\uff0c\u53cc\u8bed\u80fd\u529b\u81ea\u7136\u751f\u957f',
+        'DODO\u90fd\u5b66\u8bed\u8a00 \u2014 \u82f1\u6587\u8ba4\u77e5\u6df1\u5ea6\uff0c\u4fdd\u62a4\u4e24\u79cd\u8bed\u8a00',
       description:
-        '\u5bfc\u5e08\u5b9e\u65f6\u4e3b\u5bfc\u7684\u82f1\u8bed\u6df1\u5ea6\u5b66\u4e60\u8bfe\u7a0b\uff0c\u8bad\u7ec3\u5b8c\u6574\u7684\u9605\u8bfb\u2192\u601d\u8003\u2192\u8868\u8fbe\u2192\u5199\u4f5c\u95ed\u73af\u300216\u5468\u5185Lexile\u9605\u8bfb\u6c34\u5e73\u5e73\u5747\u63d0\u5347\u4e00\u4e2a\u5e74\u7ea7\u3002\u53cc\u8bed\u80fd\u529b\u662f\u8ba4\u77e5\u6df1\u5ea6\u7684\u81ea\u7136\u7ed3\u679c\u2014\u2014\u4e0d\u662f\u53e6\u7acb\u7684\u8bfe\u7a0b\u76ee\u6807\u3002',
+        '\u5bfc\u5e08\u4e3b\u5bfc\u7684\u82f1\u8bed\u6df1\u5ea6\u5b66\u4e60\u8bfe\u7a0b\uff0c\u8bad\u7ec3\u5b8c\u6574\u7684\u9605\u8bfb\u2192\u601d\u8003\u2192\u8868\u8fbe\u2192\u5199\u4f5c\u95ed\u73af\u300216\u5468\u5185Lexile\u9605\u8bfb\u6c34\u5e73\u5e73\u5747\u63d0\u5347\u4e00\u4e2a\u5e74\u7ea7\u3002\u53cc\u8bed\u80fd\u529b\u662f\u8ba4\u77e5\u6df1\u5ea6\u7684\u81ea\u7136\u7ed3\u679c\u3002',
     },
 
     hero: {
-      eyebrow:        '\u4e3a\u5728\u82f1\u6587\u5c42\u9762\u771f\u6b63\u638c\u63e1\u9ad8\u9636\u601d\u7ef4\u7684\u5b69\u5b50\u8bbe\u8ba1',
+      eyebrow:        '\u4e3a\u4e94\u5e74\u540e\u80fd\u5728\u5168\u82f1\u6587\u8bfe\u5802\u4f83\u4f83\u800c\u8c08\u7684\u5b69\u5b50',
       eyebrow2:       '',
-      h1:             ['\u8ba9\u5b69\u5b50\u771f\u6b63\u638c\u63e1\u82f1\u6587\u601d\u7ef4\u2014\u2014', '\u53cc\u8bed\u6df1\u5ea6\uff0c\u662f\u8ba4\u77e5\u4e25\u8c28\u6027\u7684\u81ea\u7136\u7ed3\u679c\u3002'],
+      h1:             ['\u5b69\u5b50\u7684\u82f1\u6587\u6839\u57fa\uff0c\u5728\u9605\u8bfb\u4e2d\u624e\u4e0b\u3002', '\u53cc\u8bed\u6df1\u5ea6\uff0c\u662f\u8fd9\u4efd\u4e25\u8c28\u81ea\u7136\u7ed3\u51fa\u7684\u679c\u3002'],
       h1Chinese:      '',
       differentiator: '',
       consultHook:
-        'DODO\u90fd\u5b66\u4e66\u9662\u8bad\u7ec3\u5b8c\u6574\u7684\u9605\u8bfb\u2192\u601d\u8003\u2192\u8868\u8fbe\u2192\u5199\u4f5c\u95ed\u73af\u2014\u2014\u5bfc\u5e08\u5b9e\u65f6\u4e3b\u5bfc\uff0c\u4ee5MCT\u8bed\u8a00\u827a\u672f\u6846\u67b6\u4e3a\u6838\u5fc3\u53c2\u7167\uff0c\u878d\u5165\u54c8\u4f5bProject Zero\u601d\u7ef4\u8bad\u7ec3\u4f53\u7cfb\u3002\u5f53\u5b69\u5b50\u5b66\u4f1a\u7528\u82f1\u6587\u9605\u8bfb\u590d\u6742\u6587\u672c\u3001\u4ee5\u8bc1\u636e\u4e3a\u652f\u6491\u8868\u8fbe\u7acb\u573a\u3001\u6709\u610f\u8bc6\u5730\u5199\u4f5c\uff0c\u8fd9\u79cd\u8ba4\u77e5\u8bad\u7ec3\u4f1a\u8fc1\u79fb\u5230\u4ed6\u4eec\u4f7f\u7528\u7684\u6bcf\u4e00\u79cd\u8bed\u8a00\u3002',
-      cta1:      '\u9884\u7ea6\u5b66\u4e60\u8bca\u65ad',
-      cta2:      '\u4e86\u89e316\u5468\u8bfe\u7a0b',
+        'DODO\u90fd\u5b66\u8bed\u8a00\u8bad\u7ec3\u5b8c\u6574\u7684\u9605\u8bfb\u2192\u601d\u8003\u2192\u8868\u8fbe\u2192\u5199\u4f5c\u95ed\u73af\uff0c\u4ee5MCT\u8bed\u8a00\u827a\u672f\u6846\u67b6\u548c\u54c8\u4f5bProject Zero\u601d\u7ef4\u8bad\u7ec3\u4f53\u7cfb\u4e3a\u57fa\u7840\u3002\u5f53\u5b69\u5b50\u5b66\u4f1a\u7528\u82f1\u6587\u9605\u8bfb\u590d\u6742\u6587\u672c\u3001\u4ee5\u8bc1\u636e\u652f\u6491\u7acb\u573a\u3001\u6709\u610f\u8bc6\u5730\u5199\u4f5c\u2014\u2014\u4f60\u4f1a\u5728\u67d0\u5929\u665a\u996d\u65f6\u7a81\u7136\u53d1\u73b0\uff0c\u4ed6\u7528\u4e2d\u6587\u6761\u7406\u6e05\u6670\u5730\u8bb2\u51fa\u4e86\u81ea\u5df1\u8bfb\u5b8c\u4e00\u672c\u82f1\u6587\u4e66\u540e\u7684\u60f3\u6cd5\u3002\u8fd9\u79cd\u8ba4\u77e5\u80fd\u529b\uff0c\u4f1a\u81ea\u52a8\u8fc1\u79fb\u5230\u6bcf\u4e00\u79cd\u8bed\u8a00\u3002',
+      cta1:      '\u9884\u7ea6\u80fd\u529b\u8bc4\u4f30',
+      cta2:      '\u63a2\u7d0216\u5468\u8bfe\u7a0b',
       trustLine:
-        'Lexile\u6d4b\u91cf\u8fdb\u5ea6\u00a0\u00b7\u00a06+1\u7279\u8d28\u5199\u4f5c\u6846\u67b6\u00a0\u00b7\u00a0\u5bfc\u5e08\u5b9e\u65f6\u4e3b\u5bfc\u00a0\u00b7\u00a0Think Once. In Both Languages.',
+        'Lexile\u6d4b\u91cf\u8fdb\u5ea6\u00a0\u00b7\u00a06+1 Trait\u5199\u4f5c\u8bc4\u4f30\u4f53\u7cfb\u00a0\u00b7\u00a0\u5bfc\u5e08\u5b9e\u65f6\u4e3b\u5bfc\u00a0\u00b7\u00a0Think Once. In Both Languages.',
     },
 
     proof: [
-      {
-        id:     'families',
-        number: '100+',
-        unit:   '\u4e2a\u5b69\u5b50\u548c\u5bb6\u5ead',
-        label:  '\u81ea\u6210\u7acb\u4ee5\u6765\u771f\u5b9e\u966a\u8dd1\u2014\u2014Lexile\u771f\u5b9e\u589e\u957f\uff0c\u5df2\u9a8c\u8bc1\u7684\u6210\u679c',
-      },
-      {
-        id:     'lexile',
-        number: '1',
-        unit:   '\u4e2a\u5e74\u7ea7',
-        label:  '16\u5468\u5185Lexile\u6d4b\u91cf\u7684\u5e73\u5747\u9605\u8bfb\u589e\u957f',
-      },
-      {
-        id:     'writing',
-        number: '2\u00d7',
-        unit:   '\u5199\u4f5c\u8bc4\u5206\u63d0\u5347',
-        label:  '\u5165\u5b66\u81f3\u7ed3\u8bfe6+1\u7279\u8d28\u5e73\u5747\u5f97\u5206\u589e\u957f',
-      },
-      {
-        id:     'repeat',
-        number: '8/10',
-        unit:   '\u5b66\u6210\u540e\u7ee7\u7eed',
-        label:  '\u5bb6\u5ead\u770b\u5230\u6210\u679c\uff0c\u4e3b\u52a8\u9009\u62e9\u7ee7\u7eed',
-      },
+      { id: 'families', number: '300+', unit: '\u4e2a\u5b69\u5b50\u548c\u5bb6\u5ead', label: '\u81ea\u6210\u7acb\u4ee5\u6765\u771f\u5b9e\u966a\u8dd1\u2014\u2014Lexile\u771f\u5b9e\u589e\u957f\uff0c\u5df2\u9a8c\u8bc1\u7684\u6210\u679c' },
+      { id: 'lexile',   number: '1',    unit: '\u4e2a\u5e74\u7ea7',       label: '16\u5468\u5185Lexile\u6d4b\u91cf\u7684\u5e73\u5747\u9605\u8bfb\u589e\u957f' },
+      { id: 'writing',  number: '2\u00d7', unit: '\u5199\u4f5c\u8bc4\u5206\u589e\u957f', label: '\u5165\u5b66\u81f3\u7ed3\u8bfe6+1 Trait\u5e73\u5747\u5f97\u5206\u589e\u957f' },
+      { id: 'repeat',   number: '8/10', unit: '16\u5468\u540e\u7ee7\u7eed',   label: '\u5bb6\u5ead\u770b\u5230\u6210\u679c\uff0c\u4e3b\u52a8\u9009\u62e9\u7ee7\u7eed' },
     ],
 
     photoIntro: {
-      eyebrow: '\u6211\u4eec\u662f\u8c01',
+      eyebrow: '\u8ba4\u8bc6\u5bfc\u5e08\u56e2\u961f',
       heading: '\u8001\u5e08\u4e0e\u5bfc\u5e08\u7684\u533a\u522b\uff0c\u5728\u4e8e\u90a3\u5f20\u5730\u56fe\u3002',
       body0:
         '\u5b66\u6821\u77e5\u9053\u5b69\u5b50\u5728\u51e0\u5e74\u7ea7\u3002\u90a3\u4e0d\u7b49\u4e8e\u77e5\u9053\u5b69\u5b50\u771f\u6b63\u7ad9\u5728\u54ea\u91cc\u3002\u5f88\u591a\u534e\u4eba\u5bb6\u5ead\u7684\u5b69\u5b50\uff0c\u90fd\u6709\u4e00\u4e2a\u6210\u7ee9\u5355\u4e0a\u770b\u4e0d\u89c1\u7684\u9605\u8bfb\u5dee\u8ddd\u2014\u2014\u80fd\u8ba4\u51fa\u7684\u8bcd\uff0c\u548c\u80fd\u771f\u6b63\u601d\u8003\u7684\u5185\u5bb9\uff0c\u4e2d\u95f4\u9694\u7740\u4e00\u6bb5\u8ddd\u79bb\u3002\u8fd9\u6bb5\u8ddd\u79bb\uff0c\u5927\u591a\u6570\u8bfe\u7a0b\u6d4b\u4e0d\u51fa\u6765\u3002',
       body1:
-        '\u5bfc\u5e08\u4e0d\u662f\u8865\u8bfe\u8001\u5e08\u3002\u4ed6\u4eec\u662f\u5199\u4f5c\u3001\u6587\u5b66\u548c\u5b66\u672f\u5199\u4f5c\u9886\u57df\u7684\u4e13\u5bb6\u2014\u2014\u4ee5MCT\u8bed\u8a00\u827a\u672f\u4f20\u7edf\u4e3a\u57fa\u7840\uff0c\u8fd0\u7528\u54c8\u4f5bProject Zero\u601d\u7ef4\u8bad\u7ec3\u4f53\u7cfb\uff0c\u4e13\u95e8\u8d1f\u8d23\u7f29\u77ed\u5b66\u751f\u5f53\u524dLexile\u9605\u8bfb\u6c34\u5e73\u4e0e\u5b66\u4e1a\u771f\u6b63\u9700\u6c42\u4e4b\u95f4\u7684\u5dee\u8ddd\u3002',
+        '\u5bfc\u5e08\u4e0d\u662f\u4e00\u5bf9\u4e00\u8f85\u5bfc\u8001\u5e08\u3002\u7b2c\u4e00\u8282\u8bfe\uff0c\u5bfc\u5e08\u4e0d\u4f1a\u95ee\u201c\u4f60\u8bfb\u61c2\u4e86\u4ec0\u4e48\u201d\uff0c\u800c\u662f\u95ee\u201c\u4f60\u89c9\u5f97\u8fd9\u4e2a\u4eba\u7269\u4e3a\u4ec0\u4e48\u505a\u51fa\u8fd9\u4e2a\u9009\u62e9\uff1f\u201d\u2014\u2014\u8fd9\u5c31\u662f\u533a\u522b\u3002\u4ed6\u4eec\u662f\u5199\u4f5c\u3001\u6587\u5b66\u548c\u5b66\u672f\u5199\u4f5c\u9886\u57df\u7684\u4e13\u5bb6\u2014\u2014\u4ee5MCT\u8bed\u8a00\u827a\u672f\u4f20\u7edf\u4e3a\u57fa\u7840\uff0c\u8fd0\u7528\u54c8\u4f5bProject Zero\u601d\u7ef4\u8bad\u7ec3\u4f53\u7cfb\uff0c\u4e13\u95e8\u8d1f\u8d23\u7f29\u77ed\u5b66\u751f\u5f53\u524dLexile\u9605\u8bfb\u6c34\u5e73\u4e0e\u5b66\u4e1a\u771f\u6b63\u9700\u6c42\u4e4b\u95f4\u7684\u5dee\u8ddd\u3002',
       body2:
         '\u6bcf\u4f4d\u5bfc\u5e08\u53ea\u8ffd\u8e2a\u6bcf\u4e2a\u5b69\u5b50\u4e00\u4ef6\u4e8b\uff1a\u5f53\u524dLexile\u6c34\u5e73\u4e0e\u76ee\u6807\u4e4b\u95f4\u7684\u8ddd\u79bb\u2014\u2014\u5e76\u901a\u8fc7The Loop\u9010\u5468\u7f29\u5c0f\u8fd9\u4e2a\u8ddd\u79bb\u3002\u53cc\u8bed\u6df1\u5ea6\u4ece\u8fd9\u79cd\u4e25\u8c28\u4e2d\u81ea\u7136\u751f\u957f\uff0c\u4e0d\u662f\u53e6\u5916\u6559\u7684\u4e00\u95e8\u8bfe\u3002',
       cta1:   '\u8ba4\u8bc6\u5bfc\u5e08\u56e2\u961f',
@@ -334,7 +286,7 @@ const HOMEPAGE_COPY: Record<string, any> = {
           number:      '04',
           label:       'Write \u5199\u4f5c',
           description:
-            '\u5b66\u751f\u4ea7\u51fa\u4e66\u9762\u4f5c\u54c8\uff0c\u4ee56+1\u7279\u8d28\u6846\u67b6\u8bc4\u4f30\uff1a\u60f3\u6cd5\u3001\u7ed3\u6784\u3001\u58f0\u97f3\u3001\u7528\u8bcd\u3001\u53e5\u5b50\u6d41\u7545\u5ea6\u3001\u89c4\u8303\u3001\u547c\u5e94\u3002\u5bfc\u5e08\u4e3a\u6bcf\u7bc7\u4f5c\u54c8\u9010\u9879\u8bc4\u5206\u3002\u8fdb\u6b65\u53ef\u89c1\uff0c\u53ef\u91cf\u5316\u3002',
+            '\u5b66\u751f\u4ea7\u51fa\u4e66\u9762\u4f5c\u54c1\uff0c\u4ee56+1 Trait\u6846\u67b6\u8bc4\u4f30\uff1a\u60f3\u6cd5\u3001\u7ed3\u6784\u3001\u58f0\u97f3\u3001\u7528\u8bcd\u3001\u53e5\u5b50\u6d41\u7545\u5ea6\u3001\u89c4\u8303\u3001\u547c\u5e94\u3002\u5bfc\u5e08\u4e3a\u6bcf\u7bc7\u4f5c\u54c1\u9010\u9879\u8bc4\u5206\u3002\u8fdb\u6b65\u53ef\u89c1\uff0c\u53ef\u91cf\u5316\u3002',
         },
       ],
     },
@@ -342,7 +294,7 @@ const HOMEPAGE_COPY: Record<string, any> = {
     confidence: {
       eyebrow: '\u5982\u4f55\u8fd0\u4f5c',
       heading:
-        '16\u5468\u5185\uff0c\u82f1\u8bed\u9605\u8bfb\u63d0\u5347\u4e00\u4e2a\u5e74\u7ea7\u3002\u6211\u4eec\u8bf4\u7684\u6bcf\u4e00\u4e2a\u4e3b\u5f20\uff0c\u90fd\u662f\u80fd\u7528\u6570\u5b57\u8bc1\u660e\u7684\u6570\u5b57\u3002',
+        '16\u5468\u5185\uff0c\u82f1\u8bed\u9605\u8bfb\u63d0\u5347\u4e00\u4e2a\u5e74\u7ea7\u3002\u6211\u4eec\u8bf4\u7684\u6bcf\u4e00\u4e2a\u4e3b\u5f20\uff0c\u90fd\u6709\u6570\u636e\u652f\u6491\u3002',
       body:
         '\u4ee5Lexile\u6d4b\u91cf\u3002\u5199\u4f5c\u8bc4\u5206\u53ef\u89c1\u3002\u5f53\u5b69\u5b50\u5b66\u4f1a\u7528\u82f1\u6587\u7cbe\u786e\u601d\u8003\uff0c\u8fd9\u79cd\u8ba4\u77e5\u8bad\u7ec3\u8fc1\u79fb\u5230\u6bcf\u4e00\u95e8\u5b66\u79d1\u3001\u6bcf\u4e00\u6b21\u8003\u8bd5\u3001\u4ed6\u4eec\u4f7f\u7528\u7684\u6bcf\u4e00\u79cd\u8bed\u8a00\u3002',
       pillars: [
@@ -351,7 +303,7 @@ const HOMEPAGE_COPY: Record<string, any> = {
           eyebrow:   '\u5f00\u59cb\u4e4b\u524d',
           heading:   '\u6211\u4eec\u786e\u5207\u4e86\u89e3\u60a8\u7684\u5b69\u5b50\u76ee\u524d\u5728\u54ea\u91cc\u3002',
           body:
-            '\u4e0d\u662f\u5b66\u6821\u6210\u7ee9\u5355\u8bf4\u7684\u5728\u54ea\u91cc\u3002\u5728\u7b2c\u4e00\u8282\u8bfe\u4e4b\u524d\uff0c\u6bcf\u4f4d\u5b66\u751f\u90fd\u4f1a\u63a5\u53d7Lexile\u9605\u8bfb\u8bc4\u4f30\u548c6+1\u7279\u8d28\u5199\u4f5c\u57fa\u51c6\u7ebf\u8bc4\u4f30\u3002\u6211\u4eec\u6839\u636e\u6570\u636e\u5236\u5b9a\u65b9\u6848\uff0c\u800c\u4e0d\u662f\u731c\u6d4b\u3002',
+            '\u4e0d\u662f\u5b66\u6821\u6210\u7ee9\u5355\u8bf4\u7684\u5728\u54ea\u91cc\u3002\u5728\u7b2c\u4e00\u8282\u8bfe\u4e4b\u524d\uff0c\u6bcf\u4f4d\u5b66\u751f\u90fd\u4f1a\u63a5\u53d7Lexile\u9605\u8bfb\u8bc4\u4f30\u548c6+1 Trait\u5199\u4f5c\u57fa\u51c6\u7ebf\u8bc4\u4f30\u3002\u6211\u4eec\u6839\u636e\u6570\u636e\u5236\u5b9a\u65b9\u6848\uff0c\u800c\u4e0d\u662f\u731c\u6d4b\u3002',
           linkHref:  '/program',
           linkLabel: '\u4e86\u89e3\u8bc4\u4f30\u5982\u4f55\u8fdb\u884c',
         },
@@ -369,7 +321,7 @@ const HOMEPAGE_COPY: Record<string, any> = {
           eyebrow:   '16\u5468\u540e',
           heading:   '\u6211\u4eec\u5c55\u793a\u6570\u5b57\u3002',
           body:
-            '\u6bcf\u4f4d\u5b66\u751f\u5c06\u63a5\u53d7\u7ed3\u8bfeLexile\u8bc4\u4f30\u548c\u91cd\u65b0\u8bc4\u4f30\u76846+1\u7279\u8d28\u5199\u4f5c\u5f97\u5206\u3002\u80fd\u7528\u82f1\u6587\u9605\u8bfb\u590d\u6742\u6587\u672c\u3001\u4ee5\u8bba\u636e\u652f\u6491\u7acb\u573a\u3001\u6709\u610f\u8bc6\u5730\u5199\u4f5c\u2014\u2014\u540c\u65f6\u4e5f\u5728\u4e2d\u6587\u91cc\u601d\u8003\u2014\u2014\u8fd9\u4e2a\u5b69\u5b50\u62e5\u6709\u7684\uff0c\u662fAI\u66ff\u4ee3\u4e0d\u4e86\u7684\u3002\u8fd9\u624d\u662f\u771f\u6b63\u7684\u7ade\u4e89\u4f18\u52bf\u3002',
+            '\u6bcf\u4f4d\u5b66\u751f\u5c06\u63a5\u53d7\u7ed3\u8bfeLexile\u8bc4\u4f30\u548c\u91cd\u65b0\u8bc4\u4f30\u76846+1 Trait\u5199\u4f5c\u5f97\u5206\u3002\u80fd\u7528\u82f1\u6587\u9605\u8bfb\u590d\u6742\u6587\u672c\u3001\u4ee5\u8bba\u636e\u652f\u6491\u7acb\u573a\u3001\u6709\u610f\u8bc6\u5730\u5199\u4f5c\u2014\u2014\u540c\u65f6\u4e5f\u5728\u4e2d\u6587\u91cc\u601d\u8003\u2014\u2014\u8fd9\u4e2a\u5b69\u5b50\u62e5\u6709\u7684\uff0c\u662fAI\u66ff\u4ee3\u4e0d\u4e86\u7684\u3002\u8fd9\u624d\u662f\u771f\u6b63\u7684\u7ade\u4e89\u4f18\u52bf\u3002',
           linkHref:  '/results',
           linkLabel: '\u67e5\u770b\u5b66\u751f\u6210\u679c',
         },
@@ -390,7 +342,7 @@ const HOMEPAGE_COPY: Record<string, any> = {
           start:   620,
           end:     820,
           weeks:   16,
-          trait:   '\u58f0\u97f3: 2 \u2192 4',
+          trait:   'Voice \u58f0\u97f3: 2 \u2192 4',
           quote:
             '\u5979\u5230\u4e86\u7b2c\u516b\u5468\u5f00\u59cb\u4e3b\u52a8\u4e3e\u624b\u53d1\u8a00\u3002\u5230\u7b2c\u5341\u4e8c\u5468\u65f6\uff0c\u5979\u5df2\u7ecf\u5728\u5f15\u9886\u8bfe\u5802\u8ba8\u8bba\u4e86\u3002',
           source: '\u5bb6\u957f\uff0c\u6e29\u54e5\u534e',
@@ -402,9 +354,9 @@ const HOMEPAGE_COPY: Record<string, any> = {
           start:   540,
           end:     720,
           weeks:   16,
-          trait:   '\u7ed3\u6784: 2 \u2192 5',
+          trait:   'Organization \u7ed3\u6784: 2 \u2192 5',
           quote:
-            '\u5b69\u5b50\u7684\u8001\u5e08\u544a\u8bc9\u6211\u4eec\u4ed6\u7684\u5199\u4f5c\u53d1\u751f\u4e86\u8d28\u7684\u53d8\u5316\u30026+1\u8bc4\u5206\u8ba9\u6211\u4eec\u6e05\u6670\u5730\u770b\u5230\u5177\u4f53\u6539\u53d8\u4e86\u4ec0\u4e48\u3002',
+            '\u5b69\u5b50\u7684\u8001\u5e08\u544a\u8bc9\u6211\u4eec\uff0c\u4ed6\u7684\u4f5c\u6587\u4ece\u4ee5\u524d\u7684\u4e24\u4e09\u884c\u53d8\u6210\u4e86\u6ee1\u6ee1\u4e00\u9875\uff0c\u7ed3\u6784\u4e5f\u6e05\u695a\u4e86\u3002',
           source: '\u5bb6\u957f\uff0c\u4e07\u9526\u5e02',
         },
         {
@@ -414,7 +366,7 @@ const HOMEPAGE_COPY: Record<string, any> = {
           start:   710,
           end:     940,
           weeks:   16,
-          trait:   '\u60f3\u6cd5: 3 \u2192 5',
+          trait:   'Ideas \u60f3\u6cd5: 3 \u2192 5',
           quote:
             '\u5979\u4ece\u5bb3\u6015\u5199\u4f5c\u4efb\u52a1\uff0c\u5230\u63d0\u524d\u4ea4\u4f5c\u4e1a\u3002\u5bfc\u5e08\u786e\u5207\u5730\u77e5\u9053\u5979\u5361\u5728\u54ea\u91cc\u4e86\u3002',
           source: '\u5bb6\u957f\uff0c\u6e7e\u533a',
@@ -422,15 +374,7 @@ const HOMEPAGE_COPY: Record<string, any> = {
       ],
     },
 
-    closing: {
-      eyebrow: '\u4e0b\u4e00\u6b65',
-      heading: '\u51c6\u5907\u597d\u627e\u51fa\u5b69\u5b50\u771f\u6b63\u7ad9\u5728\u54ea\u91cc\u4e86\u5417\uff1f',
-      body:
-        '\u8bca\u65ad\u548c\u8be2\u662f\u6211\u4eec\u786e\u5207\u4e86\u89e3\u5b69\u5b50\u5177\u4f53\u4f4d\u7f6e\u7684\u8d77\u70b9\u2014\u2014\u800c\u4e0d\u662f\u5b66\u6821\u8bf4\u7684\u5728\u54ea\u91cc\u3002\u6211\u4eec\u6d4b\u91cfLexile\u6c34\u5e73\uff0c\u7cbe\u786e\u547d\u540d\u5dee\u8ddd\uff0c\u89c4\u5212\u5c5e\u4e8e\u8fd9\u4e2a\u5b69\u5b50\u7684\u524d16\u5468\u8def\u5f84\u3002Lexile\u8bc4\u4f30\u662f\u7b2c\u4e00\u6b65\uff0c\u514d\u8d39\u3002',
-      cta1:    '\u9884\u7ea6\u5b66\u4e60\u8bca\u65ad',
-      cta2:    '\u4e86\u89e3\u8bfe\u7a0b\u8be6\u60c5',
-      tagline: 'Think Once. In Both Languages.',
-    },
+    // closing section removed — no component renders it. Future build item.
   },
 }
 
