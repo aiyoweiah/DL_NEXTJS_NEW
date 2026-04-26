@@ -21,7 +21,7 @@
 // Storage key: dodo_partners_unlocked
 // Inquiry email: janet@dodolearning.com
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 // ── Access constants ──────────────────────────────────────────
 const CORRECT_PIN = 'dodopartners'
@@ -169,27 +169,9 @@ const COPY = {
     },
 
     s6: {
-      chip:        "Let\u2019s Talk",
-      h2:          'We work with a small number of partners.',
-      sub:         'DODO Learning does not have a sales team. Partnership conversations begin the same way student consultations do: with an honest diagnostic conversation about fit.\n\nIf you serve students who need what we build, we\u2019d like to talk.',
-      formHeading: 'Submit a Partner Inquiry',
-      fields: {
-        name:        'Full name',
-        agency:      'Agency / Organization name',
-        website:     'Agency website',
-        region:      'Country / Region of operation',
-        profile:     'Primary student profile (2\u20133 sentences)',
-        programs:    'Program interest',
-        referral:    'How you heard about DODO Learning (optional)',
-        submit:      'Send Inquiry',
-        confirm:     'Thank you. A member of the DODO Learning team will be in touch within 3 business days.',
-      },
-      programOptions: [
-        'College Readiness Preparation',
-        'Professional Writing Development',
-        'GPA Navigation',
-        'Not sure yet',
-      ],
+      chip:    "Let\u2019s Talk",
+      h2:      'We work with a small number of partners.',
+      sub:     'DODO Learning does not have a sales team. Partnership conversations begin the same way student consultations do: with an honest diagnostic conversation about fit.\n\nIf you serve students who need what we build, we\u2019d like to talk.',
       tagline: 'Think Once. In Both Languages.',
     },
   },
@@ -336,27 +318,9 @@ const COPY = {
     },
 
     s6: {
-      chip:        '\u7acb\u5373\u6c9f\u901a',
-      h2:          '\u6211\u4eec\u4e0e\u5c11\u6570\u4f18\u8d28\u4f19\u4f34\u5408\u4f5c\u3002',
-      sub:         'DODO Learning\u6ca1\u6709\u9500\u552e\u56e2\u961f\u3002\u5408\u4f5c\u6d3d\u8be2\u4e0e\u5b66\u751f\u8bc4\u4f30\u7684\u5f00\u59cb\u65b9\u5f0f\u76f8\u540c\uff1a\u4e00\u6b21\u5bf9\u5408\u9002\u6027\u7684\u8bda\u5b9e\u8bc4\u4f30\u3002\n\n\u5982\u679c\u60a8\u670d\u52a1\u7684\u5b66\u751f\u9700\u8981\u6211\u4eec\u6240\u6784\u5efa\u7684\u80fd\u529b\uff0c\u6211\u4eec\u671f\u5f85\u4e0e\u60a8\u6c9f\u901a\u3002',
-      formHeading: '\u63d0\u4ea4\u5408\u4f5c\u6d3d\u8be2',
-      fields: {
-        name:        '\u59d3\u540d',
-        agency:      '\u673a\u6784\u540d\u79f0',
-        website:     '\u673a\u6784\u7f51\u7ad9',
-        region:      '\u6240\u5728\u56fd\u5bb6\uff0f\u5730\u533a',
-        profile:     '\u4e3b\u8981\u5b66\u751f\u7fa4\u4f53\u63cf\u8ff0\uff082\u20133\u53e5\uff09',
-        programs:    '\u611f\u5174\u8da3\u7684\u8bfe\u7a0b',
-        referral:    '\u5982\u4f55\u4e86\u89e3DODO Learning\uff08\u9009\u586b\uff09',
-        submit:      '\u53d1\u9001\u6d3d\u8be2',
-        confirm:     '\u611f\u8c22\u3002DODO Learning\u56e2\u961f\u5c06\u57283\u4e2a\u5de5\u4f5c\u65e5\u5185\u4e0e\u60a8\u8054\u7cfb\u3002',
-      },
-      programOptions: [
-        'College Readiness Preparation',
-        'Professional Writing Development',
-        'GPA Navigation',
-        '\u6682\u4e0d\u786e\u5b9a',
-      ],
+      chip:    '\u7acb\u5373\u6c9f\u901a',
+      h2:      '\u6211\u4eec\u4e0e\u5c11\u6570\u4f18\u8d28\u4f19\u4f34\u5408\u4f5c\u3002',
+      sub:     'DODO Learning\u6ca1\u6709\u9500\u552e\u56e2\u961f\u3002\u5408\u4f5c\u6d3d\u8be2\u4e0e\u5b66\u751f\u8bc4\u4f30\u7684\u5f00\u59cb\u65b9\u5f0f\u76f8\u540c\uff1a\u4e00\u6b21\u5bf9\u5408\u9002\u6027\u7684\u8bda\u5b9e\u8bc4\u4f30\u3002\n\n\u5982\u679c\u60a8\u670d\u52a1\u7684\u5b66\u751f\u9700\u8981\u6211\u4eec\u6240\u6784\u5efa\u7684\u80fd\u529b\uff0c\u6211\u4eec\u671f\u5f85\u4e0e\u60a8\u6c9f\u901a\u3002',
       tagline: '\u4e00\u6b21\u601d\u8003\uff0c\u53cc\u8bed\u7686\u901a\u3002',
     },
   },
@@ -524,180 +488,77 @@ function GateView({ g, locale, input, setInput, onSubmit, onKeyDown, error, shak
   )
 }
 
-// ── Partner Inquiry Form ──────────────────────────────────────
-function PartnerInquiryForm({ fields, programOptions, locale }) {
-  const f = font(locale)
-  const [name,     setName]     = useState('')
-  const [agency,   setAgency]   = useState('')
-  const [website,  setWebsite]  = useState('')
-  const [region,   setRegion]   = useState('')
-  const [profile,  setProfile]  = useState('')
-  const [programs, setPrograms] = useState([])
-  const [referral, setReferral] = useState('')
-  const [sent,     setSent]     = useState(false)
+// ── Partner Cal.com Embed ─────────────────────────────────────
+// Mirrors ConsultCalEmbed pattern. Namespace 'partner' is distinct
+// from 'consult' so both can coexist in the same browser session.
+// calLink: 'dodo-learning/consult' — update if a dedicated partner
+// booking link is created on Cal.com.
+function PartnerCalEmbed() {
+  const initialised = useRef(false)
 
-  const toggleProgram = (p) =>
-    setPrograms((prev) => prev.includes(p) ? prev.filter((x) => x !== p) : [...prev, p])
+  useEffect(() => {
+    if (initialised.current) return
+    initialised.current = true
 
-  const handleSubmit = () => {
-    const body = [
-      `Full Name: ${name}`,
-      `Agency: ${agency}`,
-      `Website: ${website}`,
-      `Region: ${region}`,
-      `Student Profile: ${profile}`,
-      `Program Interest: ${programs.join(', ') || 'Not specified'}`,
-      `How you heard: ${referral || 'Not specified'}`,
-    ].join('\n\n')
+    ;(function (C, A, L) {
+      const p = (a, ar) => { a.q.push(ar) }
+      const d = C.document
+      C.Cal =
+        C.Cal ||
+        function () {
+          const cal = C.Cal
+          const ar  = arguments
+          if (!cal.loaded) {
+            cal.ns  = {}
+            cal.q   = cal.q || []
+            const s = d.createElement('script')
+            s.src   = A
+            d.head.appendChild(s)
+            cal.loaded = true
+          }
+          if (ar[0] === L) {
+            const api       = function () { p(api, arguments) }
+            const namespace = ar[1]
+            api.q = api.q || []
+            if (typeof namespace === 'string') {
+              cal.ns[namespace] = cal.ns[namespace] || api
+              p(cal.ns[namespace], ar)
+              p(cal, ['initNamespace', namespace])
+            } else {
+              p(cal, ar)
+            }
+            return
+          }
+          p(cal, ar)
+        }
+    })(window, 'https://app.cal.com/embed/embed.js', 'init')
 
-    window.location.href =
-      `mailto:janet@dodolearning.com?subject=${encodeURIComponent('Partner Inquiry \u2014 DODO Learning')}&body=${encodeURIComponent(body)}`
-    setSent(true)
-  }
+    Cal('init', 'partner', { origin: 'https://app.cal.com' })
 
-  const inputStyle = {
-    display:         'block',
-    width:           '100%',
-    backgroundColor: 'rgba(255,255,255,0.05)',
-    border:          '1px solid rgba(183,181,254,0.2)',
-    borderRadius:    '10px',
-    padding:         '13px 16px',
-    fontSize:        '15px',
-    fontWeight:      400,
-    color:           '#F0F0F0',
-    fontFamily:      f,
-    boxSizing:       'border-box',
-    outline:         'none',
-    transition:      'border-color 0.2s, box-shadow 0.2s',
-  }
+    Cal.ns.partner('inline', {
+      elementOrSelector: '#my-cal-inline-partner',
+      config: {
+        layout:                    'week_view',
+        useSlotsViewOnSmallScreen: 'true',
+      },
+      calLink: 'dodo-learning/consult',
+    })
 
-  const labelStyle = {
-    display:       'block',
-    fontSize:      '12px',
-    fontWeight:    500,
-    color:         'rgba(240,240,240,0.45)',
-    marginBottom:  '8px',
-    letterSpacing: '0.05em',
-    fontFamily:    f,
-  }
-
-  if (sent) {
-    return (
-      <div style={{
-        backgroundColor: 'rgba(183,181,254,0.08)',
-        border:          '1px solid rgba(183,181,254,0.2)',
-        borderRadius:    '16px',
-        padding:         '56px 40px',
-        textAlign:       'center',
-      }}>
-        <div style={{ fontSize: '32px', marginBottom: '16px', color: '#b7b5fe' }}>✓</div>
-        <p style={{ fontSize: '17px', fontWeight: 500, color: '#F0F0F0', lineHeight: 1.6, fontFamily: f }}>
-          {fields.confirm}
-        </p>
-      </div>
-    )
-  }
+    Cal.ns.partner('ui', {
+      cssVarsPerTheme: {
+        light: { 'cal-brand': '#F5F5FF' },
+        dark:  { 'cal-brand': '#b7b5fe' },
+      },
+      hideEventTypeDetails: false,
+      layout:               'week_view',
+    })
+  }, [])
 
   return (
-    <div style={{
-      backgroundColor: '#161820',
-      border:          '1px solid rgba(183,181,254,0.12)',
-      borderRadius:    '20px',
-      padding:         '40px',
-    }}>
-      <style>{`
-        .partner-input:focus { border-color: rgba(183,181,254,0.5) !important; box-shadow: 0 0 0 3px rgba(183,181,254,0.1); }
-        .prog-btn:hover { border-color: rgba(183,181,254,0.5) !important; }
-        .form-submit:hover { background-color: #c8c6ff; }
-        .form-submit:active { transform: scale(0.98); }
-      `}</style>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6" style={{ marginBottom: '24px' }}>
-        <div>
-          <label style={labelStyle}>{fields.name}</label>
-          <input className="partner-input" type="text" value={name} onChange={(e) => setName(e.target.value)} style={inputStyle} />
-        </div>
-        <div>
-          <label style={labelStyle}>{fields.agency}</label>
-          <input className="partner-input" type="text" value={agency} onChange={(e) => setAgency(e.target.value)} style={inputStyle} />
-        </div>
-        <div>
-          <label style={labelStyle}>{fields.website}</label>
-          <input className="partner-input" type="url" value={website} onChange={(e) => setWebsite(e.target.value)} style={inputStyle} />
-        </div>
-        <div>
-          <label style={labelStyle}>{fields.region}</label>
-          <input className="partner-input" type="text" value={region} onChange={(e) => setRegion(e.target.value)} style={inputStyle} />
-        </div>
-      </div>
-
-      <div style={{ marginBottom: '24px' }}>
-        <label style={labelStyle}>{fields.profile}</label>
-        <textarea
-          className="partner-input"
-          rows={3}
-          value={profile}
-          onChange={(e) => setProfile(e.target.value)}
-          style={{ ...inputStyle, resize: 'vertical', lineHeight: 1.65 }}
-        />
-      </div>
-
-      <div style={{ marginBottom: '24px' }}>
-        <label style={labelStyle}>{fields.programs}</label>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-          {programOptions.map((p) => {
-            const checked = programs.includes(p)
-            return (
-              <button
-                key={p}
-                className="prog-btn"
-                onClick={() => toggleProgram(p)}
-                style={{
-                  fontFamily:      f,
-                  fontSize:        '13px',
-                  fontWeight:      500,
-                  color:           checked ? '#0E0E12' : 'rgba(240,240,240,0.7)',
-                  backgroundColor: checked ? '#b7b5fe' : 'transparent',
-                  border:          `1px solid ${checked ? '#b7b5fe' : 'rgba(183,181,254,0.25)'}`,
-                  borderRadius:    '8px',
-                  padding:         '8px 16px',
-                  cursor:          'pointer',
-                  transition:      'all 0.15s',
-                }}
-              >
-                {p}
-              </button>
-            )
-          })}
-        </div>
-      </div>
-
-      <div style={{ marginBottom: '32px' }}>
-        <label style={labelStyle}>{fields.referral}</label>
-        <input className="partner-input" type="text" value={referral} onChange={(e) => setReferral(e.target.value)} style={inputStyle} />
-      </div>
-
-      <button
-        className="form-submit"
-        onClick={handleSubmit}
-        style={{
-          display:         'block',
-          width:           '100%',
-          backgroundColor: '#b7b5fe',
-          color:           '#0E0E12',
-          fontSize:        '16px',
-          fontWeight:      600,
-          fontFamily:      f,
-          padding:         '16px 24px',
-          borderRadius:    '12px',
-          border:          'none',
-          cursor:          'pointer',
-          transition:      'background-color 0.15s, transform 0.1s',
-        }}
-      >
-        {fields.submit}
-      </button>
-    </div>
+    <div
+      id="my-cal-inline-partner"
+      style={{ width: '100%', height: '700px', overflow: 'scroll', borderRadius: '1rem' }}
+    />
   )
 }
 
@@ -927,15 +788,7 @@ function PartnersContent({ c, locale }) {
             {c.s6.sub}
           </p>
 
-          <div style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#b7b5fe', marginBottom: '20px', fontFamily: 'var(--font-latin)' }}>
-            {c.s6.formHeading}
-          </div>
-
-          <PartnerInquiryForm
-            fields={c.s6.fields}
-            programOptions={c.s6.programOptions}
-            locale={locale}
-          />
+          <PartnerCalEmbed />
 
           <p style={{ fontSize: '13px', fontWeight: 400, color: 'rgba(240,240,240,0.2)', marginTop: '32px', textAlign: 'center' }}>
             {c.s6.tagline}
