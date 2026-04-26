@@ -85,7 +85,7 @@ const COPY = {
       eyebrow: 'In Practice',
       h2: 'What happens in a real session',
       timeline: [
-        { label: 'Minute 0\u20135: Assessment',          body: "Navigator reviews last session\u2019s notes and The Hangar activity. They know where the student struggled, what clicked, and what needs reinforcement today." },
+        { label: 'Minute 0\u20135: Assessment',          body: "Navigator reviews last session\u2019s notes and the student\u2019s targeted work from the week. They know where the student struggled, what clicked, and what needs reinforcement today." },
         { label: 'Minute 5\u201320: Read & Think',       body: 'Student reads a Lexile-calibrated text. Navigator asks one open question. Then waits. The silence is intentional \u2014 this is where thinking happens.' },
         { label: 'Minute 20\u201335: Speak & Challenge', body: "Student articulates their position. Navigator listens, then challenges with a Socratic follow-up. The goal isn\u2019t agreement \u2014 it\u2019s precision." },
         { label: 'Minute 35\u201350: Write & Score',     body: 'Student writes their argument. Navigator scores live using 6+1 Traits \u2014 Ideas: 4/6, Organization: 5/6. Feedback is specific, not generic. The score names the gap.' },
@@ -373,8 +373,18 @@ export default async function NavigatorsPage({ params }) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="https://images.unsplash.com/photo-1673515335586-f9f662c01482?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080&q=80"
-                alt="Navigator and student in a live online session" className="w-full h-auto rounded-lg" style={{ display: 'block' }} />
+              <img
+                src="/navigators-s4-session.webp"
+                srcSet="/navigators-s4-session@0.5x.webp 600w, /navigators-s4-session.webp 1200w"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                alt="A Navigator working with a student through a reading passage"
+                width={1200}
+                height={900}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-auto rounded-lg"
+                style={{ display: 'block' }}
+              />
             </div>
             <div className="order-1 md:order-2">
               <Eyebrow>{c.s4.eyebrow}</Eyebrow>
