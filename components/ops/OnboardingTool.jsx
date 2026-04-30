@@ -1,38 +1,27 @@
 'use client';
 // components/ops/OnboardingTool.jsx
-// DODO Learning — Student Enrollment Welcome Packet PDF Generator  v2.5-ops
+// DODO Learning — Student Enrollment Welcome Packet PDF Generator  v2.6-ops
 // Migrated into /ops section: palette aligned, Hangar removed, assets from opsAssets.
-//
-// REQUIRES in components/ops/opsAssets.js:
-//   export const LOGO_B64       = 'data:image/jpeg;base64,...';  // already present
-//   export const SIGNATURE_B64  = 'data:image/png;base64,...';   // copy from App.jsx
-//   export const CLASSIN_LOGO_B64 = 'data:image/png;base64,...'; // copy from App.jsx
-//
-// npm install jspdf html2canvas  (already in project from Tool 1)
 
-import { useState, useCallback, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import { LOGO_B64, SIGNATURE_B64, CLASSIN_LOGO_B64 } from '@/components/ops/opsAssets';
 
-// ─── BRAND ── aligned to DODO design tokens ─────────────────────────────────
-// PDF pages use the light/printable palette; form UI uses the dark shell palette.
 const B = {
-  // PDF document palette
-  cream:      '#F5F5FF',            // Whisper  — page background
-  green:      '#7EC8A0',            // Soft Green — secondary accent
+  cream:      '#F5F5FF',
+  green:      '#7EC8A0',
   greenDark:  '#5aaa82',
   greenLight: '#e0f5ec',
-  brown:      '#B7B5FE',            // Lavender — primary accent / headings
+  brown:      '#B7B5FE',
   brownDark:  '#9490fe',
   brownLight: '#ededff',
-  ink:        '#0E0E12',            // Void Black — body text
+  ink:        '#0E0E12',
   muted:      '#5E6879',
   border:     'rgba(46,56,72,0.18)',
   white:      '#FFFFFF',
 };
 
-// Light shell palette for form UI inputs / cards
 const D = {
   bg:     '#f0ece8',
   card:   '#fffdf9',
@@ -45,16 +34,10 @@ const D = {
   danger: '#c0504d',
 };
 
-// ─── PDF LAYOUT CONSTANTS ────────────────────────────────────────────────────
 const F   = '"Noto Sans SC", "Avenir Next", "Avenir", "Helvetica Neue", sans-serif';
 const PW  = 794;
 const PH  = 1123;
 const PAD = 30;
-
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// PDF HEADER / FOOTER  (shared across all pages)
-// ═══════════════════════════════════════════════════════════════════════════════
 
 function PDFHeader() {
   return (
@@ -62,9 +45,7 @@ function PDFHeader() {
       <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
         <img src={LOGO_B64} alt="DODO" style={{ height: 40, width: 'auto' }} />
         <div style={{ borderLeft: `1.5px solid rgba(183,181,254,0.3)`, paddingLeft: 14 }}>
-          <div style={{ fontSize: 10, letterSpacing: 3, textTransform: 'uppercase', opacity: 0.65, fontFamily: F, fontWeight: 500 }}>
-            DODO Learning · 都学语言
-          </div>
+          <div style={{ fontSize: 10, letterSpacing: 3, textTransform: 'uppercase', opacity: 0.65, fontFamily: F, fontWeight: 500 }}>DODO Learning · 都学语言</div>
           <div style={{ fontSize: 16, fontWeight: 700, fontFamily: F, marginTop: 1 }}>
             Student Enrollment Packet
             <span style={{ fontSize: 11, fontWeight: 400, opacity: 0.72, marginLeft: 8 }}>学生入学资料</span>
@@ -80,75 +61,42 @@ function PDFFooter() {
     <div style={{ borderTop: `1px solid ${B.border}`, background: B.cream, padding: `8px ${PAD}px`, textAlign: 'center' }}>
       <div style={{ width: 40, height: 1.5, background: B.green, margin: '0 auto 6px' }} />
       <div style={{ fontSize: 9, color: B.muted }}>DODO Learning · 都学语言</div>
-      <div style={{ fontSize: 7.5, color: B.muted, marginTop: 2, opacity: 0.6 }}>
-        This document is confidential and intended for the enrolled student and their family.
-      </div>
+      <div style={{ fontSize: 7.5, color: B.muted, marginTop: 2, opacity: 0.6 }}>This document is confidential and intended for the enrolled student and their family.</div>
     </div>
   );
 }
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// PAGE 1 — WELCOME LETTER
-// ═══════════════════════════════════════════════════════════════════════════════
+// ── PAGE 1 — WELCOME LETTER ──────────────────────────────────────────────────
 
 function PDFPageWelcome({ info }) {
   return (
-    <div
-      id="pdf-welcome"
-      style={{ width: PW, height: PH, background: B.cream, fontFamily: F, color: B.ink, boxSizing: 'border-box', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}
-    >
+    <div id="pdf-welcome" style={{ width: PW, height: PH, background: B.cream, fontFamily: F, color: B.ink, boxSizing: 'border-box', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
       <PDFHeader />
-      <div style={{ padding: `24px ${PAD}px 12px`, display: 'flex', flexDirection: 'column', flex: 1 }}>
-
-        {/* Section label */}
+      <div style={{ padding: `24px ${PAD}px 12px`, display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'center' }}>
         <div style={{ textAlign: 'center', marginBottom: 20 }}>
           <div style={{ fontSize: 9, letterSpacing: 4, textTransform: 'uppercase', color: B.muted }}>Welcome Letter · 欢迎信</div>
           <div style={{ width: 60, height: 2, background: B.green, margin: '8px auto 0' }} />
         </div>
-
-        <div style={{ background: B.white, borderRadius: 8, padding: '18px 20px 20px', border: `1px solid ${B.border}`, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <div style={{ fontSize: 15, fontWeight: 600, color: B.brown, marginBottom: 16, fontFamily: F }}>
           Dear {info.name || 'Student'},
         </div>
-
-        {/* English body */}
         <div style={{ fontSize: 12.5, lineHeight: 1.85, color: B.ink, marginBottom: 18, textAlign: 'justify' }}>
-          <p style={{ margin: '0 0 12px', textIndent: '2em' }}>
-            Welcome to DODO Learning! We are absolutely thrilled to have you join our family, where learning is an adventure, and goals are reached. Our dedicated teachers and staff are here to guide you every step of the way, creating a nurturing and dynamic learning environment tailored to help you succeed. Whether this is your first step with us or you're continuing your journey, know that you are in a place where you are valued, supported, and encouraged to shine.
-          </p>
-          <p style={{ margin: '0 0 12px', textIndent: '2em' }}>
-            As you embark on this exciting chapter, we encourage you to embrace every opportunity, ask questions, make new friends, and, most importantly, believe in yourself. You have a unique voice, and we can't wait to see how you will contribute to and enrich our community.
-          </p>
-          <p style={{ margin: 0, textIndent: '2em' }}>
-            Once again, welcome to DODO Learning! We can't wait to see all the incredible things you will accomplish.
-          </p>
+          <p style={{ margin: '0 0 12px', textIndent: '2em' }}>Welcome to DODO Learning! We are absolutely thrilled to have you join our family, where learning is an adventure, and goals are reached. Our dedicated teachers and staff are here to guide you every step of the way, creating a nurturing and dynamic learning environment tailored to help you succeed. Whether this is your first step with us or you're continuing your journey, know that you are in a place where you are valued, supported, and encouraged to shine.</p>
+          <p style={{ margin: '0 0 12px', textIndent: '2em' }}>As you embark on this exciting chapter, we encourage you to embrace every opportunity, ask questions, make new friends, and, most importantly, believe in yourself. You have a unique voice, and we can't wait to see how you will contribute to and enrich our community.</p>
+          <p style={{ margin: 0, textIndent: '2em' }}>Once again, welcome to DODO Learning! We can't wait to see all the incredible things you will accomplish.</p>
         </div>
-
         <div style={{ width: '100%', height: 1, background: B.border, marginBottom: 18 }} />
-
-        {/* Chinese body */}
         <div style={{ fontSize: 12, lineHeight: 1.9, color: B.ink, marginBottom: 22, textAlign: 'justify' }}>
-          <p style={{ margin: '0 0 10px', textIndent: '2em' }}>
-            欢迎来到 DODO Learning!很高兴你能加入我们，让学习成为一场奔向目标的冒险。我们的专业教师团队将为你提供温暖且充满动力的学习环境，全方位助力你的成功。在这里，你是被珍视的个体；在这里，我们全力支持你尽情闪耀。
-          </p>
-          <p style={{ margin: '0 0 10px', textIndent: '2em' }}>
-            站在这个新起点上，请尽情拥抱每一个机会，保持好奇，并坚定地相信自己。我们非常期待看到你独一无二的才华将如何点亮我们的社区。
-          </p>
-          <p style={{ margin: 0, textIndent: '2em' }}>
-            欢迎开启这段精彩旅程，期待见证你的每一份卓越成就！
-          </p>
+          <p style={{ margin: '0 0 10px', textIndent: '2em' }}>欢迎来到 DODO Learning!很高兴你能加入我们，让学习成为一场奔向目标的冒险。我们的专业教师团队将为你提供温暖且充满动力的学习环境，全方位助力你的成功。在这里，你是被珍视的个体；在这里，我们全力支持你尽情闪耀。</p>
+          <p style={{ margin: '0 0 10px', textIndent: '2em' }}>站在这个新起点上，请尽情拥抱每一个机会，保持好奇，并坚定地相信自己。我们非常期待看到你独一无二的才华将如何点亮我们的社区。</p>
+          <p style={{ margin: 0, textIndent: '2em' }}>欢迎开启这段精彩旅程，期待见证你的每一份卓越成就！</p>
         </div>
-
-        {/* Signature block */}
         <div style={{ marginTop: 18, display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-          <div style={{ fontSize: 13, fontWeight: 600, color: B.brown, marginBottom: 12, fontStyle: 'italic' }}>
-            Warmest regards,
-          </div>
+          <div style={{ fontSize: 13, fontWeight: 600, color: B.brown, marginBottom: 12, fontStyle: 'italic' }}>Warmest regards,</div>
           <img src={SIGNATURE_B64} alt="Signature" style={{ height: 60, width: 'auto', marginBottom: 4, objectFit: 'contain' }} />
           <div style={{ fontSize: 13, fontWeight: 700, color: B.brown }}>Janet</div>
           <div style={{ fontSize: 11, color: B.muted, marginBottom: 2 }}>Learning Director</div>
           <div style={{ fontSize: 11, color: B.muted }}>DODO Learning</div>
-        </div>
         </div>
       </div>
       <PDFFooter />
@@ -156,17 +104,11 @@ function PDFPageWelcome({ info }) {
   );
 }
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// PAGE 2 — STUDENT INFO + CLASS INFO (QR CODES) + HOW TO ACTIVATE
-// QR slot 3 (The Hangar) removed — grid is now 2 columns.
-// ═══════════════════════════════════════════════════════════════════════════════
+// ── PAGE 2 — STUDENT INFO + CLASS INFO + HOW TO ACTIVATE ────────────────────
 
 function PDFPageInfo({ info, qrImages }) {
   return (
-    <div
-      id="pdf-info"
-      style={{ width: PW, height: PH, background: B.cream, fontFamily: F, color: B.ink, boxSizing: 'border-box', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}
-    >
+    <div id="pdf-info" style={{ width: PW, height: PH, background: B.cream, fontFamily: F, color: B.ink, boxSizing: 'border-box', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
       <PDFHeader />
       <div style={{ padding: `14px ${PAD}px 12px`, display: 'flex', flexDirection: 'column', flex: 1 }}>
 
@@ -178,12 +120,12 @@ function PDFPageInfo({ info, qrImages }) {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 10, rowGap: 14 }}>
             {[
-              ['Name 学生姓名',           info.name],
-              ['Age 年龄',                info.age],
-              ['Grade 年级',              info.grade],
-              ['Location 所在地',         info.location],
+              ['Name 学生姓名', info.name],
+              ['Age 年龄', info.age],
+              ['Grade 年级', info.grade],
+              ['Location 所在地', info.location],
               ['Signature Programs 定制课程组合', info.programs],
-              ['Program Start Date 开学日期',    info.date],
+              ['Program Start Date 开学日期', info.date],
             ].map(([lbl, val]) => (
               <div key={lbl}>
                 <div style={{ fontSize: 8.5, letterSpacing: 1.5, textTransform: 'uppercase', color: B.muted, fontWeight: 700, marginBottom: 4 }}>{lbl}</div>
@@ -191,7 +133,6 @@ function PDFPageInfo({ info, qrImages }) {
               </div>
             ))}
           </div>
-          {/* Course Levels */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginTop: 12 }}>
             <div>
               <div style={{ fontSize: 8.5, letterSpacing: 1.5, textTransform: 'uppercase', color: B.muted, fontWeight: 700, marginBottom: 4 }}>Literacy & Fluency Course Level 精读表达课程级别</div>
@@ -204,28 +145,26 @@ function PDFPageInfo({ info, qrImages }) {
           </div>
         </div>
 
-        {/* ClassIN Information — 2 QR codes (The Hangar removed) */}
+        {/* ClassIN Information */}
         <div style={{ background: B.white, borderRadius: 8, padding: '14px 16px 16px', marginBottom: 14, border: `1px solid ${B.border}` }}>
           <div style={{ marginBottom: 10, paddingBottom: 6, borderBottom: `1px solid ${B.border}`, display: 'flex', alignItems: 'center', gap: 8 }}>
             <span style={{ fontSize: 11, letterSpacing: 1, color: B.brown, fontWeight: 700 }}>ClassIN Information ClassIN </span>
             <span style={{ fontSize: 11, color: B.muted }}>班级信息</span>
             <img src={CLASSIN_LOGO_B64} alt="ClassIN" style={{ height: 26, width: 'auto', objectFit: 'contain', marginLeft: 4 }} />
           </div>
-          {/* 2-column grid — slot 3 (The Hangar) removed */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16, maxWidth: 520, margin: '0 auto' }}>
             {[
-              { key: 'qr1', title: '精读口语课班级',    titleEn: 'Literacy and Fluency' },
-              { key: 'qr2', title: '写作专项课程班级',  titleEn: 'Writing and Composition' },
+              { key: 'qr1', title: '精读口语课班级', titleEn: 'Literacy and Fluency' },
+              { key: 'qr2', title: '写作专项课程班级', titleEn: 'Writing and Composition' },
             ].map(qr => (
               <div key={qr.key} style={{ textAlign: 'center', padding: 10, background: B.greenLight, borderRadius: 8, border: `1px solid ${B.border}` }}>
                 <div style={{ fontSize: 11, fontWeight: 700, color: B.green, marginBottom: 2 }}>{qr.title}</div>
                 <div style={{ fontSize: 10, color: B.muted, marginBottom: 8 }}>{qr.titleEn}</div>
                 <div style={{ width: 140, height: 140, margin: '0 auto', background: B.white, borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center', border: `1px solid ${B.border}` }}>
-                  {qrImages[qr.key] ? (
-                    <img src={qrImages[qr.key]} alt={qr.title} style={{ width: 130, height: 130, objectFit: 'contain' }} />
-                  ) : (
-                    <div style={{ fontSize: 9, color: B.border }}>QR Code</div>
-                  )}
+                  {qrImages[qr.key]
+                    ? <img src={qrImages[qr.key]} alt={qr.title} style={{ width: 130, height: 130, objectFit: 'contain' }} />
+                    : <div style={{ fontSize: 9, color: B.border }}>QR Code</div>
+                  }
                 </div>
               </div>
             ))}
@@ -239,37 +178,23 @@ function PDFPageInfo({ info, qrImages }) {
             <span style={{ fontSize: 11, color: B.muted }}>如何加入班级</span>
           </div>
           <div style={{ fontSize: 13, lineHeight: 2.0, color: B.ink }}>
-            <div style={{ marginBottom: 8 }}>
-              <span style={{ fontWeight: 700, color: B.green }}>•</span> 有ClassIn 账号学生，请直接扫码进入班级并完成测评。
-            </div>
-            <div style={{ marginBottom: 6 }}>
-              <span style={{ fontWeight: 700, color: B.green }}>•</span> 没有ClassIn账号，请按照以下步骤安装下载并注册，然后扫码加入班级：
-            </div>
+            <div style={{ marginBottom: 8 }}><span style={{ fontWeight: 700, color: B.green }}>•</span> 有ClassIn 账号学生，请直接扫码进入班级并完成测评。</div>
+            <div style={{ marginBottom: 6 }}><span style={{ fontWeight: 700, color: B.green }}>•</span> 没有ClassIn账号，请按照以下步骤安装下载并注册，然后扫码加入班级：</div>
             <div style={{ paddingLeft: 22, display: 'flex', flexDirection: 'column', gap: 4 }}>
-              <div>
-                <span style={{ fontWeight: 700, color: B.brown }}>1)</span>
-                {' '}电脑或者iPad下载。苹果 APP: ClassIn，或官网：<span style={{ color: B.green, fontWeight: 600 }}>https://www.classin.com</span>
-              </div>
-              <div>
-                <span style={{ fontWeight: 700, color: B.brown }}>2)</span>
-                {' '}创建自己的账号。<span style={{ fontWeight: 700, color: B.brown }}>注意：请把名字设为学生报名的名字。</span>
-              </div>
-              <div>
-                <span style={{ fontWeight: 700, color: B.brown }}>3)</span>
-                {' '}扫码进入班级
-              </div>
+              <div><span style={{ fontWeight: 700, color: B.brown }}>1)</span>{' '}电脑或者iPad下载。苹果 APP: ClassIn，或官网：<span style={{ color: B.green, fontWeight: 600 }}>https://www.classin.com</span></div>
+              <div><span style={{ fontWeight: 700, color: B.brown }}>2)</span>{' '}创建自己的账号。<span style={{ fontWeight: 700, color: B.brown }}>注意：请把名字设为学生报名的名字。</span></div>
+              <div><span style={{ fontWeight: 700, color: B.brown }}>3)</span>{' '}扫码进入班级</div>
             </div>
           </div>
         </div>
+
       </div>
       <PDFFooter />
     </div>
   );
 }
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// PAGES 3+ — COURSE DETAILS (dynamic multi-page, hide-if-blank)
-// ═══════════════════════════════════════════════════════════════════════════════
+// ── PAGES 3+ — COURSE DETAILS (dynamic multi-page) ──────────────────────────
 
 function PDFPageDetails({ info, schedule, literacyAbout, literacyOverview, writingOverview, teacherImg, teacherIntro, parentNotes }) {
   const [pageGroups, setPageGroups] = useState(null);
@@ -281,9 +206,8 @@ function PDFPageDetails({ info, schedule, literacyAbout, literacyOverview, writi
   const hasTeacher          = !!(teacherImg || (teacherIntro && teacherIntro.trim()));
   const hasParentNotes      = !!(parentNotes      && parentNotes.trim());
 
-  const GAP    = 12;
+  const GAP      = 12;
   const USABLE_H = PH - 74 - 52 - 28;
-
   const SS = { background: B.white, borderRadius: 8, padding: '14px 16px 16px', border: `1px solid ${B.border}` };
   const HD = { marginBottom: 8, paddingBottom: 6, borderBottom: `1px solid ${B.border}` };
   const TT = { fontSize: 11, letterSpacing: 2, textTransform: 'uppercase', color: B.brown, fontWeight: 700 };
@@ -313,10 +237,7 @@ function PDFPageDetails({ info, schedule, literacyAbout, literacyOverview, writi
         <div style={{ ...HD, marginBottom: 10 }}><span style={TT}>Teacher Profile </span><span style={ST}>老师信息&介绍</span></div>
         <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
           <div style={{ width: 100, height: 120, borderRadius: 8, overflow: 'hidden', border: `1px solid ${B.border}`, flexShrink: 0, background: B.greenLight, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            {teacherImg
-              ? <img src={teacherImg} alt="Teacher" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-              : <div style={{ fontSize: 9, color: B.border }}>Photo</div>
-            }
+            {teacherImg ? <img src={teacherImg} alt="Teacher" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <div style={{ fontSize: 9, color: B.border }}>Photo</div>}
           </div>
           <div style={{ flex: 1, fontSize: 11, lineHeight: 1.75, color: B.ink, whiteSpace: 'pre-wrap' }}>{teacherIntro || ''}</div>
         </div>
@@ -360,20 +281,11 @@ function PDFPageDetails({ info, schedule, literacyAbout, literacyOverview, writi
 
   return (
     <>
-      {/* Off-screen measurement div */}
-      <div
-        ref={measureRef}
-        style={{ position: 'fixed', left: -29999, top: 0, width: PW - 2 * PAD, visibility: 'hidden', pointerEvents: 'none', zIndex: -9999 }}
-      >
+      <div ref={measureRef} style={{ position: 'fixed', left: -29999, top: 0, width: PW - 2 * PAD, visibility: 'hidden', pointerEvents: 'none', zIndex: -9999 }}>
         {sections}
       </div>
-
       {displayGroups.map((group, pi) => (
-        <div
-          key={pi}
-          id={`pdf-details-${pi}`}
-          style={{ width: PW, height: PH, background: B.cream, fontFamily: F, color: B.ink, boxSizing: 'border-box', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}
-        >
+        <div key={pi} id={`pdf-details-${pi}`} style={{ width: PW, height: PH, background: B.cream, fontFamily: F, color: B.ink, boxSizing: 'border-box', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
           <PDFHeader />
           <div style={{ padding: `14px ${PAD}px 12px`, display: 'flex', flexDirection: 'column', gap: GAP, flex: 1 }}>
             {group.map(si => sections[si])}
@@ -385,21 +297,15 @@ function PDFPageDetails({ info, schedule, literacyAbout, literacyOverview, writi
   );
 }
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// TERMS OF SERVICE PAGE
-// The Hangar row removed from schedule grid.
-// ═══════════════════════════════════════════════════════════════════════════════
+// ── TERMS OF SERVICE PAGE ────────────────────────────────────────────────────
 
 function PDFPageTerms({ schedule }) {
   return (
-    <div
-      id="pdf-terms"
-      style={{ width: PW, height: PH, background: B.cream, fontFamily: F, color: B.ink, boxSizing: 'border-box', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}
-    >
+    <div id="pdf-terms" style={{ width: PW, height: PH, background: B.cream, fontFamily: F, color: B.ink, boxSizing: 'border-box', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
       <PDFHeader />
       <div style={{ padding: `14px ${PAD}px 12px`, flex: 1 }}>
 
-        {/* Lesson Schedule — The Hangar row removed */}
+        {/* Lesson Schedule */}
         <div style={{ background: B.white, borderRadius: 8, padding: '12px 14px 14px', marginBottom: 10, border: `1px solid ${B.border}` }}>
           <div style={{ marginBottom: 8, paddingBottom: 5, borderBottom: `1px solid ${B.border}` }}>
             <span style={{ fontSize: 11, letterSpacing: 2, textTransform: 'uppercase', color: B.brown, fontWeight: 700 }}>Lesson Schedule </span>
@@ -407,12 +313,9 @@ function PDFPageTerms({ schedule }) {
           </div>
           <div style={{ fontSize: 11.5, lineHeight: 1.8, color: B.ink }}>
             <div style={{ display: 'grid', gridTemplateColumns: '170px 1fr', gap: 4, rowGap: 6 }}>
-              <div style={{ fontWeight: 700, color: B.brown }}>课程组合：</div>
-              <div>{schedule?.combo   || '—'}</div>
-              <div style={{ fontWeight: 700, color: B.brown }}>精读表达课：</div>
-              <div>{schedule?.literacy || '—'}</div>
-              <div style={{ fontWeight: 700, color: B.brown }}>写作专项课程：</div>
-              <div>{schedule?.writing  || '—'}</div>
+              <div style={{ fontWeight: 700, color: B.brown }}>课程组合：</div><div>{schedule?.combo || '—'}</div>
+              <div style={{ fontWeight: 700, color: B.brown }}>精读表达课：</div><div>{schedule?.literacy || '—'}</div>
+              <div style={{ fontWeight: 700, color: B.brown }}>写作专项课程：</div><div>{schedule?.writing || '—'}</div>
             </div>
           </div>
         </div>
@@ -429,27 +332,15 @@ function PDFPageTerms({ schedule }) {
           <div style={{ fontSize: 11, fontWeight: 700, color: B.green, marginBottom: 6, letterSpacing: 1 }}>我们的承诺</div>
           <div style={{ fontSize: 9, color: B.muted, marginBottom: 8, fontStyle: 'italic' }}>我们将全力以赴，为您开启成长之门。</div>
           <div style={{ fontSize: 10.5, lineHeight: 1.75, color: B.ink }}>
-            <div style={{ marginBottom: 6 }}>
-              <span style={{ fontWeight: 700, color: B.brown }}>• 教学保障：</span>准时提供高标准的教师，课程及学术支持。若老师因病或特殊情况缺勤，我们负责安排补课。
-            </div>
-            <div style={{ marginBottom: 4 }}>
-              <span style={{ fontWeight: 700, color: B.brown }}>• "试听课"说明：</span>
-            </div>
+            <div style={{ marginBottom: 6 }}><span style={{ fontWeight: 700, color: B.brown }}>• 教学保障：</span>准时提供高标准的教师，课程及学术支持。若老师因病或特殊情况缺勤，我们负责安排补课。</div>
+            <div style={{ marginBottom: 4 }}><span style={{ fontWeight: 700, color: B.brown }}>• "试听课"说明：</span></div>
             <div style={{ paddingLeft: 14, marginBottom: 6 }}>
               <div style={{ marginBottom: 3 }}>为了确保老师和学生之间能够达成最佳的教学共鸣，我们的"试听课"政策如下：</div>
-              <div style={{ marginBottom: 3 }}>
-                <span style={{ fontWeight: 700, color: B.greenDark }}>首课磨合期 (First Session Fit)：</span>第一节课结束后，若您认为当前 Program 的节奏或方向与孩子的需求不匹配，我们将提供全额退款。
-              </div>
-              <div style={{ marginBottom: 3 }}>
-                <span style={{ fontWeight: 700, color: B.greenDark }}>首周试行期 (Onboarding Week)：</span>若在第一节课之后、第一周结束前决定退出，首周费用将不予退还，Program 将自动终止。
-              </div>
-              <div style={{ marginBottom: 3 }}>
-                <span style={{ fontWeight: 700, color: B.greenDark }}>稳定培养期 (Post-Week 1)：</span>进入第二周后，Program 费用将不再支持退还。
-              </div>
+              <div style={{ marginBottom: 3 }}><span style={{ fontWeight: 700, color: B.greenDark }}>首课磨合期 (First Session Fit)：</span>第一节课结束后，若您认为当前 Program 的节奏或方向与孩子的需求不匹配，我们将提供全额退款。</div>
+              <div style={{ marginBottom: 3 }}><span style={{ fontWeight: 700, color: B.greenDark }}>首周试行期 (Onboarding Week)：</span>若在第一节课之后、第一周结束前决定退出，首周费用将不予退还，Program 将自动终止。</div>
+              <div style={{ marginBottom: 3 }}><span style={{ fontWeight: 700, color: B.greenDark }}>稳定培养期 (Post-Week 1)：</span>进入第二周后，Program 费用将不再支持退还。</div>
             </div>
-            <div>
-              <span style={{ fontWeight: 700, color: B.brown }}>• 成长记录：</span>提供课堂录像供您复习（我们也可能在模糊面部后将其作为精彩瞬间展示）。我们会严格保护您的个人信息，除法律要求外绝不外泄。
-            </div>
+            <div><span style={{ fontWeight: 700, color: B.brown }}>• 成长记录：</span>提供课堂录像供您复习（我们也可能在模糊面部后将其作为精彩瞬间展示）。我们会严格保护您的个人信息，除法律要求外绝不外泄。</div>
           </div>
         </div>
 
@@ -458,52 +349,37 @@ function PDFPageTerms({ schedule }) {
           <div style={{ fontSize: 11, fontWeight: 700, color: B.green, marginBottom: 6, letterSpacing: 1 }}>你的成长守则</div>
           <div style={{ fontSize: 9, color: B.muted, marginBottom: 8, fontStyle: 'italic' }}>进步，源于每一天的坚持与尊重。</div>
           <div style={{ fontSize: 10.5, lineHeight: 1.75, color: B.ink }}>
-            <div style={{ marginBottom: 6 }}>
-              <span style={{ fontWeight: 700, color: B.brown }}>• 课堂礼仪与约定：</span>缺席请提前 48 小时通知（一对一课程无法补课 & 小组课请看回放）。课中保持礼貌与尊重，共同维护舒适的课堂环境，违规干扰者将无法继续上课且不予退费。
-            </div>
-            <div style={{ marginBottom: 6 }}>
-              <span style={{ fontWeight: 700, color: B.brown }}>• 软硬兼备：</span>请自备稳定的网络和设备，确保学习不掉线。
-            </div>
-            <div>
-              <span style={{ fontWeight: 700, color: B.brown }}>• 尊重原创：</span>课程资料仅供个人学习，禁止私自复制、转发或分享。
-            </div>
+            <div style={{ marginBottom: 6 }}><span style={{ fontWeight: 700, color: B.brown }}>• 课堂礼仪与约定：</span>缺席请提前 48 小时通知（一对一课程无法补课 & 小组课请看回放）。课中保持礼貌与尊重，共同维护舒适的课堂环境，违规干扰者将无法继续上课且不予退费。</div>
+            <div style={{ marginBottom: 6 }}><span style={{ fontWeight: 700, color: B.brown }}>• 软硬兼备：</span>请自备稳定的网络和设备，确保学习不掉线。</div>
+            <div><span style={{ fontWeight: 700, color: B.brown }}>• 尊重原创：</span>课程资料仅供个人学习，禁止私自复制、转发或分享。</div>
           </div>
         </div>
+
       </div>
       <PDFFooter />
     </div>
   );
 }
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// MAIN COMPONENT — FORM UI + PDF GENERATION
-// ═══════════════════════════════════════════════════════════════════════════════
+// ── MAIN COMPONENT ───────────────────────────────────────────────────────────
 
 export default function OnboardingTool() {
-  // ── State ──────────────────────────────────────────────────────────────────
   const [info, setInfo] = useState({
     name: '', age: '', grade: '', location: '', programs: '',
     literacyLevel: '', writingLevel: '',
     date: new Date().toISOString().split('T')[0],
   });
-
-  // Hangar field removed
-  const [schedule, setSchedule] = useState({ combo: '', literacy: '', writing: '' });
-
-  const [literacyAbout,    setLiteracyAbout]    = useState('');
-  const [literacyOverview, setLiteracyOverview] = useState('');
-  const [writingOverview,  setWritingOverview]  = useState('');
-
-  const [teacherImg,   setTeacherImg]   = useState(null);
-  const [teacherIntro, setTeacherIntro] = useState('');
-  const [parentNotes,  setParentNotes]  = useState('');
-
-  // QR slot 3 (The Hangar) removed
-  const [qrImages,   setQrImages]   = useState({ qr1: null, qr2: null });
-  const [generating, setGenerating] = useState(false);
-  const [fontsReady, setFontsReady] = useState(false);
-  const [status,     setStatus]     = useState('');
-
+  const [schedule,        setSchedule]        = useState({ combo: '', literacy: '', writing: '' });
+  const [literacyAbout,   setLiteracyAbout]   = useState('');
+  const [literacyOverview,setLiteracyOverview]= useState('');
+  const [writingOverview, setWritingOverview] = useState('');
+  const [teacherImg,      setTeacherImg]      = useState(null);
+  const [teacherIntro,    setTeacherIntro]    = useState('');
+  const [parentNotes,     setParentNotes]     = useState('');
+  const [qrImages,        setQrImages]        = useState({ qr1: null, qr2: null });
+  const [generating,      setGenerating]      = useState(false);
+  const [fontsReady,      setFontsReady]      = useState(false);
+  const [status,          setStatus]          = useState('');
 
   useEffect(() => {
     const link = document.createElement('link');
@@ -513,7 +389,6 @@ export default function OnboardingTool() {
     document.fonts.ready.then(() => setFontsReady(true));
   }, []);
 
-  // ── Image upload helper ────────────────────────────────────────────────────
   const handleImageUpload = (key, setter) => (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -528,33 +403,24 @@ export default function OnboardingTool() {
     reader.readAsDataURL(file);
   };
 
-  // ── PDF Generation ─────────────────────────────────────────────────────────
   const generatePDF = async () => {
+    if (generating) return;
     setGenerating(true);
     setStatus('Rendering packet…');
     try {
-      setStatus('Waiting for fonts…');
       await document.fonts.ready;
       await new Promise(r => setTimeout(r, 150));
-
       const capture = async (id) => {
         const el = document.getElementById(id);
         if (!el) throw new Error(`#${id} not found`);
         return html2canvas(el, { scale: 2, useCORS: true, backgroundColor: B.cream, logging: false });
       };
-
-      const pdf    = new jsPDF('p', 'mm', 'a4');
-      const pageW  = 210;
-      const pageH  = 297;
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const pageW = 210, pageH = 297;
       const pageIds = ['pdf-welcome', 'pdf-info'];
-
       let di = 0;
-      while (document.getElementById(`pdf-details-${di}`)) {
-        pageIds.push(`pdf-details-${di}`);
-        di++;
-      }
+      while (document.getElementById(`pdf-details-${di}`)) { pageIds.push(`pdf-details-${di}`); di++; }
       pageIds.push('pdf-terms');
-
       for (let i = 0; i < pageIds.length; i++) {
         setStatus(`Capturing page ${i + 1} of ${pageIds.length}…`);
         const canvas = await capture(pageIds[i]);
@@ -562,25 +428,22 @@ export default function OnboardingTool() {
         const imgW = pageW;
         const imgH = (canvas.height * imgW) / canvas.width;
         if (imgH > pageH + 2) {
-          const totalCanvasH = canvas.height;
           const sliceH = (pageH / imgW) * canvas.width;
           let y = 0, pageNum = 0;
-          while (y < totalCanvasH) {
+          while (y < canvas.height) {
             if (pageNum > 0) pdf.addPage();
-            const sliceCanvas = document.createElement('canvas');
-            sliceCanvas.width  = canvas.width;
-            const thisSliceH   = Math.min(sliceH, totalCanvasH - y);
-            sliceCanvas.height = thisSliceH;
-            sliceCanvas.getContext('2d').drawImage(canvas, 0, y, canvas.width, thisSliceH, 0, 0, canvas.width, thisSliceH);
-            pdf.addImage(sliceCanvas.toDataURL('image/jpeg', 0.92), 'JPEG', 0, 0, imgW, (thisSliceH * imgW) / canvas.width);
-            y += sliceH;
-            pageNum++;
+            const sc = document.createElement('canvas');
+            sc.width = canvas.width;
+            const thisH = Math.min(sliceH, canvas.height - y);
+            sc.height = thisH;
+            sc.getContext('2d').drawImage(canvas, 0, y, canvas.width, thisH, 0, 0, canvas.width, thisH);
+            pdf.addImage(sc.toDataURL('image/jpeg', 0.92), 'JPEG', 0, 0, imgW, (thisH * imgW) / canvas.width);
+            y += sliceH; pageNum++;
           }
         } else {
           pdf.addImage(canvas.toDataURL('image/jpeg', 0.92), 'JPEG', 0, 0, imgW, Math.min(imgH, pageH));
         }
       }
-
       const fileName = `DodoEnrollment_${(info.name || 'Student').replace(/\s+/g, '_')}_${info.date}.pdf`;
       pdf.save(fileName);
       setStatus(`✓ Saved: ${fileName}`);
@@ -592,34 +455,16 @@ export default function OnboardingTool() {
     }
   };
 
-  // ── Form style tokens (dark shell) ─────────────────────────────────────────
-  const inp = {
-    width: '100%', padding: '8px 10px',
-    border: `1.5px solid ${D.border}`, borderRadius: 6,
-    fontSize: 14, fontFamily: 'inherit',
-    background: D.input, color: D.text,
-    outline: 'none', boxSizing: 'border-box',
-  };
-  const lbl = {
-    fontSize: 10, letterSpacing: 1, textTransform: 'uppercase',
-    color: D.muted, fontWeight: 700, marginBottom: 4, display: 'block',
-  };
-  const sectionTitle = {
-    fontSize: 12, fontWeight: 700, color: D.accent,
-    textTransform: 'uppercase', letterSpacing: 2, marginBottom: 12,
-  };
-  const card = {
-    background: D.card, borderRadius: 10, padding: 18,
-    marginBottom: 16, border: `1px solid ${D.border}`,
-  };
+  const inp = { width: '100%', padding: '8px 10px', border: `1.5px solid ${D.border}`, borderRadius: 6, fontSize: 14, fontFamily: 'inherit', background: D.input, color: D.text, outline: 'none', boxSizing: 'border-box' };
+  const lbl = { fontSize: 10, letterSpacing: 1, textTransform: 'uppercase', color: D.muted, fontWeight: 700, marginBottom: 4, display: 'block' };
+  const sectionTitle = { fontSize: 12, fontWeight: 700, color: D.accent, textTransform: 'uppercase', letterSpacing: 2, marginBottom: 12 };
+  const card = { background: D.card, borderRadius: 10, padding: 18, marginBottom: 16, border: `1px solid ${D.border}` };
   const textareaStyle = { ...inp, resize: 'vertical', lineHeight: 1.6, fontSize: 13, background: '#f5ede4' };
 
-  // ── Render ──────────────────────────────────────────────────────────────────
   return (
     <div style={{ fontFamily: '"Noto Sans SC", "DM Sans", "Avenir Next", sans-serif', minHeight: '100vh', background: D.bg, color: D.text }}>
       <div style={{ maxWidth: 900, margin: '0 auto', padding: '24px 20px 80px' }}>
 
-        {/* Form Header */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 24, paddingBottom: 16, borderBottom: `2px solid ${D.accent}` }}>
           <img src={LOGO_B64} alt="DODO" style={{ height: 40 }} />
           <div>
@@ -628,18 +473,11 @@ export default function OnboardingTool() {
           </div>
         </div>
 
-        {/* ══ STUDENT INFO ══════════════════════════════════════════════════ */}
+        {/* Student Info */}
         <div style={card}>
           <div style={sectionTitle}>Student Information 学生信息</div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 12 }}>
-            {[
-              ['name',     'Student Name 学生姓名',              'text'],
-              ['age',      'Age 年龄',                           'text'],
-              ['grade',    'Grade 年级',                         'text'],
-              ['location', 'Location (City, Country) 所在地',    'text'],
-              ['programs', 'Signature Programs 定制课程组合',     'text'],
-              ['date',     'Program Start Date 开学日期',         'date'],
-            ].map(([k, label, type]) => (
+            {[['name','Student Name 学生姓名','text'],['age','Age 年龄','text'],['grade','Grade 年级','text'],['location','Location (City, Country) 所在地','text'],['programs','Signature Programs 定制课程组合','text'],['date','Program Start Date 开学日期','date']].map(([k,label,type]) => (
               <label key={k} style={{ display: 'flex', flexDirection: 'column' }}>
                 <span style={lbl}>{label}</span>
                 <input type={type} value={info[k]} onChange={e => setInfo(i => ({ ...i, [k]: e.target.value }))} style={inp} />
@@ -658,88 +496,54 @@ export default function OnboardingTool() {
           </div>
         </div>
 
-        {/* ══ QR CODES — 2 slots (The Hangar removed) ══════════════════════ */}
+        {/* QR Codes */}
         <div style={card}>
           <div style={sectionTitle}>Class Information 班级信息 — QR Codes</div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 16, maxWidth: 480 }}>
-            {[
-              { key: 'qr1', label: '精读口语课班级 / Literacy and Fluency' },
-              { key: 'qr2', label: '写作专项课程班级 / Writing and Composition' },
-            ].map(qr => (
+            {[{key:'qr1',label:'精读口语课班级 / Literacy and Fluency'},{key:'qr2',label:'写作专项课程班级 / Writing and Composition'}].map(qr => (
               <div key={qr.key} style={{ textAlign: 'center' }}>
                 <div style={{ fontSize: 11, fontWeight: 600, marginBottom: 8, color: D.text }}>{qr.label}</div>
                 <div style={{ width: 140, height: 140, margin: '0 auto 8px', background: '#f5ede4', borderRadius: 8, border: `2px dashed ${D.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-                  {qrImages[qr.key]
-                    ? <img src={qrImages[qr.key]} alt={qr.label} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
-                    : <span style={{ fontSize: 11, color: D.muted }}>Upload QR</span>
-                  }
+                  {qrImages[qr.key] ? <img src={qrImages[qr.key]} alt={qr.label} style={{ width: '100%', height: '100%', objectFit: 'contain' }} /> : <span style={{ fontSize: 11, color: D.muted }}>Upload QR</span>}
                 </div>
                 <label style={{ cursor: 'pointer', fontSize: 11, color: D.green, fontWeight: 600 }}>
                   📷 Upload
                   <input type="file" accept="image/*" style={{ display: 'none' }} onChange={handleImageUpload(qr.key, null)} />
                 </label>
-                {qrImages[qr.key] && (
-                  <button onClick={() => setQrImages(prev => ({ ...prev, [qr.key]: null }))} style={{ display: 'block', margin: '4px auto 0', fontSize: 10, color: D.danger, background: 'none', border: 'none', cursor: 'pointer' }}>✕ Remove</button>
-                )}
+                {qrImages[qr.key] && <button onClick={() => setQrImages(prev => ({ ...prev, [qr.key]: null }))} style={{ display: 'block', margin: '4px auto 0', fontSize: 10, color: D.danger, background: 'none', border: 'none', cursor: 'pointer' }}>✕ Remove</button>}
               </div>
             ))}
           </div>
         </div>
 
-        {/* ══ SCHEDULE — hangar field removed ══════════════════════════════ */}
+        {/* Schedule */}
         <div style={card}>
           <div style={sectionTitle}>Lesson Schedule 上课时间</div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
-            <label style={{ display: 'flex', flexDirection: 'column' }}>
-              <span style={lbl}>课程组合</span>
-              <input type="text" value={schedule.combo} onChange={e => setSchedule(s => ({ ...s, combo: e.target.value }))} style={inp} placeholder="e.g. CORE稳健航行" />
-            </label>
-            <label style={{ display: 'flex', flexDirection: 'column' }}>
-              <span style={lbl}>精读表达课 Day & Time</span>
-              <input type="text" value={schedule.literacy} onChange={e => setSchedule(s => ({ ...s, literacy: e.target.value }))} style={inp} placeholder="e.g. 周二&周四 晚 7:00–7:30" />
-            </label>
-            <label style={{ display: 'flex', flexDirection: 'column' }}>
-              <span style={lbl}>写作专项课程 Day & Time</span>
-              <input type="text" value={schedule.writing} onChange={e => setSchedule(s => ({ ...s, writing: e.target.value }))} style={inp} placeholder="e.g. 周三晚 7:30–8:20" />
-            </label>
+            <label style={{ display: 'flex', flexDirection: 'column' }}><span style={lbl}>课程组合</span><input type="text" value={schedule.combo} onChange={e => setSchedule(s => ({ ...s, combo: e.target.value }))} style={inp} placeholder="e.g. CORE稳健航行" /></label>
+            <label style={{ display: 'flex', flexDirection: 'column' }}><span style={lbl}>精读表达课 Day & Time</span><input type="text" value={schedule.literacy} onChange={e => setSchedule(s => ({ ...s, literacy: e.target.value }))} style={inp} placeholder="e.g. 周二&周四 晚 7:00–7:30" /></label>
+            <label style={{ display: 'flex', flexDirection: 'column' }}><span style={lbl}>写作专项课程 Day & Time</span><input type="text" value={schedule.writing} onChange={e => setSchedule(s => ({ ...s, writing: e.target.value }))} style={inp} placeholder="e.g. 周三晚 7:30–8:20" /></label>
           </div>
         </div>
 
-        {/* ══ COURSE CONTENT ════════════════════════════════════════════════ */}
+        {/* Course Content */}
         <div style={card}>
           <div style={sectionTitle}>Course Content 课程内容 <span style={{ fontSize: 10, fontWeight: 400, color: D.muted, textTransform: 'none', letterSpacing: 0 }}>(leave blank to hide on PDF)</span></div>
-          <label style={{ display: 'flex', flexDirection: 'column', marginBottom: 14 }}>
-            <span style={lbl}>About Literacy & Fluency Course 关于精读表达课</span>
-            <textarea value={literacyAbout} onChange={e => setLiteracyAbout(e.target.value)} rows={4} placeholder="Leave blank to hide this section on PDF…" style={textareaStyle} />
-          </label>
-          <label style={{ display: 'flex', flexDirection: 'column', marginBottom: 14 }}>
-            <span style={lbl}>Literacy & Fluency Course Overview 精读表达课课程大纲</span>
-            <textarea value={literacyOverview} onChange={e => setLiteracyOverview(e.target.value)} rows={4} placeholder="Use bullet points (•) or tables. Leave blank to hide…" style={textareaStyle} />
-          </label>
-          <label style={{ display: 'flex', flexDirection: 'column' }}>
-            <span style={lbl}>Writing & Composition Course Overview 大师写作专项课程大纲</span>
-            <textarea value={writingOverview} onChange={e => setWritingOverview(e.target.value)} rows={4} placeholder="Use bullet points (•) or tables. Leave blank to hide…" style={textareaStyle} />
-          </label>
+          <label style={{ display: 'flex', flexDirection: 'column', marginBottom: 14 }}><span style={lbl}>About Literacy & Fluency Course 关于精读表达课</span><textarea value={literacyAbout} onChange={e => setLiteracyAbout(e.target.value)} rows={4} placeholder="Leave blank to hide…" style={textareaStyle} /></label>
+          <label style={{ display: 'flex', flexDirection: 'column', marginBottom: 14 }}><span style={lbl}>Literacy & Fluency Course Overview 精读表达课课程大纲</span><textarea value={literacyOverview} onChange={e => setLiteracyOverview(e.target.value)} rows={4} placeholder="Leave blank to hide…" style={textareaStyle} /></label>
+          <label style={{ display: 'flex', flexDirection: 'column' }}><span style={lbl}>Writing & Composition Course Overview 大师写作专项课程大纲</span><textarea value={writingOverview} onChange={e => setWritingOverview(e.target.value)} rows={4} placeholder="Leave blank to hide…" style={textareaStyle} /></label>
         </div>
 
-        {/* ══ TEACHER INFO ═════════════════════════════════════════════════ */}
+        {/* Teacher Profile */}
         <div style={card}>
           <div style={sectionTitle}>Teacher Profile 老师信息&介绍</div>
           <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
             <div style={{ flexShrink: 0 }}>
               <div style={{ width: 120, height: 140, background: '#f5ede4', borderRadius: 8, border: `2px dashed ${D.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', marginBottom: 6 }}>
-                {teacherImg
-                  ? <img src={teacherImg} alt="Teacher" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                  : <span style={{ fontSize: 11, color: D.muted }}>Upload Photo</span>
-                }
+                {teacherImg ? <img src={teacherImg} alt="Teacher" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <span style={{ fontSize: 11, color: D.muted }}>Upload Photo</span>}
               </div>
-              <label style={{ cursor: 'pointer', fontSize: 11, color: D.green, fontWeight: 600, display: 'block', textAlign: 'center' }}>
-                📷 Upload
-                <input type="file" accept="image/*" style={{ display: 'none' }} onChange={handleImageUpload(null, setTeacherImg)} />
-              </label>
-              {teacherImg && (
-                <button onClick={() => setTeacherImg(null)} style={{ display: 'block', margin: '4px auto 0', fontSize: 10, color: D.danger, background: 'none', border: 'none', cursor: 'pointer' }}>✕ Remove</button>
-              )}
+              <label style={{ cursor: 'pointer', fontSize: 11, color: D.green, fontWeight: 600, display: 'block', textAlign: 'center' }}>📷 Upload<input type="file" accept="image/*" style={{ display: 'none' }} onChange={handleImageUpload(null, setTeacherImg)} /></label>
+              {teacherImg && <button onClick={() => setTeacherImg(null)} style={{ display: 'block', margin: '4px auto 0', fontSize: 10, color: D.danger, background: 'none', border: 'none', cursor: 'pointer' }}>✕ Remove</button>}
             </div>
             <label style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
               <span style={lbl}>Teacher Introduction 老师介绍</span>
@@ -748,57 +552,26 @@ export default function OnboardingTool() {
           </div>
         </div>
 
-        {/* ══ PARENT NOTES ════════════════════════════════════════════════ */}
+        {/* Parent Notes */}
         <div style={card}>
           <div style={sectionTitle}>致家长和亲爱的你 <span style={{ fontSize: 10, fontWeight: 400, color: D.muted, textTransform: 'none', letterSpacing: 0 }}>(leave blank to hide)</span></div>
-          <textarea
-            value={parentNotes} onChange={e => setParentNotes(e.target.value)} rows={6}
-            placeholder={'e.g. 第一节课前，我们必须要做的事情-\n• 加入ClassIN 班级\n• 下载和打印书籍…'}
-            style={{ ...textareaStyle, lineHeight: 1.7, fontSize: 14 }}
-          />
+          <textarea value={parentNotes} onChange={e => setParentNotes(e.target.value)} rows={6} placeholder={'e.g. 第一节课前，我们必须要做的事情-\n• 加入ClassIN 班级\n• 下载和打印书籍…'} style={{ ...textareaStyle, lineHeight: 1.7, fontSize: 14 }} />
         </div>
 
-        {/* ══ GENERATE BUTTON ══════════════════════════════════════════════ */}
+        {/* Generate Button */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-          <button
-            onClick={generatePDF}
-            disabled={generating || !fontsReady}
-            style={{
-              padding: '14px 36px',
-              background: generating ? D.muted : D.accent,
-              color: '#fffdf9',
-              border: 'none', borderRadius: 10,
-              fontSize: 16, fontWeight: 700, fontFamily: 'inherit',
-              cursor: generating ? 'wait' : 'pointer',
-              boxShadow: generating ? 'none' : '0 3px 12px rgba(0,0,0,0.18)',
-              opacity: fontsReady ? 1 : 0.5,
-              transition: 'all 0.2s',
-            }}
-          >
+          <button onClick={generatePDF} disabled={generating || !fontsReady} style={{ padding: '14px 36px', background: generating ? D.muted : D.accent, color: '#fffdf9', border: 'none', borderRadius: 10, fontSize: 16, fontWeight: 700, fontFamily: 'inherit', cursor: generating ? 'wait' : 'pointer', boxShadow: generating ? 'none' : '0 3px 12px rgba(0,0,0,0.18)', opacity: fontsReady ? 1 : 0.5, transition: 'all 0.2s' }}>
             {!fontsReady ? 'Loading fonts…' : generating ? '⏳ Generating…' : '📄 Generate Enrollment PDF'}
           </button>
-          {status && (
-            <span style={{ fontSize: 13, color: status.startsWith('✓') ? D.green : status.startsWith('Error') ? D.danger : D.muted }}>
-              {status}
-            </span>
-          )}
+          {status && <span style={{ fontSize: 13, color: status.startsWith('✓') ? D.green : status.startsWith('Error') ? D.danger : D.muted }}>{status}</span>}
         </div>
       </div>
 
-      {/* ══ HIDDEN PDF TEMPLATES (off-screen, captured by html2canvas) ══════ */}
+      {/* Hidden PDF Templates */}
       <div style={{ position: 'fixed', left: -9999, top: 0, zIndex: -1, pointerEvents: 'none' }}>
         <PDFPageWelcome info={info} />
-        <PDFPageInfo    info={info} qrImages={qrImages} />
-        <PDFPageDetails
-          info={info}
-          schedule={schedule}
-          literacyAbout={literacyAbout}
-          literacyOverview={literacyOverview}
-          writingOverview={writingOverview}
-          teacherImg={teacherImg}
-          teacherIntro={teacherIntro}
-          parentNotes={parentNotes}
-        />
+        <PDFPageInfo info={info} qrImages={qrImages} />
+        <PDFPageDetails info={info} schedule={schedule} literacyAbout={literacyAbout} literacyOverview={literacyOverview} writingOverview={writingOverview} teacherImg={teacherImg} teacherIntro={teacherIntro} parentNotes={parentNotes} />
         <PDFPageTerms schedule={schedule} />
       </div>
     </div>
