@@ -1,5 +1,7 @@
 {
   "redirects": [
+    { "source": "/",      "destination": "https://dodoletterhouse.com/ops", "statusCode": 302, "has": [{ "type": "host", "value": "ops.dodoletterhouse.com" }] },
+    { "source": "/(.*)",  "destination": "https://dodoletterhouse.com/ops", "statusCode": 302, "has": [{ "type": "host", "value": "ops.dodoletterhouse.com" }] },
     { "source": "/",              "destination": "/en/",              "statusCode": 302 },
     { "source": "/program",       "destination": "/en/program/",      "statusCode": 302 },
     { "source": "/program/",      "destination": "/en/program/",      "statusCode": 302 },
@@ -33,12 +35,5 @@
     { "source": "/cities/",       "destination": "/en/cities/",       "statusCode": 302 },
     { "source": "/cities/:city",  "destination": "/en/cities/:city/", "statusCode": 302 },
     { "source": "/cities/:city/", "destination": "/en/cities/:city/", "statusCode": 302 }
-  ],
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/ops/$1",
-      "has": [{ "type": "host", "value": "ops.dodoletterhouse.com" }]
-    }
   ]
 }

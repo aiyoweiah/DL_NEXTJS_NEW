@@ -1,6 +1,6 @@
 'use client';
 // components/ops/OnboardingTool.jsx
-// DODO Learning — Student Enrollment Welcome Packet PDF Generator  v2.0-ops
+// DODO Learning — Student Enrollment Welcome Packet PDF Generator  v2.1-ops
 // Migrated into /ops section: palette aligned, Hangar removed, assets from opsAssets.
 //
 // REQUIRES in components/ops/opsAssets.js:
@@ -58,15 +58,39 @@ function useComposited(b64, bgColor, onReady) {
   const [composited, setComposited] = useState(b64);
   useEffect(() => {
     if (!b64) return;
+    // Parse background colour into RGB components
+    const tmp = document.createElement('canvas');
+    tmp.width = tmp.height = 1;
+    const tctx = tmp.getContext('2d');
+    tctx.fillStyle = bgColor;
+    tctx.fillRect(0, 0, 1, 1);
+    const bg = tctx.getImageData(0, 0, 1, 1).data; // [r, g, b, a]
+
     const img = new Image();
     img.onload = () => {
       const canvas = document.createElement('canvas');
       canvas.width  = img.naturalWidth;
       canvas.height = img.naturalHeight;
       const ctx = canvas.getContext('2d');
+      // Step 1 — fill background (handles true alpha transparency)
       ctx.fillStyle = bgColor;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(img, 0, 0);
+      // Step 2 — pixel-level pass: replace near-white & checkerboard pixels
+      // with exact background colour (handles baked-in opaque checkerboard)
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const d = imageData.data;
+      for (let i = 0; i < d.length; i += 4) {
+        const r = d[i], g = d[i + 1], b = d[i + 2];
+        // Threshold: any pixel lighter than 210 on all channels is background
+        if (r > 210 && g > 210 && b > 210) {
+          d[i]     = bg[0];
+          d[i + 1] = bg[1];
+          d[i + 2] = bg[2];
+          d[i + 3] = 255;
+        }
+      }
+      ctx.putImageData(imageData, 0, 0);
       setComposited(canvas.toDataURL('image/png'));
       if (onReady) onReady();
     };
