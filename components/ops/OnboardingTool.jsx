@@ -1,6 +1,6 @@
 'use client';
 // components/ops/OnboardingTool.jsx
-// DODO Learning — Student Enrollment Welcome Packet PDF Generator  v1.7-ops
+// DODO Learning — Student Enrollment Welcome Packet PDF Generator  v1.8-ops
 // Migrated into /ops section: palette aligned, Hangar removed, assets from opsAssets.
 //
 // REQUIRES in components/ops/opsAssets.js:
@@ -51,6 +51,30 @@ const PW  = 794;
 const PH  = 1123;
 const PAD = 30;
 
+// ─── SIGNATURE COMPOSITING ───────────────────────────────────────────────────
+// html2canvas does not honour CSS mix-blend-mode, so we pre-flatten the
+// signature PNG onto the exact PDF background colour before capture.
+function useComposited(b64, bgColor) {
+  const [composited, setComposited] = useState(b64);
+  useEffect(() => {
+    if (!b64) return;
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width  = img.naturalWidth;
+      canvas.height = img.naturalHeight;
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = bgColor;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(img, 0, 0);
+      setComposited(canvas.toDataURL('image/png'));
+    };
+    img.src = b64;
+  }, [b64, bgColor]);
+  return composited;
+}
+
+
 // ═══════════════════════════════════════════════════════════════════════════════
 // PDF HEADER / FOOTER  (shared across all pages)
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -90,7 +114,7 @@ function PDFFooter() {
 // PAGE 1 — WELCOME LETTER
 // ═══════════════════════════════════════════════════════════════════════════════
 
-function PDFPageWelcome({ info }) {
+function PDFPageWelcome({ info, sigFlat }) {
   return (
     <div
       id="pdf-welcome"
@@ -142,7 +166,7 @@ function PDFPageWelcome({ info }) {
           <div style={{ fontSize: 13, fontWeight: 600, color: B.brown, marginBottom: 12, fontStyle: 'italic' }}>
             Warmest regards,
           </div>
-          <img src={SIGNATURE_B64} alt="Signature" style={{ height: 60, width: 'auto', marginBottom: 4, objectFit: 'contain', mixBlendMode: 'multiply' }} />
+          <img src={sigFlat} alt="Signature" style={{ height: 60, width: 'auto', marginBottom: 4, objectFit: 'contain' }} />
           <div style={{ fontSize: 13, fontWeight: 700, color: B.brown }}>Janet</div>
           <div style={{ fontSize: 11, color: B.muted, marginBottom: 2 }}>Learning Director</div>
           <div style={{ fontSize: 11, color: B.muted }}>DODO Learning</div>
@@ -501,6 +525,9 @@ export default function OnboardingTool() {
   const [fontsReady, setFontsReady] = useState(false);
   const [status,     setStatus]     = useState('');
 
+  // Pre-composite signature onto PDF background (html2canvas blend mode fix)
+  const sigFlat = useComposited(SIGNATURE_B64, B.cream);
+
   useEffect(() => {
     const link = document.createElement('link');
     link.rel  = 'stylesheet';
@@ -526,7 +553,6 @@ export default function OnboardingTool() {
 
   // ── PDF Generation ─────────────────────────────────────────────────────────
   const generatePDF = async () => {
-    if (generating) return; // guard against double-click
     setGenerating(true);
     setStatus('Rendering packet…');
     try {
@@ -784,7 +810,7 @@ export default function OnboardingTool() {
 
       {/* ══ HIDDEN PDF TEMPLATES (off-screen, captured by html2canvas) ══════ */}
       <div style={{ position: 'fixed', left: -9999, top: 0, zIndex: -1, pointerEvents: 'none' }}>
-        <PDFPageWelcome info={info} />
+        <PDFPageWelcome info={info} sigFlat={sigFlat} />
         <PDFPageInfo    info={info} qrImages={qrImages} />
         <PDFPageDetails
           info={info}
