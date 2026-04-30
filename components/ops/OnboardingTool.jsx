@@ -1,6 +1,6 @@
 'use client';
 // components/ops/OnboardingTool.jsx
-// DODO Learning — Student Enrollment Welcome Packet PDF Generator  v1.8-ops
+// DODO Learning — Student Enrollment Welcome Packet PDF Generator  v1.9-ops
 // Migrated into /ops section: palette aligned, Hangar removed, assets from opsAssets.
 //
 // REQUIRES in components/ops/opsAssets.js:
@@ -32,17 +32,17 @@ const B = {
   white:      '#FFFFFF',
 };
 
-// Dark shell palette for form UI inputs / cards
+// Light shell palette for form UI inputs / cards
 const D = {
-  bg:      '#0E0E12',
-  card:    '#212830',
-  border:  '#2E3848',
-  input:   '#2E3848',
-  text:    '#F0F0F0',
-  muted:   '#5E6879',
-  accent:  '#B7B5FE',
-  green:   '#7EC8A0',
-  danger:  '#fe7070',
+  bg:     '#f0ece8',
+  card:   '#fffdf9',
+  border: '#e2d5c8',
+  input:  '#fffdf9',
+  text:   '#2a1f1a',
+  muted:  '#8a7a72',
+  accent: '#7a5145',
+  green:  '#6b8e75',
+  danger: '#c0504d',
 };
 
 // ─── PDF LAYOUT CONSTANTS ────────────────────────────────────────────────────
@@ -418,7 +418,7 @@ function PDFPageTerms({ schedule }) {
       style={{ width: PW, height: PH, background: B.cream, fontFamily: F, color: B.ink, boxSizing: 'border-box', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}
     >
       <PDFHeader />
-      <div style={{ padding: `80px ${PAD}px 12px`, flex: 1 }}>
+      <div style={{ padding: `14px ${PAD}px 12px`, flex: 1 }}>
 
         {/* Lesson Schedule — The Hangar row removed */}
         <div style={{ background: B.white, borderRadius: 8, padding: '12px 14px 14px', marginBottom: 10, border: `1px solid ${B.border}` }}>
@@ -635,7 +635,7 @@ export default function OnboardingTool() {
     background: D.card, borderRadius: 10, padding: 18,
     marginBottom: 16, border: `1px solid ${D.border}`,
   };
-  const textareaStyle = { ...inp, resize: 'vertical', lineHeight: 1.6, fontSize: 13, background: '#1a2130' };
+  const textareaStyle = { ...inp, resize: 'vertical', lineHeight: 1.6, fontSize: 13, background: '#f5ede4' };
 
   // ── Render ──────────────────────────────────────────────────────────────────
   return (
@@ -691,7 +691,7 @@ export default function OnboardingTool() {
             ].map(qr => (
               <div key={qr.key} style={{ textAlign: 'center' }}>
                 <div style={{ fontSize: 11, fontWeight: 600, marginBottom: 8, color: D.text }}>{qr.label}</div>
-                <div style={{ width: 140, height: 140, margin: '0 auto 8px', background: '#1a2130', borderRadius: 8, border: `2px dashed ${D.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+                <div style={{ width: 140, height: 140, margin: '0 auto 8px', background: '#f5ede4', borderRadius: 8, border: `2px dashed ${D.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
                   {qrImages[qr.key]
                     ? <img src={qrImages[qr.key]} alt={qr.label} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                     : <span style={{ fontSize: 11, color: D.muted }}>Upload QR</span>
@@ -750,7 +750,7 @@ export default function OnboardingTool() {
           <div style={sectionTitle}>Teacher Profile 老师信息&介绍</div>
           <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
             <div style={{ flexShrink: 0 }}>
-              <div style={{ width: 120, height: 140, background: '#1a2130', borderRadius: 8, border: `2px dashed ${D.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', marginBottom: 6 }}>
+              <div style={{ width: 120, height: 140, background: '#f5ede4', borderRadius: 8, border: `2px dashed ${D.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', marginBottom: 6 }}>
                 {teacherImg
                   ? <img src={teacherImg} alt="Teacher" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   : <span style={{ fontSize: 11, color: D.muted }}>Upload Photo</span>
@@ -789,11 +789,11 @@ export default function OnboardingTool() {
             style={{
               padding: '14px 36px',
               background: generating ? D.muted : D.accent,
-              color: '#0E0E12',
+              color: '#fffdf9',
               border: 'none', borderRadius: 10,
               fontSize: 16, fontWeight: 700, fontFamily: 'inherit',
               cursor: generating ? 'wait' : 'pointer',
-              boxShadow: generating ? 'none' : '0 0 24px rgba(183,181,254,0.35)',
+              boxShadow: generating ? 'none' : '0 3px 12px rgba(0,0,0,0.18)',
               opacity: fontsReady ? 1 : 0.5,
               transition: 'all 0.2s',
             }}
