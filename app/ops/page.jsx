@@ -5,7 +5,7 @@
 //
 // Tools:
 //   /ops/assessment → Student Baseline Assessment Report (v3.1.1)
-//   /ops/onboarding → Student Enrollment Welcome Packet (v1.6) — coming next
+//   /ops/onboarding → Student Enrollment Welcome Packet (v1.7)
 
 import Link from 'next/link'
 
@@ -39,10 +39,10 @@ const TOOLS = [
   {
     href:    '/ops/onboarding',
     label:   'Student Enrollment Welcome Packet',
-    version: 'v1.6',
+    version: 'v1.7',
     desc:    'Generate the 4-page enrollment welcome packet: welcome letter, student info + QR codes, curriculum overview + Navigator intro, and terms page.',
     accent:  B.softGreen,
-    status:  'coming',
+    status:  'live',
   },
 ]
 
