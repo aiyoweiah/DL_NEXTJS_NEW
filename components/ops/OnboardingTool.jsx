@@ -1,6 +1,6 @@
 'use client';
 // components/ops/OnboardingTool.jsx
-// DODO Learning — Student Enrollment Welcome Packet PDF Generator  v1.9-ops
+// DODO Learning — Student Enrollment Welcome Packet PDF Generator  v2.0-ops
 // Migrated into /ops section: palette aligned, Hangar removed, assets from opsAssets.
 //
 // REQUIRES in components/ops/opsAssets.js:
@@ -54,7 +54,7 @@ const PAD = 30;
 // ─── SIGNATURE COMPOSITING ───────────────────────────────────────────────────
 // html2canvas does not honour CSS mix-blend-mode, so we pre-flatten the
 // signature PNG onto the exact PDF background colour before capture.
-function useComposited(b64, bgColor) {
+function useComposited(b64, bgColor, onReady) {
   const [composited, setComposited] = useState(b64);
   useEffect(() => {
     if (!b64) return;
@@ -68,6 +68,7 @@ function useComposited(b64, bgColor) {
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(img, 0, 0);
       setComposited(canvas.toDataURL('image/png'));
+      if (onReady) onReady();
     };
     img.src = b64;
   }, [b64, bgColor]);
@@ -526,7 +527,8 @@ export default function OnboardingTool() {
   const [status,     setStatus]     = useState('');
 
   // Pre-composite signature onto PDF background (html2canvas blend mode fix)
-  const sigFlat = useComposited(SIGNATURE_B64, B.cream);
+  const [sigReady, setSigReady] = useState(false);
+  const sigFlat = useComposited(SIGNATURE_B64, B.cream, () => setSigReady(true));
 
   useEffect(() => {
     const link = document.createElement('link');
@@ -785,7 +787,7 @@ export default function OnboardingTool() {
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
           <button
             onClick={generatePDF}
-            disabled={generating || !fontsReady}
+            disabled={generating || !fontsReady || !sigReady}
             style={{
               padding: '14px 36px',
               background: generating ? D.muted : D.accent,
@@ -794,11 +796,11 @@ export default function OnboardingTool() {
               fontSize: 16, fontWeight: 700, fontFamily: 'inherit',
               cursor: generating ? 'wait' : 'pointer',
               boxShadow: generating ? 'none' : '0 3px 12px rgba(0,0,0,0.18)',
-              opacity: fontsReady ? 1 : 0.5,
+              opacity: (fontsReady && sigReady) ? 1 : 0.5,
               transition: 'all 0.2s',
             }}
           >
-            {!fontsReady ? 'Loading fonts…' : generating ? '⏳ Generating…' : '📄 Generate Enrollment PDF'}
+            {!fontsReady ? 'Loading fonts…' : !sigReady ? 'Preparing assets…' : generating ? '⏳ Generating…' : '📄 Generate Enrollment PDF'}
           </button>
           {status && (
             <span style={{ fontSize: 13, color: status.startsWith('✓') ? D.green : status.startsWith('Error') ? D.danger : D.muted }}>
