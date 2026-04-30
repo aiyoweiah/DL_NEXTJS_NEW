@@ -33,9 +33,7 @@
     { "source": "/cities/",       "destination": "/en/cities/",       "statusCode": 302 },
     { "source": "/cities/:city",  "destination": "/en/cities/:city/", "statusCode": 302 },
     { "source": "/cities/:city/", "destination": "/en/cities/:city/", "statusCode": 302 }
-  ]
-}
-{
+  ],
   "rewrites": [
     {
       "source": "/(.*)",
