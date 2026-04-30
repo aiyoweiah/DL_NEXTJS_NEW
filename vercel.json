@@ -36,11 +36,10 @@
   ]
 }
 {
-  "redirects": [
+  "rewrites": [
     {
-      "source": "/",
-      "destination": "https://dodoletterhouse.com/ops",
-      "permanent": true,
+      "source": "/(.*)",
+      "destination": "/ops/$1",
       "has": [{ "type": "host", "value": "ops.dodoletterhouse.com" }]
     }
   ]
