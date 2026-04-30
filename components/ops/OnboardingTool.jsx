@@ -72,7 +72,7 @@ function PDFPageWelcome({ info }) {
   return (
     <div id="pdf-welcome" style={{ width: PW, height: PH, background: B.cream, fontFamily: F, color: B.ink, boxSizing: 'border-box', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
       <PDFHeader />
-      <div style={{ padding: `24px ${PAD}px 12px`, display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'center' }}>
+      <div style={{ padding: `14px ${PAD}px 12px`, display: 'flex', flexDirection: 'column', flex: 1 }}>
         <div style={{ textAlign: 'center', marginBottom: 20 }}>
           <div style={{ fontSize: 9, letterSpacing: 4, textTransform: 'uppercase', color: B.muted }}>Welcome Letter · 欢迎信</div>
           <div style={{ width: 60, height: 2, background: B.green, margin: '8px auto 0' }} />
