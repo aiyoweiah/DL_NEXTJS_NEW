@@ -1,6 +1,6 @@
 'use client';
 // components/ops/OnboardingTool.jsx
-// DODO Learning — Student Enrollment Welcome Packet PDF Generator  v2.1-ops
+// DODO Learning — Student Enrollment Welcome Packet PDF Generator  v2.2-ops
 // Migrated into /ops section: palette aligned, Hangar removed, assets from opsAssets.
 //
 // REQUIRES in components/ops/opsAssets.js:
@@ -51,54 +51,6 @@ const PW  = 794;
 const PH  = 1123;
 const PAD = 30;
 
-// ─── SIGNATURE COMPOSITING ───────────────────────────────────────────────────
-// html2canvas does not honour CSS mix-blend-mode, so we pre-flatten the
-// signature PNG onto the exact PDF background colour before capture.
-function useComposited(b64, bgColor, onReady) {
-  const [composited, setComposited] = useState(b64);
-  useEffect(() => {
-    if (!b64) return;
-    // Parse background colour into RGB components
-    const tmp = document.createElement('canvas');
-    tmp.width = tmp.height = 1;
-    const tctx = tmp.getContext('2d');
-    tctx.fillStyle = bgColor;
-    tctx.fillRect(0, 0, 1, 1);
-    const bg = tctx.getImageData(0, 0, 1, 1).data; // [r, g, b, a]
-
-    const img = new Image();
-    img.onload = () => {
-      const canvas = document.createElement('canvas');
-      canvas.width  = img.naturalWidth;
-      canvas.height = img.naturalHeight;
-      const ctx = canvas.getContext('2d');
-      // Step 1 — fill background (handles true alpha transparency)
-      ctx.fillStyle = bgColor;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.drawImage(img, 0, 0);
-      // Step 2 — pixel-level pass: replace near-white & checkerboard pixels
-      // with exact background colour (handles baked-in opaque checkerboard)
-      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      const d = imageData.data;
-      for (let i = 0; i < d.length; i += 4) {
-        const r = d[i], g = d[i + 1], b = d[i + 2];
-        // Threshold: any pixel lighter than 210 on all channels is background
-        if (r > 210 && g > 210 && b > 210) {
-          d[i]     = bg[0];
-          d[i + 1] = bg[1];
-          d[i + 2] = bg[2];
-          d[i + 3] = 255;
-        }
-      }
-      ctx.putImageData(imageData, 0, 0);
-      setComposited(canvas.toDataURL('image/png'));
-      if (onReady) onReady();
-    };
-    img.src = b64;
-  }, [b64, bgColor]);
-  return composited;
-}
-
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // PDF HEADER / FOOTER  (shared across all pages)
@@ -139,7 +91,7 @@ function PDFFooter() {
 // PAGE 1 — WELCOME LETTER
 // ═══════════════════════════════════════════════════════════════════════════════
 
-function PDFPageWelcome({ info, sigFlat }) {
+function PDFPageWelcome({ info }) {
   return (
     <div
       id="pdf-welcome"
@@ -191,7 +143,7 @@ function PDFPageWelcome({ info, sigFlat }) {
           <div style={{ fontSize: 13, fontWeight: 600, color: B.brown, marginBottom: 12, fontStyle: 'italic' }}>
             Warmest regards,
           </div>
-          <img src={sigFlat} alt="Signature" style={{ height: 60, width: 'auto', marginBottom: 4, objectFit: 'contain' }} />
+          <img src={SIGNATURE_B64} alt="Signature" style={{ height: 60, width: 'auto', marginBottom: 4, objectFit: 'contain' }} />
           <div style={{ fontSize: 13, fontWeight: 700, color: B.brown }}>Janet</div>
           <div style={{ fontSize: 11, color: B.muted, marginBottom: 2 }}>Learning Director</div>
           <div style={{ fontSize: 11, color: B.muted }}>DODO Learning</div>
@@ -550,9 +502,6 @@ export default function OnboardingTool() {
   const [fontsReady, setFontsReady] = useState(false);
   const [status,     setStatus]     = useState('');
 
-  // Pre-composite signature onto PDF background (html2canvas blend mode fix)
-  const [sigReady, setSigReady] = useState(false);
-  const sigFlat = useComposited(SIGNATURE_B64, B.cream, () => setSigReady(true));
 
   useEffect(() => {
     const link = document.createElement('link');
@@ -811,7 +760,7 @@ export default function OnboardingTool() {
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
           <button
             onClick={generatePDF}
-            disabled={generating || !fontsReady || !sigReady}
+            disabled={generating || !fontsReady}
             style={{
               padding: '14px 36px',
               background: generating ? D.muted : D.accent,
@@ -820,11 +769,11 @@ export default function OnboardingTool() {
               fontSize: 16, fontWeight: 700, fontFamily: 'inherit',
               cursor: generating ? 'wait' : 'pointer',
               boxShadow: generating ? 'none' : '0 3px 12px rgba(0,0,0,0.18)',
-              opacity: (fontsReady && sigReady) ? 1 : 0.5,
+              opacity: fontsReady ? 1 : 0.5,
               transition: 'all 0.2s',
             }}
           >
-            {!fontsReady ? 'Loading fonts…' : !sigReady ? 'Preparing assets…' : generating ? '⏳ Generating…' : '📄 Generate Enrollment PDF'}
+            {!fontsReady ? 'Loading fonts…' : generating ? '⏳ Generating…' : '📄 Generate Enrollment PDF'}
           </button>
           {status && (
             <span style={{ fontSize: 13, color: status.startsWith('✓') ? D.green : status.startsWith('Error') ? D.danger : D.muted }}>
@@ -836,7 +785,7 @@ export default function OnboardingTool() {
 
       {/* ══ HIDDEN PDF TEMPLATES (off-screen, captured by html2canvas) ══════ */}
       <div style={{ position: 'fixed', left: -9999, top: 0, zIndex: -1, pointerEvents: 'none' }}>
-        <PDFPageWelcome info={info} sigFlat={sigFlat} />
+        <PDFPageWelcome info={info} />
         <PDFPageInfo    info={info} qrImages={qrImages} />
         <PDFPageDetails
           info={info}
