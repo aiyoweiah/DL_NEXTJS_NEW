@@ -35,3 +35,13 @@
     { "source": "/cities/:city/", "destination": "/en/cities/:city/", "statusCode": 302 }
   ]
 }
+{
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "https://dodoletterhouse.com/ops",
+      "permanent": true,
+      "has": [{ "type": "host", "value": "ops.dodoletterhouse.com" }]
+    }
+  ]
+}
