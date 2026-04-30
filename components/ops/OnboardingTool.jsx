@@ -73,6 +73,7 @@ function PDFPageWelcome({ info }) {
     <div id="pdf-welcome" style={{ width: PW, height: PH, background: B.cream, fontFamily: F, color: B.ink, boxSizing: 'border-box', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
       <PDFHeader />
       <div style={{ padding: `14px ${PAD}px 12px`, display: 'flex', flexDirection: 'column', flex: 1 }}>
+        <div style={{ background: B.white, borderRadius: 8, padding: '18px 20px 22px', border: `1px solid ${B.border}`, flex: 1, display: 'flex', flexDirection: 'column' }}>
         <div style={{ textAlign: 'center', marginBottom: 20 }}>
           <div style={{ fontSize: 9, letterSpacing: 4, textTransform: 'uppercase', color: B.muted }}>Welcome Letter · 欢迎信</div>
           <div style={{ width: 60, height: 2, background: B.green, margin: '8px auto 0' }} />
@@ -97,6 +98,7 @@ function PDFPageWelcome({ info }) {
           <div style={{ fontSize: 13, fontWeight: 700, color: B.brown }}>Janet</div>
           <div style={{ fontSize: 11, color: B.muted, marginBottom: 2 }}>Learning Director</div>
           <div style={{ fontSize: 11, color: B.muted }}>DODO Learning</div>
+        </div>
         </div>
       </div>
       <PDFFooter />
