@@ -1,6 +1,6 @@
 'use client';
 // components/ops/OnboardingTool.jsx
-// DODO Learning — Student Enrollment Welcome Packet PDF Generator  v2.3-ops
+// DODO Learning — Student Enrollment Welcome Packet PDF Generator  v2.4-ops
 // Migrated into /ops section: palette aligned, Hangar removed, assets from opsAssets.
 //
 // REQUIRES in components/ops/opsAssets.js:
@@ -106,6 +106,7 @@ function PDFPageWelcome({ info }) {
           <div style={{ width: 60, height: 2, background: B.green, margin: '8px auto 0' }} />
         </div>
 
+        <div style={{ background: B.white, borderRadius: 8, padding: '18px 20px 20px', border: `1px solid ${B.border}`, flex: 1, display: 'flex', flexDirection: 'column' }}>
         <div style={{ fontSize: 15, fontWeight: 600, color: B.brown, marginBottom: 16, fontFamily: F }}>
           Dear {info.name || 'Student'},
         </div>
@@ -147,6 +148,7 @@ function PDFPageWelcome({ info }) {
           <div style={{ fontSize: 13, fontWeight: 700, color: B.brown }}>Janet</div>
           <div style={{ fontSize: 11, color: B.muted, marginBottom: 2 }}>Learning Director</div>
           <div style={{ fontSize: 11, color: B.muted }}>DODO Learning</div>
+        </div>
         </div>
       </div>
       <PDFFooter />
