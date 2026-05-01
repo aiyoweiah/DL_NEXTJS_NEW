@@ -73,41 +73,42 @@ function PDFPageWelcome({ info }) {
     <div id="pdf-welcome" style={{ width: PW, height: PH, background: B.cream, fontFamily: F, color: B.ink, boxSizing: 'border-box', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
       <PDFHeader />
       <div style={{ padding: `14px ${PAD}px 12px`, display: 'flex', flexDirection: 'column', flex: 1 }}>
-        <div style={{ background: B.white, borderRadius: 8, padding: '14px 16px 16px', border: `1px solid ${B.border}`, flex: 1, display: 'flex', flexDirection: 'column' }}>
-        <div style={{ textAlign: 'center', marginBottom: 20 }}>
+
+        {/* Section label */}
+        <div style={{ textAlign: 'center', marginBottom: 24 }}>
           <div style={{ fontSize: 9, letterSpacing: 4, textTransform: 'uppercase', color: B.muted }}>Welcome Letter · 欢迎信</div>
           <div style={{ width: 60, height: 2, background: B.green, margin: '8px auto 0' }} />
         </div>
-        <div style={{ fontSize: 15, fontWeight: 600, color: B.brown, marginBottom: 16, fontFamily: F }}>
+
+        {/* Greeting */}
+        <div style={{ fontSize: 15, fontWeight: 600, color: B.brown, marginBottom: 16 }}>
           Dear {info.name || 'Student'},
         </div>
+
+        {/* English body */}
         <div style={{ fontSize: 12.5, lineHeight: 1.85, color: B.ink, marginBottom: 18, textAlign: 'justify' }}>
           <p style={{ margin: '0 0 12px', textIndent: '2em' }}>Welcome to DODO Learning! We are absolutely thrilled to have you join our family, where learning is an adventure, and goals are reached. Our dedicated teachers and staff are here to guide you every step of the way, creating a nurturing and dynamic learning environment tailored to help you succeed. Whether this is your first step with us or you're continuing your journey, know that you are in a place where you are valued, supported, and encouraged to shine.</p>
           <p style={{ margin: '0 0 12px', textIndent: '2em' }}>As you embark on this exciting chapter, we encourage you to embrace every opportunity, ask questions, make new friends, and, most importantly, believe in yourself. You have a unique voice, and we can't wait to see how you will contribute to and enrich our community.</p>
           <p style={{ margin: 0, textIndent: '2em' }}>Once again, welcome to DODO Learning! We can't wait to see all the incredible things you will accomplish.</p>
         </div>
+
+        {/* Divider */}
         <div style={{ width: '100%', height: 1, background: B.border, marginBottom: 18 }} />
-        <div style={{ fontSize: 12, lineHeight: 1.9, color: B.ink, marginBottom: 22, textAlign: 'justify' }}>
+
+        {/* Chinese body */}
+        <div style={{ fontSize: 12, lineHeight: 1.9, color: B.ink, marginBottom: 28, textAlign: 'justify' }}>
           <p style={{ margin: '0 0 10px', textIndent: '2em' }}>欢迎来到 DODO Learning!很高兴你能加入我们，让学习成为一场奔向目标的冒险。我们的专业教师团队将为你提供温暖且充满动力的学习环境，全方位助力你的成功。在这里，你是被珍视的个体；在这里，我们全力支持你尽情闪耀。</p>
           <p style={{ margin: '0 0 10px', textIndent: '2em' }}>站在这个新起点上，请尽情拥抱每一个机会，保持好奇，并坚定地相信自己。我们非常期待看到你独一无二的才华将如何点亮我们的社区。</p>
           <p style={{ margin: 0, textIndent: '2em' }}>欢迎开启这段精彩旅程，期待见证你的每一份卓越成就！</p>
         </div>
-        <div style={{ marginTop: 18, display: 'flex', flexDirection: 'row', alignItems: 'flex-end', width: '100%' }}>
-          {/* Left: signature block */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-            <div style={{ fontSize: 13, fontWeight: 600, color: B.brown, marginBottom: 12, fontStyle: 'italic' }}>Warmest regards,</div>
-            <img src={SIGNATURE_B64} alt="Signature" style={{ height: 60, width: 'auto', marginBottom: 4, objectFit: 'contain' }} />
-            <div style={{ fontSize: 13, fontWeight: 700, color: B.brown }}>Janet</div>
-            <div style={{ fontSize: 11, color: B.muted, marginBottom: 2 }}>Learning Director</div>
-            <div style={{ fontSize: 11, color: B.muted }}>DODO Learning</div>
-          </div>
-          {/* Right: fills remaining width — decorative closing */}
-          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'flex-end', paddingBottom: 4 }}>
-            <div style={{ fontSize: 9, letterSpacing: 3, textTransform: 'uppercase', color: B.muted, opacity: 0.6, marginBottom: 6 }}>Think Once. In Both Languages.</div>
-            <div style={{ width: '100%', height: 1.5, background: B.green, opacity: 0.4 }} />
-          </div>
-        </div>
-        </div>
+
+        {/* Signature */}
+        <div style={{ fontSize: 13, fontWeight: 600, color: B.brown, marginBottom: 10, fontStyle: 'italic' }}>Warmest regards,</div>
+        <img src={SIGNATURE_B64} alt="Signature" style={{ height: 60, width: 'auto', marginBottom: 4, objectFit: 'contain' }} />
+        <div style={{ fontSize: 13, fontWeight: 700, color: B.brown }}>Janet</div>
+        <div style={{ fontSize: 11, color: B.muted, marginBottom: 2 }}>Learning Director</div>
+        <div style={{ fontSize: 11, color: B.muted }}>DODO Learning</div>
+
       </div>
       <PDFFooter />
     </div>
