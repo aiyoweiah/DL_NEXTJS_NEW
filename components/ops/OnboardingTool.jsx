@@ -104,7 +104,7 @@ function PDFPageWelcome({ info }) {
 
         {/* Signature */}
         <div style={{ fontSize: 13, fontWeight: 600, color: B.brown, marginBottom: 10, fontStyle: 'italic' }}>Warmest regards,</div>
-        <img src={SIGNATURE_B64} alt="Signature" style={{ height: 60, width: 'auto', marginBottom: 4, objectFit: 'contain' }} />
+        <img src={SIGNATURE_B64} alt="Signature" style={{ height: 60, width: 200, marginBottom: 4, objectFit: 'contain', objectPosition: 'left' }} />
         <div style={{ fontSize: 13, fontWeight: 700, color: B.brown }}>Janet</div>
         <div style={{ fontSize: 11, color: B.muted, marginBottom: 2 }}>Learning Director</div>
         <div style={{ fontSize: 11, color: B.muted }}>DODO Learning</div>
