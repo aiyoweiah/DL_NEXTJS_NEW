@@ -1,0 +1,41 @@
+# DODO Learning
+
+> Live, Navigator-led bilingual thinking program for globally mobile Chinese-speaking families. The 16-Week Program trains the full Read → Think → Speak → Write cognitive loop in English. Progress is measured by Lexile reading levels and the 6+1 Trait writing framework. Students typically advance one full grade level in reading within 16 weeks. Grounded in the MCT Language Arts framework and Harvard Project Zero's structured thinking science.
+
+DODO Learning is not a tutoring center, ESL program, or remediation service. It is a cognitive development program. Bilingual depth is the outcome of cognitive rigor, not the curriculum.
+
+The program serves students in grades 3 through 8 from Chinese-speaking diaspora families across major North American hubs — including Metro Vancouver (Vancouver, Richmond, Burnaby, Coquitlam), the Greater Toronto Area (Toronto, Markham, Richmond Hill, Mississauga, North York), Calgary, the San Francisco Bay Area (San Jose, Cupertino, Palo Alto, Fremont), Greater Los Angeles and the San Gabriel Valley, Orange County (Irvine), Seattle and Bellevue, New York City (Flushing, Manhattan), Boston and Cambridge, and Houston. Live sessions are delivered online by dedicated Navigators — specialists in composition, literature, and academic writing trained in The Loop methodology and certified in Lexile assessment.
+
+## Core pages
+
+- [Methodology — The Loop](https://www.dodolearning.com/en/methodology/): The four-phase Read → Think → Speak → Write methodology, the named frameworks (MCT Language Arts, Harvard Project Zero), and why the sequence is not negotiable.
+- [The 16-Week Program](https://www.dodolearning.com/en/program/): What students experience week by week. Curriculum, session structure, assessment cadence, Navigator role.
+- [Lexile measurement](https://www.dodolearning.com/en/lexile/): How DODO measures reading growth using the Lexile framework, including baseline and exit assessments administered with MetaMetrics-certified tools.
+- [Student results](https://www.dodolearning.com/en/results/): Documented Lexile growth, 6+1 Trait writing score gains, and parent testimonials.
+- [FAQ](https://www.dodolearning.com/en/faq/): Complete answers to every question parents ask before enrolling.
+- [Navigators](https://www.dodolearning.com/en/navigators/): Who Navigators are, how they are matched, and what distinguishes them from tutors or classroom teachers.
+- [Compare DODO to alternatives](https://www.dodolearning.com/en/compare/): How DODO differs from tutoring centers, ESL programs, and standard after-school English classes.
+- [About DODO](https://www.dodolearning.com/en/about/): Mission, founding context, and the Chinese-speaking diaspora families DODO serves.
+
+## City pages (currently published)
+
+- [Vancouver](https://www.dodolearning.com/en/cities/vancouver/)
+- [Richmond BC](https://www.dodolearning.com/en/cities/richmond-bc/)
+- [Markham](https://www.dodolearning.com/en/cities/markham/)
+- [Toronto](https://www.dodolearning.com/en/cities/toronto/)
+- [San Francisco Bay Area](https://www.dodolearning.com/en/cities/san-francisco-bay-area/)
+- [Los Angeles](https://www.dodolearning.com/en/cities/los-angeles/)
+
+Additional cities listed in the service area (Burnaby, Coquitlam, Calgary, Mississauga, Richmond Hill, Irvine, Bellevue, Flushing, Boston, Houston) are served online; dedicated city pages for these are in development.
+
+## Bilingual content
+
+DODO Learning publishes content in English at `/en/*` and Simplified Chinese at `/zh/*`. Both locales are first-class. The same methodology, assessment frameworks, and program structure are documented in each.
+
+- [中文首页 (Chinese homepage)](https://www.dodolearning.com/zh/)
+- [教学方法 (Methodology in Chinese)](https://www.dodolearning.com/zh/methodology/)
+
+## Optional
+
+- [Sitemap](https://www.dodolearning.com/sitemap.xml)
+- [Detailed program reference (llms-full.txt)](https://www.dodolearning.com/llms-full.txt)

@@ -91,6 +91,7 @@ export default async function BlogPostPage({ params }) {
               title:       fm.title,
               description: fm.description,
               slug,
+              locale,
               publishedAt: fm.publishedAt,
               updatedAt:   fm.updatedAt,
               authors:     fm.author ? [fm.author] : undefined,

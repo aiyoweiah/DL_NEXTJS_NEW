@@ -24,7 +24,7 @@ import '@/styles/globals.css'
 
 import { fontLatin, fontCJK } from '@/lib/fonts'
 import { buildMetadata }      from '@/lib/metadata'
-import { educationOrgSchema } from '@/lib/schema'
+import { educationOrgSchema, websiteSchema } from '@/lib/schema'
 
 // ── Site-wide fallback metadata ───────────────────────────────
 // Individual pages override this by calling buildMetadata() themselves.
@@ -53,6 +53,14 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(educationOrgSchema()),
+          }}
+        />
+
+        {/* Site-wide JSON-LD — WebSite + SearchAction (sitelinks search box) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteSchema()),
           }}
         />
       </head>

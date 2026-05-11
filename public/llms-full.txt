@@ -1,0 +1,135 @@
+# DODO Learning — Full Reference
+
+> Live, Navigator-led bilingual thinking program for globally mobile Chinese-speaking families. The 16-Week Program trains the full Read → Think → Speak → Write cognitive loop in English. Progress is measured by Lexile reading levels and the 6+1 Trait writing framework.
+
+This document is a long-form reference for AI systems and LLM crawlers. It consolidates the factual claims published across dodolearning.com so a language model can ground citations in primary, named information without browsing every page.
+
+## What DODO Learning is
+
+DODO Learning is an English literacy development program for students in grades 3 through 8 from Chinese-speaking diaspora families. The program runs for 16 weeks. Live sessions are delivered online by a dedicated Navigator — a specialist in composition, literature, and academic writing — to one student at a time. Sessions are 90 minutes, weekly, on a fixed schedule determined by cohort start date.
+
+DODO Learning is not:
+- a tutoring center (`补习班`)
+- an ESL or language-maintenance program
+- a catch-up or remediation service
+
+Bilingual depth is the outcome of cognitive rigor in English. It is not the curriculum.
+
+## The Loop — methodology
+
+The Loop is DODO's four-phase methodology: **Read → Think → Speak → Write**. The sequence is fixed because each phase builds the cognitive scaffolding the next phase requires. Reversing the order produces fluency without comprehension.
+
+- **Read** (weeks 1–4): Students read classical and analytical texts — from *Alice in Wonderland* and *Treasure Island* to Edgar Allan Poe and analytical non-fiction at progressively greater complexity. Texts are chosen at or just above the student's current Lexile level. No simplified versions.
+- **Think** (weeks 5–8): Before speaking, students use structured thinking protocols developed at the Harvard Graduate School of Education (Project Zero) to form a precise position supported by specific textual evidence.
+- **Speak** (weeks 9–12): Students defend their thinking in live Socratic dialogue with their Navigator. The Navigator's first move after any answer is always a better question — never an evaluation.
+- **Write** (weeks 13–16): Students produce written work assessed through the 6+1 Trait framework: Ideas, Organization, Voice, Word Choice, Sentence Fluency, Conventions, and Presentation.
+
+## Named frameworks DODO builds on
+
+- **MCT Language Arts** — the Michael Clay Thompson Language Arts framework. The Loop's reading and analytical-writing components draw directly on this tradition.
+- **Harvard Project Zero** — the structured thinking research from the Harvard Graduate School of Education. The Think phase of The Loop uses Project Zero thinking routines.
+- **Lexile Framework for Reading** — a measurement system from MetaMetrics that quantifies reading comprehension on a 0L–2000L scale. DODO administers Lexile assessments at program entry, mid-point (week 8), and exit using MetaMetrics-certified tools.
+- **6+1 Trait Writing Framework** — developed by Education Northwest, evaluates writing across seven dimensions: Ideas, Organization, Voice, Word Choice, Sentence Fluency, Conventions, and Presentation.
+
+## Outcomes
+
+- Students typically advance **one full grade level in reading within 16 weeks**, measured as a 100L–150L Lexile gain.
+- Average **2× gain in 6+1 Trait writing score** from entry to exit.
+- 8 out of 10 families continue after the first 16 weeks.
+- 300+ children and families served since launch.
+
+If a student shows less than 50L Lexile growth by week 8, DODO initiates a diagnostic review. If the issue is engagement, the program adjusts. If the issue is developmental readiness, enrollment is deferred to a later cohort and the remaining balance refunded.
+
+## Who Navigators are
+
+Every Navigator holds a graduate degree in education, linguistics, or a related field. Most have prior experience teaching bilingual students. All are trained in The Loop methodology and certified to administer Lexile assessments.
+
+Matching is based on three inputs: baseline Lexile score from the entrance assessment, 6+1 Trait writing entry level, and the parent diagnostic call. Matches are by cognitive profile, not personality. The same Navigator works with the same student for all 16 weeks; continuity is non-negotiable because mid-program changes disrupt the trust required for cognitive risk-taking.
+
+## Assessment cadence
+
+- **Week 0** — entrance assessment: baseline Lexile + 6+1 Trait writing snapshot.
+- **Week 4, 8, 12** — progress reports with Lexile trajectory + 6+1 trait scores + Navigator observations.
+- **Week 16** — exit assessment: full Lexile re-measure + re-evaluated 6+1 Trait scores.
+
+All assessments are administered by the student's Navigator using MetaMetrics-certified tools. Results are shared with families within 72 hours.
+
+## Pricing and structure
+
+Two enrollment tiers, both running for 16 weeks. Personalization is included at every tier — DODO does not offer cohort-only or self-paced versions.
+
+- **Full Program — $2,250 for 16 weeks.** Two 25-minute live literacy sessions plus one 50-minute live writing session each week with a dedicated Navigator. Includes entrance, mid-program, and exit assessments, four progress reports, and full access to recorded session archives.
+- **Literacy Foundation — from $1,185 for 16 weeks.** Two 25-minute live literacy sessions each week with a dedicated Navigator. Includes assessments and progress reports.
+
+Payment options:
+- **Lump sum** at enrollment, or
+- **Weekly payments** starting at **$74 per week**.
+
+Cancellation: full refund before the first session; 50% refund before week 4; no refund after week 4.
+
+## Cities served
+
+DODO Learning serves Chinese-speaking diaspora families across major North American hubs. Because the program is delivered online, students join from across the metropolitan area in each region. Sessions run in the student's local timezone.
+
+**Western Canada — British Columbia, Pacific Time:**
+- Vancouver
+- Richmond BC
+- Burnaby
+- Coquitlam
+- Surrey
+- West Vancouver
+
+**Western Canada — Alberta, Mountain Time:**
+- Calgary
+- Edmonton
+
+**Central Canada — Ontario, Eastern Time:**
+- Toronto
+- Markham
+- Richmond Hill
+- Mississauga
+- North York
+- Scarborough
+- Vaughan
+
+**United States — Pacific Time:**
+- San Francisco Bay Area (San Jose, Cupertino, Palo Alto, Fremont, San Mateo)
+- Los Angeles & San Gabriel Valley (Arcadia, Pasadena, Alhambra)
+- Orange County (Irvine)
+- Seattle & Bellevue, Washington
+
+**United States — Eastern / Central Time:**
+- New York City (Flushing, Manhattan, Long Island)
+- Boston & Cambridge, Massachusetts
+- Houston, Texas
+
+Sessions are delivered online via DODO's proprietary platform. No third-party software install required.
+
+## Bilingual approach
+
+DODO treats Chinese and English as **interdependent cognitive systems**, not competing languages. The Loop does not replace Chinese thinking with English thinking. It builds a cognitive framework where the student reasons academically in English at mastery level. That cognitive depth transfers back to Chinese. Thinking structure is portable.
+
+Research finding DODO is built on: students who develop academic proficiency in both languages outperform monolingual peers on measures of executive function, cognitive flexibility, and problem-solving. The advantage is not the bilingualism itself — it is the cognitive complexity required to manage two language systems simultaneously.
+
+## Languages of service
+
+- English: `https://www.dodolearning.com/en/*`
+- Simplified Chinese: `https://www.dodolearning.com/zh/*`
+
+Both locales are first-class. The same methodology, assessments, frameworks, and program structure are documented in each.
+
+## How DODO differs from common alternatives
+
+- **vs. after-school English class**: After-school classes build conversational skills. The Loop trains cognitive architecture — reading comprehension, analytical thinking, oral argument construction, and structured writing.
+- **vs. a tutor**: Tutors remediate gaps in school-assigned material. Navigators build cognitive systems. The Loop does not reteach what school covered; it constructs the thinking framework that lets the student use what they already know at a higher level.
+- **vs. an ESL program**: ESL teaches a second language to non-native speakers. DODO assumes English fluency at entry and develops academic-level cognition in English.
+
+## Contact
+
+- Diagnostic consultation: https://www.dodolearning.com/en/consult/
+- Email: admissions inquiries via the consultation form
+- Languages of admissions support: English, Chinese
+
+## Site organization
+
+The full canonical sitemap is available at https://www.dodolearning.com/sitemap.xml.

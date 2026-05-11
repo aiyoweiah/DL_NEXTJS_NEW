@@ -12,6 +12,8 @@ import { notFound }                    from 'next/navigation'
 import { isValidLocale, localeParams } from '@/lib/i18n'
 import { buildMetadata }               from '@/lib/metadata'
 import { faqSchema }                   from '@/lib/schema'
+import { faqEn }                       from '@/content/faq-en'
+import { faqZh }                       from '@/content/faq-zh'
 import FAQClient                       from '@/components/faq/FAQClient'
 
 export function generateStaticParams() {
@@ -33,11 +35,16 @@ export default async function FAQPage({ params }) {
   const { locale } = await params
   if (!isValidLocale(locale)) notFound()
 
+  // Pick the locale-appropriate Q&A list for the JSON-LD FAQPage schema.
+  // The UI rendering still uses FAQClient's own JSX-rich data; this module
+  // feeds the canonical plain-text version to search engines and LLMs.
+  const faqItems = locale === 'zh' ? faqZh : faqEn
+
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema()) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(faqItems)) }}
       />
       <FAQClient locale={locale} />
     </>
