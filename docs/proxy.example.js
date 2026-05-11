@@ -1,20 +1,25 @@
-// proxy.js
+// docs/proxy.example.js
 //
-// ── STATIC EXPORT MODE — THIS FILE IS NOT ACTIVE ────────────
-// The site currently uses output: 'export' for Cloudflare Pages.
-// In static export mode, Next.js does not run middleware — there
-// is no server runtime to execute it.
+// ── REFERENCE COPY — THIS FILE IS NOT WIRED IN ──────────────
+// Stored under docs/ so Next.js does not auto-detect it. (Next.js 16
+// looks for `proxy.{js,ts}` at the project root or src/. Keeping a
+// copy here preserves the blueprint without triggering the dev/build
+// warning "Middleware cannot be used with output: export".)
 //
-// Locale redirects are handled instead by public/_redirects, which
-// Cloudflare Pages reads natively at the CDN edge. See that file.
+// The site currently uses output: 'export', which has no server
+// runtime. Locale redirects live in:
+//   • public/_redirects   — Cloudflare Pages (dodolearning.com)
+//   • vercel.json         — Vercel (dodoletterhouse.com)
 //
-// ── How to activate this file ────────────────────────────────
+// ── How to activate ──────────────────────────────────────────
 // If the project moves to a server runtime (Cloudflare Workers via
-// @cloudflare/next-on-pages, or Vercel), simply:
-//   1. Remove output: 'export' from next.config.js
-//   2. Remove trailingSlash: true from next.config.js
-//   3. Delete public/_redirects
-//   4. This file activates automatically — no other changes needed.
+// @cloudflare/next-on-pages, or Vercel server mode):
+//   1. Copy this file to the project root as `proxy.js`
+//   2. Remove output: 'export' from next.config.js
+//   3. Remove trailingSlash: true from next.config.js
+//   4. Delete public/_redirects (proxy will handle locale routing)
+//   5. Trim vercel.json redirects to only host-specific rules
+//      (e.g. the ops.dodoletterhouse.com subdomain rule)
 //
 // ── What this file does (when active) ────────────────────────
 // Runs on the Next.js edge runtime before every matched request.

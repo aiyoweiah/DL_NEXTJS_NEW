@@ -1,16 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // ── Static export for Cloudflare Pages ───────────────────────
-  // Cloudflare Pages serves a static file bundle. output: 'export'
-  // tells Next.js to emit the full site to /out at build time.
+  // ── Static export for Cloudflare Pages + Vercel ──────────────
+  // Both hosts serve a static file bundle. output: 'export' tells
+  // Next.js to emit the full site to /out at build time.
   //
-  // Locale detection does NOT use middleware.js in this mode —
-  // middleware requires a server/edge runtime that static export
-  // does not have. Locale redirects are handled by public/_redirects,
-  // which Cloudflare Pages reads natively at the CDN edge.
+  // Locale detection does NOT use proxy.js (Next.js 16 middleware)
+  // in this mode — the proxy requires a server/edge runtime that
+  // static export does not have. Locale redirects are handled by:
+  //   • public/_redirects  — Cloudflare Pages reads at the CDN edge
+  //   • vercel.json        — Vercel reads at the edge
   //
-  // If the project ever moves to Cloudflare Workers or Vercel (server
-  // mode), remove this line and middleware.js takes over automatically.
+  // If the project ever moves to a server runtime, copy
+  // docs/proxy.example.js to the project root as proxy.js — see
+  // that file's header for the full activation steps.
   // ── Redirects ─────────────────────────────────────────────
   // NOTE: output: 'export' disables Next.js server-side redirects.
   // Redirects are handled at the CDN edge instead:
