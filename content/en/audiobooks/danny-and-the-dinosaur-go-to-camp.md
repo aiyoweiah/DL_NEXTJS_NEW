@@ -9,7 +9,7 @@ publishedAt: "2026-05-11"
 chapters:
   - title: "Full Story"
     durationSec: 0
-    audioUrl: "https://audio.dodolearning.com/danny-and-the-dinosaur-go-to-camp/full.mp3"
+    audioUrl: "https://audio.dodolearning.com/danny-and-the-dinosaur-go-to-camp.mp3"
 ---
 
 A warm, slow read of Syd Hoff's classic — recorded with care for young
