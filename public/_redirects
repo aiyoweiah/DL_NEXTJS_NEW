@@ -50,6 +50,12 @@
 /cities/                    /en/cities/                 302
 /cities/:city/              /en/cities/:city/           302
 
+# ── Audiobooks (gated by Cloudflare Access) ───────────────────
+# Note: dodoletterhouse intentionally redirects /audiobooks/* away
+# in vercel.json — these CF rules only fire on dodolearning.com.
+/audiobooks/                /en/audiobooks/             302
+/audiobooks/:slug/          /en/audiobooks/:slug/       302
+
 # ── Fallback ──────────────────────────────────────────────────
 # NOTE: No splat catchall. Cloudflare Pages applies redirects BEFORE
 # serving static assets, so /:splat would intercept /logo-dark.svg,
