@@ -55,7 +55,17 @@ Add an application → Self-hosted**:
 | Application name | `DODO Audiobooks` |
 | Session duration | `1 month` (or whatever feels right) |
 | Application domain | `dodolearning.com` `/audiobooks*` |
-| Additional domains | `audio.dodolearning.com` `*` |
+| Additional domains | `dodolearning.com` `/en/audiobooks*` |
+|                    | `dodolearning.com` `/zh/audiobooks*` |
+|                    | `audio.dodolearning.com` `*` |
+
+**Why all three website paths matter.** The bare `/audiobooks` path
+redirects to the locale-prefixed URL (`/en/audiobooks/`) via
+`public/_redirects`. If only `/audiobooks*` is gated, the redirect lands
+the user on `/en/audiobooks/` — which is **unprotected** — and they see
+the library without ever logging in. Gating all three paths (bare,
+`/en/...`, `/zh/...`) plugs that hole. The same Allow policy applies to
+all destinations on the app; you only configure the email list once.
 
 Then **Policies → Add a policy**:
 
