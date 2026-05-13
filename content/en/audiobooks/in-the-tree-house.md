@@ -3,7 +3,7 @@ title: "In the Tree House"
 author: "Andrew Larsen"
 narrator: "Miss Jennifer"
 cover: "/audiobooks/covers/in-the-tree-house.jpg"
-summary: ""
+summary: "On a hot summer night, the narrator climbs up into the backyard tree house alone — his older brother has been too busy to play. But when the lights of the whole neighborhood go out at once, something unexpected happens up there in the dark."
 durationSec: 433
 publishedAt: "2026-05-12"
 chapters:
@@ -12,9 +12,10 @@ chapters:
     audioUrl: "https://audio.dodolearning.com/in-the-tree-house.mp3"
 ---
 
-<!--
-Drop this file into DL_NEXTJS_NEW/content/en/audiobooks/in-the-tree-house.md
-Upload the matching MP3 to R2 at the bucket root as in-the-tree-house.mp3
-Cover image goes to DL_NEXTJS_NEW/public/audiobooks/covers/in-the-tree-house.jpg
-Fill in `summary` (1-2 sentences) before deploying.
--->
+Today, we climb up into a backyard tree house on a hot summer night.
+The narrator's older brother has been too busy to play this summer, so
+the tree house has been a quiet, lonely place. But when the lights of
+the whole neighborhood go out at once, something unexpected happens up
+there in the dark.
+
+Read at A2 with a gentle vocabulary preview.

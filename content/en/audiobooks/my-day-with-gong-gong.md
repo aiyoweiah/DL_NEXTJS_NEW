@@ -3,7 +3,7 @@ title: "My Day with Gong Gong"
 author: "Sennah Yee"
 narrator: "Miss Jennifer"
 cover: "/audiobooks/covers/my-day-with-gong-gong.jpg"
-summary: ""
+summary: "May spends a day with her Gong Gong in Chinatown. She doesn't know Chinese, and her grandpa doesn't speak much English, so she's worried they won't be able to talk to each other — but Gong Gong has a few surprises up his sleeve."
 durationSec: 437
 publishedAt: "2026-05-12"
 chapters:
@@ -12,9 +12,10 @@ chapters:
     audioUrl: "https://audio.dodolearning.com/my-day-with-gong-gong.mp3"
 ---
 
-<!--
-Drop this file into DL_NEXTJS_NEW/content/en/audiobooks/my-day-with-gong-gong.md
-Upload the matching MP3 to R2 at the bucket root as my-day-with-gong-gong.mp3
-Cover image goes to DL_NEXTJS_NEW/public/audiobooks/covers/my-day-with-gong-gong.jpg
-Fill in `summary` (1-2 sentences) before deploying.
--->
+Today, we spend a day with May and her Gong Gong in Chinatown. May
+doesn't know Chinese, and her grandpa doesn't speak much English, so
+she's worried they won't be able to talk to each other. But Gong Gong
+has a few surprises up his sleeve, and by the end of the day, May
+learns the most important Chinese word of all.
+
+Read at A2 with a gentle vocabulary preview.
