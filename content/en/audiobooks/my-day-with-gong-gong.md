@@ -17,5 +17,3 @@ doesn't know Chinese, and her grandpa doesn't speak much English, so
 she's worried they won't be able to talk to each other. But Gong Gong
 has a few surprises up his sleeve, and by the end of the day, May
 learns the most important Chinese word of all.
-
-Read at A2 with a gentle vocabulary preview.

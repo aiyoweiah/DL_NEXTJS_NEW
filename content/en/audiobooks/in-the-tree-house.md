@@ -17,5 +17,3 @@ The narrator's older brother has been too busy to play this summer, so
 the tree house has been a quiet, lonely place. But when the lights of
 the whole neighborhood go out at once, something unexpected happens up
 there in the dark.
-
-Read at A2 with a gentle vocabulary preview.
