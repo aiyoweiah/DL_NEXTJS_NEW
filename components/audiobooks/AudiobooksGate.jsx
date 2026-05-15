@@ -26,7 +26,7 @@ export default function AudiobooksGate({ children }) {
   const [unlocked, setUnlocked] = useState(false)
   const [checking, setChecking] = useState(false)
   const [loading,  setLoading]  = useState(false)
-  const [error,    setError]    = useState(false)
+  const [error,    setError]    = useState(null)
   const [shake,    setShake]    = useState(false)
   const [mounted,  setMounted]  = useState(false)
 
@@ -49,7 +49,7 @@ export default function AudiobooksGate({ children }) {
   async function handleSubmit() {
     if (!input.trim() || loading) return
     setLoading(true)
-    setError(false)
+    setError(null)
     try {
       const res = await fetch(AUTH_URL, {
         method: 'POST',
@@ -61,20 +61,20 @@ export default function AudiobooksGate({ children }) {
         localStorage.setItem(STORAGE_KEY, '1')
         setUnlocked(true)
       } else {
-        triggerError()
+        triggerError('wrong')
       }
-    } catch {
-      triggerError()
+    } catch (err) {
+      triggerError('network')
     } finally {
       setLoading(false)
     }
   }
 
-  function triggerError() {
-    setError(true)
+  function triggerError(type) {
+    setError(type)
     setShake(true)
     setTimeout(() => setShake(false), 600)
-    setTimeout(() => setError(false), 3000)
+    setTimeout(() => setError(null), 4000)
   }
 
   // Hydration guard + session-check blank (prevents flash)
@@ -187,7 +187,8 @@ export default function AudiobooksGate({ children }) {
             transition:   'opacity 0.2s',
             opacity:      error ? 1 : 0,
           }}>
-            Incorrect code. Contact Janet if you need access.
+            {error === 'wrong'   && 'Incorrect code. Contact Janet if you need access.'}
+            {error === 'network' && 'Connection error — could not reach audio server.'}
           </div>
 
           <button
