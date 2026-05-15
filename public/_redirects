@@ -50,17 +50,15 @@
 /cities/                    /en/cities/                 302
 /cities/:city/              /en/cities/:city/           302
 
-# ── Audiobooks (gated by Cloudflare Access) ───────────────────
+# ── Audiobooks (gated by AudiobooksGate client component) ─────
 # Note: dodoletterhouse intentionally redirects /audiobooks/* away
 # in vercel.json — these CF rules only fire on dodolearning.com.
 #
-# Both slash and no-slash versions are explicit. Other pages on the
-# site work with one (slashed) entry because Pages auto-appends the
-# trailing slash on no-slash URLs and re-evaluates _redirects on the
-# retry. For /audiobooks, Cloudflare Access intercepts the request
-# before that auto-slash dance can happen — so the no-slash form
-# never matches a rule and 404s. Listing both versions explicitly
-# fixes it. See vercel.json — same pattern there for the same reason.
+# Both slash and no-slash variants are listed explicitly. CF Pages
+# normally auto-appends trailing slashes before re-evaluating rules,
+# but the no-slash entries were added when CF Access intercepted
+# requests before that dance could complete. CF Access is now removed;
+# the explicit entries are harmless and kept for safety.
 /audiobooks                 /en/audiobooks/             302
 /audiobooks/                /en/audiobooks/             302
 /audiobooks/:slug           /en/audiobooks/:slug/       302
