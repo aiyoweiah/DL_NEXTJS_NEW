@@ -37,8 +37,8 @@ const UI = {
     emptyBody:  'New titles will appear here as they’re published.',
     gateNoteEyebrow: 'Private library',
     gateNote:
-      ‘You’re seeing this page because you have the access code. ‘ +
-      ‘Audio files are protected by the same session — they won’t play or download without it.’,
+      "You’re seeing this page because you have the access code. " +
+      "Audio files are protected by the same session — they won’t play or download without it.",
   },
   zh: {
     meta: {
