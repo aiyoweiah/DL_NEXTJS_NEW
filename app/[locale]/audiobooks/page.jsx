@@ -37,8 +37,8 @@ const UI = {
     emptyBody:  'New titles will appear here as they’re published.',
     gateNoteEyebrow: 'Private library',
     gateNote:
-      'You’re seeing this page because you were invited. Files are protected ' +
-      'by the same login — they won’t play or download in a signed-out browser.',
+      ‘You’re seeing this page because you have the access code. ‘ +
+      ‘Audio files are protected by the same session — they won’t play or download without it.’,
   },
   zh: {
     meta: {
@@ -54,8 +54,8 @@ const UI = {
     emptyBody:  '新书发布后将出现在此。',
     gateNoteEyebrow: '私密馆藏',
     gateNote:
-      '您可以看到本页，是因为您已获邀请。' +
-      '音频文件受同一套登录保护，未登录时无法播放或下载。',
+      '您可以看到本页，是因为您拥有访问码。' +
+      '音频文件受同一套会话保护，未验证时无法播放或下载。',
   },
 }
 

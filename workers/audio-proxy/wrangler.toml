@@ -1,0 +1,18 @@
+name               = "dodo-audio-proxy"
+main               = "src/worker.js"
+compatibility_date = "2025-01-01"
+
+# Route — intercepts all requests to audio.dodolearning.com
+routes = [
+  { pattern = "audio.dodolearning.com/*", zone_name = "dodolearning.com" }
+]
+
+# R2 binding — Worker reads from the private bucket directly (no public URL needed)
+# Must come after top-level fields in TOML (array-of-tables captures everything below)
+[[r2_buckets]]
+binding     = "AUDIO_BUCKET"
+bucket_name = "dodo-audiobooks"
+
+# Secrets — set via CLI, never commit real values:
+#   wrangler secret put PASSWORD
+#   wrangler secret put COOKIE_SECRET   (generate: openssl rand -hex 32)

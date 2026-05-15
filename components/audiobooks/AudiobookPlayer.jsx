@@ -14,9 +14,9 @@
 //     timeupdate (throttled to 5s), persist current state back.
 //   - Auto-advance: when a chapter ends, jump to the next one and keep
 //     playing. Stops at the end of the last chapter.
-//   - Downloads: per-chapter <a download>. Files live behind the same
-//     Cloudflare Access policy as the page, so the browser's Access
-//     session cookie authorizes the download with no extra plumbing.
+//   - Downloads: per-chapter <a download>. Files are proxied by the audio
+//     Worker; the session cookie on audio.dodolearning.com authorizes
+//     the download automatically (same-site, SameSite=Lax).
 //
 // Keyboard:
 //   Space      play/pause
