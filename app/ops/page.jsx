@@ -4,8 +4,9 @@
 // Not in sitemap. noIndex: true.
 //
 // Tools:
-//   /ops/assessment → Student Baseline Assessment Report (v3.1.1)
-//   /ops/onboarding → Student Enrollment Welcome Packet (v1.7)
+//   /ops/assessment        → Student Baseline Assessment Report (v3.1.1)
+//   /ops/onboarding        → Student Enrollment Welcome Packet (v1.7)
+//   /ops/teacher-agreement → Teacher Service Agreement (v1.0)
 
 import Link from 'next/link'
 
@@ -42,6 +43,14 @@ const TOOLS = [
     version: 'v1.7',
     desc:    'Generate the 4-page enrollment welcome packet: welcome letter, student info + QR codes, curriculum overview + Navigator intro, and terms page.',
     accent:  B.softGreen,
+    status:  'live',
+  },
+  {
+    href:    '/ops/teacher-agreement',
+    label:   'Teacher Service Agreement',
+    version: 'v1.1',
+    desc:    'Generate the 4-page teacher service agreement: welcome letter with cursive signature, Schedule A service scope + Schedule B sections 1–4, Schedule B sections 5–9, and execution page with signature blocks, fillable teacher fields, and notes.',
+    accent:  B.gilt,
     status:  'live',
   },
 ]

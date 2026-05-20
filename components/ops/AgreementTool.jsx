@@ -1,0 +1,785 @@
+'use client'
+
+// components/ops/AgreementTool.jsx
+// DODO Learning — Teacher Service Agreement PDF Generator  v1.1-ops
+//
+// Same html2canvas + jsPDF recipe as the other ops tools:
+//   - hidden 794x1123 page divs are rasterized at scale 2
+//   - each canvas is placed on an A4 page via pdf.addImage
+//
+// Page layout (4 pages):
+//   1. Welcome letter with cursive signature
+//   2. Preamble + Schedule A table + Schedule B sections 1–4
+//   3. Schedule B sections 5–9
+//   4. Section 10 Execution + Company/Teacher signature blocks + Notes
+//
+// AcroForm fillable fields are overlaid on page 4 for Teacher
+// Signature / Print Name / Date / GST# — Print Name and GST# are
+// pre-filled from form data when known.
+//
+// Brand fonts: DM Sans + Noto Sans SC (matches lib/fonts.js).
+// Cursive signature font: Dancing Script (loaded from Google Fonts).
+
+import { useState, useEffect, useMemo, memo } from 'react'
+import { jsPDF, AcroFormTextField } from 'jspdf'
+import html2canvas from 'html2canvas'
+import { LOGO_B64 } from '@/components/ops/opsAssets'
+
+// ─── BRAND ─────────────────────────────────────────────────────────────
+const B = {
+  cream:     '#F5F5FF',
+  white:     '#FFFFFF',
+  ink:       '#212830',
+  voidBlack: '#0E0E12',
+  muted:     '#5E6879',
+  border:    '#DCDCF5',
+  borderInk: 'rgba(46,56,72,0.55)',
+  platinum:  '#F0F0F0',
+  gilt:      '#F5C842',
+  giltSoft:  '#FBF1D2',
+  headerBar: '#ECECF3',
+  lavender:  '#B7B5FE',
+}
+
+const D = {
+  card:   '#FFFFFF',
+  border: '#DCDCF5',
+  text:   '#212830',
+  muted:  '#5E6879',
+  accent: '#F5C842',
+  bgPage: '#F5F5FF',
+}
+
+const F        = '"DM Sans", "Noto Sans SC", sans-serif'
+const CURSIVE  = '"Dancing Script", "Apple Chancery", cursive'
+const PW       = 794
+const PH       = 1123
+const PAD      = 56
+
+// ─── DEFAULT COPY ───────────────────────────────────────────────────────
+const DEFAULT_PAY_INTERVAL = 'Payments are processed on the 15th of every month'
+const DEFAULT_SCOPE        = 'N/A'
+
+// ─── FORM STYLES (module-scope so Field can live outside the component) ─
+const INP_STYLE = {
+  width: '100%', padding: '8px 10px', border: `1.5px solid ${D.border}`,
+  borderRadius: 6, fontSize: 14, fontFamily: 'inherit', background: D.card,
+  color: D.text, outline: 'none', boxSizing: 'border-box',
+}
+const LBL_STYLE = {
+  fontSize: 10, letterSpacing: 1, textTransform: 'uppercase',
+  color: D.muted, fontWeight: 700, marginBottom: 4, display: 'block',
+}
+
+// Field lives at module scope (not inside AgreementTool) so React keeps a
+// stable component identity across re-renders. Otherwise every keystroke
+// would remount the underlying <input>, which is what causes typing lag.
+const Field = memo(function Field({ label, type = 'text', placeholder, span = 1, value, onChange }) {
+  return (
+    <label style={{ display: 'flex', flexDirection: 'column', gridColumn: `span ${span}` }}>
+      <span style={LBL_STYLE}>{label}</span>
+      <input type={type} value={value} onChange={onChange} placeholder={placeholder} style={INP_STYLE} />
+    </label>
+  )
+})
+
+// ─── SHARED CHROME ──────────────────────────────────────────────────────
+function PDFHeader() {
+  return (
+    <div style={{
+      background: B.headerBar,
+      padding: '22px 36px 22px 28px',
+      display: 'flex',
+      alignItems: 'center',
+      gap: 0,
+      height: 110,
+      boxSizing: 'border-box',
+    }}>
+      {/* Logo + DODO LANGUAGE label */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 }}>
+        <img src={LOGO_B64} alt="DODO" style={{ height: 52, width: 'auto' }} />
+        <div style={{
+          fontSize: 7.5, letterSpacing: 1.2, color: B.ink,
+          lineHeight: 1.15, fontFamily: F, fontWeight: 700,
+        }}>
+          DODO<br />LANGUAGE
+        </div>
+      </div>
+
+      {/* Gilt accent bar */}
+      <div style={{
+        width: 12, alignSelf: 'stretch', background: B.gilt,
+        marginLeft: 22, marginRight: 24, borderRadius: 2,
+      }} />
+
+      {/* Title block */}
+      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', flex: 1, minWidth: 0 }}>
+        <div style={{
+          fontSize: 10, letterSpacing: 4, color: B.ink,
+          fontFamily: F, fontWeight: 600, marginBottom: 6,
+        }}>
+          DODO LEARNING
+        </div>
+        <div style={{
+          fontSize: 26, color: B.gilt, fontFamily: F, fontWeight: 700,
+          letterSpacing: 0.3, lineHeight: 1.05, whiteSpace: 'nowrap',
+        }}>
+          Teacher Service Agreement
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function Watermark() {
+  return (
+    <div style={{
+      position: 'absolute',
+      left: '50%', top: '52%',
+      transform: 'translate(-50%, -50%)',
+      opacity: 0.045,
+      pointerEvents: 'none',
+      userSelect: 'none',
+    }}>
+      <img src={LOGO_B64} alt="" style={{ width: 360, height: 'auto' }} />
+    </div>
+  )
+}
+
+// Cursive signature rendering — used wherever a "signed" name should appear
+function CursiveSig({ name, size = 32 }) {
+  return (
+    <span style={{
+      fontFamily: CURSIVE,
+      fontSize: size,
+      fontWeight: 600,
+      color: B.ink,
+      lineHeight: 1,
+      letterSpacing: 0.3,
+      whiteSpace: 'nowrap',
+    }}>
+      {name}
+    </span>
+  )
+}
+
+// ─── PAGE 1: WELCOME LETTER ─────────────────────────────────────────────
+function PDFPage1Impl({ info }) {
+  const firstName  = (info.teacherFirstName || '').trim() || 'Teacher'
+  const signatory  = (info.signatoryName    || '').trim() || ''
+  return (
+    <div id="pdf-tsa-p1" style={{
+      width: PW, height: PH, background: B.cream, fontFamily: F,
+      color: B.ink, boxSizing: 'border-box', overflow: 'hidden',
+      position: 'relative',
+    }}>
+      <PDFHeader />
+      <Watermark />
+      <div style={{ position: 'relative', padding: `100px ${PAD}px 0`, zIndex: 1 }}>
+        <div style={{ fontSize: 13, color: B.ink, marginBottom: 18 }}>
+          Dear {firstName},
+        </div>
+        <p style={{ fontSize: 13, lineHeight: 1.6, color: B.ink, margin: '0 0 14px' }}>
+          We are absolutely delighted to officially welcome you to <strong>DODO Learning</strong>!
+        </p>
+        <p style={{ fontSize: 13, lineHeight: 1.6, color: B.ink, margin: '0 0 14px', textAlign: 'justify' }}>
+          After our recent discussions, we are confident that your expertise and passion for education will be a wonderful addition to our team. At DODO Learning, we believe that every lesson is an opportunity to inspire, and we are thrilled to have you join us in creating a nurturing and dynamic environment for our students.
+        </p>
+        <p style={{ fontSize: 13, lineHeight: 1.6, color: B.ink, margin: '0 0 14px', textAlign: 'justify' }}>
+          As an independent contractor, you are joining a community of dedicated professionals who value artistic excellence and student-centered growth. We are here to support you as you settle in and prepare for your upcoming sessions on ClassIN.
+        </p>
+        <p style={{ fontSize: 13, lineHeight: 1.6, color: B.ink, margin: '0 0 14px', textAlign: 'justify' }}>
+          Attached, you will find your <strong>Teacher Service Agreement</strong>. Please review the details, including our technical requirements and protocols. Once you have had a chance to look it over, please sign and return a copy to us.
+        </p>
+        <p style={{ fontSize: 13, lineHeight: 1.6, color: B.ink, margin: '0 0 14px', textAlign: 'justify' }}>
+          We are so excited to see the incredible impact you will have on our students and our community. Welcome aboard — let&rsquo;s make this an amazing journey together!
+        </p>
+        <p style={{ fontSize: 13, lineHeight: 1.6, color: B.ink, margin: '0 0 8px' }}>
+          Warmest regards,
+        </p>
+
+        {/* Signature — right-aligned, sits below "Warmest regards" in the letter flow */}
+        <div style={{ paddingRight: 24, textAlign: 'right', marginTop: 20 }}>
+          {signatory ? <CursiveSig name={signatory} size={38} /> : null}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ─── SECTION HELPERS (shared by pages 2 + 3) ────────────────────────────
+function Section({ n, title, items, dense = false }) {
+  const gap = dense ? 1 : 3
+  return (
+    <div style={{ marginTop: 6, marginBottom: 6 }}>
+      <div style={{ fontSize: 12, fontWeight: 700, color: B.ink, marginBottom: 3 }}>
+        {n}. {title}
+      </div>
+      <ul style={{
+        margin: 0, padding: 0, listStyle: 'none',
+      }}>
+        {items.map(([label, body]) => (
+          <li key={label} style={{
+            position: 'relative',
+            paddingLeft: 16,
+            fontSize: 11, lineHeight: 1.55, color: B.ink,
+            marginBottom: gap,
+          }}>
+            <span style={{
+              position: 'absolute', left: 4, top: 0,
+              color: B.ink, fontWeight: 700,
+            }}>·</span>
+            <strong>{label}.</strong> {body}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+const PDFPage1 = memo(PDFPage1Impl, (a, b) =>
+  a.info.teacherFirstName === b.info.teacherFirstName &&
+  a.info.signatoryName    === b.info.signatoryName
+)
+
+// ─── PAGE 2: PREAMBLE + SCHEDULE A + SCHEDULE B (1–4) ───────────────────
+function PDFPage2Impl({ info }) {
+  return (
+    <div id="pdf-tsa-p2" style={{
+      width: PW, height: PH, background: B.cream, fontFamily: F,
+      color: B.ink, boxSizing: 'border-box', overflow: 'hidden',
+      position: 'relative',
+    }}>
+      <PDFHeader />
+      <Watermark />
+      <div style={{ position: 'relative', padding: `26px ${PAD}px 26px`, zIndex: 1 }}>
+
+        {/* Preamble */}
+        <div style={{ fontSize: 12, lineHeight: 1.7, color: B.ink, marginBottom: 18 }}>
+          This Agreement is made between DODO Learning (the &ldquo;Company&rdquo;) and{' '}
+          <span style={{ fontWeight: 600, color: B.ink }}>{info.teacherFullName || '________________'}</span>
+          {' '}(the &ldquo;Teacher&rdquo;) as of{' '}
+          <span style={{ fontWeight: 600, color: B.ink }}>{info.effectiveDate || '____________'}</span>.
+        </div>
+
+        {/* Schedule A: Service Scope — clean two-column layout, no underlines */}
+        <div style={{ fontSize: 13, fontWeight: 700, color: B.ink, marginBottom: 8 }}>
+          Schedule A: Service Scope
+        </div>
+        <div style={{
+          border: `1px solid ${B.borderInk}`,
+          borderRadius: 4,
+          overflow: 'hidden',
+          marginBottom: 18,
+        }}>
+          {[
+            ['Subject Taught',                  info.subjectTaught],
+            ['Scope of Lesson Development',     info.scope || DEFAULT_SCOPE],
+            ['Term Duration (Weeks)',           info.termWeeks ? String(info.termWeeks) : ''],
+            ['Pay Interval',                    info.payInterval || DEFAULT_PAY_INTERVAL],
+            ['Payment Email Address',           info.paymentEmail],
+            ['Professional Fee per Hour (CAD)', info.hourlyFee ? `$${info.hourlyFee}` : ''],
+          ].map(([label, value], i, arr) => (
+            <div key={label} style={{
+              display: 'grid',
+              gridTemplateColumns: '42% 58%',
+              borderBottom: i < arr.length - 1 ? `1px solid ${B.borderInk}` : 'none',
+              background: B.giltSoft,
+            }}>
+              <div style={{
+                padding: '8px 14px',
+                fontSize: 11.5,
+                fontWeight: 700,
+                color: B.ink,
+                borderRight: `1px solid ${B.borderInk}`,
+              }}>
+                {label}
+              </div>
+              <div style={{
+                padding: '8px 14px',
+                fontSize: 11.5,
+                color: B.ink,
+              }}>
+                {value || ' '}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Schedule B: Collaboration Agreement */}
+        <div style={{ fontSize: 13, fontWeight: 700, color: B.ink, marginBottom: 4 }}>
+          Schedule B: Collaboration Agreement
+        </div>
+
+        <Section n={1} title="Relationship of Parties" items={[
+          ['Independent contractor', 'You are engaged as an independent contractor under the laws of Ontario. This is not an employment relationship.'],
+          ['You control your methods', 'You decide the teaching methods, materials, and pacing needed to meet course objectives.'],
+          ['You handle your own taxes', 'You are responsible for filing and paying your own federal and provincial income tax, CPP, and any applicable GST/HST.'],
+          ['You provide your own setup', 'A reliable computer, high-speed Internet, and a quiet, professional remote workspace are yours to provide.'],
+        ]} />
+
+        <Section n={2} title="Service Delivery & Professionalism" items={[
+          ['Quality teaching', 'Deliver each lesson with care, prepare thoroughly, and keep the classroom welcoming and inclusive.'],
+          ['Be on time', 'Log in at least 5 minutes before each session to test your setup and resolve any technical issues.'],
+          ['Stay on platform', 'All contact with students and parents happens inside ClassIN and the DODO platform. Sharing personal contact information is not allowed.'],
+        ]} />
+
+        <Section n={3} title="Compensation" items={[
+          ['Hourly pay', 'You are paid per hour at the rate shown in Schedule A.'],
+          ['Invoicing', 'Pay follows the teaching log or invoice you submit, on the schedule shown in Schedule A.'],
+          ['Teacher no-show', 'If you miss a class without 48 hours’ notice, that slot is unpaid and a $50 CAD service-disruption fee may apply.'],
+          ['Student no-show', 'If a student does not appear without notice, wait 15 minutes, then you may end the class and receive 50% of the session fee.'],
+        ]} />
+
+        <Section n={4} title="Confidentiality & Intellectual Property" items={[
+          ['Our materials stay ours', 'Anything DODO provides remains DODO property. Anything you create for our courses is licensed to DODO for ongoing use.'],
+          ['You own what you bring', 'You confirm you have the rights to any material you teach with, and you agree to cover DODO if a third party raises an IP claim.'],
+          ['Student privacy', 'Handle all student data in line with Canada’s Personal Information Protection and Electronic Documents Act (PIPEDA), which governs private-sector personal data in Ontario.'],
+        ]} />
+
+      </div>
+    </div>
+  )
+}
+
+const PDFPage2 = memo(PDFPage2Impl, (a, b) =>
+  a.info.teacherFullName === b.info.teacherFullName &&
+  a.info.effectiveDate   === b.info.effectiveDate   &&
+  a.info.subjectTaught   === b.info.subjectTaught   &&
+  a.info.scope           === b.info.scope           &&
+  a.info.termWeeks       === b.info.termWeeks       &&
+  a.info.payInterval     === b.info.payInterval     &&
+  a.info.paymentEmail    === b.info.paymentEmail    &&
+  a.info.hourlyFee       === b.info.hourlyFee
+)
+
+// ─── PAGE 3: SCHEDULE B (5–9) ──────────────────────────────────────────
+function PDFPage3Impl({ info }) {
+  return (
+    <div id="pdf-tsa-p3" style={{
+      width: PW, height: PH, background: B.cream, fontFamily: F,
+      color: B.ink, boxSizing: 'border-box', overflow: 'hidden',
+      position: 'relative',
+    }}>
+      <PDFHeader />
+      <Watermark />
+      <div style={{ position: 'relative', padding: `26px ${PAD}px 26px`, zIndex: 1 }}>
+
+        <Section n={5} title="Termination & Schedule Changes" items={[
+          ['14 days’ notice', 'Either party may end this collaboration by giving 14 days’ written notice.'],
+          ['Short-notice resignation', 'If you resign with less than 14 days’ notice, no final payment is owed for the remaining period, since reassigning students has real costs. If you serve the full 14 days, you are paid in full for everything taught during that period.'],
+          ['Immediate termination', 'DODO may end this agreement immediately for serious breaches — Code of Conduct violations or academic dishonesty. No notice or final payment is owed in those cases.'],
+        ]} />
+
+        <Section n={6} title="Marketing & Media Consent" items={[
+          ['Use of your image', 'You grant DODO a royalty-free license to use your name, image, and voice from class recordings in DODO marketing.'],
+          ['Right to withdraw', 'You may withdraw this consent in writing at any time.'],
+          ['Effect of withdrawal', 'Withdrawal takes effect within 7 business days for new posts. Content already shared or printed may not be fully retractable.'],
+        ]} />
+
+        <Section n={7} title="Safety & Background Representations" items={[
+          ['Criminal record', 'You confirm you have never been convicted of, and are not currently charged with, any offense involving sexual interference, sexual exploitation, or any other offense that endangers minors.'],
+          ['Sex offender registry', 'You confirm you are not currently listed on any national or provincial sex offender registry in Canada or your country of primary residence.'],
+        ]} />
+
+        <Section n={8} title="Non-Solicitation of Students" items={[
+          ['During and after the term', 'During this agreement and for 12 months after it ends, you agree not to solicit DODO students or their families for private tutoring or any competing service — including direct outreach, social-media contact, or referrals to other providers.'],
+          ['Unsolicited contact', 'This does not prevent you from accepting an unsolicited inquiry that originates independently from a former DODO family, but you agree to notify DODO in writing within 30 days if that happens.'],
+        ]} />
+
+        <Section n={9} title="General Provisions" items={[
+          ['Severability', 'If any part of this agreement is found unenforceable, the remaining parts still apply.'],
+          ['Entire agreement', 'This document is the full agreement between us and replaces any earlier conversations, drafts, or emails on these terms. Changes must be agreed in writing.'],
+        ]} />
+
+      </div>
+    </div>
+  )
+}
+
+// Page 3 has no dynamic content — render once and never again.
+const PDFPage3 = memo(PDFPage3Impl, () => true)
+
+// ─── PAGE 4: EXECUTION + SIGNATURES + NOTES ─────────────────────────────
+function PDFPage4Impl({ info }) {
+  const signatory = (info.signatoryName || '').trim()
+  return (
+    <div id="pdf-tsa-p4" style={{
+      width: PW, height: PH, background: B.cream, fontFamily: F,
+      color: B.ink, boxSizing: 'border-box', overflow: 'hidden',
+      position: 'relative',
+    }}>
+      <PDFHeader />
+      <Watermark />
+      <div style={{ position: 'relative', padding: `26px ${PAD}px 26px`, zIndex: 1 }}>
+
+        {/* Section 10: Execution */}
+        <div style={{ fontSize: 12, fontWeight: 700, color: B.ink, marginBottom: 6 }}>
+          10. Execution and Acceptance
+        </div>
+        <p style={{ fontSize: 11.5, lineHeight: 1.6, color: B.ink, margin: '0 0 20px' }}>
+          By signing below, the parties confirm they have read this Agreement, understood its terms, and accepted them in full as of the Effective Date.
+        </p>
+
+        {/* Notes section — sits above the signature block */}
+        {info.notes && info.notes.trim() ? (
+          <div style={{ marginTop: 4, marginBottom: 24 }}>
+            <div style={{
+              fontSize: 10, letterSpacing: 2, textTransform: 'uppercase',
+              color: B.muted, fontWeight: 700, marginBottom: 6,
+            }}>
+              Notes
+            </div>
+            <div style={{
+              background: B.white,
+              border: `1px solid ${B.border}`,
+              borderRadius: 6,
+              padding: '12px 14px',
+              fontSize: 11,
+              lineHeight: 1.6,
+              color: B.ink,
+              whiteSpace: 'pre-wrap',
+            }}>
+              {info.notes}
+            </div>
+          </div>
+        ) : null}
+
+        {/* Two-column signature block */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: 32,
+          marginTop: 8,
+        }}>
+          {/* Company column */}
+          <SigColumn
+            heading={'DODO Learning (the "Company")'}
+            sigContent={signatory ? <CursiveSig name={signatory} size={24} /> : null}
+            printName={signatory}
+            date={info.directorDate}
+          />
+
+          {/* Teacher column */}
+          <SigColumn
+            heading={'The Teacher (the "Contractor")'}
+            sigFieldId="tsa-field-sig"
+            printNameFieldId="tsa-field-name"
+            dateFieldId="tsa-field-date"
+            gstFieldId="tsa-field-gst"
+          />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// teacherFullName / teacherGST aren't rendered into the page 4 HTML — they
+// only feed AcroForm field values at generate time. So they don't need to
+// be in the comparator.
+const PDFPage4 = memo(PDFPage4Impl, (a, b) =>
+  a.info.signatoryName === b.info.signatoryName &&
+  a.info.directorDate  === b.info.directorDate  &&
+  a.info.notes         === b.info.notes
+)
+
+function SigColumn({ heading, sigContent, printName, date, sigFieldId, printNameFieldId, dateFieldId, gstFieldId }) {
+  return (
+    <div>
+      <div style={{ fontStyle: 'italic', fontSize: 12, color: B.ink, marginBottom: 14 }}>
+        {heading}
+      </div>
+      <SigRow label="Signature"  content={sigContent} fieldId={sigFieldId} tall />
+      <SigRow label="Print Name" content={printName ? <span style={{ fontSize: 12 }}>{printName}</span> : null} fieldId={printNameFieldId} />
+      <SigRow label="Date"       content={date ? <span style={{ fontSize: 12 }}>{date}</span> : null} fieldId={dateFieldId} />
+      {gstFieldId ? (
+        <SigRow label="GST# (if applicable)" fieldId={gstFieldId} />
+      ) : null}
+    </div>
+  )
+}
+
+function SigRow({ label, content, fieldId, tall }) {
+  // Tall rows host the cursive signature, whose "J" descender drops ~25–30%
+  // of font-size below the line-box. paddingBottom 18 gives the descender
+  // 6–8px of clearance above the underline so it doesn't look like the
+  // signature is cutting through the line.
+  return (
+    <div style={{ marginBottom: 18 }}>
+      <div style={{ fontSize: 9.5, letterSpacing: 1.5, textTransform: 'uppercase', color: B.muted, fontWeight: 700, marginBottom: 6 }}>
+        {label}
+      </div>
+      <div
+        id={fieldId}
+        style={{
+          width: '100%',
+          height: tall ? 52 : 24,
+          borderBottom: `1.2px solid ${B.borderInk}`,
+          display: 'flex',
+          alignItems: 'flex-end',
+          justifyContent: 'flex-start',
+          paddingBottom: tall ? 18 : 4,
+          paddingLeft: 6,
+          boxSizing: 'border-box',
+          overflow: 'visible',
+        }}
+      >
+        {content || null}
+      </div>
+    </div>
+  )
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// MAIN COMPONENT
+// ═══════════════════════════════════════════════════════════════════════
+
+const todayISO = () => new Date().toISOString().split('T')[0]
+const toUS = (iso) => {
+  if (!iso) return ''
+  const [y, m, d] = iso.split('-')
+  return `${m}/${d}/${y}`
+}
+
+export default function AgreementTool() {
+  const [info, setInfo] = useState({
+    teacherFirstName: '',
+    teacherFullName:  '',
+    teacherGST:       '',
+    signatoryName:    'Janet Sui',
+    effectiveDateISO: todayISO(),
+    subjectTaught:    '',
+    scope:            DEFAULT_SCOPE,
+    termWeeks:        '',
+    payInterval:      DEFAULT_PAY_INTERVAL,
+    paymentEmail:     '',
+    hourlyFee:        '',
+    directorDateISO:  todayISO(),
+    notes:            '',
+  })
+  const [generating, setGenerating] = useState(false)
+  const [fontsReady, setFontsReady] = useState(false)
+  const [status, setStatus] = useState('')
+
+  const pdfInfo = {
+    ...info,
+    effectiveDate: toUS(info.effectiveDateISO),
+    directorDate:  toUS(info.directorDateISO),
+  }
+
+  useEffect(() => {
+    const link = document.createElement('link')
+    link.rel  = 'stylesheet'
+    link.href =
+      'https://fonts.googleapis.com/css2' +
+      '?family=DM+Sans:wght@300;400;500;600;700' +
+      '&family=Noto+Sans+SC:wght@400;500;700' +
+      '&family=Dancing+Script:wght@500;600;700' +
+      '&display=swap'
+    document.head.appendChild(link)
+    document.fonts.ready.then(() => setFontsReady(true))
+  }, [])
+
+  // Build per-field onChange handlers ONCE on mount. Stable identity means
+  // <Field> with memo() can skip re-render when its own value didn't change.
+  const handlers = useMemo(() => {
+    const keys = [
+      'teacherFirstName', 'teacherFullName', 'teacherGST', 'signatoryName',
+      'effectiveDateISO', 'subjectTaught', 'scope', 'termWeeks',
+      'payInterval', 'paymentEmail', 'hourlyFee', 'directorDateISO', 'notes',
+    ]
+    const out = {}
+    for (const k of keys) {
+      out[k] = (e) => setInfo(prev => ({ ...prev, [k]: e.target.value }))
+    }
+    return out
+  }, [])
+
+  const generatePDF = async () => {
+    if (generating) return
+    setGenerating(true)
+    setStatus('Rendering agreement…')
+    try {
+      await document.fonts.ready
+      await new Promise(r => setTimeout(r, 150))
+
+      const capture = async (id) => {
+        const el = document.getElementById(id)
+        if (!el) throw new Error(`#${id} not found`)
+        return html2canvas(el, { scale: 2, useCORS: true, backgroundColor: B.cream, logging: false })
+      }
+
+      const pdf = new jsPDF('p', 'mm', 'a4')
+      const PAGE_W_MM = 210
+      const PAGE_H_MM = 297
+      const pxToMmX = PAGE_W_MM / PW
+      const pxToMmY = PAGE_H_MM / PH
+
+      const pages = ['pdf-tsa-p1', 'pdf-tsa-p2', 'pdf-tsa-p3', 'pdf-tsa-p4']
+      for (let i = 0; i < pages.length; i++) {
+        setStatus(`Capturing page ${i + 1} of ${pages.length}…`)
+        const canvas = await capture(pages[i])
+        if (i > 0) pdf.addPage()
+        pdf.addImage(canvas.toDataURL('image/jpeg', 0.94), 'JPEG', 0, 0, PAGE_W_MM, PAGE_H_MM)
+      }
+
+      // Overlay AcroForm fields on page 4 (1-indexed: 4)
+      setStatus('Adding fillable fields…')
+      pdf.setPage(4)
+      const pageEl   = document.getElementById('pdf-tsa-p4')
+      const pageRect = pageEl.getBoundingClientRect()
+      const fieldSpec = [
+        { id: 'tsa-field-sig',  name: 'TeacherSignature', tooltip: 'Sign here (use your reader’s Fill & Sign)', value: '' },
+        { id: 'tsa-field-name', name: 'TeacherPrintName', tooltip: 'Print your full name',                          value: info.teacherFullName || '' },
+        { id: 'tsa-field-date', name: 'TeacherDate',      tooltip: 'Date signed (e.g. MM/DD/YYYY)',                 value: '' },
+        { id: 'tsa-field-gst',  name: 'TeacherGST',       tooltip: 'GST number, if applicable',                     value: info.teacherGST || '' },
+      ]
+      for (const spec of fieldSpec) {
+        const el = document.getElementById(spec.id)
+        if (!el) continue
+        const r = el.getBoundingClientRect()
+        const x = (r.left - pageRect.left) * pxToMmX
+        const y = (r.top  - pageRect.top)  * pxToMmY
+        const w = r.width  * pxToMmX
+        const h = Math.max(r.height * pxToMmY, 5)
+        const tf = new AcroFormTextField()
+        tf.Rect = [x, y - 1, w, h + 2]
+        tf.fieldName = spec.name
+        tf.fontSize = 11
+        tf.value = spec.value
+        tf.alternateName = spec.tooltip
+        pdf.addField(tf)
+      }
+
+      const safeName = (info.teacherFullName || info.teacherFirstName || 'Teacher').trim().replace(/\s+/g, '_')
+      const fileName = `DodoTeacherAgreement_${safeName}_${info.effectiveDateISO}.pdf`
+      pdf.save(fileName)
+      setStatus(`✓ Saved: ${fileName}`)
+    } catch (err) {
+      console.error(err)
+      setStatus(`Error: ${err.message}`)
+    } finally {
+      setGenerating(false)
+    }
+  }
+
+  // Note: Field + INP_STYLE + LBL_STYLE now live at module scope (above).
+
+  return (
+    <div style={{ fontFamily: F, minHeight: '100vh', background: D.bgPage }}>
+      <div style={{ maxWidth: 900, margin: '0 auto', padding: '24px 20px 80px' }}>
+
+        {/* Form header */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 24, paddingBottom: 16, borderBottom: `2px solid ${D.accent}` }}>
+          <img src={LOGO_B64} alt="DODO" style={{ height: 40 }} />
+          <div>
+            <div style={{ fontSize: 11, letterSpacing: 3, textTransform: 'uppercase', color: D.muted }}>DODO Learning</div>
+            <div style={{ fontSize: 20, fontWeight: 700, color: D.text }}>Teacher Service Agreement Generator</div>
+          </div>
+        </div>
+
+        {/* Teacher block */}
+        <Card title="Teacher">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 12 }}>
+            <Field value={info.teacherFirstName} onChange={handlers.teacherFirstName} label="First Name (greeting on letter)" placeholder="e.g. Melanie" />
+            <Field value={info.teacherFullName}  onChange={handlers.teacherFullName}  label="Full Legal Name (on agreement)"  placeholder="e.g. Melanie Close" />
+            <Field value={info.teacherGST}       onChange={handlers.teacherGST}       label="Teacher GST# (optional, pre-fills page 4)" placeholder="leave blank if N/A" span={2} />
+          </div>
+        </Card>
+
+        {/* Schedule A block */}
+        <Card title="Schedule A — Service Scope">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 12 }}>
+            <Field value={info.subjectTaught} onChange={handlers.subjectTaught} label="Subject Taught" placeholder="e.g. Literacy & Writing" />
+            <Field value={info.scope}         onChange={handlers.scope}         label='Scope of Lesson Development (default "N/A")' placeholder="N/A" />
+            <Field value={info.termWeeks}     onChange={handlers.termWeeks}     label="Term Duration (Weeks)" type="number" placeholder="e.g. 24" />
+            <Field value={info.hourlyFee}     onChange={handlers.hourlyFee}     label="Professional Fee per Hour (CAD, number only)" type="number" placeholder="e.g. 30" />
+            <Field value={info.paymentEmail}  onChange={handlers.paymentEmail}  label="Payment Email Address" type="email" placeholder="teacher@example.com" />
+            <Field value={info.payInterval}   onChange={handlers.payInterval}   label="Pay Interval" placeholder={DEFAULT_PAY_INTERVAL} />
+          </div>
+        </Card>
+
+        {/* Company signatory + dates */}
+        <Card title="Company Signatory & Dates">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 12 }}>
+            <Field value={info.signatoryName}    onChange={handlers.signatoryName}    label="Signatory Name (renders as cursive signature)" placeholder="e.g. Janet Sui" span={2} />
+            <Field value={info.effectiveDateISO} onChange={handlers.effectiveDateISO} label="Effective Date (page 2 preamble)" type="date" />
+            <Field value={info.directorDateISO}  onChange={handlers.directorDateISO}  label="Company Signing Date (page 4)"    type="date" />
+          </div>
+        </Card>
+
+        {/* Notes */}
+        <Card title="Notes (optional, appears on page 4)">
+          <textarea
+            value={info.notes}
+            onChange={handlers.notes}
+            placeholder="Add any custom notes — onboarding reminders, special conditions, training session times, etc."
+            style={{ ...INP_STYLE, minHeight: 96, lineHeight: 1.6, fontSize: 14, resize: 'vertical' }}
+          />
+        </Card>
+
+        {/* Generate */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginTop: 6 }}>
+          <button
+            onClick={generatePDF}
+            disabled={generating || !fontsReady}
+            style={{
+              padding: '14px 30px',
+              background: generating ? D.muted : D.accent,
+              color: generating ? D.bgPage : '#1F1B12',
+              border: 'none', borderRadius: 10, fontSize: 16, fontWeight: 700,
+              fontFamily: 'inherit', cursor: generating ? 'wait' : 'pointer',
+              boxShadow: '0 3px 12px rgba(0,0,0,0.15)',
+              opacity: fontsReady ? 1 : 0.5, transition: 'all 0.2s',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            {!fontsReady ? 'Loading fonts…' : generating ? 'Generating…' : 'Generate Agreement PDF'}
+          </button>
+          {status && (
+            <span style={{
+              fontSize: 13,
+              color: status.startsWith('✓') ? '#5AAA82'
+                   : status.startsWith('Error') ? '#C0504D'
+                   : D.muted,
+            }}>
+              {status}
+            </span>
+          )}
+        </div>
+
+        <p style={{ fontSize: 12, color: D.muted, marginTop: 16, lineHeight: 1.6 }}>
+          The Company signature on pages 1 and 4 is rendered from the typed Signatory Name in a cursive script font (Dancing Script).
+          Page 4 has fillable form fields for the Teacher: <strong>Print Name</strong> is pre-filled from &ldquo;Full Legal Name&rdquo;,
+          <strong> GST#</strong> is pre-filled if provided, and <strong>Signature</strong> + <strong>Date</strong> stay blank for the
+          teacher to complete in any PDF reader (Adobe Reader, macOS Preview, Chrome / Edge built-in viewer).
+        </p>
+      </div>
+
+      {/* ═══ HIDDEN 4-PAGE PDF TEMPLATES ═══ */}
+      <div style={{ position: 'fixed', left: -9999, top: 0, zIndex: -1, opacity: 1, pointerEvents: 'none' }}>
+        <PDFPage1 info={pdfInfo} />
+        <PDFPage2 info={pdfInfo} />
+        <PDFPage3 info={pdfInfo} />
+        <PDFPage4 info={pdfInfo} />
+      </div>
+    </div>
+  )
+}
+
+function Card({ title, children }) {
+  return (
+    <div style={{
+      background: D.card, borderRadius: 10, padding: 18, marginBottom: 16,
+      border: `1px solid ${D.border}`,
+    }}>
+      <div style={{
+        fontSize: 12, fontWeight: 700, color: D.text,
+        textTransform: 'uppercase', letterSpacing: 2, marginBottom: 12,
+      }}>
+        {title}
+      </div>
+      {children}
+    </div>
+  )
+}
