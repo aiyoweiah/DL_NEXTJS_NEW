@@ -8,8 +8,25 @@
 //   2. Logo import path updated to shared opsAssets.js
 // Everything else is identical to the tested standalone build.
 
-// VERSION: 3.3.1
+// VERSION: 3.4.0
 // DODO Learning — Student Baseline Report PDF Generator
+//
+// v3.4.0 — design rule established: white surfaces, color as accent only.
+// All pillar.lightColor / item.lightColor BACKGROUNDS removed from the
+// rendered output. Color identity is now carried by:
+//   - Colored header strips on cards (pillar.color)
+//   - Colored 1.5px borders on rating chips (rc.text)
+//   - 3px colored left accents on module sub-cards
+//   - Small colored swatches next to section labels
+// Affected surfaces:
+//   - PillarTable column-header row (was pillar.lightColor, now white)
+//   - PillarTable skill-rating chips (was rc.bg tint, now white chip
+//     with colored border + colored text — matches the Summary card
+//     pattern from v3.3.0)
+//   - Summary card body (was pillar.lightColor, now white)
+//   - Module sub-cards already white from v3.3.1
+// Net effect: text contrast is now uniform across the report regardless
+// of which pillar you're looking at, and the visual rhythm is cleaner.
 //
 // v3.3.1 — readability fix on three more spots that had the same root
 // cause as the v3.3.0 Summary chip rework (pillar.color text on
@@ -471,10 +488,11 @@ function PillarTable({ pillar, ratings, comments }) {
         <div style={{ fontSize: 13, fontWeight: 700, lineHeight: 1.15 }}>{pillar.label}</div>
         <div style={{ fontSize: 10, opacity: 0.8, marginTop: 1 }}>{pillar.labelZh}</div>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "140px 140px 1fr", background: pillar.lightColor, borderBottom: `2px solid ${B.border}` }}>
+      {/* Column header row: white surface (was pillar.lightColor — same
+          tonal family as headers caused washout). Subtle bottom border
+          separates header from skill rows. */}
+      <div style={{ display: "grid", gridTemplateColumns: "140px 140px 1fr", background: B.white, borderBottom: `1.5px solid ${B.border}` }}>
         {[["Skill Area", "技能领域"], ["Assessment Rating", "评估等级"], ["What this means for your child", "这对您的孩子意味着什么"]].map(([en, zh]) => (
-          // Column headers in ink (was pillar.color which washed out
-          // against the same family pillar.lightColor row background)
           <div key={en} style={{ padding: "8px 12px" }}>
             <div style={{ fontSize: 9, letterSpacing: 1, textTransform: "uppercase", color: B.ink, fontWeight: 700 }}>{en}</div>
             <div style={{ fontSize: 8, color: B.muted, marginTop: 2 }}>{zh}</div>
@@ -496,10 +514,22 @@ function PillarTable({ pillar, ratings, comments }) {
             </div>
             <div style={{ padding: "8px 10px", borderRight: `1px solid ${B.border}`, display: "flex", flexDirection: "column", justifyContent: "flex-start" }}>
               {(r !== undefined && r !== null) ? (
-                // Plain text-on-color chip (no dot) — matches the Summary
-                // card pills on page 4 and avoids all the dot-alignment
-                // chasing that produced the v3.2.1 regression.
-                <div style={{ display: "inline-block", padding: "3px 10px", background: rc.bg, color: rc.text, borderRadius: 12, fontSize: 11, fontWeight: 700, whiteSpace: "nowrap", alignSelf: "flex-start" }}>
+                // White chip + colored text + colored 1.5px border.
+                // Identical pattern to the Summary card pills on page 4.
+                // Replaces the rc.bg tinted background (which clashed
+                // with the pillar.lightColor row tint we just removed).
+                <div style={{
+                  display: "inline-block",
+                  padding: "3px 12px",
+                  background: B.white,
+                  color: rc.text,
+                  border: `1.5px solid ${rc.text}`,
+                  borderRadius: 12,
+                  fontSize: 11,
+                  fontWeight: 700,
+                  whiteSpace: "nowrap",
+                  alignSelf: "flex-start",
+                }}>
                   {r} – {RATING_LABELS[r]}
                 </div>
               ) : <span style={{ fontSize: 11, color: B.border }}>—</span>}
@@ -715,7 +745,10 @@ function PDFPage3Impl({ info, ratings, proficientGrade, studentLexile }) {
                   <div style={{ fontSize: 12, fontWeight: 700, lineHeight: 1.15 }}>{pillar.label}</div>
                   <div style={{ fontSize: 10, opacity: 0.72, marginTop: 2 }}>{pillar.labelZh}</div>
                 </div>
-                <div style={{ background: pillar.lightColor, padding: "18px 10px", textAlign: "center" }}>
+                {/* Body: white surface (was pillar.lightColor). The colored
+                    pillar header strip + the colored chip border give all the
+                    pillar identity that's needed; body tint added noise. */}
+                <div style={{ background: B.white, padding: "18px 10px", textAlign: "center" }}>
                   {rounded ? (
                     <div style={{
                       display: "inline-block",
