@@ -70,6 +70,19 @@ the treatment. `AssessmentTool.jsx` has none of it. Both are tolerable
 today but would benefit from the same treatment if extended
 significantly.
 
+### Layout gotcha — `lineHeight: 1` on a chip with background
+
+Hit on AssessmentTool's rating pill (v3.2.1 → v3.2.2 revert). Setting
+`lineHeight: 1` collapses the text's line-box to the font-size, but
+rendered glyphs (descenders on g/p/y, ascenders on capitals) extend
+*beyond* that line-box. When the container has a background color, the
+background fits the line-box and the text appears to dangle outside
+the chip.
+
+**Rule:** never set `lineHeight: 1` on an element whose background
+paints around text. To better center a sibling icon/dot with text
+glyphs, adjust the *icon* (`marginTop`) instead of the text's line-box.
+
 ### Layout gotcha — flex column shrinking text children
 
 The v2.7 fix on `/ops/onboarding` page 1 turned up a subtle trap. The
