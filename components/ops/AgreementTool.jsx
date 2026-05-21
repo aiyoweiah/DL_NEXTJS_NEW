@@ -1,7 +1,23 @@
 'use client'
 
 // components/ops/AgreementTool.jsx
-// DODO Learning — Teacher Service Agreement PDF Generator  v1.2-ops
+// DODO Learning — Teacher Service Agreement PDF Generator  v1.3-ops
+//
+// v1.3 — restore Immediate Termination clause + full "the Company"
+// sweep across contract text:
+//   * Section 5 gains a 4th bullet: "Immediate Termination for Breach"
+//     — DODO Learning may end the agreement immediately for serious
+//     breaches including Code of Conduct violations (no notice or
+//     further pay). Tighter than the v1.1 wording.
+//   * "the Company" replaced with "DODO Learning" everywhere in the
+//     contract body (Section 5 bullet 2 was the only remaining usage
+//     after v1.2). Preamble parenthetical (the "Company") dropped
+//     since the shorthand isn't used elsewhere.
+//   * Page 4 signature block headings simplified: "DODO Learning"
+//     (was 'DODO Learning (the "Company")') and "The Teacher" (was
+//     'The Teacher (the "Contractor")') — symmetric, no parentheticals.
+//   * Operator UI labels switched too: "Company Signatory & Dates"
+//     -> "DODO Learning Signatory & Dates", etc.
 //
 // v1.2 — contract language updates:
 //   * Body text uses "DODO Learning" everywhere (was "DODO" in some
@@ -271,7 +287,7 @@ function PDFPage2Impl({ info }) {
 
         {/* Preamble */}
         <div style={{ fontSize: 12, lineHeight: 1.7, color: B.ink, marginBottom: 18 }}>
-          This Agreement is made between DODO Learning (the &ldquo;Company&rdquo;) and{' '}
+          This Agreement is made between DODO Learning and{' '}
           <span style={{ fontWeight: 600, color: B.ink }}>{info.teacherFullName || '________________'}</span>
           {' '}(the &ldquo;Teacher&rdquo;) as of{' '}
           <span style={{ fontWeight: 600, color: B.ink }}>{info.effectiveDate || '____________'}</span>.
@@ -382,8 +398,9 @@ function PDFPage3Impl({ info }) {
 
         <Section n={5} title="Termination & Schedule Changes" items={[
           ['Commitment to Term Duration', 'You agree to complete teaching for the full Term Duration set out in Schedule A. If you depart before completing the term, DODO Learning reserves the right to withhold the final pay period’s compensation as offset for the disruption caused to students.'],
-          ['Extraordinary Notice (21 days or more)', 'DODO Learning recognizes that circumstances may change. If you provide written notice no less than 21 days before your intended departure, the Company will arrange the final pay individually with you, agreed on the day your written notice is submitted.'],
+          ['Extraordinary Notice (21 days or more)', 'DODO Learning recognizes that circumstances may change. If you provide written notice no less than 21 days before your intended departure, DODO Learning will arrange the final pay individually with you, agreed on the day your written notice is submitted.'],
           ['Insufficient Notice (under 21 days)', 'Resignation with less than 21 days’ written notice is treated as resignation without notice. No payment is owed for the final pay period in such cases.'],
+          ['Immediate Termination for Breach', 'DODO Learning may end this agreement immediately, without notice or further payment, for serious breaches including Code of Conduct violations.'],
         ]} />
 
         <Section n={6} title="Marketing & Media Consent" items={[
@@ -467,9 +484,9 @@ function PDFPage4Impl({ info }) {
           gap: 32,
           marginTop: 8,
         }}>
-          {/* Company column */}
+          {/* DODO Learning column */}
           <SigColumn
-            heading={'DODO Learning (the "Company")'}
+            heading={'DODO Learning'}
             sigContent={signatory ? <CursiveSig name={signatory} size={24} /> : null}
             printName={signatory}
             date={info.directorDate}
@@ -477,7 +494,7 @@ function PDFPage4Impl({ info }) {
 
           {/* Teacher column */}
           <SigColumn
-            heading={'The Teacher (the "Contractor")'}
+            heading={'The Teacher'}
             sigFieldId="tsa-field-sig"
             printNameFieldId="tsa-field-name"
             dateFieldId="tsa-field-date"
@@ -714,12 +731,12 @@ export default function AgreementTool() {
           </div>
         </Card>
 
-        {/* Company signatory + dates */}
-        <Card title="Company Signatory & Dates">
+        {/* DODO Learning signatory + dates */}
+        <Card title="DODO Learning Signatory & Dates">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 12 }}>
             <Field value={info.signatoryName}    onChange={handlers.signatoryName}    label="Signatory Name (renders as cursive signature)" placeholder="e.g. Janet Sui" span={2} />
             <Field value={info.effectiveDateISO} onChange={handlers.effectiveDateISO} label="Effective Date (page 2 preamble)" type="date" />
-            <Field value={info.directorDateISO}  onChange={handlers.directorDateISO}  label="Company Signing Date (page 4)"    type="date" />
+            <Field value={info.directorDateISO}  onChange={handlers.directorDateISO}  label="DODO Learning Signing Date (page 4)" type="date" />
           </div>
         </Card>
 
@@ -764,7 +781,7 @@ export default function AgreementTool() {
         </div>
 
         <p style={{ fontSize: 12, color: D.muted, marginTop: 16, lineHeight: 1.6 }}>
-          The Company signature on pages 1 and 4 is rendered from the typed Signatory Name in a cursive script font (Dancing Script).
+          The DODO Learning signature on pages 1 and 4 is rendered from the typed Signatory Name in a cursive script font (Dancing Script).
           Page 4 has fillable form fields for the Teacher: <strong>Print Name</strong> is pre-filled from &ldquo;Full Legal Name&rdquo;,
           <strong> GST#</strong> is pre-filled if provided, and <strong>Signature</strong> + <strong>Date</strong> stay blank for the
           teacher to complete in any PDF reader (Adobe Reader, macOS Preview, Chrome / Edge built-in viewer).
