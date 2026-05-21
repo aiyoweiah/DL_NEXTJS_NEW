@@ -77,7 +77,7 @@ export const home = {
     eyebrow: 'Who We Are',
     heading: 'The difference between a teacher and a Navigator is a map.',
     body0:
-      'Your child’s school knows what grade they’re in. That’s not the same as knowing where they are. Most children in immigrant families carry a reading gap their report card never shows — the distance between what they can decode and what they can actually think through.',
+      'Your child’s school knows what grade they’re in. That’s not the same as knowing where they are. Many children carry a reading gap their report card never shows — the distance between what they can decode and what they can actually think through.',
     body1:
       'Navigators are not tutors. They are specialists in composition, literature, and academic writing — trained in the MCT Language Arts tradition and in the structured thinking protocols of Harvard Project Zero. They close the gap between where your child reads now and where their academic life demands.',
     body2:
@@ -212,43 +212,42 @@ export const home = {
 // ── /program ─────────────────────────────────────────────────────
 export const program = {
   meta: {
-    title: 'What Happens in The 16-Week Program — DODO Learning',
+    title: 'What Happens in a 16-Week Program — DODO Learning',
     description:
-      'The live, Navigator-led program that trains Read → Think → Speak → Write for Chinese families in Canada and the US. Entry and exit Lexile assessments. One grade level of growth, measured.',
+      'Live, Navigator-led English literacy program for students worldwide. The LCS System and MCT enriched curriculum, executed each session through The Loop — Read → Think → Speak → Write. Entry, mid-cycle, and exit Lexile assessments. One grade level of growth across two 16-week cycles.',
   },
   hero: {
     chip: 'Think Once. In Both Languages.',
-    h1:   'What happens inside The 16-Week Program?',
+    h1:   'What happens in a 16-Week Program?',
     h1zh: '',
     sub:
-      'Designed for Chinese families in Canada and the US. Every session runs The Loop — Read → Think → Speak → Write — guided by a dedicated Navigator. We build English Thinkers at mastery level.',
+      'Live, one-on-one with dedicated Navigator. English literacy and writing for students around the world. Grounded in MCT gifted teaching framework plus The LCS System covering Reading, Thinking, Speaking, and Writing. Progress measured in Lexile and the 6+1 Trait rubric.',
     cta1: 'See How It Works',
     cta2: 'Book Your Consultation',
     stats: [
       { value: '16',       unit: 'Weeks',         desc: 'A real commitment'                          },
       { value: '4',        unit: 'Skills',         desc: 'Read · Think · Speak · Write' },
-      { value: '2',        unit: 'Assessments',    desc: 'Before + After'                            },
+      { value: '3',        unit: 'Assessments',    desc: 'Week 0 · Week 8 · Week 16'                 },
       { value: '1',        unit: 'Navigator',      desc: 'Who knows your child'                      },
       { value: '1-on-1',   unit: 'Always',         desc: 'No group sessions, no rotation'            },
       { value: '∞',   unit: 'The Full Loop',  desc: 'Every single session'                      },
     ],
   },
   loop: {
-    eyebrow:         'How The Loop Works',
+    eyebrow:         'How does LCS or “The Loop” work?',
     h2:              'Four skills. Every session.',
     h2zh:            null,
-    typeAB:
-      'Sessions alternate between two types. Type A — Literacy Session: the student reads aloud while the Navigator coaches at sentence level (vocabulary, intonation, comprehension), anchored on the MCT Building Language and Caesar’s English vocabulary tracks. Type B — Writing Session: the student thinks, discusses, and drafts; the Navigator opens with a Harvard Project Zero Visible Thinking routine and scores output against the 6+1 Trait rubric. Type assignment is driven by the student’s current Lexile data, not a fixed rotation.',
+    typeAB:          '', // 2026-05-21: Type A/B caption moved to /methodology per program review Q6
     methodologyLink: 'Read the full methodology →',
     steps: [
       { num: '01', label: 'Read',  labelZh: '阅读', badge: null,
-        desc: 'Texts chosen above their comfort zone — just enough to stretch. Comprehension is tracked by Lexile level, not guesswork.' },
+        desc: 'Classical and SAT-must-read texts — Alice in Wonderland, The Invisible Man, The War of the Worlds — chosen at or just above their current Lexile. Comprehension tracked by data, not guesswork.' },
       { num: '02', label: 'Think', labelZh: '思考', badge: null,
         desc: 'Before they speak or write, they build the argument. What’s the claim? What’s the evidence? What’s the counter? Structure first.' },
       { num: '03', label: 'Speak', labelZh: '表达', badge: null,
         desc: 'They take a position and defend it — live, with their Navigator. This is where confidence is built, not performed.' },
       { num: '04', label: 'Write', labelZh: '写作', badge: null,
-        desc: 'Everything they’ve read, thought, and said now lands on the page. Draft to revision — measurable improvement, every time.' },
+        desc: 'Everything they’ve read, thought, and said now lands on the page. The MCT writing arc — Grammar → sentence → paragraph → essay → academic composition — scored against the 6+1 Trait rubric.' },
     ],
   },
   journey: {
@@ -265,7 +264,7 @@ export const program = {
       {
         week: 'Weeks 2–15',
         label: 'Weekly Sessions', labelZh: '每周课程',
-        desc: 'Each week, your child works through The Loop with their Navigator — someone who knows their progress, their challenges, and what to push next. Sessions run 90 minutes, once per week.',
+        desc: 'Each week, your child works through The LCS with their Navigator — someone who knows their progress, their challenges, and what to push next. Sessions run up to 50 minutes, minimum once per week.',
         badge: null, badgeSub: null,
       },
       {
@@ -281,9 +280,10 @@ export const program = {
     h2:      'How the work compounds: The Loop (per-session) → The LCS System (per-cycle) → Levels (across cycles).',
     h2zh:    null,
     body:
-      'Each session runs The Loop — Read → Think → Speak → Write — guided by your child’s Navigator. ' +
-      'Across each 16-week cycle, sessions roll up into the LCS Teaching System. ' +
-      'Across multiple cycles, students progress through nine curriculum levels — Starter, Intermediate, and Levels 1–7. ' +
+      'The LCS System — Literacy · Composition · Speaking — is the curriculum architecture. ' +
+      'Within it, every session runs The Loop, guided by your child’s Navigator. ' +
+      'Across each 16-week cycle, sessions accumulate into LCS strand progress. ' +
+      'Across multiple cycles, students advance through nine curriculum levels — Starter, Intermediate, and Levels 1–7. ' +
       'Each level requires two to three cycles. Each cycle is 16 weeks.',
     strands: [
       { letter: 'L', name: 'Literacy',    nameZh: '文学精读',         body: 'Deep engagement with literary classics. Vocabulary accumulation, literary sensibility, the student’s own intellectual treasury. The root of all language output.' },
@@ -307,22 +307,22 @@ export const program = {
       { id: 'flex-2',  name: 'Flex 2',  nameZh: '大师写作自由航行',     format: '2× writing / week',                 price: '$2,110',     forWhom: 'Writing specialisation',                               featured: false },
       { id: 'flex-3',  name: 'Flex 3',  nameZh: 'GPA管理自由航行',     format: '1× GPA tutoring / week',            price: 'from $750', forWhom: 'School academic management · pairs with any combination above', featured: false },
     ],
-    note: 'Pricing per 16-week cycle. Weekly payment options available — see FAQ for breakdown.',
+    note: 'Each combination runs for one 16-week cycle. Pricing and weekly payment options are detailed in the FAQ.',
     faqLink: 'See pricing details in FAQ →',
   },
 
   session: {
     eyebrow:        'A Real Session',
     navigatorName:  'Ms. Jennifer',
-    sessionPhase:   'Read Phase · Lexile 740',
+    sessionPhase:   'Read · Red Tide · Lexile 740',
     h2:   'Here’s what a typical Tuesday looks like.',
     h2zh: null,
-    p1: 'The Navigator opens by naming the phase:',
-    q1: '“Today we’re in Read. Your text is at Lexile 740 — that’s eight points above where you were last week. Let’s see what you can do.”',
-    p2: 'Twenty minutes of structured reading. Not silent — annotated, questioned, discussed together.',
-    p3: 'Then comes Think. The Navigator asks: what’s the author’s argument? Do you agree? What’s the strongest counter?',
+    p1: 'The Navigator opens with the day’s text:',
+    q1: '“Today we’re inside Red Tide — chapter four. You’re at Lexile 740, eight points above last week. The word doing the heavy lifting today is malevolent. Before we read, let’s crack it open.”',
+    p2: 'Five minutes on the Latin root from MCT’s Building Language — mal- for bad, volens for willing. Malevolent isn’t just “evil.” It’s wanting harm, intentionally. The antagonist’s choice now reads differently.',
+    p3: 'Then the chapter. Annotated, paused, questioned. After each scene the Navigator asks: what is the author choosing not to tell us? What changes when malevolent is the word in your head?',
     p4: 'The session closes looking forward:',
-    q4: '“Next week is Speak. You’ll defend your position out loud. Start getting ready.”',
+    q4: '“Next week is Speak. You’ll defend whether the antagonist is malevolent or just afraid. Bring three pieces of evidence from this chapter.”',
     navigatorsLink: 'Meet the Navigators →',
   },
   growth: {
@@ -357,7 +357,7 @@ export const program = {
     h2:    'Ready to meet your child’s Navigator?',
     sub:   'The diagnostic consultation is where we find out exactly where your child is — not where their school says they are.',
     btn1:  'Book Your Consultation',
-    btn2:  'Read the Methodology',
+    btn2:  'Read the LCS Methodology',
   },
 }
 
@@ -365,9 +365,9 @@ export const program = {
 export const about = {
   meta: {
     title:
-      'What Is DODO Learning? English Literacy at the Cognitive Level — for Chinese Families in Canada & the US',
+      'What Is DODO Learning? English Literacy at the Cognitive Level',
     description:
-      'DODO Learning is the live, Navigator-led English literacy program for Chinese families in Canada and the US — trained on the full Read → Think → Speak → Write loop, measured by Lexile levels and the 6+1 Trait writing framework. We build English Thinkers at mastery level. Bilingual depth emerges from that rigor.',
+      'DODO Learning is the live, Navigator-led English literacy program for families worldwide — trained on the full Read → Think → Speak → Write loop, measured by Lexile levels and the 6+1 Trait writing framework. We build English Thinkers at mastery level. Bilingual depth emerges from that rigor.',
   },
   hero: {
     chip:          'Our Story',
@@ -375,7 +375,7 @@ export const about = {
     h1c:           'is not the same as a child',
     h1d:           'who ', h1em2: 'thinks', h1e: ' in it.',
     sub:
-      'Built for Chinese families in Canada and the US whose children will lead in English-dominant schools, universities, and boardrooms. Most children in these families learn English as a subject — they pass exams, they sound fluent. Ask them to argue a position, read dense analytical prose, or write something original — and the language reaches its limit. Our founder saw that gap and built DODO to close it. The goal is English mastery at the cognitive level. Bilingual depth is what emerges when that goal is reached.',
+      'Built for families whose children will lead in English-dominant schools, universities, and boardrooms. Many of these children learn English as a subject — they pass exams, they sound fluent. Ask them to argue a position, read dense analytical prose, or write something original — and the language reaches its limit. Our founder saw that gap and built DODO to close it. The goal is English mastery at the cognitive level. Bilingual depth is what emerges when that goal is reached.',
     videoLabel:    'Watch: Why DODO Exists',
     videoDuration: '3 min',
   },
@@ -545,12 +545,12 @@ export const consult = {
 export const compare = {
     meta: {
       title:       'Why DODO Learning — How It Differs From Tutoring, ESL, and Test-Prep | DODO Learning',
-      description: 'DODO Learning is a cognitive development program for Chinese immigrant families in Canada and the US — not a tutoring centre, not an ESL program, not test-prep. Here is exactly what makes it structurally different, and why that difference compounds over 16 weeks.',
+      description: 'DODO Learning is a cognitive development program for globally-mobile families — not a tutoring centre, not an ESL program, not test-prep. Here is exactly what makes it structurally different, and why that difference compounds over 16 weeks.',
     },
     s1: {
       eyebrow: 'Why DODO Learning',
       h1a: 'Every English program promises\u00a0', h1b: 'progress.', h1c: '\u00a0One of them builds the thinker.',
-      sub: 'For Chinese immigrant families in Canada and the US — this is what makes DODO Learning structurally different from every other option available to your child.',
+      sub: 'For globally-mobile families — this is what makes DODO Learning structurally different from every other option available to your child.',
     },
     s2: { pull: 'Most programs teach your child to answer the question correctly.\u00a0', pullSpan: 'DODO Learning builds English Thinkers who ask a better one.', pullEnd: '' },
     s3: {

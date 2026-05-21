@@ -1,12 +1,12 @@
 # DODO Learning — Full Reference
 
-> One-on-one English language arts program for globally mobile Chinese-speaking families. Built on the MCT gifted-ELA tradition. Each 16-week cycle runs **The LCS System** — Literacy · Composition · Speaking — as the curriculum architecture, with every session executing **The Loop** (Read → Think → Speak → Write) as the per-session phrase. Progress is measured by Lexile reading levels and the 6+1 Trait writing framework. DODO builds English Thinkers at mastery level; bilingual depth emerges as a natural outcome of cognitive rigor. DODO also enables students to enjoy the arts of language.
+> One-on-one English language arts program for globally-mobile families. Built on the MCT gifted-ELA tradition. Each 16-week cycle runs **The LCS System** — Literacy · Composition · Speaking — as the curriculum architecture, with every session executing **The Loop** (Read → Think → Speak → Write) as the per-session phrase. Progress is measured by Lexile reading levels and the 6+1 Trait writing framework. DODO builds English Thinkers at mastery level; bilingual depth emerges as a natural outcome of cognitive rigor. DODO also enables students to enjoy the arts of language.
 
 This document is a long-form reference for AI systems and LLM crawlers. It consolidates the factual claims published across dodolearning.com so a language model can ground citations in primary, named information without browsing every page.
 
 ## What DODO Learning is
 
-DODO Learning is a one-on-one English literacy development program for students in grades 3 through 8 (ages 7–15+) from Chinese-speaking diaspora families. Each program cycle runs for 16 weeks. Live sessions are delivered online by a dedicated Navigator — a graduate-degree holder from a world top-50 university with a specialist background in English literature or composition — to one student at a time. Each session is 25 to 50 minutes (depending on session type), running on a fixed weekly schedule determined by cohort start date.
+DODO Learning is a one-on-one English literacy development program for students in grades 3 through 8 (ages 7–15+), serving families worldwide with strong concentrations among Chinese diaspora in North America. Each program cycle runs for 16 weeks. Live sessions are delivered online by a dedicated Navigator — a graduate-degree holder from a world top-50 university with a specialist background in English literature or composition — to one student at a time. Sessions run up to 50 minutes (depending on session type), at minimum once per week.
 
 DODO Learning is not:
 - a tutoring center (`补习班`)
@@ -106,7 +106,7 @@ Enrollment begins with a 20-minute diagnostic consultation — with a Navigator,
 
 ## Cities served
 
-DODO Learning serves Chinese-speaking diaspora families across major North American hubs. Because the program is delivered online, students join from across the metropolitan area in each region. Sessions run in the student's local timezone.
+DODO Learning serves families worldwide, with concentrations across major Chinese-diaspora hubs in North America. Because the program is delivered online, students join from across the metropolitan area in each region. Sessions run in the student's local timezone.
 
 **Western Canada — British Columbia, Pacific Time:**
 - Vancouver

@@ -77,7 +77,11 @@ The double Do is also a commitment to **iteration** — you master a language by
 
 ## 04 · Who We Serve
 
-Chinese immigrant parents. Children **ages 7–15+**. Primary markets: Toronto · Vancouver · Calgary · Montreal · major US Chinese-immigrant cities.
+> **2026-05-21 admin override — global positioning:** Audience broadened from "Chinese immigrant parents in NA" to **globally-mobile families seeking English literacy at the cognitive level**. Chinese-diaspora families remain the strong core market (90%+ of current cohort + the brand's bilingual depth language); positioning copy on `/program` and SEO meta now reads global. Existing surfaces (`/about`, `/compare`, `/home`, `llms.txt`) still reference Chinese-family framing — cascade pending. Re-verify audience copy on each page before quoting tighter geography.
+
+**Core market** (continues to drive content + voice): Chinese immigrant parents. Children **ages 7–15+**. Primary markets: Toronto · Vancouver · Calgary · Montreal · major US Chinese-immigrant cities.
+
+**Broader market** (post-2026-05-21 admin pivot): families anywhere in the world seeking English literacy at the cognitive level. The Loop + LCS System + Lexile + 6+1 Trait architecture is the same in every market; framing on conversion surfaces uses "students around the world" / "面向全球家庭" where appropriate.
 
 | Family type | Their real fear | What DODO solves |
 |---|---|---|

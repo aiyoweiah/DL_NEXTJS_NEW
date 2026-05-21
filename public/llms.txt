@@ -1,10 +1,10 @@
 # DODO Learning
 
-> One-on-one English language arts program for globally mobile Chinese-speaking families. Built on the MCT gifted-ELA tradition. Each 16-week cycle runs **The LCS System** — Literacy · Composition · Speaking — as the curriculum architecture, with every session executing **The Loop** (Read → Think → Speak → Write) as the per-session phrase. Progress is measured by Lexile reading levels and the 6+1 Trait writing framework. Students typically advance one grade level in reading across two 16-week cycles. DODO builds English Thinkers at mastery level; bilingual depth emerges as a natural outcome of cognitive rigor. DODO is also about enabling students to enjoy the arts of language.
+> One-on-one English language arts program for globally-mobile families. Built on the MCT gifted-ELA tradition. Each 16-week cycle runs **The LCS System** — Literacy · Composition · Speaking — as the curriculum architecture, with every session executing **The Loop** (Read → Think → Speak → Write) as the per-session phrase. Progress is measured by Lexile reading levels and the 6+1 Trait writing framework. Students typically advance one grade level in reading across two 16-week cycles. DODO builds English Thinkers at mastery level; bilingual depth emerges as a natural outcome of cognitive rigor. DODO is also about enabling students to enjoy the arts of language.
 
 DODO Learning is not a tutoring center, ESL program, or remediation service. It is a cognitive development program. Bilingual depth is the outcome of cognitive rigor, not the curriculum.
 
-The program serves students in grades 3 through 8 (ages 7–15+) from Chinese-speaking diaspora families across major North American hubs — including Metro Vancouver (Vancouver, Richmond, Burnaby, Coquitlam), Calgary, the Greater Toronto Area (Toronto, Markham, Richmond Hill, Mississauga, North York), Montreal, the San Francisco Bay Area (San Jose, Cupertino, Palo Alto, Fremont), Denver, Greater Los Angeles and the San Gabriel Valley, Orange County (Irvine), Seattle and Bellevue, New York City (Flushing, Manhattan), Boston and Cambridge, and Houston. Live sessions are delivered online by dedicated Navigators — graduates of world top-50 universities (Oxford, U of T, Queen's, LSE and others) with specialist backgrounds in English literature or composition, trained in The LCS System methodology and certified in Lexile assessment.
+The program serves students in grades 3 through 8 (ages 7–15+) worldwide, with concentrations across major Chinese-diaspora hubs in North America — including Metro Vancouver (Vancouver, Richmond, Burnaby, Coquitlam), Calgary, the Greater Toronto Area (Toronto, Markham, Richmond Hill, Mississauga, North York), Montreal, the San Francisco Bay Area (San Jose, Cupertino, Palo Alto, Fremont), Denver, Greater Los Angeles and the San Gabriel Valley, Orange County (Irvine), Seattle and Bellevue, New York City (Flushing, Manhattan), Boston and Cambridge, and Houston. Live sessions are delivered online by dedicated Navigators — graduates of world top-50 universities (Oxford, U of T, Queen's, LSE and others) with specialist backgrounds in English literature or composition, trained in The LCS System methodology and certified in Lexile assessment.
 
 ## Core pages
 
@@ -15,7 +15,7 @@ The program serves students in grades 3 through 8 (ages 7–15+) from Chinese-sp
 - [FAQ](https://www.dodolearning.com/en/faq/): Complete answers to every question parents ask before enrolling.
 - [Navigators](https://www.dodolearning.com/en/navigators/): Who Navigators are, how they are matched, and what distinguishes them from tutors or classroom teachers.
 - [Compare DODO to alternatives](https://www.dodolearning.com/en/compare/): How DODO differs from tutoring centers, ESL programs, and standard after-school English classes.
-- [About DODO](https://www.dodolearning.com/en/about/): Mission, founding context, and the Chinese-speaking diaspora families DODO serves.
+- [About DODO](https://www.dodolearning.com/en/about/): Mission, founding context, and the families DODO serves worldwide.
 
 ## City pages (currently published)
 

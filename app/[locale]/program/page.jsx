@@ -572,9 +572,12 @@ function CombinationsSection({ locale, c }) {
                   {item.forWhom}
                 </p>
               </div>
-              <p style={{ fontSize: '1.25rem', fontWeight: 700, color: item.featured ? '#b7b5fe' : '#0E0E12', letterSpacing: '-0.02em', marginTop: '0.75rem' }}>
-                {item.price}
-              </p>
+              {/* Price intentionally hidden 2026-05-21 per program review Q7 — pricing now via FAQ + consultation. Data preserved in item.price for future re-enabling. */}
+              {item.price && false && (
+                <p style={{ fontSize: '1.25rem', fontWeight: 700, color: item.featured ? '#b7b5fe' : '#0E0E12', letterSpacing: '-0.02em', marginTop: '0.75rem' }}>
+                  {item.price}
+                </p>
+              )}
             </article>
           ))}
         </div>
