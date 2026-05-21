@@ -8,8 +8,22 @@
 //   2. Logo import path updated to shared opsAssets.js
 // Everything else is identical to the tested standalone build.
 
-// VERSION: 3.3.0
+// VERSION: 3.3.1
 // DODO Learning — Student Baseline Report PDF Generator
+//
+// v3.3.1 — readability fix on three more spots that had the same root
+// cause as the v3.3.0 Summary chip rework (pillar.color text on
+// pillar.lightColor background → same tonal family → washes out):
+//   * Module sub-cards in CurriculumSection (page 4–5): titles were
+//     in pillar.color on pillar.lightColor — nearly invisible for
+//     Literacy + Speaking. Redesigned as white cards with a 3px
+//     pillar-colored left accent stripe, titles in ink. Pillar
+//     identity preserved by the accent, titles readable.
+//   * "Recommended Modules · 推荐课程模块" section label: was
+//     pillar.color, now ink with a small pillar-colored swatch.
+//   * PillarTable column headers (Skill Area / Assessment Rating /
+//     What this means for your child): same fix, was pillar.color
+//     on pillar.lightColor row, now ink.
 //
 // v3.3.0 — design change to Summary cards on page 4:
 //   * Dropped the "平均等级" sublabel inside each card body. It was
@@ -459,8 +473,10 @@ function PillarTable({ pillar, ratings, comments }) {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "140px 140px 1fr", background: pillar.lightColor, borderBottom: `2px solid ${B.border}` }}>
         {[["Skill Area", "技能领域"], ["Assessment Rating", "评估等级"], ["What this means for your child", "这对您的孩子意味着什么"]].map(([en, zh]) => (
+          // Column headers in ink (was pillar.color which washed out
+          // against the same family pillar.lightColor row background)
           <div key={en} style={{ padding: "8px 12px" }}>
-            <div style={{ fontSize: 9, letterSpacing: 1, textTransform: "uppercase", color: pillar.color, fontWeight: 700 }}>{en}</div>
+            <div style={{ fontSize: 9, letterSpacing: 1, textTransform: "uppercase", color: B.ink, fontWeight: 700 }}>{en}</div>
             <div style={{ fontSize: 8, color: B.muted, marginTop: 2 }}>{zh}</div>
           </div>
         ))}
@@ -508,16 +524,34 @@ function CurriculumSection({ item, proficientGrade }) {
       </div>
       <div style={{ padding: "8px 14px" }}>
         <p style={{ margin: "0 0 6px", lineHeight: 1.5, fontSize: 10, color: B.ink, fontFamily: F }}>{item.match}</p>
-        <div style={{ fontSize: 9, letterSpacing: 2, textTransform: "uppercase", color: item.color, fontWeight: 700, marginBottom: 6, fontFamily: F }}>
-          Recommended Modules · 推荐课程模块
+        {/* Section label in ink (was pillar.color — washed out against
+            the curriculum section's white-ish background and the page
+            cream). Small colored swatch keeps the pillar accent visible. */}
+        <div style={{ display: "flex", alignItems: "center", gap: 7, marginBottom: 6 }}>
+          <div style={{ width: 12, height: 2, background: item.color, borderRadius: 1 }} />
+          <div style={{ fontSize: 9, letterSpacing: 2, textTransform: "uppercase", color: B.ink, fontWeight: 700, fontFamily: F }}>
+            Recommended Modules · 推荐课程模块
+          </div>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 6 }}>
           {(proficientGrade && GRADE_MODULES[proficientGrade]?.[PILLAR_GRADE_KEY[item.pillar]]?.length
             ? GRADE_MODULES[proficientGrade][PILLAR_GRADE_KEY[item.pillar]]
             : item.modules
           ).map(mod => (
-            <div key={mod.name} style={{ background: item.lightColor, border: `1px solid ${B.border}`, borderRadius: 6, padding: 8 }}>
-              <div style={{ fontSize: 11, fontWeight: 700, color: item.color }}>{mod.name}</div>
+            // White card with pillar-colored left accent stripe.
+            // Title in ink (high contrast) instead of the pale pillar
+            // color that washed out against the pillar.lightColor body.
+            // This is the same readability fix as the white-chip change
+            // on the Summary pills — same root cause (pillar.color text
+            // on pillar.lightColor background blends together).
+            <div key={mod.name} style={{
+              background: B.white,
+              border: `1px solid ${B.border}`,
+              borderLeft: `3px solid ${item.color}`,
+              borderRadius: 6,
+              padding: 9,
+            }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: B.ink }}>{mod.name}</div>
               <div style={{ fontSize: 10, color: B.muted, marginBottom: 4, marginTop: 2 }}>{mod.nameZh}</div>
               <div style={{ fontSize: 9, color: B.ink, lineHeight: 1.55 }}>{mod.desc}</div>
             </div>

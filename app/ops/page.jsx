@@ -32,7 +32,7 @@ const TOOLS = [
   {
     href:    '/ops/assessment',
     label:   'Baseline Assessment Report',
-    version: 'v3.3.0',
+    version: 'v3.3.1',
     desc:    'Generate a 5-page PDF report from a student baseline evaluation. Covers Literature & Literacy, Speaking & Discussion, and Language Craft & Writing. Includes Lexile input, grade band modules, comment pools, and evaluator notes.',
     accent:  B.lavender,
     status:  'live',
