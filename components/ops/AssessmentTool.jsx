@@ -8,8 +8,19 @@
 //   2. Logo import path updated to shared opsAssets.js
 // Everything else is identical to the tested standalone build.
 
-// VERSION: 3.2.3
+// VERSION: 3.2.4
 // DODO Learning — Student Baseline Report PDF Generator
+//
+// v3.2.4 — actually center Summary pills (v3.2.3 was a no-op):
+//   * Root cause: my v3.2.3 flex centering had no effect because all 3
+//     Summary cards have identical content structure → identical natural
+//     height → CSS Grid doesn't stretch them → no extra room for body's
+//     flex:1 to expand into → flex centering has nothing to center within.
+//   * Fix: explicit minHeight: 140 on the card guarantees ~30-40px of
+//     extra body height beyond natural content. Now flex:1 + justify
+//     Content:center actually centers the label + pill.
+//   * Replaced label marginBottom with flex `gap: 8` for cleaner symmetric
+//     spacing in a vertically-centered context.
 //
 // v3.2.3 — drop colored dot from PillarTable pills + center Summary pills:
 //   * PillarTable rating pill is now plain text-on-color (no leading dot).
@@ -637,18 +648,20 @@ function PDFPage3Impl({ info, ratings, proficientGrade, studentLexile }) {
             const avg = scored.length > 0 ? scored.reduce((a, s) => a + ratings[s.id], 0) / scored.length : 0;
             const rounded = scored.length > 0 ? Math.round(avg) : null;
             const rc = rounded ? RATING_COLORS[rounded] : null;
-            // Card is a flex column so the body can flex-1 to fill remaining
-            // height. Body uses justifyContent:center so the label + rating
-            // pill vertically center within the body regardless of header
-            // height across the 3 cards.
+            // Card is a flex column with an explicit minHeight so the body
+            // is guaranteed taller than its natural content. Body uses
+            // flex:1 + justifyContent:center to vertically center the
+            // label + rating pill. Without the minHeight, CSS Grid keeps
+            // all 3 cards at natural height (since they all have identical
+            // content) and there's no extra room for flex centering to act.
             return (
-              <div key={pillar.id} style={{ borderRadius: 10, overflow: "hidden", border: `1px solid ${B.border}`, display: "flex", flexDirection: "column" }}>
+              <div key={pillar.id} style={{ borderRadius: 10, overflow: "hidden", border: `1px solid ${B.border}`, display: "flex", flexDirection: "column", minHeight: 140 }}>
                 <div style={{ background: pillar.color, color: pillar.headerTextColor || B.platinum, padding: "10px 12px", textAlign: "center" }}>
                   <div style={{ fontSize: 12, fontWeight: 700, lineHeight: 1.15 }}>{pillar.label}</div>
                   <div style={{ fontSize: 10, opacity: 0.72, marginTop: 2 }}>{pillar.labelZh}</div>
                 </div>
-                <div style={{ background: pillar.lightColor, padding: "12px 10px", textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", flex: 1 }}>
-                  <div style={{ fontSize: 9, color: B.muted, marginBottom: 6, textTransform: "uppercase", letterSpacing: 1 }}>平均等级</div>
+                <div style={{ background: pillar.lightColor, padding: "10px 10px", textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", flex: 1, gap: 8 }}>
+                  <div style={{ fontSize: 9, color: B.muted, textTransform: "uppercase", letterSpacing: 1 }}>平均等级</div>
                   {rounded ? (
                     <div style={{ display: "inline-block", padding: "4px 14px", background: rc.bg, color: rc.text, borderRadius: 16, fontSize: 12, fontWeight: 700 }}>
                       {rounded} – {RATING_LABELS[rounded]}
