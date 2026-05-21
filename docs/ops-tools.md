@@ -70,6 +70,22 @@ the treatment. `AssessmentTool.jsx` has none of it. Both are tolerable
 today but would benefit from the same treatment if extended
 significantly.
 
+### Layout gotcha — flex centering needs room to center
+
+Hit on AssessmentTool's Summary cards (v3.2.3 attempt → v3.2.4 actual
+fix). Wrapping a flex container in `flex: 1` + `justifyContent: center`
+does nothing if the container has no extra space to expand into.
+
+In a CSS Grid where all items have identical content, **the grid does
+not stretch them** — they all naturally match the tallest, which equals
+their own height. A child set to `flex: 1` then has zero extra vertical
+space to grow into, and `justifyContent: center` has nothing to center
+within.
+
+**Fix:** force the container taller than its natural content via
+`minHeight` (or a fixed height). Then the flex centering has real room
+to act.
+
 ### Layout gotcha — `lineHeight: 1` on a chip with background
 
 Hit on AssessmentTool's rating pill (v3.2.1 → v3.2.2 revert). Setting
