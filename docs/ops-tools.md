@@ -51,24 +51,41 @@ import { jsPDF, AcroFormTextField } from 'jspdf'
 // is the v2/v3 idiom and will throw "not a constructor")
 ```
 
-### Performance pattern (teacher-agreement)
+### Performance pattern (teacher-agreement, partial onboarding)
 
-`AgreementTool.jsx` is the only tool that solves the typing-lag problem
-caused by hidden templates re-rendering on every keystroke:
+`AgreementTool.jsx` is the canonical example of the typing-lag fix:
 
 - Each `PDFPageN` wrapped in `React.memo` with a per-page comparator
-  that only checks the keys *that page* renders. Page 3 (static
-  Schedule B) uses `() => true` and never re-renders after mount.
+  that only checks the keys *that page* renders. Static-content pages
+  use `() => true` and never re-render after mount.
 - `Field` component lives at module scope (not nested in the form
   component) so React keeps stable component identity → `<input>`
   doesn't remount on every keystroke.
 - `onChange` handlers are built once in `useMemo` so each input
   receives a stable function reference.
 
-`AssessmentTool.jsx` and `OnboardingTool.jsx` predate these patterns
-and re-render all hidden templates on every keystroke. They're
-tolerable today but would benefit from the same treatment if either is
-extended significantly.
+`OnboardingTool.jsx` (v2.7) has `PDFPageWelcome` wrapped in `React.memo`
+but the other three pages and inline `onChange` handlers still need
+the treatment. `AssessmentTool.jsx` has none of it. Both are tolerable
+today but would benefit from the same treatment if extended
+significantly.
+
+### Layout gotcha — flex column shrinking text children
+
+The v2.7 fix on `/ops/onboarding` page 1 turned up a subtle trap. The
+welcome page body was wrapped in `display: flex; flexDirection: column`,
+and **text-only flex children weren't stretching to container width**.
+Header (block div) and card-shaped children with their own background
++ padding stretched fine, but bare `<div>...text...</div>` children
+collapsed to roughly content-width. Result: text wrapped at ~half the
+page width with nothing on the right side.
+
+**Rule of thumb:** if a page template uses nested flex column wrappers,
+either (a) make every child a block with its own background/padding, or
+(b) add explicit `width: '100%'` to text-only children. The cleanest
+fix is dropping the inner flex column entirely and using a plain block
+wrapper — the outer page div can stay flex column for header/body/footer
+stacking.
 
 ---
 
