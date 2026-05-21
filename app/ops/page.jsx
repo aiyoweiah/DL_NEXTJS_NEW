@@ -48,7 +48,7 @@ const TOOLS = [
   {
     href:    '/ops/teacher-agreement',
     label:   'Teacher Service Agreement',
-    version: 'v1.1',
+    version: 'v1.2',
     desc:    'Generate the 4-page teacher service agreement: welcome letter with cursive signature, Schedule A service scope + Schedule B sections 1–4, Schedule B sections 5–9, and execution page with signature blocks, fillable teacher fields, and notes.',
     accent:  B.gilt,
     status:  'live',

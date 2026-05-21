@@ -11,7 +11,7 @@ Three tools live here today:
 |---|---|---|---|
 | `/ops/assessment` | Student Baseline Assessment Report | v3.4.1 | 5-page report from a baseline evaluation — Lit/Lit, Speaking/Discussion, Craft/Writing pillars with Lexile + module recommendations |
 | `/ops/onboarding` | Student Enrollment Welcome Packet | v2.8 | 4-page enrollment packet — welcome letter, student info + QR codes, curriculum overview + Navigator intro, terms |
-| `/ops/teacher-agreement` | Teacher Service Agreement | v1.1 | 4-page contractor agreement — welcome letter, Schedule A + Schedule B (sections 1–9), execution page with cursive Company signature and fillable Teacher AcroForm fields |
+| `/ops/teacher-agreement` | Teacher Service Agreement | v1.2 | 4-page contractor agreement — welcome letter, Schedule A + Schedule B (sections 1–9), execution page with cursive Company signature and fillable Teacher AcroForm fields |
 
 ---
 

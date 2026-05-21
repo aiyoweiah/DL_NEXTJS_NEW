@@ -1,7 +1,22 @@
 'use client'
 
 // components/ops/AgreementTool.jsx
-// DODO Learning — Teacher Service Agreement PDF Generator  v1.1-ops
+// DODO Learning — Teacher Service Agreement PDF Generator  v1.2-ops
+//
+// v1.2 — contract language updates:
+//   * Body text uses "DODO Learning" everywhere (was "DODO" in some
+//     sections — sections 2, 4, 6, 8). Brand-identity instances
+//     (logo alt, header strip, form labels) unchanged.
+//   * Section 5 (Termination & Schedule Changes) rewritten per spec:
+//     - Commitment to Term Duration: company can withhold last pay
+//       period if teacher departs early
+//     - Extraordinary Notice (21+ days): individual arrangement on
+//       the day notice is submitted
+//     - Insufficient Notice (under 21 days): no final-period pay
+//     The prior Immediate-Termination-for-breach clause was removed
+//     by this rewrite. Breaches of Sections 4 (IP), 7 (Safety), 8
+//     (Non-Solicitation) and the Code of Conduct still empower the
+//     Company under those sections' own terms.
 //
 // Same html2canvas + jsPDF recipe as the other ops tools:
 //   - hidden 794x1123 page divs are rasterized at scale 2
@@ -321,7 +336,7 @@ function PDFPage2Impl({ info }) {
         <Section n={2} title="Service Delivery & Professionalism" items={[
           ['Quality teaching', 'Deliver each lesson with care, prepare thoroughly, and keep the classroom welcoming and inclusive.'],
           ['Be on time', 'Log in at least 5 minutes before each session to test your setup and resolve any technical issues.'],
-          ['Stay on platform', 'All contact with students and parents happens inside ClassIN and the DODO platform. Sharing personal contact information is not allowed.'],
+          ['Stay on platform', 'All contact with students and parents happens inside ClassIN and the DODO Learning platform. Sharing personal contact information is not allowed.'],
         ]} />
 
         <Section n={3} title="Compensation" items={[
@@ -332,8 +347,8 @@ function PDFPage2Impl({ info }) {
         ]} />
 
         <Section n={4} title="Confidentiality & Intellectual Property" items={[
-          ['Our materials stay ours', 'Anything DODO provides remains DODO property. Anything you create for our courses is licensed to DODO for ongoing use.'],
-          ['You own what you bring', 'You confirm you have the rights to any material you teach with, and you agree to cover DODO if a third party raises an IP claim.'],
+          ['Our materials stay ours', 'Anything DODO Learning provides remains DODO Learning property. Anything you create for our courses is licensed to DODO Learning for ongoing use.'],
+          ['You own what you bring', 'You confirm you have the rights to any material you teach with, and you agree to cover DODO Learning if a third party raises an IP claim.'],
           ['Student privacy', 'Handle all student data in line with Canada’s Personal Information Protection and Electronic Documents Act (PIPEDA), which governs private-sector personal data in Ontario.'],
         ]} />
 
@@ -366,13 +381,13 @@ function PDFPage3Impl({ info }) {
       <div style={{ position: 'relative', padding: `26px ${PAD}px 26px`, zIndex: 1 }}>
 
         <Section n={5} title="Termination & Schedule Changes" items={[
-          ['14 days’ notice', 'Either party may end this collaboration by giving 14 days’ written notice.'],
-          ['Short-notice resignation', 'If you resign with less than 14 days’ notice, no final payment is owed for the remaining period, since reassigning students has real costs. If you serve the full 14 days, you are paid in full for everything taught during that period.'],
-          ['Immediate termination', 'DODO may end this agreement immediately for serious breaches — Code of Conduct violations or academic dishonesty. No notice or final payment is owed in those cases.'],
+          ['Commitment to Term Duration', 'You agree to complete teaching for the full Term Duration set out in Schedule A. If you depart before completing the term, DODO Learning reserves the right to withhold the final pay period’s compensation as offset for the disruption caused to students.'],
+          ['Extraordinary Notice (21 days or more)', 'DODO Learning recognizes that circumstances may change. If you provide written notice no less than 21 days before your intended departure, the Company will arrange the final pay individually with you, agreed on the day your written notice is submitted.'],
+          ['Insufficient Notice (under 21 days)', 'Resignation with less than 21 days’ written notice is treated as resignation without notice. No payment is owed for the final pay period in such cases.'],
         ]} />
 
         <Section n={6} title="Marketing & Media Consent" items={[
-          ['Use of your image', 'You grant DODO a royalty-free license to use your name, image, and voice from class recordings in DODO marketing.'],
+          ['Use of your image', 'You grant DODO Learning a royalty-free license to use your name, image, and voice from class recordings in DODO Learning marketing.'],
           ['Right to withdraw', 'You may withdraw this consent in writing at any time.'],
           ['Effect of withdrawal', 'Withdrawal takes effect within 7 business days for new posts. Content already shared or printed may not be fully retractable.'],
         ]} />
@@ -383,8 +398,8 @@ function PDFPage3Impl({ info }) {
         ]} />
 
         <Section n={8} title="Non-Solicitation of Students" items={[
-          ['During and after the term', 'During this agreement and for 12 months after it ends, you agree not to solicit DODO students or their families for private tutoring or any competing service — including direct outreach, social-media contact, or referrals to other providers.'],
-          ['Unsolicited contact', 'This does not prevent you from accepting an unsolicited inquiry that originates independently from a former DODO family, but you agree to notify DODO in writing within 30 days if that happens.'],
+          ['During and after the term', 'During this agreement and for 12 months after it ends, you agree not to solicit DODO Learning students or their families for private tutoring or any competing service — including direct outreach, social-media contact, or referrals to other providers.'],
+          ['Unsolicited contact', 'This does not prevent you from accepting an unsolicited inquiry that originates independently from a former DODO Learning family, but you agree to notify DODO Learning in writing within 30 days if that happens.'],
         ]} />
 
         <Section n={9} title="General Provisions" items={[
