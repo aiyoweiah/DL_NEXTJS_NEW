@@ -8,8 +8,17 @@
 //   2. Logo import path updated to shared opsAssets.js
 // Everything else is identical to the tested standalone build.
 
-// VERSION: 3.2.2
+// VERSION: 3.2.3
 // DODO Learning — Student Baseline Report PDF Generator
+//
+// v3.2.3 — drop colored dot from PillarTable pills + center Summary pills:
+//   * PillarTable rating pill is now plain text-on-color (no leading dot).
+//     Matches the Summary card pill style and ends all dot-alignment
+//     iteration. Simpler component, identical information conveyed.
+//   * Summary cards (page 4) made into flex columns with body flex:1 +
+//     justifyContent:center so the "平均等级" label + rating pill sit
+//     vertically centered within each body. Previously the body content
+//     was top-anchored, leaving empty space below.
 //
 // v3.2.2 — fix rating pill regression from v3.2.1:
 //   * Removed lineHeight: 1 from the pill div. With line-height collapsed
@@ -445,16 +454,11 @@ function PillarTable({ pillar, ratings, comments }) {
             </div>
             <div style={{ padding: "8px 10px", borderRight: `1px solid ${B.border}`, display: "flex", flexDirection: "column", justifyContent: "flex-start" }}>
               {(r !== undefined && r !== null) ? (
-                // Default line-height kept on the pill so the colored
-                // background fully encloses descenders (g, p, y) — setting
-                // lineHeight: 1 in v3.2.1 caused text to dangle outside the
-                // chip. The 2px top padding nudges the pill text baseline
-                // closer to the skill name baseline next to it. Dot is
-                // pushed down 1px so it visually centers with the text's
-                // x-height instead of the line-box center.
-                <div style={{ display: "inline-flex", alignItems: "center", gap: 5, padding: "3px 10px", background: rc.bg, borderRadius: 12, alignSelf: "flex-start" }}>
-                  <div style={{ width: 7, height: 7, borderRadius: "50%", background: rc.dot, flexShrink: 0, marginTop: 1 }} />
-                  <span style={{ fontSize: 11, color: rc.text, fontWeight: 700, whiteSpace: "nowrap" }}>{r} – {RATING_LABELS[r]}</span>
+                // Plain text-on-color chip (no dot) — matches the Summary
+                // card pills on page 4 and avoids all the dot-alignment
+                // chasing that produced the v3.2.1 regression.
+                <div style={{ display: "inline-block", padding: "3px 10px", background: rc.bg, color: rc.text, borderRadius: 12, fontSize: 11, fontWeight: 700, whiteSpace: "nowrap", alignSelf: "flex-start" }}>
+                  {r} – {RATING_LABELS[r]}
                 </div>
               ) : <span style={{ fontSize: 11, color: B.border }}>—</span>}
             </div>
@@ -633,14 +637,18 @@ function PDFPage3Impl({ info, ratings, proficientGrade, studentLexile }) {
             const avg = scored.length > 0 ? scored.reduce((a, s) => a + ratings[s.id], 0) / scored.length : 0;
             const rounded = scored.length > 0 ? Math.round(avg) : null;
             const rc = rounded ? RATING_COLORS[rounded] : null;
+            // Card is a flex column so the body can flex-1 to fill remaining
+            // height. Body uses justifyContent:center so the label + rating
+            // pill vertically center within the body regardless of header
+            // height across the 3 cards.
             return (
-              <div key={pillar.id} style={{ borderRadius: 10, overflow: "hidden", border: `1px solid ${B.border}` }}>
+              <div key={pillar.id} style={{ borderRadius: 10, overflow: "hidden", border: `1px solid ${B.border}`, display: "flex", flexDirection: "column" }}>
                 <div style={{ background: pillar.color, color: pillar.headerTextColor || B.platinum, padding: "10px 12px", textAlign: "center" }}>
                   <div style={{ fontSize: 12, fontWeight: 700, lineHeight: 1.15 }}>{pillar.label}</div>
                   <div style={{ fontSize: 10, opacity: 0.72, marginTop: 2 }}>{pillar.labelZh}</div>
                 </div>
-                <div style={{ background: pillar.lightColor, padding: "8px 10px", textAlign: "center" }}>
-                  <div style={{ fontSize: 9, color: B.muted, marginBottom: 5, textTransform: "uppercase", letterSpacing: 1 }}>平均等级</div>
+                <div style={{ background: pillar.lightColor, padding: "12px 10px", textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", flex: 1 }}>
+                  <div style={{ fontSize: 9, color: B.muted, marginBottom: 6, textTransform: "uppercase", letterSpacing: 1 }}>平均等级</div>
                   {rounded ? (
                     <div style={{ display: "inline-block", padding: "4px 14px", background: rc.bg, color: rc.text, borderRadius: 16, fontSize: 12, fontWeight: 700 }}>
                       {rounded} – {RATING_LABELS[rounded]}
