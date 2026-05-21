@@ -8,8 +8,18 @@
 //   2. Logo import path updated to shared opsAssets.js
 // Everything else is identical to the tested standalone build.
 
-// VERSION: 3.2.0
+// VERSION: 3.2.1
 // DODO Learning — Student Baseline Report PDF Generator
+//
+// v3.2.1 — rating pill alignment + section header breathing room:
+//   * Rating pill: lineHeight: 1 on the inner wrapper so the colored
+//     dot visually centers with the text glyphs. Pill padding 3px → 2px
+//     vertical so the pill text baseline aligns with the skill name
+//     in the column next to it.
+//   * Pillar header padding: 6px 14px → 10px 16px (more generous).
+//   * Column header padding: 4px 10px → 8px 12px.
+//   * Summary cards on page 4: 6px 10px → 10px 12px.
+//   * CurriculumSection header: matched to pillar header.
 //
 // v3.2.0 — performance pass:
 //   * All five hidden PDF page templates wrapped in React.memo with
@@ -393,16 +403,16 @@ function PDFHeader({ info }) {
 function PillarTable({ pillar, ratings, comments }) {
   return (
     <div style={{ background: B.white, borderRadius: 8, overflow: "hidden", border: `1px solid ${B.border}` }}>
-      <div style={{ background: pillar.color, color: pillar.headerTextColor || B.platinum, padding: "6px 14px" }}>
-        <div style={{ fontSize: 8, letterSpacing: 2, textTransform: "uppercase", opacity: 0.6, marginBottom: 1 }}>Pillar · 核心领域</div>
-        <div style={{ fontSize: 13, fontWeight: 700 }}>{pillar.label}</div>
-        <div style={{ fontSize: 10, opacity: 0.8 }}>{pillar.labelZh}</div>
+      <div style={{ background: pillar.color, color: pillar.headerTextColor || B.platinum, padding: "10px 16px" }}>
+        <div style={{ fontSize: 8, letterSpacing: 2, textTransform: "uppercase", opacity: 0.6, marginBottom: 2 }}>Pillar · 核心领域</div>
+        <div style={{ fontSize: 13, fontWeight: 700, lineHeight: 1.15 }}>{pillar.label}</div>
+        <div style={{ fontSize: 10, opacity: 0.8, marginTop: 1 }}>{pillar.labelZh}</div>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "140px 140px 1fr", background: pillar.lightColor, borderBottom: `2px solid ${B.border}` }}>
         {[["Skill Area", "技能领域"], ["Assessment Rating", "评估等级"], ["What this means for your child", "这对您的孩子意味着什么"]].map(([en, zh]) => (
-          <div key={en} style={{ padding: "4px 10px" }}>
+          <div key={en} style={{ padding: "8px 12px" }}>
             <div style={{ fontSize: 9, letterSpacing: 1, textTransform: "uppercase", color: pillar.color, fontWeight: 700 }}>{en}</div>
-            <div style={{ fontSize: 8, color: B.muted, marginTop: 1 }}>{zh}</div>
+            <div style={{ fontSize: 8, color: B.muted, marginTop: 2 }}>{zh}</div>
           </div>
         ))}
       </div>
@@ -421,7 +431,12 @@ function PillarTable({ pillar, ratings, comments }) {
             </div>
             <div style={{ padding: "8px 10px", borderRight: `1px solid ${B.border}`, display: "flex", flexDirection: "column", justifyContent: "flex-start" }}>
               {(r !== undefined && r !== null) ? (
-                <div style={{ display: "inline-flex", alignItems: "center", gap: 5, padding: "3px 10px", background: rc.bg, borderRadius: 12, alignSelf: "flex-start" }}>
+                // lineHeight: 1 shrinks the text's line-box so the colored
+                // dot (7px circle) visually centers with the text glyphs.
+                // padding: "2px 10px" lifts the pill text up so its baseline
+                // sits at the same height as the skill name in the column to
+                // the left.
+                <div style={{ display: "inline-flex", alignItems: "center", gap: 5, padding: "2px 10px", background: rc.bg, borderRadius: 12, alignSelf: "flex-start", lineHeight: 1 }}>
                   <div style={{ width: 7, height: 7, borderRadius: "50%", background: rc.dot, flexShrink: 0 }} />
                   <span style={{ fontSize: 11, color: rc.text, fontWeight: 700, whiteSpace: "nowrap" }}>{r} – {RATING_LABELS[r]}</span>
                 </div>
@@ -440,9 +455,9 @@ function PillarTable({ pillar, ratings, comments }) {
 function CurriculumSection({ item, proficientGrade }) {
   return (
     <div style={{ background: B.white, borderRadius: 8, overflow: "hidden", border: `1px solid ${B.border}` }}>
-      <div style={{ background: item.color, color: item.headerTextColor || B.platinum, padding: "6px 14px" }}>
-        <div style={{ fontSize: 8, letterSpacing: 2, textTransform: "uppercase", opacity: 0.6, marginBottom: 1 }}>Pillar · 核心领域</div>
-        <div style={{ fontSize: 12, fontWeight: 700 }}>{item.pillar}</div>
+      <div style={{ background: item.color, color: item.headerTextColor || B.platinum, padding: "10px 16px" }}>
+        <div style={{ fontSize: 8, letterSpacing: 2, textTransform: "uppercase", opacity: 0.6, marginBottom: 2 }}>Pillar · 核心领域</div>
+        <div style={{ fontSize: 12, fontWeight: 700, lineHeight: 1.15 }}>{item.pillar}</div>
         <div style={{ fontSize: 10, opacity: 0.72, marginTop: 1 }}>{item.pillarZh}</div>
       </div>
       <div style={{ padding: "8px 14px" }}>
@@ -604,9 +619,9 @@ function PDFPage3Impl({ info, ratings, proficientGrade, studentLexile }) {
             const rc = rounded ? RATING_COLORS[rounded] : null;
             return (
               <div key={pillar.id} style={{ borderRadius: 10, overflow: "hidden", border: `1px solid ${B.border}` }}>
-                <div style={{ background: pillar.color, color: pillar.headerTextColor || B.platinum, padding: "6px 10px", textAlign: "center" }}>
-                  <div style={{ fontSize: 12, fontWeight: 700 }}>{pillar.label}</div>
-                  <div style={{ fontSize: 10, opacity: 0.72, marginTop: 1 }}>{pillar.labelZh}</div>
+                <div style={{ background: pillar.color, color: pillar.headerTextColor || B.platinum, padding: "10px 12px", textAlign: "center" }}>
+                  <div style={{ fontSize: 12, fontWeight: 700, lineHeight: 1.15 }}>{pillar.label}</div>
+                  <div style={{ fontSize: 10, opacity: 0.72, marginTop: 2 }}>{pillar.labelZh}</div>
                 </div>
                 <div style={{ background: pillar.lightColor, padding: "8px 10px", textAlign: "center" }}>
                   <div style={{ fontSize: 9, color: B.muted, marginBottom: 5, textTransform: "uppercase", letterSpacing: 1 }}>平均等级</div>
