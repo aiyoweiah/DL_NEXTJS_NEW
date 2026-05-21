@@ -8,14 +8,28 @@
 //   2. Logo import path updated to shared opsAssets.js
 // Everything else is identical to the tested standalone build.
 
-// VERSION: 3.2.1
+// VERSION: 3.2.2
 // DODO Learning — Student Baseline Report PDF Generator
+//
+// v3.2.2 — fix rating pill regression from v3.2.1:
+//   * Removed lineHeight: 1 from the pill div. With line-height collapsed
+//     to font-size, descenders (g, p, y) extended outside the colored
+//     chip background, making the pill look broken. Restored default
+//     line-height so the background fully encloses every glyph.
+//   * Restored padding to 3px 10px to give the chip its full visual
+//     height back.
+//   * Added marginTop: 1 to the dot to nudge it down so it visually
+//     centers with the text's x-height instead of the line-box center.
+//     This achieves the original alignment goal of v3.2.1 without the
+//     line-height side-effect.
+//   * Section header padding bumps from v3.2.1 retained (they were fine).
 //
 // v3.2.1 — rating pill alignment + section header breathing room:
 //   * Rating pill: lineHeight: 1 on the inner wrapper so the colored
 //     dot visually centers with the text glyphs. Pill padding 3px → 2px
 //     vertical so the pill text baseline aligns with the skill name
 //     in the column next to it.
+//     ^^ lineHeight: 1 broke descender containment; see v3.2.2.
 //   * Pillar header padding: 6px 14px → 10px 16px (more generous).
 //   * Column header padding: 4px 10px → 8px 12px.
 //   * Summary cards on page 4: 6px 10px → 10px 12px.
@@ -431,13 +445,15 @@ function PillarTable({ pillar, ratings, comments }) {
             </div>
             <div style={{ padding: "8px 10px", borderRight: `1px solid ${B.border}`, display: "flex", flexDirection: "column", justifyContent: "flex-start" }}>
               {(r !== undefined && r !== null) ? (
-                // lineHeight: 1 shrinks the text's line-box so the colored
-                // dot (7px circle) visually centers with the text glyphs.
-                // padding: "2px 10px" lifts the pill text up so its baseline
-                // sits at the same height as the skill name in the column to
-                // the left.
-                <div style={{ display: "inline-flex", alignItems: "center", gap: 5, padding: "2px 10px", background: rc.bg, borderRadius: 12, alignSelf: "flex-start", lineHeight: 1 }}>
-                  <div style={{ width: 7, height: 7, borderRadius: "50%", background: rc.dot, flexShrink: 0 }} />
+                // Default line-height kept on the pill so the colored
+                // background fully encloses descenders (g, p, y) — setting
+                // lineHeight: 1 in v3.2.1 caused text to dangle outside the
+                // chip. The 2px top padding nudges the pill text baseline
+                // closer to the skill name baseline next to it. Dot is
+                // pushed down 1px so it visually centers with the text's
+                // x-height instead of the line-box center.
+                <div style={{ display: "inline-flex", alignItems: "center", gap: 5, padding: "3px 10px", background: rc.bg, borderRadius: 12, alignSelf: "flex-start" }}>
+                  <div style={{ width: 7, height: 7, borderRadius: "50%", background: rc.dot, flexShrink: 0, marginTop: 1 }} />
                   <span style={{ fontSize: 11, color: rc.text, fontWeight: 700, whiteSpace: "nowrap" }}>{r} – {RATING_LABELS[r]}</span>
                 </div>
               ) : <span style={{ fontSize: 11, color: B.border }}>—</span>}
