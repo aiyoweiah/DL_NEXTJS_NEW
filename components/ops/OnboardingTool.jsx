@@ -1,6 +1,6 @@
 'use client';
 // components/ops/OnboardingTool.jsx
-// DODO Learning — Student Enrollment Welcome Packet PDF Generator  v2.7-ops
+// DODO Learning — Student Enrollment Welcome Packet PDF Generator  v2.8-ops
 // Migrated into /ops section: palette aligned, Hangar removed, assets from opsAssets.
 //
 // v2.7 — page 1 layout fix:
@@ -70,6 +70,24 @@ function PDFHeader() {
   );
 }
 
+function Watermark() {
+  // Faint logo behind page body — matches AgreementTool styling.
+  // pointerEvents:none keeps the mark from interfering with html2canvas.
+  return (
+    <div style={{
+      position: 'absolute',
+      left: '50%', top: '52%',
+      transform: 'translate(-50%, -50%)',
+      opacity: 0.045,
+      pointerEvents: 'none',
+      userSelect: 'none',
+      zIndex: 0,
+    }}>
+      <img src={LOGO_B64} alt="" style={{ width: 360, height: 'auto' }} />
+    </div>
+  );
+}
+
 function PDFFooter() {
   return (
     <div style={{ borderTop: `1px solid ${B.border}`, background: B.cream, padding: `8px ${PAD}px`, textAlign: 'center' }}>
@@ -84,13 +102,15 @@ function PDFFooter() {
 
 function PDFPageWelcomeImpl({ info }) {
   return (
-    <div id="pdf-welcome" style={{ width: PW, height: PH, background: B.cream, fontFamily: F, color: B.ink, boxSizing: 'border-box', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+    <div id="pdf-welcome" style={{ width: PW, height: PH, background: B.cream, fontFamily: F, color: B.ink, boxSizing: 'border-box', overflow: 'hidden', display: 'flex', flexDirection: 'column', position: 'relative' }}>
       <PDFHeader />
+      <Watermark />
       {/* Body wrapper: plain block (not nested flex column). Explicit
           width: 100% guards against the prior issue where text-only
           children were rendering at ~half the page width inside a
-          nested flex column. */}
-      <div style={{ width: '100%', flex: 1, padding: `28px ${PAD}px 12px`, boxSizing: 'border-box' }}>
+          nested flex column. position:relative + zIndex:1 layers
+          content above the watermark. */}
+      <div style={{ width: '100%', flex: 1, padding: `28px ${PAD}px 12px`, boxSizing: 'border-box', position: 'relative', zIndex: 1 }}>
 
         {/* Section label */}
         <div style={{ width: '100%', textAlign: 'center', marginBottom: 30 }}>
@@ -140,9 +160,10 @@ const PDFPageWelcome = memo(PDFPageWelcomeImpl, (a, b) => a.info.name === b.info
 
 function PDFPageInfoImpl({ info, qrImages }) {
   return (
-    <div id="pdf-info" style={{ width: PW, height: PH, background: B.cream, fontFamily: F, color: B.ink, boxSizing: 'border-box', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+    <div id="pdf-info" style={{ width: PW, height: PH, background: B.cream, fontFamily: F, color: B.ink, boxSizing: 'border-box', overflow: 'hidden', display: 'flex', flexDirection: 'column', position: 'relative' }}>
       <PDFHeader />
-      <div style={{ padding: `14px ${PAD}px 12px`, display: 'flex', flexDirection: 'column', flex: 1 }}>
+      <Watermark />
+      <div style={{ padding: `14px ${PAD}px 12px`, display: 'flex', flexDirection: 'column', flex: 1, position: 'relative', zIndex: 1 }}>
 
         {/* Student Information */}
         <div style={{ background: B.white, borderRadius: 8, padding: '14px 16px 18px', marginBottom: 14, border: `1px solid ${B.border}` }}>
@@ -333,9 +354,10 @@ function PDFPageDetailsImpl({ literacyAbout, literacyOverview, writingOverview, 
         {sections}
       </div>
       {displayGroups.map((group, pi) => (
-        <div key={pi} id={`pdf-details-${pi}`} style={{ width: PW, height: PH, background: B.cream, fontFamily: F, color: B.ink, boxSizing: 'border-box', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+        <div key={pi} id={`pdf-details-${pi}`} style={{ width: PW, height: PH, background: B.cream, fontFamily: F, color: B.ink, boxSizing: 'border-box', overflow: 'hidden', display: 'flex', flexDirection: 'column', position: 'relative' }}>
           <PDFHeader />
-          <div style={{ padding: `14px ${PAD}px 12px`, display: 'flex', flexDirection: 'column', gap: GAP, flex: 1 }}>
+          <Watermark />
+          <div style={{ padding: `14px ${PAD}px 12px`, display: 'flex', flexDirection: 'column', gap: GAP, flex: 1, position: 'relative', zIndex: 1 }}>
             {group.map(si => sections[si])}
           </div>
           <PDFFooter />
@@ -358,9 +380,10 @@ const PDFPageDetails = memo(PDFPageDetailsImpl, (a, b) =>
 
 function PDFPageTermsImpl({ schedule }) {
   return (
-    <div id="pdf-terms" style={{ width: PW, height: PH, background: B.cream, fontFamily: F, color: B.ink, boxSizing: 'border-box', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+    <div id="pdf-terms" style={{ width: PW, height: PH, background: B.cream, fontFamily: F, color: B.ink, boxSizing: 'border-box', overflow: 'hidden', display: 'flex', flexDirection: 'column', position: 'relative' }}>
       <PDFHeader />
-      <div style={{ padding: `14px ${PAD}px 12px`, flex: 1 }}>
+      <Watermark />
+      <div style={{ padding: `14px ${PAD}px 12px`, flex: 1, position: 'relative', zIndex: 1 }}>
 
         {/* Lesson Schedule */}
         <div style={{ background: B.white, borderRadius: 8, padding: '12px 14px 14px', marginBottom: 10, border: `1px solid ${B.border}` }}>

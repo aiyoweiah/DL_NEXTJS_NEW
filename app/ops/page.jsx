@@ -40,7 +40,7 @@ const TOOLS = [
   {
     href:    '/ops/onboarding',
     label:   'Student Enrollment Welcome Packet',
-    version: 'v2.7',
+    version: 'v2.8',
     desc:    'Generate the 4-page enrollment welcome packet: welcome letter, student info + QR codes, curriculum overview + Navigator intro, and terms page.',
     accent:  B.softGreen,
     status:  'live',
