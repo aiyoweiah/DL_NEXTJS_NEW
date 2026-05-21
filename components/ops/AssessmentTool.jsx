@@ -8,8 +8,19 @@
 //   2. Logo import path updated to shared opsAssets.js
 // Everything else is identical to the tested standalone build.
 
-// VERSION: 3.4.0
+// VERSION: 3.4.1
 // DODO Learning — Student Baseline Report PDF Generator
+//
+// v3.4.1 — drop the rating chip frame entirely. Ratings are now plain
+// colored text on white. The white-bg + colored border chip from v3.4.0
+// was visually indistinguishable from a borderless colored text element
+// in the rasterized output — same color, same readability, just an
+// extra rounded box. Removing it commits the design fully to "color
+// carries identity, no frames":
+//   * PillarTable rating: plain 11px colored text, bold (no frame)
+//   * Summary card rating: 18px colored text, bold (no frame). Bigger
+//     than the PillarTable rating because it's the data focal point
+//     of the Summary card body.
 //
 // v3.4.0 — design rule established: white surfaces, color as accent only.
 // All pillar.lightColor / item.lightColor BACKGROUNDS removed from the
@@ -514,19 +525,13 @@ function PillarTable({ pillar, ratings, comments }) {
             </div>
             <div style={{ padding: "8px 10px", borderRight: `1px solid ${B.border}`, display: "flex", flexDirection: "column", justifyContent: "flex-start" }}>
               {(r !== undefined && r !== null) ? (
-                // White chip + colored text + colored 1.5px border.
-                // Identical pattern to the Summary card pills on page 4.
-                // Replaces the rc.bg tinted background (which clashed
-                // with the pillar.lightColor row tint we just removed).
+                // Plain colored text, no chip frame. Color carries the
+                // rating tier identity; the outline that was here in
+                // v3.4.0 was redundant decoration.
                 <div style={{
-                  display: "inline-block",
-                  padding: "3px 12px",
-                  background: B.white,
-                  color: rc.text,
-                  border: `1.5px solid ${rc.text}`,
-                  borderRadius: 12,
                   fontSize: 11,
                   fontWeight: 700,
+                  color: rc.text,
                   whiteSpace: "nowrap",
                   alignSelf: "flex-start",
                 }}>
@@ -745,25 +750,21 @@ function PDFPage3Impl({ info, ratings, proficientGrade, studentLexile }) {
                   <div style={{ fontSize: 12, fontWeight: 700, lineHeight: 1.15 }}>{pillar.label}</div>
                   <div style={{ fontSize: 10, opacity: 0.72, marginTop: 2 }}>{pillar.labelZh}</div>
                 </div>
-                {/* Body: white surface (was pillar.lightColor). The colored
-                    pillar header strip + the colored chip border give all the
-                    pillar identity that's needed; body tint added noise. */}
-                <div style={{ background: B.white, padding: "18px 10px", textAlign: "center" }}>
+                {/* Body: white surface, rating as plain colored text — no
+                    chip frame. Bigger font size makes it the data focal
+                    point of the card. */}
+                <div style={{ background: B.white, padding: "22px 10px", textAlign: "center" }}>
                   {rounded ? (
                     <div style={{
-                      display: "inline-block",
-                      padding: "5px 16px",
-                      background: B.white,
                       color: rc.text,
-                      border: `1.5px solid ${rc.text}`,
-                      borderRadius: 16,
-                      fontSize: 13,
+                      fontSize: 18,
                       fontWeight: 700,
+                      letterSpacing: 0.3,
                     }}>
                       {rounded} – {RATING_LABELS[rounded]}
                     </div>
                   ) : (
-                    <div style={{ color: B.muted, fontSize: 12, fontStyle: "italic" }}>暂未评估</div>
+                    <div style={{ color: B.muted, fontSize: 13, fontStyle: "italic" }}>暂未评估</div>
                   )}
                 </div>
               </div>
