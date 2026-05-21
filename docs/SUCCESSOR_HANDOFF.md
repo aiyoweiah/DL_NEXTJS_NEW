@@ -1,10 +1,60 @@
 # DODO Learning — Successor Handoff
 
 **Authored:** 2026-05-17 (end of session)
+**Last updated:** 2026-05-21 — see "Recent decisions log" below for the changes since the original authoring.
 **Repo:** `aiyoweiah/DL_NEXTJS_NEW` · deploys to dodolearning.com (Cloudflare Pages) + dodoletterhouse.com (Vercel) from the same `main` branch
-**Status:** Bilingual site fully shipped. Content + architecture work complete. Tier 2/3 SEO+GEO + business decisions pending.
+**Status:** Bilingual site fully shipped. Home + /program rewritten through granular review. Tier 2/3 SEO+GEO + business decisions pending.
 
-This doc is **your entry point if you're picking up this work cold.** Read this first. Then `docs/workflow.md` for the longer-running SEO+GEO context.
+This doc is **your entry point if you're picking up this work cold.** Read this first. Then:
+1. `docs/content-style-decisions.md` — **active style decisions log** (date-stamped, append-only). The most recent voice / vocabulary / architectural decisions live here before they roll into the brand guide.
+2. `docs/workflow.md` Open Decisions table — the running list of pending items.
+3. `translation/BRAND_CONTENT_GUIDE.md` — the locked brand truth for content surfaces.
+
+---
+
+## Recent decisions log — 2026-05-21 (post-original-handoff)
+
+These are the changes since 2026-05-17. Full detail in `docs/content-style-decisions.md` (D1–D9) and `docs/workflow.md` Open Decisions #13–#18.
+
+### Brand-level pivots
+- **D1 · LCS surfaces as the named methodology** on dodolearning.com. **The Loop** is preserved as the per-session phrase (`Read → Think → Speak → Write`) inside body copy. Never use "The Loop" as a section header or pillar heading on brand surfaces. Internal Navigator materials may still use "The Loop" as the methodology label.
+- **D2 · MCT direct naming permitted in the Write step.** Permitted phrasing: *"the MCT writing arc: Grammar → sentence → paragraph → essay → academic composition"*. Soft-distancing rules still apply elsewhere.
+- **D8 · Lexile canon updated** to *"one grade level over two 16-week cycles"* (supersedes prior `187 points / 1.2 grade levels / 16 weeks`). Per-cycle Lexile gains in the 100L–150L range.
+- **D9 · ZH 6+1 trait canon updated** to `思考、结构、声音、用词、流畅、规范、呈现` (replacing `想法、结构、声音、用词、句子流畅度、规范性、呈现`). Cascaded across all surfaces. **Note: 思考 now overlaps with The Loop's step-2 label — accepted trade-off.**
+- **Audience pivot to global positioning (workflow #16)** — brand guide §04 broadened from "Chinese immigrant parents in NA" → "globally-mobile families". Applied to `/program`, `/about`, `/home` PhotoIntro body0, `/compare`, `llms.txt` + `llms-full.txt`. FAQ city coverage answers + bilingual cognitive-system references kept as authentic operational/factual content.
+- **Session length canon** — now "up to 50 minutes, minimum once per week" (was "90 minutes, once per week"). Applied across /program and `llms-full.txt`.
+
+### Voice / style additions
+- **D4 · Six ZH-specific voice patterns** added to brand guide §08:
+  1. Positioning over poetic abstraction in headlines
+  2. Two-sentence punch openers
+  3. Avoid combat metaphors (捍卫 → 表达并支持)
+  4. Four-character idiomatic frames (`高频低压`)
+  5. Drop reassurance tails (`而不是猜测` / `我们承诺`)
+  6. Use `外教` only as contrast term, never DODO self-positioning
+- **D6 · "Enjoy the arts of language / 培养学生享受文学艺术的能力"** — humanistic positioning that pairs with cognitive-rigor language. Used as section H2 on home Parent-Trust section. Candidate 4th brand truth to track.
+- **D5 · Testimonial style** — First-name + last-initial format (Vincent X · Juliette W · River C); primary city pool now Vancouver / Calgary / Toronto / Montreal / Bay Area / **Denver** (Markham retired from primary pool).
+- **D7 · Specific book titles in Read step** — name SAT-must-read classics (Alice in Wonderland, The Invisible Man, The War of the Worlds) over generic descriptors. /program Read step now references the Mud Trilogy *The Red Tide* novel.
+
+### Surface changes
+- **Home page migrated** out of inline `HOMEPAGE_COPY` in `app/[locale]/page.tsx` into `home` exports in `content/marketing.{en,zh}.js`. **Now 10 marketing pages**, not 9. Audit script covers home.
+- **/program review applied (Q1–Q8)**:
+  - §6 Session section rewritten as observer POV (no marketing voice). Scene from Phase 2 Lesson 04 of Mud Trilogy curriculum. Real Visible Thinking routine "What Makes You Say That?" enacted in dialogue. Anchored in actual lesson guide content from `DLCW/projects/lit_L1_MudTrilogy/outputs/phase2`.
+  - Pricing hidden on §5 combinations cards via JSX conditional `{item.price && false && (...)}`. Data preserved for re-enable. Pricing facts still in `faq.js #enrollment`.
+  - Type A/B caption removed from /program §2 (`loop.typeAB: ''`). **Workflow #18 deferred** — port to /methodology when that page is reviewed.
+  - LCS-forward methodology naming, MCT writing arc, Latin/Greek root references, session-length canon.
+- **llms.txt + llms-full.txt** refreshed — lead blockquote globalized; Lexile canon; LCS-forward; Speak step "a better question" → "a more thought-provoking question"; cities pool updated (Montreal + Denver added).
+
+### New tooling
+- **`scripts/content-audit.mjs`** — EN/ZH parity + anti-dictionary scan across all content surfaces. Run via `node scripts/content-audit.mjs`. Run after any content change.
+- **`docs/content-style-decisions.md`** — date-stamped active style-decisions log. Append decisions here as they emerge; promote to brand guide once stable.
+- **`content-review/` folder** — page-by-page review artifacts. Each page review produces a content dump (`NN-page-content-dump.md`) + an applied-state record (`NN-page.md`). Pattern: user marks up the dump → "apply review" → I apply marks to source and refresh dump.
+- **`.claude/skills/dodo-content-writer/SKILL.md`** — 6 new lint rules added (Loop/LCS surface check · ZH combat-metaphor · EN abstract-evaluative · ZH reassurance-tail · placeholder name · primary-city-pool).
+
+### Recent commits
+- `24dc688` — home + program review · LCS-forward methodology · 6+1 ZH canon cascade (2026-05-21)
+- `fe4fe84` — /program review Q1-Q8 + global positioning cascade
+- `6ced09c` — /program §6 session narrative as observer POV (anchored in Mud Trilogy Lesson 04)
 
 ---
 
@@ -28,14 +78,18 @@ Build verifies clean. Site is in known-good state.
 
 ```
 content/
-  marketing.en.js   ← 9 marketing pages, EN. One named export per page.
-  marketing.zh.js   ← Same 9 exports, ZH.
+  marketing.en.js   ← 10 marketing pages, EN. One named export per page.
+                     home / program / about / consult / compare /
+                     methodology / lexile / results / navigators / demos
+  marketing.zh.js   ← Same 10 exports, ZH.
   faq.js            ← Bilingual nested. faq.{sections,ui,categories}.{en,zh}.
   cities.js         ← Bilingual nested. 6 cities + citiesUi/citiesProofStats/citiesLoopSteps/citiesPhases.
   en/blog/          ← MDX articles, per-article EN
   zh/blog/          ← MDX articles, per-article ZH
   en/audiobooks/    ← Markdown, EN-only by design
 ```
+
+**Home was migrated 2026-05-21** from inline `HOMEPAGE_COPY` in `app/[locale]/page.tsx` to `marketing.{en,zh}.js` `home` export. `page.tsx` now imports `home as homeEn` / `home as homeZh` and wires them into a 5-line locale switch.
 
 ### Page imports look like this
 
@@ -70,24 +124,33 @@ The non-negotiables, in 30 seconds:
 |---|---|
 | **Tagline** | `Think Once. In Both Languages.` · ZH: `语言的根，长在阅读里` · Never "Think Twice" (typo) |
 | **First mention** | `DODO Learning / 都学书院` (both); subsequent mentions either is fine |
-| **The Loop** | Always `Read → Think → Speak → Write`, exact phrase, exact order |
+| **LCS = named system; The Loop = per-session phrase** *(updated 2026-05-21)* | On brand surfaces, "The LCS System" / "LCS 教学理念" is the methodology name in headers / pillar headings. "The Loop" (`Read → Think → Speak → Write`) lives inside body copy as the per-session phrase. Never use "The Loop" as a section header on dodolearning.com. |
 | **Navigators** | Never teachers/tutors/instructors/老师/辅导老师 |
 | **English Thinker** | Current owned identity term. `Bilingual Thinker` / `双语思维者` / `双语学习者` are **retired** |
 | **The Hangar** | Retired 2026-04. Strip on sight. |
-| **Frameworks** | MCT with distancing language ("grounded in" / "aligned with"). Harvard Project Zero nameable in body, never name specific routines in hero/image copy. |
-| **Lexile** | Always cite a specific number ("620 to 820 in 16 weeks") |
+| **MCT** | Soft-distancing in most contexts ("grounded in" / "aligned with"). **Direct naming permitted in the Write step** *(updated 2026-05-21)*: "the MCT writing arc: Grammar → sentence → paragraph → essay → academic composition". |
+| **Harvard Project Zero** | Nameable in body, never name specific routines in hero/image copy. *(In observer-POV body narrative — e.g., /program §6 session — the routine can be enacted; just don't slogan-brand it in hero or image overlays.)* |
+| **Lexile canon** *(updated 2026-05-21)* | "One grade level over two 16-week cycles" — per-cycle Lexile gains in the 100L–150L range. Old "187 points / 1.2 grade levels / 16 weeks" superseded. |
+| **6+1 Trait ZH canon** *(updated 2026-05-21)* | `思考、结构、声音、用词、流畅、规范、呈现` (replacing old `想法、句子流畅度、规范性`). 思考 overlaps with Loop step 2 — accepted trade-off. |
+| **Audience** *(updated 2026-05-21)* | Globally-mobile families on positioning surfaces (`/program`, `/about`, home hero, `/compare`, `llms.txt`). Chinese-diaspora references preserved where authentically operational (FAQ city coverage, bilingual cognitive-system references). |
 | **Founding Family Program** | Positioning signal, never discount/limited-time |
 | **English mastery → bilingual depth** | In that order. Never reverse. |
+| **"Arts of language"** *(new 2026-05-21)* | The humanistic positioning that pairs with cognitive-rigor: "Enabling students to enjoy the arts of language / 培养学生享受文学艺术的能力". Used as section H2 on home Parent-Trust section. |
 
 **Anti-dictionary** (must NOT appear in content, per §10): EN — `tutoring`, `ESL` (in DODO description), `catch up`, `Charter Enrollment`, `affordable`, `Think Twice`. ZH — `补习班`, `干预`, `综上所述`, `毋庸置疑`, `由此可见`, `追赶`, `双语思维者`, `双语学习者`, `母语老师`.
 
-**Owned vocabulary table** is in §09 of the brand guide. New terms locked this session and now in `dodo-glossary.json`: LCS, Summit, Core, Flex 1-3, Literacy/Writing Session, Visible Thinking, Janet Sui, Ms. Jennifer / Willow / Sarah, MCT components.
+**ZH-specific lints added 2026-05-21** (per §08 ZH voice patterns + dodo-content-writer skill):
+- Combat metaphors: `捍卫`, `战胜`, `搏斗`, `较量`, `攻克` → replace with collaborative/depth verbs (`表达并支持`, `更深入`, `引导`)
+- Reassurance tails: `而不是猜测`, `我们说的每一个主张，都有数据支撑`, `我们承诺`, `我们保证` → prune
+- `外教` allowed ONLY as contrast term ("外教不代表会教") — never DODO self-positioning
+
+**Owned vocabulary table** is in §09 of the brand guide. Terms now in `dodo-glossary.json`: LCS, Summit, Core, Flex 1-3, Literacy/Writing Session, Visible Thinking, Janet Sui, Ms. Jennifer / Willow / Sarah, MCT components. **Added 2026-05-21**: `外教` (ZH contrast term), `高频低压` (4-char frame), "Enabling students to enjoy the arts of language" (humanistic positioning).
 
 ---
 
 ## 3. Product taxonomy (locked 2026-05-17)
 
-The site presents the **LCS + 9 Levels + 5 Combinations** architecture from brand guide §06. Pricing on `/program` and `/faq`:
+The site presents the **LCS + 9 Levels + 5 Combinations** architecture from brand guide §06. Pricing canonical:
 
 | Tier | Format | 16-week | Weekly |
 |---|---|---|---|
@@ -96,6 +159,10 @@ The site presents the **LCS + 9 Levels + 5 Combinations** architecture from bran
 | **Flex 1** 文学阅读自由航行 | 2× literature | $1,185 | $74 |
 | **Flex 2** 大师写作自由航行 | 2× writing | $2,110 | $132 |
 | **Flex 3** GPA管理自由航行 | 1× GPA tutoring | from $750 | ~$47 |
+
+**Pricing display surfaces** (updated 2026-05-21):
+- **`/program` combinations cards** — **prices HIDDEN** via JSX conditional `{item.price && false && (...)}` in `app/[locale]/program/page.jsx`. Item.price data preserved in `marketing.{en,zh}.js`. Future re-enable: delete the `&& false` in the JSX. Note + faqLink rewritten to point at FAQ for pricing.
+- **`/faq` `#enrollment` section** — full pricing matrix. **Primary public source of pricing facts.** Verify accuracy before any pricing-related question (workflow #17).
 
 Old "Full Program / Literacy Foundation" naming is retired site-wide. If you find any old references, replace with the new taxonomy.
 
@@ -141,20 +208,25 @@ Only re-fetch mid-session for one reason: before a `git push`. Otherwise trust t
 
 | Path | What it is |
 |---|---|
-| `translation/BRAND_CONTENT_GUIDE.md` | **Master brand + content guide (v4.1)**. Read first for any content work. Also `.docx` for sharing. |
-| `translation/DEEPSEEK_BRIEF.md` | DeepSeek translation brief (v1.1). Standing context for every translation session. |
-| `translation/dodo-glossary.json` | Canonical EN ↔ ZH term map. Updated this session with LCS / Summit-Core-Flex / Janet Sui / etc. |
-| `translation/deepseek-handoff-2026-05-17/` | Last DeepSeek round-trip staging folder + README with prompt template. |
-| `content/marketing.{en,zh}.js` | 9 marketing pages, one named export per page |
+| `translation/BRAND_CONTENT_GUIDE.md` | **Master brand + content guide (v4.1)**. Read first for any content work. Sections updated 2026-05-21: §04 audience pivot, §06 LCS/Loop convention, §07 MCT writing arc, §08 ZH voice patterns table, §09 owned vocab additions, §11 Lexile canon + testimonial style, §12 home row updates. Also `.docx` for sharing. |
+| `translation/DEEPSEEK_BRIEF.md` | DeepSeek translation brief (v1.1). Standing context for every translation session. 6+1 ZH canon updated 2026-05-21. |
+| `translation/dodo-glossary.json` | Canonical EN ↔ ZH term map. Updated 2026-05-21 with new 6+1 trait canon (`思考、结构、声音、用词、流畅、规范、呈现`). |
+| `translation/deepseek-handoff-2026-05-17/` | Last DeepSeek round-trip staging folder + README with prompt template. **Frozen — do not edit. Copy to new dated folder for next round-trip.** |
+| `content/marketing.{en,zh}.js` | **10 marketing pages**, one named export per page (home, program, about, consult, compare, methodology, lexile, results, navigators, demos) |
 | `content/faq.js` | 50 Q&As + UI + categories, bilingual nested |
 | `content/cities.js` | 6 cities + shared chrome, bilingual nested |
-| `public/llms.txt` / `llms-full.txt` | GEO surfaces for LLM citation. EN-only. Rewrite when site voice changes. |
+| `public/llms.txt` / `llms-full.txt` | GEO surfaces for LLM citation. EN-only. Refreshed 2026-05-21 (LCS-forward + global positioning + new Lexile canon). |
 | `lib/schema.js` | JSON-LD schemas (EducationalOrganization, WebSite, FAQPage, courseSchema, citySchema). |
 | `lib/i18n.js` | Locale primitives only (LOCALES, isValidLocale, toggleLocale, localeParams). `getContent` removed 2026-05-17. |
+| `app/[locale]/page.tsx` | Home page. Imports `home` from `marketing.{en,zh}.js`. Old inline `HOMEPAGE_COPY` retired 2026-05-21. |
+| `app/[locale]/program/page.jsx` | /program page. `TRAITS` array (6+1 ZH labels) and `LEXILE_SCALE` array live here as page-specific static data. Combinations card price hidden via `{item.price && false && (...)}` conditional. |
 | `components/faq/FAQClient.jsx` | Pure renderer + markdown-lite parser. Imports `faq` from content/faq.js directly. |
-| `docs/workflow.md` | SEO+GEO running doc — Open Decisions, session log, Tier 1-3 plan. |
+| `docs/workflow.md` | SEO+GEO running doc — Open Decisions (#1–#18), session log, Tier 1-3 plan. |
+| `docs/content-style-decisions.md` | **NEW 2026-05-21.** Date-stamped active style-decisions log. D1–D9 captured to date. Promote to brand guide when stable. |
 | `docs/llm-citations/` | Monthly citation tracker. Same 8 prompts × 4 LLMs (TBD prompts in decision #5). |
-| `.claude/skills/dodo-content-writer/` | Project-local skill for DODO content tasks. |
+| `content-review/` | **NEW 2026-05-21.** Page-by-page review artifacts: `01-home.md` + `01-home-content-dump.md` (home), `02-program.md` + `02-program-content-dump.md` (/program). Pattern: user marks up the dump → "apply review" → applied state recorded in the sibling .md. |
+| `scripts/content-audit.mjs` | **NEW 2026-05-21.** EN/ZH parity + anti-dictionary scan across `marketing.{en,zh}.js`, `faq.js`, `cities.js`, `public/llms*.txt`. Run `node scripts/content-audit.mjs` after any content change. Expects clean output (0 parity gaps; 19 baseline strategic-ESL contrast hits are pre-existing, not regressions). |
+| `.claude/skills/dodo-content-writer/` | Project-local skill for DODO content tasks. Lint rules expanded 2026-05-21 with Loop/LCS · ZH combat-metaphor · EN abstract-evaluative · ZH reassurance-tail · placeholder-name · primary-city-pool checks. |
 
 ---
 
@@ -170,6 +242,9 @@ Only re-fetch mid-session for one reason: before a `git push`. Otherwise trust t
 - **#9** Social profile URLs for `sameAs` schema
 - **#10/11** Cities expansion strategy (18 cities in `areaServed`, 6 have dedicated pages, 12 don't)
 - **#12** YouTube video IDs for `/demos` (`YOUTUBE_IDS` const has placeholders)
+- **#15** Home hero `consultHook` not visible on live site (reported 2026-05-21) — verify post-deploy of `24dc688`/`fe4fe84`/`6ced09c`. Likely was just deploy lag; if still missing → contrast or `overflow-hidden` clipping diagnosis steps in workflow.md.
+- **#17** Verify FAQ pricing is current (Summit $2,830 · Core $2,250 · Flex 1 $1,185 · Flex 2 $2,110 · Flex 3 from $750). Pricing now hidden on /program (workflow #17), so /faq is the only public surface.
+- **#18** Type A/B caption needs to land on /methodology — caption was cleared from /program (`loop.typeAB: ''`) and needs to live in `methodology` export of `marketing.{en,zh}.js`. **Apply during /methodology page review** (deferred per user 2026-05-21).
 
 ### Tier 2 work items (from workflow.md, not yet done)
 
@@ -241,5 +316,28 @@ Then visit `/en/program`, `/zh/program`, `/en/faq`, `/zh/faq` locally (`npm run 
 - Translation questions → `DEEPSEEK_BRIEF.md` + `dodo-glossary.json`.
 - Decision blockers → `docs/workflow.md` Open Decisions.
 - SEO/GEO strategy → `docs/workflow.md` Tier 1/2/3 plan.
+- Recent voice / vocab decisions → `docs/content-style-decisions.md`.
+
+---
+
+## 13. Page-by-page review pattern (NEW 2026-05-21)
+
+When the user wants to deeply review a page (versus apply a small spot-fix), use this rhythm:
+
+1. **Generate a content dump**: dump all visible strings of the page into `content-review/NN-<page>-content-dump.md`, organized by section (`§0` SEO meta → `§N` final section) with EN ↔ ZH paired and labeled by element type (eyebrow / H1 / sub / CTA / body / etc.). Pull the data from the source file (`marketing.{en,zh}.js` or wherever the page imports its copy) — not from rendered HTML.
+2. **User marks up the dump** — strikethroughs, replacement text inline below original, "keep" markers, comments.
+3. **You read the marked-up dump** and produce a catalogue of changes needing approval. Surface judgment calls (factual shifts, brand-architecture changes, removals) as Q1, Q2, ... with options + recommendations.
+4. **User answers Qs.** Apply all decisions, plus typo fixes and pure style edits inline.
+5. **Re-run audit** (`node scripts/content-audit.mjs`). Verify 0 parity gaps + same baseline anti-dictionary hits.
+6. **Refresh the dump** with the post-applied state for the next round if needed.
+7. **Record applied state** in sibling file `content-review/NN-<page>.md` — what was applied, what's pending, links to relevant brand-guide / workflow entries.
+8. **Promote any emergent style decisions** to `docs/content-style-decisions.md` (D-numbered) and update brand guide sections if stable.
+9. **Commit + push** with a descriptive message that links source files + brand-guide sections updated.
+
+Pages completed via this pattern as of 2026-05-21: `/` (home) Round 1+2, `/program` Round 1+2 (F1–F7 + Q1–Q8 + session rewrite).
+
+Pages remaining in §12 priority order: `/about` → `/methodology` (apply workflow #18 Type A/B port here) → `/results` → `/faq` audit → `/compare` voice pass → `/lexile` AEO snippet → `/navigators` → `/consult`.
+
+---
 
 Good luck.

@@ -82,3 +82,49 @@ For each decision above, ask: has this stabilized across 2+ surface reviews? If 
 - **Em-dash style in ZH** — `——` (double em-dash, no space) vs `— ` (single em-dash + space). User edit on §5.6 mixed both. Worth a style call after 1–2 more page reviews.
 - **"Improvements" vs "Results"** in soft CTAs — pattern emerging; need a second data point before codifying.
 - **"高阶课程" phrasing** — user introduced it once. May be a candidate owned ZH phrase if it recurs.
+
+---
+
+## 2026-05-21 (later) · /program review Round 2 + audience pivot
+
+### D10 · Audience pivot to global positioning (Q1)
+- **Decision:** Drop "Chinese immigrant families in Canada and the US" framing from positioning surfaces. Use "globally-mobile families" / "面向全球家庭" on `/program`, `/about`, home PhotoIntro body0, `/compare`, and `llms.txt` lead blockquote. Preserve Chinese-diaspora references where authentically operational (FAQ city coverage, bilingual cognitive-system descriptions).
+- **Overrides:** Prior brand guide §04 NA-Chinese-immigrant scoping.
+- **Where it lives now:** `BRAND_CONTENT_GUIDE.md` §04 dual-market block; cascaded across `/program`, `/about`, `/home`, `/compare`, llms files. Workflow #16 marked done.
+- **Trigger:** User Q1 answer "Option B full calibration" during /program review.
+- **Watch:** Core market remains Chinese diaspora (90%+ of current cohort). Voice and product language untouched — only surface positioning broadened. If future cohort data shifts substantially, re-evaluate §04.
+
+### D11 · Canonical session length updated (Q2)
+- **Decision:** "Sessions run up to 50 minutes, minimum once per week" (replaces "90 minutes, once per week"). Aligns with the variable-intensity Summit/Core/Flex combinations.
+- **Where it lives now:** `marketing.{en,zh}.js` /program §3 Journey · `llms-full.txt` What DODO Is section · brand guide §05 implied via combination cadence.
+- **Trigger:** User Q2 confirmation during /program review.
+
+### D12 · Loop/LCS asymmetry permitted in EN/ZH within the same section (Q3 answer A)
+- **Decision:** When EN and ZH copy in the same element describe per-session work, the choice between naming "The LCS" (architecture) or "The Loop" (per-session phrase) can be made independently per locale. Example: /program §3.4 EN says "works through The LCS" while ZH says "操练 The Loop" — both pass.
+- **Reasoning:** ZH carries more rhythmic / per-session emotional weight via "操练 The Loop". EN reads cleaner with "The LCS". Both honor the brand-architecture distinction.
+- **Where it lives now:** `marketing.{en,zh}.js` /program §3.4 · noted in `02-program-content-dump.md`.
+- **Trigger:** User Q3 explicit answer A.
+
+### D13 · Pricing display: hidden on /program, surfaced on /faq (Q7)
+- **Decision:** Combination card price field hidden on /program via JSX conditional `{item.price && false && (...)}`. Item.price data preserved. Pricing facts live on `/faq#enrollment` as the only public source. Combinations `note` rewritten to remove "Pricing per 16-week cycle" framing and instead direct to FAQ.
+- **Overrides:** Brand guide §12 /program "must include · pricing" — pricing is now via FAQ link, not directly displayed.
+- **Where it lives now:** `app/[locale]/program/page.jsx` CombinationsSection · `marketing.{en,zh}.js` /program note. Workflow #17 marks "verify FAQ pricing current" as pending.
+- **Trigger:** User Q7 answer A.
+- **Future re-enable:** Delete `&& false` in the JSX conditional.
+
+### D14 · Type A/B caption moved to /methodology (Q6 — deferred)
+- **Decision:** Type A (Literacy Session) / Type B (Writing Session) caption removed from /program §2 (`loop.typeAB: ''` both locales). Content moves to /methodology when that page is reviewed. **Apply during /methodology review** — workflow #18 logged as deferred.
+- **Where it lives now:** Cleared from `marketing.{en,zh}.js` /program loop.typeAB · workflow #18 pending · brand guide §05 still has the Type A/B definition (untouched).
+- **Trigger:** User Q6 answer B.
+
+### D15 · Observer-POV session pattern (Q8)
+- **Decision:** "Real session" sections on conversion pages are written as third-person observer POV from an actual DLCW curriculum lesson. No marketing voice ("we build", "where confidence is built"), no timing notations, no slogan-branded Visible Thinking routine names. Real characters, real source quotes, cognitive discovery in the student's voice. First reference implementation: `/program §6` = Mud Trilogy Phase 2 Lesson 04 "The Red Tide" Ch. 4.
+- **Where it lives now:** New brand guide section **§12a · The observer-POV session pattern**. Reference implementation at `marketing.{en,zh}.js` `program.session` (commit `6ced09c`). Reusable for /methodology, /about, /results when those surfaces want a "what does a real session look like" element.
+- **Trigger:** User rejected the marketing-voice and gimmicky drafts; provided source curriculum path for grounding.
+
+### Observations promoted to decisions
+- **Pronoun disambiguation** in narrative scenes — when same-gender Navigator and student both appear, use explicit subjects ("Ms. Jennifer", "the student") for the subject who'd otherwise pronoun-collide. Applied in /program §6 EN+ZH. Now part of §12a observer-POV pattern.
+
+### Still-open observations
+- **EN/ZH semantic asymmetry tolerance** — D12 explicitly permits within one element; broader tolerance (sections deliberately diverging in their POV) hasn't been tested. Watch as more pages get reviewed.
+- **Lexile data display strategy** — `/program` §6 dropped Lexile from the q1 dialogue. Whether this generalizes (Lexile signals stay in section chips + ProofStrip stats, not in narrative dialogue) needs another page test.

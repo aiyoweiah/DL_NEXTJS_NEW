@@ -4,6 +4,8 @@
 Distilled from Master Brand Guide v3.1 (Apr 2026) + DLCW curriculum sources. Working copy for site rewrite + DeepSeek ZH handoff.
 **Every section answers _"what do I do on a content surface?"_**
 
+> **Active decisions log:** Date-stamped overrides and additions since 2026-05-16 are tracked in `docs/content-style-decisions.md`. When a decision stabilizes, it's promoted into the relevant section below with an explicit `2026-MM-DD admin override` note. Read both this guide AND the active-decisions log before any major content work — recent decisions may not yet be reflected in the locked sections.
+
 ---
 
 ## 00 · Identity
@@ -312,7 +314,7 @@ Quick anchors when rewriting each surface. Specifics on tone, must-include eleme
 | Page | Conversion goal | Must include | Hero cap | Tone weight |
 |---|---|---|---|---|
 | `/` (home) | Move to /consult or /program | Tagline · one Lexile number · "English Thinker" frame · **LCS named in methodology section header** · one specific book title in Read step · one MCT-framework reference · "Enjoy the arts of language" humanistic frame in trust section | H1 ≤ 12 words (EN) / H1 = brand sub-tagline (ZH) · sub ≤ 28 | Future-focused 50% · Confident 30% · Warm 20% |
-| `/program` | Move to /consult | Loop · LCS · cycle vs level explained · assessment cadence · combination chooser (Summit/Core/Flex) · pricing | H1 ≤ 12 · sub ≤ 30 | Precise 40% · Confident 40% · Warm 20% |
+| `/program` | Move to /consult | **LCS as named methodology header** · Loop as per-session phrase in body · cycle vs level explained · assessment cadence (Week 0 · Week 8 · Week 16) · combination chooser (Summit/Core/Flex) · **observer-POV session narrative from a real curriculum lesson** (see §12a) · pricing facts via FAQ link (combination cards hidden as of 2026-05-21 Q7) | H1 ≤ 12 · sub ≤ 30 | Precise 40% · Confident 40% · Warm 20% |
 | `/methodology` | Build credibility, send to /program | MCT + Project Zero + Lexile + 6+1 named once · Loop in 4 phases · GEO-ready 40–80-word definitions at top | H1 ≤ 14 · sub ≤ 30 | Confident 50% · Precise 50% |
 | `/results` | Lower buying anxiety | Real Lexile deltas · anonymised case studies · 6+1 Trait scores · methodology link · anchor case study | H1 ≤ 10 · sub ≤ 24 | Precise 60% · Warm 40% |
 | `/consult` | Form submission | "Diagnostic, not sales" · 20 min · 4 phases of the call · "honest fit assessment" | H1 ≤ 12 · sub ≤ 28 | Warm 50% · Confident 30% · Precise 20% |
@@ -323,7 +325,45 @@ Quick anchors when rewriting each surface. Specifics on tone, must-include eleme
 | `/faq` | Self-service answers + GEO | 50 Q&As, each readable in isolation (council requirement) · pricing facts · LCS/Levels/Combinations explained at the top | — | Precise 50% · Warm 30% · Confident 20% |
 | `/cities/[city]` | Verification post-referral | Local context · cohort cadence · Loop summary · local outcome anchor | H1 ≤ 14 · sub ≤ 30 | Warm 50% · Precise 30% · Confident 20% |
 | `/enroll` *(pending)* | Conversion | Pricing matrix (Summit/Core/Flex) · Founding Family Program · diagnostic-first language | H1 ≤ 10 · sub ≤ 24 | Confident 60% · Precise 40% |
-| `llms.txt` / `llms-full.txt` | Be cited by LLMs | Tagline · what we are · what we are not · The Loop · LCS · frameworks · 1.2-grade-level claim · MCT credit | — | Precise 100% |
+| `llms.txt` / `llms-full.txt` | Be cited by LLMs | Tagline · what we are · what we are not · The Loop · LCS as named system · frameworks · "one grade level over two 16-week cycles" canon · MCT credit · MCT writing arc · globally-mobile family positioning | — | Precise 100% |
+
+---
+
+## 12a · The observer-POV session pattern (added 2026-05-21)
+
+Reusable convention for any "what does a real session look like?" surface. First deployed on `/program` §6 (Mud Trilogy Lesson 04 "The Red Tide" Ch. 4).
+
+**What it is:** A documentary-style scene from an actual DLCW curriculum lesson, written in third-person observer POV. The reader is watching the lesson unfold, not being marketed to.
+
+**Source of truth:** `C:\Users\hsink\Documents\DLCW\projects\<unit>\outputs\phase<N>\lesson_<NN>` — pull real lesson facts (book, chapter, page range, Visible Thinking routine, vocabulary unit, workshop pivot, write-back assignment). **Never invent curriculum content.**
+
+**Structural shape (mirrors `session` object in `marketing.{en,zh}.js`):**
+
+| Field | Purpose | Voice |
+|---|---|---|
+| `sessionPhase` chip | Small label under navigator avatar; identifies the lesson context (book + chapter) | Concise — e.g., `The Red Tide · Ch. 4` |
+| `eyebrow` + `h2` | Section frame | Plain — `A Real Session` / `A real session.` |
+| `p1` + `q1` | Opening scene + Navigator's first quoted line | Observer narration + Navigator dialogue |
+| `p2` | Mid-scene: a Visible Thinking routine is enacted (not named) — second-pass question, student goes back into the text | Observer narration with embedded student/Navigator dialogue |
+| `p3` | Later in the lesson: a concept clicks — the student discovers a reasoning move in their own voice ("Wait — that's what X did. In reverse.") | Observer narration; the cognitive payoff is reached by the student, not delivered by the Navigator |
+| `p4` | Workshop pivot — a craft moment from MCT (poetry / etymology / grammar) anchored to real source material | Observer narration |
+| `q4` | Closing assignment — terse, takeaway-shaped | Navigator dialogue |
+
+**Voice rules for this pattern:**
+
+| Do | Don't |
+|---|---|
+| Third-person observer POV | First-person Navigator marketing voice ("we build" / "we measure") |
+| Enact the Visible Thinking routine in dialogue | Name-brand it in the section eyebrow or hero |
+| Use real character names from the book (Turner, Mud, Baldwin) | Generic placeholders ("the antagonist") |
+| Verbatim source quotes from the actual chapter | Invented dialogue |
+| Cognitive discovery in the student's voice | Cognitive discovery narrated by the Navigator |
+| Lexile data implied via the chip, not paraded in dialogue | "Your Lexile is 740, eight points above last week" in q1 |
+| Pronoun disambiguation: explicit "Ms. Jennifer" or "the student" where two same-pronoun subjects collide | Strings of "she did X, she said Y" with ambiguous antecedents |
+| Drop timing notations ("Spark, five minutes" / "Twelve minutes of guided reading") | Section-marker labels in the narrative |
+| Close on the student's voice or the next-week assignment | Marketing close ("That is the difference DODO makes") |
+
+**Reference implementation:** `content/marketing.{en,zh}.js` → `program.session` (commit `6ced09c`, 2026-05-21).
 
 ---
 
