@@ -8,8 +8,23 @@
 //   2. Logo import path updated to shared opsAssets.js
 // Everything else is identical to the tested standalone build.
 
-// VERSION: 3.2.4
+// VERSION: 3.3.0
 // DODO Learning — Student Baseline Report PDF Generator
+//
+// v3.3.0 — design change to Summary cards on page 4:
+//   * Dropped the "平均等级" sublabel inside each card body. It was
+//     redundant with the section title ("SUMMARY · 各核心领域总结")
+//     and the card header (pillar name), and it forced a stacked
+//     two-element layout that demanded vertical centering tricks.
+//     Three rounds of flex/minHeight iteration (v3.2.3 / v3.2.4)
+//     never centered convincingly in the rasterized output — likely
+//     an html2canvas + flex justifyContent capture quirk.
+//   * Body now holds a single rating chip with symmetric vertical
+//     padding (18px). Naturally proportional, no centering tricks.
+//   * Chip restyled: white background + colored text + colored
+//     border. Always visible regardless of the pillar.lightColor
+//     behind it. Previously the green chip on a green body, etc.,
+//     were nearly invisible.
 //
 // v3.2.4 — actually center Summary pills (v3.2.3 was a no-op):
 //   * Root cause: my v3.2.3 flex centering had no effect because all 3
@@ -648,25 +663,41 @@ function PDFPage3Impl({ info, ratings, proficientGrade, studentLexile }) {
             const avg = scored.length > 0 ? scored.reduce((a, s) => a + ratings[s.id], 0) / scored.length : 0;
             const rounded = scored.length > 0 ? Math.round(avg) : null;
             const rc = rounded ? RATING_COLORS[rounded] : null;
-            // Card is a flex column with an explicit minHeight so the body
-            // is guaranteed taller than its natural content. Body uses
-            // flex:1 + justifyContent:center to vertically center the
-            // label + rating pill. Without the minHeight, CSS Grid keeps
-            // all 3 cards at natural height (since they all have identical
-            // content) and there's no extra room for flex centering to act.
+            // Design change (v3.3.0): instead of chasing flex centering on a
+            // stacked "平均等级" label + pill, drop the label entirely (it's
+            // redundant with the SUMMARY section title and the card header).
+            // Body now holds a single rating chip with generous symmetric
+            // padding — it sits naturally in the visual middle without any
+            // flex/grid centering tricks. Eliminates the html2canvas + flex
+            // alignment quirk that made v3.2.3 and v3.2.4 ineffective.
+            //
+            // Chip uses white background + colored text/border so it's
+            // always visible regardless of which pillar's lightColor sits
+            // behind it (green-on-green / lavender-on-lavender were nearly
+            // invisible in the prior design).
             return (
-              <div key={pillar.id} style={{ borderRadius: 10, overflow: "hidden", border: `1px solid ${B.border}`, display: "flex", flexDirection: "column", minHeight: 140 }}>
+              <div key={pillar.id} style={{ borderRadius: 10, overflow: "hidden", border: `1px solid ${B.border}` }}>
                 <div style={{ background: pillar.color, color: pillar.headerTextColor || B.platinum, padding: "10px 12px", textAlign: "center" }}>
                   <div style={{ fontSize: 12, fontWeight: 700, lineHeight: 1.15 }}>{pillar.label}</div>
                   <div style={{ fontSize: 10, opacity: 0.72, marginTop: 2 }}>{pillar.labelZh}</div>
                 </div>
-                <div style={{ background: pillar.lightColor, padding: "10px 10px", textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", flex: 1, gap: 8 }}>
-                  <div style={{ fontSize: 9, color: B.muted, textTransform: "uppercase", letterSpacing: 1 }}>平均等级</div>
+                <div style={{ background: pillar.lightColor, padding: "18px 10px", textAlign: "center" }}>
                   {rounded ? (
-                    <div style={{ display: "inline-block", padding: "4px 14px", background: rc.bg, color: rc.text, borderRadius: 16, fontSize: 12, fontWeight: 700 }}>
+                    <div style={{
+                      display: "inline-block",
+                      padding: "5px 16px",
+                      background: B.white,
+                      color: rc.text,
+                      border: `1.5px solid ${rc.text}`,
+                      borderRadius: 16,
+                      fontSize: 13,
+                      fontWeight: 700,
+                    }}>
                       {rounded} – {RATING_LABELS[rounded]}
                     </div>
-                  ) : <div style={{ color: B.border, fontSize: 12 }}>暂未评估</div>}
+                  ) : (
+                    <div style={{ color: B.muted, fontSize: 12, fontStyle: "italic" }}>暂未评估</div>
+                  )}
                 </div>
               </div>
             );
