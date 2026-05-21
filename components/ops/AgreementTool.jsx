@@ -1,7 +1,17 @@
 'use client'
 
 // components/ops/AgreementTool.jsx
-// DODO Learning — Teacher Service Agreement PDF Generator  v1.4-ops
+// DODO Learning — Teacher Service Agreement PDF Generator  v1.4.1-ops
+//
+// v1.4.1 — page layout rebalanced after the v1.4 legal pass made
+// pages 2 and 3 too dense:
+//   * Page 2 now: Preamble + Schedule A + Sections 1, 2, 3
+//     (Section 4 moved off to page 3)
+//   * Page 3 now: Sections 4, 5, 6, 7, 8
+//     (Section 9 moved off to page 4)
+//   * Page 4 now: Section 9 + Section 10 + Notes + signatures
+//     (Section 9 added at the top; extra vertical room kept before
+//     Notes so handwritten or typed notes don't crowd the page)
 //
 // v1.4 — legal-writing pass across the full contract. Every clause
 // rewritten to use canonical legal phrasing while preserving the
@@ -385,12 +395,6 @@ function PDFPage2Impl({ info }) {
           ['Student no-show', 'If a student fails to attend a scheduled class without prior notice, you must remain logged in and available for at least 15 minutes from the scheduled start time. After 15 minutes, you may end the session and will receive 50% of the standard session fee.'],
         ]} />
 
-        <Section n={4} title="Confidentiality & Intellectual Property" items={[
-          ['DODO Learning materials', 'All curriculum materials, lesson plans, assessments, and proprietary content provided by DODO Learning remain the exclusive property of DODO Learning. Materials you create in the course of teaching DODO Learning classes are licensed to DODO Learning on a perpetual, royalty-free basis for ongoing instructional use.'],
-          ['Third-party content', 'You represent and warrant that you hold all necessary rights to any third-party material you incorporate into your teaching. You agree to indemnify and hold DODO Learning harmless from any third-party intellectual-property claim arising from your use of such material.'],
-          ['Student data privacy', 'You will handle all student personal information in strict compliance with Canada’s Personal Information Protection and Electronic Documents Act (PIPEDA), which governs private-sector personal data in Ontario. You may not collect, store, or share student data beyond what is necessary for DODO Learning instructional purposes.'],
-        ]} />
-
       </div>
     </div>
   )
@@ -419,6 +423,12 @@ function PDFPage3Impl({ info }) {
       <Watermark />
       <div style={{ position: 'relative', padding: `26px ${PAD}px 26px`, zIndex: 1 }}>
 
+        <Section n={4} title="Confidentiality & Intellectual Property" items={[
+          ['DODO Learning materials', 'All curriculum materials, lesson plans, assessments, and proprietary content provided by DODO Learning remain the exclusive property of DODO Learning. Materials you create in the course of teaching DODO Learning classes are licensed to DODO Learning on a perpetual, royalty-free basis for ongoing instructional use.'],
+          ['Third-party content', 'You represent and warrant that you hold all necessary rights to any third-party material you incorporate into your teaching. You agree to indemnify and hold DODO Learning harmless from any third-party intellectual-property claim arising from your use of such material.'],
+          ['Student data privacy', 'You will handle all student personal information in strict compliance with Canada’s Personal Information Protection and Electronic Documents Act (PIPEDA), which governs private-sector personal data in Ontario. You may not collect, store, or share student data beyond what is necessary for DODO Learning instructional purposes.'],
+        ]} />
+
         <Section n={5} title="Termination & Schedule Changes" items={[
           ['Commitment to Term Duration', 'You agree to complete teaching for the full Term Duration set out in Schedule A. If you depart before the term is complete, DODO Learning reserves the right to withhold the final pay period’s compensation in recognition of the disruption to enrolled students.'],
           ['Extraordinary Notice (21 days or more)', 'DODO Learning recognizes that personal circumstances may change. If you provide written notice no less than 21 days in advance of your intended departure date, DODO Learning will negotiate the final pay arrangement with you on an individual basis, with terms agreed in writing on the date your notice is submitted.'],
@@ -443,14 +453,6 @@ function PDFPage3Impl({ info }) {
           ['Unsolicited contact', 'This restriction does not prevent you from accepting an unsolicited inquiry that originates independently from a former DODO Learning student or family. If such an inquiry occurs, you agree to notify DODO Learning in writing within 30 days.'],
         ]} />
 
-        <Section n={9} title="General Provisions" items={[
-          ['Severability', 'If any provision of this Agreement is held to be invalid or unenforceable by a court of competent jurisdiction, the remaining provisions will continue in full force and effect.'],
-          ['Entire agreement', 'This Agreement constitutes the entire agreement between DODO Learning and the Teacher with respect to its subject matter, and supersedes all prior conversations, correspondence, drafts, and representations. Any amendment must be made in writing and signed by both parties.'],
-          ['Governing law', 'This Agreement is governed by the laws of the Province of Ontario and the applicable laws of Canada. Any disputes arising under this Agreement will be resolved in the courts of Ontario.'],
-          ['Assignment', 'The Teacher may not assign or transfer this Agreement, in whole or in part, without DODO Learning’s prior written consent.'],
-          ['Survival', 'Sections 4 (Confidentiality & Intellectual Property), 7 (Safety & Background Representations), and 8 (Non-Solicitation of Students) survive termination of this Agreement.'],
-        ]} />
-
       </div>
     </div>
   )
@@ -472,11 +474,19 @@ function PDFPage4Impl({ info }) {
       <Watermark />
       <div style={{ position: 'relative', padding: `26px ${PAD}px 26px`, zIndex: 1 }}>
 
+        <Section n={9} title="General Provisions" items={[
+          ['Severability', 'If any provision of this Agreement is held to be invalid or unenforceable by a court of competent jurisdiction, the remaining provisions will continue in full force and effect.'],
+          ['Entire agreement', 'This Agreement constitutes the entire agreement between DODO Learning and the Teacher with respect to its subject matter, and supersedes all prior conversations, correspondence, drafts, and representations. Any amendment must be made in writing and signed by both parties.'],
+          ['Governing law', 'This Agreement is governed by the laws of the Province of Ontario and the applicable laws of Canada. Any disputes arising under this Agreement will be resolved in the courts of Ontario.'],
+          ['Assignment', 'The Teacher may not assign or transfer this Agreement, in whole or in part, without DODO Learning’s prior written consent.'],
+          ['Survival', 'Sections 4 (Confidentiality & Intellectual Property), 7 (Safety & Background Representations), and 8 (Non-Solicitation of Students) survive termination of this Agreement.'],
+        ]} />
+
         {/* Section 10: Execution */}
-        <div style={{ fontSize: 12, fontWeight: 700, color: B.ink, marginBottom: 6 }}>
+        <div style={{ fontSize: 12, fontWeight: 700, color: B.ink, marginTop: 14, marginBottom: 6 }}>
           10. Execution and Acceptance
         </div>
-        <p style={{ fontSize: 11.5, lineHeight: 1.6, color: B.ink, margin: '0 0 20px' }}>
+        <p style={{ fontSize: 11.5, lineHeight: 1.6, color: B.ink, margin: '0 0 18px' }}>
           By signing below, each party confirms they have read this Agreement, had the opportunity to obtain independent legal advice, understood its terms, and accepted them as of the Effective Date.
         </p>
 
