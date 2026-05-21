@@ -51,24 +51,96 @@ import { jsPDF, AcroFormTextField } from 'jspdf'
 // is the v2/v3 idiom and will throw "not a constructor")
 ```
 
-### Performance pattern (teacher-agreement, partial onboarding)
+### Performance pattern (now applied to all three tools)
 
-`AgreementTool.jsx` is the canonical example of the typing-lag fix:
+The typing-lag fix has three parts; together they prevent the form
+from re-rendering all hidden PDF templates on every keystroke.
 
-- Each `PDFPageN` wrapped in `React.memo` with a per-page comparator
-  that only checks the keys *that page* renders. Static-content pages
-  use `() => true` and never re-render after mount.
-- `Field` component lives at module scope (not nested in the form
+- **Each `PDFPageN` wrapped in `React.memo`** with a per-page
+  comparator that checks only the keys *that page* renders. Static
+  pages use `() => true` and never re-render after first mount.
+- **`Field` component lives at module scope** (not nested in the form
   component) so React keeps stable component identity → `<input>`
-  doesn't remount on every keystroke.
-- `onChange` handlers are built once in `useMemo` so each input
-  receives a stable function reference.
+  doesn't remount on every keystroke. *Only `AgreementTool` has a
+  `Field` wrapper; the others use inline inputs.*
+- **`onChange` handlers built once in `useMemo`** so each input
+  receives a stable function reference. *Same scope — only relevant
+  where `Field` is a wrapper.*
 
-`OnboardingTool.jsx` (v2.7) has `PDFPageWelcome` wrapped in `React.memo`
-but the other three pages and inline `onChange` handlers still need
-the treatment. `AssessmentTool.jsx` has none of it. Both are tolerable
-today but would benefit from the same treatment if extended
-significantly.
+Current coverage:
+
+| Tool | React.memo on all pages | Field at module scope | Stable onChange |
+|---|---|---|---|
+| `AgreementTool` | ✅ | ✅ | ✅ |
+| `OnboardingTool` | ✅ (v2.8) | n/a (inline inputs) | n/a |
+| `AssessmentTool` | ✅ (v3.2.0) | n/a (inline inputs) | n/a |
+
+`OnboardingTool` and `AssessmentTool` use inline `<input onChange={…}>`
+nodes rather than wrapped `Field` components, so the `Field` /
+`useMemo handlers` parts don't apply — React just re-attaches the
+listener on every render, which doesn't cause cursor lag the way a
+component remount does. The `React.memo` pattern is what matters for
+those two.
+
+### Design rule — white surfaces, color as accent only
+
+Established on `AssessmentTool` after a multi-version iteration loop
+(v3.2.1 → v3.4.1) chasing readability bugs on tinted-on-tinted
+backgrounds. The rule is:
+
+> Surfaces are white. Color carries identity only through:
+> - **Header strips** at section boundaries (pillar / curriculum card headers)
+> - **Thin colored borders or left-edge accent stripes** on data cards
+> - **Colored text** for tier identity on data points (no chip frames around the text)
+> - **Small colored swatches** beside section labels
+
+**Why this rule exists.** The original design used
+`pillar.lightColor` (a light tint) as the background of any card body
+or row containing `pillar.color` text (the same family, e.g. lavender
+text on light-lavender body). This blended badly: text contrast was
+fine on the Writing pillar (dark midnight on light blue-gray) but
+nearly invisible on Literacy and Speaking. Every "this looks wrong"
+report on the assessment tool eventually traced back to that one
+pattern. Three rounds of patching (v3.2.1 lineHeight, v3.2.2 dot
+nudge, v3.2.3 flex centering) failed to fix individual cases because
+they didn't touch the root cause. v3.4.0 swept all `pillar.lightColor`
+surfaces to white; v3.4.1 dropped the colored chip frame around rating
+text since color alone is the identity carrier.
+
+**If you add a new ops tool or extend an existing one,** don't
+introduce `pillar.lightColor` / `item.lightColor` as a background
+where colored text or chips will sit on top. Keep surfaces white and
+let colored borders / strips / text do the identifying.
+
+### Legal-writing pass (teacher-agreement, v1.4)
+
+The teacher-agreement was rewritten in v1.4 to use canonical legal
+phrasing while keeping the plain-English voice. Patterns adopted:
+
+- "**represent and warrant**" instead of "confirm" for factual
+  attestations (Sections 4, 7) — the legal term of art
+- "**indemnify and hold harmless**" for IP claims (Section 4)
+- "**perpetual, royalty-free**" license language (Section 4)
+- "**material breach**" + "**including but not limited to**" for the
+  termination-for-breach clause (Section 5) — gives flexibility
+- "**represent and warrant**" + an explicit **ongoing duty to
+  disclose** added to the Safety section (7) so mid-term changes in
+  status are surfaced
+- Standard general-provisions block in Section 9: Severability,
+  Entire Agreement, Governing Law (Ontario), Assignment, Survival
+- "**had the opportunity to obtain independent legal advice**" in
+  Section 10 — standard contract-execution protection
+
+If the contract is rewritten again, retain these canonical phrases.
+Don't paraphrase "indemnify and hold harmless" or "represent and
+warrant" — they carry specific legal meaning courts recognize.
+
+**Page allocation (v1.4.1, after a legal-pass reflow):**
+
+- Page 1: Welcome letter
+- Page 2: Preamble + Schedule A + Sections 1, 2, 3
+- Page 3: Sections 4, 5, 6, 7, 8
+- Page 4: Section 9 + Section 10 + Notes (if present) + signature block
 
 ### Layout gotcha — flex centering needs room to center
 
@@ -167,6 +239,22 @@ split, the build errors on `output: 'export'`.
    apply the `React.memo` + module-scope `Field` pattern from
    `AgreementTool.jsx`. Tests for slowness: type rapidly in a form
    field — characters should appear instantly with no cursor stutter.
+8. **Visual design rule:** white surfaces only. Color via header
+   strips, thin borders, and colored text — never colored
+   backgrounds behind colored text (see "Design rule" section
+   above for the full reasoning). Module/data cards: white bg with
+   pillar-colored left accent stripe (`borderLeft: 3px solid …`).
+   Rating chips: plain colored text, no frame around it.
+9. **Brand-name copy:** Use "DODO Learning" everywhere in contract /
+   document body text — not "DODO" alone, not "the Company". This
+   was hashed out across the agreement-tool versions; matters for
+   consistency across all three tools.
+10. **Section / page break planning:** for multi-section legal-style
+    docs, plan section-to-page allocation explicitly. The teacher-
+    agreement tool reorganized twice as content grew (v1.0 / v1.4.1).
+    Cleanest pattern: each `<Section />` lives inside a specific
+    page template; if you have N sections and 4 pages, decide
+    which sections go on which page rather than letting them flow.
 
 ---
 
