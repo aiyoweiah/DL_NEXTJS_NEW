@@ -138,7 +138,7 @@ const PDFPageWelcome = memo(PDFPageWelcomeImpl, (a, b) => a.info.name === b.info
 
 // ── PAGE 2 — STUDENT INFO + CLASS INFO + HOW TO ACTIVATE ────────────────────
 
-function PDFPageInfo({ info, qrImages }) {
+function PDFPageInfoImpl({ info, qrImages }) {
   return (
     <div id="pdf-info" style={{ width: PW, height: PH, background: B.cream, fontFamily: F, color: B.ink, boxSizing: 'border-box', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
       <PDFHeader />
@@ -226,9 +226,25 @@ function PDFPageInfo({ info, qrImages }) {
   );
 }
 
+const PDFPageInfo = memo(PDFPageInfoImpl, (a, b) =>
+  a.info.name          === b.info.name          &&
+  a.info.age           === b.info.age           &&
+  a.info.grade         === b.info.grade         &&
+  a.info.location      === b.info.location      &&
+  a.info.programs      === b.info.programs      &&
+  a.info.date          === b.info.date          &&
+  a.info.literacyLevel === b.info.literacyLevel &&
+  a.info.writingLevel  === b.info.writingLevel  &&
+  a.qrImages.qr1       === b.qrImages.qr1       &&
+  a.qrImages.qr2       === b.qrImages.qr2
+);
+
 // ── PAGES 3+ — COURSE DETAILS (dynamic multi-page) ──────────────────────────
 
-function PDFPageDetails({ info, schedule, literacyAbout, literacyOverview, writingOverview, teacherImg, teacherIntro, parentNotes }) {
+// Note: `info` and `schedule` props are not referenced by the body — they
+// were dead-listed in the signature. Kept here for backward compatibility
+// with the call site; comparator ignores them.
+function PDFPageDetailsImpl({ literacyAbout, literacyOverview, writingOverview, teacherImg, teacherIntro, parentNotes }) {
   const [pageGroups, setPageGroups] = useState(null);
   const measureRef = useRef(null);
 
@@ -329,9 +345,18 @@ function PDFPageDetails({ info, schedule, literacyAbout, literacyOverview, writi
   );
 }
 
+const PDFPageDetails = memo(PDFPageDetailsImpl, (a, b) =>
+  a.literacyAbout    === b.literacyAbout    &&
+  a.literacyOverview === b.literacyOverview &&
+  a.writingOverview  === b.writingOverview  &&
+  a.teacherImg       === b.teacherImg       &&
+  a.teacherIntro     === b.teacherIntro     &&
+  a.parentNotes      === b.parentNotes
+);
+
 // ── TERMS OF SERVICE PAGE ────────────────────────────────────────────────────
 
-function PDFPageTerms({ schedule }) {
+function PDFPageTermsImpl({ schedule }) {
   return (
     <div id="pdf-terms" style={{ width: PW, height: PH, background: B.cream, fontFamily: F, color: B.ink, boxSizing: 'border-box', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
       <PDFHeader />
@@ -392,6 +417,12 @@ function PDFPageTerms({ schedule }) {
     </div>
   );
 }
+
+const PDFPageTerms = memo(PDFPageTermsImpl, (a, b) =>
+  a.schedule?.combo    === b.schedule?.combo    &&
+  a.schedule?.literacy === b.schedule?.literacy &&
+  a.schedule?.writing  === b.schedule?.writing
+);
 
 // ── MAIN COMPONENT ───────────────────────────────────────────────────────────
 
