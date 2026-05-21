@@ -1,7 +1,30 @@
 'use client'
 
 // components/ops/AgreementTool.jsx
-// DODO Learning — Teacher Service Agreement PDF Generator  v1.3-ops
+// DODO Learning — Teacher Service Agreement PDF Generator  v1.4-ops
+//
+// v1.4 — legal-writing pass across the full contract. Every clause
+// rewritten to use canonical legal phrasing while preserving the
+// plain-English voice. Highlights:
+//   * Preamble: "as of" -> "with effect from"
+//   * Section 1: added no-employment/partnership/JV/agency disclaimer
+//   * Sections 2-3: tightened obligations ("with care" -> "professional
+//     competence and diligence"; specified personal-contact carve-outs;
+//     "for hours actually taught"; "remain logged in and available")
+//   * Section 4: "represent and warrant" + "indemnify and hold harmless"
+//     + "perpetual, royalty-free" license language
+//   * Section 5: "in recognition of" softer phrasing; "material breach"
+//     + "including but not limited to"
+//   * Section 6: added "worldwide, non-exclusive" + carve-out for
+//     uses commenced before withdrawal
+//   * Section 7: added child abuse + child pornography to offense list;
+//     "represent and warrant"; added ongoing duty to disclose (3rd bullet)
+//   * Section 8: "directly or indirectly" + "through third parties"
+//     closes the friend-as-proxy loophole
+//   * Section 9: added three standard provisions — Governing Law,
+//     Assignment, Survival. Now 5 bullets total.
+//   * Section 10: added "had the opportunity to obtain independent
+//     legal advice"
 //
 // v1.3 — restore Immediate Termination clause + full "the Company"
 // sweep across contract text:
@@ -289,7 +312,7 @@ function PDFPage2Impl({ info }) {
         <div style={{ fontSize: 12, lineHeight: 1.7, color: B.ink, marginBottom: 18 }}>
           This Agreement is made between DODO Learning and{' '}
           <span style={{ fontWeight: 600, color: B.ink }}>{info.teacherFullName || '________________'}</span>
-          {' '}(the &ldquo;Teacher&rdquo;) as of{' '}
+          {' '}(the &ldquo;Teacher&rdquo;) with effect from{' '}
           <span style={{ fontWeight: 600, color: B.ink }}>{info.effectiveDate || '____________'}</span>.
         </div>
 
@@ -343,29 +366,29 @@ function PDFPage2Impl({ info }) {
         </div>
 
         <Section n={1} title="Relationship of Parties" items={[
-          ['Independent contractor', 'You are engaged as an independent contractor under the laws of Ontario. This is not an employment relationship.'],
-          ['You control your methods', 'You decide the teaching methods, materials, and pacing needed to meet course objectives.'],
+          ['Independent contractor', 'You are engaged as an independent contractor under the laws of the Province of Ontario. Nothing in this Agreement creates an employment, partnership, joint venture, or agency relationship between you and DODO Learning.'],
+          ['You control your methods', 'You retain control over the teaching methods, materials, and pacing used to meet course objectives. DODO Learning may provide curriculum guidelines and standards.'],
           ['You handle your own taxes', 'You are responsible for filing and paying your own federal and provincial income tax, CPP, and any applicable GST/HST.'],
-          ['You provide your own setup', 'A reliable computer, high-speed Internet, and a quiet, professional remote workspace are yours to provide.'],
+          ['You provide your own setup', 'A reliable computer, high-speed Internet connection, and a quiet, professional remote workspace are your responsibility.'],
         ]} />
 
         <Section n={2} title="Service Delivery & Professionalism" items={[
-          ['Quality teaching', 'Deliver each lesson with care, prepare thoroughly, and keep the classroom welcoming and inclusive.'],
-          ['Be on time', 'Log in at least 5 minutes before each session to test your setup and resolve any technical issues.'],
-          ['Stay on platform', 'All contact with students and parents happens inside ClassIN and the DODO Learning platform. Sharing personal contact information is not allowed.'],
+          ['Quality teaching', 'You will deliver each lesson with professional competence and diligence, prepare adequately, and maintain a welcoming and inclusive classroom environment.'],
+          ['Punctuality', 'You will log in at least 5 minutes before each scheduled session to verify your setup and resolve any technical issues.'],
+          ['Communication channels', 'All communication with students and their families must occur exclusively through ClassIN or the DODO Learning platform. You may not share personal contact information (phone numbers, email addresses, social-media handles, or messaging IDs) with students or families.'],
         ]} />
 
         <Section n={3} title="Compensation" items={[
-          ['Hourly pay', 'You are paid per hour at the rate shown in Schedule A.'],
-          ['Invoicing', 'Pay follows the teaching log or invoice you submit, on the schedule shown in Schedule A.'],
-          ['Teacher no-show', 'If you miss a class without 48 hours’ notice, that slot is unpaid and a $50 CAD service-disruption fee may apply.'],
-          ['Student no-show', 'If a student does not appear without notice, wait 15 minutes, then you may end the class and receive 50% of the session fee.'],
+          ['Hourly rate', 'You will be compensated at the hourly rate set out in Schedule A, for hours actually taught.'],
+          ['Invoicing', 'Payment is made following submission of a teaching log or invoice, in accordance with the Pay Interval set out in Schedule A.'],
+          ['Teacher no-show', 'If you fail to attend a scheduled class without providing at least 48 hours’ written notice, that session will not be compensated, and a service-disruption fee of $50 CAD may be deducted from your next pay period.'],
+          ['Student no-show', 'If a student fails to attend a scheduled class without prior notice, you must remain logged in and available for at least 15 minutes from the scheduled start time. After 15 minutes, you may end the session and will receive 50% of the standard session fee.'],
         ]} />
 
         <Section n={4} title="Confidentiality & Intellectual Property" items={[
-          ['Our materials stay ours', 'Anything DODO Learning provides remains DODO Learning property. Anything you create for our courses is licensed to DODO Learning for ongoing use.'],
-          ['You own what you bring', 'You confirm you have the rights to any material you teach with, and you agree to cover DODO Learning if a third party raises an IP claim.'],
-          ['Student privacy', 'Handle all student data in line with Canada’s Personal Information Protection and Electronic Documents Act (PIPEDA), which governs private-sector personal data in Ontario.'],
+          ['DODO Learning materials', 'All curriculum materials, lesson plans, assessments, and proprietary content provided by DODO Learning remain the exclusive property of DODO Learning. Materials you create in the course of teaching DODO Learning classes are licensed to DODO Learning on a perpetual, royalty-free basis for ongoing instructional use.'],
+          ['Third-party content', 'You represent and warrant that you hold all necessary rights to any third-party material you incorporate into your teaching. You agree to indemnify and hold DODO Learning harmless from any third-party intellectual-property claim arising from your use of such material.'],
+          ['Student data privacy', 'You will handle all student personal information in strict compliance with Canada’s Personal Information Protection and Electronic Documents Act (PIPEDA), which governs private-sector personal data in Ontario. You may not collect, store, or share student data beyond what is necessary for DODO Learning instructional purposes.'],
         ]} />
 
       </div>
@@ -397,31 +420,35 @@ function PDFPage3Impl({ info }) {
       <div style={{ position: 'relative', padding: `26px ${PAD}px 26px`, zIndex: 1 }}>
 
         <Section n={5} title="Termination & Schedule Changes" items={[
-          ['Commitment to Term Duration', 'You agree to complete teaching for the full Term Duration set out in Schedule A. If you depart before completing the term, DODO Learning reserves the right to withhold the final pay period’s compensation as offset for the disruption caused to students.'],
-          ['Extraordinary Notice (21 days or more)', 'DODO Learning recognizes that circumstances may change. If you provide written notice no less than 21 days before your intended departure, DODO Learning will arrange the final pay individually with you, agreed on the day your written notice is submitted.'],
-          ['Insufficient Notice (under 21 days)', 'Resignation with less than 21 days’ written notice is treated as resignation without notice. No payment is owed for the final pay period in such cases.'],
-          ['Immediate Termination for Breach', 'DODO Learning may end this agreement immediately, without notice or further payment, for serious breaches including Code of Conduct violations.'],
+          ['Commitment to Term Duration', 'You agree to complete teaching for the full Term Duration set out in Schedule A. If you depart before the term is complete, DODO Learning reserves the right to withhold the final pay period’s compensation in recognition of the disruption to enrolled students.'],
+          ['Extraordinary Notice (21 days or more)', 'DODO Learning recognizes that personal circumstances may change. If you provide written notice no less than 21 days in advance of your intended departure date, DODO Learning will negotiate the final pay arrangement with you on an individual basis, with terms agreed in writing on the date your notice is submitted.'],
+          ['Insufficient Notice (under 21 days)', 'A resignation submitted with less than 21 days’ written notice will be treated as a resignation without notice. In such cases, no compensation will be owed for the final pay period.'],
+          ['Immediate Termination for Breach', 'DODO Learning may terminate this Agreement immediately, without notice and without further compensation, for material breach by the Teacher, including but not limited to violations of the DODO Learning Code of Conduct.'],
         ]} />
 
         <Section n={6} title="Marketing & Media Consent" items={[
-          ['Use of your image', 'You grant DODO Learning a royalty-free license to use your name, image, and voice from class recordings in DODO Learning marketing.'],
-          ['Right to withdraw', 'You may withdraw this consent in writing at any time.'],
-          ['Effect of withdrawal', 'Withdrawal takes effect within 7 business days for new posts. Content already shared or printed may not be fully retractable.'],
+          ['License grant', 'You grant DODO Learning a worldwide, non-exclusive, royalty-free license to use your name, likeness, image, and voice (including audio and video from recorded sessions) for marketing and promotional purposes.'],
+          ['Right to withdraw', 'You may withdraw this consent at any time by written notice. Withdrawal does not affect uses commenced before DODO Learning received your written notice.'],
+          ['Effect of withdrawal', 'Upon receipt of written withdrawal, DODO Learning will cease using your name, image, and voice in new marketing within 7 business days. You acknowledge that content already published, shared, or printed prior to the withdrawal may not be fully retractable.'],
         ]} />
 
         <Section n={7} title="Safety & Background Representations" items={[
-          ['Criminal record', 'You confirm you have never been convicted of, and are not currently charged with, any offense involving sexual interference, sexual exploitation, or any other offense that endangers minors.'],
-          ['Sex offender registry', 'You confirm you are not currently listed on any national or provincial sex offender registry in Canada or your country of primary residence.'],
+          ['Criminal record', 'You represent and warrant that you have never been convicted of, and are not currently charged with, any offense involving sexual interference, sexual exploitation, child abuse, child pornography, or any other offense involving the safety or welfare of minors.'],
+          ['Registry status', 'You represent and warrant that you are not currently listed on any sex offender or child-abuse registry in Canada (federal, provincial, or territorial) or in your country of primary residence or citizenship.'],
+          ['Ongoing duty to disclose', 'You agree to notify DODO Learning in writing immediately if your status under either of the above representations changes during the term of this Agreement.'],
         ]} />
 
         <Section n={8} title="Non-Solicitation of Students" items={[
-          ['During and after the term', 'During this agreement and for 12 months after it ends, you agree not to solicit DODO Learning students or their families for private tutoring or any competing service — including direct outreach, social-media contact, or referrals to other providers.'],
-          ['Unsolicited contact', 'This does not prevent you from accepting an unsolicited inquiry that originates independently from a former DODO Learning family, but you agree to notify DODO Learning in writing within 30 days if that happens.'],
+          ['During and after the term', 'During the term of this Agreement and for 12 months following its end, you agree not to directly or indirectly solicit any DODO Learning student or their family for private tutoring services, competing educational services, or referrals to other providers. This restriction includes direct outreach, social-media contact, and any form of solicitation through third parties.'],
+          ['Unsolicited contact', 'This restriction does not prevent you from accepting an unsolicited inquiry that originates independently from a former DODO Learning student or family. If such an inquiry occurs, you agree to notify DODO Learning in writing within 30 days.'],
         ]} />
 
         <Section n={9} title="General Provisions" items={[
-          ['Severability', 'If any part of this agreement is found unenforceable, the remaining parts still apply.'],
-          ['Entire agreement', 'This document is the full agreement between us and replaces any earlier conversations, drafts, or emails on these terms. Changes must be agreed in writing.'],
+          ['Severability', 'If any provision of this Agreement is held to be invalid or unenforceable by a court of competent jurisdiction, the remaining provisions will continue in full force and effect.'],
+          ['Entire agreement', 'This Agreement constitutes the entire agreement between DODO Learning and the Teacher with respect to its subject matter, and supersedes all prior conversations, correspondence, drafts, and representations. Any amendment must be made in writing and signed by both parties.'],
+          ['Governing law', 'This Agreement is governed by the laws of the Province of Ontario and the applicable laws of Canada. Any disputes arising under this Agreement will be resolved in the courts of Ontario.'],
+          ['Assignment', 'The Teacher may not assign or transfer this Agreement, in whole or in part, without DODO Learning’s prior written consent.'],
+          ['Survival', 'Sections 4 (Confidentiality & Intellectual Property), 7 (Safety & Background Representations), and 8 (Non-Solicitation of Students) survive termination of this Agreement.'],
         ]} />
 
       </div>
@@ -450,7 +477,7 @@ function PDFPage4Impl({ info }) {
           10. Execution and Acceptance
         </div>
         <p style={{ fontSize: 11.5, lineHeight: 1.6, color: B.ink, margin: '0 0 20px' }}>
-          By signing below, the parties confirm they have read this Agreement, understood its terms, and accepted them in full as of the Effective Date.
+          By signing below, each party confirms they have read this Agreement, had the opportunity to obtain independent legal advice, understood its terms, and accepted them as of the Effective Date.
         </p>
 
         {/* Notes section — sits above the signature block */}
