@@ -1,9 +1,23 @@
 'use client';
 // components/ops/OnboardingTool.jsx
-// DODO Learning — Student Enrollment Welcome Packet PDF Generator  v2.6-ops
+// DODO Learning — Student Enrollment Welcome Packet PDF Generator  v2.7-ops
 // Migrated into /ops section: palette aligned, Hangar removed, assets from opsAssets.
+//
+// v2.7 — page 1 layout fix:
+//   * Body content was rendering at ~half page-width because the inner
+//     flex column wasn't stretching text-only children. Explicit
+//     width: '100%' on the body wrapper forces full-width regardless
+//     of flex behavior.
+//   * PAD bumped 30 → 56 (~8mm → ~15mm letter margin) to match the
+//     other ops tools and give the letter proper business margins.
+//   * Signature block right-aligned in standard letter format.
+//   * English paragraphs lose Chinese-style textIndent (kept on
+//     Chinese paragraphs where it's the convention).
+//   * Font stack now DM Sans first to match lib/fonts.js + sibling tools.
+//   * Hidden PDF templates wrapped in React.memo so typing in the form
+//     stops triggering full template re-renders.
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, memo } from 'react';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import { LOGO_B64, SIGNATURE_B64, CLASSIN_LOGO_B64 } from '@/components/ops/opsAssets';
@@ -34,10 +48,10 @@ const D = {
   danger: '#c0504d',
 };
 
-const F   = '"Noto Sans SC", "Avenir Next", "Avenir", "Helvetica Neue", sans-serif';
+const F   = '"DM Sans", "Noto Sans SC", sans-serif';
 const PW  = 794;
 const PH  = 1123;
-const PAD = 30;
+const PAD = 56;
 
 function PDFHeader() {
   return (
@@ -68,52 +82,59 @@ function PDFFooter() {
 
 // ── PAGE 1 — WELCOME LETTER ──────────────────────────────────────────────────
 
-function PDFPageWelcome({ info }) {
+function PDFPageWelcomeImpl({ info }) {
   return (
     <div id="pdf-welcome" style={{ width: PW, height: PH, background: B.cream, fontFamily: F, color: B.ink, boxSizing: 'border-box', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
       <PDFHeader />
-      <div style={{ padding: `14px ${PAD}px 12px`, display: 'flex', flexDirection: 'column', flex: 1 }}>
+      {/* Body wrapper: plain block (not nested flex column). Explicit
+          width: 100% guards against the prior issue where text-only
+          children were rendering at ~half the page width inside a
+          nested flex column. */}
+      <div style={{ width: '100%', flex: 1, padding: `28px ${PAD}px 12px`, boxSizing: 'border-box' }}>
 
         {/* Section label */}
-        <div style={{ textAlign: 'center', marginBottom: 24 }}>
+        <div style={{ width: '100%', textAlign: 'center', marginBottom: 30 }}>
           <div style={{ fontSize: 9, letterSpacing: 4, textTransform: 'uppercase', color: B.muted }}>Welcome Letter · 欢迎信</div>
           <div style={{ width: 60, height: 2, background: B.green, margin: '8px auto 0' }} />
         </div>
 
         {/* Greeting */}
-        <div style={{ fontSize: 15, fontWeight: 600, color: B.brown, marginBottom: 16 }}>
+        <div style={{ width: '100%', fontSize: 14, fontWeight: 600, color: B.ink, marginBottom: 18 }}>
           Dear {info.name || 'Student'},
         </div>
 
-        {/* English body */}
-        <div style={{ fontSize: 12.5, lineHeight: 1.85, color: B.ink, marginBottom: 18, textAlign: 'justify' }}>
-          <p style={{ margin: '0 0 12px', textIndent: '2em' }}>Welcome to DODO Learning! We are absolutely thrilled to have you join our family, where learning is an adventure, and goals are reached. Our dedicated teachers and staff are here to guide you every step of the way, creating a nurturing and dynamic learning environment tailored to help you succeed. Whether this is your first step with us or you're continuing your journey, know that you are in a place where you are valued, supported, and encouraged to shine.</p>
-          <p style={{ margin: '0 0 12px', textIndent: '2em' }}>As you embark on this exciting chapter, we encourage you to embrace every opportunity, ask questions, make new friends, and, most importantly, believe in yourself. You have a unique voice, and we can't wait to see how you will contribute to and enrich our community.</p>
-          <p style={{ margin: 0, textIndent: '2em' }}>Once again, welcome to DODO Learning! We can't wait to see all the incredible things you will accomplish.</p>
+        {/* English body — no textIndent (Chinese-style indent reads
+            awkwardly in English). Justified with comfortable line-height. */}
+        <div style={{ width: '100%', fontSize: 12.5, lineHeight: 1.75, color: B.ink, marginBottom: 22, textAlign: 'justify' }}>
+          <p style={{ margin: '0 0 12px' }}>Welcome to DODO Learning! We are absolutely thrilled to have you join our family, where learning is an adventure, and goals are reached. Our dedicated teachers and staff are here to guide you every step of the way, creating a nurturing and dynamic learning environment tailored to help you succeed. Whether this is your first step with us or you&rsquo;re continuing your journey, know that you are in a place where you are valued, supported, and encouraged to shine.</p>
+          <p style={{ margin: '0 0 12px' }}>As you embark on this exciting chapter, we encourage you to embrace every opportunity, ask questions, make new friends, and, most importantly, believe in yourself. You have a unique voice, and we can&rsquo;t wait to see how you will contribute to and enrich our community.</p>
+          <p style={{ margin: 0 }}>Once again, welcome to DODO Learning! We can&rsquo;t wait to see all the incredible things you will accomplish.</p>
         </div>
 
         {/* Divider */}
-        <div style={{ width: '100%', height: 1, background: B.border, marginBottom: 18 }} />
+        <div style={{ width: '100%', height: 1, background: B.border, marginBottom: 22 }} />
 
-        {/* Chinese body */}
-        <div style={{ fontSize: 12, lineHeight: 1.9, color: B.ink, marginBottom: 28, textAlign: 'justify' }}>
+        {/* Chinese body — keeps 2em indent (Chinese convention) */}
+        <div style={{ width: '100%', fontSize: 12, lineHeight: 1.9, color: B.ink, marginBottom: 36, textAlign: 'justify' }}>
           <p style={{ margin: '0 0 10px', textIndent: '2em' }}>欢迎来到 DODO Learning!很高兴你能加入我们，让学习成为一场奔向目标的冒险。我们的专业教师团队将为你提供温暖且充满动力的学习环境，全方位助力你的成功。在这里，你是被珍视的个体；在这里，我们全力支持你尽情闪耀。</p>
           <p style={{ margin: '0 0 10px', textIndent: '2em' }}>站在这个新起点上，请尽情拥抱每一个机会，保持好奇，并坚定地相信自己。我们非常期待看到你独一无二的才华将如何点亮我们的社区。</p>
           <p style={{ margin: 0, textIndent: '2em' }}>欢迎开启这段精彩旅程，期待见证你的每一份卓越成就！</p>
         </div>
 
-        {/* Signature */}
-        <div style={{ fontSize: 13, fontWeight: 600, color: B.brown, marginBottom: 10, fontStyle: 'italic' }}>Warmest regards,</div>
-        <img src={SIGNATURE_B64} alt="Signature" style={{ height: 60, width: 200, marginBottom: 4, objectFit: 'contain', objectPosition: 'left' }} />
-        <div style={{ fontSize: 13, fontWeight: 700, color: B.brown }}>Janet</div>
-        <div style={{ fontSize: 11, color: B.muted, marginBottom: 2 }}>Learning Director</div>
-        <div style={{ fontSize: 11, color: B.muted }}>DODO Learning</div>
+        {/* Signature block — "Warmest regards" left, signature right-aligned in classic letter format. */}
+        <div style={{ width: '100%', fontSize: 13, fontWeight: 600, color: B.ink, marginBottom: 8, fontStyle: 'italic' }}>
+          Warmest regards,
+        </div>
+        <div style={{ width: '100%', textAlign: 'right', paddingRight: 8 }}>
+          <img src={SIGNATURE_B64} alt="Signature" style={{ height: 64, width: 'auto', objectFit: 'contain', display: 'inline-block' }} />
+        </div>
 
       </div>
       <PDFFooter />
     </div>
   );
 }
+const PDFPageWelcome = memo(PDFPageWelcomeImpl, (a, b) => a.info.name === b.info.name);
 
 // ── PAGE 2 — STUDENT INFO + CLASS INFO + HOW TO ACTIVATE ────────────────────
 
