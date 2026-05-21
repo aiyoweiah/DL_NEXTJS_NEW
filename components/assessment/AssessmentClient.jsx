@@ -183,7 +183,7 @@ function AccordionItem({ question, answer, open, onToggle, id }) {
 // ─── Data ─────────────────────────────────────────────────────
 const TRAIT_DATA = [
   { name: 'Ideas',            entry: 2, exit: 4 },
-  { name: 'Organisation',     entry: 3, exit: 5 },
+  { name: 'Organization',     entry: 3, exit: 5 },
   { name: 'Voice',            entry: 2, exit: 4 },
   { name: 'Word Choice',      entry: 3, exit: 4 },
   { name: 'Sentence Fluency', entry: 2, exit: 5 },
@@ -193,7 +193,7 @@ const TRAIT_DATA = [
 
 const SIX_TRAITS = [
   { name: 'Ideas',            def: 'The central message — what the student has to say and how clearly they say it' },
-  { name: 'Organisation',     def: 'The internal structure — beginning, middle, end, and the logic that connects them' },
+  { name: 'Organization',     def: 'The internal structure — beginning, middle, end, and the logic that connects them' },
   { name: 'Voice',            def: 'The sense of a real person behind the words — the quality that makes writing unmistakably theirs' },
   { name: 'Word Choice',      def: 'The precision and energy of the specific words selected' },
   { name: 'Sentence Fluency', def: 'The rhythm and flow — how the writing sounds when read aloud' },

@@ -1,19 +1,19 @@
 // app/[locale]/faq/page.jsx
 //
 // FAQ page — server shell.
-// All interactivity (search, category nav, accordions) is in FAQClient.jsx.
-// Locale is passed as a prop so FAQClient can prefix internal links correctly.
+// All interactivity (search, category nav, accordions) is in FAQClient.jsx,
+// which imports `faq` from content/faq.js directly. This page only consumes
+// the data to emit the JSON-LD FAQPage schema for search/LLM indexing.
 //
-// Content lives in FAQClient.jsx for now — it uses JSX in answers (inline links)
-// which can't be serialised to content/en.js. When FAQ content migrates to a CMS,
-// FAQClient receives it as a prop from here.
+// Single source of truth: content/faq.js (consolidated 2026-05-17 from former
+// content/faq-en.js + content/faq-zh.js + components/faq/FAQClient.jsx
+// duplication — see translation/BRAND_CONTENT_GUIDE.md §13 for translation workflow).
 
 import { notFound }                    from 'next/navigation'
 import { isValidLocale, localeParams } from '@/lib/i18n'
 import { buildMetadata }               from '@/lib/metadata'
 import { faqSchema }                   from '@/lib/schema'
-import { faqEn }                       from '@/content/faq-en'
-import { faqZh }                       from '@/content/faq-zh'
+import { faq }                         from '@/content/faq'
 import FAQClient                       from '@/components/faq/FAQClient'
 
 export function generateStaticParams() {
@@ -31,14 +31,27 @@ export async function generateMetadata({ params }) {
   })
 }
 
+// Strip markdown-lite syntax → plain text. Used to feed JSON-LD FAQPage schema
+// (which requires plain text answers, not JSX or markdown).
+function stripMarkdownLite(text) {
+  if (typeof text !== 'string') return ''
+  return text
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')  // [text](href) → text
+    .replace(/\*\*([^*]+)\*\*/g, '$1')        // **text**     → text
+}
+
 export default async function FAQPage({ params }) {
   const { locale } = await params
   if (!isValidLocale(locale)) notFound()
 
-  // Pick the locale-appropriate Q&A list for the JSON-LD FAQPage schema.
-  // The UI rendering still uses FAQClient's own JSX-rich data; this module
-  // feeds the canonical plain-text version to search engines and LLMs.
-  const faqItems = locale === 'zh' ? faqZh : faqEn
+  // Schema-feed only. FAQClient picks the same data via its own import.
+  const sections = faq.sections[locale] ?? faq.sections.en
+  const faqItems = sections.flatMap((section) =>
+    section.items.map((item) => ({
+      question: item.question,
+      answer:   stripMarkdownLite(item.answer),
+    }))
+  )
 
   return (
     <>

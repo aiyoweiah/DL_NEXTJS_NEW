@@ -27,6 +27,8 @@ import { isValidLocale, localeParams } from '@/lib/i18n'
 import { buildMetadata }               from '@/lib/metadata'
 import { courseSchema }                from '@/lib/schema'
 import LexileBar                       from '@/components/ui/LexileBar'
+import { program as copyEn }              from '@/content/marketing.en'
+import { program as copyZh }              from '@/content/marketing.zh'
 
 // ─────────────────────────────────────────────────────────────
 // STATIC STRUCTURAL DATA (no locale variants)
@@ -42,252 +44,20 @@ const LEXILE_SCALE = [
 ]
 
 const TRAITS = [
-  { id: 'ideas',        en: 'Ideas',            zh: '\u60f3\u6cd5',     start: 2, end: 4 },
-  { id: 'organisation', en: 'Organisation',     zh: '\u7ed3\u6784',     start: 2, end: 4 },
-  { id: 'voice',        en: 'Voice',            zh: '\u58f0\u97f3',     start: 2, end: 4 },
-  { id: 'word-choice',  en: 'Word Choice',      zh: '\u8bcd\u6c47\u9009\u62e9',  start: 2, end: 5 },
-  { id: 'fluency',      en: 'Sentence Fluency', zh: '\u53e5\u5b50\u6d41\u7545',  start: 3, end: 5 },
-  { id: 'conventions',  en: 'Conventions',      zh: '\u5199\u4f5c\u89c4\u8303',  start: 3, end: 4 },
-  { id: 'presentation', en: 'Presentation',     zh: '\u5448\u73b0',     start: 2, end: 4 },
+  { id: 'ideas',        en: 'Ideas',            zh: '\u601d\u8003',  start: 2, end: 4 },
+  { id: 'organisation', en: 'Organization',     zh: '\u7ed3\u6784',  start: 2, end: 4 },
+  { id: 'voice',        en: 'Voice',            zh: '\u58f0\u97f3',  start: 2, end: 4 },
+  { id: 'word-choice',  en: 'Word Choice',      zh: '\u7528\u8bcd',  start: 2, end: 5 },
+  { id: 'fluency',      en: 'Sentence Fluency', zh: '\u6d41\u7545',  start: 3, end: 5 },
+  { id: 'conventions',  en: 'Conventions',      zh: '\u89c4\u8303',  start: 3, end: 4 },
+  { id: 'presentation', en: 'Presentation',     zh: '\u5448\u73b0',  start: 2, end: 4 },
 ]
 
 // ─────────────────────────────────────────────────────────────
 // BILINGUAL COPY
 // ─────────────────────────────────────────────────────────────
 
-const COPY = {
-  en: {
-    meta: {
-      title: 'What Happens in The 16-Week Program \u2014 DODO Learning',
-      description:
-        'The live, Navigator-led program that trains Read \u2192 Think \u2192 Speak \u2192 Write for Chinese families in Canada and the US. Entry and exit Lexile assessments. One grade level of growth, measured.',
-    },
-    hero: {
-      chip: 'Think Once. In Both Languages.',
-      h1:   'What happens inside The 16-Week Program?',
-      h1zh: '',
-      sub:
-        'Designed for Chinese families in Canada and the US. Every session runs The Loop \u2014 structured, tracked, and guided by a dedicated Navigator who knows your child by name.',
-      cta1: 'See How It Works',
-      cta2: 'Book Your Consultation',
-      stats: [
-        { value: '16',       unit: 'Weeks',         desc: 'A real commitment'                          },
-        { value: '4',        unit: 'Skills',         desc: 'Read \u00b7 Think \u00b7 Speak \u00b7 Write' },
-        { value: '2',        unit: 'Assessments',    desc: 'Before + After'                            },
-        { value: '1',        unit: 'Navigator',      desc: 'Who knows your child'                      },
-        { value: '1',        unit: 'Cohort',         desc: 'Small & intentional'                       },
-        { value: '\u221e',   unit: 'The Full Loop',  desc: 'Every single session'                      },
-      ],
-    },
-    loop: {
-      eyebrow:         'How The Loop Works',
-      h2:              'Four skills. Every session.',
-      h2zh:            null,
-      typeAB:
-        'Sessions alternate between Type A (fluency observation \u2014 the Navigator tracks the exact moment fluency breaks across four stages) and Type B (comprehension and oral defense \u2014 the student builds a position, defends it live, and responds to follow-up questions before the Navigator offers any evaluation). Session type is assigned by the Navigator based on the student\u2019s current Lexile data, not a fixed rotation.',
-      methodologyLink: 'Read the full methodology \u2192',
-      steps: [
-        { num: '01', label: 'Read',  labelZh: '\u9605\u8bfb', badge: null,
-          desc: 'Texts chosen above their comfort zone \u2014 just enough to stretch. Comprehension is tracked by Lexile level, not guesswork.' },
-        { num: '02', label: 'Think', labelZh: '\u601d\u8003', badge: null,
-          desc: 'Before they speak or write, they build the argument. What\u2019s the claim? What\u2019s the evidence? What\u2019s the counter? Structure first.' },
-        { num: '03', label: 'Speak', labelZh: '\u8868\u8fbe', badge: null,
-          desc: 'They take a position and defend it \u2014 live, with their Navigator. This is where confidence is built, not performed.' },
-        { num: '04', label: 'Write', labelZh: '\u5199\u4f5c', badge: null,
-          desc: 'Everything they\u2019ve read, thought, and said now lands on the page. Draft to revision \u2014 measurable improvement, every time.' },
-      ],
-    },
-    journey: {
-      eyebrow: 'The Journey',
-      h2:      'Where your child starts \u2014 and where they\u2019ll be.',
-      h2zh:    null,
-      steps: [
-        {
-          week: 'Week 1',
-          label: 'Entrance Assessment', labelZh: '\u5165\u5b66\u8bc4\u4f30',
-          desc: 'We start by finding out exactly where your child is \u2014 their Lexile reading level, their 6+1 Trait writing baseline, and the specific areas where they need support. No assumptions.',
-          badge: null, badgeSub: null,
-        },
-        {
-          week: 'Weeks 2\u201315',
-          label: 'Weekly Sessions', labelZh: '\u6bcf\u5468\u8bfe\u7a0b',
-          desc: 'Each week, your child works through The Loop with their Navigator \u2014 someone who knows their progress, their challenges, and what to push next. Sessions run 90 minutes, once per week.',
-          badge: null, badgeSub: null,
-        },
-        {
-          week: 'Week 16',
-          label: 'Exit Assessment + Progress Report', labelZh: '\u7ed3\u4e1a\u8bc4\u4f30',
-          desc: 'At the end, you see the growth as real numbers: Lexile level before and after, 6+1 Trait scores for all seven traits, side by side with where they started. You receive a written progress report. Then you decide what comes next.',
-          badge: null, badgeSub: null,
-        },
-      ],
-    },
-    session: {
-      eyebrow:        'A Real Session',
-      navigatorName:  'Navigator Sarah',
-      sessionPhase:   'Read Phase \u00b7 Lexile 740',
-      h2:   'Here\u2019s what a typical Tuesday looks like.',
-      h2zh: null,
-      p1: 'The Navigator opens by naming the phase:',
-      q1: '\u201cToday we\u2019re in Read. Your text is at Lexile 740 \u2014 that\u2019s eight points above where you were last week. Let\u2019s see what you can do.\u201d',
-      p2: 'Twenty minutes of structured reading. Not silent \u2014 annotated, questioned, discussed together.',
-      p3: 'Then comes Think. The Navigator asks: what\u2019s the author\u2019s argument? Do you agree? What\u2019s the strongest counter?',
-      p4: 'The session closes looking forward:',
-      q4: '\u201cNext week is Speak. You\u2019ll defend your position out loud. Start getting ready.\u201d',
-      navigatorsLink: 'Meet the Navigators \u2192',
-    },
-    growth: {
-      eyebrow: 'How We Measure Growth',
-      h2:      'Real numbers, not vague progress reports.',
-      h2zh:    null,
-      lexile: {
-        h3:    'Lexile Reading Level',
-        sub:   'The same measurement system used by schools across North America \u2014 so you can compare progress directly.',
-        note:  'We don\u2019t say your child \u201creads well.\u201d We show you they moved from <strong>Lexile 620 to 820</strong> in 16 weeks \u2014 that\u2019s the difference between Grade\u00a04 and Grade\u00a06 reading territory.',
-        start: 620, end: 820,
-      },
-      trait: {
-        h3:         '6+1 Trait Writing',
-        sub:        'The same rubric your child\u2019s school uses \u2014 so when you see improvement here, it shows up in the classroom too.',
-        startLabel: 'Start',
-        endLabel:   'After 16 weeks',
-        scaleLabel: 'Scale 1\u20136',
-        note:       'When you ask \u201chas the writing improved?\u201d \u2014 we don\u2019t say yes. We show you each trait score, before and after, so you can see exactly where the growth happened.',
-      },
-    },
-    cta: {
-      eyebrow: 'Diagnostic Consultation',
-      h2:      'Ready to see where your child stands?',
-      body:
-        'The consultation is 20 minutes. A Navigator \u2014 not a sales call. We measure your child\u2019s Lexile level, identify the exact gaps, and show you what the first 16 weeks looks like for a student exactly like yours.',
-      btn:  'Book Your Consultation',
-      note: 'Free diagnostic assessment included. No obligation.',
-    },
-    charter: {
-      badge: 'Diagnostic Consultation',
-      h2:    'Ready to meet your child\u2019s Navigator?',
-      sub:   'The diagnostic consultation is where we find out exactly where your child is \u2014 not where their school says they are.',
-      btn1:  'Book Your Consultation',
-      btn2:  'Read the Methodology',
-    },
-  },
-
-  zh: {
-    meta: {
-      title: '16\u5468\u53cc\u8bed\u9605\u8bfb\u8bfe\u7a0b\u5177\u4f53\u5305\u542b\u4ec0\u4e48\uff1f\u2014\u2014 DODO Learning',
-      description:
-        '\u7531\u5bfc\u5e08\u4e3b\u5bfc\u7684\u5b9e\u65f6\u53cc\u8bed\u9605\u8bfb\u8bfe\u7a0b\uff0c\u8bad\u7ec3\u5b8c\u6574\u7684\u9605\u8bfb\u2192\u601d\u8003\u2192\u8868\u8fbe\u2192\u5199\u4f5c\u95ed\u73af\u2014\u2014\u9762\u5411\u52a0\u62ff\u5927\u548c\u7f8e\u56fd\u7684\u534e\u8bed\u5bb6\u5ead\u3002\u5165\u5b66\u548c\u7ed3\u4e1aLexile\u8bc4\u4f30\u3002\u4e00\u4e2a\u5e74\u7ea7\u7684\u9605\u8bfb\u6210\u957f\uff0c\u6709\u6570\u636e\u4e3a\u8bc4\u8bc1\u3002',
-    },
-    hero: {
-      chip: 'Think Once. In Both Languages.',
-      h1:   '16\u5468\u53cc\u8bed\u9605\u8bfb\u8bfe\u7a0b\u5177\u4f53\u5305\u542b\u4ec0\u4e48\uff1f',
-      h1zh: 'What happens inside The 16-Week Program?',
-      sub:
-        '\u4e13\u4e3a\u52a0\u62ff\u5927\u548c\u7f8e\u56fd\u7684\u534e\u8bed\u5bb6\u5ead\u8bbe\u8ba1\u3002\u6bcf\u8282\u8bfe\u5747\u8fd0\u884cThe Loop\u2014\u2014\u7ed3\u6784\u5316\u3001\u53ef\u8ddf\u8e2a\uff0c\u7531\u719f\u77e5\u60a8\u5b69\u5b50\u6bcf\u4e00\u6b65\u6210\u957f\u7684\u4e13\u5c5e\u5bfc\u5e08\u5168\u7a0b\u5f15\u5bfc\u3002',
-      cta1: '\u4e86\u89e3\u8bfe\u7a0b\u7ed3\u6784',
-      cta2: '\u9884\u7ea6\u548c\u8be2',
-      stats: [
-        { value: '16',       unit: '\u5468',            desc: '\u771f\u5b9e\u7684\u627f\u8bfa'                                                     },
-        { value: '4',        unit: '\u9879\u6280\u80fd', desc: '\u9605\u8bfb \u00b7 \u601d\u8003 \u00b7 \u8868\u8fbe \u00b7 \u5199\u4f5c'           },
-        { value: '2',        unit: '\u6b21\u8bc4\u4f30', desc: '\u8bfe\u524d + \u8bfe\u540e'                                                        },
-        { value: '1',        unit: '\u4f4d\u5bfc\u5e08', desc: '\u4e86\u89e3\u60a8\u7684\u5b69\u5b50'                                              },
-        { value: '1',        unit: '\u4e2a\u5c0f\u7ec4', desc: '\u5c0f\u73ed\u7cbe\u82f1'                                                          },
-        { value: '\u221e',   unit: '\u5b8c\u6574\u5faa\u73af', desc: '\u6bcf\u8282\u8bfe\u90fd\u8d2f\u7a7f'                                        },
-      ],
-    },
-    loop: {
-      eyebrow:         '\u5faa\u73af\u5982\u4f55\u8fd0\u4f5c',
-      h2:              '\u56db\u9879\u6280\u80fd\uff0c\u8d2f\u7a7f\u6bcf\u5802\u8bfe',
-      h2zh:            'Four skills. Every session.',
-      typeAB:
-        '\u8bfe\u7a0b\u5728A\u578b\uff08\u6d41\u5229\u5ea6\u89c2\u5bdf\u2014\u2014\u5bfc\u5e08\u8ddf\u8e2a\u6d41\u5229\u5ea6\u65ad\u88c2\u70b9\u7684\u5177\u4f53\u65f6\u523b\uff09\u548cB\u578b\uff08\u7406\u89e3\u4e0e\u53e3\u5934\u8bba\u8bc1\u2014\u2014\u5b66\u751f\u6784\u5efa\u7acb\u573a\u3001\u5b9e\u65f6\u634d\u536b\u5e76\u56de\u5e94\u8ffd\u95ee\uff0c\u5bfc\u5e08\u5728\u5b66\u751f\u56de\u5e94\u540e\u624d\u7ed9\u51fa\u8bc4\u4ef7\uff09\u4e4b\u95f4\u4ea4\u66ff\u8fdb\u884c\u3002\u8bfe\u578b\u7531\u5bfc\u5e08\u6839\u636e\u5b66\u751f\u5f53\u524dLexile\u6570\u636e\u6307\u5b9a\uff0c\u800c\u975e\u6309\u56fa\u5b9a\u8f6e\u6b21\u5b89\u6392\u3002',
-      methodologyLink: '\u9605\u8bfb\u5b8c\u6574\u6559\u5b66\u65b9\u6cd5 \u2192',
-      steps: [
-        { num: '01', label: '\u9605\u8bfb', labelZh: 'Read',  badge: null,
-          desc: '\u7cbe\u9009\u7565\u9ad8\u4e8e\u8212\u9002\u533a\u7684\u6587\u7ae0\u2014\u2014\u6070\u5230\u597d\u5904\u5730\u5ef6\u5c55\u3002\u9605\u8bfb\u7406\u89e3\u901a\u8fc7Lexile\u7b49\u7ea7\u8ffd\u8e2a\uff0c\u800c\u975e\u51ed\u611f\u89c9\u3002' },
-        { num: '02', label: '\u601d\u8003', labelZh: 'Think', badge: null,
-          desc: '\u5728\u5f00\u53e3\u6216\u52a8\u7b14\u4e4b\u524d\uff0c\u5148\u641e\u5efa\u8bba\u70b9\u6846\u67b6\u3002\u8bba\u70b9\u662f\u4ec0\u4e48\uff1f\u4f9d\u636e\u662f\u4ec0\u4e48\uff1f\u53cd\u9a73\u662f\u4ec0\u4e48\uff1f\u7ed3\u6784\u5148\u884c\u3002' },
-        { num: '03', label: '\u8868\u8fbe', labelZh: 'Speak', badge: null,
-          desc: '\u5728\u5bfc\u5e08\u9762\u524d\uff0c\u73b0\u573a\u8868\u8fbe\u5e76\u634d\u536b\u81ea\u5df1\u7684\u7acb\u573a\u3002\u81ea\u4fe1\u5728\u8fd9\u91cc\u5efa\u7acb\uff0c\u800c\u975e\u8868\u6f14\u51fa\u6765\u3002' },
-        { num: '04', label: '\u5199\u4f5c', labelZh: 'Write', badge: null,
-          desc: '\u6240\u6709\u9605\u8bfb\u3001\u601d\u8003\u548c\u8868\u8fbe\u7684\u5185\u5bb9\uff0c\u6700\u7ec8\u843d\u5728\u7eb8\u9762\u4e0a\u3002\u4ece\u521d\u7a3f\u5230\u4fee\u6539\u2014\u2014\u6bcf\u6b21\u90fd\u6709\u53ef\u8861\u91cf\u7684\u8fdb\u6b65\u3002' },
-      ],
-    },
-    journey: {
-      eyebrow: '\u6210\u957f\u4e4b\u65c5',
-      h2:      '\u4ece\u8d77\u70b9\u5230\u6210\u957f\u7684\u6e05\u6670\u8def\u5f84',
-      h2zh:    'Where your child starts \u2014 and where they\u2019ll be.',
-      steps: [
-        {
-          week: '\u7b2c\u4e00\u5468',
-          label: '\u5165\u5b66\u8bc4\u4f30', labelZh: 'Entrance Assessment',
-          desc: '\u6211\u4eec\u4ece\u7cbe\u786e\u4e86\u89e3\u5b69\u5b50\u73b0\u72b6\u5f00\u59cb\u2014\u2014Lexile\u9605\u8bfb\u7b49\u7ea7\u3001\u4e03\u98796+1 Trait\u5199\u4f5c\u57fa\u7ebf\uff0c\u4ee5\u53ca\u9700\u8981\u652f\u6301\u7684\u5177\u4f53\u65b9\u9762\u3002\u4e0d\u4f5c\u5047\u8bbe\u3002',
-          badge: null, badgeSub: null,
-        },
-        {
-          week: '\u7b2c\u4e8c\u81f3\u5341\u4e94\u5468',
-          label: '\u6bcf\u5468\u8bfe\u7a0b', labelZh: 'Weekly Sessions',
-          desc: '\u6bcf\u5468\uff0c\u5b69\u5b50\u4e0e\u4e13\u5c5e\u5bfc\u5e08\u5171\u540c\u5b8c\u6210\u5b8c\u6574\u7684\u5b66\u4e60\u5faa\u73af\u3002\u6bcf\u8282\u8bfe90\u5206\u949f\uff0c\u6bcf\u5468\u4e00\u6b21\u3002',
-          badge: null, badgeSub: null,
-        },
-        {
-          week: '\u7b2c\u5341\u516d\u5468',
-          label: '\u7ed3\u4e1a\u8bc4\u4f30\u4e0e\u8fdb\u5ea6\u62a5\u544a', labelZh: 'Exit Assessment + Progress Report',
-          desc: '\u8bfe\u7a0b\u7ed3\u675f\u65f6\uff0c\u60a8\u5c06\u770b\u5230\u771f\u5b9e\u7684\u6210\u957f\u6570\u636e\uff1aLexile\u7b49\u7ea7\u3001\u5168\u90e86+1 Trait\u5199\u4f5c\u8bc4\u5206\uff0c\u4e0e\u8d77\u70b9\u5e76\u6392\u5448\u73b0\u3002\u60a8\u5c06\u6536\u5230\u4e66\u9762\u8fdb\u5ea6\u62a5\u544a\u3002\u7136\u540e\u7531\u60a8\u51b3\u5b9a\u4e0b\u4e00\u6b65\u3002',
-          badge: null, badgeSub: null,
-        },
-      ],
-    },
-    session: {
-      eyebrow:        '\u771f\u5b9e\u8bfe\u5802',
-      navigatorName:  'Navigator Sarah',
-      sessionPhase:   '\u9605\u8bfb\u9636\u6bb5 \u00b7 Lexile 740',
-      h2:   '\u4e00\u4e2a\u5178\u578b\u7684\u5468\u4e8c\u8bfe\u5802',
-      h2zh: 'Here\u2019s what a typical Tuesday looks like.',
-      p1: '\u5bfc\u5e08\u5f00\u573a\u65f6\u70b9\u660e\u5b66\u4e60\u9636\u6bb5\uff1a',
-      q1: '\u201c\u4eca\u5929\u6211\u4eec\u8fdb\u884c\u9605\u8bfb\u9636\u6bb5\u3002\u4f60\u7684\u6587\u7ae0Lexile\u662f740\u2014\u2014\u6bd4\u4e0a\u5468\u9ad8\u4e86\u516b\u5206\u3002\u6211\u4eec\u6765\u770b\u770b\u4f60\u80fd\u505a\u5230\u4ec0\u4e48\u3002\u201d',
-      p2: '\u4e8c\u5341\u5206\u949f\u7684\u7ed3\u6784\u5316\u9605\u8bfb\u3002\u4e0d\u662f\u9ed8\u8bfb\u2014\u2014\u800c\u662f\u6279\u6ce8\u3001\u63d0\u95ee\u3001\u5171\u540c\u8ba8\u8bba\u3002',
-      p3: '\u7136\u540e\u8fdb\u5165\u601d\u8003\u9636\u6bb5\u3002\u5bfc\u5e08\u63d0\u95ee\uff1a\u4f5c\u8005\u7684\u8bba\u70b9\u662f\u4ec0\u4e48\uff1f\u4f60\u540c\u610f\u5417\uff1f\u6700\u6709\u529b\u7684\u53cd\u9a73\u662f\u4ec0\u4e48\uff1f',
-      p4: '\u8bfe\u7a0b\u7ed3\u675f\u65f6\uff0c\u76ee\u5149\u6295\u5411\u524d\u65b9\uff1a',
-      q4: '\u201c\u4e0b\u5468\u662f\u8868\u8fbe\u9636\u6bb5\u3002\u4f60\u8981\u73b0\u573a\u634d\u536b\u4f60\u7684\u7acb\u573a\u3002\u4ece\u73b0\u5728\u5f00\u59cb\u51c6\u5907\u3002\u201d',
-      navigatorsLink: '\u8ba4\u8bc6\u5bfc\u5e08\u56e2\u961f \u2192',
-    },
-    growth: {
-      eyebrow: '\u6211\u4eec\u5982\u4f55\u8861\u91cf\u6210\u957f',
-      h2:      '\u771f\u5b9e\u6570\u636e\uff0c\u544a\u522b\u6a21\u7cca\u8bc4\u8bed',
-      h2zh:    'Real numbers, not vague progress reports.',
-      lexile: {
-        h3:    'Lexile \u9605\u8bfb\u7b49\u7ea7',
-        sub:   '\u4e0e\u5317\u7f8e\u5404\u5730\u5b66\u6821\u4f7f\u7528\u7684\u540c\u4e00\u5957\u6d4b\u91cf\u4f53\u7cfb\u2014\u2014\u8ba9\u60a8\u53ef\u4ee5\u76f4\u63a5\u5bf9\u6bd4\u8fdb\u6b65\u3002',
-        note:  '\u6211\u4eec\u4e0d\u8bf4\u5b69\u5b50\u201c\u8bfb\u5f97\u4e0d\u9519\u201d\u3002\u6211\u4eec\u7528\u6570\u636e\u5c55\u793a\uff1a\u4ed6\u4eec\u572816\u5468\u5185\u4ece <strong>Lexile 620 \u63d0\u5347\u5230 820</strong>\u2014\u2014\u8fd9\u662f\u56db\u5e74\u7ea7\u548c\u516d\u5e74\u7ea7\u9605\u8bfb\u6c34\u5e73\u4e4b\u95f4\u7684\u5dee\u8ddd\u3002',
-        start: 620, end: 820,
-      },
-      trait: {
-        h3:         '6+1 Trait \u5199\u4f5c\u8bc4\u4f30',
-        sub:        '\u4e0e\u5b69\u5b50\u5b66\u6821\u4f7f\u7528\u7684\u540c\u4e00\u5957\u8bc4\u5206\u6807\u51c6\u2014\u2014\u5728\u8fd9\u91cc\u770b\u5230\u7684\u8fdb\u6b65\uff0c\u4f1a\u76f4\u63a5\u4f53\u73b0\u5728\u8bfe\u5802\u4e0a\u3002',
-        startLabel: '\u8d77\u59cb',
-        endLabel:   '16\u5468\u540e',
-        scaleLabel: '\u8bc4\u5206 1\u20136',
-        note:       '\u5f53\u4f60\u95ee\u201c\u5199\u4f5c\u6709\u8fdb\u6b65\u5417\u201d\u2014\u2014\u6211\u4eec\u4e0d\u8bf4\u201c\u6709\u201d\u3002\u6211\u4eec\u5c55\u793a\u6bcf\u9879\u7279\u8d28\u8bc4\u5206\u7684\u524d\u540e\u5bf9\u6bd4\uff0c\u8ba9\u60a8\u6e05\u6670\u770b\u5230\u6210\u957f\u53d1\u751f\u5728\u54ea\u91cc\u3002',
-      },
-    },
-    cta: {
-      eyebrow: '\u8bfa\u65ad\u548c\u8be2',
-      h2:      '\u51c6\u5907\u597d\u4e86\u89e3\u5b69\u5b50\u7684\u5b66\u4e60\u8d77\u70b9\u4e86\u5417\uff1f',
-      body:
-        '\u548c\u8be2\u4ec520\u5206\u949f\u3002\u63a5\u5f85\u60a8\u7684\u662fNavigator\uff0c\u4e0d\u662f\u9500\u552e\u3002\u6211\u4eec\u6d4b\u91cf\u60a8\u5b69\u5b50\u7684Lexile\u7b49\u7ea7\uff0c\u627e\u51fa\u786e\u5207\u7684\u5dee\u8ddd\uff0c\u5e76\u5c55\u793a\u5c5e\u4e8e\u8fd9\u4e2a\u5b69\u5b50\u7684\u524d16\u5468\u8def\u5f84\u3002',
-      btn:  '\u9884\u7ea6\u514d\u8d39\u8bfa\u65ad\u548c\u8be2',
-      note: '\u5305\u542b\u514d\u8d39\u8bfa\u65ad\u8bc4\u4f30\u3002\u65e0\u9700\u627f\u8bfa\u3002',
-    },
-    charter: {
-      badge: '\u8bfa\u65ad\u548c\u8be2',
-      h2:    '\u51c6\u5907\u597d\u8ba4\u8bc6\u5b69\u5b50\u7684\u5bfc\u5e08\u4e86\u5417\uff1f',
-      sub:   '\u8bfa\u65ad\u548c\u8be2\u662f\u6211\u4eec\u7cbe\u786e\u4e86\u89e3\u5b69\u5b50\u5177\u4f53\u5728\u54ea\u91cc\u7684\u8d77\u70b9\u2014\u2014\u800c\u975e\u4f9d\u8d56\u5b66\u6821\u7684\u8bc4\u4f30\u62a5\u544a\u3002',
-      btn1:  '\u9884\u7ea6\u548c\u8be2',
-      btn2:  '\u9605\u8bfb\u6559\u5b66\u65b9\u6cd5',
-    },
-  },
-}
+const COPY = { en: copyEn, zh: copyZh }
 
 // ─────────────────────────────────────────────────────────────
 // SHARED PRIMITIVES
@@ -709,6 +479,117 @@ function JourneySection({ locale, c }) {
 }
 
 // ─────────────────────────────────────────────────────────────
+// SECTION 3b — ARCHITECTURE (Loop → LCS → Levels)
+// Brand v4.1 §06 — distinguishes per-session Loop from
+// curriculum-level LCS from multi-cycle Levels.
+// ─────────────────────────────────────────────────────────────
+
+function ArchitectureSection({ locale, c }) {
+  if (!c.architecture) return null
+  const a = c.architecture
+  return (
+    <section aria-labelledby="architecture-heading" style={{ backgroundColor: '#212830', padding: 'var(--section-md) 0' }}>
+      <div className="container-section">
+        <div style={{ marginBottom: '2rem' }}>
+          <Eyebrow dark>{a.eyebrow}</Eyebrow>
+          <BilingualH2 id="architecture-heading" primary={a.h2} secondary={a.h2zh} light />
+          <p style={{ marginTop: '1.25rem', fontSize: '1rem', lineHeight: 1.82, color: 'rgba(240,240,240,0.6)', maxWidth: '48rem' }}>
+            {a.body}
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4" style={{ marginBottom: '1.5rem' }}>
+          {a.strands.map((strand) => (
+            <article key={strand.letter}
+              style={{ padding: '1.5rem', backgroundColor: 'rgba(183,181,254,0.06)', border: '1px solid rgba(183,181,254,0.18)', borderRadius: '0.75rem' }}>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.625rem', marginBottom: '0.625rem' }}>
+                <span style={{ fontSize: '2rem', fontWeight: 800, color: '#b7b5fe', lineHeight: 1, letterSpacing: '-0.03em' }} aria-hidden="true">
+                  {strand.letter}
+                </span>
+                <div>
+                  <p style={{ fontSize: '1rem', fontWeight: 700, color: '#F0F0F0', lineHeight: 1.2 }}>{strand.name}</p>
+                  {locale === 'zh' ? (
+                    <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '11px', color: 'rgba(183,181,254,0.7)', lineHeight: 1.3 }}>{strand.nameZh}</p>
+                  ) : (
+                    <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '11px', color: 'rgba(183,181,254,0.5)', lineHeight: 1.3 }}>{strand.nameZh}</p>
+                  )}
+                </div>
+              </div>
+              <p style={{ fontSize: '0.875rem', lineHeight: 1.75, color: 'rgba(240,240,240,0.65)' }}>{strand.body}</p>
+            </article>
+          ))}
+        </div>
+        <p style={{ fontSize: '0.8125rem', lineHeight: 1.7, color: 'rgba(240,240,240,0.45)', maxWidth: '52rem' }}>
+          {a.levelsNote}
+        </p>
+      </div>
+    </section>
+  )
+}
+
+// ─────────────────────────────────────────────────────────────
+// SECTION 3c — COMBINATIONS (Summit / Core / Flex 1-3)
+// ─────────────────────────────────────────────────────────────
+
+function CombinationsSection({ locale, c }) {
+  if (!c.combinations) return null
+  const k = c.combinations
+  return (
+    <section id="combinations" aria-labelledby="combinations-heading" style={{ backgroundColor: '#F5F5FF', padding: 'var(--section-md) 0' }}>
+      <div className="container-section">
+        <div style={{ marginBottom: '2rem' }}>
+          <Eyebrow>{k.eyebrow}</Eyebrow>
+          <BilingualH2 id="combinations-heading" primary={k.h2} secondary={k.h2zh} />
+          <p style={{ marginTop: '1.25rem', fontSize: '1rem', lineHeight: 1.82, color: '#3D4452', maxWidth: '48rem' }}>
+            {k.body}
+          </p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3" style={{ marginBottom: '1.25rem' }}>
+          {k.items.map((item) => (
+            <article key={item.id}
+              style={{
+                padding: '1.25rem 1rem',
+                backgroundColor: item.featured ? '#0E0E12' : '#ffffff',
+                color: item.featured ? '#F0F0F0' : '#0E0E12',
+                border: item.featured ? '2px solid #b7b5fe' : '1px solid rgba(14,14,18,0.08)',
+                borderRadius: '0.625rem',
+                display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
+                minHeight: '220px',
+              }}>
+              <div>
+                {item.featured && (
+                  <span style={{ display: 'inline-block', padding: '2px 8px', borderRadius: '9999px', backgroundColor: '#b7b5fe', color: '#0E0E12', fontSize: '9px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
+                    {locale === 'zh' ? '最受欢迎' : 'Most Popular'}
+                  </span>
+                )}
+                <p style={{ fontSize: '1.125rem', fontWeight: 700, lineHeight: 1.2, letterSpacing: '-0.01em' }}>{item.name}</p>
+                <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '11px', color: item.featured ? 'rgba(183,181,254,0.75)' : '#5856cc', marginTop: '2px', lineHeight: 1.3 }}>
+                  {item.nameZh}
+                </p>
+                <p style={{ fontSize: '0.8125rem', lineHeight: 1.55, color: item.featured ? 'rgba(240,240,240,0.7)' : '#3D4452', marginTop: '0.75rem' }}>
+                  {item.format}
+                </p>
+                <p style={{ fontSize: '0.75rem', lineHeight: 1.5, color: item.featured ? 'rgba(240,240,240,0.55)' : '#7B8494', marginTop: '0.5rem' }}>
+                  {item.forWhom}
+                </p>
+              </div>
+              <p style={{ fontSize: '1.25rem', fontWeight: 700, color: item.featured ? '#b7b5fe' : '#0E0E12', letterSpacing: '-0.02em', marginTop: '0.75rem' }}>
+                {item.price}
+              </p>
+            </article>
+          ))}
+        </div>
+        <p style={{ fontSize: '0.8125rem', color: '#7B8494', marginBottom: '0.625rem' }}>
+          {k.note}
+        </p>
+        <Link href={`/${locale}/faq#enrollment`} style={{ fontSize: '0.875rem', fontWeight: 600, color: '#5856cc', textDecoration: 'none' }}>
+          {k.faqLink}
+        </Link>
+      </div>
+    </section>
+  )
+}
+
+// ─────────────────────────────────────────────────────────────
 // SECTION 4 — A REAL SESSION
 // ─────────────────────────────────────────────────────────────
 
@@ -987,8 +868,10 @@ export default async function ProgramPage({ params }) {
       />
       <Hero              locale={locale} c={c} />
       <LoopSection       locale={locale} c={c} />
-      <JourneySection    locale={locale} c={c} />
-      <SessionSection    locale={locale} c={c} />
+      <JourneySection      locale={locale} c={c} />
+      <ArchitectureSection locale={locale} c={c} />
+      <CombinationsSection locale={locale} c={c} />
+      <SessionSection      locale={locale} c={c} />
       <GrowthSection     locale={locale} c={c} />
       <GetStartedSection locale={locale} c={c} />
       <CharterSection    locale={locale} c={c} />

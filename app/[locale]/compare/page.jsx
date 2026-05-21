@@ -13,6 +13,8 @@ import Link from 'next/link'
 import { notFound }                    from 'next/navigation'
 import { isValidLocale, localeParams } from '@/lib/i18n'
 import { buildMetadata }               from '@/lib/metadata'
+import { compare as copyEn }       from '@/content/marketing.en'
+import { compare as copyZh }       from '@/content/marketing.zh'
 
 export async function generateMetadata({ params }) {
   const { locale } = await params
@@ -80,124 +82,7 @@ function Section({ bg = 'dark', className = '', children, id }) {
   )
 }
 
-const COPY = {
-  en: {
-    meta: {
-      title:       'Why DODO Learning — How It Differs From Tutoring, ESL, and Test-Prep | DODO Learning',
-      description: 'DODO Learning is a cognitive development program for Chinese immigrant families in Canada and the US — not a tutoring centre, not an ESL program, not test-prep. Here is exactly what makes it structurally different, and why that difference compounds over 16 weeks.',
-    },
-    s1: {
-      eyebrow: 'Why DODO Learning',
-      h1a: 'Every English program promises\u00a0', h1b: 'progress.', h1c: '\u00a0One of them builds the thinker.',
-      sub: 'For Chinese immigrant families in Canada and the US — this is what makes DODO Learning structurally different from every other option available to your child.',
-    },
-    s2: { pull: 'Most programs teach your child to answer the question correctly.\u00a0', pullSpan: 'DODO Learning trains them to ask a better one.', pullEnd: '' },
-    s3: {
-      eyebrow: 'The Category Difference',
-      h2: 'Three comparisons that clarify what DODO Learning actually is.',
-      cols: [
-        { question: 'vs. Tutoring centres & ESL programs', title: 'Cognitive development\u00a0— not language practice', body: 'Tutoring centres fix homework. ESL programs build conversational fluency. DODO Learning develops the reasoning architecture that makes your child capable of reading dense analytical prose, arguing a position with textual evidence, and writing with precision. Different category. Different outcome.' },
-        { question: 'vs. Grade-level school support', title: 'Mastery standard\u00a0— not grade compliance', body: 'School English is calibrated to the average. DODO Learning\u2019s program is grounded in the principles of the MCT Language Arts framework\u00a0\u2014 one of the most rigorous classical ELA programs in North America, built for students capable of genuine mastery. Your child is measured against their own Lexile ceiling, not a classroom mean.' },
-        { question: 'vs. Test-prep companies', title: 'A 16-week arc\u00a0— not a score for next month', body: 'Test-prep optimises for a single exam window. The 16-Week Program builds the cognitive capacity that produces strong results as a natural byproduct\u00a0\u2014 because a student who can read complexity, synthesise evidence, and write with intention will perform on any assessment they face.' },
-      ],
-    },
-    s4: {
-      eyebrow: 'The Methodology', h2: 'What separates DODO Learning is not the curriculum. It\u2019s The Loop.',
-      caption: 'Read \u2192 Think \u2192 Speak \u2192 Write. Every session follows this exact sequence. Every stage is assessed. The Loop is not a teaching method\u00a0\u2014 it is a compounding system. A student who runs The Loop with a Navigator across 16 weeks does not simply improve their English. They rebuild how they process complexity. That is the difference that becomes visible a decade later.',
-      methodologyLink: 'Read the full methodology \u2192',
-    },
-    s5: { eyebrow: 'From the Founder', h2: 'Why we built DODO Learning\u00a0\u2014 and what we decided we would never become.', sub: 'Unscripted. Eight minutes. The decision in full.', founderName: 'Sarah Chen \u2014 Founder & Lead Navigator', founderNote: 'Video embed \u2014 replace with production URL' },
-    s6: {
-      eyebrow: 'The Navigator Difference', h2: 'A Navigator is not a tutor. Here is exactly what that means.',
-      points: [
-        { label: 'Longitudinal knowledge', body: 'A session-by-session tutor meets your child fresh each time. A Navigator carries the full arc\u00a0\u2014 your child\u2019s Lexile baseline, their 6+1 Trait profile from week one, the specific sentence from three sessions ago that still needs to move. That context compounds. The insight it produces cannot be replicated in a one-off session.' },
-        { label: 'A better question\u00a0\u2014 not a faster answer', body: 'The Navigator\u2019s first move after your child responds is always a follow-up question\u00a0\u2014 never an evaluation. This is the structural difference between developing a thinker and training a responder. One builds capacity. The other builds dependence.' },
-        { label: 'Calibrated feedback\u00a0\u2014 not general praise', body: 'Every Navigator response references a specific 6+1 Trait, a specific score, and a specific next move. Not \u201cgood job\u201d\u00a0\u2014 \u201cyour Ideas trait moved from a 2 to a 3 because of this sentence. A 4 requires this.\u201d Your child always knows exactly where they are and what a higher score requires of them.' },
-        { label: 'One Navigator. The full 16-week arc.', body: 'Your child\u2019s Navigator is with them from initial Lexile assessment to final 6+1 Trait evaluation. One relationship. One standard. One set of eyes on every draft, every oral defence, every argument. The relationship itself is part of the program.' },
-      ],
-      navigatorsLink: 'Meet the Navigators \u2192',
-    },
-    s7: {
-      eyebrow: 'What Progress Looks Like Here', h2: 'Measurable, specific, and felt\u00a0\u2014 versus everywhere else.',
-      cols: [
-        { num: '01', title: 'Lexile\u00a0\u2014 not letter grades', body: 'Lexile 620 to Lexile 790 in 16 weeks is a verifiable fact. A letter grade is a school\u2019s assessment of compliance against a class average. DODO Learning measures reading complexity\u00a0\u2014 the actual cognitive demand of the texts your child can independently handle\u00a0\u2014 at entry, at the midpoint, and at completion.' },
-        { num: '02', title: '6+1 Traits\u00a0\u2014 not impressions', body: 'Writing is scored across seven specific traits: Ideas, Organization, Voice, Word Choice, Sentence Fluency, Conventions, Presentation. Your child knows which trait moved, by how much, and exactly what a higher score requires. Progress is never vague here.' },
-        { num: '03', title: 'A committed arc\u00a0\u2014 not rolling enrolment', body: 'The 16-Week Program has a beginning, a measurable midpoint, and a confirmed result. Not a monthly subscription. Not open enrolment. A structure\u00a0\u2014 because compounding only works when the work is continuous and the Navigator\u2019s knowledge accumulates.' },
-      ],
-    },
-    s8: {
-      eyebrow: 'In Their Words', h2: 'Students who came from somewhere else\u00a0\u2014 and what changed.',
-      voices: [
-        { quote: 'I did three years of English tutoring before this. I could answer the reading comprehension questions but I couldn\u2019t actually tell you what the chapter meant or why it mattered. The first time my Navigator asked me to defend my interpretation, I had nothing. Sixteen weeks later I could argue for two pages.', grade: 'Grade 7', city: 'Calgary', weeks: '16-week program, completed', detail: 'Lexile 590 \u2192 780 \u00b7 6+1 Ideas: 1 \u2192 4 \u00b7 6+1 Organization: 2 \u2192 4 \u00b7 Entered from two-year tutoring programme' },
-        { quote: 'My parents tried two ESL programs before DODO Learning. My English got more fluent but I still couldn\u2019t write an essay that said anything. Here the Navigator made me re-write the same paragraph six times. Each time I understood something I hadn\u2019t before. That\u2019s a different kind of work.', grade: 'Grade 6', city: 'Vancouver', weeks: '16-week program, week 14', detail: 'Lexile 610 \u2192 760 at week 14 \u00b7 6+1 Voice: 1 \u2192 3 \u00b7 6+1 Word Choice: 2 \u2192 4 \u00b7 Previously enrolled in two ESL providers' },
-      ],
-    },
-    s9: {
-      h2: 'The Lexile assessment is where we find out if DODO Learning is the right fit for your child.',
-      sub: 'Every enrollment begins with a free Lexile reading assessment\u00a0\u2014 no commitment, no pressure. A precise starting point, because meaningful progress requires one.',
-      ctaPrimary: 'Book a Free Lexile Assessment', ctaSecondary: 'See the Full Program',
-      note: 'The assessment is free. The 16-Week Program begins with a confirmed Lexile baseline.',
-    },
-  },
-
-  zh: {
-    meta: {
-      title: 'DODO Learning有什么不同——与辅导班、ESL和应试培训的本质区别 | 都学书院',
-      description: 'DODO Learning不是英文辅导班，不是ESL项目，不是应试培训。这是一个面向加拿大和美国华人家庭的英语认知发展项目。这里解释它在结构上的不同，以及这种差异如何在16周内形成复利。',
-    },
-    s1: {
-      eyebrow: '为什么是DODO Learning',
-      h1a: '每一个英语项目都承诺\u00a0', h1b: '进步。', h1c: '\u00a0其中一个培养真正的思考者。',
-      sub: '面向加拿大和美国的华人家庭——这是DODO Learning在结构上与您孩子所能接触到的其他所有选择的根本区别。',
-    },
-    s2: { pull: '大多数项目教孩子如何正确回答问题。\u00a0', pullSpan: 'DODO Learning训练他们提出更好的问题。', pullEnd: '' },
-    s3: {
-      eyebrow: '类别差异', h2: '三组对比，说清楚DODO Learning究竟是什么。',
-      cols: [
-        { question: '对比辅导班和ESL项目', title: '认知发展\u00a0——\u00a0不是语言练习', body: '辅导班解决当天的作业。ESL项目建立日常会话流利度。DODO Learning构建的是推理架构——让孩子能够阅读密度较高的分析性文章、用文本证据为观点辩护、以精准语言完成写作。这是不同的类别，也是不同的结果。' },
-        { question: '对比年级水平的学校支持', title: '掌握标准\u00a0——\u00a0不是年级合规', body: '学校英语以平均水平为基准。DODO Learning的课程以MCT语言艺术框架的理念为核心参照——北美最严格的经典ELA课程之一，专为有能力真正掌握语言的学生设计。孩子以自身的Lexile上限为衡量标准，而非班级平均值。' },
-        { question: '对比应试培训机构', title: '16周完整弧线\u00a0——\u00a0不是下个月的分数', body: '应试培训为单次考试窗口优化。16周项目构建的认知能力，会自然产生优异的考试成绩——因为一个能读懂复杂文本、综合证据、有意图地写作的学生，面对任何考核都能表现出色。' },
-      ],
-    },
-    s4: {
-      eyebrow: '教学方法', h2: '区分DODO Learning的不是课程内容。是The Loop。',
-      caption: '阅读 → 思考 → 表达 → 写作。每一节课都遵循这个确切的顺序。每个阶段都有评估。The Loop不是一种教学方法——它是一个复利系统。一个与Navigator共同完成16周The Loop的学生，不只是英语有所提升。他们重建了处理复杂性的方式。这种差异，十年后才真正显现。',
-      methodologyLink: '阅读完整教学方法 →',
-    },
-    s5: { eyebrow: '创始人说', h2: '我们为什么创立DODO Learning\u00a0——\u00a0以及我们决定永远不会成为什么。', sub: '无脚本。八分钟。完整阐述这个决定。', founderName: 'Sarah Chen — 创始人 & 首席Navigator', founderNote: '视频链接——请替换为正式URL' },
-    s6: {
-      eyebrow: 'Navigator的不同', h2: 'Navigator不是辅导老师。这是确切的区别所在。',
-      points: [
-        { label: '纵向知识积累', body: '按课时收费的辅导老师每次都从零开始了解你的孩子。Navigator携带的是完整的弧线——孩子的Lexile基线、从第一周起的6+1特质档案、三节课前那个仍需改进的具体句子。这些积累形成复利。它产生的洞察，无法在一次性课程中被复制。' },
-        { label: '更好的问题\u00a0——\u00a0而非更快的答案', body: 'Navigator在孩子回答之后的第一个动作，永远是追问——从不是评价。这是培养思考者与训练应答者之间的结构性差异。一个建立能力，另一个建立依赖。' },
-        { label: '有针对性的反馈\u00a0——\u00a0而非泛泛的鼓励', body: 'Navigator的每一条回应都指向具体的6+1特质、具体的分数、以及具体的下一步。不是"不错"——而是"你的想法特质从2分升到3分，是因为这个句子。4分要求你做到这个。"孩子永远清楚自己在哪里，以及更高分数需要什么。' },
-        { label: '一位Navigator。完整的16周弧线。', body: '孩子的Navigator从最初的Lexile评估陪伴到最终的6+1特质评估。一段关系，一个标准，对每一份草稿、每一次口头表达、每一个论点的全程关注。这段关系本身就是项目的组成部分。' },
-      ],
-      navigatorsLink: '认识Navigator团队 →',
-    },
-    s7: {
-      eyebrow: '进步在这里意味着什么', h2: '可量化、具体、可感知\u00a0——\u00a0与其他地方截然不同。',
-      cols: [
-        { num: '01', title: 'Lexile\u00a0——\u00a0不是字母成绩', body: '16周内从Lexile 620到790，是可核实的事实。字母成绩是学校对照班级平均水平的合规评估。DODO Learning衡量的是阅读复杂度——孩子能够独立处理的文本的实际认知难度——在入学时、中期和完成时分别测量。' },
-        { num: '02', title: '6+1特质\u00a0——\u00a0不是模糊印象', body: '写作在七个具体特质上评分：想法、组织、声音、词汇选择、句子流畅度、规范性、呈现。孩子知道哪个特质提升了，提升了多少，以及更高分数具体要求什么。这里的进步从不含糊。' },
-        { num: '03', title: '有承诺的弧线\u00a0——\u00a0不是滚动报名', body: '16周项目有明确的起点、可量化的中期节点和已确认的结果。不是按月续费。不是随时入学。是一种结构——因为复利只在工作持续进行、Navigator的知识不断积累时才能发挥作用。' },
-      ],
-    },
-    s8: {
-      eyebrow: '他们自己说', h2: '曾在其他地方学习过的学生\u00a0——\u00a0以及发生了什么变化。',
-      voices: [
-        { quote: '在这之前我上了三年英文辅导课。阅读理解题我会答，但我真的不知道那章讲了什么，也不知道为什么重要。第一次Navigator让我为自己的理解辩护，我完全说不出来。十六周后，我能写两页来论证。', grade: '七年级', city: '卡尔加里', weeks: '16周项目，已完成', detail: 'Lexile 590 → 780 · 6+1想法：1 → 4 · 6+1组织：2 → 4 · 入学前参加过两年辅导课' },
-        { quote: '我妈给我试过两个ESL项目。英文是流利了，但我还是写不出一篇有观点的文章。在这里Navigator让我把同一段重写了六次。每一次我都理解了之前没理解的东西。那是一种完全不同的工作方式。', grade: '六年级', city: '温哥华', weeks: '16周项目，第14周', detail: 'Lexile 610 → 760（第14周）· 6+1声音：1 → 3 · 6+1词汇选择：2 → 4 · 入学前参加过两家ESL机构' },
-      ],
-    },
-    s9: {
-      h2: 'Lexile评估是我们判断DODO Learning是否适合您孩子的起点。',
-      sub: '每次入学都从免费Lexile阅读评估开始——无需承诺，没有压力。一个精准的起点，因为有意义的进步需要一个起点。',
-      ctaPrimary: '预约免费Lexile评估', ctaSecondary: '查看完整项目',
-      note: '评估免费。16周项目在确认Lexile基线后正式开始。',
-    },
-  },
-}
+const COPY = { en: copyEn, zh: copyZh }
 
 export function generateStaticParams() { return localeParams() }
 

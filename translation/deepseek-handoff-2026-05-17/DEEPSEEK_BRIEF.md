@@ -34,7 +34,7 @@ You are the official ZH translator for DODO Learning — a bilingual cognitive d
 | Lexile | Lexile（蓝思）|
 | Lexile Level | Lexile阅读水平 |
 | 6+1 Traits / 6+1 Trait | 6+1特质 |
-| Ideas, Organization, Voice, Word Choice, Sentence Fluency, Conventions, Presentation | 思考、结构、声音、用词、流畅、规范、呈现 |
+| Ideas, Organisation, Voice, Word Choice, Sentence Fluency, Conventions, Presentation | 想法、结构、声音、用词、句子流畅度、规范性、呈现 |
 | Think Once. In Both Languages. | 一次思考。两种语言。|
 | Harvard Project Zero | 哈佛教育学院零点项目 |
 | MCT Language Arts | MCT语言艺术课程 |
@@ -63,20 +63,6 @@ You are the official ZH translator for DODO Learning — a bilingual cognitive d
 | Literacy Session | Literacy Session（文学课） |
 | Writing Session | Writing Session（写作课） |
 | Visible Thinking | Visible Thinking（哈佛Project Zero的可视化思维方法） |
-
-### Navigator-Portal Program Labels — added 2026-05-18
-
-These labels appear on `navigators.dodolearning.com` (the Navigator-private companion site) and any L-strand-only artefact. They replace the earlier `Mud Trilogy — Phase N` program labels.
-
-| English | Chinese |
-|---------|---------|
-| Literacy · Level 1 | 文学精读 · 一级 |
-| Literacy: Level 1 – Phase 1 | 文学精读 · 一级 · 第一阶段 |
-| Literacy: Level 1 – Phase 2 | 文学精读 · 一级 · 第二阶段 |
-| Literacy: Level 1 – Phase 3 | 文学精读 · 一级 · 第三阶段 |
-| L·L1 / L·L1·P1 / L·L1·P2 / L·L1·P3 | Keep Latin codenames, no translation |
-
-**Phase ↔ Cycle:** The Navigator portal (and its DLCW curriculum source) labels the 16-week unit a **Phase / 阶段**. Brand surfaces (dodolearning.com, social, parent-facing copy) use **Cycle / 周期**. Same unit, two surface registers — match the audience.
 
 ### MCT Curriculum Components — keep English, don't translate
 

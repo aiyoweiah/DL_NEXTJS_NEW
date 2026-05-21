@@ -4,7 +4,8 @@ Internal documentation. Not deployed (not in `public/`, not served).
 
 ## Contents
 
-- **[workflow.md](workflow.md)** — The single source of truth for the ongoing SEO + GEO (Generative Engine Optimization) initiative. Read this first if you're picking up this work.
+- **[SUCCESSOR_HANDOFF.md](SUCCESSOR_HANDOFF.md)** — Entry-point doc for anyone picking up the project cold. Architecture, brand voice, DeepSeek workflow, key files, what's pending, smoke tests. **Read this first.**
+- **[workflow.md](workflow.md)** — Single source of truth for the ongoing SEO + GEO (Generative Engine Optimization) initiative. Read second for longer-running context.
 - **[ops-tools.md](ops-tools.md)** — Internal PDF generators under `/ops/*` (Assessment, Onboarding, Teacher Agreement). The shared html2canvas + jsPDF recipe, the AcroForm pattern, the typing-lag performance pattern, and a checklist for adding a new tool.
 - **[navigators-setup.md](navigators-setup.md)** — One-time Cloudflare setup runbook for the sibling navigators repo.
 - **[audiobooks-setup.md](audiobooks-setup.md)** / **[audiobooks-add-new.md](audiobooks-add-new.md)** — Audiobook section setup and per-book add procedure.

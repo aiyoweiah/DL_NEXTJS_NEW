@@ -33,7 +33,7 @@ export const metadata = buildMetadata({
   title:
     'DODO Learning — Think Once. In Both Languages.',
   description:
-    'A live, Navigator-led bilingual thinking program for globally mobile ' +
+    'A live, Navigator-led English literacy program for globally mobile ' +
     'Chinese-speaking families. The 16-Week Program develops students who ' +
     'read, think, speak, and write in two languages — measured by Lexile ' +
     'levels and the 6+1 Trait writing framework.',

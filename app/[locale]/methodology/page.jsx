@@ -23,8 +23,10 @@
 
 import Link         from 'next/link'
 import { notFound } from 'next/navigation'
+import { methodology as copyEn }   from '@/content/marketing.en'
+import { methodology as copyZh }   from '@/content/marketing.zh'
 
-import { isValidLocale, localeParams, getContent } from '@/lib/i18n'
+import { isValidLocale, localeParams} from '@/lib/i18n'
 import { buildMetadata }                           from '@/lib/metadata'
 import { courseSchema }                            from '@/lib/schema'
 
@@ -41,7 +43,7 @@ export function generateStaticParams() {
 // ── Metadata ──────────────────────────────────────────────────
 export async function generateMetadata({ params }) {
   const { locale } = await params
-  const t = await getContent(locale, 'methodology')
+  const t = locale === 'zh' ? copyZh : copyEn
   return buildMetadata({
     locale,
     path:        '/methodology',
@@ -55,7 +57,7 @@ export default async function MethodologyPage({ params }) {
   const { locale } = await params
   if (!isValidLocale(locale)) notFound()
 
-  const t = await getContent(locale, 'methodology')
+  const t = locale === 'zh' ? copyZh : copyEn
 
   // Step background rhythm: dark, light, dark, light
   const stepBg = [true, false, true, false]

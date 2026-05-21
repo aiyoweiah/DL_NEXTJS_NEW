@@ -16,8 +16,10 @@
 
 import Link         from 'next/link'
 import { notFound } from 'next/navigation'
+import { lexile as copyEn }        from '@/content/marketing.en'
+import { lexile as copyZh }        from '@/content/marketing.zh'
 
-import { isValidLocale, localeParams, getContent } from '@/lib/i18n'
+import { isValidLocale, localeParams} from '@/lib/i18n'
 import { buildMetadata }                           from '@/lib/metadata'
 
 import SectionWrapper from '@/components/ui/SectionWrapper'
@@ -33,7 +35,7 @@ export function generateStaticParams() {
 // ── Metadata ──────────────────────────────────────────────────
 export async function generateMetadata({ params }) {
   const { locale } = await params
-  const t = await getContent(locale, 'lexile')
+  const t = locale === 'zh' ? copyZh : copyEn
   return buildMetadata({
     locale,
     path:        '/lexile',
@@ -47,7 +49,7 @@ export default async function LexilePage({ params }) {
   const { locale } = await params
   if (!isValidLocale(locale)) notFound()
 
-  const t = await getContent(locale, 'lexile')
+  const t = locale === 'zh' ? copyZh : copyEn
 
   const lexileSchema = {
     '@context':  'https://schema.org',

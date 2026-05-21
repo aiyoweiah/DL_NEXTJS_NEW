@@ -19,10 +19,11 @@
 //   Warm amber radial accent echoes illustration's doorstep glow
 
 import Link from 'next/link'
+import { results as copyEn }              from '@/content/marketing.en'
+import { results as copyZh }              from '@/content/marketing.zh'
 
 import { notFound }                    from 'next/navigation'
-import { isValidLocale, localeParams,
-         getContent }                  from '@/lib/i18n'
+import { isValidLocale, localeParams}                  from '@/lib/i18n'
 import { buildMetadata }               from '@/lib/metadata'
 
 import SectionWrapper from '@/components/ui/SectionWrapper'
@@ -38,7 +39,7 @@ export function generateStaticParams() {
 // ── Metadata ──────────────────────────────────────────────────
 export async function generateMetadata({ params }) {
   const { locale } = await params
-  const t = await getContent(locale, 'results')
+  const t = locale === 'zh' ? copyZh : copyEn
   return buildMetadata({
     locale,
     path:        '/results',
@@ -53,7 +54,7 @@ export default async function ResultsPage({ params }) {
 
   if (!isValidLocale(locale)) notFound()
 
-  const t = await getContent(locale, 'results')
+  const t = locale === 'zh' ? copyZh : copyEn
 
   return (
     <>
@@ -191,6 +192,37 @@ export default async function ResultsPage({ params }) {
           </p>
         </div>
       </SectionWrapper>
+
+      {/* ── 3b. Anchor case study (long-arc proof) ──────────── */}
+      {t.anchor && (
+        <SectionWrapper dark>
+          <div className="py-16 md:py-20 max-w-3xl">
+            <p className="eyebrow mb-4" style={{ color: '#b7b5fe' }}>{t.anchor.eyebrow}</p>
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-5" style={{ color: '#F0F0F0' }}>
+              {t.anchor.heading}
+            </h2>
+            <p className="text-lg leading-relaxed mb-8" style={{ color: 'rgba(240,240,240,0.7)' }}>
+              {t.anchor.body}
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              {t.anchor.stats.map((stat, i) => (
+                <div key={i} className="p-6" style={{ background: 'rgba(183,181,254,0.08)', borderLeft: '3px solid #b7b5fe' }}>
+                  <p className="text-5xl font-bold tracking-tight" style={{ color: '#b7b5fe', letterSpacing: '-0.03em' }}>
+                    {stat.number}
+                    <span className="text-base font-medium ml-2" style={{ color: 'rgba(183,181,254,0.7)' }}>{stat.unit}</span>
+                  </p>
+                  <p className="text-sm font-semibold uppercase tracking-wider mt-2" style={{ color: 'rgba(240,240,240,0.85)', letterSpacing: '0.08em' }}>
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <p className="text-sm leading-relaxed" style={{ color: 'rgba(240,240,240,0.5)' }}>
+              {t.anchor.note}
+            </p>
+          </div>
+        </SectionWrapper>
+      )}
 
       {/* ── 4. Result cards ──────────────────────────────── */}
       <SectionWrapper>

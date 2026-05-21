@@ -19,15 +19,8 @@ import { isValidLocale, localeParams } from '@/lib/i18n'
 import { buildMetadata }               from '@/lib/metadata'
 import LexileBar                       from '@/components/ui/LexileBar'
 import YoutubeEmbed                    from '@/components/demos/YoutubeEmbed'
-
-const YOUTUBE_IDS = {
-  featured:       'REPLACE_FEATURED_VIDEO_ID',
-  demoGr46:       'REPLACE_DEMO_GR4_6_VIDEO_ID',
-  demoGr78:       'REPLACE_DEMO_GR7_8_VIDEO_ID',
-  demoGr9plus:    'REPLACE_DEMO_GR9PLUS_VIDEO_ID',
-  brandLoop:      'REPLACE_BRAND_LOOP_VIDEO_ID',
-  brandNavigator: 'REPLACE_BRAND_NAVIGATOR_VIDEO_ID',
-}
+import { demos as copyEn }              from '@/content/marketing.en'
+import { demos as copyZh }              from '@/content/marketing.zh'
 
 const LEXILE_SCALE = [
   { level: 1200, grade: 'Grade 12+' },
@@ -40,7 +33,7 @@ const LEXILE_SCALE = [
 
 const TRAITS = [
   { id: 'ideas',        en: 'Ideas',            zh: '\u60f3\u6cd5',             start: 2, end: 4 },
-  { id: 'organisation', en: 'Organisation',     zh: '\u7ed3\u6784',             start: 2, end: 4 },
+  { id: 'organisation', en: 'Organization',     zh: '\u7ed3\u6784',             start: 2, end: 4 },
   { id: 'voice',        en: 'Voice',            zh: '\u58f0\u97f3',             start: 2, end: 4 },
   { id: 'word-choice',  en: 'Word Choice',      zh: '\u8bcd\u6c47\u9009\u62e9', start: 2, end: 5 },
   { id: 'fluency',      en: 'Sentence Fluency', zh: '\u53e5\u5b50\u6d41\u7545', start: 3, end: 5 },
@@ -48,160 +41,7 @@ const TRAITS = [
   { id: 'presentation', en: 'Presentation',     zh: '\u5448\u73b0',             start: 2, end: 4 },
 ]
 
-const COPY = {
-  en: {
-    meta: {
-      title:       'Watch a Demo Class',
-      description: 'Watch real DODO Learning demo classes. See The Loop in Navigator-led sessions with bilingual students. Three grade bands. Unedited.',
-    },
-    hero: {
-      chip: 'Think Once. In Both Languages.',
-      h1:   'See exactly what your child\u2019s sessions look like.',
-      h1zh: '\u770b\u770b\u771f\u5b9e\u7684\u8bfe\u5802\u662f\u4ec0\u4e48\u6837\u5b50',
-      sub:  'No pitch. No edited highlights. A real Navigator, a real student, working through a real session of The Loop. Watch before you decide.',
-      cta1: 'Watch Demo Classes',
-      cta2: 'Book Your Consultation',
-      stats: [
-        { value: '3',      unit: 'Grade Bands',  desc: 'Grades 4\u20136, 7\u20138, 9+' },
-        { value: '20',     unit: 'Min',          desc: 'Full sessions, unedited'       },
-        { value: '4',      unit: 'Loop Phases',  desc: 'Read \u00b7 Think \u00b7 Speak \u00b7 Write' },
-        { value: '1',      unit: 'Real Student', desc: 'Parent consent given'          },
-        { value: '1',      unit: 'Navigator',    desc: 'Live, no script'               },
-        { value: '\u221e', unit: 'Free',          desc: 'No sign-up required'           },
-      ],
-    },
-    videos: {
-      eyebrow:   'Watch Before You Decide',
-      h2:        'Demo classes and program explainers.',
-      h2zh:      '\u793a\u8303\u8bfe\u4e0e\u8bfe\u7a0b\u4ecb\u7ecd',
-      row1Label: 'Demo Class Recordings',
-      row2Label: 'About the Program',
-      cards: [
-        { videoId: YOUTUBE_IDS.demoGr46,       label: 'Emerging Reader',    labelZh: '\u6210\u957f\u671f\u8bfb\u8005', tag1: 'Grades 4\u20136', tag2: 'Lexile 580\u2013720', tag3: 'Read \u00b7 Think \u00b7 Write' },
-        { videoId: YOUTUBE_IDS.demoGr78,       label: 'Independent Reader', labelZh: '\u72ec\u7acb\u9605\u8bfb\u8005', tag1: 'Grades 7\u20138', tag2: 'Lexile 820\u2013980', tag3: 'Full Loop' },
-        { videoId: YOUTUBE_IDS.demoGr9plus,    label: 'Advanced Reader',    labelZh: '\u9ad8\u7ea7\u9605\u8bfb\u8005', tag1: 'Grades 9+',       tag2: 'Lexile 1020+',      tag3: 'Full Loop \u00b7 Extended' },
-        { videoId: YOUTUBE_IDS.featured,       label: 'The Full Loop',      labelZh: '\u5b8c\u6574\u5faa\u73af\u5c55\u793a', tag1: 'Featured',   tag2: '20 min',  tag3: 'Grades 7\u20138' },
-        { videoId: YOUTUBE_IDS.brandLoop,      label: 'The Loop Explained', labelZh: '\u5b66\u4e60\u5faa\u73af\u89e3\u6790', tag1: 'Method',     tag2: '5 min',   tag3: null },
-        { videoId: YOUTUBE_IDS.brandNavigator, label: 'Meet a Navigator',   labelZh: '\u8ba4\u8bc6\u9886\u822a\u5458',       tag1: 'People',     tag2: '3 min',   tag3: null },
-      ],
-    },
-    session: {
-      eyebrow:       'Inside a Demo Session',
-      navigatorName: 'Navigator Sarah',
-      sessionPhase:  'Think Phase \u00b7 Lexile 740',
-      h2:   'What you\u2019re actually watching.',
-      h2zh: '\u4f60\u5728\u89c2\u770b\u4e00\u573a\u771f\u5b9e\u7684\u8bfe',
-      p1: 'The Navigator doesn\u2019t introduce the student or explain the format. The session is already in progress:',
-      q1: '\u201cYou said the author\u2019s main claim is about fairness. I want to push on that \u2014 what does fairness mean to the characters in this text versus what it means to you?\u201d',
-      p2: 'The student pauses. Not out of confusion \u2014 out of thought. That pause is The Loop working.',
-      p3: 'The Navigator doesn\u2019t fill the silence. They wait. When the student speaks, the answer is more precise than anything they\u2019d have said without the pause.',
-      p4: 'At the end you\u2019ll hear the Navigator set the write prompt:',
-      q4: '\u201cDraft a paragraph: what does fairness cost? Use two pieces of evidence from the text. I\u2019ll read it before next session.\u201d',
-    },
-    after: {
-      eyebrow: 'After You Watch',
-      h2:      'You\u2019ll know within 20 minutes.',
-      h2zh:    '\u89c2\u770b\u540e\uff0c\u60a8\u5c06\u5fc3\u4e2d\u6709\u6570',
-      body:    'Most parents tell us the demo answers the question they couldn\u2019t put into words before watching. Is this the right kind of challenge for my child? Watch the demo. Then book the diagnostic call. The Navigator who runs your consultation will be the same kind of person you see on screen.',
-      cta:    'Book a Diagnostic Call',
-    },
-    growth: {
-      eyebrow: 'What Students Achieve',
-      h2:      'The demo shows the method. The numbers show the result.',
-      h2zh:    '\u6f14\u793a\u5c55\u793a\u65b9\u6cd5\uff0c\u6570\u5b57\u8bc1\u660e\u6210\u679c',
-      lexile: {
-        h3:  'Lexile Reading Level',
-        sub: 'Students who complete The 16-Week Program after watching the demo start with a clear baseline and finish with a measurable number.',
-        note: 'The student in the Grade 7\u20138 demo started at <strong>Lexile 820</strong>. After 16 weeks: <strong>Lexile 1020</strong>. That\u2019s two full grade levels in four months.',
-        start: 820, end: 1020,
-      },
-      trait: {
-        h3:         '6+1 Trait Writing',
-        sub:        'Every demo includes a live 6+1 Trait writing moment. These are average entry and exit scores across all 16-week program students.',
-        startLabel: 'Entry',
-        endLabel:   'Exit (16 wks)',
-        scaleLabel: 'Scale 1\u20136',
-        note:       'The writing growth you see in the demos is exactly what causes these scores to move. The Loop is the mechanism.',
-      },
-    },
-    cta: {
-      eyebrow: 'Ready to Talk',
-      h2:      'Watched the demo. Want to know if it\u2019s right for your child?',
-      h2zh:    '\u770b\u5b8c\u793a\u8303\uff0c\u60f3\u77e5\u9053\u662f\u5426\u9002\u5408\u60a8\u7684\u5b69\u5b50\uff1f',
-      body:    'The diagnostic consultation is 20 minutes with a Navigator \u2014 not a sales call. We assess your child\u2019s current Lexile level, identify the specific gap, and map out what 16 weeks could look like for them. No commitment required to book.',
-      btn:    'Book Your Consultation',
-      note:   'With a Navigator, not a sales representative. Honest fit assessment \u2014 we only enroll students we can genuinely move.',
-    },
-    charter: {
-      badge: 'The 16-Week Program',
-      h2:    'Ready to start after watching?',
-      sub:   'Every student begins with a Navigator who knows their Lexile baseline, their 6+1 Trait writing profile, and exactly where they need to go next.',
-      btn1:  'Book Your Consultation',
-      btn2:  'See The Program',
-    },
-  },
-
-  zh: {
-    meta: {
-      title:       '\u89c2\u770b\u793a\u8303\u8bfe',
-      description: '\u89c2\u770b DODO Learning \u7684\u771f\u5b9e\u793a\u8303\u8bfe\u3002\u4e09\u4e2a\u5e74\u7ea7\u7ec4\uff0c\u672a\u526a\u8f91\u7684\u5b8c\u6574\u5b66\u4e60\u5faa\u73af\u3002',
-    },
-    hero: {
-      chip: 'Think Once. In Both Languages.',
-      h1:   '\u770b\u770b\u771f\u5b9e\u7684\u8bfe\u5802\u662f\u4ec0\u4e48\u6837\u5b50',
-      h1zh: 'See exactly what your child\u2019s sessions look like.',
-      sub:  '\u6ca1\u6709\u9500\u552e\u8bdd\u672f\uff0c\u6ca1\u6709\u7cbe\u5fc3\u526a\u8f91\u3002\u4e00\u4f4d\u771f\u5b9e\u7684\u9886\u822a\u5458\uff0c\u4e00\u4f4d\u771f\u5b9e\u7684\u5b66\u751f\uff0c\u5b8c\u6574\u7684\u5b66\u4e60\u5faa\u73af\u3002\u5148\u770b\u518d\u51b3\u5b9a\u3002',
-      cta1: '\u67e5\u770b\u793a\u8303\u8bfe',
-      cta2: '\u9884\u7ea6\u514d\u8d39\u548b\u8be2',
-      stats: [
-        { value: '3',      unit: '\u5e74\u7ea7\u7ec4',       desc: '\u56db\u516d\u5e74\u7ea7\u3001\u4e03\u516b\u5e74\u7ea7\u3001\u4e5d\u5e74\u7ea7+' },
-        { value: '20',     unit: '\u5206\u949f',             desc: '\u5b8c\u6574\u8bfe\u5802\uff0c\u672a\u526a\u8f91'          },
-        { value: '4',      unit: '\u5faa\u73af\u9636\u6bb5', desc: '\u9605\u8bfb \u00b7 \u601d\u8003 \u00b7 \u8868\u8fbe \u00b7 \u5199\u4f5c' },
-        { value: '1',      unit: '\u771f\u5b9e\u5b66\u751f', desc: '\u5df2\u83b7\u5bb6\u957f\u6388\u6743'                    },
-        { value: '1',      unit: '\u9886\u822a\u5458',       desc: '\u5168\u7a0b\u73b0\u573a\uff0c\u65e0\u811a\u672c'         },
-        { value: '\u221e', unit: '\u514d\u8d39',             desc: '\u65e0\u9700\u6ce8\u518c'                                 },
-      ],
-    },
-    videos: {
-      eyebrow:   '\u89c2\u770b\u540e\u518d\u51b3\u5b9a',
-      h2:        '\u793a\u8303\u8bfe\u4e0e\u8bfe\u7a0b\u4ecb\u7ecd',
-      h2zh:      'Demo classes and program explainers.',
-      row1Label: '\u793a\u8303\u8bfe\u5f55\u50cf',
-      row2Label: '\u5173\u4e8e\u8bfe\u7a0b',
-      cards: [
-        { videoId: YOUTUBE_IDS.demoGr46,       label: '\u6210\u957f\u671f\u8bfb\u8005', labelZh: 'Emerging Reader',    tag1: 'Grades 4\u20136', tag2: 'Lexile 580\u2013720', tag3: '\u9605\u8bfb \u00b7 \u601d\u8003 \u00b7 \u5199\u4f5c' },
-        { videoId: YOUTUBE_IDS.demoGr78,       label: '\u72ec\u7acb\u9605\u8bfb\u8005', labelZh: 'Independent Reader', tag1: 'Grades 7\u20138', tag2: 'Lexile 820\u2013980', tag3: '\u5b8c\u6574\u5faa\u73af' },
-        { videoId: YOUTUBE_IDS.demoGr9plus,    label: '\u9ad8\u7ea7\u9605\u8bfb\u8005', labelZh: 'Advanced Reader',    tag1: 'Grades 9+',       tag2: 'Lexile 1020+',      tag3: '\u5b8c\u6574\u5faa\u73af \u00b7 \u5ef6\u4f38' },
-        { videoId: YOUTUBE_IDS.featured,       label: '\u5b8c\u6574\u5faa\u73af\u5c55\u793a', labelZh: 'The Full Loop',      tag1: '\u7cbe\u9009',    tag2: '20 \u5206\u949f', tag3: 'Grades 7\u20138' },
-        { videoId: YOUTUBE_IDS.brandLoop,      label: '\u5b66\u4e60\u5faa\u73af\u89e3\u6790', labelZh: 'The Loop Explained', tag1: '\u65b9\u6cd5',    tag2: '5 \u5206\u949f',  tag3: null },
-        { videoId: YOUTUBE_IDS.brandNavigator, label: '\u8ba4\u8bc6\u9886\u822a\u5458',       labelZh: 'Meet a Navigator',   tag1: '\u4eba\u7269',    tag2: '3 \u5206\u949f',  tag3: null },
-      ],
-    },
-    session: {
-      eyebrow:       '\u793a\u8303\u8bfe\u5185\u90e8',
-      navigatorName: 'Navigator Sarah',
-      sessionPhase:  '\u601d\u8003\u9636\u6bb5 \u00b7 Lexile 740',
-      h2:   '\u4f60\u5728\u89c2\u770b\u4e00\u573a\u771f\u5b9e\u7684\u8bfe',
-      h2zh: 'What you\u2019re actually watching.',
-      p1: '\u9886\u822a\u5458\u4e0d\u4ecb\u7ecd\u5b66\u751f\uff0c\u4e5f\u4e0d\u89e3\u91ca\u683c\u5f0f\u3002\u8bfe\u5df2\u7ecf\u5f00\u59cb\uff1a',
-      q1: '\u201c\u4f60\u8bf4\u4f5c\u8005\u7684\u4e3b\u8981\u8bba\u70b9\u662f\u516c\u5e73\u3002\u6211\u60f3\u8fdb\u4e00\u6b65\u63d0\u95ee\u2014\u2014\u8fd9\u7bc7\u6587\u672c\u4e2d\u7684\u4eba\u7269\u5bf9\u516c\u5e73\u7684\u7406\u89e3\uff0c\u4e0e\u4f60\u7684\u7406\u89e3\u6709\u4f55\u4e0d\u540c\uff1f\u201d',
-      p2: '\u5b66\u751f\u505c\u987f\u4e86\u3002\u4e0d\u662f\u56e0\u4e3a\u56f0\u60d1\u2014\u2014\u800c\u662f\u56e0\u4e3a\u5728\u601d\u8003\u3002\u90a3\u4e2a\u505c\u987f\uff0c\u6b63\u662f\u5b66\u4e60\u5faa\u73af\u5728\u8d77\u4f5c\u7528\u3002',
-      p3: '\u9886\u822a\u5458\u6ca1\u6709\u6253\u7834\u6c89\u9ed8\u3002\u4ed6\u4eec\u5728\u7b49\u5f85\u3002\u5f53\u5b66\u751f\u5f00\u53e3\uff0c\u56de\u7b54\u6bd4\u6ca1\u6709\u505c\u987f\u65f6\u66f4\u52a0\u7cbe\u786e\u3002',
-      p4: '\u6700\u540e\uff0c\u60a8\u5c06\u542c\u5230\u9886\u822a\u5458\u5e03\u7f6e\u5199\u4f5c\u4efb\u52a1\uff1a',
-      q4: '\u201c\u5199\u4e00\u6bb5\u8bdd\uff1a\u516c\u5e73\u9700\u8981\u4ed8\u51fa\u4ec0\u4e48\u4ee3\u4ef7\uff1f\u4ece\u6587\u672c\u4e2d\u627e\u4e24\u4e2a\u4f9d\u636e\u3002\u6211\u5728\u4e0b\u6b21\u8bfe\u524d\u4f1a\u9605\u8bfb\u3002\u201d',
-    },
-    after: { eyebrow: '\u89c2\u770b\u540e', h2: '\u89c2\u770b\u540e\uff0c\u60a8\u5c06\u5fc3\u4e2d\u6709\u6570', h2zh: 'You\u2019ll know within 20 minutes.', body: '\u5927\u591a\u6570\u5bb6\u957f\u544a\u8bc9\u6211\u4eec\uff0c\u793a\u8303\u89e3\u7b54\u4e86\u4ed6\u4eec\u89c2\u770b\u524d\u65e0\u6cd5\u7528\u8bed\u8a00\u8868\u8fbe\u7684\u95ee\u9898\u3002\u89c2\u770b\u793a\u8303\uff0c\u7136\u540e\u9884\u7ea6\u8bfa\u65ad\u901a\u8bdd\u3002', cta: '\u9884\u7ea6\u8bfa\u65ad\u901a\u8bdd' },
-    growth: {
-      eyebrow: '\u5b66\u751f\u6210\u679c',
-      h2:      '\u6f14\u793a\u5c55\u793a\u65b9\u6cd5\uff0c\u6570\u5b57\u8bc1\u660e\u6210\u679c',
-      h2zh:    'The demo shows the method. The numbers show the result.',
-      lexile:  { h3: 'Lexile \u9605\u8bfb\u7b49\u7ea7', sub: '\u89c2\u770b\u793a\u8303\u540e\u53c2\u52a0\u5341\u516d\u5468\u8bfe\u7a0b\u7684\u5b66\u751f\uff0c\u4ece\u6e05\u6670\u7684\u57fa\u7ebf\u51fa\u53d1\uff0c\u5f97\u5230\u53ef\u8861\u91cf\u7684\u6570\u5b57\u7ed3\u679c\u3002', note: '\u4e03\u81f3\u516b\u5e74\u7ea7\u793a\u8303\u4e2d\u7684\u5b66\u751f\u8d77\u59cb\u4e8e <strong>Lexile 820</strong>\u3002\u5341\u516d\u5468\u540e\uff1a<strong>Lexile 1020</strong>\u3002\u56db\u4e2a\u6708\u5185\u63d0\u5347\u4e86\u4e24\u4e2a\u5b8c\u6574\u5e74\u7ea7\u3002', start: 820, end: 1020 },
-      trait:   { h3: '6+1 \u5199\u4f5c\u7279\u8d28', sub: '\u6bcf\u4e2a\u793a\u8303\u8bfe\u90fd\u5305\u542b\u4e00\u4e2a\u5b9e\u65f66+1\u5199\u4f5c\u7279\u8d28\u8bc4\u5206\u73af\u8282\u3002', startLabel: '\u5165\u5b66', endLabel: '\u7ed3\u4e1a (16\u5468)', scaleLabel: '\u8bc4\u5206 1\u20136', note: '\u5b66\u4e60\u5faa\u73af\u662f\u63a8\u52a8\u8bc4\u5206\u63d0\u5347\u7684\u52a8\u56e0\u3002' },
-    },
-    cta:     { eyebrow: '\u51c6\u5907\u8c08\u8c08', h2: '\u770b\u5b8c\u793a\u8303\uff0c\u60f3\u77e5\u9053\u662f\u5426\u9002\u5408\u60a8\u7684\u5b69\u5b50\uff1f', h2zh: 'Watched the demo. Want to know if it\u2019s right for your child?', body: '\u8bfa\u65ad\u548b\u8be2\u662f\u4e0e\u9886\u822a\u5458\u4e00\u5bf9\u4e00\u7684\u4e8c\u5341\u5206\u949f\u5bf9\u8bdd\u2014\u2014\u4e0d\u662f\u9500\u552e\u7535\u8bdd\u3002\u9884\u7ea6\u65e0\u9700\u627f\u8bfa\u3002', btn: '\u9884\u7ea6\u514d\u8d39\u8bfa\u65ad\u901a\u8bdd', note: '\u548b\u8be2\u7531\u9886\u822a\u5458\u4e3b\u6301\uff0c\u8bda\u5b9e\u7684\u9002\u5408\u6027\u8bc4\u4f30\u3002' },
-    charter: { badge: '16\u5468\u8bfe\u7a0b', h2: '\u89c2\u770b\u540e\u51b3\u5b9a\u5f00\u59cb\uff1f', sub: '\u6bcf\u4f4d\u5b66\u751f\u90fd\u4ece\u4e00\u4f4d\u4e86\u89e3\u5176Lexile\u57fa\u7ebf\u3001\u516b\u52a0\u4e00\u7279\u8d28\u5199\u4f5c\u6863\u6848\uff0c\u4ee5\u53ca\u786e\u5207\u4e0b\u4e00\u6b65\u76ee\u6807\u7684Navigator\u5f00\u59cb\u3002', btn1: '\u9884\u7ea6\u548b\u8be2', btn2: '\u67e5\u770b\u8bfe\u7a0b' },
-  },
-}
+const COPY = { en: copyEn, zh: copyZh }
 
 // ─────────────────────────────────────────────────────────────
 // SHARED PRIMITIVES

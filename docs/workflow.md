@@ -139,13 +139,13 @@ Three tiers, restructured per LLM Council session (2026-05-11):
 
 ## Open Decisions
 
-These block downstream work. Updated 2026-05-11.
+These block downstream work. Updated 2026-05-17.
 
 | # | Decision | Status |
 |---|---|---|
 | 1 | Verification vs Discovery — strategy | ✅ Hybrid (premium with quota per cohort; quality > volume) |
-| 2 | Price point — locked? | ✅ Full $2,250 / Starter $1,185 / weekly from $74 |
-| 3 | Founder/Navigator named-expert identity (Person schema) | ❌ Pending — needs name + bio + credentials, or "skip" |
+| 2 | Price point — locked? | ✅ **Restructured 2026-05-17 to 5 combinations:** Summit $2,830 · Core $2,250 · Flex 1 $1,185 · Flex 2 $2,110 · Flex 3 from $750. Weekly: Flex 1 $74 · Flex 2 $132 · Core $140 · Summit $177 · Flex 3 ~$47. Live on `/program` + `/faq`. |
+| 3 | Founder/Navigator named-expert identity (Person schema) | ✅ **Janet Sui** confirmed as Founder & Lead Navigator (2026-05-17). Named on `/compare` s5. Bio + Person schema still pending. |
 | 4 | Xiaohongshu / WeChat operator + cadence | ❌ Pending |
 | 5 | The 8 monthly-tracked prompts | ❌ Pending — Claude proposed 8 in Tier 1 session; awaiting confirmation |
 | 6 | Off-site mention channel for Tier 3 | ❌ Pending — newsletters / podcast guesting / school-counselor outreach / education directories / Reddit |
@@ -154,6 +154,9 @@ These block downstream work. Updated 2026-05-11.
 | 9 | Social profile URLs for `sameAs` | ❌ Pending |
 | 10 | Cities list approval (18 cities now in `areaServed`) | ❌ Pending — user said "expand," Claude proposed 18; needs explicit OK or edits |
 | 11 | City pages for new cities — build or just list? | ❌ Pending |
+| 12 | YouTube video IDs for `/demos` | ❌ Pending — placeholders in `content/marketing.{en,zh}.js` `YOUTUBE_IDS` const |
+| 13 | Home page copy migration — extract `HOMEPAGE_COPY` from `app/[locale]/page.tsx` into `content/marketing.{en,zh}.js` `home` exports, matching the 10-page pattern | ✅ Done 2026-05-21. `home` export added to both marketing files. `page.tsx` now imports `homeEn` / `homeZh`. Audit script now covers home (100 strings × 2 locales, 0 hits). |
+| 14 | ZH 6+1 trait list cascade — glossary canon updated 2026-05-21 to `思考、结构、声音、用词、流畅、规范、呈现`. Old canon still in `content/marketing.zh.js` (lines 414/514/554) + `content/faq.js` (lines 246/252) + `translation/DEEPSEEK_BRIEF.md:37`. Cascade pending. | ❌ Pending — logged 2026-05-21 |
 
 ---
 
@@ -196,3 +199,52 @@ These block downstream work. Updated 2026-05-11.
 - `sameAs` social profile URLs (pending user input).
 
 **For next session, start by checking:** Open Decisions table above. Resolve at least #3 (founder identity) before starting Tier 2 work item 2 (Person schema).
+
+---
+
+### 2026-05-17 — Architecture consolidation + content rewrite + bilingual DeepSeek round-trip
+
+**Did:**
+
+**Brand:**
+- Authored `translation/BRAND_CONTENT_GUIDE.md` v4.0 → v4.1 (distilled v3.1 .docx to 390-line operator copy). Exported `.docx` via docx-js. Built `.claude/skills/dodo-content-writer/` (project-local skill, triggers on DODO content edits).
+
+**Architecture (Pass A + B + C):**
+- Pass A — migrated 9 marketing pages from inline COPY / `getContent()` to consolidated `content/marketing.{en,zh}.js` (one named export per page). 18 per-page content files deleted; 9 page.jsx files updated; `videos.js` (YOUTUBE_IDS) inlined into marketing files.
+- Pass B — FAQ duplication resolved (Tier 2 task #1 from this doc). `content/faq-en.js` + `content/faq-zh.js` + JSX-rich `FAQClient.jsx` data consolidated into `content/faq.js` with markdown-lite syntax (`[text](/path)`, `**bold**`). FAQClient becomes a thin renderer (614 → 320 lines).
+- Pass C — cities to `content/cities.js` (6 cities bilingual nested); deleted `content/en.js` + `content/zh.js`; removed `getContent` + `CONTENT_MODULES` from `lib/i18n.js` (152 → 71 lines).
+
+**Content rewrite (per brand v4.1):**
+- `/methodology`, `/about`, `/program` (Pass 1 voice), `/consult`, `/compare`, `/results`, `/lexile`, `/navigators`, all 6 `/cities`, `/faq` (50 Q&As + pricing matrix), `/program` Pass 2 (LCS + 5 Combinations sections).
+- Stripped 8 `Hangar` references from `content/*` + `lib/schema.js` (anti-dict).
+- Replaced "bilingual thinking program" framing in 6 infra files (`lib/schema.js`, `lib/metadata.js`, `app/layout.jsx`, `app/[locale]/assessment/page.jsx`) → "English literacy program".
+- Renamed Sarah → Ms. Jennifer (`/program`), Ms. Willow (`/consult`), Ms. Sarah (`/demos`).
+- Founder = Janet Sui on `/compare` s5 (resolves Open Decision #3).
+- Added SSAT anchor case study to `/results` (92nd/95th percentile, age-10-to-13 long-arc proof).
+- `/about` gained 4th brand-truth belief (Truth 3 — measurable progress) + new By-the-Numbers stats strip (10k hours · 300+ students · 90%+ referral · top-50 unis).
+
+**GEO surfaces:**
+- `public/llms.txt` + `public/llms-full.txt` — full rewrite. Names MCT + Harvard Project Zero + Lexile + 6+1 + LCS + 5 combinations + pricing + Navigator credentials + anchor case study. EN-only by design.
+
+**Translation handoff:**
+- Updated `translation/DEEPSEEK_BRIEF.md` to v1.1 (consolidated-architecture workflow). Updated `translation/dodo-glossary.json` (+ 26 new owned terms: LCS, 5 combinations, MCT components, Janet Sui, Ms. names, SSAT, top-50 universities). Staged `translation/deepseek-handoff-2026-05-17/` folder with brief + glossary + 3 source files + README.
+- DeepSeek round-trip executed by user: `marketing.zh.js`, `faq.js` ZH, `cities.js` ZH all merged. Validated structure parity per file. Forbidden-word screen passed. Spot-checked rendered HTML across `/zh/*` pages.
+
+**Backlog cleared (2026-05-17 end-of-session):**
+- /demos Navigator name → Ms. Sarah.
+- label/labelZh swap on ZH-side (program loop steps + demos video cards) — ZH visitors now see Chinese as primary label.
+- Organisation → Organization site-wide (6 files, 10 occurrences). Code keys `id: 'organisation'` preserved.
+- /about by-the-numbers stats strip section added (data + JSX + bilingual).
+- This workflow.md updated; `SUCCESSOR_HANDOFF.md` authored (next entry in docs/).
+
+**Did NOT do (intentionally):**
+- Founder Person schema in JSON-LD (still requires bio + credentials data; not just name).
+- Sample Navigator bios on `/navigators` (still flagged "pending" per brand v4.1 §12).
+- Bing Webmaster / GSC / GA4 setup (user account access required).
+- IndexNow API key file (requires Bing key).
+- `sameAs` social profile URLs (pending user input).
+- Tier 3 off-site mention work (pending channel decision).
+- City-page expansion for new `areaServed` cities (Calgary, Montreal, etc. — pending decision #11).
+- YouTube video IDs in `YOUTUBE_IDS` const (placeholders remain).
+
+**For next session, start by:** reading `docs/SUCCESSOR_HANDOFF.md` (entry-point doc; describes architecture, files, what's pending). Then `docs/workflow.md` Open Decisions for blockers.
