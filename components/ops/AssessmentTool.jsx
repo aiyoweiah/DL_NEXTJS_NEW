@@ -8,13 +8,22 @@
 //   2. Logo import path updated to shared opsAssets.js
 // Everything else is identical to the tested standalone build.
 
-// VERSION: 3.1.1
+// VERSION: 3.2.0
 // DODO Learning — Student Baseline Report PDF Generator
+//
+// v3.2.0 — performance pass:
+//   * All five hidden PDF page templates wrapped in React.memo with
+//     default shallow comparison. Because info / ratings / comments /
+//     notes / proficientGrade / studentLexile are independent state
+//     pieces (setRatings doesn't touch info, etc.), shallow compare
+//     correctly skips re-renders of pages whose props haven't changed.
+//   * Net effect: editing Notes no longer re-renders pages 1-3,
+//     editing ratings no longer re-renders page 4, etc.
 // Generates standardized 4-page PDF via jsPDF + html2canvas
 //
 // DEPENDENCIES: npm install jspdf html2canvas
 
-import { useState, useCallback, useEffect, useRef } from "react";
+import { useState, useCallback, useEffect, useRef, memo } from "react";
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import { LOGO_B64 } from "@/components/ops/opsAssets";
@@ -479,7 +488,7 @@ function PDFFooter() {
 }
 
 // PAGE 1: Header + Student Info + Literacy
-function PDFPage1({ info, ratings, comments }) {
+function PDFPage1Impl({ info, ratings, comments }) {
   const allSkills = PILLARS.flatMap(p => p.skills);
   const ratedCount = Object.keys(ratings).filter(k => ratings[k] !== undefined && ratings[k] !== null).length;
   return (
@@ -518,8 +527,10 @@ function PDFPage1({ info, ratings, comments }) {
   );
 }
 
+const PDFPage1 = memo(PDFPage1Impl);
+
 // PAGE 2: Header + Speaking & Discussion
-function PDFPage2({ info, ratings, comments }) {
+function PDFPage2Impl({ info, ratings, comments }) {
   return (
     <div id="pdf-p2" style={{ width: PW, height: PH, background: B.cream, fontFamily: F, color: B.ink, boxSizing: "border-box", overflow: "hidden", position: "relative" }}>
       <PDFHeader info={info} />
@@ -531,8 +542,10 @@ function PDFPage2({ info, ratings, comments }) {
   );
 }
 
+const PDFPage2 = memo(PDFPage2Impl);
+
 // PAGE 3: Header + Language Craft & Writing
-function PDFPage2b({ info, ratings, comments }) {
+function PDFPage2bImpl({ info, ratings, comments }) {
   return (
     <div id="pdf-p2b" style={{ width: PW, height: PH, background: B.cream, fontFamily: F, color: B.ink, boxSizing: "border-box", overflow: "hidden", position: "relative" }}>
       <PDFHeader info={info} />
@@ -544,8 +557,10 @@ function PDFPage2b({ info, ratings, comments }) {
   );
 }
 
+const PDFPage2b = memo(PDFPage2bImpl);
+
 // PAGE 4: Header + Consultation Overview + Summary + Literacy Curriculum
-function PDFPage3({ info, ratings, proficientGrade, studentLexile }) {
+function PDFPage3Impl({ info, ratings, proficientGrade, studentLexile }) {
   const selectedGradeObj = GRADE_LEXILE.find(g => g.grade === proficientGrade);
   return (
     <div id="pdf-p3" style={{ width: PW, height: PH, background: B.cream, fontFamily: F, color: B.ink, boxSizing: "border-box", overflow: "hidden", position: "relative" }}>
@@ -617,8 +632,10 @@ function PDFPage3({ info, ratings, proficientGrade, studentLexile }) {
   );
 }
 
+const PDFPage3 = memo(PDFPage3Impl);
+
 // PAGE 5: Header + Oral Curriculum + Writing Curriculum + Notes
-function PDFPage4({ info, proficientGrade, notes }) {
+function PDFPage4Impl({ info, proficientGrade, notes }) {
   return (
     <div id="pdf-p4" style={{ width: PW, height: PH, background: B.cream, fontFamily: F, color: B.ink, boxSizing: "border-box", overflow: "hidden", position: "relative" }}>
       <PDFHeader info={info} />
@@ -645,6 +662,8 @@ function PDFPage4({ info, proficientGrade, notes }) {
     </div>
   );
 }
+
+const PDFPage4 = memo(PDFPage4Impl);
 
 
 // ═══════════════════════════════════════════════════════════════════════
