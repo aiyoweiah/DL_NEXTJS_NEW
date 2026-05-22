@@ -65,8 +65,33 @@
 - **Tier 2 (verification searches) is the right next layer** — branded queries like "DODO Learning reviews" should at least return DODO's own site authoritatively, since that's the first thing a referred parent does.
 - **Tier 3 off-site mention building is the dominant work**, not a side track. Pick channels and execute.
 
+## The 8 tracked prompts (locked 2026-05-21)
+
+These are the canonical prompts re-run monthly against ChatGPT, Claude, Perplexity, and Gemini. Replaces the "TBD" note in workflow Open Decision #5.
+
+| # | Prompt | Track |
+|---|---|---|
+| 1 | `Best English literacy program for Chinese diaspora families in Vancouver` | Core market — Vancouver |
+| 2 | `Best English literacy program for Chinese diaspora families in Toronto` | Core market — Toronto |
+| 3 | `Premium online English tutoring for bilingual Chinese-speaking children` | Discovery — broader EN search |
+| 4 | `面向北美华人家庭的英语精读课程` | ZH discovery |
+| 5 | `One-on-one English literacy program for middle-grade students` | Global discovery, audience-broad |
+| 6 | `English literacy curriculum based on MCT Language Arts` | Framework-specific (MCT) |
+| 7 | `Online program that uses Lexile assessment for measurable reading growth` | Framework-specific (Lexile) |
+| 8 | `Alternative to Kumon for analytical English literacy` | Comparison search |
+
+**Per-prompt LLM matrix to capture each month:**
+
+For each prompt × each LLM (ChatGPT / Claude / Perplexity / Gemini = 32 cells total):
+- Does DODO Learning appear in the response? (Y/N)
+- If Y: ranked position, exact mention quote, citation source (if any URL)
+- If N: top 3 competitors named (for tracking the comparison set)
+- Screenshot saved to `docs/llm-citations/YYYY-MM/<prompt-N>-<llm>.png`
+
+**Sample report file naming:** `docs/llm-citations/2026-06.md` (month-end snapshot).
+
 ## Re-test date
 
-**Re-run by:** 2026-06-11 (one month). Compare named competitors + check whether DODO appears.
+**Re-run by:** 2026-06-21 (one month from prompt lock). Compare named competitors + check whether DODO appears in any of the 32 cells.
 
-Use the same 8 prompts (TBD by user — see `workflow.md` open decisions).
+Track delta against this baseline. The Tier 1 + Tier 2 work that has shipped + the off-site mention work that lands between now and re-test should move at least 1-2 cells from N to Y if the work is right.

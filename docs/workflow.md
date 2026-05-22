@@ -147,13 +147,13 @@ These block downstream work. Updated 2026-05-17.
 | 2 | Price point — locked? | ✅ **Restructured 2026-05-17 to 5 combinations:** Summit $2,830 · Core $2,250 · Flex 1 $1,185 · Flex 2 $2,110 · Flex 3 from $750. Weekly: Flex 1 $74 · Flex 2 $132 · Core $140 · Summit $177 · Flex 3 ~$47. Live on `/program` + `/faq`. |
 | 3 | Founder/Navigator named-expert identity (Person schema) | ✅ **Janet Sui** confirmed as Founder & Lead Navigator (2026-05-17). Named on `/compare` s5. Bio + Person schema still pending. |
 | 4 | Xiaohongshu / WeChat operator + cadence | ❌ Pending |
-| 5 | The 8 monthly-tracked prompts | ❌ Pending — Claude proposed 8 in Tier 1 session; awaiting confirmation |
+| 5 | The 8 monthly-tracked prompts | ✅ **Locked 2026-05-21** in `docs/llm-citations/2026-05-baseline.md`. Eight prompts mix Vancouver/Toronto core markets + EN + ZH + framework-specific (MCT, Lexile) + comparison (Kumon). Per-prompt × per-LLM matrix shape documented in baseline. Re-test due 2026-06-21. |
 | 6 | Off-site mention channel for Tier 3 | ❌ Pending — newsletters / podcast guesting / school-counselor outreach / education directories / Reddit |
 | 7 | Bing Webmaster Tools registration | ❌ Pending — blocks IndexNow integration |
 | 8 | Google Search Console verification + GA4 IDs | ❌ Pending |
 | 9 | Social profile URLs for `sameAs` | ❌ Pending |
-| 10 | Cities list approval (18 cities now in `areaServed`) | ❌ Pending — user said "expand," Claude proposed 18; needs explicit OK or edits |
-| 11 | City pages for new cities — build or just list? | ❌ Pending |
+| 10 | Cities list approval (now **20 cities** in `areaServed`) | ✅ **Confirmed 2026-05-21.** Baseline 18 schema cities confirmed by user; Montreal + Denver added to schema for consistency with llms-full.txt service-area section + home-page result-card (Denver) + brand guide §11 primary city pool. If "18 only" was the literal intent, revert Montreal + Denver in `lib/schema.js`. |
+| 11 | City pages — build or list-only? | ✅ **Option C selected 2026-05-21.** Compact template for 14 additional cities (Burnaby · Coquitlam · Calgary · Richmond Hill · Mississauga · Montreal · San Jose · Cupertino · Irvine · Bellevue · New York · Boston · Houston · Denver) added to `content/cities.js`. Same data shape as the 6 rich pages, shorter h1/subheading/context. Auto-rendered by existing `page.jsx`. `citiesProofStats` also updated to new Lexile canon (D8). 20 city pages total now indexable. `public/llms.txt` published-city list updated to reflect rich vs compact. |
 | 12 | YouTube video IDs for `/demos` | ❌ Pending — placeholders in `content/marketing.{en,zh}.js` `YOUTUBE_IDS` const |
 | 13 | Home page copy migration — extract `HOMEPAGE_COPY` from `app/[locale]/page.tsx` into `content/marketing.{en,zh}.js` `home` exports, matching the 10-page pattern | ✅ Done 2026-05-21. `home` export added to both marketing files. `page.tsx` now imports `homeEn` / `homeZh`. Audit script now covers home (100 strings × 2 locales, 0 hits). |
 | 14 | ZH 6+1 trait list cascade — glossary canon updated 2026-05-21 to `思考、结构、声音、用词、流畅、规范、呈现`. Old canon still in `content/marketing.zh.js` (lines 414/514/554) + `content/faq.js` (lines 246/252) + `translation/DEEPSEEK_BRIEF.md:37`. Cascade pending. | ✅ Done 2026-05-21. Cascaded across all 5 files + `app/[locale]/program/page.jsx` TRAITS array (F2). Audit clean. |

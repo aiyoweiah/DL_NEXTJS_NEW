@@ -19,6 +19,7 @@ The program serves students in grades 3 through 8 (ages 7–15+) worldwide, with
 
 ## City pages (currently published)
 
+**Rich city pages** (anchor markets — full context, community detail):
 - [Vancouver](https://www.dodolearning.com/en/cities/vancouver/)
 - [Richmond BC](https://www.dodolearning.com/en/cities/richmond-bc/)
 - [Markham](https://www.dodolearning.com/en/cities/markham/)
@@ -26,7 +27,13 @@ The program serves students in grades 3 through 8 (ages 7–15+) worldwide, with
 - [San Francisco Bay Area](https://www.dodolearning.com/en/cities/san-francisco-bay-area/)
 - [Los Angeles](https://www.dodolearning.com/en/cities/los-angeles/)
 
-Additional cities listed in the service area (Burnaby, Coquitlam, Calgary, Mississauga, Richmond Hill, Irvine, Bellevue, Flushing, Boston, Houston) are served online; dedicated city pages for these are in development.
+**Compact city pages** (extended coverage, online delivery):
+- [Burnaby](https://www.dodolearning.com/en/cities/burnaby/) · [Coquitlam](https://www.dodolearning.com/en/cities/coquitlam/) · [Calgary](https://www.dodolearning.com/en/cities/calgary/)
+- [Richmond Hill](https://www.dodolearning.com/en/cities/richmond-hill/) · [Mississauga](https://www.dodolearning.com/en/cities/mississauga/) · [Montreal](https://www.dodolearning.com/en/cities/montreal/)
+- [San Jose](https://www.dodolearning.com/en/cities/san-jose/) · [Cupertino](https://www.dodolearning.com/en/cities/cupertino/) · [Irvine](https://www.dodolearning.com/en/cities/irvine/) · [Bellevue](https://www.dodolearning.com/en/cities/bellevue/)
+- [New York](https://www.dodolearning.com/en/cities/new-york/) · [Boston](https://www.dodolearning.com/en/cities/boston/) · [Houston](https://www.dodolearning.com/en/cities/houston/) · [Denver](https://www.dodolearning.com/en/cities/denver/)
+
+20 cities total. All ZH counterparts at `/zh/cities/<slug>/`. Program is delivered online; city pages represent regional context, not local in-person service.
 
 ## Bilingual content
 
