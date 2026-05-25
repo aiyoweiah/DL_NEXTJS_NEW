@@ -29,11 +29,6 @@ const nextConfig = {
   // 404s on direct URL navigation on some Cloudflare configurations.
   trailingSlash: true,
 
-  typescript: {
-    // TODO: flip to false once all pages are typed and errors are resolved.
-    ignoreBuildErrors: true,
-  },
-
   images: {
     // next/image optimisation is not available in static export mode.
     // Use unoptimized: true so <Image> components still render as plain

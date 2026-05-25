@@ -46,7 +46,7 @@ const HOMEPAGE_COPY: Record<string, any> = {
 // ═══════════════════════════════════════════════════════════════
 // SECTION 1 — HERO
 // ═══════════════════════════════════════════════════════════════
-function Hero({ locale, c }) {
+function Hero({ locale, c }: { locale: string; c: any }) {
   return (
     <section
       className="section-light relative overflow-hidden"
@@ -127,13 +127,13 @@ function Hero({ locale, c }) {
 // ═══════════════════════════════════════════════════════════════
 // SECTION 2 — PROOF STRIP
 // ═══════════════════════════════════════════════════════════════
-function ProofStrip({ c }) {
+function ProofStrip({ c }: { c: any }) {
   return (
     <section className="section-dark" aria-labelledby="proof-heading">
       <div className="container-section">
         <h2 id="proof-heading" className="sr-only">Student Progress Proof</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-          {c.proof.map((item) => (
+          {c.proof.map((item: any) => (
             <article key={item.id} className="text-center">
               <p className="text-4xl md:text-5xl font-bold mb-3" style={{ color: '#b7b5fe' }}>
                 {item.number}
@@ -155,7 +155,7 @@ function ProofStrip({ c }) {
 // ═══════════════════════════════════════════════════════════════
 // SECTION 3 — PHOTO INTRO
 // ═══════════════════════════════════════════════════════════════
-function PhotoIntro({ locale, c }) {
+function PhotoIntro({ locale, c }: { locale: string; c: any }) {
   return (
     <section className="section-light" aria-labelledby="photo-intro-heading">
       <div className="container-section">
@@ -196,7 +196,7 @@ function PhotoIntro({ locale, c }) {
 // ═══════════════════════════════════════════════════════════════
 // SECTION 4 — THE LOOP
 // ═══════════════════════════════════════════════════════════════
-function LoopSection({ locale, c }) {
+function LoopSection({ locale, c }: { locale: string; c: any }) {
   const steps = c.loop.steps
   return (
     <section className="section-dark" aria-labelledby="loop-heading">
@@ -208,7 +208,7 @@ function LoopSection({ locale, c }) {
         </div>
 
         <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" aria-label="The Loop — DODO Learning methodology">
-          {steps.map((step, index) => (
+          {steps.map((step: any, index: number) => (
             <li key={step.id} className="relative">
               <div className="card card-dark h-full p-6 flex flex-col gap-4">
                 <div className="flex items-center gap-3">
@@ -241,7 +241,7 @@ function LoopSection({ locale, c }) {
 // ═══════════════════════════════════════════════════════════════
 // SECTION 5 — CONFIDENCE SECTION
 // ═══════════════════════════════════════════════════════════════
-function ConfidenceSection({ locale, c }) {
+function ConfidenceSection({ locale, c }: { locale: string; c: any }) {
   return (
     <section className="section-light" aria-labelledby="confidence-heading">
       <div className="container-section">
@@ -252,7 +252,7 @@ function ConfidenceSection({ locale, c }) {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          {c.confidence.pillars.map((pillar) => (
+          {c.confidence.pillars.map((pillar: any) => (
             <div key={pillar.id} className="card p-8 flex flex-col gap-4 accent-top">
               <p className="eyebrow">{pillar.eyebrow}</p>
               <h3 className="text-xl font-bold leading-snug" style={{ color: '#212830' }}>{pillar.heading}</h3>
@@ -274,7 +274,7 @@ function ConfidenceSection({ locale, c }) {
 // ═══════════════════════════════════════════════════════════════
 // SECTION 6 — PARENT TRUST SECTION
 // ═══════════════════════════════════════════════════════════════
-function ParentTrustSection({ locale, c }) {
+function ParentTrustSection({ locale, c }: { locale: string; c: any }) {
   return (
     <section className="section-dark" aria-labelledby="results-heading">
       <div className="container-section">
@@ -293,7 +293,7 @@ function ParentTrustSection({ locale, c }) {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {c.trust.results.map((result) => (
+          {c.trust.results.map((result: any) => (
             <article
               key={result.id}
               className="card card-dark p-6 flex flex-col gap-5"
