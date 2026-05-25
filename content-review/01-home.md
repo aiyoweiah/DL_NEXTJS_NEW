@@ -94,7 +94,7 @@ You flagged "I actually don't see this on live site." Confirmed it IS in JSX at 
 **Recommended diagnostic:** check on local dev (`npm run dev`) at `/en` and `/zh`. If visible locally but not on production, it's a deploy gap.
 
 ### Inline copy migration (Open Decision #13 in workflow.md)
-Still pending. `HOMEPAGE_COPY` should move to `content/marketing.{en,zh}.js` `home` exports to match the 9-page pattern. Would also bring the audit script into coverage of the home page.
+✅ **Done 2026-05-21.** `HOMEPAGE_COPY` extracted to `content/marketing.{en,zh}.js` `home` exports. `page.tsx` now imports `home as homeEn` / `home as homeZh`. Audit script covers home (100 strings × 2 locales, 0 hits). 10 marketing pages total now.
 
 ---
 

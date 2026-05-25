@@ -1,7 +1,8 @@
 # Home page — full content dump for granular review
 
-**Source file:** `app/[locale]/page.tsx` (inline `HOMEPAGE_COPY` object)
-**As of:** 2026-05-21 (after Fix A/B/C/D applied + 6+1 cascade)
+**Source file:** `content/marketing.{en,zh}.js` (`home` export, migrated from inline `HOMEPAGE_COPY` 2026-05-21 per workflow #13)
+**As of:** 2026-05-21 (after Round 1 Fix A/B/C/D + Round 2 33-edit pass; pre-migration text below not refreshed to post-migration shape)
+**Status:** Archived. Home review Round 1+2 complete; see `01-home.md` for applied state.
 **Purpose:** Every user-facing string on the home page, with clear site-position indicator. EN ↔ ZH side-by-side. No commentary.
 
 **Page layout (top → bottom):**

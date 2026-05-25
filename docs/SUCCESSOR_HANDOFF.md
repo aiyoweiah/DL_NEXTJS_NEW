@@ -177,11 +177,11 @@ When marketing-page EN copy changes, ZH needs to be regenerated:
    - For 9 marketing pages: `content/marketing.en.js` (whole file)
    - For FAQ: `faq.sections.en` / `faq.ui.en` / `faq.categories.en` (each `.en` block)
    - For cities: per-city `.en` block × 6 + each shared block (`citiesUi`, `citiesProofStats`, `citiesLoopSteps`, `citiesPhases`)
-3. Prompt template is in `translation/deepseek-handoff-2026-05-17/README.md` (also covers post-merge checks).
+3. Prompt template is in `translation/archive/deepseek-2026-05-17/README.md` (last round-trip's frozen snapshot — also covers post-merge checks).
 4. **Post-merge linter** (grep one-liner in the README): scan returned ZH for forbidden words; fix if any.
 5. `npm run build` after merge — Next.js will fail if a key the page expects is missing.
 
-The handoff folder (`translation/deepseek-handoff-2026-05-17/`) is a snapshot from the last round-trip. When you do another round, copy the latest source files into a new dated folder.
+The last round-trip's snapshot lives at `translation/archive/deepseek-2026-05-17/`. When you do another round, create a new dated folder under `translation/archive/` (e.g. `deepseek-2026-08-12/`) and copy the latest brief + glossary + source files into it. Older snapshots stay frozen — they're useful as audit trail for what the source state was at each handoff.
 
 ---
 
@@ -211,7 +211,7 @@ Only re-fetch mid-session for one reason: before a `git push`. Otherwise trust t
 | `translation/BRAND_CONTENT_GUIDE.md` | **Master brand + content guide (v4.1)**. Read first for any content work. Sections updated 2026-05-21: §04 audience pivot, §06 LCS/Loop convention, §07 MCT writing arc, §08 ZH voice patterns table, §09 owned vocab additions, §11 Lexile canon + testimonial style, §12 home row updates. Also `.docx` for sharing. |
 | `translation/DEEPSEEK_BRIEF.md` | DeepSeek translation brief (v1.1). Standing context for every translation session. 6+1 ZH canon updated 2026-05-21. |
 | `translation/dodo-glossary.json` | Canonical EN ↔ ZH term map. Updated 2026-05-21 with new 6+1 trait canon (`思考、结构、声音、用词、流畅、规范、呈现`). |
-| `translation/deepseek-handoff-2026-05-17/` | Last DeepSeek round-trip staging folder + README with prompt template. **Frozen — do not edit. Copy to new dated folder for next round-trip.** |
+| `translation/archive/deepseek-2026-05-17/` | Last DeepSeek round-trip staging folder + README with prompt template. **Frozen — do not edit. Create new dated folder under `translation/archive/` for next round-trip.** |
 | `content/marketing.{en,zh}.js` | **10 marketing pages**, one named export per page (home, program, about, consult, compare, methodology, lexile, results, navigators, demos) |
 | `content/faq.js` | 50 Q&As + UI + categories, bilingual nested |
 | `content/cities.js` | 6 cities + shared chrome, bilingual nested |

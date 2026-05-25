@@ -20,7 +20,7 @@ If you're picking this up cold:
 
 **Important context not obvious from code:**
 - The site uses `output: 'export'` and deploys the same artifact to both Cloudflare Pages and Vercel. Anything you build must work statically (no API routes, no middleware — see `docs/proxy.example.js` for the dormant proxy/middleware blueprint).
-- `content/faq-en.js` and `content/faq-zh.js` are **duplicated** from `components/faq/FAQClient.jsx` (which holds the JSX-rich UI version with inline links). This duplication is intentional Tier 1 tech debt. Tier 2 should consolidate using markdown-link syntax + a small client renderer so there's a single source of truth. Sync risk until then: if pricing or copy changes, update BOTH files.
+- FAQ is now consolidated in `content/faq.js` (bilingual nested, with markdown-lite link syntax `[text](/path)` and `**bold**` rendered by `components/faq/FAQClient.jsx`). The earlier `content/faq-en.js` + `content/faq-zh.js` split was retired 2026-05-17 (Pass B). Single source of truth.
 - The ZH FAQ had 9 typos (`的N周` for `第N周`, plus 邐 and 硈 wrong chars) that were live to users until 2026-05-11. Be vigilant about ZH typos elsewhere on the site — translator brief is at `translation/DEEPSEEK_BRIEF.md`.
 - The user's GitHub identity is `aiyoweiah` / `hsinkwu@gmail.com`. Git config is NOT set globally — use `git -c user.email=hsinkwu@gmail.com -c user.name=aiyoweiah` for commits, or ask the user to configure their git.
 
@@ -107,7 +107,7 @@ Three tiers, restructured per LLM Council session (2026-05-11):
 
 ### Claude Code's part (in priority order)
 
-1. **Refactor FAQ duplication** — `content/faq-en.js` + `content/faq-zh.js` currently duplicate `components/faq/FAQClient.jsx` data. Use markdown-style inline link syntax in the data files + small client renderer in FAQClient. Single source of truth.
+1. ~~**Refactor FAQ duplication**~~ ✅ Done 2026-05-17 (Pass B). FAQ consolidated to `content/faq.js`.
 2. **Founder/Navigator Person schema** — wire `Person` schema for the named expert (pending user decision; see Open Decisions). Add `author` field to every blog post + a richer `/about` author block. Council's top-leverage recommendation.
 3. **Credentials page** — `/about/credentials` (or new `/credentials`). MCT directly attributed to Michael Clay Thompson; Harvard PZ (HGSE); 6+1 Trait (Education Northwest). Each as structured `EducationalOccupationalCredential`.
 4. **6 verification-search city pages** — `DODO Learning [City]` post-referral search targets. Distinct from existing `/cities/[city]` (which target discovery). Pick 6 of the 18 cities now in `areaServed`; user picks which.
@@ -252,3 +252,37 @@ These block downstream work. Updated 2026-05-17.
 - YouTube video IDs in `YOUTUBE_IDS` const (placeholders remain).
 
 **For next session, start by:** reading `docs/SUCCESSOR_HANDOFF.md` (entry-point doc; describes architecture, files, what's pending). Then `docs/workflow.md` Open Decisions for blockers.
+
+---
+
+### 2026-05-20 → 2026-05-21 — Home + /program granular review, LCS-forward methodology, global positioning, ops handoff refresh
+
+Captured in detail in `docs/SUCCESSOR_HANDOFF.md` "Recent decisions log" section. Highlights, with workflow.md Open Decisions resolved:
+
+- **#13 ✅** `HOMEPAGE_COPY` migrated out of `app/[locale]/page.tsx` into `content/marketing.{en,zh}.js` `home` exports. Now 10 marketing pages.
+- **#14 ✅** ZH 6+1 trait canon cascade: `思考、结构、声音、用词、流畅、规范、呈现`.
+- **#16 ✅** Audience pivoted to globally-mobile families on positioning surfaces (brand guide §04 broadened).
+- **#17 (partial)** /program §5 combinations pricing hidden via JSX conditional; data preserved. /faq is now the only public pricing surface — verification still pending.
+- **#18 ⏸** Type A/B caption removed from /program, deferred to /methodology review.
+- **#5 ✅** 8 monthly-tracked LLM citation prompts locked (see `docs/llm-citations/2026-05-baseline.md`).
+- **#10/11 ✅** Cities resolved to 20 (6 rich + 14 compact via Option C template).
+
+New artifacts:
+- `docs/content-style-decisions.md` — date-stamped active style-decisions log (D1–D9 captured).
+- `content-review/` — page-by-page review pattern (home + /program complete; /about dump staged in `03-about-content-dump.md`).
+- `scripts/content-audit.mjs` — EN/ZH parity + anti-dictionary scan.
+
+**For next session, start by:** reading `docs/SUCCESSOR_HANDOFF.md` "Recent decisions log" + this entry. Then Open Decisions table above for what's still blocked.
+
+---
+
+### 2026-05-24 — Next.js bump · TS enforcement · docs cleanup
+
+**Did:**
+- Bumped `next` ^16.1.6 → ^16.2.6 (clears ~20 Aikido CVE findings; none reachable in static-export topology, but quiets the scanner and future-proofs against config drift).
+- Annotated implicit-any props in `app/[locale]/page.tsx` (16 errors → 0); dropped `typescript.ignoreBuildErrors: true` from `next.config.js`. `npm run build` clean.
+- Doc sweep: replaced boilerplate `README.md` with a real DODO-aware version; archived `translation/deepseek-handoff-2026-05-17/` → `translation/archive/deepseek-2026-05-17/` (frozen snapshot, drifted from canonical); patched stale FAQ-tech-debt callouts in this file; refreshed status lines on `content-review/01-*.md` + `02-program.md`.
+
+**Did NOT do:** Aikido findings against `lib/blog.js` + `lib/audiobooks.js` path joins and `dangerouslySetInnerHTML` were evaluated as not applicable (build-time slugs from filesystem enumeration; HTML from repo-controlled markdown) — recommend marking as suppressed in Aikido with rationale.
+
+**For next session, start by:** if Aikido is still noisy, sweep the remaining 30 "subissue" code-finding flags with one-line suppressions citing static-export topology.

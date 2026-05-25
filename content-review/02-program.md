@@ -1,6 +1,6 @@
 # `/program` review · APPLIED 2026-05-21
 
-**Status:** ✅ F1–F4 applied. F5–F7 retained (contextually correct, no change needed). User has not yet marked up the granular content dump — when ready, mark up [`02-program-content-dump.md`](./02-program-content-dump.md) and say "apply program review" for the second-round granular pass.
+**Status:** ✅ Round 1 (F1–F4 applied · F5–F7 retained) + Round 2 (Q1–Q8 granular pass applied 2026-05-21 — see commits `fe4fe84` + `6ced09c`). Page review complete. See `02-program-content-dump.md` for the refreshed post-Q1–Q8 dump (v3).
 
 ---
 
@@ -66,10 +66,8 @@
 
 ## What's next on `/program`
 
-The F-fixes above are mechanical brand-alignment fixes — they don't constitute a full granular content review. When you're ready to deeply review the page (voice, flow, claims, framing per the brand guide §12 row for /program), mark up [`02-program-content-dump.md`](./02-program-content-dump.md) with your edits, save, and tell me **"apply program review"**.
+Round 2 granular review (Q1–Q8) completed 2026-05-21. Outstanding items now tracked in `docs/workflow.md` Open Decisions:
+- **#17** — verify FAQ pricing is current (Summit $2,830 · Core $2,250 · Flex 1 $1,185 · Flex 2 $2,110 · Flex 3 from $750). /faq is now the only public pricing surface.
+- **#18** — port Type A/B caption to `/methodology` when that page is reviewed.
 
-Likely next focus areas per brand-guide §12 /program must-includes:
-- LCS · Loop · cycle vs level distinction (mostly present; could be reinforced)
-- 5 Programme Combinations chooser (present — could refine `forWhom` copy)
-- Assessment cadence (currently shown in §3 Journey; could surface Week 0 / Week 8 / Week 16 cadence per §11)
-- Pricing matrix accuracy (verify against latest cohort pricing)
+Next page in §12 priority order: **`/about`** — content dump staged in `03-about-content-dump.md`.

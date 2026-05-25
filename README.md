@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# DL_NEXTJS_NEW
 
-## Getting Started
+Bilingual (EN + ZH) Next.js static site. One repo, two deploys:
+- **dodolearning.com** → Cloudflare Pages
+- **dodoletterhouse.com** → Vercel
 
-First, run the development server:
+Builds ~62 pages from one source tree via `output: 'export'`. No server runtime in production.
+
+## Start here
+
+**Picking up the project?** Read [`docs/SUCCESSOR_HANDOFF.md`](docs/SUCCESSOR_HANDOFF.md) first — architecture, brand voice, content workflow, what's pending.
+
+**Editing content?** Read [`translation/BRAND_CONTENT_GUIDE.md`](translation/BRAND_CONTENT_GUIDE.md) before touching any user-visible copy.
+
+## Dev
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun run dev
+npm install
+npm run dev          # http://localhost:3000
+npm run build        # static export to ./out
+node scripts/content-audit.mjs   # EN/ZH parity + anti-dictionary check
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Where things live
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Path | What |
+|---|---|
+| `content/marketing.{en,zh}.js` | 10 marketing pages, one named export per page |
+| `content/faq.js` | 50 Q&As, bilingual nested |
+| `content/cities.js` | 20 cities (6 rich + 14 compact), bilingual nested |
+| `content/en/blog/` · `content/zh/blog/` | MDX blog posts |
+| `content/en/audiobooks/` | EN-only audiobook markdown |
+| `app/[locale]/` | Marketing routes |
+| `app/ops/` | Internal PDF generators (PIN-gated, noindex) |
+| `lib/` | Content loaders, schema, i18n |
+| `docs/` | Internal documentation (not deployed) |
+| `translation/` | Brand guide + DeepSeek translation workflow |
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Sync rules
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The site is also edited via StackBlitz on GitHub. Always check `git status -sb` before editing. Full rules in `../CLAUDE.md`.
