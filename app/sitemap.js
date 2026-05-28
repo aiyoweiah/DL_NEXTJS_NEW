@@ -34,14 +34,33 @@ const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ||
   'https://www.dodolearning.com'
 
-// ── Priority diaspora cities — mirrors lib/schema.js ─────────
-const CITY_SLUGS = [
+// ── Published city pages — mirrors content/cities.js ─────────
+// Rich pages = anchor markets with full context (priority 0.8).
+// Compact pages = extended-coverage online-delivery framing (priority 0.6).
+// Keep this list in sync with content/cities.js Object.keys order.
+const RICH_CITY_SLUGS = [
   'vancouver',
   'richmond-bc',
   'markham',
   'toronto',
   'san-francisco-bay-area',
   'los-angeles',
+]
+const COMPACT_CITY_SLUGS = [
+  'burnaby',
+  'coquitlam',
+  'calgary',
+  'richmond-hill',
+  'mississauga',
+  'montreal',
+  'san-jose',
+  'cupertino',
+  'irvine',
+  'bellevue',
+  'new-york',
+  'boston',
+  'houston',
+  'denver',
 ]
 
 // ── Static pages with explicit SEO priority ───────────────────
@@ -117,13 +136,23 @@ export default async function sitemap() {
   }))
 
   // ── 2. City pages ─────────────────────────────────────────
-  const cityEntries = CITY_SLUGS.map((slug) => ({
+  const richCityEntries = RICH_CITY_SLUGS.map((slug) => ({
     url:             `${SITE_URL}/en/cities/${slug}`,
     lastModified:    BUILD_DATE,
     changeFrequency: 'monthly',
     priority:        0.8,
     alternates:      buildAlternates(`/cities/${slug}`),
   }))
+
+  const compactCityEntries = COMPACT_CITY_SLUGS.map((slug) => ({
+    url:             `${SITE_URL}/en/cities/${slug}`,
+    lastModified:    BUILD_DATE,
+    changeFrequency: 'monthly',
+    priority:        0.6,
+    alternates:      buildAlternates(`/cities/${slug}`),
+  }))
+
+  const cityEntries = [...richCityEntries, ...compactCityEntries]
 
   // ── 3. Blog posts ─────────────────────────────────────────
   const blogEntries = blogPosts.map(({ slug, lastModified }) => ({

@@ -276,6 +276,22 @@ New artifacts:
 
 ---
 
+### 2026-05-28 — Schema + sitemap cascade fix (catches the 2026-05-21 misses)
+
+**Did:**
+- `app/sitemap.js` — `CITY_SLUGS` (6) split into `RICH_CITY_SLUGS` (6, priority 0.8) + `COMPACT_CITY_SLUGS` (14, priority 0.6). All 20 published city pages now surface in `/sitemap.xml` with hreflang alternates. Closes the cascade-miss from commit `01ad4dc` which updated `lib/schema.js` `areaServed`, `content/cities.js`, and `public/llms.txt` but left sitemap on the old 6-city list.
+- `lib/schema.js` `websiteSchema.description` + `educationOrgSchema.description` — broadened "Chinese-speaking families in Canada and the United States" → "globally mobile families" (D10 audience pivot, 2026-05-21). Both now reference the LCS System (architecture) + The Loop (per-session phrase) per D1.
+- `lib/schema.js` `courseSchema` — `name` changed from "The 16-Week Bilingual Thinking Program" to "The DODO 16-Week Program" (drops retired `Bilingual Thinker` vocab). Description rewritten LCS-forward with 50-minute session canon (D11), MCT writing arc named (D2), Harvard PZ Visible Thinking referenced, Lexile gain framed as "one grade level across two 16-week cycles" (D8). Audience broadened to globally mobile families (D10).
+- `lib/schema.js` `courseSchema.offers` — `Charter Enrollment` (anti-dict) → `Founding Family Program` (per brand guide §11 positioning convention). URL fixed from non-existent `/enroll` to `/consult` (the actual entry surface). `LimitedAvailability` → `InStock` (drops scarcity framing per brand guide rule "positioning signal, never discount/limited-time").
+
+**Did NOT do:** `lib/metadata.js` `buildCityMetadata` description still says "Chinese-speaking families in {name}" — kept as-is per D10 (Chinese-diaspora references preserved where authentically operational). Re-evaluate if /cities page review surfaces a different stance.
+
+**Verification:** `node scripts/content-audit.mjs` clean (0 parity gaps; 19 baseline strategic-ESL hits unchanged). `node --check` clean on both files.
+
+**For next session, start by:** /about page review — content dump staged in `content-review/03-about-content-dump.md` (untracked, F1–F7 concerns logged at top).
+
+---
+
 ### 2026-05-24 — Next.js bump · TS enforcement · docs cleanup
 
 **Did:**
