@@ -19,7 +19,7 @@ the project memory file `project_audiobooks.md` (architecture overview).
 > **My workflow** generates the script + MP3 in
 > `C:\Users\hsink\Documents\DODO_Audiobook Workflow\DODO_Audiobook_Workflow\output\stage3_final\`.
 > The repo for the website is at
-> `C:\Users\hsink\Documents\DODO_web\DL_NEXTJS_NEW\` — main branch.
+> `F:\PC-Documents\DODO_web\DL_NEXTJS_NEW\` — main branch.
 >
 > **What I'll provide:**
 > 1. The path to the generated script `.md` file (so you can read the title,

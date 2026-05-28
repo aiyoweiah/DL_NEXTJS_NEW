@@ -40,7 +40,7 @@ If you're picking this up cold:
 
 A multi-LLM survey was run against 6+ parent-shopping prompts covering Vancouver (EN), Vancouver (ZH), Toronto, and online-only premium English programs for Chinese-speaking families with Grade 3–9 children.
 
-**Source:** `C:\Users\hsink\Documents\DODO_web\GEO Survey Result.txt` (1,013 lines)
+**Source:** `F:\PC-Documents\DODO_web\GEO Survey Result.txt` (1,013 lines)
 
 **Finding:** **DODO Learning is mentioned 0 times across all responses.**
 
@@ -176,7 +176,7 @@ These block downstream work. Updated 2026-05-17.
 ## Reference Docs
 
 - Council session output: in the conversation transcript that produced this plan (2026-05-11)
-- Baseline survey (raw): `C:\Users\hsink\Documents\DODO_web\GEO Survey Result.txt` (outside the repo, user-side workspace)
+- Baseline survey (raw): `F:\PC-Documents\DODO_web\GEO Survey Result.txt` (outside the repo, user-side workspace)
 - Baseline summary: `docs/llm-citations/2026-05-baseline.md`
 - Translation/voice brief: `translation/DEEPSEEK_BRIEF.md`
 - Dormant middleware (when moving to server runtime): `docs/proxy.example.js`

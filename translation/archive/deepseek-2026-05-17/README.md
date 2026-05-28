@@ -53,7 +53,7 @@ Return valid JavaScript. No markdown fences around the output.
 3. Save the returned file as `content/marketing.zh.js`.
 4. **Local merge check** — open the repo:
    ```bash
-   cd C:/Users/hsink/Documents/DODO_web/DL_NEXTJS_NEW
+   cd F:/PC-Documents/DODO_web/DL_NEXTJS_NEW
    diff <(grep -oE "^export const [a-z]+" content/marketing.en.js) \
         <(grep -oE "^export const [a-z]+" content/marketing.zh.js)
    ```
