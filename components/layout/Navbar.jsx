@@ -4,20 +4,21 @@
 //
 // Global navbar — first interactive element after SkipLink.
 //
-// Structure (v5.0 — June 2026, "chrome overhaul"):
+// Structure (v6.0 — June 2026, "funnel swap"):
 //   - Single flat row of 6 primary links (was 2-tier 4+6).
 //   - Desktop nav appears at md:768 (was lg:1024) — fixes tablet cliff.
-//   - One primary CTA: Book Your Consultation (lg+) / Book Consultation (md).
-//     "Watch Demo Class" demoted from desktop bar (still in mobile drawer + footer).
-//   - Reading Companion (/audiobooks) carries a lock glyph + "members"
-//     micro-tag (lg+ only) to set member-area expectations before click.
+//   - One primary CTA: Watch Demo Class (lg+) / Watch Demo (md) — the SOFT
+//     close. Cold top-of-funnel surface leads with the zero-commitment ask;
+//     Book Your Consultation (the firm close) is demoted to the mobile-drawer
+//     ghost, page bodies, and the global footer band. Watch hides on /demos.
+//   - Reading Companion (/audiobooks) carries a lock glyph only; the prior
+//     "· members" micro-tag is now sr-only (the glyph is the visual).
 //   - All copy comes from `copy` prop, passed by app/[locale]/layout.jsx
 //     after resolving content/marketing.[locale].js → nav. EN-hardcoding gone.
 //
-// Mobile drawer order (top → bottom) — primary CTA pinned at top fixes
-// the prior bug where Book Your Consultation was hidden below md:
-//   1. Book Your Consultation (primary)
-//   2. Watch Demo Class (secondary, ghost)
+// Mobile drawer order (top → bottom):
+//   1. Watch Demo Class (primary, soft close)
+//   2. Book Your Consultation (secondary, ghost — firm close)
 //   3. Primary links (6)
 //   4. "More" group (5 secondary)
 //   5. Locale switcher
@@ -173,7 +174,7 @@ export default function Navbar({ locale, copy }) {
 
   // ── Link sub-components ───────────────────────────────────────
   // Desktop nav link. Compact at md (gap-4 outer), comfortable at lg+ (gap-8).
-  // Gated items render with a lock glyph and a "members" micro-label at lg+.
+  // Gated items render with a lock glyph; the gating label is sr-only.
   const DesktopNavLink = ({ href, label, gated }) => {
     const active = isActive(href)
     return (
@@ -187,16 +188,8 @@ export default function Navbar({ locale, copy }) {
         <span className="inline-flex items-center">
           {label}
           {gated && <LockIcon />}
+          {gated && <span className="sr-only">{copy.members}</span>}
         </span>
-        {gated && (
-          <span
-            className="hidden lg:inline ml-1.5 text-[10px] uppercase tracking-wider font-semibold"
-            style={{ color: 'rgba(183,181,254,0.55)' }}
-            aria-hidden="true"
-          >
-            · {copy.members}
-          </span>
-        )}
       </Link>
     )
   }
@@ -216,16 +209,8 @@ export default function Navbar({ locale, copy }) {
         <span className="inline-flex items-center">
           {label}
           {gated && <LockIcon />}
+          {gated && <span className="sr-only">{copy.members}</span>}
         </span>
-        {gated && (
-          <span
-            className="ml-2 text-[10px] uppercase tracking-wider font-semibold"
-            style={{ color: 'rgba(183,181,254,0.55)' }}
-            aria-hidden="true"
-          >
-            · {copy.members}
-          </span>
-        )}
       </Link>
     )
   }
@@ -266,15 +251,15 @@ export default function Navbar({ locale, copy }) {
 
             <LocaleSwitcher locale={locale} />
 
-            {showCharterCTA && (
+            {showDemoCTA && (
               <Link
-                href={`/${locale}/consult`}
+                href={`/${locale}/demos`}
                 className="btn btn-charter hidden md:inline-flex text-sm px-5 py-2.5"
-                aria-label={copy.cta.consultAria}
+                aria-label={copy.cta.demoAria}
               >
-                {/* "Book Consultation" at md, "Book Your Consultation" at lg+ */}
-                <span className="lg:hidden">{copy.cta.consultCompact}</span>
-                <span className="hidden lg:inline">{copy.cta.consult}</span>
+                {/* "Watch Demo" at md, "Watch Demo Class" at lg+ */}
+                <span className="lg:hidden">{copy.cta.demoCompact}</span>
+                <span className="hidden lg:inline">{copy.cta.demo}</span>
               </Link>
             )}
 
@@ -326,27 +311,26 @@ export default function Navbar({ locale, copy }) {
         <div className="container-section py-6">
 
           {/*
-            CTA group — pinned at top of drawer. Fixes the prior bug where
-            "Book Your Consultation" was hidden below md, leaving phones
-            with only the secondary "Watch Demo Class" button visible.
+            CTA group — pinned at top of drawer. Soft close (Watch Demo Class)
+            leads as primary; firm close (Book Your Consultation) is the ghost.
           */}
           <div className="flex flex-col gap-3 mb-6">
-            {showCharterCTA && (
-              <Link
-                href={`/${locale}/consult`}
-                className="btn btn-charter w-full justify-center text-base py-3.5"
-                aria-label={copy.cta.consultAria}
-              >
-                {copy.cta.consult}
-              </Link>
-            )}
             {showDemoCTA && (
               <Link
                 href={`/${locale}/demos`}
-                className="btn btn-ghost w-full justify-center text-base py-3.5"
+                className="btn btn-charter w-full justify-center text-base py-3.5"
                 aria-label={copy.cta.demoAria}
               >
                 {copy.cta.demo}
+              </Link>
+            )}
+            {showCharterCTA && (
+              <Link
+                href={`/${locale}/consult`}
+                className="btn btn-ghost w-full justify-center text-base py-3.5"
+                aria-label={copy.cta.consultAria}
+              >
+                {copy.cta.consult}
               </Link>
             )}
           </div>

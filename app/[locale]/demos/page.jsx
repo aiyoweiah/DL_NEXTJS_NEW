@@ -380,51 +380,6 @@ function ResultsSection({ locale, c }) {
 }
 
 // ─────────────────────────────────────────────────────────────
-// SECTION 8 — BOOK A CALL
-// ─────────────────────────────────────────────────────────────
-
-function BookCall({ locale, c }) {
-  return (
-    <section aria-labelledby="book-heading" style={{ backgroundColor: '#F5F5FF', padding: 'var(--section-md) 0' }}>
-      <div className="container-section">
-        <div style={{ maxWidth: '40rem' }}>
-          <Eyebrow>{c.cta.eyebrow}</Eyebrow>
-          <BilingualH2 id="book-heading" primary={c.cta.h2} secondary={c.cta.h2zh} />
-          <p style={{ fontSize: '1rem', lineHeight: 1.82, color: '#3D4452', marginTop: '1.125rem', marginBottom: '1.875rem' }}>{c.cta.body}</p>
-          <Link href={`/${locale}/consult`} className="btn btn-charter">{c.cta.btn}</Link>
-          <p style={{ fontSize: '0.8125rem', color: '#7B8494', marginTop: '0.875rem' }}>{c.cta.note}</p>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-// ─────────────────────────────────────────────────────────────
-// SECTION 9 — CHARTER
-// ─────────────────────────────────────────────────────────────
-
-function CharterSection({ locale, c }) {
-  return (
-    <section aria-labelledby="charter-heading" style={{ backgroundColor: '#212830', padding: 'var(--section-md) 0' }}>
-      <div className="container-section">
-        <div style={{ maxWidth: '40rem' }}>
-          <div className="inline-flex items-center gap-2 rounded-full mb-5" style={{ padding: '4px 12px', backgroundColor: 'rgba(245,200,66,0.08)', border: '1px solid rgba(245,200,66,0.22)' }}>
-            <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: '#F5C842' }} />
-            <span style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#F5C842' }}>{c.charter.badge}</span>
-          </div>
-          <h2 id="charter-heading" style={{ fontSize: 'clamp(1.625rem, 2.5vw + 0.25rem, 2.5rem)', fontWeight: 700, letterSpacing: '-0.025em', color: '#F0F0F0', marginBottom: '0.625rem' }}>{c.charter.h2}</h2>
-          <p style={{ fontSize: '1rem', lineHeight: 1.75, color: 'rgba(240,240,240,0.45)', marginBottom: '1.875rem' }}>{c.charter.sub}</p>
-          <div className="flex flex-col sm:flex-row gap-3">
-            <Link href={`/${locale}/consult`} className="btn btn-charter">{c.charter.btn1}</Link>
-            <Link href={`/${locale}/program`} className="btn btn-ghost">{c.charter.btn2}</Link>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-// ─────────────────────────────────────────────────────────────
 // METADATA + PAGE EXPORT
 // ─────────────────────────────────────────────────────────────
 
@@ -447,8 +402,6 @@ export default async function DemosPage({ params }) {
       <InsideSession  locale={locale} c={c} />
       <AfterDemo      locale={locale} c={c} />
       <ResultsSection locale={locale} c={c} />
-      <BookCall       locale={locale} c={c} />
-      <CharterSection locale={locale} c={c} />
     </>
   )
 }

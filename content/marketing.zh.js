@@ -44,8 +44,8 @@ const YOUTUBE_IDS = {
 // 下发的 locale-aware copy 消费。结构与 marketing.en.js 镜像。
 export const nav = {
   primary: [
-    { href: '/program',     label: '课程'       },
-    { href: '/methodology', label: '方法'       },
+    { href: '/program',     label: 'ELA 课程'   },
+    { href: '/methodology', label: 'DODO 教学法' },
     { href: '/results',     label: '成果'       },
     { href: '/navigators',  label: '导师'       },
     { href: '/audiobooks',  label: '阅读伴',    gated: true },
@@ -58,15 +58,17 @@ export const nav = {
     { href: '/blog',     label: '博客'        },
     { href: '/partners', label: '合作伙伴'    },
   ],
+  // 导航以柔性引导（观看示范课）为先；预约面谈作为更坚定的转化，
+  // 收纳到移动端抽屉的次级按钮、页面正文与页脚。
   cta: {
-    consult:        '预约评估面谈',
+    demo:           '观看示范课',
+    demoCompact:    '观看示范课',
+    demoAria:       '观看免费的示范课',
+    consult:        '预约咨询',     // 移动端抽屉次级按钮
     consultCompact: '预约面谈',
     consultAria:    '预约免费的诊断式评估面谈',
-    demo:           '观看示范课',
-    demoAria:       '观看免费的示范课',
-    microLabel:     '导师亲授 · 全程直播',
   },
-  members:  '学员专属',
+  members:  '学员专属',                 // 仅供屏幕阅读器朗读（锁形图标为视觉提示）
   tagline:  '语言的根，长在阅读里',
   logoAria: 'DODO 都学书院 — 首页',
   menuOpenAria:  '打开导航菜单',
@@ -81,8 +83,19 @@ export const footer = {
     eyebrow:    '诊断式评估面谈',
     heading:    '准备好与孩子的导师见面了吗？',
     body:       '诊断式评估面谈让我们看清孩子真实的英语水平 — 而非学校档案上的水平。',
-    consult:    '预约评估面谈',
+    consult:    '预约咨询',
     consultAria:'预约诊断式评估面谈',
+    watch:      '观看示范课',
+    watchAria:  '观看免费的示范课',
+  },
+  // 仅在 /consult 页面显示的变体——该页本身即预约入口，
+  // 因此引导观看示范课（柔性步骤），而非指回自身的循环链接。
+  preCtaWatch: {
+    eyebrow:    '先看真实课堂',
+    heading:    '预约前，想先看看真实的课堂吗？',
+    body:       '没有推销，没有剪辑——一位真实的导师、一名真实的学生，完整走过一节 The Loop 课程。',
+    watch:      '观看示范课',
+    watchAria:  '观看免费的示范课',
     program:    '了解十六周课程',
     programAria:'了解十六周英语课程',
   },
@@ -109,14 +122,14 @@ export const footer = {
     { href: '/results',     label: '学习成果'      },
     { href: '/lexile',      label: 'Lexile 等级'   },
     { href: '/compare',     label: '不同之处'      },
-    { href: '/assessment',  label: '免费 Lexile 测评', soon: true },
+    { href: '/assessment',  label: 'Lexile 测评', soon: true },
   ],
   resources: [
     { href: '/about',    label: '关于 DODO'   },
     { href: '/blog',     label: '博客'        },
     { href: '/faq',      label: '常见问题'    },
     { href: '/demos',    label: '观看示范课'  },
-    { href: '/consult',  label: '预约评估面谈' },
+    { href: '/consult',  label: '预约咨询' },
     { href: '/partners', label: '合作伙伴'    },
   ],
   serving: [
@@ -172,8 +185,8 @@ export const home = {
     differentiator: '',
     consultHook:
       '我们培养英语思维者——能阅读超出年级水平的文本、以证据论证、精确写作的孩子。以高阶文学与写作框架、哈佛思维科学为根基。',
-    cta1:      '预约能力评估',
-    cta2:      '探索16周课程',
+    cta1:      '观看示范课',
+    cta2:      '预约咨询',
     trustLine:
       'Lexile测量进度 · 6+1 Trait写作评估体系 · 导师实时主导 · Think Once. In Both Languages.',
   },
@@ -461,16 +474,9 @@ export const program = {
     eyebrow: '诊断性咨询',
     h2:      '准备好了解您孩子的真实水平了吗？',
     body:
-      '咨询时长20分钟。由导师（Navigator）进行——不是销售电话。我们测量您孩子的Lexile水平，定位精确的差距，并向您展示对于与您孩子情况相似的学生，头16周会是什么样子。',
+      '咨询时长20分钟。由导师（Navigator）进行——不是销售电话。我们定位精确的差距，并向您展示对于与您孩子情况相似的学生，头16周会是什么样子。',
     btn:  '预约咨询',
-    note: '包含免费诊断性评估。',
-  },
-  charter: {
-    badge: '诊断性咨询',
-    h2:    '准备好与您孩子的导师（Navigator）见面了吗？',
-    sub:   '诊断性咨询让我们精确了解您孩子目前的真实水平——而不是学校说的水平。',
-    btn1:  '预约咨询',
-    btn2:  '认识 The LCS 系统',
+    note: '由导师进行的免费咨询，无任何义务。',
   },
 }
 
@@ -564,7 +570,7 @@ export const about = {
   closing: {
     sub:
       '不是一句口号。是一种哲学。真正的双语深度不是通过平行翻译或语言维护项目实现的。它是在一个孩子被训练在最高认知水平上用英语精确思考时涌现出来的——阅读复杂性、用证据论证、有意图地写作。这种智力严谨性会迁移。它强化每一种语言的思考。两种语言都变得更强，因为心智首先变得更强。',
-    cta: '开启您孩子的旅程',
+    cta: '观看示范课',
   },
 }
 
@@ -580,7 +586,7 @@ export const consult = {
       h1zh: '我们精确确定您孩子的起点',
       sub:  '不是学校报告上说的水平。咨询时长20分钟，与导师（Navigator）进行——不是销售电话。我们诊断、定位差距、给出方案。您来做决定。',
       cta1: '预约我的咨询',
-      cta2: '了解课程',
+      cta2: '查看十六周课程',
       stats: [
         { value: '20',     unit: '分钟',      desc: '专注，无冗余'                                        },
         { value: '1',      unit: '导师（Navigator）',    desc: '不是销售人员'                                           },
@@ -643,13 +649,6 @@ export const consult = {
         '可随时改期——无任何费用',
       ],
     },
-    charter: {
-      badge: '16周课程',
-      h2:    '通话后准备好开始了吗？',
-      sub:   '每位学生都从一位导师（Navigator）开始，这位导师了解他们的Lexile基线、6+1特质写作档案，以及他们接下来需要前往的确切方向。',
-      btn1:  '预约咨询',
-      btn2:  '了解课程',
-    },
   }
 
 // ── /compare ─────────────────────────────────────────────────────
@@ -705,10 +704,10 @@ export const compare = {
       ],
     },
     s9: {
-      h2: 'Lexile评估是我们确定DODO Learning是否适合您孩子的地方。',
-      sub: '每次报名都从一次免费的Lexile阅读评估开始——无承诺，无压力。一个精确的起点，因为有意义的进步需要一个精确的起点。',
-      ctaPrimary: '预约免费Lexile评估', ctaSecondary: '查看完整课程',
-      note: '评估是免费的。16周课程从确认的Lexile基线开始。',
+      h2: '咨询是我们确定DODO Learning是否适合您孩子的地方。',
+      sub: '一切从一次对话开始——20分钟，由导师（Navigator）进行，不是销售电话。如果合适，课程开始后我们首先测量的就是您孩子的Lexile基线。',
+      ctaPrimary: '预约咨询', ctaSecondary: '查看十六周课程',
+      note: '咨询免费，无任何义务。16周课程随后从确认的Lexile基线开始。',
     },
   }
 
@@ -974,7 +973,7 @@ export const lexile = {
   cta: {
     heading:      '精确了解您孩子目前的阅读水平。',
     body:         '入学评估大约需要30分钟，并产生一个具体的Lexile数字。这个数字是一条成长轨迹的起点，您可以在每节课后追踪这条轨迹。',
-    ctaPrimary:   '预约诊断性通话',
+    ctaPrimary:   '预约咨询',
     ctaSecondary: '查看方法论',
   },
 }
@@ -1258,8 +1257,8 @@ export const demos = {
       eyebrow: '观看之后',
       h2:      '20分钟内您就会知道答案。',
       h2zh:    '观看后，您将心中有数',
-      body:    '大多数家长告诉我们，示范课回答了他们之前无法用语言表达的问题：这对我的孩子来说是合适的挑战吗？观看示范课。然后预约诊断性通话。为您进行咨询的导师将与您在屏幕上看到的是同一类人。',
-      cta:    '预约诊断性通话',
+      body:    '大多数家长告诉我们，示范课回答了他们之前无法用语言表达的问题：这对我的孩子来说是合适的挑战吗？观看示范课。然后预约咨询。为您进行咨询的导师将与您在屏幕上看到的是同一类人。',
+      cta:    '预约咨询',
     },
     growth: {
       eyebrow: '学生取得的成就',
@@ -1279,20 +1278,5 @@ export const demos = {
         scaleLabel: '1–6分制',
         note:       '您在示范课中看到的写作成长正是推动这些分数变化的原因。The Loop（学习循环）就是那个机制。',
       },
-    },
-    cta: {
-      eyebrow: '准备好交谈',
-      h2:      '看过示范课。想知道它是否适合您的孩子？',
-      h2zh:    '看完示范，想知道是否适合您的孩子？',
-      body:    '诊断性咨询是与导师（Navigator）进行的20分钟通话——不是销售电话。我们评估您孩子当前的Lexile水平，定位具体的差距，并描绘出为他们量身定制的16周课程可能的样子。预约无需承诺。',
-      btn:    '预约咨询',
-      note:   '与导师（Navigator）进行，而非销售代表。诊断的匹配度评估——我们只招收我们真正能推动进步的学生。',
-    },
-    charter: {
-      badge: '16周课程',
-      h2:    '观看后准备好开始了吗？',
-      sub:   '每位学生都从一位导师（Navigator）开始，这位导师了解他们的Lexile基线、6+1特质写作档案，以及他们接下来需要前往的确切方向。',
-      btn1:  '预约咨询',
-      btn2:  '了解课程',
     },
   }

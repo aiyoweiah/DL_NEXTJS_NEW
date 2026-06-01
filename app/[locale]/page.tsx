@@ -109,10 +109,11 @@ function Hero({ locale, c }: { locale: string; c: any }) {
           <p className="text-base md:text-lg leading-relaxed mb-8" style={{ color: '#5856cc', maxWidth: '42rem' }}>{c.hero.consultHook}</p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
-            <Link href={`/${locale}/consult`} className="btn btn-gilt">
+            {/* cta1 = Watch a Demo Class (soft close); cta2 = Book Your Consultation (firm) */}
+            <Link href={`/${locale}/demos`} className="btn btn-gilt">
               {c.hero.cta1}
             </Link>
-            <Link href={`/${locale}/program`} className="btn btn-ghost">
+            <Link href={`/${locale}/consult`} className="btn btn-ghost">
               {c.hero.cta2}
             </Link>
           </div>

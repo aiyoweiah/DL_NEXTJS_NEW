@@ -794,47 +794,6 @@ function GetStartedSection({ locale, c }) {
 }
 
 // ─────────────────────────────────────────────────────────────
-// SECTION 7 — CONSULTATION FOOTER BAND
-// ─────────────────────────────────────────────────────────────
-
-function CharterSection({ locale, c }) {
-  return (
-    <section aria-labelledby="charter-heading" style={{ backgroundColor: '#212830', padding: 'var(--section-md) 0' }}>
-      <div className="container-section">
-        <div style={{ maxWidth: '40rem' }}>
-
-          <div
-            className="inline-flex items-center gap-2 rounded-full mb-5"
-            style={{ padding: '4px 12px', backgroundColor: 'rgba(245,200,66,0.08)', border: '1px solid rgba(245,200,66,0.22)' }}
-          >
-            <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: '#F5C842' }} />
-            <span style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#F5C842' }}>
-              {c.charter.badge}
-            </span>
-          </div>
-
-          <h2
-            id="charter-heading"
-            style={{ fontSize: 'clamp(1.625rem, 2.5vw + 0.25rem, 2.5rem)', fontWeight: 700, letterSpacing: '-0.025em', color: '#F0F0F0', marginBottom: '0.625rem' }}
-          >
-            {c.charter.h2}
-          </h2>
-          <p style={{ fontSize: '1rem', lineHeight: 1.75, color: 'rgba(240,240,240,0.45)', marginBottom: '1.875rem' }}>
-            {c.charter.sub}
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-3">
-            <Link href={`/${locale}/consult`} className="btn btn-charter">{c.charter.btn1}</Link>
-            <Link href={`/${locale}/methodology`} className="btn btn-ghost">{c.charter.btn2}</Link>
-          </div>
-
-        </div>
-      </div>
-    </section>
-  )
-}
-
-// ─────────────────────────────────────────────────────────────
 // STATIC PARAMS & METADATA
 // ─────────────────────────────────────────────────────────────
 
@@ -877,7 +836,6 @@ export default async function ProgramPage({ params }) {
       <SessionSection      locale={locale} c={c} />
       <GrowthSection     locale={locale} c={c} />
       <GetStartedSection locale={locale} c={c} />
-      <CharterSection    locale={locale} c={c} />
     </>
   )
 }

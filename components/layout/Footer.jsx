@@ -2,8 +2,10 @@
 //
 // Server component — no 'use client', no event handlers. Hover via Tailwind only.
 //
-// Structure (v5.0 — June 2026, "chrome overhaul"):
-//   1. Pre-footer CTA band   — dark (#212830), conversion moment.
+// Structure (v6.0 — June 2026, "funnel swap"):
+//   1. Pre-footer CTA band   — dark (#212830), conversion moment. Extracted to
+//                              PreCtaBand (client): firm consult close on every
+//                              page, soft Watch offer on /consult itself.
 //   2. Main footer grid      — light (#F5F5FF), columns: Brand | Program | Resources | Serving.
 //                              Renamed Company → Resources. The Difference moved into Program.
 //                              Watch a Class + Book a Consultation absorbed into Resources.
@@ -25,6 +27,7 @@
 
 import Link           from 'next/link'
 import LocaleSwitcher from '@/components/layout/LocaleSwitcher'
+import PreCtaBand     from '@/components/layout/PreCtaBand'
 
 // ── Sub-components ────────────────────────────────────────────
 
@@ -86,55 +89,10 @@ export default function Footer({ locale, copy }) {
   return (
     <footer role="contentinfo">
 
-      {/* ── 1. Pre-footer CTA band — dark (conversion moment) ── */}
-      <div
-        className="border-t border-b"
-        style={{ borderColor: 'rgba(183,181,254,0.1)', backgroundColor: '#212830' }}
-      >
-        <div className="container-section py-14 md:py-16">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
-
-            <div className="max-w-xl">
-              <p
-                className="text-xs font-semibold uppercase tracking-widest mb-3"
-                style={{ color: 'rgba(183,181,254,0.5)' }}
-              >
-                {copy.preCta.eyebrow}
-              </p>
-              <h2
-                className="text-2xl md:text-3xl font-bold leading-tight tracking-tight"
-                style={{ color: '#b7b5fe' }}
-              >
-                {copy.preCta.heading}
-              </h2>
-              <p
-                className="mt-3 text-[0.9375rem] leading-relaxed"
-                style={{ color: '#94A3B8' }}
-              >
-                {copy.preCta.body}
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-3 md:shrink-0">
-              <Link
-                href={`/${locale}/consult`}
-                className="btn btn-charter text-sm px-6 py-3 justify-center"
-                aria-label={copy.preCta.consultAria}
-              >
-                {copy.preCta.consult}
-              </Link>
-              <Link
-                href={`/${locale}/program`}
-                className="btn btn-ghost text-sm px-6 py-3 justify-center"
-                aria-label={copy.preCta.programAria}
-              >
-                {copy.preCta.program}
-              </Link>
-            </div>
-
-          </div>
-        </div>
-      </div>
+      {/* ── 1. Pre-footer CTA band — dark (conversion moment) ──
+              Path-aware variant lives in PreCtaBand (client): firm consult
+              close everywhere, soft Watch offer on /consult itself. */}
+      <PreCtaBand locale={locale} copy={copy} />
 
       {/* ── 2. Main footer grid — light ────────────────────── */}
       <div style={{ backgroundColor: '#F5F5FF' }}>

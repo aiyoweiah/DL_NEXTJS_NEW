@@ -444,7 +444,7 @@ function ClosingStamp({ locale, c }) {
         <h2 className="mb-6" aria-label="In Both Languages." style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 700, lineHeight: 1.15, letterSpacing: '-0.02em', background: 'linear-gradient(135deg, #b7b5fe 0%, #F5C842 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>In Both Languages.</h2>
         {locale === 'zh' && <p className="mb-6" style={{ fontFamily: 'var(--font-cjk)', fontSize: '22px', color: 'rgba(183,181,254,0.5)' }}>语言的根，长在阅读里</p>}
         <p className="mx-auto mb-12" style={{ fontSize: '16px', lineHeight: 1.9, color: 'rgba(240,240,240,0.4)', maxWidth: '32rem' }}>{c.closing.sub}</p>
-        <Link href={`/${locale}/consult`} className="btn btn-charter" style={{ fontSize: '15px', fontWeight: 700, letterSpacing: '0.02em', padding: '1rem 2.5rem' }} aria-label="Start your child's journey — book a consultation">
+        <Link href={`/${locale}/demos`} className="btn btn-charter" style={{ fontSize: '15px', fontWeight: 700, letterSpacing: '0.02em', padding: '1rem 2.5rem' }} aria-label="Watch a demo class">
           {c.closing.cta}
         </Link>
       </div>

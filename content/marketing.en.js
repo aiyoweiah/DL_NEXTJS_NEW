@@ -53,8 +53,8 @@ const YOUTUBE_IDS = {
 // `members` = the lock-glyph micro-tag on /audiobooks (lg+ only).
 export const nav = {
   primary: [
-    { href: '/program',     label: 'The Program'       },
-    { href: '/methodology', label: 'The Method'        },
+    { href: '/program',     label: 'ELA Program'       },
+    { href: '/methodology', label: 'DODO Method'       },
     { href: '/results',     label: 'Results'           },
     { href: '/navigators',  label: 'Navigators'        },
     { href: '/audiobooks',  label: 'Reading Companion', gated: true },
@@ -67,15 +67,17 @@ export const nav = {
     { href: '/blog',     label: 'Blog'           },
     { href: '/partners', label: 'Partners'       },
   ],
+  // Navbar leads with the soft close (Watch Demo Class). Consult is the
+  // firm close — demoted to the mobile-drawer ghost + page bodies + footer.
   cta: {
-    consult:        'Book Your Consultation',
-    consultCompact: 'Book Consultation',          // shown only at md (768–1023)
-    consultAria:    'Book a free diagnostic consultation',
     demo:           'Watch Demo Class',
+    demoCompact:    'Watch Demo',                 // shown only at md (768–1023)
     demoAria:       'Watch a free demo class',
-    microLabel:     'Live · Navigator-led',       // shown under consult CTA at lg+
+    consult:        'Book Your Consultation',     // mobile-drawer ghost (secondary)
+    consultCompact: 'Book Consultation',
+    consultAria:    'Book a free diagnostic consultation',
   },
-  members:  'members',                            // micro-tag for gated items
+  members:  'Members only',                        // sr-only label on gated items (lock glyph is the visual)
   tagline:  'Think Once. In Both Languages.',
   logoAria: 'DODO Learning — home',
   menuOpenAria:  'Open navigation menu',
@@ -101,7 +103,18 @@ export const footer = {
     body:       'The diagnostic consultation is where we find out exactly where your child is — not where their school says they are.',
     consult:    'Book Your Consultation',
     consultAria:'Book a diagnostic consultation',
-    program:    'See The Program',
+    watch:      'Watch a Class',
+    watchAria:  'Watch a free demo class',
+  },
+  // Variant shown ONLY on /consult — that page IS the booking destination,
+  // so the band offers the soft step (watch) instead of a circular consult link.
+  preCtaWatch: {
+    eyebrow:    'Watch First',
+    heading:    'Want to see a real class before you book?',
+    body:       'No pitch, no edited highlights — a real Navigator and a real student working through a full session of The Loop.',
+    watch:      'Watch a Demo Class',
+    watchAria:  'Watch a free demo class',
+    program:    'See The 16-Week Program',
     programAria:'Learn about The 16-Week Program',
   },
   brand: {
@@ -127,7 +140,7 @@ export const footer = {
     { href: '/results',     label: 'Results'             },
     { href: '/lexile',      label: 'Lexile Levels'       },
     { href: '/compare',     label: 'The Difference'      },
-    { href: '/assessment',  label: 'Free Assessment',    soon: true },
+    { href: '/assessment',  label: 'The Lexile Assessment', soon: true },
   ],
   resources: [
     { href: '/about',    label: 'About DODO'          },
@@ -190,8 +203,8 @@ export const home = {
     differentiator: '',
     consultHook:
       'We train English Thinkers — children who read above grade level, argue with evidence, write with precision. Built on the advanced literature and writing framework and Harvard’s thinking science.',
-    cta1:      'Book Your Consultation',
-    cta2:      'Explore The 16-Week Program',
+    cta1:      'Watch a Demo Class',
+    cta2:      'Book Your Consultation',
     trustLine:
       'Lexile-measured progress · 6+1 Trait writing framework · Live Navigator-led sessions · Think Once. In Both Languages.',
   },
@@ -478,16 +491,9 @@ export const program = {
     eyebrow: 'Diagnostic Consultation',
     h2:      'Ready to see where your child stands?',
     body:
-      'The consultation is 20 minutes. A Navigator — not a sales call. We measure your child’s Lexile level, identify the exact gaps, and show you what the first 16 weeks looks like for a student exactly like yours.',
+      'The consultation is 20 minutes. A Navigator — not a sales call. We identify the exact gaps and show you what the first 16 weeks looks like for a student exactly like yours.',
     btn:  'Book Your Consultation',
-    note: 'Free diagnostic assessment included. No obligation.',
-  },
-  charter: {
-    badge: 'Diagnostic Consultation',
-    h2:    'Ready to meet your child’s Navigator?',
-    sub:   'The diagnostic consultation is where we find out exactly where your child is — not where their school says they are.',
-    btn1:  'Book Your Consultation',
-    btn2:  'Read the LCS Methodology',
+    note: 'A free consultation with a Navigator. No obligation.',
   },
 }
 
@@ -581,7 +587,7 @@ export const about = {
   closing: {
     sub:
       'Not a tagline. A philosophy. Genuine bilingual depth is not achieved through parallel translation or language-maintenance programs. It emerges when a child is trained to think precisely in English at the highest cognitive level — to read complexity, argue with evidence, and write with intention. That intellectual rigor transfers. It strengthens thinking in every language. Both languages become stronger because the mind became stronger first.',
-    cta: 'Start Your Child’s Journey',
+    cta: 'Watch a Demo Class',
   },
 }
 
@@ -597,7 +603,7 @@ export const consult = {
       h1zh: '我们精确确定您孩子的起点',
       sub:  'Not where their school report says they are. The consultation is 20 minutes with a Navigator — not a sales call. We diagnose, we identify the gap, we prescribe. You decide.',
       cta1: 'Book My Consultation',
-      cta2: 'See The Program',
+      cta2: 'See The 16-Week Program',
       stats: [
         { value: '20',     unit: 'Minutes',      desc: 'Focused, no filler'                                        },
         { value: '1',      unit: 'Navigator',    desc: 'Not a sales rep'                                           },
@@ -660,13 +666,6 @@ export const consult = {
         'Reschedule any time — no penalty',
       ],
     },
-    charter: {
-      badge: 'The 16-Week Program',
-      h2:    'Ready to start after the call?',
-      sub:   'Every student begins with a Navigator who knows their Lexile baseline, their 6+1 Trait writing profile, and exactly where they need to go next.',
-      btn1:  'Book Your Consultation',
-      btn2:  'See The Program',
-    },
   }
 
 // ── /compare ─────────────────────────────────────────────────────
@@ -722,10 +721,10 @@ export const compare = {
       ],
     },
     s9: {
-      h2: 'The Lexile assessment is where we find out if DODO Learning is the right fit for your child.',
-      sub: 'Every enrollment begins with a free Lexile reading assessment\u00a0— no commitment, no pressure. A precise starting point, because meaningful progress requires one.',
-      ctaPrimary: 'Book a Free Lexile Assessment', ctaSecondary: 'See the Full Program',
-      note: 'The assessment is free. The 16-Week Program begins with a confirmed Lexile baseline.',
+      h2: 'The consultation is where we find out if DODO Learning is the right fit for your child.',
+      sub: 'It starts with a conversation\u00a0— no commitment, no pressure. If it’s a fit, your child’s Lexile baseline is the first thing we measure once the program begins.',
+      ctaPrimary: 'Book Your Consultation', ctaSecondary: 'See The 16-Week Program',
+      note: 'The consultation is free, with no obligation. The 16-Week Program then begins with a confirmed Lexile baseline.',
     },
   }
 
@@ -998,7 +997,7 @@ export const lexile = {
   cta: {
     heading:      'Find out exactly where your child reads right now.',
     body:         'The entrance assessment takes about 30 minutes and produces a specific Lexile number. That number is the beginning of a growth trajectory you can track after every session.',
-    ctaPrimary:   'Book a Diagnostic Call',
+    ctaPrimary:   'Book Your Consultation',
     ctaSecondary: 'See the Methodology',
   },
 }
@@ -1284,8 +1283,8 @@ export const demos = {
       eyebrow: 'After You Watch',
       h2:      'You’ll know within 20 minutes.',
       h2zh:    '观看后，您将心中有数',
-      body:    'Most parents tell us the demo answers the question they couldn’t put into words before watching. Is this the right kind of challenge for my child? Watch the demo. Then book the diagnostic call. The Navigator who runs your consultation will be the same kind of person you see on screen.',
-      cta:    'Book a Diagnostic Call',
+      body:    'Most parents tell us the demo answers the question they couldn’t put into words before watching. Is this the right kind of challenge for my child? Watch the demo. Then book your consultation. The Navigator who runs your consultation will be the same kind of person you see on screen.',
+      cta:    'Book Your Consultation',
     },
     growth: {
       eyebrow: 'What Students Achieve',
@@ -1305,20 +1304,5 @@ export const demos = {
         scaleLabel: 'Scale 1–6',
         note:       'The writing growth you see in the demos is exactly what causes these scores to move. The Loop is the mechanism.',
       },
-    },
-    cta: {
-      eyebrow: 'Ready to Talk',
-      h2:      'Watched the demo. Want to know if it’s right for your child?',
-      h2zh:    '看完示范，想知道是否适合您的孩子？',
-      body:    'The diagnostic consultation is 20 minutes with a Navigator — not a sales call. We assess your child’s current Lexile level, identify the specific gap, and map out what 16 weeks could look like for them. No commitment required to book.',
-      btn:    'Book Your Consultation',
-      note:   'With a Navigator, not a sales representative. Honest fit assessment — we only enroll students we can genuinely move.',
-    },
-    charter: {
-      badge: 'The 16-Week Program',
-      h2:    'Ready to start after watching?',
-      sub:   'Every student begins with a Navigator who knows their Lexile baseline, their 6+1 Trait writing profile, and exactly where they need to go next.',
-      btn1:  'Book Your Consultation',
-      btn2:  'See The Program',
     },
   }
