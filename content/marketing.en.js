@@ -375,8 +375,8 @@ export const about = {
     h1c:           'is not the same as a child',
     h1d:           'who ', h1em2: 'thinks', h1e: ' in it.',
     sub:
-      'Built for families whose children will lead in English-dominant schools, universities, and boardrooms. Many of these children learn English as a subject — they pass exams, they sound fluent. Ask them to argue a position, read dense analytical prose, or write something original — and the language reaches its limit. Our founder saw that gap and built DODO to close it. The goal is English mastery at the cognitive level. Bilingual depth is what emerges when that goal is reached.',
-    videoLabel:    'Watch: Why DODO Exists',
+      'Built for families whose children will lead in English-dominant schools, universities, and boardrooms. Many of these children learn English as a subject — they pass exams, they sound fluent. Ask them to argue a position, read dense analytical prose, or write something original — and the language reaches its limit. DODO’s founder, Janet Sui, saw that gap and built DODO to close it. The goal is English mastery at the cognitive level. Bilingual depth is what emerges when that goal is reached.',
+    videoLabel:    'Watch: Janet talks about DODO Learning',
     videoDuration: '3 min',
   },
   name: {
@@ -388,12 +388,12 @@ export const about = {
       'The double “Do” is also a commitment to iteration. You don’t master a language once. You master it by doing, then doing again — each cycle deeper, each cycle more precisely your own.',
   },
   beliefs: {
-    sub:    'Every session is built on the same four convictions.',
+    sub:    'Every session — and every teaching moment a Navigator shares with your child — rests on the same four pillars.',
     bodies: [
-      'Fluency is not about sounding right. It’s about thinking precisely — reading complex arguments, defending a position with evidence, writing with intention. That is the standard we build toward. Language is architecture for thought. We build the architecture first; fluency follows.',
-      'The best learning happens between people, not between a child and a screen. Every DODO session is a dialogue. The Navigator’s first move after your child answers is always a better question — never an evaluation.',
-      'Cognitive depth in English protects thinking in both languages. The more precisely your child reasons in English, the more sophisticated their thinking becomes in every language they use. Bilingual capacity is the natural evidence of intellectual rigor — not a separate goal to manage.',
-      'Real growth is something you can see and count, not something a teacher assures you happened. Every cycle has an entrance Lexile reading, a mid-program check, and an exit reading. Every piece of writing is scored against the 6+1 Trait framework. When we say your child moved from Lexile 620 to 820, the gap is on paper. The numbers come first; the encouragement is downstream.',
+      'Fluency is not about sounding right. It’s about thinking precisely — reading classic arguments about character and consequence, defending a position with evidence, building a piece of writing from the sentence up. Language has a structure a child can learn to see: the roots beneath a word, the logic inside an argument, the shape of a paragraph. We build that architecture first — with texts set deliberately above grade level — and fluency follows.',
+      'The deepest learning happens between people, not between a child and a screen. Every DODO session is a dialogue, and the answer your child gives is the start of the inquiry, not the end of it. After they answer, the Navigator’s next move is always a better question — one that makes their thinking visible and sends them back into the text for evidence — never an evaluation.',
+      'Cognitive depth in English protects and strengthens thinking in both languages. The more precisely your child reasons in English, the more sophisticated their thinking becomes in every language they use. A child who can read dense, analytical prose, argue a position in formal English, and write with precision — and who also thinks in his mother tongue — has a mind no machine can replace. Bilingual capacity is the natural evidence of that rigor, not a separate goal to manage.',
+      'Real growth is something you can see and count — not something you’re simply told happened. Every cycle is bracketed by a Lexile reading at Week 0, a checkpoint at Week 8, and an exit reading at Week 16, and every piece of writing is scored against the 6+1 Trait rubric. When we say your child moved from Lexile 620 to 820, the gap is on paper. The numbers come first; the encouragement is downstream.',
     ],
   },
   loop: {
@@ -401,9 +401,9 @@ export const about = {
     cta:         'Explore Methodology',
     programLink: 'See The 16-Week Program →',
     descs: [
-      'Classical literature and carefully selected texts — Alice in Wonderland, Treasure Island, Poe — read not as school assignments, but as living arguments about how language, character, and consequence work.',
-      'Structure evidence. Map cause and effect. Hold two competing ideas without rushing to resolve them. Every Think step targets a specific type of reasoning — not a reading skill, not a comprehension worksheet.',
-      'Defend a position. Inhabit a character’s perspective. Articulate exactly where in the text the evidence lives. Speaking is not output — it is how thinking becomes precise enough to write.',
+      'Classical literature that climbs with the child — Alice in Wonderland in the early years, Treasure Island mid-way, the SAT canon of The Great Gatsby by high school — read not as school assignments but as living arguments about how language, character, and consequence work.',
+      'Structure evidence. Map cause and effect. Hold two competing ideas without rushing to resolve them. Every Think step targets a specific type of reasoning. Structured thinking is not a reading skill, and it goes well beyond comprehension worksheets.',
+      'Defend a position. Inhabit a character’s perspective. Articulate exactly where in the text the evidence lives. Speaking is how thinking becomes precise enough to write.',
       'Writing is the proof that a language truly belongs to you. Progress assessed against the 6+1 Trait rubric — not by age or grade level, but by the quality and craft of the work itself.',
     ],
   },
@@ -414,13 +414,11 @@ export const about = {
     items: [
       { number: '10,000+', label: 'teaching hours delivered'                                     },
       { number: '300+',    label: 'students across the programme'                                },
-      { number: '90%+',    label: 'of enrollments from genuine word-of-mouth referrals'         },
+      { number: '75%+',    label: 'of enrollments from genuine word-of-mouth referrals'         },
       { number: 'Top 50',  label: 'world-ranked universities for every Navigator (Oxford, U of T, Queen’s, LSE…)' },
     ],
   },
   navigators: {
-    chipNot:        'Not teachers.',
-    chipAre:        'Navigators.',
     p1pre:          'We call them ',
     p1strong:       'Navigators',
     p1post:
@@ -436,7 +434,7 @@ export const about = {
       {
         quote: '“Our child will lead in English. Both languages will be stronger for it.”',
         desc:
-          'You understand that English mastery and Chinese depth are not competing goals. A child trained to think precisely in one language carries that precision into both. You want the standard set high — and measured.',
+          'You understand that English mastery and mother-tongue depth are not competing goals. A child trained to think precisely in one language carries that precision into both. You want the standard set high — and measured.',
       },
       {
         quote: '“We move between worlds. Our child’s English needs to match that complexity.”',
@@ -499,7 +497,7 @@ export const consult = {
       navigatorName: 'Ms. Willow',
       sessionPhase:  'Diagnose Phase · 5 min',
       h2:   'What the Navigator actually says.',
-      h2zh: '领航员实际如何开展咋询',
+      h2zh: '导师实际如何开展咨询',
       p1: 'The Navigator doesn’t open with a pitch. They open with a question:',
       q1: '“Tell me what a typical English class looks like for your child. Not the grade — the feeling. Do they raise their hand? Do they avoid the teacher’s eye?”',
       p2: 'That question tells us more in thirty seconds than a report card tells us in a year. We’re listening for the gap between what the school measures and what’s actually happening.',
@@ -1112,7 +1110,7 @@ export const demos = {
         { videoId: YOUTUBE_IDS.demoGr9plus,    label: 'Advanced Reader',    labelZh: '高级阅读者', tag1: 'Grades 9+',       tag2: 'Lexile 1020+',      tag3: 'Full Loop · Extended' },
         { videoId: YOUTUBE_IDS.featured,       label: 'The Full Loop',      labelZh: '完整循环展示', tag1: 'Featured',   tag2: '20 min',  tag3: 'Grades 7–8' },
         { videoId: YOUTUBE_IDS.brandLoop,      label: 'The Loop Explained', labelZh: '学习循环解析', tag1: 'Method',     tag2: '5 min',   tag3: null },
-        { videoId: YOUTUBE_IDS.brandNavigator, label: 'Meet a Navigator',   labelZh: '认识领航员',       tag1: 'People',     tag2: '3 min',   tag3: null },
+        { videoId: YOUTUBE_IDS.brandNavigator, label: 'Meet a Navigator',   labelZh: '认识导师',       tag1: 'People',     tag2: '3 min',   tag3: null },
       ],
     },
     session: {

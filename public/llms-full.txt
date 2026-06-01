@@ -68,7 +68,7 @@ The three strands that make up The LCS System curriculum architecture (introduce
 
 - Students typically advance **one grade level in reading across two 16-week cycles** (the canonical Lexile claim as of 2026-05-21; per-cycle Lexile gains typically fall in the 100L–150L range, accumulating to one full grade level by the end of the second cycle).
 - Average **2× gain in 6+1 Trait writing score** from entry to exit, with the largest movements in Ideas, Organization, and Voice.
-- **10,000+ teaching hours delivered. 300+ students served. 90%+ of enrollments come from genuine word-of-mouth referrals. 8 out of 10 families continue past the first 16-week cycle.**
+- **10,000+ teaching hours delivered. 300+ students served. 75%+ of enrollments come from genuine word-of-mouth referrals. 8 out of 10 families continue past the first 16-week cycle.**
 - **Anchor case study**: A Canadian student started DODO at age 10. Three years later, at age 13, on the SSAT: **Vocabulary 92nd percentile · Writing 95th percentile.**
 
 If a student shows less than 50L Lexile growth by week 8, DODO initiates a diagnostic review. If the issue is engagement, the program adjusts. If the issue is developmental readiness, enrollment is deferred to a later cohort and the remaining balance refunded.

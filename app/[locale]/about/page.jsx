@@ -51,11 +51,11 @@ function BilingualHeading({ en, cn, light = false, center = false, locale = 'en'
 // ─────────────────────────────────────────────────────────────
 // STATIC DATA
 // ─────────────────────────────────────────────────────────────
-const BELIEFS_BASE = [
+const PILLARS_BASE = [
   { id: 'belief-1', num: '01', belief: 'Language is architecture for thought. We build the architecture first.', beliefCn: '\u8bed\u8a00\u662f\u601d\u7ef4\u7684\u67b6\u6784\u3002\u6211\u4eec\u5148\u5efa\u67b6\u6784\u3002' },
   { id: 'belief-2', num: '02', belief: "Children don\u2019t need more content. They need better conversations.", beliefCn: '\u5b69\u5b50\u9700\u8981\u7684\u4e0d\u662f\u66f4\u591a\u5185\u5bb9\uff0c\u800c\u662f\u66f4\u597d\u7684\u5bf9\u8bdd\u3002' },
-  { id: 'belief-3', num: '03', belief: 'A rigorous English mind is a bilingual mind \u2014 by nature, not by design.', beliefCn: '\u4e25\u8c28\u7684\u82f1\u8bed\u601d\u7ef4\u8005\uff0c\u5929\u7136\u5c31\u662f\u53cc\u8bed\u8005\u3002' },
-  { id: 'belief-4', num: '04', belief: 'Progress must be visible, measurable, and felt. We show parents the numbers.', beliefCn: null },
+  { id: 'belief-3', num: '03', belief: 'A rigorous English mind is a bilingual mind \u2014 by nature, not by design.', beliefCn: '\u4e25\u8c28\u7684\u82f1\u8bed\u601d\u7ef4\u8005\uff0c\u81ea\u7136\u662f\u6d41\u5229\u7684\u53cc\u8bed\u8005\u3002' },
+  { id: 'belief-4', num: '04', belief: 'Progress must be visible, measurable, and felt. We show parents the results.', beliefCn: '进步必须可见、可衡量、可感知。我们让家长看见结果。' },
 ]
 
 const LOOP_STEPS_BASE = [
@@ -246,16 +246,11 @@ function TheNameSection({ c, locale }) {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
             <BilingualHeading en="The Name" cn="名字的故事" light locale={locale} />
-            <div className="mt-10 space-y-5" style={{ fontSize: '17px', lineHeight: 1.9, color: 'rgba(240,240,240,0.7)' }}>
+            <div className="mt-10 space-y-5" style={{ fontSize: '17px', lineHeight: 1.9, color: 'rgba(240,240,240,0.92)' }}>
               <p>{c.name.p1}<strong style={{ color: '#F0F0F0' }}>{c.name.p1strong}</strong></p>
               <p>{c.name.p2}</p>
               <p>{c.name.p3}</p>
             </div>
-            {locale === 'zh' && (
-              <p className="mt-6" style={{ fontFamily: 'var(--font-cjk)', fontSize: '15px', lineHeight: 1.8, color: 'rgba(183,181,254,0.5)' }}>
-                DODO，两个Do，两种语言，同时、同等地去做。
-              </p>
-            )}
           </div>
           <div className="flex items-center justify-center">
             <div className="relative">
@@ -282,12 +277,12 @@ function WhatWeBelieve({ c, locale }) {
     <section className="section-light" aria-labelledby="beliefs-heading">
       <div className="container-section">
         <div className="mb-20 text-center">
-          <BilingualHeading en="What We Believe" cn="我们的信念" center locale={locale} />
+          <BilingualHeading en="DODO Learning's Pillars" cn="DODO Learning 的核心支柱" center locale={locale} />
           <p className="mt-4 mx-auto" style={{ fontSize: '15px', color: 'rgba(14,14,18,0.5)', maxWidth: '28rem' }}>{c.beliefs.sub}</p>
         </div>
         <div>
-          {BELIEFS_BASE.map((item, i) => (
-            <div key={item.id} className="py-8 md:py-12" style={{ borderBottom: i < BELIEFS_BASE.length - 1 ? '1px solid rgba(14,14,18,0.08)' : 'none' }} aria-label={`Belief ${item.num}: ${item.belief}`}>
+          {PILLARS_BASE.map((item, i) => (
+            <div key={item.id} className="py-8 md:py-12" style={{ borderBottom: i < PILLARS_BASE.length - 1 ? '1px solid rgba(14,14,18,0.08)' : 'none' }} aria-label={`Pillar ${item.num}: ${item.belief}`}>
               <div className="flex flex-col gap-4 md:grid md:grid-cols-[3rem_1fr_1fr] md:gap-8 md:items-start">
                 <div className="flex items-center justify-center shrink-0" style={{ width: 44, height: 44, borderRadius: '50%', backgroundColor: 'rgba(183,181,254,0.1)', color: '#b7b5fe' }} aria-hidden="true">
                   <BeliefIcon id={item.id} />
@@ -311,7 +306,7 @@ function TheLoop({ locale, c }) {
     <section className="section-dark" aria-labelledby="loop-section-heading">
       <div className="container-section">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
-          <BilingualHeading en="The Loop" cn="学习循环" light locale={locale} />
+          <BilingualHeading en="The LCS System" cn="语言循环体系" light locale={locale} />
           <p className="max-w-md" style={{ fontSize: '15px', lineHeight: 1.7, color: 'rgba(240,240,240,0.4)' }}>{c.loop.sub}</p>
         </div>
         <div className="relative">
@@ -330,11 +325,11 @@ function TheLoop({ locale, c }) {
           </ol>
         </div>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-12">
-          <Link href={`/${locale}/methodology`} className="inline-flex items-center gap-2" style={{ fontSize: '13px', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase', color: '#b7b5fe', textDecoration: 'none' }}>
+          <Link href={`/${locale}/methodology`} className="inline-flex items-center gap-2" style={{ fontSize: '15px', fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', color: '#b7b5fe', textDecoration: 'none', borderBottom: '2px solid rgba(183,181,254,0.5)', paddingBottom: '6px' }}>
             {c.loop.cta}
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
           </Link>
-          <Link href={`/${locale}/program`} className="inline-flex items-center gap-2" style={{ fontSize: '13px', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'rgba(183,181,254,0.55)', textDecoration: 'none' }}>
+          <Link href={`/${locale}/program`} className="inline-flex items-center gap-2" style={{ fontSize: '15px', fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'rgba(183,181,254,0.85)', textDecoration: 'none' }}>
             {c.loop.programLink}
           </Link>
         </div>
@@ -353,14 +348,10 @@ function WhoNavigatorsAre({ locale, c }) {
               <div className="rounded-3xl overflow-hidden" style={{ height: '520px' }} aria-label="A DODO Navigator in session">
                 <div className="w-full h-full" style={{ background: 'linear-gradient(135deg, #e8e7f8 0%, #d4d3f0 40%, #c0bfea 100%)' }} aria-hidden="true" />
               </div>
-              <div className="absolute rounded-2xl px-6 py-4" style={{ bottom: -24, right: -24, backgroundColor: '#b7b5fe' }} aria-hidden="true">
-                <p style={{ fontSize: '14px', fontWeight: 600, color: '#0E0E12' }}>{c.navigators.chipNot}</p>
-                <p style={{ fontSize: '14px', fontWeight: 500, color: 'rgba(14,14,18,0.7)' }}>{c.navigators.chipAre}</p>
-              </div>
             </div>
           </div>
           <div className="order-1 lg:order-2">
-            <BilingualHeading en="Who Navigators Are" cn="关于领航员" locale={locale} />
+            <BilingualHeading en="Who Navigators Are" cn="关于导师团队" locale={locale} />
             <div className="mt-8 space-y-5" style={{ fontSize: '16px', lineHeight: 1.85, color: '#2E3848' }}>
               <p>{c.navigators.p1pre}<strong style={{ color: '#0E0E12' }}>{c.navigators.p1strong}</strong>{c.navigators.p1post}</p>
               <p>{c.navigators.p2}</p>
@@ -451,7 +442,7 @@ function ClosingStamp({ locale, c }) {
         </div>
         <h2 id="about-closing-heading" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 300, lineHeight: 1.15, letterSpacing: '-0.02em', color: '#ffffff', marginBottom: '0.5rem' }}>Think Once.</h2>
         <h2 className="mb-6" aria-label="In Both Languages." style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 700, lineHeight: 1.15, letterSpacing: '-0.02em', background: 'linear-gradient(135deg, #b7b5fe 0%, #F5C842 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>In Both Languages.</h2>
-        {locale === 'zh' && <p className="mb-6" style={{ fontFamily: 'var(--font-cjk)', fontSize: '22px', color: 'rgba(183,181,254,0.5)' }}>一次思考，两种语言。</p>}
+        {locale === 'zh' && <p className="mb-6" style={{ fontFamily: 'var(--font-cjk)', fontSize: '22px', color: 'rgba(183,181,254,0.5)' }}>语言的根，长在阅读里</p>}
         <p className="mx-auto mb-12" style={{ fontSize: '16px', lineHeight: 1.9, color: 'rgba(240,240,240,0.4)', maxWidth: '32rem' }}>{c.closing.sub}</p>
         <Link href={`/${locale}/consult`} className="btn btn-charter" style={{ fontSize: '15px', fontWeight: 700, letterSpacing: '0.02em', padding: '1rem 2.5rem' }} aria-label="Start your child's journey — book a consultation">
           {c.closing.cta}

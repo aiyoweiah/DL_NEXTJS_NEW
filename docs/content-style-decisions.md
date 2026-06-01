@@ -128,3 +128,48 @@ For each decision above, ask: has this stabilized across 2+ surface reviews? If 
 ### Still-open observations
 - **EN/ZH semantic asymmetry tolerance** — D12 explicitly permits within one element; broader tolerance (sections deliberately diverging in their POV) hasn't been tested. Watch as more pages get reviewed.
 - **Lexile data display strategy** — `/program` §6 dropped Lexile from the q1 dialogue. Whether this generalizes (Lexile signals stay in section chips + ProofStrip stats, not in narrative dialogue) needs another page test.
+
+---
+
+## 2026-06-01 · /about review
+
+### D16 · "What We Believe" → "DODO Learning's Pillars"
+- **Decision:** The /about beliefs section is reframed as **"DODO Learning's Pillars" / "DODO Learning 的核心支柱"**. Four numbered statements kept; wrapper language moved from belief/conviction → pillar. Internal: `BELIEFS_BASE` → `PILLARS_BASE`, aria `Belief N` → `Pillar N`. Sub ties the pillars to "every session — and every teaching moment a Navigator shares."
+- **Where it lives now:** `app/[locale]/about/page.jsx` · `marketing.{en,zh}.js` `about.beliefs`. Bodies rewritten to weave (unnamed) MCT structure-of-language + Project Zero dialogic/visible-thinking philosophy.
+- **Trigger:** User /about dump markup §3.
+
+### D17 · Referral rate 90%+ → 75%+ (site-wide)
+- **Decision:** Canonical referral figure is **75%+ from genuine word-of-mouth**, supersedes 90%+. Cascaded /about (EN+ZH), partners page (EN+ZH), llms-full.txt.
+- **Overrides:** §11 prior 90%+.
+- **Where it lives now:** `BRAND_CONTENT_GUIDE.md` §11 referral row.
+- **Trigger:** User C-2.
+
+### D18 · Top-50 university credential retained (top-30 rejected)
+- **Decision:** Navigator credential stays **world top-50**. A proposed top-30 was rejected: the named pool (Oxford · U of T · Queen's · LSE) is not all top-30, so the tighter claim is unverifiable and fails the skeptical-parent fact-check (§04 profile).
+- **Where it lives now:** `BRAND_CONTENT_GUIDE.md` §11 credentials row (do-not-downgrade note).
+- **Trigger:** User C-1.
+
+### D19 · LCS ZH section header = 语言循环体系
+- **Decision:** Canonical ZH section header for the LCS system is **"语言循环体系"**. Supersedes the prior three-way drift: D1's "LCS 教学理念" (§09), glossary "LCS 教学体系" (§15). EN unchanged ("The LCS System").
+- **Overrides:** D1 ZH rendering; glossary LCS entries.
+- **Where it lives now:** `BRAND_CONTENT_GUIDE.md` §09 + §15 · `dodo-glossary.json` LCS entries · `about/page.jsx` §4 heading.
+- **Trigger:** User C-4.
+
+### D20 · 领航员 forbidden as Navigator translation
+- **Decision:** **领航员** (literal "navigator") is forbidden — Navigator is always **导师（Navigator）**. Purged from /about heading, /consult h2zh (also fixed typo 咋询→咨询), demos labels (EN+ZH).
+- **Where it lives now:** `BRAND_CONTENT_GUIDE.md` §09 Navigators row + §10 anti-dictionary · `dodo-glossary.json` voice_rules.
+- **Trigger:** User /about dump §5 remark.
+
+### D21 · Mother-tongue framing over Chinese-specific
+- **Decision:** In globalized body copy, the child's first language is **"mother tongue" / "母语"**, not "Chinese / 中文" — except on intentionally core-market surfaces. Applied to /about Pillar 03 + Family 1.
+- **Where it lives now:** `BRAND_CONTENT_GUIDE.md` §04 (2026-06-01 note). Operationalizes D10's "cascade pending".
+- **Trigger:** User C-5.
+
+### D22 · Founder named on /about; closing uses poetic ZH sub-tagline
+- **Decision:** (a) **Janet Sui** is named in the /about hero sub + video label (founder identity, §12 must-include). (b) The closing-stamp ZH H2 switches from the literal "一次思考，两种语言。" to the canonical poetic sub-tagline **"语言的根，长在阅读里"** (§00). EN tagline unchanged.
+- **Where it lives now:** `marketing.{en,zh}.js` `about.hero` · `about/page.jsx` ClosingStamp.
+- **Trigger:** User C-3, C-6.
+
+### Reinforced (not new)
+- **ZH combat-metaphor lint** caught **捍卫** in the /about Speak step + Pillar 01 body — replaced with 阐明并支持 / 支持自己的立场. Lint rule already in §08 + skill; this is a recurrence flag.
+- **Affirmative voice** — removed the oppositional "Not teachers. / Navigators." chip pair from /about §5 (render deleted; orphan `chipNot`/`chipAre` content keys left harmless).

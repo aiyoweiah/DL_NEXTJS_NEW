@@ -48,7 +48,7 @@ const COPY = {
       stats: [
         { num: '10,000+', label: 'Hours of instruction delivered'  },
         { num: '300+',    label: 'Students served'                 },
-        { num: '90%+',    label: 'Arrive through genuine referrals' },
+        { num: '75%+',    label: 'Arrive through genuine referrals' },
       ],
     },
 
@@ -197,7 +197,7 @@ const COPY = {
       stats: [
         { num: '10,000+', label: '\u6388\u8bfe\u603b\u65f6\u6570'          },
         { num: '300+',    label: '\u5df2\u670d\u52a1\u5b66\u751f'          },
-        { num: '90%+',    label: '\u901a\u8fc7\u53e3\u7891\u8f6c\u4ecb\u800c\u6765' },
+        { num: '75%+',    label: '\u901a\u8fc7\u53e3\u7891\u8f6c\u4ecb\u800c\u6765' },
       ],
     },
 

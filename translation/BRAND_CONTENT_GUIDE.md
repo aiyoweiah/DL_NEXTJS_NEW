@@ -85,6 +85,8 @@ The double Do is also a commitment to **iteration** — you master a language by
 
 **Broader market** (post-2026-05-21 admin pivot): families anywhere in the world seeking English literacy at the cognitive level. The Loop + LCS System + Lexile + 6+1 Trait architecture is the same in every market; framing on conversion surfaces uses "students around the world" / "面向全球家庭" where appropriate.
 
+> **2026-06-01 mother-tongue framing:** In globalized body copy, name the child's first language as **"mother tongue" / "母语"**, not "Chinese / 中文" — except on intentionally core-market surfaces. Cascaded from /about Pillar 03 + Family 1. The bilingual-depth argument (Truth 2) is language-agnostic; "Chinese" is a core-market specific, not the default.
+
 | Family type | Their real fear | What DODO solves |
 |---|---|---|
 | Newly arrived in NA | "My child speaks English but can't hold their own academically" | Closes survival-English to college-tier-fluency gap |
@@ -239,9 +241,9 @@ These terms are DODO's. Use consistently across every channel.
 
 | Term | Always means | Never |
 |---|---|---|
-| **Navigators** | Longitudinal guides who know a child's voice, pace, gaps. First move after a student answers = a better question, never evaluation. | Teachers · tutors · instructors · 老师 · 辅导老师 |
+| **Navigators** | Longitudinal guides who know a child's voice, pace, gaps. First move after a student answers = a better question, never evaluation. | Teachers · tutors · instructors · 老师 · 辅导老师 · 领航员 *(领航员 is a forbidden literal Navigator translation — always 导师（Navigator）; 2026-06-01)* |
 | **The Loop** | The per-session phrase: Read → Think → Speak → Write — this phrase, this order, every session. Lives inside body copy. | "Our method" · re-ordered variants · using "The Loop" as a section header or named system on brand surfaces (use LCS for that — see §06 override 2026-05-21) |
-| **LCS System** | The named methodology surface on dodolearning.com and brand surfaces. Literacy → Composition → Speaking. The curriculum framework that organizes The Loop across cycles. Always titled **"The LCS System"** (EN) / **"LCS 教学理念"** (ZH section header) / **"The LCS"** (in body). | "Our framework" used loosely · confused with The Loop · "The Loop" used as a named system |
+| **LCS System** | The named methodology surface on dodolearning.com and brand surfaces. Literacy → Composition → Speaking. The curriculum framework that organizes The Loop across cycles. Always titled **"The LCS System"** (EN) / **"语言循环体系"** (ZH section header — 2026-06-01 admin set; supersedes "LCS 教学理念" / "LCS 教学体系") / **"The LCS"** (in body). | "Our framework" used loosely · confused with The Loop · "The Loop" used as a named system |
 | **9 Levels · Starter / Poodle / Levels 1–7** | The curriculum progression. *(Structure detail in §06.)* | "Beginner / intermediate / advanced" generic labels |
 | **Literacy · Level 1** *(strand-scoped program label)* | The L-strand program at Level 1 — used as the canonical program identity on `navigators.dodolearning.com` and in any L-strand-only artefact. Shorthand: **L·L1**. Phases labelled **L·L1·P1 / L·L1·P2 / L·L1·P3**. *(See §06 for the Phase ↔ Cycle note: Navigator surfaces use "Phase"; brand surfaces use "Cycle". Same 16-week unit.)* | "Mud Trilogy program" · "Mud Trilogy Phase 1" — book series is the reading material, not the program identity |
 | **Summit · Core · Flex 1 / 2 / 3** | The five programme combinations. | "Plans" · "packages" · "tiers" |
@@ -277,6 +279,7 @@ These terms are DODO's. Use consistently across every channel.
 | "Don't worry about Chinese" | Dismisses a real parental concern | "Cognitive depth protects both languages" |
 | "Supplement" · "support" | Dependent framing | "Develop from foundation" · "rebuild" |
 | 补习班 · 英语辅导 · 母语老师 · 干预 | Service-model language | These concepts don't belong in DODO content |
+| 领航员 | Non-canonical literal translation of Navigator — drifts from owned vocab | 导师（Navigator） |
 | 综上所述 · 毋庸置疑 · 由此可见 · 综合来看 · 不难发现 · 值得一提的是 | AI-signature ZH phrases | Delete · rewrite |
 
 ---
@@ -290,8 +293,8 @@ Cite these wherever credibility is needed. **Update centrally — never edit one
 | Founded | **2020 in Canada · relaunched 2025** with full curriculum upgrade |
 | Teaching hours | **10,000+ hours delivered** |
 | Students served | **300+ students across the programme** |
-| Referral rate | **90%+ from genuine word-of-mouth** |
-| Navigator credentials | **Degrees from world top-50 universities** (Oxford, U of T, Queen's, LSE and others); specialist backgrounds in English literature and composition |
+| Referral rate | **75%+ from genuine word-of-mouth** *(2026-06-01 admin set; supersedes prior 90%+. Update centrally — already cascaded to /about · partners · llms-full)* |
+| Navigator credentials | **Degrees from world top-50 universities** (Oxford, U of T, Queen's, LSE and others); specialist backgrounds in English literature and composition *(2026-06-01: top-50 retained — do NOT downgrade to top-30; the named pool incl. Queen's is not all top-30, so a tighter claim is unverifiable)* |
 | Typical Lexile gain | **One grade level over two 16-week cycles** *(canonical 2026-05-21 admin set; supersedes prior 187 points / 1.2 grade levels / 16 weeks. Re-verify against latest cohort data before quoting tighter numbers.)* |
 | Lexile assessment cadence | **Week 0 · Week 8 · Week 16** |
 | Anchor case study | Canadian student, started at age 10. At age 13: **SSAT Vocabulary 92nd percentile · Writing 95th percentile.** |
@@ -444,7 +447,7 @@ Brand-content effectiveness lives in measurable signals. Track these monthly; on
 
 **Owned terms locked in 2026-05 batch — add to `dodo-glossary.json` before next session:**
 
-- `LCS` / `LCS Teaching System` → `LCS 教学体系`
+- `LCS` / `LCS Teaching System` → `语言循环体系` *(2026-06-01 canonical ZH section header; supersedes "LCS 教学体系" / "LCS 教学理念")*
 - `Summit` → `Summit（全境领航）`
 - `Core` → `Core（稳健航行）`
 - `Flex 1` → `Flex 1（文学阅读自由航行）`
