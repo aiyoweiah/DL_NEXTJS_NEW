@@ -166,7 +166,7 @@ For each decision above, ask: has this stabilized across 2+ surface reviews? If 
 - **Trigger:** User C-5.
 
 ### D22 · Founder named on /about; closing uses poetic ZH sub-tagline
-- **Decision:** (a) **Janet Sui** is named in the /about hero sub + video label (founder identity, §12 must-include). (b) The closing-stamp ZH H2 switches from the literal "一次思考，两种语言。" to the canonical poetic sub-tagline **"语言的根，长在阅读里"** (§00). EN tagline unchanged.
+- **Decision:** (a) The founder is named on /about as **Janet** (first name — warm conversion register), in the hero sub + video label (founder identity, §12 must-include). Full **"Janet Sui"** is reserved for formal credits (/compare "From the Founder" byline), legal signatory (AgreementTool), and the pending Person schema. (b) The closing-stamp ZH H2 switches from the literal "一次思考，两种语言。" to the canonical poetic sub-tagline **"语言的根，长在阅读里"** (§00). EN tagline unchanged.
 - **Where it lives now:** `marketing.{en,zh}.js` `about.hero` · `about/page.jsx` ClosingStamp.
 - **Trigger:** User C-3, C-6.
 

@@ -375,7 +375,7 @@ export const about = {
     h1c:           'is not the same as a child',
     h1d:           'who ', h1em2: 'thinks', h1e: ' in it.',
     sub:
-      'Built for families whose children will lead in English-dominant schools, universities, and boardrooms. Many of these children learn English as a subject — they pass exams, they sound fluent. Ask them to argue a position, read dense analytical prose, or write something original — and the language reaches its limit. DODO’s founder, Janet Sui, saw that gap and built DODO to close it. The goal is English mastery at the cognitive level. Bilingual depth is what emerges when that goal is reached.',
+      'Built for families whose children will lead in English-dominant schools, universities, and boardrooms. Many of these children learn English as a subject — they pass exams, they sound fluent. Ask them to argue a position, read dense analytical prose, or write something original — and the language reaches its limit. DODO’s founder, Janet, saw that gap and built DODO to close it. The goal is English mastery at the cognitive level. Bilingual depth is what emerges when that goal is reached.',
     videoLabel:    'Watch: Janet talks about DODO Learning',
     videoDuration: '3 min',
   },

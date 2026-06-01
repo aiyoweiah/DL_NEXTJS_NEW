@@ -298,6 +298,7 @@ Cite these wherever credibility is needed. **Update centrally — never edit one
 | Typical Lexile gain | **One grade level over two 16-week cycles** *(canonical 2026-05-21 admin set; supersedes prior 187 points / 1.2 grade levels / 16 weeks. Re-verify against latest cohort data before quoting tighter numbers.)* |
 | Lexile assessment cadence | **Week 0 · Week 8 · Week 16** |
 | Anchor case study | Canadian student, started at age 10. At age 13: **SSAT Vocabulary 92nd percentile · Writing 95th percentile.** |
+| Founder reference | **Janet** (first name) in conversion-page prose — warm register; **Janet Sui** (full) only in formal credits (/compare "From the Founder" byline), legal signatory, and Person schema *(2026-06-01)* |
 
 **Testimonial / result-card style (added 2026-05-21):**
 
