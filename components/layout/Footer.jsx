@@ -1,93 +1,57 @@
 // components/layout/Footer.jsx
 //
-// Pure server component — no 'use client', no event handlers.
-// Hover states are handled via Tailwind CSS classes only.
+// Server component — no 'use client', no event handlers. Hover via Tailwind only.
 //
-// Structure (top → bottom):
-//   1. Pre-footer CTA band     — stays dark (#212830), conversion moment
-//   2. Main footer grid        — light (#F5F5FF), Brand / Program / Company / Cities
-//   3. Trust strip             — light (#F5F5FF), Lexile + 6+1 credibility signals
-//   4. Legal strip             — light (#F5F5FF), copyright, privacy, terms, locale switcher
+// Structure (v5.0 — June 2026, "chrome overhaul"):
+//   1. Pre-footer CTA band   — dark (#212830), conversion moment.
+//   2. Main footer grid      — light (#F5F5FF), columns: Brand | Program | Resources | Serving.
+//                              Renamed Company → Resources. The Difference moved into Program.
+//                              Watch a Class + Book a Consultation absorbed into Resources.
+//                              Grid jumps sm:2 → md:4 (was sm:2 → lg:4) to kill the
+//                              awkward 2+1+1+1 layout at tablet widths.
+//   3. Trust strip           — light, 3 evidentiary cards (Lexile · 6+1 · Live).
+//   4. Legal strip           — light, copyright + Privacy + Terms + locale switcher.
 //
-// Changes from pre-locale version:
-//   - Accepts `locale` prop from app/[locale]/layout.jsx
-//   - All nav hrefs prefixed with /${locale} so links stay within the
-//     current locale session
-//   - LocaleSwitcherSlot replaced with <LocaleSwitcher locale={locale} />
+// Brand column now reserves a sibling-site cross-link line ("Also from DODO ·
+// DODO Coding"), rendered only when env flag NEXT_PUBLIC_SHOW_CODING is set.
+// Hidden until the sibling site ships — the slot is structurally present.
 //
-// Footer nav structure (v4.0 — April 2026):
-//   NAV_PROGRAM — alphabetical: Lexile Levels, Navigators, Results, The 16-Week Program, The Loop
-//   NAV_COMPANY — alphabetical: About DODO, Blog, Book a Consultation, FAQ, The Difference, Partners, Watch Demo Class
-//   /partners added — invite-only; listed here for partner-referred traffic
+// All copy comes from `copy` prop, passed by app/[locale]/layout.jsx after
+// resolving content/marketing.[locale].js → footer. EN-hardcoding gone.
 //
-// Logo: uses logo.svg (black fill #000000) — correct for light #F5F5FF background.
-//   Dimensions reflect trimmed viewBox="58 45 484 240" → 2.02:1 aspect ratio.
-//   Plain <img> used (not next/image) — images: { unoptimized: true } gives no benefit.
-//
-// Contrast: all text on light bg uses #3D4452 (body) and #7c79e8 (lavender AA).
-// #b7b5fe (2.8:1 on white) is never used as text on light — #7c79e8 is used instead.
+// Logo: uses logo.svg (black fill #000000) — correct for light #F5F5FF.
+// Contrast: body text uses #3D4452, lavender accents use #7c79e8 (AA on #F5F5FF).
+// #b7b5fe (2.8:1 on white) is never used as text on light — #7c79e8 instead.
 
 import Link           from 'next/link'
 import LocaleSwitcher from '@/components/layout/LocaleSwitcher'
 
-// ── Navigation columns ────────────────────────────────────────
-// Paths are locale-relative (no prefix). Prefix applied in render.
-
-const NAV_PROGRAM = [
-  { href: '/program',     label: 'The 16-Week Program' },
-  { href: '/methodology', label: 'The Loop'            },
-  { href: '/results',     label: 'Results'             },
-  { href: '/navigators',  label: 'Navigators'          },
-  { href: '/lexile',      label: 'Lexile Levels'       },
-]
-
-const NAV_COMPANY = [
-  { href: '/about',    label: 'About DODO'          },
-  { href: '/blog',     label: 'Blog'                },
-  { href: '/consult',  label: 'Book a Consultation' },
-  { href: '/faq',      label: 'FAQ'                 },
-  { href: '/compare',  label: 'The Difference'      },
-  { href: '/partners', label: 'Partners'            },
-  { href: '/demos',    label: 'Watch Demo Class'    },
-]
-
-const NAV_CITIES = [
-  { href: '/cities/vancouver',              label: 'Vancouver'              },
-  { href: '/cities/richmond-bc',            label: 'Richmond BC'            },
-  { href: '/cities/markham',                label: 'Markham'                },
-  { href: '/cities/toronto',                label: 'Toronto'                },
-  { href: '/cities/san-francisco-bay-area', label: 'San Francisco Bay Area' },
-  { href: '/cities/los-angeles',            label: 'Los Angeles'            },
-]
-
-const NAV_LEGAL = [
-  { href: '/privacy', label: 'Privacy Policy' },
-  { href: '/terms',   label: 'Terms of Use'   },
-]
-
-// ── Trust signals ─────────────────────────────────────────────
-const TRUST_SIGNALS = [
-  {
-    id:          'lexile',
-    label:       'Lexile Measurement',
-    description: 'Progress measured in Lexile levels — the same standard used by North American school systems.',
-  },
-  {
-    id:          '6plus1',
-    label:       '6+1 Trait Writing Framework',
-    description: 'Writing assessed with the 6+1 Trait framework — the rubric taught in Canadian and US classrooms.',
-  },
-  {
-    id:          'live',
-    label:       'Live, Navigator-Led Sessions',
-    description: 'Every session is live. No pre-recorded content. Navigators track each student individually.',
-  },
-]
-
 // ── Sub-components ────────────────────────────────────────────
 
-// FooterLink — light bg variant. #3D4452 body, #7c79e8 hover (AA on #F5F5FF).
-function FooterLink({ href, label }) {
+function FooterLink({ href, label, soon, comingSoonLabel }) {
+  // "Coming soon" items render as a non-link span with a muted badge.
+  if (soon) {
+    return (
+      <li>
+        <span
+          className="text-sm inline-flex items-center gap-2"
+          style={{ color: '#7B8494' }}
+        >
+          {label}
+          <span
+            className="text-[10px] uppercase tracking-wider font-semibold px-1.5 py-0.5 rounded"
+            style={{
+              color: '#7c79e8',
+              backgroundColor: 'rgba(124,121,232,0.10)',
+            }}
+          >
+            {comingSoonLabel}
+          </span>
+        </span>
+      </li>
+    )
+  }
+
   return (
     <li>
       <Link
@@ -100,7 +64,6 @@ function FooterLink({ href, label }) {
   )
 }
 
-// ColHeading — #7c79e8 on light bg passes WCAG AA (4.6:1 on #F5F5FF).
 function ColHeading({ children }) {
   return (
     <h3
@@ -113,13 +76,17 @@ function ColHeading({ children }) {
 }
 
 // ── Main component ────────────────────────────────────────────
-export default function Footer({ locale }) {
+export default function Footer({ locale, copy }) {
   const currentYear = new Date().getFullYear()
+
+  // Sibling-site cross-link is structurally present but only renders when
+  // explicitly enabled. Set NEXT_PUBLIC_SHOW_CODING=true when DODO Coding ships.
+  const showSibling = process.env.NEXT_PUBLIC_SHOW_CODING === 'true'
 
   return (
     <footer role="contentinfo">
 
-      {/* ── 1. Pre-footer CTA band — stays dark (conversion moment) ── */}
+      {/* ── 1. Pre-footer CTA band — dark (conversion moment) ── */}
       <div
         className="border-t border-b"
         style={{ borderColor: 'rgba(183,181,254,0.1)', backgroundColor: '#212830' }}
@@ -132,20 +99,19 @@ export default function Footer({ locale }) {
                 className="text-xs font-semibold uppercase tracking-widest mb-3"
                 style={{ color: 'rgba(183,181,254,0.5)' }}
               >
-                Diagnostic Consultation
+                {copy.preCta.eyebrow}
               </p>
               <h2
                 className="text-2xl md:text-3xl font-bold leading-tight tracking-tight"
                 style={{ color: '#b7b5fe' }}
               >
-                Ready to meet your child&rsquo;s Navigator?
+                {copy.preCta.heading}
               </h2>
               <p
                 className="mt-3 text-[0.9375rem] leading-relaxed"
                 style={{ color: '#94A3B8' }}
               >
-                The diagnostic consultation is where we find out exactly where
-                your child is — not where their school says they are.
+                {copy.preCta.body}
               </p>
             </div>
 
@@ -153,16 +119,16 @@ export default function Footer({ locale }) {
               <Link
                 href={`/${locale}/consult`}
                 className="btn btn-charter text-sm px-6 py-3 justify-center"
-                aria-label="Book a diagnostic consultation"
+                aria-label={copy.preCta.consultAria}
               >
-                Book Your Consultation
+                {copy.preCta.consult}
               </Link>
               <Link
                 href={`/${locale}/program`}
                 className="btn btn-ghost text-sm px-6 py-3 justify-center"
-                aria-label="Learn about The 16-Week Program"
+                aria-label={copy.preCta.programAria}
               >
-                See The Program
+                {copy.preCta.program}
               </Link>
             </div>
 
@@ -173,22 +139,23 @@ export default function Footer({ locale }) {
       {/* ── 2. Main footer grid — light ────────────────────── */}
       <div style={{ backgroundColor: '#F5F5FF' }}>
         <div className="container-section pt-14 pb-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+          {/*
+            Grid jumps sm:2 → md:4. Previously sm:2 → lg:4 left an awkward
+            2+1+1+1 layout at 640–1023px (Brand spanned 2 cells). Now Brand
+            is single-cell from md+, all four columns balanced from tablet up.
+          */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-8">
 
             {/* Column 1: Brand */}
-            <div className="sm:col-span-2 lg:col-span-1">
+            <div className="sm:col-span-2 md:col-span-1">
 
               <Link
                 href={`/${locale}`}
                 className="inline-flex mb-6 focus-visible:outline-none focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-[#b7b5fe] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5F5FF]"
-                aria-label="DODO Learning — home"
+                aria-label={copy.brand.logoAria}
               >
-                {/*
-                  logo.svg — black fill (#000000), correct for light bg (#F5F5FF).
-                  viewBox trimmed to content: 484×240 → 2.02:1 ratio.
-                  width/height are intrinsic hints only; h-10 w-auto drives render size.
-                  At h=40px → rendered width ≈ 81px.
-                */}
+                {/* logo.svg — black fill (#000000), correct for light bg (#F5F5FF). */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/logo.svg"
                   alt="DODO Learning"
@@ -202,53 +169,82 @@ export default function Footer({ locale }) {
                 className="text-sm leading-relaxed mb-6 max-w-[26ch]"
                 style={{ color: '#3D4452' }}
               >
-                A live, Navigator-led English literacy program for globally
-                mobile families. Read → Think → Speak → Write.
+                {copy.brand.body}
               </p>
 
-              {/* Tagline — confirmed: "Think Once. In Both Languages." */}
               <p
-                className="text-xs font-semibold uppercase tracking-widest"
+                className="text-xs font-semibold uppercase tracking-widest mb-5"
                 style={{ color: '#7c79e8' }}
               >
-                Think Once. In Both Languages.
+                {copy.brand.tagline}
               </p>
+
+              {/*
+                Sibling-site cross-link (DODO Coding). Hidden by default;
+                opt in with NEXT_PUBLIC_SHOW_CODING=true once Coding ships.
+                Structure reserves the slot now so when the env flag flips
+                the layout doesn't shift.
+              */}
+              {showSibling && (
+                <div className="pt-2 border-t border-[rgba(124,121,232,0.15)]">
+                  <p
+                    className="text-[10px] font-semibold uppercase tracking-wider mb-1.5"
+                    style={{ color: '#7c79e8' }}
+                  >
+                    {copy.sibling.label}
+                  </p>
+                  <a
+                    href={copy.sibling.href}
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-[#3D4452] hover:text-[#7c79e8] transition-colors duration-150"
+                  >
+                    <span>{copy.sibling.name}</span>
+                    <span className="text-xs" style={{ color: '#7B8494' }}>
+                      · {copy.sibling.blurb}
+                    </span>
+                    <span aria-hidden="true">→</span>
+                  </a>
+                </div>
+              )}
 
             </div>
 
             {/* Column 2: Program */}
             <div>
-              <ColHeading>Program</ColHeading>
+              <ColHeading>{copy.columns.program}</ColHeading>
               <ul className="space-y-3">
-                {NAV_PROGRAM.map((link) => (
+                {copy.program.map((link) => (
                   <FooterLink
                     key={link.href}
                     href={`/${locale}${link.href}`}
                     label={link.label}
+                    soon={link.soon}
+                    comingSoonLabel={copy.comingSoon}
                   />
                 ))}
               </ul>
             </div>
 
-            {/* Column 3: Company */}
+            {/* Column 3: Resources (renamed from Company) */}
             <div>
-              <ColHeading>Company</ColHeading>
+              <ColHeading>{copy.columns.resources}</ColHeading>
               <ul className="space-y-3">
-                {NAV_COMPANY.map((link) => (
+                {copy.resources.map((link) => (
                   <FooterLink
                     key={link.href}
                     href={`/${locale}${link.href}`}
                     label={link.label}
+                    soon={link.soon}
+                    comingSoonLabel={copy.comingSoon}
                   />
                 ))}
               </ul>
             </div>
 
-            {/* Column 4: Cities */}
+            {/* Column 4: Serving (cities) */}
             <div>
-              <ColHeading>Serving</ColHeading>
+              <ColHeading>{copy.columns.serving}</ColHeading>
               <ul className="space-y-3">
-                {NAV_CITIES.map((link) => (
+                {copy.serving.map((link) => (
                   <FooterLink
                     key={link.href}
                     href={`/${locale}${link.href}`}
@@ -271,7 +267,7 @@ export default function Footer({ locale }) {
       >
         <div className="container-section py-8">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {TRUST_SIGNALS.map((signal) => (
+            {copy.trust.map((signal) => (
               <div key={signal.id} className="flex items-start gap-3">
                 <span
                   className="mt-1.5 shrink-0 w-1.5 h-1.5 rounded-full"
@@ -309,11 +305,11 @@ export default function Footer({ locale }) {
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
 
             <p className="text-xs" style={{ color: '#7B8494' }}>
-              &copy; {currentYear} DODO Learning. All rights reserved.
+              &copy; {currentYear} {copy.legal.copyright}
             </p>
 
             <div className="flex items-center gap-5">
-              {NAV_LEGAL.map((link) => (
+              {copy.legal.links.map((link) => (
                 <Link
                   key={link.href}
                   href={`/${locale}${link.href}`}
@@ -323,7 +319,6 @@ export default function Footer({ locale }) {
                 </Link>
               ))}
 
-              {/* LocaleSwitcher — inverted colours for light background */}
               <div className="[&_button]:text-[#7c79e8] [&_button]:border-[rgba(124,121,232,0.3)] [&_button]:hover:border-[rgba(124,121,232,0.7)] [&_button]:hover:bg-[rgba(124,121,232,0.08)] [&_button]:focus-visible:ring-offset-[#F5F5FF]">
                 <LocaleSwitcher locale={locale} />
               </div>

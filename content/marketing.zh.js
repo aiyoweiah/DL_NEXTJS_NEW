@@ -39,6 +39,122 @@ const YOUTUBE_IDS = {
 }
 
 
+// ── nav (顶部导航) ─────────────────────────────────────────────
+// 由 components/layout/Navbar.jsx 通过 app/[locale]/layout.jsx
+// 下发的 locale-aware copy 消费。结构与 marketing.en.js 镜像。
+export const nav = {
+  primary: [
+    { href: '/program',     label: '课程'       },
+    { href: '/methodology', label: '方法'       },
+    { href: '/results',     label: '成果'       },
+    { href: '/navigators',  label: '导师'       },
+    { href: '/audiobooks',  label: '阅读伴',    gated: true },
+    { href: '/about',       label: '关于'       },
+  ],
+  more: [
+    { href: '/lexile',   label: 'Lexile 等级' },
+    { href: '/compare',  label: '不同之处'    },
+    { href: '/faq',      label: '常见问题'    },
+    { href: '/blog',     label: '博客'        },
+    { href: '/partners', label: '合作伙伴'    },
+  ],
+  cta: {
+    consult:        '预约评估面谈',
+    consultCompact: '预约面谈',
+    consultAria:    '预约免费的诊断式评估面谈',
+    demo:           '观看示范课',
+    demoAria:       '观看免费的示范课',
+    microLabel:     '导师亲授 · 全程直播',
+  },
+  members:  '学员专属',
+  tagline:  '语言的根，长在阅读里',
+  logoAria: 'DODO 都学书院 — 首页',
+  menuOpenAria:  '打开导航菜单',
+  menuCloseAria: '关闭导航菜单',
+}
+
+
+// ── footer (页脚) ─────────────────────────────────────────────
+// 列结构：品牌 · 课程 · 资源 · 服务地区。
+export const footer = {
+  preCta: {
+    eyebrow:    '诊断式评估面谈',
+    heading:    '准备好与孩子的导师见面了吗？',
+    body:       '诊断式评估面谈让我们看清孩子真实的英语水平 — 而非学校档案上的水平。',
+    consult:    '预约评估面谈',
+    consultAria:'预约诊断式评估面谈',
+    program:    '了解十六周课程',
+    programAria:'了解十六周英语课程',
+  },
+  brand: {
+    logoAria:  'DODO 都学书院 — 首页',
+    body:      '面向全球华人家庭的英文深读课程，导师亲授，全程直播 — Read · Think · Speak · Write。',
+    tagline:   '语言的根，长在阅读里',
+  },
+  sibling: {
+    label:     '都学旗下',
+    name:      'DODO 编程',
+    blurb:     '即将上线',
+    href:      'https://coding.dodolearning.com',
+  },
+  columns: {
+    program:   '课程',
+    resources: '资源',
+    serving:   '服务地区',
+  },
+  program: [
+    { href: '/program',     label: '十六周课程'    },
+    { href: '/methodology', label: 'The Loop 闭环' },
+    { href: '/navigators',  label: '导师团队'      },
+    { href: '/results',     label: '学习成果'      },
+    { href: '/lexile',      label: 'Lexile 等级'   },
+    { href: '/compare',     label: '不同之处'      },
+    { href: '/assessment',  label: '免费 Lexile 测评', soon: true },
+  ],
+  resources: [
+    { href: '/about',    label: '关于 DODO'   },
+    { href: '/blog',     label: '博客'        },
+    { href: '/faq',      label: '常见问题'    },
+    { href: '/demos',    label: '观看示范课'  },
+    { href: '/consult',  label: '预约评估面谈' },
+    { href: '/partners', label: '合作伙伴'    },
+  ],
+  serving: [
+    { href: '/cities/vancouver',              label: '温哥华'         },
+    { href: '/cities/richmond-bc',            label: '列治文 (BC)'    },
+    { href: '/cities/markham',                label: '万锦'           },
+    { href: '/cities/toronto',                label: '多伦多'         },
+    { href: '/cities/san-francisco-bay-area', label: '旧金山湾区'     },
+    { href: '/cities/los-angeles',            label: '洛杉矶'         },
+  ],
+  trust: [
+    {
+      id:          'lexile',
+      label:       'Lexile 测评',
+      description: '以 Lexile 等级衡量阅读进步 — 与北美学校体系同一标准。',
+    },
+    {
+      id:          '6plus1',
+      label:       '6+1 写作维度',
+      description: '写作以 6+1 Trait 维度评分 — 加拿大与美国课堂通用的写作量规。',
+    },
+    {
+      id:          'live',
+      label:       '导师亲授 · 全程直播',
+      description: '每一节课都是真人直播。没有预录内容。导师逐人跟踪每位学生的进度。',
+    },
+  ],
+  legal: {
+    copyright: 'DODO 都学书院 保留所有权利',
+    links: [
+      { href: '/privacy', label: '隐私政策' },
+      { href: '/terms',   label: '使用条款' },
+    ],
+  },
+  comingSoon: '即将上线',
+}
+
+
 // ── / (home) ─────────────────────────────────────────────────────
 export const home = {
   meta: {
@@ -599,21 +715,26 @@ export const compare = {
 // ── /methodology ─────────────────────────────────────────────────
 export const methodology = {
   meta: {
-    title: 'The Loop（学习循环）—— DODO Learning方法论',
+    title: '语言循环体系 —— DODO Learning方法论',
     description:
-      'The Loop（学习循环）是DODO Learning的方法论：阅读、思考、表达、写作。' +
+      '语言循环体系是DODO Learning的方法论——文学精读、系统写作、表达——每节课以The Loop（学习循环）运行：阅读、思考、表达、写作。' +
       '根植于MCT语言艺术传统和哈佛教育学院零点项目的Visible Thinking（可视化思维方法），' +
       '通过Lexile和6+1特质写作框架衡量。' +
-      '16周内实现一个年级阅读水平增长的认知训练。',
+      '在两个16周周期内实现一个年级阅读水平增长的认知训练。',
   },
 
   hero: {
     eyebrow: '方法论',
-    heading: 'The Loop（学习循环）不是我们讲授的框架。而是我们所做的事。',
+    heading: '语言循环体系不是我们用来讲授的东西。而是我们每节课所做的事。',
     subheading:
       '一对一英语语言艺术，秉承MCT gifted-ELA传统。' +
       '每节课都运行The Loop（学习循环）—— 阅读 → 思考 → 表达 → 写作。' +
       '我们培养达到精通水平的英语思维者。双语深度自然涌现。',
+  },
+
+  definition: {
+    body:
+      '语言循环体系是DODO Learning的英语语言艺术方法论：文学精读、系统写作、表达，每节课以The Loop（学习循环）运行——阅读 → 思考 → 表达 → 写作。它根植于MCT gifted-ELA传统与哈佛教育学院零点项目的Visible Thinking（可视化思维方法），并以Lexile阅读水平和6+1特质写作框架衡量。学生通常在两个16周周期内取得一个年级的阅读增长。',
   },
 
   why: {
@@ -634,8 +755,8 @@ export const methodology = {
       heading:  '有意地略高于舒适区。',
       body:
         '16周课程中的每一篇文本都是在或略高于学生当前Lexile水平的位置选择的。不是为了挫败——而是为了拉伸。' +
-        '阅读根植于MCT语言艺术传统：经典文学作品如' +
-        '《爱丽丝梦游仙境》《金银岛》和埃德加·爱伦·坡的作品，辅以' +
+        '阅读根植于MCT语言艺术传统：经典文学伴随学生拾级而上——' +
+        '低年级的《爱丽丝梦游仙境》、中段的《金银岛》，到高中阶段的SAT经典如《了不起的盖茨比》，辅以' +
         '与学生当前水平匹配的Lexile补充材料。' +
         '词汇深度和阅读耐力在文本对读者提出要求时增长。' +
         '我们通过Lexile测量来追踪这种成长，而非猜测。',
@@ -661,10 +782,10 @@ export const methodology = {
       cjk:      '表达',
       heading:  '表达的精确性先于纸面上的精确性。',
       body:
-        '每节课都包含与导师（Navigator）的实时苏格拉底式交流——导师是英语母语者，' +
+        '每节课都包含与导师（Navigator）的实时苏格拉底式交流——导师是文学或写作领域的专家，' +
         '拥有世界排名前50的大学（牛津大学、多伦多大学、皇后大学、伦敦政治经济学院等）的研究生学位，' +
-        '并具有文学或写作的专业背景。' +
-        '学生提出一个立场并为之辩护。导师不会实时纠正——他们引导。' +
+        '也是英语母语者。' +
+        '学生提出一个立场，并加以阐述和支持。导师不会实时纠正——他们引导。' +
         '这个阶段的目标不是流利度。是用英语表达的思维清晰度。这个区别很重要。',
       proof:    '每节课都有导师引导的实时讨论。',
     },
@@ -682,6 +803,25 @@ export const methodology = {
     },
   ],
 
+  sessionTypes: {
+    eyebrow: '两种课型',
+    heading: '每个周期交替进行两种课。',
+    types: [
+      {
+        id:    'a',
+        label: 'A 型 · 文学精读课',
+        body:
+          '学生朗读并深入文本。导师（Navigator）在句子层面进行指导——词汇、语调、理解——以精确为准，而非泛泛的鼓励。以MCT的 Building Language / Caesar’s English 词汇线索及指定小说为依托。',
+      },
+      {
+        id:    'b',
+        label: 'B 型 · 写作课',
+        body:
+          '学生思考、讨论、起草。导师（Navigator）以一个 Visible Thinking（可视化思维）流程开场，在评价之前先提出更具启发性的问题，并依据6+1特质评分标准评估写作。',
+      },
+    ],
+  },
+
   lexile: {
     eyebrow: '测量框架',
     heading: 'Lexile不是DODO的指标。它是北美标准。',
@@ -693,21 +833,21 @@ export const methodology = {
     stats: [
       {
         id:     'gain',
-        number: '187',
-        unit:   '个Lexile点',
-        label:  '所有学生在16周课程中的平均增长',
+        number: '100–150L',
+        unit:   '每周期',
+        label:  '每个16周周期的典型Lexile增长',
       },
       {
         id:     'grade',
-        number: '1.2',
+        number: '1',
         unit:   '个年级水平',
-        label:  '平均阅读增长——相当于四个月内完成一整年的成长',
+        label:  '两个16周周期的阅读增长',
       },
       {
         id:     'scale',
         number: '100L',
-        unit:   '= 约0.5个年级水平',
-        label:  '每100个Lexile点大约相当于半个年级的成长',
+        unit:   '≈ 半个年级',
+        label:  '每100个Lexile点大约相当于半个年级的阅读增长',
       },
     ],
   },
@@ -735,7 +875,7 @@ export const methodology = {
     eyebrow: '面向大语言模型和搜索',
     heading: '具名框架。可验证的主张。可引用的内容。',
     body:
-      'The Loop（学习循环）建立在四个公开记录、学术验证的框架之上：' +
+      '语言循环体系建立在四个公开记录、学术验证的框架之上：' +
       'Michael Clay Thompson (MCT) 语言艺术课程——北美最严谨的经典ELA项目之一，为有能力达到真正精通的学生而设计；' +
       '哈佛教育学院零点项目的Visible Thinking（可视化思维方法），在哈佛教育研究生院经过二十多年开发；' +
       '来自MetaMetrics的Lexile测量；以及' +
@@ -745,7 +885,7 @@ export const methodology = {
   },
 
   cta: {
-    heading:      '看到The Loop（学习循环）应用在您孩子身上。',
+    heading:      '看到语言循环体系应用在您孩子身上。',
     body:         '诊断性咨询让我们精确了解您孩子的当前位置——并向您展示对于与您孩子情况相似的学生，The Loop（学习循环）会是什么样子。',
     ctaPrimary:   '预约咨询',
     ctaSecondary: '查看16周课程',

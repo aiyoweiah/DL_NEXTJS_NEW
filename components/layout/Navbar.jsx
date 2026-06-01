@@ -2,21 +2,26 @@
 
 // components/layout/Navbar.jsx
 //
-// Fixed navigation bar. First interactive element after SkipLink.
+// Global navbar — first interactive element after SkipLink.
 //
-// Changes from pre-locale version:
-//   - Accepts `locale` prop from app/[locale]/layout.jsx
-//   - All nav hrefs prefixed with /${locale} so links stay within the
-//     current locale session (bare /program would edge-redirect to /en/)
-//   - isActive strips the locale prefix from usePathname() before comparing
-//   - LocaleSwitcherSlot replaced with <LocaleSwitcher locale={locale} />
-//     in both desktop bar and mobile drawer
+// Structure (v5.0 — June 2026, "chrome overhaul"):
+//   - Single flat row of 6 primary links (was 2-tier 4+6).
+//   - Desktop nav appears at md:768 (was lg:1024) — fixes tablet cliff.
+//   - One primary CTA: Book Your Consultation (lg+) / Book Consultation (md).
+//     "Watch Demo Class" demoted from desktop bar (still in mobile drawer + footer).
+//   - Reading Companion (/audiobooks) carries a lock glyph + "members"
+//     micro-tag (lg+ only) to set member-area expectations before click.
+//   - All copy comes from `copy` prop, passed by app/[locale]/layout.jsx
+//     after resolving content/marketing.[locale].js → nav. EN-hardcoding gone.
 //
-// Nav structure (v4.0 — April 2026):
-//   PRIMARY_LINKS   — alphabetical by label: Navigators, Results, The Loop, The Program
-//   SECONDARY_LINKS — alphabetical by label: About, Blog, FAQ, The Difference, Lexile Levels, Partners
-//   /assessment removed — UnderConstruction; reinstated when page is built
-//   /partners added — invite-only; listed in nav but PIN-gated at the page level
+// Mobile drawer order (top → bottom) — primary CTA pinned at top fixes
+// the prior bug where Book Your Consultation was hidden below md:
+//   1. Book Your Consultation (primary)
+//   2. Watch Demo Class (secondary, ghost)
+//   3. Primary links (6)
+//   4. "More" group (5 secondary)
+//   5. Locale switcher
+//   6. Tagline
 //
 // Logo sizing:
 //   --nav-height: 4rem = 64px.
@@ -29,24 +34,34 @@ import { usePathname }                               from 'next/navigation'
 import LocaleSwitcher                                from '@/components/layout/LocaleSwitcher'
 import { useFocusTrap }                              from '@/lib/a11y'
 
-// ── Nav link definitions ──────────────────────────────────────
-// Paths are locale-relative (no prefix). Prefix applied in render.
-
-const PRIMARY_LINKS = [
-  { href: '/navigators',  label: 'Navigators'  },
-  { href: '/results',     label: 'Results'     },
-  { href: '/methodology', label: 'The Loop'    },
-  { href: '/program',     label: 'The Program' },
-]
-
-const SECONDARY_LINKS = [
-  { href: '/about',    label: 'About'          },
-  { href: '/blog',     label: 'Blog'           },
-  { href: '/faq',      label: 'FAQ'            },
-  { href: '/compare',  label: 'The Difference' },
-  { href: '/lexile',   label: 'Lexile Levels'  },
-  { href: '/partners', label: 'Partners'       },
-]
+// ── Lock glyph (for gated nav items) ──────────────────────────
+function LockIcon() {
+  return (
+    <svg
+      width="12"
+      height="12"
+      viewBox="0 0 14 14"
+      fill="none"
+      aria-hidden="true"
+      focusable="false"
+      style={{ flexShrink: 0, marginLeft: 4, verticalAlign: 'middle' }}
+    >
+      <rect
+        x="2.5" y="6"
+        width="9" height="6.5"
+        rx="1"
+        stroke="currentColor"
+        strokeWidth="1.3"
+      />
+      <path
+        d="M4.5 6V4.25a2.5 2.5 0 0 1 5 0V6"
+        stroke="currentColor"
+        strokeWidth="1.3"
+        strokeLinecap="round"
+      />
+    </svg>
+  )
+}
 
 // ── Hamburger icon ────────────────────────────────────────────
 function HamburgerIcon({ open }) {
@@ -95,19 +110,14 @@ function HamburgerIcon({ open }) {
 }
 
 // ── Wordmark ──────────────────────────────────────────────────
-function Wordmark({ locale }) {
+function Wordmark({ locale, ariaLabel }) {
   return (
     <Link
       href={`/${locale}`}
       className="flex items-center shrink-0 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b7b5fe] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0E0E12]"
-      aria-label="DODO Learning — home"
+      aria-label={ariaLabel}
       style={{ overflow: 'visible' }}
     >
-      {/*
-        logo-dark.svg — white fill (#FFFFFF), correct for dark nav bg (#0E0E12).
-        Height: 32px = 50% of --nav-height (64px) → 16px optical padding top/bottom.
-        Width auto from trimmed viewBox 484×240 (2.02:1) → ~65px rendered width.
-      */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/logo-dark.svg"
@@ -121,18 +131,16 @@ function Wordmark({ locale }) {
 }
 
 // ── Main component ────────────────────────────────────────────
-export default function Navbar({ locale }) {
+export default function Navbar({ locale, copy }) {
   const pathname = usePathname() // e.g. /en/program, /zh/compare
 
-  const [scrolled,    setScrolled]  = useState(false)
+  const [scrolled,    setScrolled]   = useState(false)
   const [mobileOpen,  setMobileOpen] = useState(false)
 
   const drawerRef    = useRef(null)
   const hamburgerRef = useRef(null)
 
-  // ── isActive ─────────────────────────────────────────────────
-  // usePathname returns /en/program. Strip the locale prefix so we can
-  // compare against bare hrefs like /program.
+  // Strip locale prefix for active-link comparison.
   const strippedPathname = pathname.replace(/^\/(en|zh)/, '') || '/'
 
   const isActive = useCallback(
@@ -164,39 +172,65 @@ export default function Navbar({ locale }) {
   useFocusTrap(drawerRef, mobileOpen, () => setMobileOpen(false))
 
   // ── Link sub-components ───────────────────────────────────────
-  const DesktopNavLink = ({ href, label }) => {
+  // Desktop nav link. Compact at md (gap-4 outer), comfortable at lg+ (gap-8).
+  // Gated items render with a lock glyph and a "members" micro-label at lg+.
+  const DesktopNavLink = ({ href, label, gated }) => {
     const active = isActive(href)
     return (
       <Link
         href={`/${locale}${href}`}
         aria-current={active ? 'page' : undefined}
-        className={`nav-link text-sm font-medium whitespace-nowrap transition-colors duration-150 ${
+        className={`nav-link text-sm font-medium whitespace-nowrap transition-colors duration-150 inline-flex items-center ${
           active ? 'text-[#b7b5fe]' : 'text-[#F0F0F0] hover:text-[#b7b5fe]'
         }`}
       >
-        {label}
+        <span className="inline-flex items-center">
+          {label}
+          {gated && <LockIcon />}
+        </span>
+        {gated && (
+          <span
+            className="hidden lg:inline ml-1.5 text-[10px] uppercase tracking-wider font-semibold"
+            style={{ color: 'rgba(183,181,254,0.55)' }}
+            aria-hidden="true"
+          >
+            · {copy.members}
+          </span>
+        )}
       </Link>
     )
   }
 
-  const MobileNavLink = ({ href, label }) => {
+  const MobileNavLink = ({ href, label, gated }) => {
     const active = isActive(href)
     return (
       <Link
         href={`/${locale}${href}`}
         aria-current={active ? 'page' : undefined}
-        className={`block py-4 text-[1.125rem] font-medium border-b transition-colors duration-150 ${
+        className={`flex items-center py-4 text-[1.125rem] font-medium border-b transition-colors duration-150 ${
           active
             ? 'text-[#b7b5fe] border-[rgba(183,181,254,0.2)]'
             : 'text-[#F0F0F0] hover:text-[#b7b5fe] border-[rgba(183,181,254,0.1)]'
         }`}
       >
-        {label}
+        <span className="inline-flex items-center">
+          {label}
+          {gated && <LockIcon />}
+        </span>
+        {gated && (
+          <span
+            className="ml-2 text-[10px] uppercase tracking-wider font-semibold"
+            style={{ color: 'rgba(183,181,254,0.55)' }}
+            aria-hidden="true"
+          >
+            · {copy.members}
+          </span>
+        )}
       </Link>
     )
   }
 
-  // Hide CTAs when already on that page
+  // Hide CTAs when already on that page.
   const showDemoCTA    = strippedPathname !== '/demos'
   const showCharterCTA = strippedPathname !== '/consult'
 
@@ -209,57 +243,50 @@ export default function Navbar({ locale }) {
         style={{
           backgroundColor: '#0E0E12',
           borderBottom:    '1px solid rgba(183,181,254,0.10)',
-          overflow:        'visible', // prevent .nav overflow:hidden from clipping logo
+          overflow:        'visible',
         }}
       >
-        <div className="container-section h-full flex items-center justify-between gap-6" style={{ overflow: 'visible' }}>
+        <div className="container-section h-full flex items-center justify-between gap-4 lg:gap-6" style={{ overflow: 'visible' }}>
 
-          <Wordmark locale={locale} />
+          <Wordmark locale={locale} ariaLabel={copy.logoAria} />
 
-          <nav aria-label="Primary navigation" className="hidden lg:flex items-center gap-8">
-            {PRIMARY_LINKS.map((link) => (
-              <DesktopNavLink key={link.href} {...link} />
-            ))}
-            <span aria-hidden="true" className="w-px h-4 bg-[rgba(183,181,254,0.2)]" />
-            {SECONDARY_LINKS.map((link) => (
+          {/*
+            Primary nav — single flat row of 6.
+            Visible from md:768 (tablet+) with compact gap-4; widens to
+            gap-8 at lg:1024+. Fixes prior tablet cliff (mobile drawer
+            until lg:1024) where Book Consultation was hidden until lg.
+          */}
+          <nav aria-label="Primary navigation" className="hidden md:flex items-center gap-4 lg:gap-8">
+            {copy.primary.map((link) => (
               <DesktopNavLink key={link.href} {...link} />
             ))}
           </nav>
 
           <div className="flex items-center gap-3">
 
-            {/* LocaleSwitcher — desktop */}
             <LocaleSwitcher locale={locale} />
-
-            {showDemoCTA && (
-              <Link
-                href={`/${locale}/demos`}
-                className="btn btn-primary hidden md:inline-flex text-sm px-5 py-2.5"
-                aria-label="Watch a free demo class"
-              >
-                Watch Demo Class
-              </Link>
-            )}
 
             {showCharterCTA && (
               <Link
                 href={`/${locale}/consult`}
-                className="btn btn-charter hidden lg:inline-flex text-sm px-5 py-2.5"
-                aria-label="Book a free diagnostic consultation"
+                className="btn btn-charter hidden md:inline-flex text-sm px-5 py-2.5"
+                aria-label={copy.cta.consultAria}
               >
-                Book Your Consultation
+                {/* "Book Consultation" at md, "Book Your Consultation" at lg+ */}
+                <span className="lg:hidden">{copy.cta.consultCompact}</span>
+                <span className="hidden lg:inline">{copy.cta.consult}</span>
               </Link>
             )}
 
-            {/* Hamburger — Platinum on dark nav */}
+            {/* Hamburger — visible only below md (tablet collapses to flat nav, not drawer) */}
             <button
               ref={hamburgerRef}
               type="button"
               aria-expanded={mobileOpen}
               aria-controls="mobile-nav-drawer"
-              aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-label={mobileOpen ? copy.menuCloseAria : copy.menuOpenAria}
               onClick={() => setMobileOpen((prev) => !prev)}
-              className="lg:hidden flex items-center justify-center w-10 h-10 rounded-md text-[#F0F0F0] hover:text-[#b7b5fe] hover:bg-[rgba(183,181,254,0.08)] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b7b5fe] focus-visible:ring-offset-1 focus-visible:ring-offset-[#0E0E12]"
+              className="md:hidden flex items-center justify-center w-10 h-10 rounded-md text-[#F0F0F0] hover:text-[#b7b5fe] hover:bg-[rgba(183,181,254,0.08)] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b7b5fe] focus-visible:ring-offset-1 focus-visible:ring-offset-[#0E0E12]"
             >
               <HamburgerIcon open={mobileOpen} />
             </button>
@@ -272,7 +299,7 @@ export default function Navbar({ locale }) {
       {mobileOpen && (
         <div
           aria-hidden="true"
-          className="fixed inset-0 bg-[rgba(14,14,18,0.7)] backdrop-blur-sm z-[90] lg:hidden"
+          className="fixed inset-0 bg-[rgba(14,14,18,0.7)] backdrop-blur-sm z-[90] md:hidden"
           style={{ top: 'var(--nav-height)' }}
           onClick={() => setMobileOpen(false)}
         />
@@ -286,7 +313,7 @@ export default function Navbar({ locale }) {
         aria-modal="true"
         aria-label="Navigation menu"
         className={`
-          fixed left-0 right-0 bottom-0 z-[95] lg:hidden
+          fixed left-0 right-0 bottom-0 z-[95] md:hidden
           bg-[#0E0E12] border-t border-[rgba(183,181,254,0.12)]
           overflow-y-auto
           transition-transform duration-300 ease-[cubic-bezier(0.25,1,0.5,1)]
@@ -298,40 +325,46 @@ export default function Navbar({ locale }) {
       >
         <div className="container-section py-6">
 
-          <nav aria-label="Primary navigation">
-            {PRIMARY_LINKS.map((link) => (
-              <MobileNavLink key={link.href} {...link} />
-            ))}
-          </nav>
-
-          <nav aria-label="Secondary navigation" className="mt-2">
-            {SECONDARY_LINKS.map((link) => (
-              <MobileNavLink key={link.href} {...link} />
-            ))}
-          </nav>
-
-          <div className="mt-8 flex flex-col gap-3">
-            {showDemoCTA && (
-              <Link
-                href={`/${locale}/demos`}
-                className="btn btn-primary w-full justify-center text-base py-3.5"
-                aria-label="Watch a free demo class"
-              >
-                Watch Demo Class
-              </Link>
-            )}
+          {/*
+            CTA group — pinned at top of drawer. Fixes the prior bug where
+            "Book Your Consultation" was hidden below md, leaving phones
+            with only the secondary "Watch Demo Class" button visible.
+          */}
+          <div className="flex flex-col gap-3 mb-6">
             {showCharterCTA && (
               <Link
                 href={`/${locale}/consult`}
                 className="btn btn-charter w-full justify-center text-base py-3.5"
-                aria-label="Book a free diagnostic consultation"
+                aria-label={copy.cta.consultAria}
               >
-                Book Your Consultation
+                {copy.cta.consult}
+              </Link>
+            )}
+            {showDemoCTA && (
+              <Link
+                href={`/${locale}/demos`}
+                className="btn btn-ghost w-full justify-center text-base py-3.5"
+                aria-label={copy.cta.demoAria}
+              >
+                {copy.cta.demo}
               </Link>
             )}
           </div>
 
-          {/* LocaleSwitcher — mobile drawer */}
+          <nav aria-label="Primary navigation">
+            {copy.primary.map((link) => (
+              <MobileNavLink key={link.href} {...link} />
+            ))}
+          </nav>
+
+          {copy.more?.length > 0 && (
+            <nav aria-label="Secondary navigation" className="mt-2">
+              {copy.more.map((link) => (
+                <MobileNavLink key={link.href} {...link} />
+              ))}
+            </nav>
+          )}
+
           <div className="mt-8 flex items-center justify-center">
             <LocaleSwitcher locale={locale} />
           </div>
@@ -340,7 +373,7 @@ export default function Navbar({ locale }) {
             className="mt-6 text-xs font-medium tracking-widest uppercase text-center"
             style={{ color: 'rgba(183,181,254,0.4)' }}
           >
-            Think Once. In Both Languages.
+            {copy.tagline}
           </p>
 
         </div>

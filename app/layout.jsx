@@ -40,6 +40,15 @@ export const metadata = buildMetadata({
   path: '/',
 })
 
+// ── Viewport ──────────────────────────────────────────────────
+// Explicit declaration prevents drift from Next.js defaults. maximumScale: 5
+// (not 1) preserves user zoom — WCAG 1.4.4 prohibits disabling pinch-zoom.
+export const viewport = {
+  width:        'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+}
+
 // ── Root layout ───────────────────────────────────────────────
 export default function RootLayout({ children }) {
   return (

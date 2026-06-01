@@ -25,6 +25,13 @@ import SkipLink from '@/components/layout/SkipLink'
 import Navbar   from '@/components/layout/Navbar'
 import Footer   from '@/components/layout/Footer'
 
+// Locale-aware chrome copy. The server layout resolves EN vs ZH once
+// per request and passes the resolved object down — Navbar (client) and
+// Footer (server) both read pre-resolved labels, so neither has to import
+// both locale modules.
+import { nav as navEn, footer as footerEn } from '@/content/marketing.en'
+import { nav as navZh, footer as footerZh } from '@/content/marketing.zh'
+
 // ── Static params ─────────────────────────────────────────────
 // Tells Next.js to pre-render /en/* and /zh/* at build time.
 // Without this, neither locale variant is emitted in the static export.
@@ -56,6 +63,10 @@ export default async function LocaleLayout({ children, params }) {
   // BCP 47 lang tag. 'zh-Hans' is correct for Simplified Chinese.
   // Not 'zh' or 'zh-CN' — screen readers and search engines expect zh-Hans.
   const htmlLang = locale === 'zh' ? 'zh-Hans' : 'en'
+
+  // Resolve chrome copy once for this request.
+  const navCopy    = locale === 'zh' ? navZh    : navEn
+  const footerCopy = locale === 'zh' ? footerZh : footerEn
 
   return (
     <>
@@ -94,13 +105,13 @@ export default async function LocaleLayout({ children, params }) {
       {/* A11y: SkipLink must be the first visible element after html/body. */}
       <SkipLink />
 
-      <Navbar locale={locale} />
+      <Navbar locale={locale} copy={navCopy} />
 
       <main id="main-content" tabIndex={-1}>
         {children}
       </main>
 
-      <Footer locale={locale} />
+      <Footer locale={locale} copy={footerCopy} />
     </>
   )
 }

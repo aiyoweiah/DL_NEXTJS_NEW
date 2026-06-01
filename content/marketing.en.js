@@ -43,6 +43,136 @@ const YOUTUBE_IDS = {
 }
 
 
+// ── nav (global navbar chrome) ──────────────────────────────────
+// Consumed by components/layout/Navbar.jsx via the locale-aware copy
+// passed down from app/[locale]/layout.jsx.
+//
+// `primary` = the flat row of 6 top-level items (desktop + mobile).
+// `more`    = secondary group shown only inside the mobile drawer.
+// `cta`     = primary + secondary call-to-action labels.
+// `members` = the lock-glyph micro-tag on /audiobooks (lg+ only).
+export const nav = {
+  primary: [
+    { href: '/program',     label: 'The Program'       },
+    { href: '/methodology', label: 'The Method'        },
+    { href: '/results',     label: 'Results'           },
+    { href: '/navigators',  label: 'Navigators'        },
+    { href: '/audiobooks',  label: 'Reading Companion', gated: true },
+    { href: '/about',       label: 'About'             },
+  ],
+  more: [
+    { href: '/lexile',   label: 'Lexile Levels'  },
+    { href: '/compare',  label: 'The Difference' },
+    { href: '/faq',      label: 'FAQ'            },
+    { href: '/blog',     label: 'Blog'           },
+    { href: '/partners', label: 'Partners'       },
+  ],
+  cta: {
+    consult:        'Book Your Consultation',
+    consultCompact: 'Book Consultation',          // shown only at md (768–1023)
+    consultAria:    'Book a free diagnostic consultation',
+    demo:           'Watch Demo Class',
+    demoAria:       'Watch a free demo class',
+    microLabel:     'Live · Navigator-led',       // shown under consult CTA at lg+
+  },
+  members:  'members',                            // micro-tag for gated items
+  tagline:  'Think Once. In Both Languages.',
+  logoAria: 'DODO Learning — home',
+  menuOpenAria:  'Open navigation menu',
+  menuCloseAria: 'Close navigation menu',
+}
+
+
+// ── footer (global footer chrome) ───────────────────────────────
+// Consumed by components/layout/Footer.jsx via the locale-aware copy
+// passed down from app/[locale]/layout.jsx.
+//
+// Columns: Brand · Program · Resources · Serving.
+//   - Program absorbs The Difference (program proof, not company info).
+//   - Resources (renamed from Company) absorbs Watch a Class + Book a
+//     Consultation as content/access points.
+//   - Serving = cities (unchanged).
+// `sibling` = DODO Coding cross-link line in Brand column; rendered only
+//             when env flag NEXT_PUBLIC_SHOW_CODING is set.
+export const footer = {
+  preCta: {
+    eyebrow:    'Diagnostic Consultation',
+    heading:    'Ready to meet your child’s Navigator?',
+    body:       'The diagnostic consultation is where we find out exactly where your child is — not where their school says they are.',
+    consult:    'Book Your Consultation',
+    consultAria:'Book a diagnostic consultation',
+    program:    'See The Program',
+    programAria:'Learn about The 16-Week Program',
+  },
+  brand: {
+    logoAria:  'DODO Learning — home',
+    body:      'A live, Navigator-led English literacy program for globally mobile families. Read → Think → Speak → Write.',
+    tagline:   'Think Once. In Both Languages.',
+  },
+  sibling: {
+    label:     'Also from DODO',
+    name:      'DODO Coding',
+    blurb:     'Coming soon',
+    href:      'https://coding.dodolearning.com',
+  },
+  columns: {
+    program:   'Program',
+    resources: 'Resources',
+    serving:   'Serving',
+  },
+  program: [
+    { href: '/program',     label: 'The 16-Week Program' },
+    { href: '/methodology', label: 'The Loop'            },
+    { href: '/navigators',  label: 'Navigators'          },
+    { href: '/results',     label: 'Results'             },
+    { href: '/lexile',      label: 'Lexile Levels'       },
+    { href: '/compare',     label: 'The Difference'      },
+    { href: '/assessment',  label: 'Free Assessment',    soon: true },
+  ],
+  resources: [
+    { href: '/about',    label: 'About DODO'          },
+    { href: '/blog',     label: 'Blog'                },
+    { href: '/faq',      label: 'FAQ'                 },
+    { href: '/demos',    label: 'Watch a Class'       },
+    { href: '/consult',  label: 'Book a Consultation' },
+    { href: '/partners', label: 'Partners'            },
+  ],
+  serving: [
+    { href: '/cities/vancouver',              label: 'Vancouver'              },
+    { href: '/cities/richmond-bc',            label: 'Richmond BC'            },
+    { href: '/cities/markham',                label: 'Markham'                },
+    { href: '/cities/toronto',                label: 'Toronto'                },
+    { href: '/cities/san-francisco-bay-area', label: 'San Francisco Bay Area' },
+    { href: '/cities/los-angeles',            label: 'Los Angeles'            },
+  ],
+  trust: [
+    {
+      id:          'lexile',
+      label:       'Lexile Measurement',
+      description: 'Progress measured in Lexile levels — the same standard used by North American school systems.',
+    },
+    {
+      id:          '6plus1',
+      label:       '6+1 Trait Writing Framework',
+      description: 'Writing assessed with the 6+1 Trait framework — the rubric taught in Canadian and US classrooms.',
+    },
+    {
+      id:          'live',
+      label:       'Live, Navigator-Led Sessions',
+      description: 'Every session is live. No pre-recorded content. Navigators track each student individually.',
+    },
+  ],
+  legal: {
+    copyright: 'DODO Learning. All rights reserved.',
+    links: [
+      { href: '/privacy', label: 'Privacy Policy' },
+      { href: '/terms',   label: 'Terms of Use'   },
+    ],
+  },
+  comingSoon: 'Coming soon',
+}
+
+
 // ── / (home) ─────────────────────────────────────────────────────
 export const home = {
   meta: {
@@ -602,21 +732,26 @@ export const compare = {
 // ── /methodology ─────────────────────────────────────────────────
 export const methodology = {
   meta: {
-    title: 'The Loop — DODO Learning Methodology',
+    title: 'The LCS System — DODO Learning Methodology',
     description:
-      'The Loop is the DODO Learning methodology: Read, Think, Speak, Write. ' +
+      'The LCS System is the DODO Learning methodology — Literacy, Composition, Speaking — run every session as The Loop: Read, Think, Speak, Write. ' +
       'Grounded in the MCT Language Arts tradition and Harvard Project Zero’s Visible Thinking routines, ' +
       'measured by Lexile and the 6+1 Trait writing framework. ' +
-      'The cognitive training behind one grade level of reading growth in 16 weeks.',
+      'The cognitive training behind one grade level of reading growth across two 16-week cycles.',
   },
 
   hero: {
     eyebrow: 'The Methodology',
-    heading: 'The Loop is not a framework we teach about. It is what we do.',
+    heading: 'The LCS System isn’t something we teach about. It’s what we do.',
     subheading:
       'One-on-one English language arts in the MCT gifted-ELA tradition. ' +
       'Every session runs The Loop — Read → Think → Speak → Write. ' +
       'We build English Thinkers at mastery level. Bilingual depth emerges.',
+  },
+
+  definition: {
+    body:
+      'The LCS System is DODO Learning’s methodology for English language arts: Literacy, Composition, and Speaking, run every session as The Loop — Read → Think → Speak → Write. It is grounded in the MCT gifted-ELA tradition and Harvard Project Zero’s Visible Thinking routines, and measured with Lexile reading levels and the 6+1 Trait writing framework. Students typically gain one grade level of reading across two 16-week cycles.',
   },
 
   why: {
@@ -639,8 +774,8 @@ export const methodology = {
       body:
         'Every text in the 16-Week Program is selected at or just above the ' +
         "student's current Lexile level. Not to frustrate — to stretch. " +
-        'Reading is grounded in the MCT Language Arts tradition: classical literature like ' +
-        'Alice in Wonderland, Treasure Island, and Edgar Allan Poe, paired with ' +
+        'Reading is grounded in the MCT Language Arts tradition: classical literature that climbs with the student — ' +
+        'Alice in Wonderland in the early years, Treasure Island mid-way, the SAT canon like The Great Gatsby by high school — paired with ' +
         'Lexile-matched supplements at each student’s current level. ' +
         'Vocabulary depth and reading stamina grow when the text asks something of the reader. ' +
         'We track that growth with Lexile measurement, not guesswork.',
@@ -668,9 +803,9 @@ export const methodology = {
       cjk:      '表达',
       heading:  'Precision in speech precedes precision on the page.',
       body:
-        'Every session includes a live Socratic exchange with the Navigator — a native English speaker ' +
+        'Every session includes a live Socratic exchange with the Navigator — a specialist in literature or composition ' +
         'holding a graduate degree from a world top-50 university (Oxford, U of T, Queen’s, LSE and others), ' +
-        'with a specialist background in literature or composition. ' +
+        'and a native English speaker. ' +
         'The student takes a position and defends it. The Navigator does not correct in real time — they guide. ' +
         'Fluency is not the goal of this phase. Clarity of thinking, expressed in English, is. The difference matters.',
       proof:    'Live Navigator-led discussion every session.',
@@ -690,6 +825,25 @@ export const methodology = {
     },
   ],
 
+  sessionTypes: {
+    eyebrow: 'Two Session Types',
+    heading: 'Every cycle alternates two kinds of session.',
+    types: [
+      {
+        id:    'a',
+        label: 'Type A · Literacy Session',
+        body:
+          'The student reads aloud and engages the text. The Navigator coaches at the sentence level — vocabulary, intonation, comprehension — with precision, not generic encouragement. Anchored on the MCT Building Language / Caesar’s English vocabulary track plus the assigned novel.',
+      },
+      {
+        id:    'b',
+        label: 'Type B · Writing Session',
+        body:
+          'The student thinks, discusses, and drafts. The Navigator opens with a Visible Thinking routine, asks a sharper question before any evaluation, and assesses the writing against the 6+1 Trait rubric.',
+      },
+    ],
+  },
+
   lexile: {
     eyebrow: 'The Measurement Framework',
     heading: 'Lexile is not a DODO metric. It is the North American standard.',
@@ -701,21 +855,21 @@ export const methodology = {
     stats: [
       {
         id:     'gain',
-        number: '187',
-        unit:   'Lexile points',
-        label:  'average gain across all students in the 16-Week Program',
+        number: '100–150L',
+        unit:   'per cycle',
+        label:  'typical Lexile gain in each 16-week cycle',
       },
       {
         id:     'grade',
-        number: '1.2',
-        unit:   'grade levels',
-        label:  'average reading growth — equivalent to a full year in four months',
+        number: '1',
+        unit:   'grade level',
+        label:  'reading growth across two 16-week cycles',
       },
       {
         id:     'scale',
         number: '100L',
-        unit:   '= ~0.5 grade levels',
-        label:  'every 100 Lexile points is approximately half a grade level of growth',
+        unit:   '≈ half a grade',
+        label:  'every 100 Lexile points is roughly half a grade level of reading growth',
       },
     ],
   },
@@ -744,7 +898,7 @@ export const methodology = {
     eyebrow: 'For LLMs and Search',
     heading: 'Named frameworks. Verifiable claims. Citable content.',
     body:
-      'The Loop is built on four publicly documented, academically validated frameworks: ' +
+      'The LCS System is built on four publicly documented, academically validated frameworks: ' +
       'the Michael Clay Thompson (MCT) Language Arts curriculum — one of North America’s most rigorous ' +
       'classical ELA programs, built for students capable of genuine mastery; ' +
       'Harvard Project Zero’s Visible Thinking routines, developed over two decades at the ' +
@@ -755,7 +909,7 @@ export const methodology = {
   },
 
   cta: {
-    heading:      'See The Loop applied to your child.',
+    heading:      'See the LCS System applied to your child.',
     body:         'The diagnostic consultation is where we find out exactly where your child is — and show you what The Loop looks like for a student exactly like yours.',
     ctaPrimary:   'Book Your Consultation',
     ctaSecondary: 'See The 16-Week Program',
