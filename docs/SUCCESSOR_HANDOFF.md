@@ -1,14 +1,57 @@
 # DODO Learning — Successor Handoff
 
 **Authored:** 2026-05-17 (end of session)
-**Last updated:** 2026-05-21 — see "Recent decisions log" below for the changes since the original authoring.
+**Last updated:** 2026-06-01 — chrome overhaul (navbar + footer redesigned, translation gap fixed, /privacy + /terms stubs shipped). See "2026-06-01 · Chrome overhaul" in the decisions log below.
 **Repo:** `aiyoweiah/DL_NEXTJS_NEW` · deploys to dodolearning.com (Cloudflare Pages) + dodoletterhouse.com (Vercel) from the same `main` branch
-**Status:** Bilingual site fully shipped. Home + /program rewritten through granular review. Tier 2/3 SEO+GEO + business decisions pending.
+**Status:** Bilingual site fully shipped. Home + /program + /about rewritten through granular review. Chrome (navbar + footer) overhauled 2026-06-01. /methodology rewrite in progress. Tier 2/3 SEO+GEO + business decisions pending.
 
 This doc is **your entry point if you're picking up this work cold.** Read this first. Then:
 1. `docs/content-style-decisions.md` — **active style decisions log** (date-stamped, append-only). The most recent voice / vocabulary / architectural decisions live here before they roll into the brand guide.
 2. `docs/workflow.md` Open Decisions table — the running list of pending items.
 3. `translation/BRAND_CONTENT_GUIDE.md` — the locked brand truth for content surfaces.
+
+---
+
+## Recent decisions log — 2026-06-01 (chrome overhaul)
+
+Full detail in `docs/content-style-decisions.md` (D23–D26). Plan: `~/.claude/plans/study-the-current-navbar-sharded-sundae.md`. Commit: `03f1131`.
+
+### Why this happened
+The chrome was built additively as pages shipped: 10 links duplicated between navbar and footer, two-tier navbar (primary + secondary), Company column overloaded with 7 links, `/privacy` and `/terms` linked but 404, primary CTA hidden below `md`, all nav/footer copy EN-hardcoded (so `/zh/*` pages rendered Chinese bodies wrapped in English chrome — a silent correctness bug). Audience research said "won't read >25 words in hero" — chrome had to match that.
+
+### Navbar (D23, D25)
+- Collapsed two-tier rows → **single flat row of 6**: The Program · The Method · Results · Navigators · Reading Companion 🔒 · About.
+- Desktop breakpoint shifted **`lg:1024` → `md:768`** (was a tablet cliff where iPad portrait got the mobile drawer + wrong CTA visible).
+- Single primary CTA: **Book Your Consultation** at `lg+`, **Book Consultation** at `md` (compact label preserves footprint headroom). "Watch Demo Class" demoted from desktop bar (still in mobile drawer + footer Resources).
+- Mobile drawer order rebuilt: CTAs pinned **at top** (fixes the hidden-CTA bug), primary 6 links, More group (Lexile · Difference · FAQ · Blog · Partners), locale switcher, tagline.
+- All labels resolved from `nav.*` namespace in `content/marketing.{en,zh}.js` — passed as `copy` prop from `app/[locale]/layout.jsx`. Chrome now translates.
+
+### Footer (D25, D26)
+- 4 columns rebucketed to **Brand · Program · Resources · Serving** (renamed Company → Resources; moved The Difference to Program; absorbed Watch a Class + Book a Consultation into Resources).
+- Grid `grid-cols-1 sm:grid-cols-2 md:grid-cols-4` (was `sm:2 lg:4`) — fixes the awkward 2+1+1+1 tablet layout.
+- Brand column reserves a **sibling-site cross-link** ("Also from DODO · DODO Coding · Coming soon") gated by `process.env.NEXT_PUBLIC_SHOW_CODING === 'true'`. Hidden until the Coding site ships; flip the env var to reveal.
+- Brand-blurb sentence updated to "globally mobile families" (D26, cascades D10 into chrome).
+- "Free Assessment" listed under Program with a `Coming soon` badge until `/assessment` is built (reserves the slot, no broken link).
+- All labels via `footer.*` namespace; same locale-aware prop pattern.
+
+### Naming (D23, D24)
+- **/methodology nav label = "The Method"** (clearer to cold traffic). Page body still names "The Loop" and "The LCS System" per D1/D19.
+- **/audiobooks UI label = "Reading Companion" / "阅读伴"**. URL unchanged (back-compat, sitemap, hreflang). Cloudflare Access gate unchanged — nav item is a members-area entry point, rendered with lock glyph + "members" / "学员专属" micro-tag.
+
+### New pages
+- **`app/[locale]/privacy/page.jsx`** + **`app/[locale]/terms/page.jsx`** — minimal bilingual stubs, K-12 student-data context. Resolves the long-standing broken-link condition in the footer legal strip. Copy lives inline in each page file (legal boilerplate, not marketing) rather than in `marketing.*.js`. Treat as placeholders pending legal review. Listed in `sitemap.js` at priority 0.3.
+
+### Viewport
+- Explicit `viewport` export added in `app/layout.jsx` with `maximumScale: 5` (WCAG 1.4.4 — never disables pinch-zoom). Replaces reliance on Next.js defaults.
+
+### Architectural consequence — chrome i18n pattern
+`Navbar.jsx` (`'use client'`) and `Footer.jsx` (server) both now accept a `copy` prop. The server layout (`app/[locale]/layout.jsx`) imports both `nav`/`footer` from `marketing.en.js` AND `marketing.zh.js`, resolves the right one by `locale`, passes the object down. Pattern keeps the client Navbar from bundling both locales and matches the per-page convention.
+
+### Carried forward (out of v1 scope)
+- **Surface 6** — sticky in-page secondary nav on `/program`, `/results`, `/about` hub pages, linking to absorbed sub-pages (Lexile, The Difference, FAQ etc.). Deferred to v1.5. Without it, demoted items still retain 3 surfaces (footer + in-page links + sitemap).
+- **"Live · Navigator-led" CTA micro-label** — drafted but pulled at build time (absolute positioning overlapped page hero). Re-add as a properly-positioned tooltip if first-glance trust at the nav level becomes a stated need.
+- **`/audiobooks` index as public marketing landing** — proposed in the plan, rejected by direction ("leave access gate as is"). If the audiobook library ever wants to double as a public value/trust signal, the path is a new public route (e.g. `/library`) that previews the catalog and links to the gated `/audiobooks`.
+- **DODO Coding sibling site** — slot is reserved, copy is "Coming soon". When sibling ships, replace `footer.sibling.blurb` with a one-line program description and set `NEXT_PUBLIC_SHOW_CODING=true`.
 
 ---
 
@@ -101,6 +144,24 @@ import { program as copyZh } from '@/content/marketing.zh'
 const COPY = { en: copyEn, zh: copyZh }
 // then: const c = COPY[locale] ?? COPY.en
 ```
+
+### Chrome imports look like this *(added 2026-06-01)*
+
+Navbar and Footer don't pick their own locale — the server layout resolves it once and passes the copy object down. This keeps the client Navbar from bundling both locale modules.
+
+```js
+// app/[locale]/layout.jsx (excerpt)
+import { nav as navEn, footer as footerEn } from '@/content/marketing.en'
+import { nav as navZh, footer as footerZh } from '@/content/marketing.zh'
+
+const navCopy    = locale === 'zh' ? navZh    : navEn
+const footerCopy = locale === 'zh' ? footerZh : footerEn
+
+<Navbar locale={locale} copy={navCopy} />
+<Footer locale={locale} copy={footerCopy} />
+```
+
+The `nav.*` and `footer.*` namespaces live at the **top** of both `marketing.en.js` and `marketing.zh.js` (above the 10 per-page exports). Editing chrome labels = edit those namespaces in both files; Navbar/Footer code rarely changes.
 
 ### Why one file per locale (not per page)
 
@@ -212,7 +273,12 @@ Only re-fetch mid-session for one reason: before a `git push`. Otherwise trust t
 | `translation/DEEPSEEK_BRIEF.md` | DeepSeek translation brief (v1.1). Standing context for every translation session. 6+1 ZH canon updated 2026-05-21. |
 | `translation/dodo-glossary.json` | Canonical EN ↔ ZH term map. Updated 2026-05-21 with new 6+1 trait canon (`思考、结构、声音、用词、流畅、规范、呈现`). |
 | `translation/archive/deepseek-2026-05-17/` | Last DeepSeek round-trip staging folder + README with prompt template. **Frozen — do not edit. Create new dated folder under `translation/archive/` for next round-trip.** |
-| `content/marketing.{en,zh}.js` | **10 marketing pages**, one named export per page (home, program, about, consult, compare, methodology, lexile, results, navigators, demos) |
+| `content/marketing.{en,zh}.js` | **10 marketing pages + chrome**. Named exports: `nav`, `footer` (chrome, added 2026-06-01), then `home`, `program`, `about`, `consult`, `compare`, `methodology`, `lexile`, `results`, `navigators`, `demos` (one per page). |
+| `components/layout/Navbar.jsx` | Global navbar. Single flat row of 6, `md:768` desktop breakpoint, CTA-first mobile drawer. Accepts `copy` prop from locale layout — no EN hardcoding. |
+| `components/layout/Footer.jsx` | Global footer. 4 columns (Brand · Program · Resources · Serving), `sm:2 md:4` grid. Sibling-site cross-link gated by `NEXT_PUBLIC_SHOW_CODING`. Accepts `copy` prop. |
+| `app/[locale]/layout.jsx` | Locale shell. Resolves nav/footer copy from `marketing.{en,zh}.js` and passes to chrome components. Sets `<html lang>` via inline script. |
+| `app/[locale]/privacy/page.jsx` / `terms/page.jsx` | **NEW 2026-06-01.** Bilingual stubs. K-12 student-data context. Copy inline (legal boilerplate, not marketing). Replaces broken footer links. Listed in sitemap at priority 0.3. |
+| `app/layout.jsx` | Root layout. Owns `<html>` + `<body>`. Site-wide metadata + JSON-LD. Explicit `viewport` export (`maximumScale: 5`, preserves user zoom). |
 | `content/faq.js` | 50 Q&As + UI + categories, bilingual nested |
 | `content/cities.js` | 6 cities + shared chrome, bilingual nested |
 | `public/llms.txt` / `llms-full.txt` | GEO surfaces for LLM citation. EN-only. Refreshed 2026-05-21 (LCS-forward + global positioning + new Lexile canon). |

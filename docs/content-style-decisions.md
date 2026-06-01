@@ -173,3 +173,41 @@ For each decision above, ask: has this stabilized across 2+ surface reviews? If 
 ### Reinforced (not new)
 - **ZH combat-metaphor lint** caught **捍卫** in the /about Speak step + Pillar 01 body — replaced with 阐明并支持 / 支持自己的立场. Lint rule already in §08 + skill; this is a recurrence flag.
 - **Affirmative voice** — removed the oppositional "Not teachers. / Navigators." chip pair from /about §5 (render deleted; orphan `chipNot`/`chipAre` content keys left harmless).
+
+---
+
+## 2026-06-01 (later) · Chrome overhaul (navbar + footer)
+
+Scope: redesign navbar + footer for simplicity, fix tablet UX cliff, kill nav/footer redundancy, fix EN-hardcoded-chrome translation bug, ship Privacy + Terms stubs, reserve a slot for the future DODO Coding sibling site. Plan file: `~/.claude/plans/study-the-current-navbar-sharded-sundae.md`. Commit: `03f1131`.
+
+### D23 · "The Method" as cold-traffic nav label for /methodology
+- **Decision:** The global nav uses **"The Method" / "方法"** as the top-level label for `/methodology`. Brand-owned term **"The Loop"** is preserved inside the page body (hero, anchors, JSON-LD) and across the broader methodology vocabulary. The nav label is the cold-traffic translation; the page itself still names "The Loop" and "The LCS System" per D1/D19.
+- **Reasoning:** "The Loop" reads as in-group vocabulary to a parent landing on the site for the first time. "The Method" is unambiguous in chrome; the owned term carries weight inside the page where the parent has committed to reading.
+- **Where it lives now:** `content/marketing.{en,zh}.js` `nav.primary` array · `components/layout/Navbar.jsx` (label only — href unchanged at `/methodology`).
+- **Trigger:** User direction during plan-mode review of the chrome overhaul.
+
+### D24 · "Reading Companion" as cold-traffic UI label for /audiobooks
+- **Decision:** The UI label for the gated `/audiobooks` library is **"Reading Companion" / "阅读伴"** wherever it appears in chrome and member-facing surfaces. The URL `/audiobooks` is unchanged for routing / back-compat / sitemap / hreflang stability. Cloudflare Access gate is unchanged — the nav item is a members-area entry point, not a marketing surface; rendered with a lock glyph + "members" / "学员专属" micro-tag (visible at `lg+`, omitted at `md` to save horizontal width).
+- **Reasoning:** "Audiobooks" describes the file format; "Reading Companion" describes the role the library plays in a student's program. Aligns the label with the value proposition rather than the medium. The ZH rendering "阅读伴" is the proposed short form — confirm with brand voice before locking; alternatives in play: 共读伙伴, 阅读伴侣.
+- **Where it lives now:** `content/marketing.{en,zh}.js` `nav.primary[4].label` · `Navbar.jsx` renders the lock glyph and `members` tag · all marketing references to "the library" should follow this rename.
+- **Trigger:** User direction during plan-mode review.
+- **Watch:** ZH translation 阅读伴 is provisional. If brand voice prefers 共读伙伴 or 阅读伴侣, swap in `marketing.zh.js` only — no other surface depends on the string.
+
+### D25 · Chrome i18n pattern — copy passed as prop from server layout
+- **Decision:** Navbar and Footer no longer hardcode EN labels in component constants. Both consume a `copy` prop resolved once per request in `app/[locale]/layout.jsx` (which imports both `nav`/`footer` exports from `marketing.en.js` and `marketing.zh.js` and selects by locale). Pattern keeps the client-side Navbar from bundling both locale modules and matches the existing per-page convention.
+- **Overrides:** Prior pattern where `PRIMARY_LINKS` / `NAV_PROGRAM` etc. were const arrays inside the component files, EN-only. Fixed a silent correctness bug where `/zh/*` pages rendered Chinese page bodies wrapped in English nav + footer chrome.
+- **Where it lives now:** New namespaces `nav` + `footer` at the top of `content/marketing.en.js` and `content/marketing.zh.js`. `app/[locale]/layout.jsx` imports both and passes the resolved object to `<Navbar copy={...} />` / `<Footer copy={...} />`.
+- **Trigger:** Chrome overhaul scope; flagged in plan as "the single biggest correctness bug the redesign should fix."
+
+### D26 · Audience cue — "globally mobile families" on chrome surfaces
+- **Decision:** The brand-blurb sentence rendered in the footer Brand column reads **"A live, Navigator-led English literacy program for globally mobile families."** in EN and the ZH-equivalent in `marketing.zh.js` `footer.brand.body`. Aligns with D10 (audience pivot to globally-mobile positioning) on a chrome surface where the brand blurb appears on every page.
+- **Where it lives now:** `content/marketing.{en,zh}.js` `footer.brand.body`.
+- **Trigger:** Audit of footer copy during the rebucket; existing chrome copy still said "Chinese-speaking" pre-D10. Now cascaded to chrome.
+
+---
+
+## Observations from chrome overhaul (not yet decisions)
+
+- **"Live · Navigator-led" micro-label under desktop CTA** — drafted but pulled at build time because absolute-positioning overlapped page hero. Worth re-adding as a properly-positioned tooltip in v1.5 if first-glance trust at the nav level becomes a stated need. The brand-truth signal (Lexile · 6+1 · Live) already lives in the footer trust strip and on `/methodology`.
+- **Hub-page secondary nav (Surface 6)** — planned but deferred. Sticky in-page nav on `/program`, `/results`, `/about` linking to absorbed sub-pages (Lexile, The Difference, FAQ etc.). Documentation-site pattern. Defer until first content owner asks for it; without it, demoted items still retain 3 surfaces (footer + in-page links + sitemap), which clears the floor set in the plan's net-visibility check.
+- **DODO Coding cross-link copy** — `footer.sibling.blurb` is "Coming soon" / "即将上线". When sibling site ships, replace with one-line program description (TBD) and flip `NEXT_PUBLIC_SHOW_CODING=true`.
