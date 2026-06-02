@@ -54,20 +54,32 @@ Provisional section spine (mirrors the established page rhythm, re-pitched for K
 3. **How Little DODO works** — high-frequency, low-pressure rhythm; the Navigator relationship at this age.
 4. **Shared credibility** — reuse the live/Navigator-led proof, age-appropriately (NOT Lexile-heavy).
 5. **Fit / who it's for** — K–2 starters; honest fit.
-6. **Close** — the page's single in-body CTA, then the global PreCtaBand (subject to Open Decision #19).
+6. **Close** — the page itself owns its in-body close, so `/little-dodo` is added to the
+   `PreCtaBand` SUPPRESS list (one conversion moment per page, per D33).
 
-## Open IA / naming decisions (workflow.md #20)
+## IA / naming — DECIDED 2026-06-02 (one item still open)
 
-- **Route:** `/little-dodo` vs `/program/little-dodo`. (Leaning `/little-dodo` as a peer marketing page.)
-- **Nav relationship to "ELA Program":** current rule is **no dropdown** (flat 6). Options: keep flat
-  and surface Little DODO from within the ELA Program page + footer; or branch the program page into
-  two age bands. Do NOT add a navbar dropdown without revisiting the simplicity decision.
-- **ZH program name:** TBD (brand-voice — e.g. 小小都学 / 都学启蒙, confirm before locking).
-- **Age label:** "K–2" vs "ages 5–8" vs "pre-elementary" — pick one canonical phrasing.
-- **Schema / sitemap / hreflang:** add EN+ZH routes, `Course`/program schema, sitemap + llms.txt entry.
+- **Route:** ✅ **`/little-dodo`** (top-level marketing page). Hierarchy is expressed via links
+  (the `/program` hub + footer), not URL nesting — better for direct links from ads / Xiaohongshu and SEO.
+- **Nav relationship:** ✅ **Option I — flat nav unchanged** (no 7th item, no dropdown; honours the
+  simplicity decision). **`/program` becomes the program-family hub:** an age-band chooser near the top
+  branches to **Little DODO (K–2)** and **The 16-Week Program (Gr 4+)**; the footer Program column adds a
+  Little DODO link. The "ELA Program" nav label therefore must read as the *family* entry — so `/program`
+  has to present both bands up top, not just the older-kid program.
+- **EN / ZH name:** ✅ EN **Little DODO** / ZH **都学启蒙** (transcreation — ZH conveys the early-learning
+  stage 启蒙, not literal "little"). Run final strings through the `dodo-content-writer` lint before locking.
+  **Caution:** the ZH name already contains 启蒙 — do NOT pair it with a 启蒙-redundant descriptor; use a
+  reading-comprehension / 高频低压 framing for the supporting line instead.
+- **Age label:** ✅ **EN "Ages 5–8"** (canonical — no curriculum assumption; clearest for
+  globally-mobile / ESL parents). **ZH "5–8 岁"**; 幼小衔接 available as supporting framing where it
+  fits naturally. Used in the `/program` age-band chooser, H1, meta, schema.
+- **Schema / sitemap / hreflang:** add EN+ZH `/little-dodo` routes, `Course`/program schema, sitemap +
+  `llms.txt` entry (at build).
 
 ## Definition of done (future)
 
 EN + ZH copy in `content/marketing.{en,zh}.js` (new `littleDodo` export, matching the per-page
-pattern); page under `app/[locale]/...`; chrome/funnel per `.interface-design/system.md`; nav/footer
-+ sitemap + llms.txt updated; `next build` clean; decision promoted from D32 to shipped.
+pattern); page at `app/[locale]/little-dodo/`; chrome/funnel per `.interface-design/system.md`;
+**add `/little-dodo` to the `PreCtaBand` SUPPRESS list**; build the age-band chooser on `/program`
++ add the footer Program-column link; sitemap + llms.txt + `Course` schema (EN+ZH); `next build`
+clean; decision promoted from D32 to shipped.
