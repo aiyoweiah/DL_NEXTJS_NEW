@@ -99,8 +99,17 @@ child (needs `usePathname`); everything else stays server.
 | Muted text | `#7B8494` / `#94A3B8` |
 | Borders | `rgba(183,181,254,0.10)` family (low-opacity lavender) |
 
-**Buttons:** `btn-charter` (primary), `btn-ghost` (secondary outline), `btn-gilt` (gold
-primary, home hero), `btn-primary`. Pick by surface, keep one primary per surface.
+**Buttons — accessibility rule (WCAG AA: text ≥ 4.5:1, boundary ≥ 3:1):**
+- **Filled primaries are surface-agnostic** (near-black text on a light fill): `btn-charter`
+  (gold `#F5C842`, ~11.8:1 — firm close / Watch on light heroes) · `btn-primary` (lavender
+  `#b7b5fe`, ~9.8:1 — Watch on dark heroes). Use either on any surface.
+- **Outline secondaries are surface-SPECIFIC — this is the load-bearing rule:**
+  - On **DARK** surfaces → `btn-ghost` (light-lavender text `#b7b5fe`).
+  - On **LIGHT** surfaces → `btn-outline` (deep-lavender text `#5856cc`, ~5.8:1).
+  - ⚠️ **Never `btn-ghost` on light** — `#b7b5fe` on white is ~1.8:1 (fails). No single text
+    color passes on both black and white, so the secondary MUST match its surface.
+- `btn-gilt` is a safety **alias of `btn-charter`** (it was once undefined → invisible). Prefer
+  `btn-charter` directly. When adding a CTA, ask: filled or outline? and dark or light surface?
 
 **Spacing/layout:** `container-section` wrapper; section padding `var(--section-md)`;
 pill badges `rounded-full`, buttons/cards `rounded-lg`. Breakpoints: `md:768`, `lg:1024`.

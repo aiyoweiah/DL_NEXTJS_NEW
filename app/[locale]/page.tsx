@@ -109,11 +109,12 @@ function Hero({ locale, c }: { locale: string; c: any }) {
           <p className="text-base md:text-lg leading-relaxed mb-8" style={{ color: '#5856cc', maxWidth: '42rem' }}>{c.hero.consultHook}</p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
-            {/* cta1 = Watch a Demo Class (soft close); cta2 = Book Your Consultation (firm) */}
-            <Link href={`/${locale}/demos`} className="btn btn-gilt">
+            {/* cta1 = Watch a Demo Class (soft close); cta2 = Book Your Consultation (firm).
+                Light hero → filled gold primary + outline secondary (NOT ghost, which is dark-only). */}
+            <Link href={`/${locale}/demos`} className="btn btn-charter">
               {c.hero.cta1}
             </Link>
-            <Link href={`/${locale}/consult`} className="btn btn-ghost">
+            <Link href={`/${locale}/consult`} className="btn btn-outline">
               {c.hero.cta2}
             </Link>
           </div>
@@ -171,10 +172,10 @@ function PhotoIntro({ locale, c }: { locale: string; c: any }) {
             <p className="text-base md:text-lg leading-relaxed mb-8" style={{ color: '#3D4452' }}>{c.photoIntro.body2}</p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href={`/${locale}/navigators`} className="btn btn-ghost">
+              <Link href={`/${locale}/navigators`} className="btn btn-outline">
                 {c.photoIntro.cta1}
               </Link>
-              <Link href={`/${locale}/results`} className="btn btn-ghost">
+              <Link href={`/${locale}/results`} className="btn btn-outline">
                 {c.photoIntro.cta2}
               </Link>
             </div>

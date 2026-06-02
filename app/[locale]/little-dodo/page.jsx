@@ -310,7 +310,8 @@ function CtaSection({ locale, c }) {
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
             <Link href={`/${locale}/consult`} className="btn btn-charter">{c.cta.btn}</Link>
-            <Link href={`/${locale}/demos`} className="btn btn-ghost">{c.cta.watch}</Link>
+            {/* white section → outline (ghost is dark-only) */}
+            <Link href={`/${locale}/demos`} className="btn btn-outline">{c.cta.watch}</Link>
           </div>
           <p style={{ fontSize: '0.8125rem', color: '#7B8494', marginTop: '0.875rem' }}>{c.cta.note}</p>
         </div>
