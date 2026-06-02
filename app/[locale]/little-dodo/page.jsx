@@ -12,6 +12,13 @@
 //     honours the no-dropdown nav decision).
 // Voice: K–2-warm, but English-mastery-primary; NOT Lexile-heavy (K–2 is
 // pre-measurement). See docs/little-dodo-plan.md.
+//
+// BACKGROUND — 2026-06-02
+//   Hero bg: little-dodo-background.webp (young dodo with a picture book at
+//   dawn, watercolor — 2560×1429). Same 4-stop overlay treatment as program /
+//   about / demos: <img> + 108deg directional overlay + bottom vignette +
+//   warm-amber radial accent (rgba(200,140,40,…)) echoing the dawn light.
+//   objectPosition 'center 40%' frames the bird + book in the revealed right zone.
 
 import Link                              from 'next/link'
 import { notFound }                      from 'next/navigation'
@@ -84,13 +91,50 @@ function Hero({ locale, c }) {
         backgroundColor: '#0E0E12',
       }}
     >
-      {/* Soft lavender radial — warmth without an image asset */}
+      {/* Background illustration — young dodo with a picture book at dawn, watercolor */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/little-dodo-background.webp"
+        alt=""
+        aria-hidden="true"
+        style={{
+          position:       'absolute',
+          inset:          0,
+          width:          '100%',
+          height:         '100%',
+          objectFit:      'cover',
+          objectPosition: 'center 40%',
+          display:        'block',
+        }}
+      />
+
+      {/* Primary directional overlay — left text zone near-solid, right opens to the art */}
+      <div
+        aria-hidden="true"
+        style={{
+          position:   'absolute',
+          inset:      0,
+          background: 'linear-gradient(108deg, rgba(14,14,18,0.98) 0%, rgba(14,14,18,0.97) 35%, rgba(14,14,18,0.80) 58%, rgba(14,14,18,0.28) 100%)',
+        }}
+      />
+
+      {/* Bottom vignette — anchors the stat rail transition */}
+      <div
+        aria-hidden="true"
+        style={{
+          position:   'absolute',
+          inset:      0,
+          background: 'linear-gradient(to top, rgba(14,14,18,0.88) 0%, transparent 28%)',
+        }}
+      />
+
+      {/* Warm amber radial accent — echoes the dawn light around the book */}
       <div
         aria-hidden="true"
         style={{
           position:      'absolute',
           inset:         0,
-          background:    'radial-gradient(ellipse 60% 50% at 25% 30%, rgba(183,181,254,0.10) 0%, transparent 60%)',
+          background:    'radial-gradient(ellipse 55% 50% at 68% 42%, rgba(200,140,40,0.08) 0%, transparent 65%)',
           pointerEvents: 'none',
         }}
       />
