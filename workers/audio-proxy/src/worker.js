@@ -20,14 +20,25 @@
 
 const COOKIE_NAME      = 'dodo_ab_session'
 const SESSION_SECONDS  = 60 * 60 * 24 * 30   // 30 days
-const ALLOWED_ORIGIN   = 'https://dodolearning.com'
+
+// Both apex and www are currently served by Cloudflare Pages. Either origin
+// must be able to call /auth from the AudiobooksGate (which uses
+// credentials: 'include' — that disallows wildcards and requires an exact
+// echo of the request origin). The canonical host is www; apex is kept as
+// a fallback so a user hitting dodolearning.com directly doesn't get
+// CORS-blocked before any redirect can consolidate them.
+const ALLOWED_ORIGINS = new Set([
+  'https://www.dodolearning.com',
+  'https://dodolearning.com',
+])
+const DEFAULT_ORIGIN  = 'https://www.dodolearning.com'
 
 export default {
   async fetch(request, env) {
     const { method } = request
     const pathname   = new URL(request.url).pathname
 
-    if (method === 'OPTIONS')                        return preflight()
+    if (method === 'OPTIONS')                        return preflight(request)
     if (pathname === '/auth' && method === 'GET')    return checkSession(request, env)
     if (pathname === '/auth' && method === 'POST')   return createSession(request, env)
     if (method === 'GET' || method === 'HEAD')       return proxyAudio(request, env)
@@ -42,11 +53,11 @@ export default {
 async function createSession(request, env) {
   let body
   try { body = await request.json() } catch {
-    return addCors(new Response('Bad request', { status: 400 }))
+    return addCors(new Response('Bad request', { status: 400 }), request)
   }
 
   if (!body?.password || body.password !== env.PASSWORD) {
-    return addCors(jsonResponse({ ok: false }, 401))
+    return addCors(jsonResponse({ ok: false }, 401), request)
   }
 
   const expiry = Date.now() + SESSION_SECONDS * 1000
@@ -60,7 +71,7 @@ async function createSession(request, env) {
     `SameSite=Lax`,
   ].join('; ')
 
-  return addCors(jsonResponse({ ok: true }, 200, { 'Set-Cookie': cookie }))
+  return addCors(jsonResponse({ ok: true }, 200, { 'Set-Cookie': cookie }), request)
 }
 
 // ── GET /auth ─────────────────────────────────────────────────
@@ -68,7 +79,7 @@ async function createSession(request, env) {
 // Called by AudiobooksGate on mount to decide whether to skip the form.
 async function checkSession(request, env) {
   const valid = await isValidSession(request, env)
-  return addCors(jsonResponse({ ok: valid }, valid ? 200 : 401))
+  return addCors(jsonResponse({ ok: valid }, valid ? 200 : 401), request)
 }
 
 // ── GET|HEAD /<key> ───────────────────────────────────────────
@@ -157,23 +168,37 @@ function getCookie(header, name) {
 // ── CORS helpers ──────────────────────────────────────────────
 // Only /auth needs CORS headers — audio requests from <audio src> and
 // <a download> are no-CORS and send cookies automatically (same-site).
-function preflight() {
+//
+// AudiobooksGate calls /auth with credentials: 'include', which means the
+// browser will reject responses whose Access-Control-Allow-Origin is a
+// wildcard OR doesn't exactly match the request's Origin. We therefore
+// echo the request's Origin back when it's in our allowlist, and fall
+// back to the canonical host otherwise (which simply means non-allowed
+// origins fail the credential check — exactly what we want).
+function pickAllowedOrigin(request) {
+  const origin = request.headers.get('Origin')
+  return origin && ALLOWED_ORIGINS.has(origin) ? origin : DEFAULT_ORIGIN
+}
+
+function preflight(request) {
   return new Response(null, {
     status: 204,
     headers: {
-      'Access-Control-Allow-Origin':      ALLOWED_ORIGIN,
+      'Access-Control-Allow-Origin':      pickAllowedOrigin(request),
       'Access-Control-Allow-Methods':     'GET, POST, OPTIONS',
       'Access-Control-Allow-Headers':     'Content-Type',
       'Access-Control-Allow-Credentials': 'true',
       'Access-Control-Max-Age':           '86400',
+      'Vary':                             'Origin',
     },
   })
 }
 
-function addCors(response) {
+function addCors(response, request) {
   const r = new Response(response.body, response)
-  r.headers.set('Access-Control-Allow-Origin',      ALLOWED_ORIGIN)
+  r.headers.set('Access-Control-Allow-Origin',      pickAllowedOrigin(request))
   r.headers.set('Access-Control-Allow-Credentials', 'true')
+  r.headers.append('Vary',                          'Origin')
   return r
 }
 

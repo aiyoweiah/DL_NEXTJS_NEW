@@ -1,6 +1,7 @@
 name               = "dodo-audio-proxy"
 main               = "src/worker.js"
 compatibility_date = "2025-01-01"
+account_id         = "38ee89b0810af32569cad02ed760a585"
 
 # Route — intercepts all requests to audio.dodolearning.com
 routes = [
