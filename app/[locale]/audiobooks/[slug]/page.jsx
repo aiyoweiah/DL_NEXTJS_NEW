@@ -36,13 +36,13 @@ const UI = {
 }
 
 // ── Static params ───────────────────────────────────────────────
-// One entry per (locale, slug). On the letterhouse build the page
-// itself notFound()s before any audiobook content is read, so each
-// route emits a 404 HTML. The only thing that ends up in the
-// letterhouse output is the slug *string* (visible in routing
-// metadata) — book titles, chapters, descriptions, and audio URLs
-// never reach that build. Returning [] is not an option under
-// output: 'export' (Next.js requires at least one param).
+// One entry per (locale, slug). When the NEXT_PUBLIC_SITE build guard is
+// not 'dodolearning' the page notFound()s before any audiobook content is
+// read, so each route emits 404 HTML and only the slug *string* lands in
+// that build — titles, chapters, descriptions, and audio URLs never do.
+// (Historically that was the dodoletterhouse.com / Vercel build; now a
+// single Cloudflare Pages host renders the real pages.) Returning [] is not
+// an option under output: 'export' (Next.js requires at least one param).
 export function generateStaticParams() {
   const locales = localeParams()
   const slugs   = getAllAudiobookSlugs()

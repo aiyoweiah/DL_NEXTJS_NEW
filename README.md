@@ -1,8 +1,8 @@
 # DL_NEXTJS_NEW
 
-Bilingual (EN + ZH) Next.js static site. One repo, two deploys:
-- **dodolearning.com** → Cloudflare Pages
-- **dodoletterhouse.com** → Vercel
+Bilingual (EN + ZH) Next.js static site, deployed to **dodolearning.com** via **Cloudflare Pages** (`dl-nextjs-new` project).
+
+> Single host as of 2026-06-02. The former `dodoletterhouse.com` / Vercel deploy is retired — that domain now 301-forwards to dodolearning.com at the Cloudflare edge (`ops.dodoletterhouse.com` → the `/ops` tools). See `docs/SUCCESSOR_HANDOFF.md`.
 
 Builds ~62 pages from one source tree via `output: 'export'`. No server runtime in production.
 

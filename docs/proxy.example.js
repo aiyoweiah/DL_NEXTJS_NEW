@@ -9,17 +9,16 @@
 // The site currently uses output: 'export', which has no server
 // runtime. Locale redirects live in:
 //   • public/_redirects   — Cloudflare Pages (dodolearning.com)
-//   • vercel.json         — Vercel (dodoletterhouse.com)
+// (dodoletterhouse.com is retired — it now 301-forwards to dodolearning.com
+//  via Cloudflare Redirect Rules, not a build artifact.)
 //
 // ── How to activate ──────────────────────────────────────────
-// If the project moves to a server runtime (Cloudflare Workers via
-// @cloudflare/next-on-pages, or Vercel server mode):
+// If the project moves to a server runtime (e.g. Cloudflare Workers via
+// @cloudflare/next-on-pages):
 //   1. Copy this file to the project root as `proxy.js`
 //   2. Remove output: 'export' from next.config.js
 //   3. Remove trailingSlash: true from next.config.js
 //   4. Delete public/_redirects (proxy will handle locale routing)
-//   5. Trim vercel.json redirects to only host-specific rules
-//      (e.g. the ops.dodoletterhouse.com subdomain rule)
 //
 // ── What this file does (when active) ────────────────────────
 // Runs on the Next.js edge runtime before every matched request.

@@ -2,7 +2,7 @@
 
 **Created:** 2026-05-11
 **Status:** Tier 1 ✅ shipped. Tier 2 ready to start.
-**Repo:** `aiyoweiah/DL_NEXTJS_NEW` (deploys to dodolearning.com via Cloudflare Pages + dodoletterhouse.com via Vercel from the same `main` branch)
+**Repo:** `aiyoweiah/DL_NEXTJS_NEW` (deploys to dodolearning.com via Cloudflare Pages from `main`. 2026-06-02: Vercel/dodoletterhouse.com retired → 301-forwards to dodolearning.com. Single host.)
 
 This doc is the source of truth for the SEO + AI-crawl (GEO) initiative. Update it after every working session.
 
@@ -19,7 +19,7 @@ If you're picking this up cold:
 5. **Tier 2 work order is in this doc** — but don't start it until the user re-runs the citation baseline and confirms the strategic decisions.
 
 **Important context not obvious from code:**
-- The site uses `output: 'export'` and deploys the same artifact to both Cloudflare Pages and Vercel. Anything you build must work statically (no API routes, no middleware — see `docs/proxy.example.js` for the dormant proxy/middleware blueprint).
+- The site uses `output: 'export'` and deploys to Cloudflare Pages. Anything you build must work statically (no API routes, no middleware — see `docs/proxy.example.js` for the dormant proxy/middleware blueprint).
 - FAQ is now consolidated in `content/faq.js` (bilingual nested, with markdown-lite link syntax `[text](/path)` and `**bold**` rendered by `components/faq/FAQClient.jsx`). The earlier `content/faq-en.js` + `content/faq-zh.js` split was retired 2026-05-17 (Pass B). Single source of truth.
 - The ZH FAQ had 9 typos (`的N周` for `第N周`, plus 邐 and 硈 wrong chars) that were live to users until 2026-05-11. Be vigilant about ZH typos elsewhere on the site — translator brief is at `translation/DEEPSEEK_BRIEF.md`.
 - The user's GitHub identity is `aiyoweiah` / `hsinkwu@gmail.com`. Git config is NOT set globally — use `git -c user.email=hsinkwu@gmail.com -c user.name=aiyoweiah` for commits, or ask the user to configure their git.
@@ -169,7 +169,7 @@ These block downstream work. Updated 2026-05-17.
 ## Operating Rules
 
 - This workflow doc is the single source of truth. Update statuses after each session.
-- All technical changes ship in `main` and auto-deploy to both Cloudflare Pages and Vercel. Both hosts must remain compatible (`output: 'export'`).
+- All technical changes ship in `main` and auto-deploy to Cloudflare Pages (`output: 'export'`).
 - Voice: never imply tutoring / ESL / remediation (per `translation/DEEPSEEK_BRIEF.md`).
 - LLM citation tracker entries go in `docs/llm-citations/YYYY-MM.md` with screenshots.
 

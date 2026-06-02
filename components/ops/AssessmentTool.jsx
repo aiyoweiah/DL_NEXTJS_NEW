@@ -612,7 +612,7 @@ function PDFFooter() {
     }}>
       <span style={{ fontSize: 8, color: B.muted, letterSpacing: 0.2 }}>www.dodolearning.com</span>
       <span style={{ fontSize: 8.5, fontWeight: 700, color: B.lavender, letterSpacing: 1.5, textTransform: "uppercase" }}>Think Once. In Both Languages.</span>
-      <span style={{ fontSize: 8, color: B.muted, letterSpacing: 0.2 }}>www.dodoletterhouse.com</span>
+      <span style={{ fontSize: 8, color: B.muted, letterSpacing: 0.2 }}>都学书院</span>
     </div>
   );
 }

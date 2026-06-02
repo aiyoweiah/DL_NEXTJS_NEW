@@ -1,14 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // ── Static export for Cloudflare Pages + Vercel ──────────────
-  // Both hosts serve a static file bundle. output: 'export' tells
-  // Next.js to emit the full site to /out at build time.
+  // ── Static export for Cloudflare Pages ───────────────────────
+  // output: 'export' emits the full static site to /out at build time,
+  // served by Cloudflare Pages (the only host as of 2026-06-02 —
+  // dodoletterhouse.com / Vercel is retired and now 301-forwards to
+  // dodolearning.com at the Cloudflare edge; see docs/SUCCESSOR_HANDOFF.md).
   //
   // Locale detection does NOT use proxy.js (Next.js 16 middleware)
   // in this mode — the proxy requires a server/edge runtime that
   // static export does not have. Locale redirects are handled by:
   //   • public/_redirects  — Cloudflare Pages reads at the CDN edge
-  //   • vercel.json        — Vercel reads at the edge
   //
   // If the project ever moves to a server runtime, copy
   // docs/proxy.example.js to the project root as proxy.js — see
@@ -17,7 +18,6 @@ const nextConfig = {
   // NOTE: output: 'export' disables Next.js server-side redirects.
   // Redirects are handled at the CDN edge instead:
   //   • Cloudflare Pages: public/_redirects
-  //   • Vercel:           vercel.json → redirects[]
   // This includes the /the-hangar → /compare 301 redirect
   // added April 2026 when The Hangar route was retired.
 

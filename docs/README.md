@@ -16,4 +16,4 @@ Internal documentation. Not deployed (not in `public/`, not served).
 
 - `workflow.md` is updated after every working session — both status changes and a one-line session log entry. Don't replace; append.
 - Citation tracking runs monthly. Same 8 prompts × 4 LLMs each time. Format and template are in `workflow.md`.
-- This folder is **not** in the static export (`out/`) — it doesn't ship to Cloudflare Pages or Vercel. Safe to keep internal notes here.
+- This folder is **not** in the static export (`out/`) — it doesn't ship to Cloudflare Pages. Safe to keep internal notes here.

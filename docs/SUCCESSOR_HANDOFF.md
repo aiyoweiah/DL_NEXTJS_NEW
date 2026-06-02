@@ -2,7 +2,7 @@
 
 **Authored:** 2026-05-17 (end of session)
 **Last updated:** 2026-06-02 — funnel swap (v6.0): Watch Demo soft-close, consult firm-close, duplicate CTA bands removed, assessment reframed (consult-before-assess), CTA labels standardized, ELA Program / DODO Method renames. Design reference: `.interface-design/system.md`. Commit `140a7a5`. New program **Little DODO** (K–2) briefed — page not yet built (`docs/little-dodo-plan.md`). See "2026-06-02 · Funnel swap (v6.0)" in the decisions log.
-**Repo:** `aiyoweiah/DL_NEXTJS_NEW` · deploys to dodolearning.com (Cloudflare Pages) + dodoletterhouse.com (Vercel) from the same `main` branch
+**Repo:** `aiyoweiah/DL_NEXTJS_NEW` · deploys to dodolearning.com via **Cloudflare Pages** (`dl-nextjs-new`) from `main`. *(2026-06-02: dodoletterhouse.com / Vercel retired — that domain now 301-forwards to www.dodolearning.com at the Cloudflare edge; `ops.dodoletterhouse.com` → the `/ops` tools. www.dodolearning.com is now a Pages custom domain too. Single host.)*
 **Status:** Bilingual site fully shipped. Home + /program + /about rewritten through granular review. Chrome + funnel overhauled (v5 chrome 2026-06-01, v6 funnel 2026-06-02; pre-footer band → soft fallback v6.1, D33). /methodology rewrite in progress. **Open:** Little DODO page build + IA (#20). Tier 2/3 SEO+GEO + business decisions pending.
 
 This doc is **your entry point if you're picking up this work cold.** Read this first. Then:
@@ -352,7 +352,7 @@ Only re-fetch mid-session for one reason: before a `git push`. Otherwise trust t
 
 ## 9. Known constraints
 
-- **Static export** (`output: 'export'`). No API routes. No middleware (see `docs/proxy.example.js` for the dormant blueprint). Must work on Cloudflare Pages + Vercel from the same artifact.
+- **Static export** (`output: 'export'`). No API routes. No middleware (see `docs/proxy.example.js` for the dormant blueprint). Targets **Cloudflare Pages** (single host since 2026-06-02; Vercel retired).
 - **No Windows symlinks.** Per-page content files were retired partly for this reason.
 - **Git config not set globally.** Use `git -c user.email=hsinkwu@gmail.com -c user.name=aiyoweiah` for commits, or ask the user to configure.
 - **External image fetch warnings** during build (Unsplash hero backgrounds) — pre-existing, not from this session's work. 91 warnings × runs. Ignorable.

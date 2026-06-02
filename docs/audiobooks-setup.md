@@ -1,9 +1,12 @@
 # Audiobooks — setup guide
 
 This page lives at `/[locale]/audiobooks` and `/[locale]/audiobooks/[slug]`.
-It's served on **dodolearning.com only** (Cloudflare Pages) and gated by
-**Cloudflare Access**. The Vercel build (dodoletterhouse.com) bakes the
-route as a 404 and a `vercel.json` redirect sends any direct hits to `/`.
+It's served on **dodolearning.com** (Cloudflare Pages) and gated by the
+**AudiobooksGate access-code component**. A build-time guard
+(`NEXT_PUBLIC_SITE === 'dodolearning'`) renders the route only on the
+production build. *(Single host since 2026-06-02 — the former Vercel /
+dodoletterhouse.com build is retired; that domain now 301-forwards to
+dodolearning.com.)*
 
 ---
 
@@ -20,18 +23,10 @@ In the Cloudflare dashboard:
 2. Add `NEXT_PUBLIC_SITE=dodolearning` to both **Production** and **Preview**.
 
 This is what flips the audiobooks route on at build time. Without it, the
-page renders as a 404 — the same as on Vercel.
-
-### 1.2 Vercel — env var
-
-In the Vercel dashboard:
-
-1. Project Settings → **Environment Variables**.
-2. Add `NEXT_PUBLIC_SITE=letterhouse` to all environments.
-
-This guarantees the Vercel build never renders the audiobooks HTML. The
-`vercel.json` redirects are a second layer of defence — even if someone
-removes this env var, requests to `/audiobooks*` get bounced to `/`.
+page renders as a 404. **Keep `NEXT_PUBLIC_SITE=dodolearning` set** on the
+Pages project, or the library 404s. *(This guard is vestigial — it once hid
+the library on the retired Vercel build; with a single host it can be
+simplified away later.)*
 
 ### 1.3 Create the R2 bucket
 
@@ -132,9 +127,8 @@ Optional long-form description. Renders as HTML on the detail page —
 **bold**, _italic_, lists, links all work.
 ```
 
-Push to GitHub. Both Cloudflare Pages and Vercel will rebuild; the new
-book appears in the library on dodolearning, and the Vercel build stays
-inert for that route as designed.
+Push to GitHub. Cloudflare Pages rebuilds and the new book appears in the
+library on dodolearning.com.
 
 ---
 
@@ -148,10 +142,12 @@ Two independent layers protect the audiobooks:
 if (process.env.NEXT_PUBLIC_SITE !== 'dodolearning') notFound()
 ```
 
-`NEXT_PUBLIC_SITE` is inlined at build time. The dodoletterhouse build
-bakes a 404 HTML for every audiobook route. The dodolearning build
-renders normally. This means **no audiobook HTML or metadata ever ships
-to the Vercel CDN.**
+`NEXT_PUBLIC_SITE` is inlined at build time. With any value other than
+`dodolearning`, every audiobook route bakes a 404 HTML; the production
+Cloudflare Pages build sets `dodolearning` and renders normally. *(This
+layer's original purpose — keeping audiobook HTML off the retired Vercel /
+dodoletterhouse build — is now moot with a single host; it remains a build
+guard. See the note in `app/[locale]/audiobooks/page.jsx`.)*
 
 **Layer 2 — Cloudflare Access.** Sits in front of:
   - `dodolearning.com/audiobooks/*` — the HTML pages

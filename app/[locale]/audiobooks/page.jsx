@@ -2,14 +2,17 @@
 //
 // Audiobook library — gated grid of available titles.
 //
-// Two-layer gating (see docs/audiobooks-setup.md):
-//   1. BUILD-TIME — process.env.NEXT_PUBLIC_SITE !== 'dodolearning' → 404.
-//      Vercel build sets NEXT_PUBLIC_SITE=letterhouse, so this route
-//      bakes as a 404 in the dodoletterhouse export. Cloudflare build
-//      sets NEXT_PUBLIC_SITE=dodolearning and renders the real page.
-//   2. RUNTIME — Cloudflare Access sits in front of /audiobooks* and
-//      audio.dodolearning.com. Unauthenticated users never reach this
-//      HTML; the player's media URLs are protected by the same policy.
+// Gating (see docs/audiobooks-setup.md):
+//   1. BUILD-TIME guard — renders only when process.env.NEXT_PUBLIC_SITE
+//      === 'dodolearning'; otherwise the route bakes as a 404. The
+//      Cloudflare Pages build sets NEXT_PUBLIC_SITE=dodolearning, so the
+//      page renders in production.
+//      NOTE (2026-06-02): this gate originally hid the library on the now-
+//      retired dodoletterhouse.com / Vercel build. It's vestigial — keep
+//      NEXT_PUBLIC_SITE=dodolearning set on the CF Pages project, or
+//      simplify the gate away (single host now).
+//   2. RUNTIME — the AudiobooksGate access-code component controls who
+//      reaches the player; media URLs live on the audio host.
 
 import Link from 'next/link'
 import { notFound } from 'next/navigation'

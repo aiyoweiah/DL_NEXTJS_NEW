@@ -106,8 +106,8 @@ the project memory file `project_audiobooks.md` (architecture overview).
 >   step 3. Extras get silently dropped.
 > - Don't try to set up R2, Cloudflare Access, or env vars — those are
 >   one-time and already done. Just match the existing conventions.
-> - Don't touch `vercel.json` or `public/_redirects` — the routing for
->   `/audiobooks/*` is already correct on both hosts.
+> - Don't touch `public/_redirects` — the routing for `/audiobooks/*` is
+>   already correct.
 > - The audiobook URL is `dodolearning.com/<slug>` (the `/en/` is added
 >   by `_redirects`). The slug **must** match what's in R2 exactly,
 >   including hyphens and case.
