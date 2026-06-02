@@ -15,8 +15,6 @@ import {
 } from '@/lib/audiobooks'
 import AudiobookPlayer from '@/components/audiobooks/AudiobookPlayer'
 
-const SITE = process.env.NEXT_PUBLIC_SITE
-
 // ── UI strings — chrome only ────────────────────────────────────
 const UI = {
   en: {
@@ -36,13 +34,8 @@ const UI = {
 }
 
 // ── Static params ───────────────────────────────────────────────
-// One entry per (locale, slug). When the NEXT_PUBLIC_SITE build guard is
-// not 'dodolearning' the page notFound()s before any audiobook content is
-// read, so each route emits 404 HTML and only the slug *string* lands in
-// that build — titles, chapters, descriptions, and audio URLs never do.
-// (Historically that was the dodoletterhouse.com / Vercel build; now a
-// single Cloudflare Pages host renders the real pages.) Returning [] is not
-// an option under output: 'export' (Next.js requires at least one param).
+// One entry per (locale, slug). Returning [] is not an option under
+// output: 'export' (Next.js requires at least one param).
 export function generateStaticParams() {
   const locales = localeParams()
   const slugs   = getAllAudiobookSlugs()
@@ -53,12 +46,6 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
   const { locale, slug } = await params
-
-  // On non-dodolearning builds, return generic metadata so no audiobook
-  // title or summary is baked into the 404 HTML emitted for this route.
-  if (SITE !== 'dodolearning') {
-    return buildMetadata({ locale, title: 'Audiobook', path: `/audiobooks/${slug}`, noIndex: true })
-  }
 
   const book = await getAudiobook(slug, { withHtml: false })
   if (!book) return buildMetadata({ locale, title: 'Audiobook', path: `/audiobooks/${slug}`, noIndex: true })
@@ -75,7 +62,6 @@ export async function generateMetadata({ params }) {
 export default async function AudiobookDetailPage({ params }) {
   const { locale, slug } = await params
   if (!isValidLocale(locale)) notFound()
-  if (SITE !== 'dodolearning')  notFound()
 
   const ui   = UI[locale] ?? UI.en
   const book = await getAudiobook(slug)

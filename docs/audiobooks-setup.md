@@ -1,12 +1,11 @@
 # Audiobooks — setup guide
 
 This page lives at `/[locale]/audiobooks` and `/[locale]/audiobooks/[slug]`.
-It's served on **dodolearning.com** (Cloudflare Pages) and gated by the
-**AudiobooksGate access-code component**. A build-time guard
-(`NEXT_PUBLIC_SITE === 'dodolearning'`) renders the route only on the
-production build. *(Single host since 2026-06-02 — the former Vercel /
-dodoletterhouse.com build is retired; that domain now 301-forwards to
-dodolearning.com.)*
+It's served on **dodolearning.com** (Cloudflare Pages) and gated at runtime
+by the **AudiobooksGate access-code component**. *(Single host since
+2026-06-02 — the former Vercel / dodoletterhouse.com build is retired; that
+domain now 301-forwards to dodolearning.com. The old build-time
+`NEXT_PUBLIC_SITE` guard was removed at the same time — no env var needed.)*
 
 ---
 
@@ -14,21 +13,7 @@ dodolearning.com.)*
 
 You only do these steps once.
 
-### 1.1 Cloudflare Pages — env var
-
-In the Cloudflare dashboard:
-
-1. Workers & Pages → your dodolearning Pages project → **Settings → Environment
-   variables**.
-2. Add `NEXT_PUBLIC_SITE=dodolearning` to both **Production** and **Preview**.
-
-This is what flips the audiobooks route on at build time. Without it, the
-page renders as a 404. **Keep `NEXT_PUBLIC_SITE=dodolearning` set** on the
-Pages project, or the library 404s. *(This guard is vestigial — it once hid
-the library on the retired Vercel build; with a single host it can be
-simplified away later.)*
-
-### 1.3 Create the R2 bucket
+### 1.1 Create the R2 bucket
 
 In the Cloudflare dashboard:
 
@@ -134,55 +119,48 @@ library on dodolearning.com.
 
 ## 3. How the gating works
 
-Two independent layers protect the audiobooks:
+**Build time:** nothing special — the audiobooks routes render in the normal
+Cloudflare Pages build. *(The old `NEXT_PUBLIC_SITE !== 'dodolearning'` →
+`notFound()` build guard was removed 2026-06-02 when the second host
+(dodoletterhouse.com / Vercel) went away.)*
 
-**Layer 1 — Build-time route exclusion.** Each page file starts with:
+**Runtime — page gate.** The library and player are wrapped by the
+`AudiobooksGate` component, which requires an access code before the titles
+or player are revealed.
 
-```js
-if (process.env.NEXT_PUBLIC_SITE !== 'dodolearning') notFound()
-```
+**Runtime — media.** Audio and download URLs point at the audio host
+(`audio.dodolearning.com`), which enforces its own access control.
 
-`NEXT_PUBLIC_SITE` is inlined at build time. With any value other than
-`dodolearning`, every audiobook route bakes a 404 HTML; the production
-Cloudflare Pages build sets `dodolearning` and renders normally. *(This
-layer's original purpose — keeping audiobook HTML off the retired Vercel /
-dodoletterhouse build — is now moot with a single host; it remains a build
-guard. See the note in `app/[locale]/audiobooks/page.jsx`.)*
-
-**Layer 2 — Cloudflare Access.** Sits in front of:
-  - `dodolearning.com/audiobooks/*` — the HTML pages
-  - `audio.dodolearning.com/*` — the MP3 files
-
-Unauthenticated visitors are redirected to a Cloudflare-hosted login. They
-enter their email; Cloudflare sends a one-time code; they paste it; the
-Access session cookie is set for the duration you configured. From then on
-both the pages and the file URLs load transparently for that user.
-
-When the player calls `<audio src="https://audio.dodolearning.com/...">`,
-the browser sends the Access cookie alongside the request and the file
-streams. Download links work the same way — `<a download>` carries the
-cookie, the browser saves the file.
+> ⚠️ Verify the exact runtime gating against the live Cloudflare config
+> before relying on it. **Cloudflare Access in front of the `/audiobooks`
+> HTML pages was removed** (see the note in `public/_redirects`); the
+> access-code `AudiobooksGate` and the audio host's protection are what
+> remain.
 
 ---
 
 ## 4. Local development
 
-You can build the audiobooks page locally by setting:
+Just run the dev server:
 
 ```bash
-# Windows PowerShell
-$env:NEXT_PUBLIC_SITE = 'dodolearning'
 npm run dev
 ```
 
-Open `http://localhost:3000/en/audiobooks/`. The page renders, but the
-audio file URLs will 401 against Cloudflare Access since you're not
-authenticated. For local-only testing, swap the `audioUrl` in the sample
-content file to a publicly-hosted test MP3.
+Open `http://localhost:3000/en/audiobooks/`. The page renders (no env var
+needed — the build guard was removed). Audio file URLs may not load locally
+depending on the audio host's access control; for local-only testing, swap
+the `audioUrl` in the sample content file to a publicly-hosted test MP3.
 
 ---
 
 ## 5. Removing access for a user
+
+> ⚠️ **May be stale** — this assumes Cloudflare Access still gates the pages,
+> but Access was removed from `/audiobooks` (see §3). If the current gate is
+> the access-code `AudiobooksGate`, "removing access" means rotating the
+> shared code. Verify against the live config before relying on the steps
+> below.
 
 Cloudflare dashboard → Zero Trust → Access → Applications → DODO
 Audiobooks → Policies → Allowed listeners → remove their email from the
