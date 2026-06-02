@@ -30,9 +30,9 @@ The site is now **Cloudflare Pages only**. dodoletterhouse.com / Vercel is retir
 - **Removed the `NEXT_PUBLIC_SITE` audiobooks build guard** entirely (it only existed to hide the library on the retired letterhouse build). Audiobooks now render in the normal build; runtime gating is the `AudiobooksGate` access-code component. **No `NEXT_PUBLIC_SITE` env var needed anymore.**
 - AssessmentTool PDF footer `www.dodoletterhouse.com` → `都学书院`.
 
-**Still on you (dashboard, outside repo):** in Vercel → `dodoreadinghouse` project → Settings → Domains remove dodoletterhouse.com/www/ops, then Settings → Git disconnect (or delete the project) so `main` stops building on Vercel. The Cloudflare forward already covers all traffic.
+**Vercel teardown — ✅ done (2026-06-02):** the domains were removed from the Vercel `dodoreadinghouse` project and its Git integration disconnected. `main` no longer builds on Vercel; Cloudflare is the sole host.
 
-**⚠️ Flagged for archive (obsolete assets — ~2.8 MB, zero code refs):** unused hero `.jpg` masters + `@0.5x` variants in `public/` — `bg-about-hero.jpg`, `bg-navigators-hero.jpg`, `consult-/demos-/lexile-/methodology-/program-/results-background.jpg`, `bg-partners-hero@0.5x.webp`, `navigators-s4-session@0.5x.webp`. The site renders only the `.webp` (no `<picture>`/srcset). Safe to delete or move out of `public/`; left in place pending confirmation (could be intentional source masters).
+**Obsolete assets — ✅ deleted (2026-06-02):** the 10 unused hero `.jpg` masters + `@0.5x` variants in `public/` (~2.8 MB, zero code refs) were removed. The site renders only the `.webp` heroes (no `<picture>`/srcset), which remain.
 
 **⚠️ Verify (separate from this migration):** the audiobooks runtime gate. `_redirects` notes Cloudflare Access was removed from `/audiobooks`; confirm whether the access-code `AudiobooksGate` + the audio host's protection are the full story (see `docs/audiobooks-setup.md` §3/§5 caveats).
 
