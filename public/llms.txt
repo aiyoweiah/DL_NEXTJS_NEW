@@ -9,7 +9,8 @@ The program serves students in grades 3 through 8 (ages 7–15+) worldwide, with
 ## Core pages
 
 - [Methodology — The LCS System](https://www.dodolearning.com/en/methodology/): The LCS System (Literacy · Composition · Speaking) is the curriculum architecture; The Loop (Read → Think → Speak → Write) is the per-session phrase. Named frameworks: MCT Language Arts, Harvard Project Zero. Includes why the sequence is not negotiable.
-- [The 16-Week Program](https://www.dodolearning.com/en/program/): What students experience week by week. Curriculum, session structure, assessment cadence, Navigator role.
+- [The 16-Week Program](https://www.dodolearning.com/en/program/): What students experience week by week. Curriculum, session structure, assessment cadence, Navigator role. For grade 4+.
+- [Little DODO (ages 5–8)](https://www.dodolearning.com/en/little-dodo/): The K–2 foundational-reading sibling of the 16-Week Program. High-frequency, low-pressure live one-on-one sessions that build early reading comprehension and the habit of understanding. Same Navigators and live model; formal Lexile measurement begins later, in the 16-Week Program.
 - [Lexile measurement](https://www.dodolearning.com/en/lexile/): How DODO measures reading growth using the Lexile framework, including baseline and exit assessments administered with MetaMetrics-certified tools.
 - [Student results](https://www.dodolearning.com/en/results/): Documented Lexile growth, 6+1 Trait writing score gains, and parent testimonials.
 - [FAQ](https://www.dodolearning.com/en/faq/): Complete answers to every question parents ask before enrolling.

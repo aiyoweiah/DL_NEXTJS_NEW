@@ -27,8 +27,9 @@ import { isValidLocale, localeParams } from '@/lib/i18n'
 import { buildMetadata }               from '@/lib/metadata'
 import { courseSchema }                from '@/lib/schema'
 import LexileBar                       from '@/components/ui/LexileBar'
-import { program as copyEn }              from '@/content/marketing.en'
-import { program as copyZh }              from '@/content/marketing.zh'
+import AgeBandChooser                  from '@/components/ui/AgeBandChooser'
+import { program as copyEn, ageBands as bandsEn } from '@/content/marketing.en'
+import { program as copyZh, ageBands as bandsZh } from '@/content/marketing.zh'
 
 // ─────────────────────────────────────────────────────────────
 // STATIC STRUCTURAL DATA (no locale variants)
@@ -57,7 +58,8 @@ const TRAITS = [
 // BILINGUAL COPY
 // ─────────────────────────────────────────────────────────────
 
-const COPY = { en: copyEn, zh: copyZh }
+const COPY  = { en: copyEn,  zh: copyZh  }
+const BANDS = { en: bandsEn, zh: bandsZh }
 
 // ─────────────────────────────────────────────────────────────
 // SHARED PRIMITIVES
@@ -820,7 +822,8 @@ export default async function ProgramPage({ params }) {
   const { locale } = await params
   if (!isValidLocale(locale)) notFound()
 
-  const c = COPY[locale] ?? COPY.en
+  const c     = COPY[locale]  ?? COPY.en
+  const bands = BANDS[locale] ?? BANDS.en
 
   return (
     <>
@@ -829,6 +832,7 @@ export default async function ProgramPage({ params }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema()) }}
       />
       <Hero              locale={locale} c={c} />
+      <AgeBandChooser    locale={locale} copy={bands} current="/program" />
       <LoopSection       locale={locale} c={c} />
       <JourneySection      locale={locale} c={c} />
       <ArchitectureSection locale={locale} c={c} />

@@ -74,6 +74,7 @@ const STATIC_PAGES = [
   // Highest priority
   { path: '/',             priority: 1.0,  changeFrequency: 'weekly'  },
   { path: '/program',      priority: 0.9,  changeFrequency: 'monthly' },
+  { path: '/little-dodo',  priority: 0.8,  changeFrequency: 'monthly' },
   { path: '/results',      priority: 0.9,  changeFrequency: 'monthly' },
   { path: '/consult',      priority: 0.9,  changeFrequency: 'weekly'  },
   { path: '/methodology',  priority: 0.9,  changeFrequency: 'monthly' },

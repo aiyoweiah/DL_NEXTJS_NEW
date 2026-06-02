@@ -1,9 +1,10 @@
 # Little DODO — program plan (page not yet built)
 
-**Status:** Briefed 2026-06-02 (decision D32). Positioning recorded here; the marketing page
-is a future build (Task 3, "eventually"). **Ground rule:** strictly follow
-`.interface-design/system.md` (chrome, funnel ladder, CTA rules, color tokens) while showing
-thoughtfulness to the K–2 audience. This doc is the brief; nothing is shipped.
+**Status:** ✅ **SHIPPED 2026-06-02** (decision D32 → built). Page at `app/[locale]/little-dodo/`,
+`littleDodo` + `ageBands` exports (EN+ZH), shared `components/ui/AgeBandChooser.jsx`, footer link,
+PreCtaBand SUPPRESS, sitemap + llms.txt + `littleDodoCourseSchema()`. This doc remains the brief +
+record of the IA/naming decisions below. **Ground rule (followed):** strictly follow
+`.interface-design/system.md` while showing thoughtfulness to the K–2 audience.
 
 ---
 

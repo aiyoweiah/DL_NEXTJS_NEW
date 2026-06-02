@@ -127,6 +127,7 @@ export const footer = {
   },
   program: [
     { href: '/program',     label: 'The 16-Week Program' },
+    { href: '/little-dodo', label: 'Little DODO (5–8)'   },
     { href: '/methodology', label: 'The Loop'            },
     { href: '/navigators',  label: 'Navigators'          },
     { href: '/results',     label: 'Results'             },
@@ -1298,3 +1299,111 @@ export const demos = {
       },
     },
   }
+
+
+// ── ageBands (program-family chooser) ───────────────────────────
+// Shared by the /program hub and the /little-dodo page. Rendered as a band
+// directly below each page's hero (NOT inside the hero). The component marks
+// the current page's band "You're here" via a `current` prop.
+export const ageBands = {
+  eyebrow: 'By your child’s stage',
+  heading: 'Two ways into DODO English.',
+  here:    'You’re here',
+  bands: [
+    {
+      href:  '/little-dodo',
+      tag:   'Ages 5–8',
+      name:  'Little DODO',
+      blurb: 'High-frequency, low-pressure reading and comprehension for pre-elementary starters. Where the reader begins.',
+      cta:   'Explore Little DODO',
+    },
+    {
+      href:  '/program',
+      tag:   'Grade 4+',
+      name:  'The 16-Week Program',
+      blurb: 'Live, Navigator-led literacy and writing — read complexity, argue with evidence, write with intention. Progress measured in Lexile.',
+      cta:   'See The 16-Week Program',
+    },
+  ],
+}
+
+
+// ── /little-dodo ─────────────────────────────────────────────────
+// Little DODO — the K–2 (ages 5–8) sibling of the 16-Week Program.
+// High-frequency, low-pressure foundational reading + comprehension. Shares
+// the same Navigators / live model / standards; the pace and pressure differ.
+// Funnel: hero leads soft (Watch a Demo Class); page owns its firm close, so
+// /little-dodo is on the PreCtaBand SUPPRESS list. NOT Lexile-heavy (K–2 is
+// pre-measurement; formal Lexile begins in the 16-Week Program).
+export const littleDodo = {
+  meta: {
+    title: 'Little DODO — Foundational English Reading for Ages 5–8 | DODO Learning',
+    description:
+      'Little DODO is the high-frequency, low-pressure start to English literacy for children ages 5–8 (K–2). Live, one-on-one with a dedicated Navigator — building reading comprehension and the steady habit of understanding. The gentle on-ramp to the DODO 16-Week Program.',
+  },
+  hero: {
+    chip: 'Think Once. In Both Languages.',
+    h1:   'Where your child’s reading begins.',
+    h1zh: '阅读，从这里开始。',
+    sub:
+      'Little DODO is the gentle start to English literacy — for children ages 5–8. A real Navigator, short and frequent sessions, and the quiet confidence that they can understand what they read. High-frequency, low-pressure, by design.',
+    cta1: 'Watch a Demo Class',
+    cta2: 'Book Your Consultation',
+    stats: [
+      { value: '5–8',    unit: 'Years',         desc: 'Pre-elementary starters'   },
+      { value: '1',      unit: 'Navigator',     desc: 'Who knows your child'       },
+      { value: '1-on-1', unit: 'Always',        desc: 'No group rotation'         },
+      { value: 'High',   unit: 'Frequency',     desc: 'Short, frequent sessions'  },
+      { value: 'Low',    unit: 'Pressure',      desc: 'By design'                 },
+      { value: 'Live',   unit: 'Every Session', desc: 'Never pre-recorded'        },
+    ],
+  },
+  problem: {
+    eyebrow: 'Before the Pressure',
+    h2:      'The early years decide whether a child reads to learn — or learns to avoid reading.',
+    h2zh:    null,
+    body:
+      'Most programs for young children push performance too early — flashcards, levels, tests. A five-year-old who feels behind learns to dread the page. Little DODO does the opposite: short, frequent sessions that build comprehension first, and the quiet confidence that they can understand what they read.',
+  },
+  how: {
+    eyebrow: 'How Little DODO Works',
+    h2:      'High-frequency. Low-pressure. Live with a Navigator.',
+    h2zh:    null,
+    steps: [
+      { num: '01', label: 'Frequent, short sessions',
+        desc: 'Little and often beats long and rare at this age. Sessions are brief and come around often, so reading becomes a steady habit — not a weekly event to brace for.' },
+      { num: '02', label: 'One Navigator who knows them',
+        desc: 'Not a rotating tutor. The same Navigator each time — someone who learns your child’s pace, what they love to read, and where they need a gentler hand.' },
+      { num: '03', label: 'Read, then talk it through',
+        desc: 'Your child reads, then says what they understood out loud — the early shape of Read → Think → Speak. Comprehension grows by talking through a story, never by drilling it.' },
+    ],
+  },
+  shared: {
+    eyebrow: 'The Same DODO',
+    h2:      'The program your older child would grow into — built for five-year-olds.',
+    h2zh:    null,
+    body:
+      'Little DODO runs on the same machinery as the 16-Week Program: live sessions, one dedicated Navigator, and Navigators with backgrounds in literature and composition. What changes is the pace and the pressure. Formal Lexile measurement comes later, in the 16-Week Program; here the work is the foundation it’s built on — comprehension, confidence, and a child who reaches for the next book.',
+  },
+  fit: {
+    eyebrow: 'Who It’s For',
+    h2:      'Little DODO is a fit if…',
+    h2zh:    null,
+    points: [
+      'Your child is roughly ages 5–8 (kindergarten through grade 2).',
+      'They are just starting to read, or reading but not yet understanding deeply.',
+      'You want a gentle, consistent start — not flashcards and pressure.',
+      'You’d rather build the habit and the love of understanding before the rigour begins.',
+    ],
+  },
+  cta: {
+    eyebrow: 'Start Gently',
+    h2:      'See a session, then talk to us.',
+    h2zh:    null,
+    body:
+      'Watch a real Little DODO session — no pitch, no edited highlights. Then book a consultation with a Navigator, not a sales rep. We’ll tell you honestly whether your child is ready, or whether to start a little later.',
+    btn:     'Book Your Consultation',
+    watch:   'Watch a Demo Class',
+    note:    'A free consultation with a Navigator. No obligation.',
+  },
+}
