@@ -211,3 +211,52 @@ Scope: redesign navbar + footer for simplicity, fix tablet UX cliff, kill nav/fo
 - **"Live · Navigator-led" micro-label under desktop CTA** — drafted but pulled at build time because absolute-positioning overlapped page hero. Worth re-adding as a properly-positioned tooltip in v1.5 if first-glance trust at the nav level becomes a stated need. The brand-truth signal (Lexile · 6+1 · Live) already lives in the footer trust strip and on `/methodology`.
 - **Hub-page secondary nav (Surface 6)** — planned but deferred. Sticky in-page nav on `/program`, `/results`, `/about` linking to absorbed sub-pages (Lexile, The Difference, FAQ etc.). Documentation-site pattern. Defer until first content owner asks for it; without it, demoted items still retain 3 surfaces (footer + in-page links + sitemap), which clears the floor set in the plan's net-visibility check.
 - **DODO Coding cross-link copy** — `footer.sibling.blurb` is "Coming soon" / "即将上线". When sibling site ships, replace with one-line program description (TBD) and flip `NEXT_PUBLIC_SHOW_CODING=true`.
+
+---
+
+## 2026-06-02 · Funnel swap (v6.0) — chrome + CTA UX
+
+Scope: realign the whole visitor funnel around a soft→firm commitment ladder, kill duplicate consult CTAs, and reframe assessment. Shipped in commit `140a7a5`. Design reference written to `.interface-design/system.md` (read it before touching chrome/CTAs). EN + ZH parity; `next build` clean.
+
+**The funnel model (the spine of all CTA decisions):**
+`See → Talk → [enroll] → Assess`. Watch a Demo Class = soft close (cold surfaces). Book Your Consultation = firm close (warm surfaces). The Lexile assessment is **post-enrollment and informational only** — never a lead-capture CTA.
+
+### D27 · Watch Demo Class is the soft close; consult is demoted to the firm close
+- **Decision:** The navbar primary CTA, the home hero primary, and the `/about` closing all lead with **Watch a Demo Class / 观看示范课** (zero-commitment, "free, no sign-up"). **Book Your Consultation** is demoted to the firm close — mobile-drawer ghost, deep-page bodies, and the footer band. Cold/high-traffic surfaces lead soft; warm surfaces (post-content, post-video) close firm.
+- **Overrides:** Chrome-overhaul state where Book Your Consultation was the single primary CTA on every cold surface (navbar + hero + footer) and Watch was demoted.
+- **Where it lives now:** `nav.cta` (demo-first), `home.hero.cta1/cta2`, `about.closing.cta`; `Navbar.jsx` (desktop button + drawer order swapped, hides Watch on `/demos`); `page.tsx`/`about/page.jsx` hrefs realigned.
+- **Trigger:** User funnel-redesign direction — "replace booking consultation with watch demo class as top-of-page soft closer; consult is the firmer close on the demo page."
+
+### D28 · One conversion moment per page — charter bands removed, PreCtaBand is path-aware
+- **Decision:** No page renders the dark consult panel twice. The per-page `charter` bands (duplicates of the global footer band) were **deleted from `/program`, `/demos`, `/consult`** plus the duplicate `BookCall` on `/demos`. The global pre-footer band was extracted to a client component **`PreCtaBand.jsx`** that is **path-aware**: firm consult close on every page, but on `/consult` itself it swaps to a soft "Watch a Demo Class" offer (`footer.preCtaWatch`) so it never links back to the page you're on. Default-band ghost changed `See The Program → Watch a Class`.
+- **Overrides:** The additive pattern where most pages stacked an in-body `cta` band + a near-identical `charter` band + the global footer band (up to 3–4 consult asks in a row).
+- **Where it lives now:** `components/layout/PreCtaBand.jsx` (new) + `Footer.jsx`; `footer.preCta` (ghost→watch) + new `footer.preCtaWatch`; charter sections removed from the 3 page files.
+- **Follow-up:** Even at one in-body CTA + one footer band, the band still sat directly under a page's own closing CTA on content pages → "two CTAs in a row." **Resolved by D33 (band as fallback).**
+
+### D29 · Assessment reframe — consult before assess
+- **Decision:** Families are **consulted before being assessed.** The consultation decides fit; the Lexile baseline is measured only after enrollment (Week 0/8/16). All "Book a Free Lexile Assessment"-style entry CTAs removed. `compare.s9` reframed (the *consultation* decides fit, not the assessment). Footer Program-column label `Free Assessment → The Lexile Assessment / Lexile 测评` (informational, still `soon`).
+- **Where it lives now:** `compare.s9` (h2/sub/cta/note), `footer.program` assessment row, `program.cta.note` (dropped "assessment included"); `/assessment` + `/lexile` remain informational explainers.
+- **Trigger:** User — "Assessment page won't act as a second step in the closing process. We want to consult families before assessing them."
+
+### D30 · CTA label standardization + nav renames (ELA Program, DODO Method)
+- **Decision:** One action, one label. EN: **Book Your Consultation** (firm), **Watch a Demo Class** (soft), **See The 16-Week Program** (secondary). ZH consult standardized to **预约咨询** — deliberately dropping 评估 (assessment) from the consult CTA to reinforce D29. Exception: the `/consult` hero keeps first-person **Book My Consultation / 预约我的咨询**. Nav renames: **The Program → ELA Program / ELA 课程**, **The Method → DODO Method / DODO 教学法**.
+- **Overrides:** D23 (`/methodology` label "The Method/方法" → now "DODO Method/DODO 教学法"). Replaced the 4–5 drifting consult labels ("Book a Diagnostic Call", "Book a Free Lexile Assessment", etc.) and 4 secondary-label variants.
+- **Where it lives now:** `nav.primary`, all page `cta`/`ctaPrimary`/`ctaSecondary` in `marketing.{en,zh}.js`.
+- **Trigger:** User renames + site-wide CTA audit.
+
+### D31 · Gated nav item — lock glyph only, "members" tag → sr-only
+- **Decision:** The gated `/audiobooks` (Reading Companion) nav item shows the **lock glyph only**; the visible "· members / · 学员专属" micro-tag is removed and the gating word is now **`sr-only`** (still announced to screen readers via `copy.members`).
+- **Overrides:** D24's visible `lg+` "members" micro-tag.
+- **Where it lives now:** `Navbar.jsx` (Desktop + Mobile NavLink render `<span className="sr-only">`); `nav.members` repurposed as the sr-only string.
+- **Trigger:** User — "Remove the wording of members on the navbar, keep the lock icon only."
+
+### D32 · Little DODO — forthcoming K–2 ELA sub-program (positioning recorded; page not yet built)
+- **Decision (direction):** The ELA Program is being extended with a sibling program, **Little DODO**, targeting **K–2 / pre-elementary starters** — a **high-frequency, low-pressure** reading + comprehension program. Operationally it shares the main program's pillars: **tuition, environment, frequency, and Navigators are all similar.** What differs is **marketing/packaging emphasis and target audience** — early foundational literacy, reading habit + confidence, and comprehension basics, *not* the older program's "argue with evidence / write with intention / Lexile-rigour" register.
+- **Status:** A dedicated marketing page is planned (Task 3 — "eventually build"). Ground rule from user: **strictly follow the design framework (`.interface-design/system.md`) while showing thoughtfulness to the K–2 target audience.** Full positioning + page plan in `docs/little-dodo-plan.md`. IA decision (URL, how it relates to the "ELA Program" nav item) is OPEN — see workflow.md #20.
+- **Trigger:** User — program-extension briefing, 2026-06-02.
+
+### D33 · Pre-footer band is a soft fallback, not a peer panel (resolves #19)
+- **Decision:** Option A. The global `PreCtaBand` now yields **one conversion moment per page**: it is **suppressed** on every page that already owns an in-body closing CTA (about, program, methodology, lexile, results, navigators, compare, demos, consult, blog, cities, audiobooks, privacy, terms) and **shown only as a soft fallback** on pages without one (home, `/faq`, `/partners`, `/assessment`). Where shown it leads **soft** — Watch a Demo Class (primary) + Book Your Consultation (ghost) — matching the cold-surface = soft-close rule.
+- **Overrides:** D28's path-aware-swap implementation. The `/consult`-only swap and the `footer.preCtaWatch` block are removed (consult now suppresses the band entirely). `footer.preCta` reframed from the firm "Ready to meet your Navigator?" to the soft "See a real class before you decide."
+- **Where it lives now:** `components/layout/PreCtaBand.jsx` (`SUPPRESS` prefix list + soft render); `footer.preCta` in `marketing.{en,zh}.js` (reframed soft; `preCtaWatch` deleted).
+- **Trigger:** User — "the section just above the footer is almost always redundant to the section above it." Chose Option A from the 2026-06-02 proposal.

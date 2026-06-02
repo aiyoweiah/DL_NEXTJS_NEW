@@ -1,14 +1,29 @@
 # DODO Learning — Successor Handoff
 
 **Authored:** 2026-05-17 (end of session)
-**Last updated:** 2026-06-01 — chrome overhaul (navbar + footer redesigned, translation gap fixed, /privacy + /terms stubs shipped). See "2026-06-01 · Chrome overhaul" in the decisions log below.
+**Last updated:** 2026-06-02 — funnel swap (v6.0): Watch Demo soft-close, consult firm-close, duplicate CTA bands removed, assessment reframed (consult-before-assess), CTA labels standardized, ELA Program / DODO Method renames. Design reference: `.interface-design/system.md`. Commit `140a7a5`. New program **Little DODO** (K–2) briefed — page not yet built (`docs/little-dodo-plan.md`). See "2026-06-02 · Funnel swap (v6.0)" in the decisions log.
 **Repo:** `aiyoweiah/DL_NEXTJS_NEW` · deploys to dodolearning.com (Cloudflare Pages) + dodoletterhouse.com (Vercel) from the same `main` branch
-**Status:** Bilingual site fully shipped. Home + /program + /about rewritten through granular review. Chrome (navbar + footer) overhauled 2026-06-01. /methodology rewrite in progress. Tier 2/3 SEO+GEO + business decisions pending.
+**Status:** Bilingual site fully shipped. Home + /program + /about rewritten through granular review. Chrome + funnel overhauled (v5 chrome 2026-06-01, v6 funnel 2026-06-02; pre-footer band → soft fallback v6.1, D33). /methodology rewrite in progress. **Open:** Little DODO page build + IA (#20). Tier 2/3 SEO+GEO + business decisions pending.
 
 This doc is **your entry point if you're picking up this work cold.** Read this first. Then:
 1. `docs/content-style-decisions.md` — **active style decisions log** (date-stamped, append-only). The most recent voice / vocabulary / architectural decisions live here before they roll into the brand guide.
-2. `docs/workflow.md` Open Decisions table — the running list of pending items.
-3. `translation/BRAND_CONTENT_GUIDE.md` — the locked brand truth for content surfaces.
+2. `.interface-design/system.md` — **interface design system** (chrome, funnel ladder, CTA rules, color tokens). Read before touching navbar/footer/CTAs.
+3. `docs/workflow.md` Open Decisions table — the running list of pending items.
+4. `translation/BRAND_CONTENT_GUIDE.md` — the locked brand truth for content surfaces.
+
+---
+
+## Recent decisions log — 2026-06-02 (funnel swap · v6.0)
+
+Full detail in `docs/content-style-decisions.md` (D27–D32) and `.interface-design/system.md`. Commit: `140a7a5`.
+
+**Funnel model (the spine of CTA decisions):** `See → Talk → [enroll] → Assess`. **Watch a Demo Class** = soft close on cold/high-traffic surfaces (navbar primary, home hero, /about close). **Book Your Consultation** = firm close on warm surfaces (deep-page bodies, post-video, footer band). The **Lexile assessment is post-enrollment and informational only** — never a lead-capture CTA (consult-before-assess).
+
+- **Navbar (D27, D30, D31):** primary CTA → **Watch Demo Class** (hides on /demos); consult demoted to mobile-drawer ghost. Renames **The Program → ELA Program**, **The Method → DODO Method**. Gated Reading Companion item = lock glyph only; "members" tag now `sr-only`.
+- **CTAs / pages (D28, D30):** one conversion moment per page. Deleted the per-page `charter` bands on /program, /demos, /consult + the duplicate `BookCall` on /demos. Labels standardized (EN "Book Your Consultation" / ZH **预约咨询**, dropping 评估; secondary "See The 16-Week Program").
+- **Footer (D28 → D33):** pre-CTA band extracted to client `components/layout/PreCtaBand.jsx`. Now a **soft fallback (v6.1, D33):** suppressed on every page that owns an in-body close; shown soft-first (Watch primary + Consult ghost) only on pages without one (home, /faq, /partners, /assessment). `footer.preCta` reframed soft; `footer.preCtaWatch` removed.
+- **Assessment (D29):** `compare.s9` reframed (consultation decides fit, not assessment); footer label `Free Assessment → The Lexile Assessment / Lexile 测评`.
+- **Little DODO (D32):** K–2 ELA sub-program briefed; positioning + page plan in `docs/little-dodo-plan.md`. Page build deferred (Task 3).
 
 ---
 

@@ -79,25 +79,17 @@ export const nav = {
 // ── footer (页脚) ─────────────────────────────────────────────
 // 列结构：品牌 · 课程 · 资源 · 服务地区。
 export const footer = {
+  // 柔性兜底转化条（PreCtaBand）。仅在没有自带收尾 CTA 的页面显示
+  // （首页、/faq、/partners、/assessment）——见 PreCtaBand SUPPRESS。
+  // 柔性引导优先：观看示范课（主）+ 预约咨询（次）。
   preCta: {
-    eyebrow:    '诊断式评估面谈',
-    heading:    '准备好与孩子的导师见面了吗？',
-    body:       '诊断式评估面谈让我们看清孩子真实的英语水平 — 而非学校档案上的水平。',
-    consult:    '预约咨询',
-    consultAria:'预约诊断式评估面谈',
-    watch:      '观看示范课',
-    watchAria:  '观看免费的示范课',
-  },
-  // 仅在 /consult 页面显示的变体——该页本身即预约入口，
-  // 因此引导观看示范课（柔性步骤），而非指回自身的循环链接。
-  preCtaWatch: {
     eyebrow:    '先看真实课堂',
-    heading:    '预约前，想先看看真实的课堂吗？',
+    heading:    '先看一节真实的课，再做决定。',
     body:       '没有推销，没有剪辑——一位真实的导师、一名真实的学生，完整走过一节 The Loop 课程。',
     watch:      '观看示范课',
     watchAria:  '观看免费的示范课',
-    program:    '了解十六周课程',
-    programAria:'了解十六周英语课程',
+    consult:    '预约咨询',
+    consultAria:'预约诊断式评估面谈',
   },
   brand: {
     logoAria:  'DODO 都学书院 — 首页',

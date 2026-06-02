@@ -48,10 +48,15 @@ a Demo   Consultation          (Week 0 / 8 / 16)
      预约我的咨询.
    - ZH deliberately uses **预约咨询** (not 预约评估面谈) so the word "评估" (assessment)
      never appears on a consult CTA — reinforces the consult-before-assess reframe.
-3. **`PreCtaBand` is path-aware.** Firm consult close on every page; on `/consult`
-   itself it swaps to a soft "Watch a Demo Class" offer (copy key `footer.preCtaWatch`)
-   so the band never links back to the page you're already on. Mirror this pattern for
-   any future "you are here" CTA suppression.
+3. **`PreCtaBand` is a soft fallback, not a peer panel (v6.1, D33).** It is
+   **suppressed** on every page that owns an in-body closing CTA (see the `SUPPRESS`
+   list in `PreCtaBand.jsx`: about, program, methodology, lexile, results, navigators,
+   compare, demos, consult, blog, cities, audiobooks, privacy, terms) and **shown only**
+   on pages without one (home, `/faq`, `/partners`, `/assessment`). Where shown it leads
+   **soft** — Watch a Demo Class (primary) + Book Your Consultation (ghost). Copy:
+   `footer.preCta` (reframed soft). This is what guarantees "one conversion moment per
+   page" — never a page's own close *plus* the band. When you add a page, decide: does it
+   own a close? If yes, add its route to `SUPPRESS`.
 
 ---
 

@@ -97,25 +97,17 @@ export const nav = {
 // `sibling` = DODO Coding cross-link line in Brand column; rendered only
 //             when env flag NEXT_PUBLIC_SHOW_CODING is set.
 export const footer = {
+  // Soft fallback band (PreCtaBand). Shown ONLY on pages without their own
+  // closing CTA (home, /faq, /partners, /assessment) — see PreCtaBand SUPPRESS.
+  // Leads soft: Watch a Demo Class (primary) + Book Your Consultation (ghost).
   preCta: {
-    eyebrow:    'Diagnostic Consultation',
-    heading:    'Ready to meet your child’s Navigator?',
-    body:       'The diagnostic consultation is where we find out exactly where your child is — not where their school says they are.',
-    consult:    'Book Your Consultation',
-    consultAria:'Book a diagnostic consultation',
-    watch:      'Watch a Class',
-    watchAria:  'Watch a free demo class',
-  },
-  // Variant shown ONLY on /consult — that page IS the booking destination,
-  // so the band offers the soft step (watch) instead of a circular consult link.
-  preCtaWatch: {
-    eyebrow:    'Watch First',
-    heading:    'Want to see a real class before you book?',
+    eyebrow:    'See It First',
+    heading:    'See a real class before you decide.',
     body:       'No pitch, no edited highlights — a real Navigator and a real student working through a full session of The Loop.',
     watch:      'Watch a Demo Class',
     watchAria:  'Watch a free demo class',
-    program:    'See The 16-Week Program',
-    programAria:'Learn about The 16-Week Program',
+    consult:    'Book Your Consultation',
+    consultAria:'Book a diagnostic consultation',
   },
   brand: {
     logoAria:  'DODO Learning — home',
