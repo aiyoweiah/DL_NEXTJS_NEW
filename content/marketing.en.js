@@ -1203,9 +1203,9 @@ export const navigators = {
     s4half: {
       eyebrow:    'Meet a Navigator',
       h2:         'Ms. Kimberly.',
-      bio:        '[YOUR COPY — 2–3 sentences on Kimberly\'s background, teaching style, where she sits in The Loop.]',
+      bio:        'A practicing professor of English Literature and Communication, Ms. Kimberly holds an education degree from Queen\'s University and brings seven years of guiding students through the kind of close reading and structured composition North American universities expect. Her sessions are grounded in the MCT tradition of author mirroring — students study the moves of a published author until those moves become available in their own writing. Inside The Loop, she is sharpest at the Speak → Write transition, where a student\'s spoken position has to land as a precise sentence on the page.',
       stats: [
-        { label: 'Years teaching',       value: '[N]' },
+        { label: 'Years teaching',       value: '7' },
         { label: 'Lexile certified',     value: 'Yes' },
         { label: '6+1 Trait calibrated', value: 'Yes' },
       ],

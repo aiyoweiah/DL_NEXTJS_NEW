@@ -276,12 +276,12 @@ export default async function NavigatorsPage({ params }) {
 
       {/* ── S4.5 MEET MS. KIMBERLY (vertical kimberly-intro spotlight) ── */}
       {/*
-        Featured spotlight before the S5 navigator grid. Light surface
-        (#F5F5FF) extends the S4 → S5 cadence (light → dark) by inserting
-        light → light → dark, which still reads cleanly because the video
-        chrome itself reverses to dark on the page.
+        Featured spotlight before the S5 navigator grid. Surface is the
+        section-tinted token (#EAEAF8) — distinct from S4's #F5F5FF above
+        and S5's #0E0E12 below — to avoid same-surface back-to-back doubled
+        padding per the section spacing protocol in system.md.
       */}
-      <section className="px-6 py-24" style={{ backgroundColor: '#F5F5FF' }} aria-labelledby="navigators-s4half-heading">
+      <section className="px-6 py-24" style={{ backgroundColor: '#EAEAF8' }} aria-labelledby="navigators-s4half-heading">
         <div className="container-section">
           <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] gap-10 md:gap-14 items-center max-w-5xl mx-auto">
             <div className="mx-auto md:mx-0" style={{ width: '100%', maxWidth: '300px' }}>

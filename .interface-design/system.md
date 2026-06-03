@@ -114,6 +114,28 @@ child (needs `usePathname`); everything else stays server.
 **Spacing/layout:** `container-section` wrapper; section padding `var(--section-md)`;
 pill badges `rounded-full`, buttons/cards `rounded-lg`. Breakpoints: `md:768`, `lg:1024`.
 
+**Section spacing protocol (v6.2, added when wiring Stream video embeds).** All
+section padding is owned by `SectionWrapper` — never apply section-level `py-*`
+in a page file (the `.section-*` classes in `globals.css` already add
+`padding-top/bottom: var(--section-md)` = 64 px). Inner content may add `py-*`
+for emphasis. Critically: **two adjacent sections must NOT share both the same
+surface colour AND default `--section-md` padding** — back-to-back same-surface
+sections double the vertical air and read as loose (the failure mode that
+prompted this rule was on /methodology where two consecutive `<SectionWrapper
+white>` calls produced ~240 px of empty white between the LCS definition box
+and the "See it live" video heading). When two adjacent sections semantically
+belong together, choose one:
+
+1. **Combine** into a single `SectionWrapper` with internal `mt-16 md:mt-20`
+   between blocks — preferred when continuous (e.g., a definition followed by
+   its illustrative video).
+2. **Alternate the surface** of the second to a different token (`section-light`
+   → `section-tinted` → `section-light`; `#F5F5FF` → `#EAEAF8` → `#F5F5FF`) —
+   preferred when distinct (e.g., abstract claim → specific spotlight example,
+   as in `/navigators` S4 → S4.5 Kimberly).
+3. **Tighten the boundary** with `paddingTop: 0` on the inner container — last
+   resort, only when neither combine nor alternate fits the semantic.
+
 ---
 
 ## Process guardrails (DODO-specific)

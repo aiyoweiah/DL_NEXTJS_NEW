@@ -1177,9 +1177,9 @@ export const navigators = {
     s4half: {
       eyebrow:    '认识导师（Navigator）',
       h2:         'Kimberly 老师。',
-      bio:        '[请补充 Kimberly 老师的背景介绍——2-3 句话。]',
+      bio:        'Kimberly 老师现任大学教授，讲授英语文学与传播学，持有皇后大学的教育学学位，七年来陪伴学生走过北美顶尖大学所要求的精读与系统写作训练。她的课堂传承 MCT 的"作者临摹"理念——让学生反复研读一位成熟作家的笔触，直到那些笔触能在自己的文字中自然浮现。在 The Loop（学习循环）中，她最擅长 Speak（表达）→ Write（写作）的衔接——引导学生把口头表达过的立场，落成纸上一句精确的句子。',
       stats: [
-        { label: '教学经验',      value: '[N] 年' },
+        { label: '教学经验',      value: '7 年' },
         { label: 'Lexile 认证',  value: '已认证' },
         { label: '6+1 写作标定', value: '已标定' },
       ],

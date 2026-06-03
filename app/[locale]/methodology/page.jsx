@@ -169,7 +169,14 @@ export default async function MethodologyPage({ params }) {
         </div>
       </section>
 
-      {/* ── 1b. What is the LCS System (AEO definition) ───── */}
+      {/* ── 1b + 1c. Definition + See it live (combined) ───── */}
+      {/*
+        Per the section spacing protocol (see .interface-design/system.md),
+        two adjacent SectionWrappers on the same surface produce doubled
+        vertical air. The LCS definition and the live clip are semantically
+        continuous ("here is what it is → now see it") so they share one
+        SectionWrapper with an internal mt-16 md:mt-20 break instead.
+      */}
       <SectionWrapper white>
         <div className="py-12 md:py-14 max-w-3xl">
           <div className="rounded-2xl p-6 md:p-8" style={{ backgroundColor: '#F5F5FF', borderLeft: '3px solid #b7b5fe' }}>
@@ -177,32 +184,24 @@ export default async function MethodologyPage({ params }) {
               {t.definition.body}
             </p>
           </div>
-        </div>
-      </SectionWrapper>
 
-      {/* ── 1c. See it live — lcs-cut 90s clip ───────────── */}
-      {/*
-        Sandwiched between abstract definition and the "Why a Loop" argument.
-        White surface to maintain editorial calm; the video itself provides
-        the visual break, not a section colour shift.
-      */}
-      <SectionWrapper white>
-        <div className="py-16 md:py-20 max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.15em] mb-4" style={{ color: '#5856cc' }}>
-            {t.seeItLive.eyebrow}
-          </p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5" style={{ color: '#0E0E12', letterSpacing: '-0.025em' }}>
-            {t.seeItLive.h2}
-          </h2>
-          <p className="text-lg leading-relaxed mb-10" style={{ color: '#3D4452' }}>
-            {t.seeItLive.body}
-          </p>
-          <StreamVideo
-            videoKey="lcs-cut"
-            title={t.seeItLive.videoTitle}
-            aspectRatio="16/9"
-            rounded="1rem"
-          />
+          <div className="mt-16 md:mt-20">
+            <p className="text-xs font-semibold uppercase tracking-[0.15em] mb-4" style={{ color: '#5856cc' }}>
+              {t.seeItLive.eyebrow}
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5" style={{ color: '#0E0E12', letterSpacing: '-0.025em' }}>
+              {t.seeItLive.h2}
+            </h2>
+            <p className="text-lg leading-relaxed mb-10" style={{ color: '#3D4452' }}>
+              {t.seeItLive.body}
+            </p>
+            <StreamVideo
+              videoKey="lcs-cut"
+              title={t.seeItLive.videoTitle}
+              aspectRatio="16/9"
+              rounded="1rem"
+            />
+          </div>
         </div>
       </SectionWrapper>
 

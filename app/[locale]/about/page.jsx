@@ -325,7 +325,10 @@ function WhoNavigatorsAre({ locale, c }) {
   return (
     <section className="section-light" aria-labelledby="navigators-heading">
       <div className="container-section">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        {/* gap-12 (48px) rather than gap-16 (64px) — the vertical video has a
+            narrower footprint than the gradient it replaced; gap-16 left
+            inter-column air feeling loose. */}
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="order-2 lg:order-1">
             <div className="flex flex-col items-center lg:items-start">
               {/* Vertical 9:16 navigator intro — Ms. Kimberly */}
