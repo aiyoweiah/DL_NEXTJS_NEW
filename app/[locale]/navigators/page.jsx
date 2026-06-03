@@ -17,6 +17,7 @@ import { buildMetadata }               from '@/lib/metadata'
 import { navigators as copyEn }    from '@/content/marketing.en'
 import { navigators as copyZh }    from '@/content/marketing.zh'
 import StreamVideo                 from '@/components/media/StreamVideo'
+import SectionWrapper              from '@/components/ui/SectionWrapper'
 
 export async function generateMetadata({ params }) {
   const { locale } = await params
@@ -179,45 +180,41 @@ export default async function NavigatorsPage({ params }) {
       </section>
 
       {/* ── S2 WHAT A NAVIGATOR IS NOT ───────────────────── */}
-      <section className="px-6 py-24" style={{ backgroundColor: '#0E0E12' }}>
-        <div className="container-section">
-          <Eyebrow dark center>{c.s2.eyebrow}</Eyebrow>
-          <h2 className="text-center mb-16" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 600, color: '#F0F0F0', lineHeight: 1.3 }}>
-            {c.s2.h2}
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0">
-            {c.s2.cols.map(({ strike, title, body }, i) => (
-              <div key={i} className={i === 0 ? 'md:pr-12 md:border-r' : i === 1 ? 'md:px-12 md:border-r' : 'md:pl-12'}
-                style={{ borderColor: 'rgba(183,181,254,0.2)' }}>
-                <div className="mb-3 line-through" style={{ fontSize: '13px', fontWeight: 500, color: '#F0F0F0', opacity: 0.5 }}>{strike}</div>
-                <div className="mb-4" style={{ fontSize: '20px', fontWeight: 700, color: '#b7b5fe' }}>{title}</div>
-                <p style={{ fontSize: '15px', fontWeight: 400, color: '#F0F0F0', opacity: 0.7, lineHeight: 1.6 }}>{body}</p>
-              </div>
-            ))}
-          </div>
+      <SectionWrapper darker>
+        <Eyebrow dark center>{c.s2.eyebrow}</Eyebrow>
+        <h2 className="text-center mb-16" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 600, color: '#F0F0F0', lineHeight: 1.3 }}>
+          {c.s2.h2}
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0">
+          {c.s2.cols.map(({ strike, title, body }, i) => (
+            <div key={i} className={i === 0 ? 'md:pr-12 md:border-r' : i === 1 ? 'md:px-12 md:border-r' : 'md:pl-12'}
+              style={{ borderColor: 'rgba(183,181,254,0.2)' }}>
+              <div className="mb-3 line-through" style={{ fontSize: '13px', fontWeight: 500, color: '#F0F0F0', opacity: 0.5 }}>{strike}</div>
+              <div className="mb-4" style={{ fontSize: '20px', fontWeight: 700, color: '#b7b5fe' }}>{title}</div>
+              <p style={{ fontSize: '15px', fontWeight: 400, color: '#F0F0F0', opacity: 0.7, lineHeight: 1.6 }}>{body}</p>
+            </div>
+          ))}
         </div>
-      </section>
+      </SectionWrapper>
 
       {/* ── S3 WHAT A NAVIGATOR DOES ─────────────────────── */}
-      <section className="px-6 py-24" style={{ backgroundColor: '#212830' }}>
-        <div className="container-section">
-          <Eyebrow dark center>{c.s3.eyebrow}</Eyebrow>
-          <h2 className="text-center mb-16" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 600, color: '#F0F0F0', lineHeight: 1.3 }}>
-            {c.s3.h2}
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
-            {c.s3.steps.map(({ num, phase, headline, sub }) => (
-              <div key={num}>
-                <div className="mb-2" style={{ fontSize: '14px', fontWeight: 300, color: '#b7b5fe', opacity: 0.5 }}>{num}</div>
-                <div className="mb-6" style={{ borderTop: '3px solid #b7b5fe', width: '100%' }} />
-                <div className="mb-4" style={{ fontSize: '22px', fontWeight: 700, color: '#b7b5fe' }}>{phase}</div>
-                <p className="mb-3" style={{ fontSize: '16px', fontWeight: 600, color: '#F0F0F0', lineHeight: 1.5 }}>{headline}</p>
-                <p style={{ fontSize: '14px', fontWeight: 400, color: '#F0F0F0', opacity: 0.65, lineHeight: 1.5 }}>{sub}</p>
-              </div>
-            ))}
-          </div>
+      <SectionWrapper dark>
+        <Eyebrow dark center>{c.s3.eyebrow}</Eyebrow>
+        <h2 className="text-center mb-16" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 600, color: '#F0F0F0', lineHeight: 1.3 }}>
+          {c.s3.h2}
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
+          {c.s3.steps.map(({ num, phase, headline, sub }) => (
+            <div key={num}>
+              <div className="mb-2" style={{ fontSize: '14px', fontWeight: 300, color: '#b7b5fe', opacity: 0.5 }}>{num}</div>
+              <div className="mb-6" style={{ borderTop: '3px solid #b7b5fe', width: '100%' }} />
+              <div className="mb-4" style={{ fontSize: '22px', fontWeight: 700, color: '#b7b5fe' }}>{phase}</div>
+              <p className="mb-3" style={{ fontSize: '16px', fontWeight: 600, color: '#F0F0F0', lineHeight: 1.5 }}>{headline}</p>
+              <p style={{ fontSize: '14px', fontWeight: 400, color: '#F0F0F0', opacity: 0.65, lineHeight: 1.5 }}>{sub}</p>
+            </div>
+          ))}
         </div>
-      </section>
+      </SectionWrapper>
 
       {/* ── S3.5 HOW WE CHOOSE NAVIGATORS (dodo-tutor-selection) ── */}
       {/*
@@ -226,53 +223,49 @@ export default async function NavigatorsPage({ params }) {
         without inventing a new colour. No new CTA — funnel rules cap
         consult touchpoints; S8 owns the page's close.
       */}
-      <section className="px-6 py-24" style={{ backgroundColor: '#0E0E12' }} aria-labelledby="navigators-s3half-heading">
-        <div className="container-section">
-          <div className="max-w-2xl mb-10">
-            <Eyebrow dark>{c.s3half.eyebrow}</Eyebrow>
-            <h2 id="navigators-s3half-heading" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 600, color: '#F0F0F0', lineHeight: 1.3, marginBottom: '1rem' }}>
-              {c.s3half.h2}
-            </h2>
-            <p style={{ fontSize: '16px', lineHeight: 1.7, color: 'rgba(240,240,240,0.6)' }}>
-              {c.s3half.body}
-            </p>
-          </div>
-          <div className="mx-auto" style={{ maxWidth: '880px' }}>
-            <StreamVideo
-              videoKey="dodo-tutor-selection"
-              title={c.s3half.videoTitle}
-              aspectRatio="16/9"
-              rounded="1rem"
-            />
-          </div>
+      <SectionWrapper darker ariaLabelledBy="navigators-s3half-heading">
+        <div className="max-w-2xl mb-10">
+          <Eyebrow dark>{c.s3half.eyebrow}</Eyebrow>
+          <h2 id="navigators-s3half-heading" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 600, color: '#F0F0F0', lineHeight: 1.3, marginBottom: '1rem' }}>
+            {c.s3half.h2}
+          </h2>
+          <p style={{ fontSize: '16px', lineHeight: 1.7, color: 'rgba(240,240,240,0.6)' }}>
+            {c.s3half.body}
+          </p>
         </div>
-      </section>
+        <div className="mx-auto" style={{ maxWidth: '880px' }}>
+          <StreamVideo
+            videoKey="dodo-tutor-selection"
+            title={c.s3half.videoTitle}
+            aspectRatio="16/9"
+            rounded="1rem"
+          />
+        </div>
+      </SectionWrapper>
 
       {/* ── S4 THE NAVIGATOR RELATIONSHIP ────────────────── */}
-      <section className="px-6 py-24" style={{ backgroundColor: '#F5F5FF' }}>
-        <div className="container-section">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="order-2 md:order-1">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="https://images.unsplash.com/photo-1673515335586-f9f662c01482?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080&q=80"
-                alt="Navigator and student in a live online session" className="w-full h-auto rounded-lg" style={{ display: 'block' }} />
-            </div>
-            <div className="order-1 md:order-2">
-              <Eyebrow>{c.s4.eyebrow}</Eyebrow>
-              <h2 className="mb-8" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 700, color: '#0E0E12', lineHeight: 1.3, maxWidth: '480px' }}>
-                {c.s4.h2}
-              </h2>
-              <div className="space-y-5">
-                {c.s4.points.map(({ label, body }) => (
-                  <p key={label} style={{ fontSize: '16px', fontWeight: 400, color: '#212830', lineHeight: 1.6 }}>
-                    <strong style={{ fontWeight: 600, color: '#0E0E12' }}>{label}:</strong>{' '}{body}
-                  </p>
-                ))}
-              </div>
+      <SectionWrapper>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="order-2 md:order-1">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="https://images.unsplash.com/photo-1673515335586-f9f662c01482?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080&q=80"
+              alt="Navigator and student in a live online session" className="w-full h-auto rounded-lg" style={{ display: 'block' }} />
+          </div>
+          <div className="order-1 md:order-2">
+            <Eyebrow>{c.s4.eyebrow}</Eyebrow>
+            <h2 className="mb-8" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 700, color: '#0E0E12', lineHeight: 1.3, maxWidth: '480px' }}>
+              {c.s4.h2}
+            </h2>
+            <div className="space-y-5">
+              {c.s4.points.map(({ label, body }) => (
+                <p key={label} style={{ fontSize: '16px', fontWeight: 400, color: '#212830', lineHeight: 1.6 }}>
+                  <strong style={{ fontWeight: 600, color: '#0E0E12' }}>{label}:</strong>{' '}{body}
+                </p>
+              ))}
             </div>
           </div>
         </div>
-      </section>
+      </SectionWrapper>
 
       {/* ── S4.5 MEET MS. KIMBERLY (vertical kimberly-intro spotlight) ── */}
       {/*
@@ -281,71 +274,67 @@ export default async function NavigatorsPage({ params }) {
         and S5's #0E0E12 below — to avoid same-surface back-to-back doubled
         padding per the section spacing protocol in system.md.
       */}
-      <section className="px-6 py-24" style={{ backgroundColor: '#EAEAF8' }} aria-labelledby="navigators-s4half-heading">
-        <div className="container-section">
-          <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] gap-10 md:gap-14 items-center max-w-5xl mx-auto">
-            <div className="mx-auto md:mx-0" style={{ width: '100%', maxWidth: '300px' }}>
-              <StreamVideo
-                videoKey="kimberly-intro"
-                title={c.s4half.videoTitle}
-                aspectRatio="9/16"
-                rounded="1.5rem"
-              />
-            </div>
-            <div>
-              <Eyebrow>{c.s4half.eyebrow}</Eyebrow>
-              <h2 id="navigators-s4half-heading" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 700, color: '#0E0E12', lineHeight: 1.3, marginBottom: '1rem' }}>
-                {c.s4half.h2}
-              </h2>
-              <p style={{ fontSize: '16px', lineHeight: 1.7, color: '#3D4452', marginBottom: '1.75rem' }}>
-                {c.s4half.bio}
-              </p>
-              <dl className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                {c.s4half.stats.map((stat) => (
-                  <div key={stat.label} className="rounded-lg p-4" style={{ backgroundColor: '#ffffff', border: '1px solid rgba(14,14,18,0.07)' }}>
-                    <dt style={{ fontSize: '11px', fontWeight: 600, color: '#5856cc', letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: '6px' }}>
-                      {stat.label}
-                    </dt>
-                    <dd style={{ fontSize: '15px', fontWeight: 700, color: '#0E0E12' }}>
-                      {stat.value}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
+      <SectionWrapper tinted ariaLabelledBy="navigators-s4half-heading">
+        <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] gap-10 md:gap-14 items-center max-w-5xl mx-auto">
+          <div className="mx-auto md:mx-0" style={{ width: '100%', maxWidth: '300px' }}>
+            <StreamVideo
+              videoKey="kimberly-intro"
+              title={c.s4half.videoTitle}
+              aspectRatio="9/16"
+              rounded="1.5rem"
+            />
+          </div>
+          <div>
+            <Eyebrow>{c.s4half.eyebrow}</Eyebrow>
+            <h2 id="navigators-s4half-heading" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 700, color: '#0E0E12', lineHeight: 1.3, marginBottom: '1rem' }}>
+              {c.s4half.h2}
+            </h2>
+            <p style={{ fontSize: '16px', lineHeight: 1.7, color: '#3D4452', marginBottom: '1.75rem' }}>
+              {c.s4half.bio}
+            </p>
+            <dl className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {c.s4half.stats.map((stat) => (
+                <div key={stat.label} className="rounded-lg p-4" style={{ backgroundColor: '#ffffff', border: '1px solid rgba(14,14,18,0.07)' }}>
+                  <dt style={{ fontSize: '11px', fontWeight: 600, color: '#5856cc', letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: '6px' }}>
+                    {stat.label}
+                  </dt>
+                  <dd style={{ fontSize: '15px', fontWeight: 700, color: '#0E0E12' }}>
+                    {stat.value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </div>
-      </section>
+      </SectionWrapper>
 
       {/* ── S5 NAVIGATOR PROFILES ────────────────────────── */}
-      <section className="px-6 py-24" style={{ backgroundColor: '#0E0E12' }}>
-        <div className="container-section">
-          <Eyebrow dark center>{c.s5.eyebrow}</Eyebrow>
-          <h2 className="text-center mb-16" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 600, color: '#F0F0F0', lineHeight: 1.3 }}>
-            {c.s5.h2}
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {NAVIGATORS.map((nav) => {
-              const loc = nav[locale] ?? nav.en
-              return (
-                <div key={nav.name} className="rounded-lg" style={{ backgroundColor: '#2E3848', borderTop: '3px solid #b7b5fe', padding: '32px' }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={nav.photo} alt={nav.alt} className="rounded-lg object-cover mb-6" style={{ width: '96px', height: '96px', display: 'block' }} />
-                  <div className="mb-2" style={{ fontSize: '18px', fontWeight: 600, color: '#F0F0F0' }}>{nav.name}</div>
-                  <p className="mb-4" style={{ fontSize: '14px', fontWeight: 400, color: '#F0F0F0', opacity: 0.7, lineHeight: 1.5 }}>{loc.bio}</p>
-                  <p className="mb-4" style={{ fontSize: '14px', fontWeight: 400, fontStyle: 'italic', color: '#b7b5fe', lineHeight: 1.5 }}>&ldquo;{loc.quote}&rdquo;</p>
-                  <div className="mb-4 flex flex-wrap">{nav.badges.map((b) => <Badge key={b}>{b}</Badge>)}</div>
-                  <p style={{ fontSize: '13px', fontWeight: 500, color: '#F0F0F0', lineHeight: 1.5 }}>{nav.result}<br />{nav.lexile}</p>
-                </div>
-              )
-            })}
-          </div>
+      <SectionWrapper darker>
+        <Eyebrow dark center>{c.s5.eyebrow}</Eyebrow>
+        <h2 className="text-center mb-16" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 600, color: '#F0F0F0', lineHeight: 1.3 }}>
+          {c.s5.h2}
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {NAVIGATORS.map((nav) => {
+            const loc = nav[locale] ?? nav.en
+            return (
+              <div key={nav.name} className="rounded-lg" style={{ backgroundColor: '#2E3848', borderTop: '3px solid #b7b5fe', padding: '32px' }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={nav.photo} alt={nav.alt} className="rounded-lg object-cover mb-6" style={{ width: '96px', height: '96px', display: 'block' }} />
+                <div className="mb-2" style={{ fontSize: '18px', fontWeight: 600, color: '#F0F0F0' }}>{nav.name}</div>
+                <p className="mb-4" style={{ fontSize: '14px', fontWeight: 400, color: '#F0F0F0', opacity: 0.7, lineHeight: 1.5 }}>{loc.bio}</p>
+                <p className="mb-4" style={{ fontSize: '14px', fontWeight: 400, fontStyle: 'italic', color: '#b7b5fe', lineHeight: 1.5 }}>&ldquo;{loc.quote}&rdquo;</p>
+                <div className="mb-4 flex flex-wrap">{nav.badges.map((b) => <Badge key={b}>{b}</Badge>)}</div>
+                <p style={{ fontSize: '13px', fontWeight: 500, color: '#F0F0F0', lineHeight: 1.5 }}>{nav.result}<br />{nav.lexile}</p>
+              </div>
+            )
+          })}
         </div>
-      </section>
+      </SectionWrapper>
 
       {/* ── S6 A REAL SESSION ────────────────────────────── */}
-      <section className="px-6 py-24" style={{ backgroundColor: '#F5F5FF' }}>
-        <div className="max-w-5xl mx-auto px-0 md:px-6">
+      <SectionWrapper>
+        <div className="max-w-5xl mx-auto">
           <Eyebrow center>{c.s6.eyebrow}</Eyebrow>
           <h2 className="text-center mb-12" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 700, color: '#0E0E12', lineHeight: 1.3 }}>{c.s6.h2}</h2>
           <div className="rounded-lg" style={{ backgroundColor: '#ffffff', border: '1px solid rgba(14,14,18,0.1)', padding: '40px' }}>
@@ -359,27 +348,25 @@ export default async function NavigatorsPage({ params }) {
             </div>
           </div>
         </div>
-      </section>
+      </SectionWrapper>
 
       {/* ── S7 WHAT FAMILIES SAY ─────────────────────────── */}
-      <section className="px-6 py-24" style={{ backgroundColor: '#212830' }}>
-        <div className="container-section">
-          <Eyebrow dark center>{c.s7.eyebrow}</Eyebrow>
-          <h2 className="text-center mb-16" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 600, color: '#F0F0F0', lineHeight: 1.3 }}>{c.s7.h2}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {c.s7.testimonials.map(({ quote, city, detail }) => (
-              <div key={city + detail} className="rounded-lg" style={{ backgroundColor: '#2E3848', padding: '32px' }}>
-                <p className="mb-6" style={{ fontSize: '16px', fontWeight: 400, color: '#F0F0F0', lineHeight: 1.7, fontStyle: 'italic' }}>&ldquo;{quote}&rdquo;</p>
-                <div style={{ fontSize: '14px', fontWeight: 600, color: '#b7b5fe' }}>{city}</div>
-                <div style={{ fontSize: '13px', fontWeight: 400, color: '#F0F0F0', opacity: 0.6 }}>{detail}</div>
-              </div>
-            ))}
-          </div>
+      <SectionWrapper dark>
+        <Eyebrow dark center>{c.s7.eyebrow}</Eyebrow>
+        <h2 className="text-center mb-16" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 600, color: '#F0F0F0', lineHeight: 1.3 }}>{c.s7.h2}</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {c.s7.testimonials.map(({ quote, city, detail }) => (
+            <div key={city + detail} className="rounded-lg" style={{ backgroundColor: '#2E3848', padding: '32px' }}>
+              <p className="mb-6" style={{ fontSize: '16px', fontWeight: 400, color: '#F0F0F0', lineHeight: 1.7, fontStyle: 'italic' }}>&ldquo;{quote}&rdquo;</p>
+              <div style={{ fontSize: '14px', fontWeight: 600, color: '#b7b5fe' }}>{city}</div>
+              <div style={{ fontSize: '13px', fontWeight: 400, color: '#F0F0F0', opacity: 0.6 }}>{detail}</div>
+            </div>
+          ))}
         </div>
-      </section>
+      </SectionWrapper>
 
       {/* ── S8 CLOSING CTA ───────────────────────────────── */}
-      <section className="px-6 py-32" style={{ backgroundColor: '#0E0E12' }}>
+      <SectionWrapper darker>
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="mb-6" style={{ fontSize: 'clamp(32px, 5vw, 52px)', fontWeight: 700, color: '#F0F0F0', lineHeight: 1.2 }}>
             {c.s8.h2a}<span style={{ color: '#b7b5fe' }}>{c.s8.h2b}</span>{c.s8.h2c}<span style={{ color: '#b7b5fe' }}>{c.s8.h2d}</span>{c.s8.h2e}
@@ -391,7 +378,7 @@ export default async function NavigatorsPage({ params }) {
           </Link>
           <p className="mt-6" style={{ fontSize: '14px', fontWeight: 400, color: '#F0F0F0', opacity: 0.5 }}>{c.s8.note}</p>
         </div>
-      </section>
+      </SectionWrapper>
 
     </div>
   )
