@@ -187,11 +187,11 @@ Scope: redesign navbar + footer for simplicity, fix tablet UX cliff, kill nav/fo
 - **Trigger:** User direction during plan-mode review of the chrome overhaul.
 
 ### D24 · "Reading Companion" as cold-traffic UI label for /audiobooks
-- **Decision:** The UI label for the gated `/audiobooks` library is **"Reading Companion" / "阅读伴"** wherever it appears in chrome and member-facing surfaces. The URL `/audiobooks` is unchanged for routing / back-compat / sitemap / hreflang stability. Cloudflare Access gate is unchanged — the nav item is a members-area entry point, not a marketing surface; rendered with a lock glyph + "members" / "学员专属" micro-tag (visible at `lg+`, omitted at `md` to save horizontal width).
-- **Reasoning:** "Audiobooks" describes the file format; "Reading Companion" describes the role the library plays in a student's program. Aligns the label with the value proposition rather than the medium. The ZH rendering "阅读伴" is the proposed short form — confirm with brand voice before locking; alternatives in play: 共读伙伴, 阅读伴侣.
-- **Where it lives now:** `content/marketing.{en,zh}.js` `nav.primary[4].label` · `Navbar.jsx` renders the lock glyph and `members` tag · all marketing references to "the library" should follow this rename.
-- **Trigger:** User direction during plan-mode review.
-- **Watch:** ZH translation 阅读伴 is provisional. If brand voice prefers 共读伙伴 or 阅读伴侣, swap in `marketing.zh.js` only — no other surface depends on the string.
+- **Decision:** The UI label for the gated `/audiobooks` library is **"Reading Companion" (EN) / "有声书" (ZH, per D34)** wherever it appears in chrome and member-facing surfaces. The URL `/audiobooks` is unchanged for routing / back-compat / sitemap / hreflang stability. Cloudflare Access gate is unchanged — the nav item is a members-area entry point, not a marketing surface; rendered with a lock glyph + "members" / "学员专属" micro-tag (visible at `lg+`, omitted at `md` to save horizontal width).
+- **Reasoning:** "Audiobooks" describes the file format; "Reading Companion" describes the role the library plays in a student's program. Aligns the label with the value proposition rather than the medium. **ZH side adopts the descriptive form 有声书 (per D34, 2026-06-02)** — EN retains the branded "Reading Companion" for the role framing; ZH chose the descriptive form for clarity on a gated entry-point label. Bilingual asymmetry is intentional and recorded in `translation/dodo-glossary.json`.
+- **Where it lives now:** `content/marketing.{en,zh}.js` `nav.primary[4].label` · `Navbar.jsx` renders the lock glyph and `members` tag · `app/[locale]/terms/page.jsx` ZH prose now uses `「有声书」内容库` (rewritten to avoid the redundant `「有声书」有声书库`).
+- **Trigger:** User direction during plan-mode review; ZH locked 2026-06-02 per D34.
+- **History:** ZH was provisionally "阅读伴" through 2026-06-02; D34 locks it as 有声书.
 
 ### D25 · Chrome i18n pattern — copy passed as prop from server layout
 - **Decision:** Navbar and Footer no longer hardcode EN labels in component constants. Both consume a `copy` prop resolved once per request in `app/[locale]/layout.jsx` (which imports both `nav`/`footer` exports from `marketing.en.js` and `marketing.zh.js` and selects by locale). Pattern keeps the client-side Navbar from bundling both locale modules and matches the existing per-page convention.
@@ -222,7 +222,7 @@ Scope: realign the whole visitor funnel around a soft→firm commitment ladder, 
 `See → Talk → [enroll] → Assess`. Watch a Demo Class = soft close (cold surfaces). Book Your Consultation = firm close (warm surfaces). The Lexile assessment is **post-enrollment and informational only** — never a lead-capture CTA.
 
 ### D27 · Watch Demo Class is the soft close; consult is demoted to the firm close
-- **Decision:** The navbar primary CTA, the home hero primary, and the `/about` closing all lead with **Watch a Demo Class / 观看示范课** (zero-commitment, "free, no sign-up"). **Book Your Consultation** is demoted to the firm close — mobile-drawer ghost, deep-page bodies, and the footer band. Cold/high-traffic surfaces lead soft; warm surfaces (post-content, post-video) close firm.
+- **Decision:** The navbar primary CTA, the home hero primary, and the `/about` closing all lead with **Watch a Demo Class (EN) / 课堂实录 (ZH, per D34)** (zero-commitment, "free, no sign-up"). **Book Your Consultation** is demoted to the firm close — mobile-drawer ghost, deep-page bodies, and the footer band. Cold/high-traffic surfaces lead soft; warm surfaces (post-content, post-video) close firm.
 - **Overrides:** Chrome-overhaul state where Book Your Consultation was the single primary CTA on every cold surface (navbar + hero + footer) and Watch was demoted.
 - **Where it lives now:** `nav.cta` (demo-first), `home.hero.cta1/cta2`, `about.closing.cta`; `Navbar.jsx` (desktop button + drawer order swapped, hides Watch on `/demos`); `page.tsx`/`about/page.jsx` hrefs realigned.
 - **Trigger:** User funnel-redesign direction — "replace booking consultation with watch demo class as top-of-page soft closer; consult is the firmer close on the demo page."
@@ -239,8 +239,8 @@ Scope: realign the whole visitor funnel around a soft→firm commitment ladder, 
 - **Trigger:** User — "Assessment page won't act as a second step in the closing process. We want to consult families before assessing them."
 
 ### D30 · CTA label standardization + nav renames (ELA Program, DODO Method)
-- **Decision:** One action, one label. EN: **Book Your Consultation** (firm), **Watch a Demo Class** (soft), **See The 16-Week Program** (secondary). ZH consult standardized to **预约咨询** — deliberately dropping 评估 (assessment) from the consult CTA to reinforce D29. Exception: the `/consult` hero keeps first-person **Book My Consultation / 预约我的咨询**. Nav renames: **The Program → ELA Program / ELA 课程**, **The Method → DODO Method / DODO 教学法**.
-- **Overrides:** D23 (`/methodology` label "The Method/方法" → now "DODO Method/DODO 教学法"). Replaced the 4–5 drifting consult labels ("Book a Diagnostic Call", "Book a Free Lexile Assessment", etc.) and 4 secondary-label variants.
+- **Decision:** One action, one label. EN: **Book Your Consultation** (firm), **Watch a Demo Class** (soft), **See The 16-Week Program** (secondary). ZH consult standardized to **预约咨询** — deliberately dropping 评估 (assessment) from the consult CTA to reinforce D29. Exception: the `/consult` hero keeps first-person **Book My Consultation / 预约我的咨询**. Nav renames: **The Program → ELA Program / ELA 课程**, **The Method → DODO Method / DODO 教学系统 (ZH per D34)**.
+- **Overrides:** D23 (`/methodology` label "The Method/方法" → "DODO Method"; ZH locked to 教学系统 by D34). Replaced the 4–5 drifting consult labels ("Book a Diagnostic Call", "Book a Free Lexile Assessment", etc.) and 4 secondary-label variants.
 - **Where it lives now:** `nav.primary`, all page `cta`/`ctaPrimary`/`ctaSecondary` in `marketing.{en,zh}.js`.
 - **Trigger:** User renames + site-wide CTA audit.
 
@@ -262,3 +262,14 @@ Scope: realign the whole visitor funnel around a soft→firm commitment ladder, 
 - **Overrides:** D28's path-aware-swap implementation. The `/consult`-only swap and the `footer.preCtaWatch` block are removed (consult now suppresses the band entirely). `footer.preCta` reframed from the firm "Ready to meet your Navigator?" to the soft "See a real class before you decide."
 - **Where it lives now:** `components/layout/PreCtaBand.jsx` (`SUPPRESS` prefix list + soft render); `footer.preCta` in `marketing.{en,zh}.js` (reframed soft; `preCtaWatch` deleted).
 - **Trigger:** User — "the section just above the footer is almost always redundant to the section above it." Chose Option A from the 2026-06-02 proposal.
+
+### D34 · Navbar ZH refresh — descriptive over branded (2026-06-02)
+- **Decision:** Four ZH labels lock to user-given source-of-truth substitutions:
+  1. **`DODO 教学法` → `DODO 教学系统`** (global ZH) — descriptor shifts from "method/pedagogy" to "system." Applies to nav, faq.js sections, all prose.
+  2. **`阅读伴` → `有声书`** (global ZH) — moves from the branded short-form to the descriptive "audiobook." Applies to nav + terms-page prose (the latter rewritten to `「有声书」内容库` to avoid `「有声书」有声书库` redundancy).
+  3. **`关于` → `故事`** (navbar primary ONLY) — `nav.primary[5].label` only. All other 关于 occurrences (footer `关于 DODO`, demos `关于课程` / `关于 DODO` card, prose use of 关于) remain untouched. Recorded as `context_specific_overrides` in `translation/dodo-glossary.json`.
+  4. **`观看示范课` → `课堂实录`** (global ZH) — repositions the soft-close from "demo class" framing to "real classroom recording." Applies to: navbar CTA, footer PreCtaBand, all page `cta1`/`watch` keys, demos page hero + meta, prose uses of standalone 示范课 (grammar adjusted — counter shifts 一堂→一段, 每节→每段; `示范课录像` collapses to `课堂实录`).
+- **EN side:** **Unchanged.** EN retains "DODO Method," "Reading Companion," "About," "Watch a Demo Class." Bilingual asymmetry is intentional — ZH side reframes brand vocabulary; EN side keeps the existing soft-close + branded forms.
+- **Where it lives now:** `content/marketing.zh.js` (~32 strings across nav, footer, home, about closing, demos, little-dodo) · `content/faq.js` (3 strings) · `app/[locale]/terms/page.jsx` ZH prose (1) · `translation/dodo-glossary.json` (3 new `owned_terms` entries + `context_specific_overrides` section) · `.interface-design/system.md` line 44 · `docs/SUCCESSOR_HANDOFF.md` (cross-refs).
+- **Trigger:** User direction 2026-06-02 — "navbar ZH translation source of truth."
+- **Rule going forward:** Future ZH additions follow the descriptive form. `教学法`/`阅读伴`/`观看示范课`/`示范课` should not reappear in ZH copy unless explicitly justified (e.g., historical quote, archived doc).

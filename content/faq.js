@@ -72,7 +72,7 @@ export const faq = {
     ],
     zh: [
       { label: '课程介绍',        anchor: 'program'    },
-      { label: 'The Loop 教学法', anchor: 'the-loop'   },
+      { label: 'The Loop 教学系统', anchor: 'the-loop'   },
       { label: '导师团队',        anchor: 'navigators' },
       { label: '学习成果',        anchor: 'results'    },
       { label: '报名与费用',      anchor: 'enrollment' },
@@ -210,11 +210,11 @@ export const faq = {
         ],
       },
       {
-        id: 'the-loop', label: 'The Loop 教学法',
+        id: 'the-loop', label: 'The Loop 教学系统',
         heading: '教学方法如何运作——以及顺序不可更改的原因。',
         variant: 'dark', bg: '#212830',
         items: [
-          { question: 'The Loop 是什么？', answer: 'The Loop 是 DODO 的四阶段教学法：阅读 → 思考 → 表达 → 写作。它根植于 MCT 语言艺术课程传统和哈佛教育学院零点项目（Harvard Project Zero）的 Visible Thinking（可视化思维方法），模拟高水平思考者处理学术内容的方式——而非语言学习者翻译词汇的方式。顺序固定，因为每个阶段都为下一阶段构建必要的认知脚手架。' },
+          { question: 'The Loop 是什么？', answer: 'The Loop 是 DODO 的四阶段教学系统：阅读 → 思考 → 表达 → 写作。它根植于 MCT 语言艺术课程传统和哈佛教育学院零点项目（Harvard Project Zero）的 Visible Thinking（可视化思维方法），模拟高水平思考者处理学术内容的方式——而非语言学习者翻译词汇的方式。顺序固定，因为每个阶段都为下一阶段构建必要的认知脚手架。' },
           { question: '为什么必须按照阅读 → 思考 → 表达 → 写作的顺序？', answer: '因为这是学术认知发展的自然顺序。阅读构建输入能力，思考构建概念框架，表达将框架外化，写作将其固化为持久的思维结构。颠倒顺序会产生没有理解深度的流利——孩子听起来自信，却无法独立推理。' },
           { question: '学生在 The Loop 每个阶段各花多长时间？', answer: '每个阶段持续4周。阅读：第1–4周。思考：第5–8周。表达：第9–12周。写作：第13–16周。无论初始能力水平如何，每位学生都完整经历四个阶段。内容难度会调整——教学方法不变。' },
           { question: '随着学生进步，The Loop 会改变吗？', answer: '结构永不改变，内容复杂度会提升。第1周 Lexile 600L 的学生仍然遵循阅读 → 思考 → 表达 → 写作的顺序，但随着基础水平提升，文本、提示和写作任务的 Lexile 范围与分析要求也会相应增加。' },

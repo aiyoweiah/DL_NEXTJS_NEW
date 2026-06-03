@@ -41,7 +41,7 @@ a Demo   Consultation          (Week 0 / 8 / 16)
    the global `PreCtaBand` (in `Footer.jsx`) is the universal close. (v6.0 deleted the
    `charter` sections from program/demos/consult and the duplicate `BookCall` on demos.)
 2. **Standardized labels — one action, one label:**
-   - Soft close: **Watch a Demo Class** / 观看示范课  → `/demos`
+   - Soft close: **Watch a Demo Class** / 课堂实录  → `/demos`
    - Firm close: **Book Your Consultation** / 预约咨询  → `/consult`
    - Secondary:  **See The 16-Week Program** / 查看十六周课程  → `/program`
    - Exception: the consult-page hero may use first-person **Book My Consultation** /

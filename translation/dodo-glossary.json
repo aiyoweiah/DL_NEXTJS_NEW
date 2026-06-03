@@ -28,6 +28,9 @@
 
     "LCS": "语言循环体系",
     "LCS Teaching System": "语言循环体系（Literacy 文学精读 · Composition 系统写作训练 · Speaking 表达）",
+    "DODO Method": "DODO 教学系统",
+    "Reading Companion": "有声书",
+    "Watch a Demo Class": "课堂实录",
     "Literacy": "文学精读（LCS 中的 L 部分）",
     "Composition": "系统写作训练（LCS 中的 C 部分）",
     "Speaking": "表达（LCS 中的 S 部分）",
@@ -64,6 +67,10 @@
     "U of T": "多伦多大学",
     "Queen's": "皇后大学",
     "LSE": "伦敦政治经济学院"
+  },
+
+  "context_specific_overrides": {
+    "About (navbar primary only)": "故事 — Only in nav.primary on /. Everywhere else (page titles, meta, prose) use 关于 in the standard 'about/regarding' sense. Footer column items like '关于 DODO' and demos row labels like '关于课程' remain unchanged."
   },
 
   "do_not_translate": [

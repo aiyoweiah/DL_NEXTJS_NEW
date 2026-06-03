@@ -1,7 +1,7 @@
 # DODO Learning — Successor Handoff
 
 **Authored:** 2026-05-17 (end of session)
-**Last updated:** 2026-06-02 — funnel swap (v6.0): Watch Demo soft-close, consult firm-close, duplicate CTA bands removed, assessment reframed (consult-before-assess), CTA labels standardized, ELA Program / DODO Method renames. Design reference: `.interface-design/system.md`. Commit `140a7a5`. New program **Little DODO** (K–2) briefed — page not yet built (`docs/little-dodo-plan.md`). See "2026-06-02 · Funnel swap (v6.0)" in the decisions log.
+**Last updated:** 2026-06-02 — funnel swap (v6.0): Watch Demo soft-close, consult firm-close, duplicate CTA bands removed, assessment reframed (consult-before-assess), CTA labels standardized, ELA Program / DODO Method renames. **Same day: Navbar ZH refresh (D34)** — ZH side adopts descriptive forms: `DODO 教学系统` · `有声书` · `故事` (navbar-only) · `课堂实录`. EN unchanged. Design reference: `.interface-design/system.md`. Commit `140a7a5`. New program **Little DODO** (K–2) briefed — page not yet built (`docs/little-dodo-plan.md`). See "2026-06-02 · Funnel swap (v6.0)" in the decisions log.
 **Repo:** `aiyoweiah/DL_NEXTJS_NEW` · deploys to dodolearning.com via **Cloudflare Pages** (`dl-nextjs-new`) from `main`. *(2026-06-02: dodoletterhouse.com / Vercel retired — that domain now 301-forwards to www.dodolearning.com at the Cloudflare edge; `ops.dodoletterhouse.com` → the `/ops` tools. www.dodolearning.com is now a Pages custom domain too. Single host.)*
 **Status:** Bilingual site fully shipped. Home + /program + /about rewritten through granular review. Chrome + funnel overhauled (v5 chrome 2026-06-01, v6 funnel 2026-06-02; pre-footer band → soft fallback v6.1, D33). /methodology rewrite in progress. **Open:** Little DODO page build + IA (#20). Tier 2/3 SEO+GEO + business decisions pending.
 
@@ -44,7 +44,7 @@ Full detail in `docs/content-style-decisions.md` (D27–D32) and `.interface-des
 
 **Funnel model (the spine of CTA decisions):** `See → Talk → [enroll] → Assess`. **Watch a Demo Class** = soft close on cold/high-traffic surfaces (navbar primary, home hero, /about close). **Book Your Consultation** = firm close on warm surfaces (deep-page bodies, post-video, footer band). The **Lexile assessment is post-enrollment and informational only** — never a lead-capture CTA (consult-before-assess).
 
-- **Navbar (D27, D30, D31):** primary CTA → **Watch Demo Class** (hides on /demos); consult demoted to mobile-drawer ghost. Renames **The Program → ELA Program**, **The Method → DODO Method**. Gated Reading Companion item = lock glyph only; "members" tag now `sr-only`.
+- **Navbar (D27, D30, D31, D34):** primary CTA → **Watch Demo Class** (EN) / **课堂实录** (ZH, per D34); hides on /demos; consult demoted to mobile-drawer ghost. Renames **The Program → ELA Program / ELA 课程**, **The Method → DODO Method / DODO 教学系统 (ZH per D34)**. Gated Reading Companion (EN) / **有声书** (ZH per D34) item = lock glyph only; "members" tag now `sr-only`. Navbar `/about` label is **About (EN) / 故事 (ZH, navbar-only per D34)**.
 - **CTAs / pages (D28, D30):** one conversion moment per page. Deleted the per-page `charter` bands on /program, /demos, /consult + the duplicate `BookCall` on /demos. Labels standardized (EN "Book Your Consultation" / ZH **预约咨询**, dropping 评估; secondary "See The 16-Week Program").
 - **Footer (D28 → D33):** pre-CTA band extracted to client `components/layout/PreCtaBand.jsx`. Now a **soft fallback (v6.1, D33):** suppressed on every page that owns an in-body close; shown soft-first (Watch primary + Consult ghost) only on pages without one (home, /faq, /partners, /assessment). `footer.preCta` reframed soft; `footer.preCtaWatch` removed.
 - **Assessment (D29):** `compare.s9` reframed (consultation decides fit, not assessment); footer label `Free Assessment → The Lexile Assessment / Lexile 测评`.
@@ -76,7 +76,7 @@ The chrome was built additively as pages shipped: 10 links duplicated between na
 
 ### Naming (D23, D24)
 - **/methodology nav label = "The Method"** (clearer to cold traffic). Page body still names "The Loop" and "The LCS System" per D1/D19.
-- **/audiobooks UI label = "Reading Companion" / "阅读伴"**. URL unchanged (back-compat, sitemap, hreflang). Cloudflare Access gate unchanged — nav item is a members-area entry point, rendered with lock glyph + "members" / "学员专属" micro-tag.
+- **/audiobooks UI label = "Reading Companion" (EN) / "有声书" (ZH, per D34)**. URL unchanged (back-compat, sitemap, hreflang). Cloudflare Access gate unchanged — nav item is a members-area entry point, rendered with lock glyph + "members" / "学员专属" micro-tag.
 
 ### New pages
 - **`app/[locale]/privacy/page.jsx`** + **`app/[locale]/terms/page.jsx`** — minimal bilingual stubs, K-12 student-data context. Resolves the long-standing broken-link condition in the footer legal strip. Copy lives inline in each page file (legal boilerplate, not marketing) rather than in `marketing.*.js`. Treat as placeholders pending legal review. Listed in `sitemap.js` at priority 0.3.

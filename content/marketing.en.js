@@ -1270,7 +1270,7 @@ export const demos = {
     videos: {
       eyebrow:   'Watch Before You Decide',
       h2:        'Demo classes and program explainers.',
-      h2zh:      '示范课与课程介绍',
+      h2zh:      '课堂实录与课程介绍',
       row1Label: 'Demo Class Recordings',
       row2Label: 'About the Program',
       cards: [

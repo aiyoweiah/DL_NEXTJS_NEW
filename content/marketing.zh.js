@@ -41,12 +41,12 @@ const YOUTUBE_IDS = {
 // 下发的 locale-aware copy 消费。结构与 marketing.en.js 镜像。
 export const nav = {
   primary: [
-    { href: '/program',     label: 'ELA 课程'   },
-    { href: '/methodology', label: 'DODO 教学法' },
-    { href: '/results',     label: '成果'       },
-    { href: '/navigators',  label: '导师'       },
-    { href: '/audiobooks',  label: '阅读伴',    gated: true },
-    { href: '/about',       label: '关于'       },
+    { href: '/program',     label: 'ELA 课程'      },
+    { href: '/methodology', label: 'DODO 教学系统' },
+    { href: '/results',     label: '成果'          },
+    { href: '/navigators',  label: '导师'          },
+    { href: '/audiobooks',  label: '有声书',       gated: true },
+    { href: '/about',       label: '故事'          },
   ],
   more: [
     { href: '/lexile',   label: 'Lexile 等级' },
@@ -55,12 +55,12 @@ export const nav = {
     { href: '/blog',     label: '博客'        },
     { href: '/partners', label: '合作伙伴'    },
   ],
-  // 导航以柔性引导（观看示范课）为先；预约面谈作为更坚定的转化，
+  // 导航以柔性引导（课堂实录）为先；预约面谈作为更坚定的转化，
   // 收纳到移动端抽屉的次级按钮、页面正文与页脚。
   cta: {
-    demo:           '观看示范课',
-    demoCompact:    '观看示范课',
-    demoAria:       '观看免费的示范课',
+    demo:           '课堂实录',
+    demoCompact:    '课堂实录',
+    demoAria:       '观看免费的课堂实录',
     consult:        '预约咨询',     // 移动端抽屉次级按钮
     consultCompact: '预约面谈',
     consultAria:    '预约免费的诊断式评估面谈',
@@ -78,13 +78,13 @@ export const nav = {
 export const footer = {
   // 柔性兜底转化条（PreCtaBand）。仅在没有自带收尾 CTA 的页面显示
   // （首页、/faq、/partners、/assessment）——见 PreCtaBand SUPPRESS。
-  // 柔性引导优先：观看示范课（主）+ 预约咨询（次）。
+  // 柔性引导优先：课堂实录（主）+ 预约咨询（次）。
   preCta: {
     eyebrow:    '先看真实课堂',
     heading:    '先看一节真实的课，再做决定。',
     body:       '没有推销，没有剪辑——一位真实的导师、一名真实的学生，完整走过一节 The Loop 课程。',
-    watch:      '观看示范课',
-    watchAria:  '观看免费的示范课',
+    watch:      '课堂实录',
+    watchAria:  '观看免费的课堂实录',
     consult:    '预约咨询',
     consultAria:'预约诊断式评估面谈',
   },
@@ -118,7 +118,7 @@ export const footer = {
     { href: '/about',    label: '关于 DODO'   },
     { href: '/blog',     label: '博客'        },
     { href: '/faq',      label: '常见问题'    },
-    { href: '/demos',    label: '观看示范课'  },
+    { href: '/demos',    label: '课堂实录'  },
     { href: '/consult',  label: '预约咨询' },
     { href: '/partners', label: '合作伙伴'    },
   ],
@@ -175,7 +175,7 @@ export const home = {
     differentiator: '',
     consultHook:
       '我们培养英语思维者——能阅读超出年级水平的文本、以证据论证、精确写作的孩子。以高阶文学与写作框架、哈佛思维科学为根基。',
-    cta1:      '观看示范课',
+    cta1:      '课堂实录',
     cta2:      '预约咨询',
     trustLine:
       'Lexile测量进度 · 6+1 Trait写作评估体系 · 导师实时主导 · Think Once. In Both Languages.',
@@ -561,7 +561,7 @@ export const about = {
   closing: {
     sub:
       '不是一句口号。是一种哲学。真正的双语深度不是通过平行翻译或语言维护项目实现的。它是在一个孩子被训练在最高认知水平上用英语精确思考时涌现出来的——阅读复杂性、用证据论证、有意图地写作。这种智力严谨性会迁移。它强化每一种语言的思考。两种语言都变得更强，因为心智首先变得更强。',
-    cta: '观看示范课',
+    cta: '课堂实录',
   },
 }
 
@@ -1222,15 +1222,15 @@ export const navigators = {
 // ── /demos ───────────────────────────────────────────────────────
 export const demos = {
     meta: {
-      title:       '观看示范课',
-      description: '观看真实的DODO Learning示范课。在导师（Navigator）带领的课程中看到The Loop（学习循环）如何在双语学生身上运行。三个年级段。未经剪辑。',
+      title:       '课堂实录',
+      description: '观看真实的DODO Learning课堂实录。在导师（Navigator）带领的课程中看到The Loop（学习循环）如何在双语学生身上运行。三个年级段。未经剪辑。',
     },
     hero: {
       chip: '一次思考。两种语言。',
       h1:   '确切看到您孩子的课堂是什么样子。',
       h1zh: '看看真实的课堂是什么样子',
       sub:  '没有推销。没有剪辑的精彩片段。一位真实的导师（Navigator），一位真实的学生，一起完成一堂真实的The Loop（学习循环）课程。在您做决定前观看。',
-      cta1: '观看示范课',
+      cta1: '课堂实录',
       cta2: '预约咨询',
       stats: [
         { value: '3',      unit: '个年级段',  desc: '四至六年级，七至八年级，九年级及以上' },
@@ -1243,9 +1243,9 @@ export const demos = {
     },
     videos: {
       eyebrow:   '做决定前先观看',
-      h2:        '示范课与课程介绍。',
-      h2zh:      '示范课与课程介绍',
-      row1Label: '示范课录像',
+      h2:        '课堂实录与课程介绍。',
+      h2zh:      '课堂实录与课程介绍',
+      row1Label: '课堂实录',
       row2Label: '关于课程',
       cards: [
         { videoId: YOUTUBE_IDS.demoGr46,       label: '成长期读者',    labelZh: 'Emerging Reader', tag1: '四至六年级', tag2: 'Lexile 580–720', tag3: '阅读 · 思考 · 写作' },
@@ -1257,7 +1257,7 @@ export const demos = {
       ],
     },
     session: {
-      eyebrow:       '一堂示范课内部',
+      eyebrow:       '一段课堂实录内部',
       navigatorName: 'Ms. Sarah',
       sessionPhase:  '思考阶段 · Lexile 740',
       h2:   '您实际在观看什么。',
@@ -1273,26 +1273,26 @@ export const demos = {
       eyebrow: '观看之后',
       h2:      '20分钟内您就会知道答案。',
       h2zh:    '观看后，您将心中有数',
-      body:    '大多数家长告诉我们，示范课回答了他们之前无法用语言表达的问题：这对我的孩子来说是合适的挑战吗？观看示范课。然后预约咨询。为您进行咨询的导师将与您在屏幕上看到的是同一类人。',
+      body:    '大多数家长告诉我们，课堂实录回答了他们之前无法用语言表达的问题：这对我的孩子来说是合适的挑战吗？观看课堂实录。然后预约咨询。为您进行咨询的导师将与您在屏幕上看到的是同一类人。',
       cta:    '预约咨询',
     },
     growth: {
       eyebrow: '学生取得的成就',
-      h2:      '示范课展示方法。数字证明成果。',
+      h2:      '课堂实录展示方法。数字证明成果。',
       h2zh:    '演示展示方法，数字证明成果',
       lexile: {
         h3:  'Lexile阅读水平',
-        sub: '观看示范课后完成16周课程的学生从一个清晰的基线开始，并以一个可衡量的数字结束。',
-        note: '七至八年级示范课中的学生开始时为<strong>Lexile 820</strong>。16周后：<strong>Lexile 1020</strong>。这相当于四个月内整整两个年级水平。',
+        sub: '观看课堂实录后完成16周课程的学生从一个清晰的基线开始，并以一个可衡量的数字结束。',
+        note: '七至八年级课堂实录中的学生开始时为<strong>Lexile 820</strong>。16周后：<strong>Lexile 1020</strong>。这相当于四个月内整整两个年级水平。',
         start: 820, end: 1020,
       },
       trait: {
         h3:         '6+1特质写作',
-        sub:        '每节示范课都包含一个实时的6+1特质写作环节。以下是所有16周课程学生的平均入学和结业分数。',
+        sub:        '每段课堂实录都包含一个实时的6+1特质写作环节。以下是所有16周课程学生的平均入学和结业分数。',
         startLabel: '入学',
         endLabel:   '结业（16周）',
         scaleLabel: '1–6分制',
-        note:       '您在示范课中看到的写作成长正是推动这些分数变化的原因。The Loop（学习循环）就是那个机制。',
+        note:       '您在课堂实录中看到的写作成长正是推动这些分数变化的原因。The Loop（学习循环）就是那个机制。',
       },
     },
   }
@@ -1327,7 +1327,7 @@ export const ageBands = {
 // ── /little-dodo（都学启蒙）────────────────────────────────────
 // 都学启蒙——十六周课程的 K–2（5–8 岁）启蒙姊妹课程。高频低压的英文阅读
 // 与理解启蒙。共用同一批导师 / 直播模式 / 标准；改变的是节奏与压力。
-// 漏斗：hero 以柔性引导（观看示范课）为先；页面自带坚定收尾，故 /little-dodo
+// 漏斗：hero 以柔性引导（课堂实录）为先；页面自带坚定收尾，故 /little-dodo
 // 列入 PreCtaBand SUPPRESS。不以 Lexile 为重（K–2 处于测评之前）。
 export const littleDodo = {
   meta: {
@@ -1341,7 +1341,7 @@ export const littleDodo = {
     h1zh: '',
     sub:
       '都学启蒙是英文读写的温和起点——专为 5–8 岁的孩子设计。一位真实的导师（Navigator），短而高频的课程，让孩子安心地相信：我读得懂。高频低压，是设计使然。',
-    cta1: '观看示范课',
+    cta1: '课堂实录',
     cta2: '预约咨询',
     stats: [
       { value: '5–8',  unit: '岁',     desc: '幼小衔接阶段'   },
@@ -1397,7 +1397,7 @@ export const littleDodo = {
     body:
       '观看一节真实的都学启蒙课程——没有推销，没有剪辑。然后预约一次与导师（Navigator）的咨询，而不是销售。我们会坦诚告诉您：孩子已经准备好了，还是不妨稍晚一些开始。',
     btn:     '预约咨询',
-    watch:   '观看示范课',
+    watch:   '课堂实录',
     note:    '由导师进行的免费咨询，无任何义务。',
   },
 }
