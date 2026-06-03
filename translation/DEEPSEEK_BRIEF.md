@@ -46,6 +46,10 @@ You are the official ZH translator for DODO Learning — a bilingual cognitive d
 | BC | 不列颠哥伦比亚省 |
 | The Hangar | **已从课程移除 — 如出现请标注 [REMOVED] 并省略** |
 | Bilingual Thinker | 英语思维者（该词已废弃，替换）|
+| DODO Method | DODO 教学系统 *(D34, 2026-06-02 — replaces previous "DODO 教学法")* |
+| Reading Companion | 有声书 *(D34, 2026-06-02 — replaces previous "阅读伴")* |
+| Watch a Demo Class | 课堂实录 *(D34, 2026-06-02 — replaces previous "观看示范课"; also covers standalone 示范课 in prose — counter shifts apply: 一堂→一段, 每节→每段)* |
+| About *(navbar only)* | 故事 *(D34, 2026-06-02 — **navbar primary ONLY**; all other 关于 occurrences stay as 关于 in the standard "about/regarding" sense)* |
 
 ### Programme Architecture (LCS · Levels · Combinations) — locked 2026-05
 

@@ -1,15 +1,94 @@
 # DODO Learning — Successor Handoff
 
 **Authored:** 2026-05-17 (end of session)
-**Last updated:** 2026-06-02 — funnel swap (v6.0): Watch Demo soft-close, consult firm-close, duplicate CTA bands removed, assessment reframed (consult-before-assess), CTA labels standardized, ELA Program / DODO Method renames. **Same day: Navbar ZH refresh (D34)** — ZH side adopts descriptive forms: `DODO 教学系统` · `有声书` · `故事` (navbar-only) · `课堂实录`. EN unchanged. Design reference: `.interface-design/system.md`. Commit `140a7a5`. New program **Little DODO** (K–2) briefed — page not yet built (`docs/little-dodo-plan.md`). See "2026-06-02 · Funnel swap (v6.0)" in the decisions log.
+**Last updated:** 2026-06-02 — **video pipeline session** (commits `b3f3ae3` → `fde4af3`): Cloudflare Stream video pipeline shipped with embeds on /about, /methodology, /navigators, /demos via reusable `<StreamVideo />`; section spacing protocol canonicalized in `.interface-design/system.md` (v6.2 — Combine / Alternate / Tighten remedies for same-surface back-to-back sections); `/navigators` swept to the `SectionWrapper` convention with a new `tinted` prop (#EAEAF8) + `ariaLabelledBy` passthrough; **Navbar ZH refresh (D34)** locks descriptive ZH forms `DODO 教学系统` · `有声书` · `故事` (navbar-only) · `课堂实录`, EN unchanged. **Earlier same day:** funnel swap (v6.0), CTA standardization (D27–D33). Design reference: `.interface-design/system.md`. New program **Little DODO** (K–2) shipped (D32, commit `140a7a5`). See "2026-06-02 · Video pipeline + spacing protocol + D34 ZH refresh" below.
 **Repo:** `aiyoweiah/DL_NEXTJS_NEW` · deploys to dodolearning.com via **Cloudflare Pages** (`dl-nextjs-new`) from `main`. *(2026-06-02: dodoletterhouse.com / Vercel retired — that domain now 301-forwards to www.dodolearning.com at the Cloudflare edge; `ops.dodoletterhouse.com` → the `/ops` tools. www.dodolearning.com is now a Pages custom domain too. Single host.)*
-**Status:** Bilingual site fully shipped. Home + /program + /about rewritten through granular review. Chrome + funnel overhauled (v5 chrome 2026-06-01, v6 funnel 2026-06-02; pre-footer band → soft fallback v6.1, D33). /methodology rewrite in progress. **Open:** Little DODO page build + IA (#20). Tier 2/3 SEO+GEO + business decisions pending.
+**Status:** Bilingual site fully shipped. Home + /program + /about rewritten through granular review. Chrome + funnel overhauled (v5 chrome 2026-06-01, v6 funnel 2026-06-02; pre-footer band → soft fallback v6.1, D33; section spacing protocol v6.2). /methodology has video embed + redesigned 1c "See it live" section. /navigators has SectionWrapper sweep + S3.5 selection + S4.5 Kimberly spotlight. **Open:** Ms. Kimberly bio in `navigators.s4half.bio` was filled by an automated agent with "7 years teaching" — verify against actual credentials before next push. Tier 2/3 SEO+GEO + business decisions pending.
 
 This doc is **your entry point if you're picking up this work cold.** Read this first. Then:
 1. `docs/content-style-decisions.md` — **active style decisions log** (date-stamped, append-only). The most recent voice / vocabulary / architectural decisions live here before they roll into the brand guide.
 2. `.interface-design/system.md` — **interface design system** (chrome, funnel ladder, CTA rules, color tokens). Read before touching navbar/footer/CTAs.
 3. `docs/workflow.md` Open Decisions table — the running list of pending items.
 4. `translation/BRAND_CONTENT_GUIDE.md` — the locked brand truth for content surfaces.
+
+---
+
+## Recent decisions log — 2026-06-02 (video pipeline · spacing protocol v6.2 · D34 ZH refresh)
+
+Late-day session arc. Four commits land between `df6f139` and `fde4af3`.
+
+| Commit | What it did |
+|---|---|
+| `b3f3ae3` | Cloudflare Stream video pipeline + embeds across about / methodology / navigators / demos |
+| `40d7e7b` | Tighten video section spacing + canonicalize section spacing protocol v6.2 |
+| `15db157` | Refactor /navigators to SectionWrapper convention |
+| `fde4af3` | Navbar ZH refresh (D34): descriptive over branded |
+
+### Video pipeline (commit `b3f3ae3`)
+
+Six brand / methodology / people videos now host on **Cloudflare Stream** (account `38ee89b0…`, playback subdomain `customer-me018erhvwsykfhr.cloudflarestream.com`, paid plan — minimum 1000 min storage at $5/mo). Embeds use a reusable thumbnail-first `<StreamVideo />` component (`components/media/StreamVideo.jsx`) that mirrors `YoutubeEmbed`'s lazy-load pattern (iframe injected only on click — keeps Lighthouse honest on pages with multiple videos).
+
+**Source masters stay out of git.** The 1.4 GB of source MP4s sits in `Videos/` (gitignored). Only `Videos/video-manifest.json` (a ~3 KB map of stable key → Stream UID + auto-thumbnail URL) is committed — needed at build time by `StreamVideo`. The gitignore pattern is `Videos/*` (NOT `/Videos/`) so the carve-out for `!Videos/video-manifest.json` actually works.
+
+**Tooling shipped:**
+- `scripts/optimize-videos.ps1` — ffmpeg batch that downscales 4K masters to 1080p and re-times 60fps masters to 30fps before upload (Stream caps Basic output at 1080p anyway, so 4K bytes are wasted; this saves ~64% upload size — 1.4 GB → 503 MB).
+- `scripts/upload-videos-to-stream.mjs` — idempotent multipart uploader. Reads `CF_ACCOUNT_ID` + `CF_STREAM_API_TOKEN` from `.env.local` (gitignored). Skips keys already in the manifest, so re-runs are safe. Future video adds: drop new MP4 in `Videos/`, add entry to the script's `VIDEOS` array, re-run.
+
+**Embeds wired in this session:**
+| Page | Video | Placement |
+|---|---|---|
+| `/about` hero | `about-page-intro` (53s, 16:9) | Right column, replaces former 3:4 portrait placeholder |
+| `/about` WhoNavigatorsAre | `kimberly-intro` (33s, 9:16 vertical) | Left column, with violet hairline + name caption |
+| `/methodology` new section 1c | `lcs-cut` (1:36, 16:9) | New "See it live" beat after the LCS definition box (combined into 1b's wrapper per the spacing protocol) |
+| `/navigators` new S3.5 | `dodo-tutor-selection` (3:02, 16:9) | New "How we choose Navigators" section between S3 and S4, `darker` surface |
+| `/navigators` new S4.5 | `kimberly-intro` (reused) | "Meet Ms. Kimberly" spotlight, `tinted` surface, vertical card + bio + stats |
+| `/demos` cards 4–6 | `dodo-brand-full` + `lcs-detailed` + `kimberly-intro` | Replace 3 of the YouTube placeholders; row 1 (Demo Class Recordings) stays YouTube-placeholder until real class footage exists |
+
+China-delivery caveat: Cloudflare Stream's edge into mainland China is best-effort without the China Network add-on. Short clips fine; long-form may buffer for /zh viewers. Revisit if real-user data warrants — options: pay for CCN (needs ICP license) or dual-host long-form on a Chinese provider (Tencent / Aliyun VOD).
+
+### Section spacing protocol v6.2 (commit `40d7e7b`)
+
+Canonicalized in `.interface-design/system.md` under "Spacing/layout." The trigger was loose-feeling video sections: two adjacent `<SectionWrapper white>` calls between LCS definition and "See it live" produced ~240 px of empty white air. Rule:
+
+> **Two adjacent sections must NOT share both the same surface colour AND default `--section-md` padding** — back-to-back same-surface sections double the vertical air and read as loose. Choose one remedy:
+> 1. **Combine** into a single `SectionWrapper` with internal `mt-16 md:mt-20`.
+> 2. **Alternate the surface** of the second (light → tinted → light).
+> 3. **Tighten the boundary** with `paddingTop: 0` on the inner container (last resort).
+
+Applied in this session: methodology 1b + 1c combined into one wrapper (option 1); navigators S4 → S4.5 surface alternated to `section-tinted` `#EAEAF8` (option 2); about WhoNavigatorsAre column gap tightened 64 px → 48 px to match the vertical video's narrower footprint.
+
+### Navigators SectionWrapper sweep (commit `15db157`)
+
+All 8 outer sections on `/navigators` (S2–S8 + the new S3.5, S4.5) refactored from hand-rolled raw `<section className="px-6 py-24" style={{ backgroundColor: ... }}>` to `<SectionWrapper>` calls. Page height drops ~256 px (96 → 64 px padding × 8 sections); S8 also drops its bespoke `py-32`. S1 hero left untouched (it has its own banker's-lamp background treatment). All inner decorative chrome preserved.
+
+**SectionWrapper.jsx gains two props:**
+- `tinted` → `.section-tinted` class (#EAEAF8 surface, already in `globals.css`). Maintains the v6.2 protocol's "alternate the surface" remedy on light pages.
+- `ariaLabelledBy` passthrough so wrappers can keep their `<h2 id>`-linked accessibility hookups (used by S3.5 and S4.5).
+
+Backwards-compatible — existing callers of `<SectionWrapper>` / `<SectionWrapper dark>` / etc. unaffected.
+
+### Navbar ZH refresh — D34 (commit `fde4af3`)
+
+Four user-given source-of-truth substitutions, with EN unchanged. Detail in `docs/content-style-decisions.md` D34.
+
+| Source ZH | New ZH | Scope |
+|---|---|---|
+| `DODO 教学法` | `DODO 教学系统` | Global ZH (nav + faq.js + prose) |
+| `阅读伴` | `有声书` | Global ZH (nav + terms-page prose rewrite) |
+| `关于` | `故事` | **Navbar primary ONLY**; recorded as `context_specific_overrides` in `dodo-glossary.json` |
+| `观看示范课` | `课堂实录` | Global ZH (nav, footer PreCtaBand, all page CTAs, demos prose with grammar adjustments) |
+
+**Glossary updates:** `translation/dodo-glossary.json` (canonical) and `translation/DEEPSEEK_BRIEF.md` (deepseek session prompt) both add the 3 new owned-term entries + the navbar-only About → 故事 exception. Future ZH copy work that draws from either file will see the new terms.
+
+**EN side intentionally untouched.** Bilingual asymmetry: EN keeps "Watch a Demo Class" / "Reading Companion" / "DODO Method" / "About" as the soft-close + branded role labels. ZH reframes to descriptive forms for clarity on chrome surfaces.
+
+### Open follow-ups from this session
+
+- **Ms. Kimberly bio** — an automated agent filled `navigators.s4half.bio` and `s4half.stats[0].value` with placeholder text + "7 years teaching." Build is green but the copy is **agent-authored without ground truth**. Verify with the real Kimberly before next major push.
+- **Cloudflare Stream API token** — the token used to upload the 6 videos this session is still in `.env.local` on the user's machine. Revoke at dash.cloudflare.com → My Profile → API Tokens once you're sure no more videos are pending; uploads are one-time-per-video.
+- **/demos cards 1–3** — still YouTube placeholders (`YOUTUBE_IDS.demoGr46/78/9plus`). Need actual class recordings filmed + uploaded (to Stream, following the same pipeline). Then swap the cards to `streamKey` like cards 4–6.
+- **Content-review markdown** (`content-review/03-about-content-dump.md`, `04-methodology-content-dump.md`) — pre-existing from earlier sessions, still untracked. Reviewer call on whether to commit/dismiss; not blocking.
+- **Vertical-video columns on mobile** — `/about` Kimberly + `/navigators` S4.5 both use a vertical 9:16 video in a `flex flex-col items-center` / `grid-cols-[300px_1fr]` layout. Render-tested at desktop via `next build`; eyeball on real iOS/Android narrow viewports recommended.
 
 ---
 
