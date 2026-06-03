@@ -34,6 +34,7 @@ import SectionWrapper from '@/components/ui/SectionWrapper'
 import Button         from '@/components/ui/Button'
 import Badge          from '@/components/ui/Badge'
 import LexileBar      from '@/components/ui/LexileBar'
+import StreamVideo    from '@/components/media/StreamVideo'
 
 // ── Static params ─────────────────────────────────────────────
 export function generateStaticParams() {
@@ -168,6 +169,43 @@ export default async function MethodologyPage({ params }) {
         </div>
       </section>
 
+      {/* ── 1b. What is the LCS System (AEO definition) ───── */}
+      <SectionWrapper white>
+        <div className="py-12 md:py-14 max-w-3xl">
+          <div className="rounded-2xl p-6 md:p-8" style={{ backgroundColor: '#F5F5FF', borderLeft: '3px solid #b7b5fe' }}>
+            <p className="text-base md:text-lg leading-relaxed" style={{ color: '#2E3848' }}>
+              {t.definition.body}
+            </p>
+          </div>
+        </div>
+      </SectionWrapper>
+
+      {/* ── 1c. See it live — lcs-cut 90s clip ───────────── */}
+      {/*
+        Sandwiched between abstract definition and the "Why a Loop" argument.
+        White surface to maintain editorial calm; the video itself provides
+        the visual break, not a section colour shift.
+      */}
+      <SectionWrapper white>
+        <div className="py-16 md:py-20 max-w-3xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.15em] mb-4" style={{ color: '#5856cc' }}>
+            {t.seeItLive.eyebrow}
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5" style={{ color: '#0E0E12', letterSpacing: '-0.025em' }}>
+            {t.seeItLive.h2}
+          </h2>
+          <p className="text-lg leading-relaxed mb-10" style={{ color: '#3D4452' }}>
+            {t.seeItLive.body}
+          </p>
+          <StreamVideo
+            videoKey="lcs-cut"
+            title={t.seeItLive.videoTitle}
+            aspectRatio="16/9"
+            rounded="1rem"
+          />
+        </div>
+      </SectionWrapper>
+
       {/* ── 2. Why a Loop ─────────────────────────────────── */}
       <SectionWrapper white>
         <div className="py-20 md:py-24 max-w-3xl">
@@ -262,6 +300,30 @@ export default async function MethodologyPage({ params }) {
         </SectionWrapper>
       ))}
 
+      {/* ── 3b. Two session types (workflow #18) ──────────── */}
+      <SectionWrapper dark>
+        <div className="py-20 md:py-24">
+          <div className="max-w-2xl mb-12">
+            <p className="eyebrow mb-4">{t.sessionTypes.eyebrow}</p>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-gradient">
+              {t.sessionTypes.heading}
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {t.sessionTypes.types.map((s) => (
+              <div
+                key={s.id}
+                className="rounded-2xl p-6 md:p-8"
+                style={{ backgroundColor: 'rgba(183,181,254,0.07)', border: '1px solid rgba(183,181,254,0.15)' }}
+              >
+                <p className="text-lg font-bold mb-3" style={{ color: '#b7b5fe' }}>{s.label}</p>
+                <p className="text-base leading-relaxed" style={{ color: '#94A3B8' }}>{s.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </SectionWrapper>
+
       {/* ── 4. Lexile ─────────────────────────────────────── */}
       <SectionWrapper darker>
         <div className="py-20 md:py-24">
@@ -299,9 +361,9 @@ export default async function MethodologyPage({ params }) {
           {/* Example Lexile bar */}
           <div className="max-w-lg">
             <p className="text-xs font-semibold uppercase tracking-[0.15em] mb-5" style={{ color: 'rgba(183,181,254,0.5)' }}>
-              Typical 16-week result
+              Typical result — two 16-week cycles
             </p>
-            <LexileBar start={620} end={820} weeks={16} />
+            <LexileBar start={620} end={820} weeks={32} />
           </div>
 
         </div>

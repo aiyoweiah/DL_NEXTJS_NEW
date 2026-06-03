@@ -19,6 +19,7 @@ import { isValidLocale, localeParams } from '@/lib/i18n'
 import { buildMetadata }               from '@/lib/metadata'
 import LexileBar                       from '@/components/ui/LexileBar'
 import YoutubeEmbed                    from '@/components/demos/YoutubeEmbed'
+import StreamVideo                     from '@/components/media/StreamVideo'
 import { demos as copyEn }              from '@/content/marketing.en'
 import { demos as copyZh }              from '@/content/marketing.zh'
 
@@ -199,12 +200,18 @@ function VideoGallery({ locale, c }) {
   const row2 = c.videos.cards.slice(3, 6)
 
   function VideoCard({ card }) {
+    // Cards with a streamKey render via Cloudflare Stream (DODO-hosted),
+    // legacy cards with a videoId render via the YouTube fallback. This
+    // lets the page keep its 6-card grid while we migrate sources.
+    const player = card.streamKey
+      ? <StreamVideo  videoKey={card.streamKey} title={`${card.label} — ${card.labelZh}`} rounded="0" />
+      : <YoutubeEmbed videoId={card.videoId}   title={`${card.label} — ${card.labelZh}`} rounded="0" />
     return (
       <article
         aria-label={`${card.label} — ${card.labelZh}`}
         style={{ backgroundColor: '#ffffff', border: '1px solid rgba(14,14,18,0.08)', borderRadius: '0.875rem', overflow: 'hidden', boxShadow: '0 1px 3px rgba(0,0,0,0.05)', display: 'flex', flexDirection: 'column' }}
       >
-        <YoutubeEmbed videoId={card.videoId} title={`${card.label} — ${card.labelZh}`} rounded="0" />
+        {player}
         <div style={{ padding: '0.625rem 0.75rem 0.875rem' }}>
           <div style={{ display: 'flex', gap: '0.3rem', flexWrap: 'wrap', marginBottom: '0.5rem' }}>
             <Tag variant="violet">{card.tag1}</Tag>

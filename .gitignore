@@ -30,3 +30,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# video source masters (uploaded to Cloudflare Stream, not committed)
+# NOTE: video-manifest.json (filename -> Stream UID map) IS committed.
+# Pattern: ignore Videos/* (contents) rather than /Videos/ (the directory),
+# because git cannot re-include a file under an excluded parent directory.
+/Videos/*
+!/Videos/video-manifest.json

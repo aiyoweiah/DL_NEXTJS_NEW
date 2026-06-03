@@ -30,12 +30,9 @@
 // Demos page YouTube IDs (formerly app/[locale]/demos/videos.js).
 // Replace placeholders with real video IDs.
 const YOUTUBE_IDS = {
-  featured:       'REPLACE_FEATURED_VIDEO_ID',
   demoGr46:       'REPLACE_DEMO_GR4_6_VIDEO_ID',
   demoGr78:       'REPLACE_DEMO_GR7_8_VIDEO_ID',
   demoGr9plus:    'REPLACE_DEMO_GR9PLUS_VIDEO_ID',
-  brandLoop:      'REPLACE_BRAND_LOOP_VIDEO_ID',
-  brandNavigator: 'REPLACE_BRAND_NAVIGATOR_VIDEO_ID',
 }
 
 
@@ -489,7 +486,6 @@ export const about = {
     sub:
       '专为全球家庭打造——这些家庭的孩子将在英语主导的学校、大学和职场中成为引领者。他们中的许多孩子把英语当作一门学科来学——能通过考试，听起来流利。但让他们论证一个观点、阅读密集的分析性散文、或写出有原创性的东西——语言就达到了极限。DODO 的创始人 Janet 看到了这个差距，并建立了 DODO 来弥合它。目标是在认知层面达到英语精通。双语深度是达到这一目标后自然产生的结果。',
     videoLabel:    '观看：Janet 谈到DODO Learning',
-    videoDuration: '3分钟',
   },
   name: {
     p1:       'DODO这个名字源于一个刻意的、双面的理念： ',
@@ -539,7 +535,9 @@ export const about = {
       '一位导师（Navigator）会提出他们自己也不知道答案的问题。他们会对一个七岁孩子关于公平、忠诚、或者某个角色为什么做出那个选择的想法产生真正的好奇心。这些问题源于哈佛教育学院零点项目的Visible Thinking（可视化思维方法）——在哈佛教育研究生院开发的结构化教学协议——但好奇心是真实的。',
     p3:
       '他们是读者。他们是思考者。每位导师（Navigator）都拥有世界排名前50的大学（牛津大学、多伦多大学、皇后大学、伦敦政治经济学院等）的研究生学位，并具有文学或写作的专业背景。他们在意语言，因为语言是他们理解一切的方式——也因为他们知道，一个被训练用英语严谨推理的孩子，其心智将比任何考试成绩都更能带他们走得更远。',
-    navigatorsLink: '认识导师（Navigator）团队 →',
+    navigatorsLink:  '认识导师（Navigator）团队 →',
+    videoCaption:    'Kimberly 老师 · DODO 导师（Navigator）',
+    videoCaptionSub: '30秒的自我介绍',
   },
   families: {
     items: [
@@ -727,6 +725,14 @@ export const methodology = {
   definition: {
     body:
       '语言循环体系是DODO Learning的英语语言艺术方法论：文学精读、系统写作、表达，每节课以The Loop（学习循环）运行——阅读 → 思考 → 表达 → 写作。它根植于MCT gifted-ELA传统与哈佛教育学院零点项目的Visible Thinking（可视化思维方法），并以Lexile阅读水平和6+1特质写作框架衡量。学生通常在两个16周周期内取得一个年级的阅读增长。',
+  },
+
+  seeItLive: {
+    eyebrow:    '实景片段',
+    h2:         '90 秒，看一段完整的 Loop。',
+    body:
+      '一段 LCS 课堂实景——阅读、思考、表达、书写——大约是您泡一杯咖啡的时间。这就是 The Loop 在运转的样子。',
+    videoTitle: 'LCS 课堂实景（90秒）',
   },
 
   why: {
@@ -1152,6 +1158,12 @@ export const navigators = {
         { num: '04', phase: '写作', headline: '实时根据6+1特质评估书面回应。分数具体。反馈精确。', sub: '6+1特质框架 — 明确分数' },
       ],
     },
+    s3half: {
+      eyebrow:    '选拔',
+      h2:         '我们如何挑选导师（Navigator）。',
+      body:       '在与 DODO 学生见面之前，每一位导师（Navigator）都要通过教学演示、Lexile 蓝思分级认证，以及 6+1 写作维度的标定。下面是 3 分钟的过程。',
+      videoTitle: 'DODO 如何筛选导师（3 分钟）',
+    },
     s4: {
       eyebrow: '这段关系',
       h2: '同一位导师（Navigator）。每节课。十六周。',
@@ -1162,7 +1174,18 @@ export const navigators = {
         { label: '差距追踪', body: '导师（Navigator）不准备教案。他们为您的具体孩子做准备——他们这周在哪里，差距是什么，以及The Loop（学习循环）的哪一部分会弥合这个差距。' },
       ],
     },
-    s5: { eyebrow: '导师（Navigator）团队', h2: '每周与您的孩子一起工作的人。' },
+    s4half: {
+      eyebrow:    '认识导师（Navigator）',
+      h2:         'Kimberly 老师。',
+      bio:        '[请补充 Kimberly 老师的背景介绍——2-3 句话。]',
+      stats: [
+        { label: '教学经验',      value: '[N] 年' },
+        { label: 'Lexile 认证',  value: '已认证' },
+        { label: '6+1 写作标定', value: '已标定' },
+      ],
+      videoTitle: 'Kimberly 老师 · DODO 导师（Navigator）',
+    },
+    s5: { eyebrow: '导师（Navigator）团队', h2: '我们团队中的其他导师（Navigator）。' },
     s6: {
       eyebrow: '实际应用',
       h2: '一堂真实课中发生了什么',
@@ -1228,9 +1251,9 @@ export const demos = {
         { videoId: YOUTUBE_IDS.demoGr46,       label: '成长期读者',    labelZh: 'Emerging Reader', tag1: '四至六年级', tag2: 'Lexile 580–720', tag3: '阅读 · 思考 · 写作' },
         { videoId: YOUTUBE_IDS.demoGr78,       label: '独立阅读者', labelZh: 'Independent Reader', tag1: '七至八年级', tag2: 'Lexile 820–980', tag3: '完整学习循环' },
         { videoId: YOUTUBE_IDS.demoGr9plus,    label: '高级阅读者',    labelZh: 'Advanced Reader', tag1: '九年级及以上',       tag2: 'Lexile 1020+',      tag3: '完整学习循环 · 拓展' },
-        { videoId: YOUTUBE_IDS.featured,       label: '完整循环展示',      labelZh: 'The Full Loop', tag1: '精选',   tag2: '20分钟',  tag3: '七至八年级' },
-        { videoId: YOUTUBE_IDS.brandLoop,      label: '学习循环解析', labelZh: 'The Loop Explained', tag1: '方法论',     tag2: '5分钟',   tag3: null },
-        { videoId: YOUTUBE_IDS.brandNavigator, label: '认识导师',   labelZh: 'Meet a Navigator',       tag1: '人物',     tag2: '3分钟',   tag3: null },
+        { streamKey: 'dodo-brand-full', label: '关于 DODO',           labelZh: 'The DODO Approach', tag1: '精选',   tag2: '4分钟',  tag3: '品牌介绍' },
+        { streamKey: 'lcs-detailed',    label: '语言循环体系详解',     labelZh: 'The LCS System',    tag1: '方法论', tag2: '2分钟',  tag3: null },
+        { streamKey: 'kimberly-intro',  label: '认识 Kimberly 老师',   labelZh: 'Meet Ms. Kimberly', tag1: '人物',   tag2: '30秒',   tag3: '导师（Navigator）' },
       ],
     },
     session: {

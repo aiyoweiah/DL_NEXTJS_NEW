@@ -16,6 +16,7 @@ import { isValidLocale, localeParams } from '@/lib/i18n'
 import { buildMetadata }               from '@/lib/metadata'
 import { navigators as copyEn }    from '@/content/marketing.en'
 import { navigators as copyZh }    from '@/content/marketing.zh'
+import StreamVideo                 from '@/components/media/StreamVideo'
 
 export async function generateMetadata({ params }) {
   const { locale } = await params
@@ -218,6 +219,35 @@ export default async function NavigatorsPage({ params }) {
         </div>
       </section>
 
+      {/* ── S3.5 HOW WE CHOOSE NAVIGATORS (dodo-tutor-selection) ── */}
+      {/*
+        Sits between "what they do" (S3) and "the relationship" (S4).
+        #0E0E12 canvas breaks the S3 (#212830) → S4 (#F5F5FF) gradient
+        without inventing a new colour. No new CTA — funnel rules cap
+        consult touchpoints; S8 owns the page's close.
+      */}
+      <section className="px-6 py-24" style={{ backgroundColor: '#0E0E12' }} aria-labelledby="navigators-s3half-heading">
+        <div className="container-section">
+          <div className="max-w-2xl mb-10">
+            <Eyebrow dark>{c.s3half.eyebrow}</Eyebrow>
+            <h2 id="navigators-s3half-heading" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 600, color: '#F0F0F0', lineHeight: 1.3, marginBottom: '1rem' }}>
+              {c.s3half.h2}
+            </h2>
+            <p style={{ fontSize: '16px', lineHeight: 1.7, color: 'rgba(240,240,240,0.6)' }}>
+              {c.s3half.body}
+            </p>
+          </div>
+          <div className="mx-auto" style={{ maxWidth: '880px' }}>
+            <StreamVideo
+              videoKey="dodo-tutor-selection"
+              title={c.s3half.videoTitle}
+              aspectRatio="16/9"
+              rounded="1rem"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* ── S4 THE NAVIGATOR RELATIONSHIP ────────────────── */}
       <section className="px-6 py-24" style={{ backgroundColor: '#F5F5FF' }}>
         <div className="container-section">
@@ -239,6 +269,49 @@ export default async function NavigatorsPage({ params }) {
                   </p>
                 ))}
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── S4.5 MEET MS. KIMBERLY (vertical kimberly-intro spotlight) ── */}
+      {/*
+        Featured spotlight before the S5 navigator grid. Light surface
+        (#F5F5FF) extends the S4 → S5 cadence (light → dark) by inserting
+        light → light → dark, which still reads cleanly because the video
+        chrome itself reverses to dark on the page.
+      */}
+      <section className="px-6 py-24" style={{ backgroundColor: '#F5F5FF' }} aria-labelledby="navigators-s4half-heading">
+        <div className="container-section">
+          <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] gap-10 md:gap-14 items-center max-w-5xl mx-auto">
+            <div className="mx-auto md:mx-0" style={{ width: '100%', maxWidth: '300px' }}>
+              <StreamVideo
+                videoKey="kimberly-intro"
+                title={c.s4half.videoTitle}
+                aspectRatio="9/16"
+                rounded="1.5rem"
+              />
+            </div>
+            <div>
+              <Eyebrow>{c.s4half.eyebrow}</Eyebrow>
+              <h2 id="navigators-s4half-heading" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 700, color: '#0E0E12', lineHeight: 1.3, marginBottom: '1rem' }}>
+                {c.s4half.h2}
+              </h2>
+              <p style={{ fontSize: '16px', lineHeight: 1.7, color: '#3D4452', marginBottom: '1.75rem' }}>
+                {c.s4half.bio}
+              </p>
+              <dl className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {c.s4half.stats.map((stat) => (
+                  <div key={stat.label} className="rounded-lg p-4" style={{ backgroundColor: '#ffffff', border: '1px solid rgba(14,14,18,0.07)' }}>
+                    <dt style={{ fontSize: '11px', fontWeight: 600, color: '#5856cc', letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: '6px' }}>
+                      {stat.label}
+                    </dt>
+                    <dd style={{ fontSize: '15px', fontWeight: 700, color: '#0E0E12' }}>
+                      {stat.value}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
             </div>
           </div>
         </div>

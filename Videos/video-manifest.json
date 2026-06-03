@@ -1,0 +1,59 @@
+{
+  "playbackHost": "customer-me018erhvwsykfhr.cloudflarestream.com",
+  "videos": {
+    "dodo-brand-full": {
+      "uid": "3303e7a112b4ad4db773de4e09526ee4",
+      "title": "DODO Brand Intro (Full)",
+      "source": "_optimized/DODO-brand-full.mp4",
+      "sizeBytes": 172097172,
+      "durationSec": -1,
+      "thumbnail": "https://customer-me018erhvwsykfhr.cloudflarestream.com/3303e7a112b4ad4db773de4e09526ee4/thumbnails/thumbnail.jpg",
+      "uploadedAt": "2026-06-02T23:03:33.063Z"
+    },
+    "dodo-tutor-selection": {
+      "uid": "88d7e2259f5b982e8ffbae44ad36787e",
+      "title": "How DODO Selects Tutors",
+      "source": "_optimized/DODO-tutor-selection.mp4",
+      "sizeBytes": 104373742,
+      "durationSec": -1,
+      "thumbnail": "https://customer-me018erhvwsykfhr.cloudflarestream.com/88d7e2259f5b982e8ffbae44ad36787e/thumbnails/thumbnail.jpg",
+      "uploadedAt": "2026-06-02T23:03:41.792Z"
+    },
+    "lcs-detailed": {
+      "uid": "cb12bc39a0761f37f284961cd49e62b3",
+      "title": "LCS Detailed Intro",
+      "source": "_optimized/LCS-detailed.mp4",
+      "sizeBytes": 68823747,
+      "durationSec": -1,
+      "thumbnail": "https://customer-me018erhvwsykfhr.cloudflarestream.com/cb12bc39a0761f37f284961cd49e62b3/thumbnails/thumbnail.jpg",
+      "uploadedAt": "2026-06-02T23:03:47.476Z"
+    },
+    "kimberly-intro": {
+      "uid": "2e851b8fd2fc2a95376ca88566e92ead",
+      "title": "Ms. Kimberly Intro (vertical)",
+      "source": "_optimized/kimberly-intro.mp4",
+      "sizeBytes": 17522794,
+      "durationSec": -1,
+      "thumbnail": "https://customer-me018erhvwsykfhr.cloudflarestream.com/2e851b8fd2fc2a95376ca88566e92ead/thumbnails/thumbnail.jpg",
+      "uploadedAt": "2026-06-02T23:03:49.849Z"
+    },
+    "about-page-intro": {
+      "uid": "f53cf62b8b59e09de304a25764a5e04c",
+      "title": "About Page Intro",
+      "source": "about_page_intro.mp4",
+      "sizeBytes": 62285164,
+      "durationSec": -1,
+      "thumbnail": "https://customer-me018erhvwsykfhr.cloudflarestream.com/f53cf62b8b59e09de304a25764a5e04c/thumbnails/thumbnail.jpg",
+      "uploadedAt": "2026-06-02T23:03:54.468Z"
+    },
+    "lcs-cut": {
+      "uid": "79562facc339fb2377722d1d53befc38",
+      "title": "LCS Cut (Short)",
+      "source": "lcs cut.mp4",
+      "sizeBytes": 94350824,
+      "durationSec": -1,
+      "thumbnail": "https://customer-me018erhvwsykfhr.cloudflarestream.com/79562facc339fb2377722d1d53befc38/thumbnails/thumbnail.jpg",
+      "uploadedAt": "2026-06-02T23:04:03.660Z"
+    }
+  }
+}

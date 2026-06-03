@@ -34,12 +34,9 @@
 // Demos page YouTube IDs (formerly app/[locale]/demos/videos.js).
 // Replace placeholders with real video IDs.
 const YOUTUBE_IDS = {
-  featured:       'REPLACE_FEATURED_VIDEO_ID',
   demoGr46:       'REPLACE_DEMO_GR4_6_VIDEO_ID',
   demoGr78:       'REPLACE_DEMO_GR7_8_VIDEO_ID',
   demoGr9plus:    'REPLACE_DEMO_GR9PLUS_VIDEO_ID',
-  brandLoop:      'REPLACE_BRAND_LOOP_VIDEO_ID',
-  brandNavigator: 'REPLACE_BRAND_NAVIGATOR_VIDEO_ID',
 }
 
 
@@ -506,7 +503,6 @@ export const about = {
     sub:
       'Built for families whose children will lead in English-dominant schools, universities, and boardrooms. Many of these children learn English as a subject — they pass exams, they sound fluent. Ask them to argue a position, read dense analytical prose, or write something original — and the language reaches its limit. DODO’s founder, Janet, saw that gap and built DODO to close it. The goal is English mastery at the cognitive level. Bilingual depth is what emerges when that goal is reached.',
     videoLabel:    'Watch: Janet talks about DODO Learning',
-    videoDuration: '3 min',
   },
   name: {
     p1:       'DODO comes from a deliberate, two-sided idea: ',
@@ -556,7 +552,9 @@ export const about = {
       'A Navigator asks questions they don’t already know the answer to. They get genuinely curious about what a seven-year-old thinks about fairness, about loyalty, about why a character made the choice they made. The questions are drawn from Harvard Project Zero’s Visible Thinking routines — structured protocols developed at the Harvard Graduate School of Education — but the curiosity is real.',
     p3:
       'They are readers. They are thinkers. Every Navigator holds a graduate degree from a world top-50 university (Oxford, U of T, Queen’s, LSE and others) with a specialist background in literature or composition. They care about language because it is how they make sense of everything — and because they know that a child trained to reason rigorously in English has a mind that will carry them further than any test score ever could.',
-    navigatorsLink: 'Meet the Navigators →',
+    navigatorsLink:  'Meet the Navigators →',
+    videoCaption:    'Ms. Kimberly · DODO Navigator',
+    videoCaptionSub: 'A 30-second hello',
   },
   families: {
     items: [
@@ -744,6 +742,14 @@ export const methodology = {
   definition: {
     body:
       'The LCS System is DODO Learning’s methodology for English language arts: Literacy, Composition, and Speaking, run every session as The Loop — Read → Think → Speak → Write. It is grounded in the MCT gifted-ELA tradition and Harvard Project Zero’s Visible Thinking routines, and measured with Lexile reading levels and the 6+1 Trait writing framework. Students typically gain one grade level of reading across two 16-week cycles.',
+  },
+
+  seeItLive: {
+    eyebrow:    'See It Live',
+    h2:         'Watch one Loop, start to finish.',
+    body:
+      'Ninety seconds inside an LCS classroom — Read, Think, Speak, Write — in the time it takes to make a cup of coffee. The mechanism on this page, working.',
+    videoTitle: 'LCS in action (90s clip)',
   },
 
   why: {
@@ -1178,6 +1184,12 @@ export const navigators = {
         { num: '04', phase: 'WRITE', headline: 'Assesses the written response live against 6+1 Traits. Scores are specific. Feedback is precise.', sub: '6+1 Trait framework — named scores' },
       ],
     },
+    s3half: {
+      eyebrow:    'Selection',
+      h2:         'How we choose a Navigator.',
+      body:       'Every Navigator clears a teaching demonstration, Lexile certification, and a 6+1 Trait calibration before they ever meet a DODO student. Three minutes inside the process.',
+      videoTitle: 'How DODO selects Navigators (3 min)',
+    },
     s4: {
       eyebrow: 'The Relationship',
       h2: 'The same Navigator. Every session. Sixteen weeks.',
@@ -1188,7 +1200,18 @@ export const navigators = {
         { label: 'Gap tracking', body: 'A Navigator does not prepare a lesson plan. They prepare for your specific child — where they are this week, what the gap is, and which part of The Loop will close it.' },
       ],
     },
-    s5: { eyebrow: 'The Navigators', h2: 'The person your child works with, every week.' },
+    s4half: {
+      eyebrow:    'Meet a Navigator',
+      h2:         'Ms. Kimberly.',
+      bio:        '[YOUR COPY — 2–3 sentences on Kimberly\'s background, teaching style, where she sits in The Loop.]',
+      stats: [
+        { label: 'Years teaching',       value: '[N]' },
+        { label: 'Lexile certified',     value: 'Yes' },
+        { label: '6+1 Trait calibrated', value: 'Yes' },
+      ],
+      videoTitle: 'Ms. Kimberly — DODO Navigator',
+    },
+    s5: { eyebrow: 'The Navigators', h2: 'More Navigators on the team.' },
     s6: {
       eyebrow: 'In Practice',
       h2: 'What happens in a real session',
@@ -1254,9 +1277,9 @@ export const demos = {
         { videoId: YOUTUBE_IDS.demoGr46,       label: 'Emerging Reader',    labelZh: '成长期读者', tag1: 'Grades 4–6', tag2: 'Lexile 580–720', tag3: 'Read · Think · Write' },
         { videoId: YOUTUBE_IDS.demoGr78,       label: 'Independent Reader', labelZh: '独立阅读者', tag1: 'Grades 7–8', tag2: 'Lexile 820–980', tag3: 'Full Loop' },
         { videoId: YOUTUBE_IDS.demoGr9plus,    label: 'Advanced Reader',    labelZh: '高级阅读者', tag1: 'Grades 9+',       tag2: 'Lexile 1020+',      tag3: 'Full Loop · Extended' },
-        { videoId: YOUTUBE_IDS.featured,       label: 'The Full Loop',      labelZh: '完整循环展示', tag1: 'Featured',   tag2: '20 min',  tag3: 'Grades 7–8' },
-        { videoId: YOUTUBE_IDS.brandLoop,      label: 'The Loop Explained', labelZh: '学习循环解析', tag1: 'Method',     tag2: '5 min',   tag3: null },
-        { videoId: YOUTUBE_IDS.brandNavigator, label: 'Meet a Navigator',   labelZh: '认识导师',       tag1: 'People',     tag2: '3 min',   tag3: null },
+        { streamKey: 'dodo-brand-full', label: 'The DODO Approach',  labelZh: '关于 DODO',           tag1: 'Featured', tag2: '4 min',  tag3: 'Brand' },
+        { streamKey: 'lcs-detailed',    label: 'The LCS System',     labelZh: '语言循环体系详解',     tag1: 'Method',   tag2: '2 min',  tag3: null },
+        { streamKey: 'kimberly-intro',  label: 'Meet Ms. Kimberly',  labelZh: '认识 Kimberly 老师',   tag1: 'People',   tag2: '30 sec', tag3: 'Navigator' },
       ],
     },
     session: {

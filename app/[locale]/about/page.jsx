@@ -18,6 +18,7 @@ import { isValidLocale, localeParams } from '@/lib/i18n'
 import { buildMetadata }               from '@/lib/metadata'
 import { about as copyEn }              from '@/content/marketing.en'
 import { about as copyZh }              from '@/content/marketing.zh'
+import StreamVideo                     from '@/components/media/StreamVideo'
 
 export async function generateMetadata({ params }) {
   const { locale } = await params
@@ -201,31 +202,13 @@ function Hero({ c, locale }) {
               {c.hero.sub}
             </p>
           </div>
-          <div className="lg:col-span-2">
-            <div
-              className="relative rounded-3xl overflow-hidden"
-              style={{ aspectRatio: '3/4' }}
-              aria-label={c.hero.videoLabel}
-            >
-              <div
-                className="absolute inset-0"
-                style={{ background: 'linear-gradient(135deg, #161c28 0%, #2E3848 50%, #1a2030 100%)' }}
-                aria-hidden="true"
-              />
-              <div className="absolute inset-0 flex flex-col items-center justify-center" aria-hidden="true">
-                <div
-                  className="flex items-center justify-center"
-                  style={{ width: 80, height: 80, borderRadius: '50%', backgroundColor: '#F5C842', boxShadow: '0 8px 40px rgba(0,0,0,0.4)' }}
-                >
-                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                    <path d="M11 8l14 8-14 8V8z" fill="#0E0E12" />
-                  </svg>
-                </div>
-                <p className="mt-4" style={{ fontSize: '13px', fontWeight: 500, color: 'rgba(255,255,255,0.8)' }}>{c.hero.videoLabel}</p>
-                <p style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)' }}>{c.hero.videoDuration}</p>
-              </div>
-              <div className="absolute inset-0 rounded-3xl" style={{ border: '1px solid rgba(183,181,254,0.1)' }} aria-hidden="true" />
-            </div>
+          <div className="lg:col-span-2" style={{ alignSelf: 'center' }}>
+            <StreamVideo
+              videoKey="about-page-intro"
+              title={c.hero.videoLabel}
+              aspectRatio="16/9"
+              rounded="1.5rem"
+            />
           </div>
         </div>
         <div className="flex justify-center mt-16 absolute bottom-8 left-1/2 -translate-x-1/2" aria-hidden="true">
@@ -344,9 +327,27 @@ function WhoNavigatorsAre({ locale, c }) {
       <div className="container-section">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="order-2 lg:order-1">
-            <div className="relative">
-              <div className="rounded-3xl overflow-hidden" style={{ height: '520px' }} aria-label="A DODO Navigator in session">
-                <div className="w-full h-full" style={{ background: 'linear-gradient(135deg, #e8e7f8 0%, #d4d3f0 40%, #c0bfea 100%)' }} aria-hidden="true" />
+            <div className="flex flex-col items-center lg:items-start">
+              {/* Vertical 9:16 navigator intro — Ms. Kimberly */}
+              <div style={{ width: '100%', maxWidth: '300px' }}>
+                <StreamVideo
+                  videoKey="kimberly-intro"
+                  title={c.navigators.videoCaption}
+                  aspectRatio="9/16"
+                  rounded="1.5rem"
+                />
+              </div>
+              {/* Caption strip — small violet dot + name · role, sub-caption on next line */}
+              <div className="mt-4 flex flex-col items-center lg:items-start" style={{ maxWidth: '300px' }}>
+                <div className="inline-flex items-center gap-2">
+                  <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: '#5856cc' }} />
+                  <span style={{ fontSize: '13px', fontWeight: 600, color: '#0E0E12', letterSpacing: '0.01em' }}>
+                    {c.navigators.videoCaption}
+                  </span>
+                </div>
+                <span style={{ fontSize: '12px', color: '#7B8494', marginTop: '2px', paddingLeft: '14px' }}>
+                  {c.navigators.videoCaptionSub}
+                </span>
               </div>
             </div>
           </div>
