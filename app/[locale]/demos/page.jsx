@@ -20,6 +20,7 @@ import { buildMetadata }               from '@/lib/metadata'
 import LexileBar                       from '@/components/ui/LexileBar'
 import YoutubeEmbed                    from '@/components/demos/YoutubeEmbed'
 import StreamVideo                     from '@/components/media/StreamVideo'
+import K2Note                           from '@/components/ui/K2Note'
 import { demos as copyEn }              from '@/content/marketing.en'
 import { demos as copyZh }              from '@/content/marketing.zh'
 
@@ -406,6 +407,7 @@ export default async function DemosPage({ params }) {
     <>
       <Hero           locale={locale} c={c} />
       <VideoGallery   locale={locale} c={c} />
+      <K2Note         locale={locale} copy={c.k2Note} />
       <InsideSession  locale={locale} c={c} />
       <AfterDemo      locale={locale} c={c} />
       <ResultsSection locale={locale} c={c} />

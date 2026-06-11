@@ -104,7 +104,7 @@ export const cities = {
     countryCode: 'CA',
     en: {
       h1:
-        'English Thinkers built in Toronto — The 16-Week Program for Chinese-speaking families.',
+        'English Thinkers built in Toronto — the ELA Program for Chinese-speaking families.',
       subheading:
         'Toronto\'s Chinese-speaking diaspora is one of the most academically competitive in Canada. DODO Learning develops the edge that matters — reading precision, written argument, and the ability to think in both languages.',
       context:
@@ -112,7 +112,7 @@ export const cities = {
     },
     zh: {
       h1:
-        '多伦多培养的英语思维者——面向华语家庭的16周课程。',
+        '多伦多培养的英语思维者——面向华语家庭的 ELA 课程。',
       subheading:
         '多伦多的华语社区是加拿大学业竞争最激烈的之一。DODO Learning培养真正重要的优势——阅读精准度、书面论证能力，以及在两种语言中思考的能力。',
       context:
@@ -141,7 +141,7 @@ export const cities = {
       subheading:
         '湾区华语社区汇聚了美国教育意识最强的家庭。DODO Learning服务需要的不只是流利——而是精准、论证能力和可量化成长的学生。',
       context:
-        '旧金山湾区拥有规模庞大、学业成就突出的华语社区。这里的家庭理解数据、期待数据。DODO Learning同样如此——Lexile评估、6+1特质写作框架，以及一项有记录结果的16周课程。线上直播课程，整个16周由专属导师（Navigator）陪伴。',
+        '旧金山湾区拥有规模庞大、学业成就突出的华语社区。这里的家庭理解数据、期待数据。DODO Learning同样如此——Lexile评估、6+1特质写作框架，以及一项有记录结果的 ELA 课程。线上直播课程，整个 16 周由专属导师（Navigator）陪伴。',
     },
   },
 
@@ -154,7 +154,7 @@ export const cities = {
     countryCode: 'US',
     en: {
       h1:
-        'English Thinkers for Los Angeles Chinese-speaking families — The 16-Week Program.',
+        'English Thinkers for Los Angeles Chinese-speaking families — the ELA Program.',
       subheading:
         'Los Angeles is one of the largest Chinese-speaking diaspora communities in the US. DODO Learning builds the English Thinkers that LA families are raising — students who read above grade level, argue precisely, and write with intention.',
       context:
@@ -162,7 +162,7 @@ export const cities = {
     },
     zh: {
       h1:
-        '洛杉矶华语家庭的英语思维——16周课程。',
+        '洛杉矶华语家庭的英语思维——ELA 课程。',
       subheading:
         '洛杉矶是美国最大的华语社区之一。DODO Learning培养洛杉矶家庭正在塑造的英语思维者——阅读能力超越年级，论证精准，写作有目的。',
       context:
@@ -442,9 +442,10 @@ export const citiesPhases = {
 
 export const citiesUi = {
   en: {
-    badge:            'The 16-Week Program',
+    badge:            'ELA Program · Little DODO',
+    bandsCallout:     'Both the ELA Program (Grade 3+) and Little DODO (5–8) serve families online.',
     ctaPrimary:       'Book Your Consultation',
-    ctaSecondary:     'See The Program',
+    ctaSecondary:     'See Our Programs',
     contextEyebrow:   'Serving This Community',
     loopEyebrow:      'The Methodology',
     loopHeading:      'The Loop runs in every session.',
@@ -452,17 +453,18 @@ export const citiesUi = {
     loopCta:          'Read the full methodology →',
     structureEyebrow: 'Program Structure',
     structureHeading: 'A beginning, a midpoint, and a measured end.',
-    structureBody:    'The 16-Week Program is a commitment — not a subscription. It has a defined arc with three anchor points.',
+    structureBody:    'The ELA Program is a commitment — not a subscription. It has a defined arc with three anchor points.',
     charterEyebrow:   'Diagnostic Consultation',
     charterHeading:   'Find out exactly where your child stands.',
-    charterBody:      'The consultation is 20 minutes. A Navigator — not a sales call. We measure your child\'s Lexile level and show you what The 16-Week Program looks like for a student exactly like yours.',
+    charterBody:      'The consultation is 20 minutes. A Navigator — not a sales call. We measure your child\'s Lexile level and show you what the ELA Program looks like for a student exactly like yours.',
     charterCta:       'Book Your Consultation',
     charterNote:      'Free diagnostic assessment included. No obligation.',
   },
   zh: {
-    badge:            '16周课程',
+    badge:            'ELA 课程 · 都学启蒙',
+    bandsCallout:     'ELA 课程（3 年级+）和都学启蒙（5–8 岁）都为家庭线上授课。',
     ctaPrimary:       '预约咨询',
-    ctaSecondary:     '了解课程',
+    ctaSecondary:     '了解我们的课程',
     contextEyebrow:   '服务本地社区',
     loopEyebrow:      '教学方法',
     loopHeading:      'The Loop（学习循环）贯穿每一节课。',
@@ -470,10 +472,10 @@ export const citiesUi = {
     loopCta:          '阅读完整方法论 →',
     structureEyebrow: '课程结构',
     structureHeading: '有开始，有中点，有量化的结局。',
-    structureBody:    '16周课程是一项承诺，而非订阅。它有明确的轨迹，包含三个关键节点。',
+    structureBody:    'ELA 课程是一项承诺，而非订阅。它有明确的轨迹，包含三个关键节点。',
     charterEyebrow:   '诊断咨询',
     charterHeading:   '了解您的孩子目前真正的水平。',
-    charterBody:      '咨询仅需20分钟。接待您的是导师（Navigator），不是销售。我们测量您孩子的Lexile水平，并展示16周课程对于和您孩子情况一样的学生意味着什么。',
+    charterBody:      '咨询仅需20分钟。接待您的是导师（Navigator），不是销售。我们测量您孩子的Lexile水平，并展示 ELA 课程对于和您孩子情况一样的学生意味着什么。',
     charterCta:       '预约咨询',
     charterNote:      '包含免费诊断评估。无需承诺。',
   },

@@ -18,6 +18,7 @@ import { navigators as copyEn }    from '@/content/marketing.en'
 import { navigators as copyZh }    from '@/content/marketing.zh'
 import StreamVideo                 from '@/components/media/StreamVideo'
 import SectionWrapper              from '@/components/ui/SectionWrapper'
+import K2Note                       from '@/components/ui/K2Note'
 
 export async function generateMetadata({ params }) {
   const { locale } = await params
@@ -379,6 +380,8 @@ export default async function NavigatorsPage({ params }) {
           <p className="mt-6" style={{ fontSize: '14px', fontWeight: 400, color: '#F0F0F0', opacity: 0.5 }}>{c.s8.note}</p>
         </div>
       </SectionWrapper>
+
+      <K2Note locale={locale} copy={c.k2Note} />
 
     </div>
   )

@@ -20,8 +20,9 @@ import { notFound }                    from 'next/navigation'
 import { isValidLocale, localeParams } from '@/lib/i18n'
 import { buildMetadata }               from '@/lib/metadata'
 import LexileBar                        from '@/components/ui/LexileBar'
-import { home as homeEn }              from '@/content/marketing.en'
-import { home as homeZh }              from '@/content/marketing.zh'
+import AgeBandChooser                   from '@/components/ui/AgeBandChooser'
+import { home as homeEn, ageBands as bandsEn }      from '@/content/marketing.en'
+import { home as homeZh, ageBands as bandsZh }      from '@/content/marketing.zh'
 
 // ── Metadata ──────────────────────────────────────────────────
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -41,6 +42,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 const HOMEPAGE_COPY: Record<string, any> = {
   en: homeEn,
   zh: homeZh,
+}
+
+const BANDS_COPY: Record<string, any> = {
+  en: bandsEn,
+  zh: bandsZh,
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -330,10 +336,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const { locale } = await params
   if (!isValidLocale(locale)) notFound()
   const c = HOMEPAGE_COPY[locale] ?? HOMEPAGE_COPY.en
+  const bands = BANDS_COPY[locale] ?? BANDS_COPY.en
   return (
     <>
       <Hero locale={locale} c={c} />
       <ProofStrip c={c} />
+      <AgeBandChooser locale={locale} copy={bands} current={null} />
       <PhotoIntro locale={locale} c={c} />
       <LoopSection locale={locale} c={c} />
       <ConfidenceSection locale={locale} c={c} />

@@ -50,7 +50,7 @@ const YOUTUBE_IDS = {
 // `members` = the lock-glyph micro-tag on /audiobooks (lg+ only).
 export const nav = {
   primary: [
-    { href: '/program',     label: 'ELA Program'       },
+    { href: '/program',     label: 'Programs'          },
     { href: '/methodology', label: 'DODO Method'       },
     { href: '/results',     label: 'Results'           },
     { href: '/navigators',  label: 'Navigators'        },
@@ -58,11 +58,12 @@ export const nav = {
     { href: '/about',       label: 'About'             },
   ],
   more: [
-    { href: '/lexile',   label: 'Lexile Levels'  },
-    { href: '/compare',  label: 'The Difference' },
-    { href: '/faq',      label: 'FAQ'            },
-    { href: '/blog',     label: 'Blog'           },
-    { href: '/partners', label: 'Partners'       },
+    { href: '/little-dodo', label: 'Little DODO (5–8)' },
+    { href: '/lexile',      label: 'Lexile Levels'     },
+    { href: '/compare',     label: 'The Difference'    },
+    { href: '/faq',         label: 'FAQ'               },
+    { href: '/blog',        label: 'Blog'              },
+    { href: '/partners',    label: 'Partners'          },
   ],
   // Navbar leads with the soft close (Watch Demo Class). Consult is the
   // firm close — demoted to the mobile-drawer ghost + page bodies + footer.
@@ -118,12 +119,12 @@ export const footer = {
     href:      'https://coding.dodolearning.com',
   },
   columns: {
-    program:   'Program',
+    program:   'Programs',
     resources: 'Resources',
     serving:   'Serving',
   },
   program: [
-    { href: '/program',     label: 'The 16-Week Program' },
+    { href: '/program',     label: 'ELA Program (Grade 3+)' },
     { href: '/little-dodo', label: 'Little DODO (5–8)'   },
     { href: '/methodology', label: 'The Loop'            },
     { href: '/navigators',  label: 'Navigators'          },
@@ -345,14 +346,15 @@ export const home = {
 // ── /program ─────────────────────────────────────────────────────
 export const program = {
   meta: {
-    title: 'What Happens in a 16-Week Program — DODO Learning',
+    title: 'The ELA Program — DODO Learning',
     description:
       'Live, Navigator-led English literacy program for students worldwide. The LCS System and MCT enriched curriculum, executed each session through The Loop — Read → Think → Speak → Write. Entry, mid-cycle, and exit Lexile assessments. One grade level of growth across two 16-week cycles.',
   },
   hero: {
-    chip: 'Think Once. In Both Languages.',
-    h1:   'What happens in a 16-Week Program?',
-    h1zh: '',
+    chip:       'Think Once. In Both Languages.',
+    kidsChip:   'Ages 5–8? See Little DODO →',
+    h1:         'What happens in the ELA Program?',
+    h1zh:       '',
     sub:
       'Live, one-on-one with dedicated Navigator. English literacy and writing for students around the world. Grounded in MCT gifted teaching framework plus The LCS System covering Reading, Thinking, Speaking, and Writing. Progress measured in Lexile and the 6+1 Trait rubric.',
     cta1: 'See How It Works',
@@ -524,7 +526,7 @@ export const about = {
   loop: {
     sub:         'Every session follows the same cycle. Consistent in structure. Cumulative in effect.',
     cta:         'Explore Methodology',
-    programLink: 'See The 16-Week Program →',
+    programLink: 'See the ELA Program →',
     descs: [
       'Classical literature that climbs with the child — Alice in Wonderland in the early years, Treasure Island mid-way, the SAT canon of The Great Gatsby by high school — read not as school assignments but as living arguments about how language, character, and consequence work.',
       'Structure evidence. Map cause and effect. Hold two competing ideas without rushing to resolve them. Every Think step targets a specific type of reasoning. Structured thinking is not a reading skill, and it goes well beyond comprehension worksheets.',
@@ -573,6 +575,11 @@ export const about = {
         desc:
           'Your child is already strong in English. But you sense there’s a ceiling — in how they argue, how they write, how they handle complexity under pressure. The future belongs to children who can reason precisely and write with intention. We build that.',
       },
+      {
+        quote: '“We want a gentle, consistent start — and the joy of understanding what they read.”',
+        desc:
+          'Parents of 5–8-year-olds choosing the right entry point. You want high-frequency, low-pressure reading with a Navigator who knows your child, not a class. Little DODO is the K-2 sibling of the ELA Program — same Navigator model, adapted in pace and pressure.',
+      },
     ],
   },
   closing: {
@@ -592,9 +599,9 @@ export const consult = {
       chip: 'Think Once. In Both Languages.',
       h1:   'We find out exactly where your child is.',
       h1zh: '我们精确确定您孩子的起点',
-      sub:  'Not where their school report says they are. The consultation is 20 minutes with a Navigator — not a sales call. We diagnose, we identify the gap, we prescribe. You decide.',
+      sub:  'Not where their school report says they are. The consultation is 20 minutes with a Navigator — not a sales call. We diagnose, we identify the gap, we prescribe. You decide. We consult for both age bands — Little DODO (5–8) and the ELA Program (Grade 3+).',
       cta1: 'Book My Consultation',
-      cta2: 'See The 16-Week Program',
+      cta2: 'See the ELA Program',
       stats: [
         { value: '20',     unit: 'Minutes',      desc: 'Focused, no filler'                                        },
         { value: '1',      unit: 'Navigator',    desc: 'Not a sales rep'                                           },
@@ -630,13 +637,13 @@ export const consult = {
       p2: 'That question tells us more in thirty seconds than a report card tells us in a year. We’re listening for the gap between what the school measures and what’s actually happening.',
       p3: 'By minute fifteen, we’ve named the gap. We’ve described what the first four weeks of The Loop looks like for a student with that specific profile.',
       p4: 'The call closes with one honest statement:',
-      q4: '“Based on what you’ve told me, I think the 16-Week Program is the right fit. Here’s exactly why — and here’s what happens if it isn’t working at week eight.”',
+      q4: '“Based on what you’ve told me, I think the ELA Program is the right fit. Here’s exactly why — and here’s what happens if it isn’t working at week eight.”',
     },
     trust: {
       eyebrow: 'Before You Book',
       h2:      'This is a diagnostic call, not a sales call.',
       h2zh:    '这是诺断通话，不是销售通话',
-      body:    'DODO consultations are run by Navigators — the same people who deliver the program. They will tell you honestly whether the 16-Week Program is the right fit for your child right now. If it is not, they will tell you that too.',
+      body:    'DODO consultations are run by Navigators — the same people who deliver the program. They will tell you honestly whether the ELA Program is the right fit for your child right now. If it is not, they will tell you that too.',
       points: [
         'Run by a Navigator, not a sales representative',
         'Lexile level identified before the call ends',
@@ -670,6 +677,11 @@ export const compare = {
       h1a: 'Every English program promises\u00a0', h1b: 'progress.', h1c: '\u00a0One of them builds the thinker.',
       sub: 'For globally-mobile families — this is what makes DODO Learning structurally different from every other option available to your child.',
     },
+    k2Note: {
+      text:       'Comparing for a 5–8-year-old? Little DODO is the K-2 entry point — same Navigator model, adapted in pace and pressure.',
+      linkLabel:  'Explore Little DODO →',
+      href:       '/little-dodo',
+    },
     s2: { pull: 'Most programs teach your child to answer the question correctly.\u00a0', pullSpan: 'DODO Learning builds English Thinkers who ask a better one.', pullEnd: '' },
     s3: {
       eyebrow: 'The Category Difference',
@@ -677,7 +689,7 @@ export const compare = {
       cols: [
         { question: 'vs. Tutoring centres & ESL programs', title: 'Cognitive development\u00a0— not language practice', body: 'Tutoring centres fix homework. ESL programs build conversational fluency. DODO Learning develops the reasoning architecture that makes your child capable of reading dense analytical prose, arguing a position with textual evidence, and writing with precision. Different category. Different outcome.' },
         { question: 'vs. Grade-level school support', title: 'Mastery standard\u00a0— not grade compliance', body: 'School English is calibrated to the average. DODO Learning’s program is grounded in the principles of the MCT Language Arts framework\u00a0— one of the most rigorous classical ELA programs in North America, built for students capable of genuine mastery. Your child is measured against their own Lexile ceiling, not a classroom mean.' },
-        { question: 'vs. Test-prep companies', title: 'A 16-week arc\u00a0— not a score for next month', body: 'Test-prep optimises for a single exam window. The 16-Week Program builds the cognitive capacity that produces strong results as a natural byproduct\u00a0— because a student who can read complexity, synthesise evidence, and write with intention will perform on any assessment they face.' },
+        { question: 'vs. Test-prep companies', title: 'A 16-week arc\u00a0— not a score for next month', body: 'Test-prep optimises for a single exam window. The ELA Program builds the cognitive capacity that produces strong results as a natural byproduct\u00a0— because a student who can read complexity, synthesise evidence, and write with intention will perform on any assessment they face.' },
       ],
     },
     s4: {
@@ -701,7 +713,7 @@ export const compare = {
       cols: [
         { num: '01', title: 'Lexile\u00a0— not letter grades', body: 'Lexile 620 to Lexile 790 in 16 weeks is a verifiable fact. A letter grade is a school’s assessment of compliance against a class average. DODO Learning measures reading complexity\u00a0— the actual cognitive demand of the texts your child can independently handle\u00a0— at entry, at the midpoint, and at completion.' },
         { num: '02', title: '6+1 Traits\u00a0— not impressions', body: 'Writing is scored across seven specific traits: Ideas, Organization, Voice, Word Choice, Sentence Fluency, Conventions, Presentation. Your child knows which trait moved, by how much, and exactly what a higher score requires. Progress is never vague here.' },
-        { num: '03', title: 'A committed arc\u00a0— not rolling enrolment', body: 'The 16-Week Program has a beginning, a measurable midpoint, and a confirmed result. Not a monthly subscription. Not open enrolment. A structure\u00a0— because compounding only works when the work is continuous and the Navigator’s knowledge accumulates.' },
+        { num: '03', title: 'A committed arc\u00a0— not rolling enrolment', body: 'The ELA Program has a beginning, a measurable midpoint, and a confirmed result. Not a monthly subscription. Not open enrolment. A structure\u00a0— because compounding only works when the work is continuous and the Navigator’s knowledge accumulates.' },
       ],
     },
     s8: {
@@ -714,8 +726,8 @@ export const compare = {
     s9: {
       h2: 'The consultation is where we find out if DODO Learning is the right fit for your child.',
       sub: 'It starts with a conversation\u00a0— no commitment, no pressure. If it’s a fit, your child’s Lexile baseline is the first thing we measure once the program begins.',
-      ctaPrimary: 'Book Your Consultation', ctaSecondary: 'See The 16-Week Program',
-      note: 'The consultation is free, with no obligation. The 16-Week Program then begins with a confirmed Lexile baseline.',
+      ctaPrimary: 'Book Your Consultation', ctaSecondary: 'See the ELA Program',
+      note: 'The consultation is free, with no obligation. The ELA Program then begins with a confirmed Lexile baseline.',
     },
   }
 
@@ -737,6 +749,12 @@ export const methodology = {
       'One-on-one English language arts in the MCT gifted-ELA tradition. ' +
       'Every session runs The Loop — Read → Think → Speak → Write. ' +
       'We build English Thinkers at mastery level. Bilingual depth emerges.',
+  },
+
+  k2Note: {
+    text:       'The Loop runs the same way for our K-2 starters in Little DODO — adapted in pace and pressure, identical in structure.',
+    linkLabel:  'Explore Little DODO →',
+    href:       '/little-dodo',
   },
 
   definition: {
@@ -770,7 +788,7 @@ export const methodology = {
       cjk:      '阅读',
       heading:  'Above the comfort zone. Intentionally.',
       body:
-        'Every text in the 16-Week Program is selected at or just above the ' +
+        'Every text in the ELA Program is selected at or just above the ' +
         "student's current Lexile level. Not to frustrate — to stretch. " +
         'Reading is grounded in the MCT Language Arts tradition: classical literature that climbs with the student — ' +
         'Alice in Wonderland in the early years, Treasure Island mid-way, the SAT canon like The Great Gatsby by high school — paired with ' +
@@ -910,7 +928,7 @@ export const methodology = {
     heading:      'See the LCS System applied to your child.',
     body:         'The diagnostic consultation is where we find out exactly where your child is — and show you what The Loop looks like for a student exactly like yours.',
     ctaPrimary:   'Book Your Consultation',
-    ctaSecondary: 'See The 16-Week Program',
+    ctaSecondary: 'See the ELA Program',
   },
 }
 
@@ -927,6 +945,12 @@ export const lexile = {
     heading:    'What is a Lexile level — and what does the number actually mean?',
     subheading:
       'Lexile is the most precise reading measurement tool available to parents. One number tells you exactly where your child reads today, how far they are from grade level, and how much they have grown after a structured program.',
+  },
+
+  k2Note: {
+    text:       'Formal Lexile measurement begins at Grade 3+ in the ELA Program. K-2 readers in Little DODO build the comprehension foundation that Lexile later measures — without scoring a 5-year-old.',
+    linkLabel:  'Explore Little DODO →',
+    href:       '/little-dodo',
   },
 
   what: {
@@ -1007,7 +1031,7 @@ export const results = {
     title: 'Student Results',
     description:
       'Real Lexile growth data from DODO Learning students. Anonymised results ' +
-      'showing reading and writing progress across The 16-Week Program — measured ' +
+      'showing reading and writing progress across the ELA Program — measured ' +
       'by Lexile levels and the 6+1 Trait writing framework.',
   },
 
@@ -1016,7 +1040,13 @@ export const results = {
     heading:    'Growth you can read in a number.',
     subheading:
       'Every result below is measured — not estimated, not felt. Lexile scores ' +
-      'before and after The 16-Week Program. Real students. Real data. Names withheld by design.',
+      'before and after the ELA Program. Real students. Real data. Names withheld by design.',
+  },
+
+  k2Note: {
+    text:       'These are ELA Program results — Lexile-measured, 6+1-Trait-scored. Little DODO outcomes look different at this stage: confidence to read aloud, comfort with comprehension questions, the steady habit of opening a book. The formal Lexile arc begins later.',
+    linkLabel:  'Explore Little DODO →',
+    href:       '/little-dodo',
   },
 
   proof: {
@@ -1145,7 +1175,7 @@ export const results = {
     eyebrow: 'Diagnostic Consultation',
     heading: 'Find out exactly where your child stands.',
     body:
-      'The consultation is 20 minutes. A Navigator — not a sales call. We measure your child\'s Lexile level, identify the exact gaps, and show you what The 16-Week Program looks like for a student exactly like yours.',
+      'The consultation is 20 minutes. A Navigator — not a sales call. We measure your child\'s Lexile level, identify the exact gaps, and show you what the ELA Program looks like for a student exactly like yours.',
     cta: 'Book Your Consultation',
   },
 }
@@ -1164,6 +1194,11 @@ export const navigators = {
       h1d: "where they’re going",
       h1e: '.',
       sub: 'Most programs teach the content. A Navigator teaches the thinker.',
+    },
+    k2Note: {
+      text:       'Navigators teach across both age bands — from the K-2 reader in Little DODO to the Grade 12 SAT/IB candidate in the ELA Program.',
+      linkLabel:  'Explore Little DODO →',
+      href:       '/little-dodo',
     },
     s2: {
       eyebrow: 'Reframe',
@@ -1271,7 +1306,7 @@ export const demos = {
       eyebrow:   'Watch Before You Decide',
       h2:        'Demo classes and program explainers.',
       h2zh:      '课堂实录与课程介绍',
-      row1Label: 'Demo Class Recordings',
+      row1Label: 'ELA Program (Grade 3+) · Demo Classes',
       row2Label: 'About the Program',
       cards: [
         { videoId: YOUTUBE_IDS.demoGr46,       label: 'Emerging Reader',    labelZh: '成长期读者', tag1: 'Grades 4–6', tag2: 'Lexile 580–720', tag3: 'Read · Think · Write' },
@@ -1281,6 +1316,11 @@ export const demos = {
         { streamKey: 'lcs-detailed',    label: 'The LCS System',     labelZh: '语言循环体系详解',     tag1: 'Method',   tag2: '2 min',  tag3: null },
         { streamKey: 'kimberly-intro',  label: 'Meet Ms. Kimberly',  labelZh: '认识 Kimberly 老师',   tag1: 'People',   tag2: '30 sec', tag3: 'Navigator' },
       ],
+    },
+    k2Note: {
+      text:       'Little DODO demo classes are being recorded with K-2 students and their Navigators. In the meantime, see what Little DODO is and how it sits alongside the ELA Program.',
+      linkLabel:  'Explore Little DODO →',
+      href:       '/little-dodo',
     },
     session: {
       eyebrow:       'Inside a Demo Session',
@@ -1308,7 +1348,7 @@ export const demos = {
       h2zh:    '演示展示方法，数字证明成果',
       lexile: {
         h3:  'Lexile Reading Level',
-        sub: 'Students who complete The 16-Week Program after watching the demo start with a clear baseline and finish with a measurable number.',
+        sub: 'Students who complete the ELA Program after watching the demo start with a clear baseline and finish with a measurable number.',
         note: 'The student in the Grade 7–8 demo started at <strong>Lexile 820</strong>. After 16 weeks: <strong>Lexile 1020</strong>. That’s two full grade levels in four months.',
         start: 820, end: 1020,
       },
@@ -1329,9 +1369,11 @@ export const demos = {
 // directly below each page's hero (NOT inside the hero). The component marks
 // the current page's band "You're here" via a `current` prop.
 export const ageBands = {
-  eyebrow: 'By your child’s stage',
-  heading: 'Two ways into DODO English.',
-  here:    'You’re here',
+  eyebrow:      'By your child’s stage',
+  heading:      'Two ways into DODO English.',
+  homeEyebrow:  'Built for the stage your child is in',
+  homeHeading:  'Two paths into DODO English literacy.',
+  here:         'You’re here',
   bands: [
     {
       href:  '/little-dodo',
@@ -1342,27 +1384,27 @@ export const ageBands = {
     },
     {
       href:  '/program',
-      tag:   'Grade 4+',
-      name:  'The 16-Week Program',
-      blurb: 'Live, Navigator-led literacy and writing — read complexity, argue with evidence, write with intention. Progress measured in Lexile.',
-      cta:   'See The 16-Week Program',
+      tag:   'Grade 3+',
+      name:  'ELA Program',
+      blurb: 'Live, Navigator-led literacy and writing — read complexity, argue with evidence, write with intention. Progress measured in Lexile. A 16-week cycle, four skills every session.',
+      cta:   'Explore the ELA Program',
     },
   ],
 }
 
 
 // ── /little-dodo ─────────────────────────────────────────────────
-// Little DODO — the K–2 (ages 5–8) sibling of the 16-Week Program.
+// Little DODO — the K–2 (ages 5–8) sibling of the ELA Program.
 // High-frequency, low-pressure foundational reading + comprehension. Shares
 // the same Navigators / live model / standards; the pace and pressure differ.
 // Funnel: hero leads soft (Watch a Demo Class); page owns its firm close, so
 // /little-dodo is on the PreCtaBand SUPPRESS list. NOT Lexile-heavy (K–2 is
-// pre-measurement; formal Lexile begins in the 16-Week Program).
+// pre-measurement; formal Lexile begins in the ELA Program at Grade 3+).
 export const littleDodo = {
   meta: {
     title: 'Little DODO — Foundational English Reading for Ages 5–8 | DODO Learning',
     description:
-      'Little DODO is the high-frequency, low-pressure start to English literacy for children ages 5–8 (K–2). Live, one-on-one with a dedicated Navigator — building reading comprehension and the steady habit of understanding. The gentle on-ramp to the DODO 16-Week Program.',
+      'Little DODO is the high-frequency, low-pressure start to English literacy for children ages 5–8 (K–2). Live, one-on-one with a dedicated Navigator — building reading comprehension and the steady habit of understanding. The gentle on-ramp to the DODO ELA Program.',
   },
   hero: {
     chip: 'Think Once. In Both Languages.',
@@ -1406,7 +1448,7 @@ export const littleDodo = {
     h2:      'The program your older child would grow into — built for five-year-olds.',
     h2zh:    null,
     body:
-      'Little DODO runs on the same machinery as the 16-Week Program: live sessions, one dedicated Navigator, and Navigators with backgrounds in literature and composition. What changes is the pace and the pressure. Formal Lexile measurement comes later, in the 16-Week Program; here the work is the foundation it’s built on — comprehension, confidence, and a child who reaches for the next book.',
+      'Little DODO runs on the same machinery as the ELA Program: live sessions, one dedicated Navigator, and Navigators with backgrounds in literature and composition. What changes is the pace and the pressure. Formal Lexile measurement comes later, in the ELA Program (Grade 3+); here the work is the foundation it’s built on — comprehension, confidence, and a child who reaches for the next book.',
   },
   fit: {
     eyebrow: 'Who It’s For',

@@ -27,6 +27,7 @@ import { isValidLocale, localeParams}                  from '@/lib/i18n'
 import { buildMetadata }               from '@/lib/metadata'
 
 import SectionWrapper from '@/components/ui/SectionWrapper'
+import K2Note         from '@/components/ui/K2Note'
 import Button         from '@/components/ui/Button'
 import Badge          from '@/components/ui/Badge'
 import LexileBar      from '@/components/ui/LexileBar'
@@ -441,6 +442,7 @@ export default async function ResultsPage({ params }) {
         </div>
       </SectionWrapper>
 
+      <K2Note locale={locale} copy={t.k2Note} />
     </>
   )
 }

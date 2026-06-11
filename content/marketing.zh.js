@@ -41,7 +41,7 @@ const YOUTUBE_IDS = {
 // 下发的 locale-aware copy 消费。结构与 marketing.en.js 镜像。
 export const nav = {
   primary: [
-    { href: '/program',     label: 'ELA 课程'      },
+    { href: '/program',     label: '课程'          },
     { href: '/methodology', label: 'DODO 教学系统' },
     { href: '/results',     label: '成果'          },
     { href: '/navigators',  label: '导师'          },
@@ -49,11 +49,12 @@ export const nav = {
     { href: '/about',       label: '故事'          },
   ],
   more: [
-    { href: '/lexile',   label: 'Lexile 等级' },
-    { href: '/compare',  label: '不同之处'    },
-    { href: '/faq',      label: '常见问题'    },
-    { href: '/blog',     label: '博客'        },
-    { href: '/partners', label: '合作伙伴'    },
+    { href: '/little-dodo', label: '都学启蒙（5–8 岁）' },
+    { href: '/lexile',      label: 'Lexile 等级'        },
+    { href: '/compare',     label: '不同之处'           },
+    { href: '/faq',         label: '常见问题'           },
+    { href: '/blog',        label: '博客'               },
+    { href: '/partners',    label: '合作伙伴'           },
   ],
   // 导航以柔性引导（课堂实录）为先；预约面谈作为更坚定的转化，
   // 收纳到移动端抽屉的次级按钮、页面正文与页脚。
@@ -105,7 +106,7 @@ export const footer = {
     serving:   '服务地区',
   },
   program: [
-    { href: '/program',     label: '十六周课程'    },
+    { href: '/program',     label: 'ELA 课程（3 年级+）' },
     { href: '/little-dodo', label: '都学启蒙 (5–8)' },
     { href: '/methodology', label: 'The Loop 闭环' },
     { href: '/navigators',  label: '导师团队'      },
@@ -328,14 +329,15 @@ export const home = {
 // ── /program ─────────────────────────────────────────────────────
 export const program = {
   meta: {
-    title: '16周课程安排 — DODO Learning',
+    title: 'ELA 课程 — DODO Learning',
     description:
       '面向全球家庭的英语深度学习课程，导师实时主导。LCS 教学理念与 MCT 课程为架构，每节课运行 The Loop — 阅读 → 思考 → 表达 → 写作。入学、中期、结业三次Lexile评估。两个16周周期内Lexile阅读水平提升一个年级。',
   },
   hero: {
-    chip: '一次思考。两种语言。',
-    h1:   '16周课程安排',
-    h1zh: '',
+    chip:       '一次思考。两种语言。',
+    kidsChip:   '5–8 岁？看都学启蒙 →',
+    h1:         'ELA 课程里发生了什么？',
+    h1zh:       '',
     sub:
       '特约导师，线上一对一，面向全球家庭的英语深度学习课程。以 MCT 资优教学架构与 LCS 教学体系，每节课全面发展 Read - Think - Speak - Write。进步以 Lexile 数据和 6+1 Trait 评估体系衡量。',
     cta1: '了解详情',
@@ -507,7 +509,7 @@ export const about = {
   loop: {
     sub:         '每节课都遵循谨慎设计的循环。结构一致。效果累积。',
     cta:         '阅读DODO Learning 的教学系统',
-    programLink: '查看DODO Learning 的16周课程 →',
+    programLink: '查看 ELA 课程 →',
     descs: [
       '经典文学伴随孩子拾级而上——低年级的《爱丽丝梦游仙境》，中段的《金银岛》，到高中阶段的 SAT 经典《了不起的盖茨比》——都不是作为学校作业来读，而是作为关于语言、人物与后果如何运作的活生生的论证。',
       '结构化证据。映射因果关系。同时持有两个竞争性想法而不急于解决。每一个思考步骤都针对特定类型的推理——这不只是阅读能力，更不是阅读理解练习册能教的。',
@@ -556,6 +558,11 @@ export const about = {
         desc:
           '您的孩子英语已经很强。但您感觉到有一个天花板——在他们如何论证、如何写作、如何在压力下处理复杂性方面。未来属于能够精确推理并有意图地写作的孩子。我们培养这种能力。',
       },
+      {
+        quote: '“我们希望温和稳定地起步——让孩子享受读懂一本书的乐趣。”',
+        desc:
+          '为 5–8 岁孩子寻找合适入口的家长。您想要的是高频低压的阅读，由真正认识孩子的导师陪伴，而不是班级课。都学启蒙是 ELA 课程的 K-2 姊妹课程——同样的导师模式，节奏和强度做了适龄调整。',
+      },
     ],
   },
   closing: {
@@ -569,15 +576,15 @@ export const about = {
 export const consult = {
     meta: {
       title:       '预约诊断性咨询',
-      description: '预约与DODO Learning的20分钟诊断性咨询。由导师（Navigator）——而非销售人员——精确了解您孩子的当前位置，并描绘出16周课程可能的样子。无需承诺。',
+      description: '预约与DODO Learning的20分钟诊断性咨询。由导师（Navigator）——而非销售人员——精确了解您孩子的当前位置，并描绘出 ELA 课程可能的样子。无需承诺。',
     },
     hero: {
       chip: '一次思考。两种语言。',
       h1:   '我们精确确定您孩子的起点。',
       h1zh: '我们精确确定您孩子的起点',
-      sub:  '不是学校报告上说的水平。咨询时长20分钟，与导师（Navigator）进行——不是销售电话。我们诊断、定位差距、给出方案。您来做决定。',
+      sub:  '不是学校报告上说的水平。咨询时长20分钟，与导师（Navigator）进行——不是销售电话。我们诊断、定位差距、给出方案。您来做决定。我们为两个年龄段都提供咨询——都学启蒙（5–8 岁）与 ELA 课程（3 年级+）。',
       cta1: '预约我的咨询',
-      cta2: '查看十六周课程',
+      cta2: '查看 ELA 课程',
       stats: [
         { value: '20',     unit: '分钟',      desc: '专注，无冗余'                                        },
         { value: '1',      unit: '导师（Navigator）',    desc: '不是销售人员'                                           },
@@ -613,13 +620,13 @@ export const consult = {
       p2: '那个问题在三十秒内告诉我们的信息，比一份成绩单一年告诉我们的还要多。我们在倾听学校衡量的东西与实际发生的情况之间的差距。',
       p3: '到第15分钟，我们已经明确了差距。我们描述了对于具有该特定情况的学生，The Loop（学习循环）的头四周会是什么样子。',
       p4: '通话以一句诚实的话结束：',
-      q4: '“根据您告诉我的情况，我认为16周课程是合适的匹配。这是确切的原因——以及如果在第8周效果不理想，会发生什么。”',
+      q4: '“根据您告诉我的情况，我认为 ELA 课程是合适的匹配。这是确切的原因——以及如果在第8周效果不理想，会发生什么。”',
     },
     trust: {
       eyebrow: '预约之前',
       h2:      '这是一个诊断性通话，不是销售通话。',
       h2zh:    '这是诊断通话，不是销售通话',
-      body:    'DODO咨询由导师（Navigator）进行——也就是实际授课的同一批人。他们会诚实告诉您16周课程目前是否适合您的孩子。如果不适合，他们也会如实相告。',
+      body:    'DODO咨询由导师（Navigator）进行——也就是实际授课的同一批人。他们会诚实告诉您 ELA 课程目前是否适合您的孩子。如果不适合，他们也会如实相告。',
       points: [
         '由导师（Navigator）进行，而非销售代表',
         '通话结束前确定Lexile水平',
@@ -653,6 +660,11 @@ export const compare = {
       h1a: '每个英语项目都承诺 ', h1b: '进步。', h1c: ' 但只有其中一个培养思考者。',
       sub: '对于全球家庭——这就是DODO Learning与您孩子可获得的任何其他选择在结构上的不同之处。',
     },
+    k2Note: {
+      text:       '正在为 5–8 岁孩子做对比？都学启蒙是 K-2 阶段的入口——同样的导师模式，节奏和强度做了适龄调整。',
+      linkLabel:  '了解都学启蒙 →',
+      href:       '/little-dodo',
+    },
     s2: { pull: '大多数项目教您的孩子正确回答问题。 ', pullSpan: 'DODO Learning培养能提出更好问题的英语思维者。', pullEnd: '' },
     s3: {
       eyebrow: '品类差异',
@@ -660,7 +672,7 @@ export const compare = {
       cols: [
         { question: 'vs. 补习中心和ESL项目', title: '认知发展 ——而非语言练习', body: '补习中心解决作业问题。ESL项目培养会话流利度。DODO Learning发展推理架构，使您的孩子能够阅读密集的分析性散文、用文本证据论证观点、并精确写作。不同的品类。不同的结果。' },
         { question: 'vs. 年级学业支持', title: '精通标准 ——而非年级达标', body: '学校英语是针对平均水平校准的。DODO Learning的课程基于MCT语言艺术课程框架的原则——北美最严谨的经典ELA项目之一，为有能力达到真正精通的学生而设计。您的孩子根据他们自己的Lexile天花板来衡量，而不是班级平均水平。' },
-        { question: 'vs. 备考公司', title: '16周的完整弧线 ——而非下个月的分数', body: '备考针对单一的考试窗口进行优化。16周课程构建认知能力，而强大的成绩是这种能力的自然副产品——因为一个能阅读复杂性、综合证据、并有意图地写作的学生，将在他们面对的任何评估中表现出色。' },
+        { question: 'vs. 备考公司', title: '16周的完整弧线 ——而非下个月的分数', body: '备考针对单一的考试窗口进行优化。ELA 课程构建认知能力，而强大的成绩是这种能力的自然副产品——因为一个能阅读复杂性、综合证据、并有意图地写作的学生，将在他们面对的任何评估中表现出色。' },
       ],
     },
     s4: {
@@ -684,7 +696,7 @@ export const compare = {
       cols: [
         { num: '01', title: 'Lexile ——而非字母等级', body: '在16周内从Lexile 620到790是一个可验证的事实。字母等级是学校根据班级平均水平对合规性的评估。DODO Learning在入学时、期中时和结业时测量阅读复杂性——您的孩子能够独立处理的文本的实际认知需求。' },
         { num: '02', title: '6+1特质 ——而非印象', body: '写作根据七个具体特质评分：思考、结构、声音、用词、流畅、规范、呈现。您的孩子知道哪个特质进步了，进步了多少，以及达到更高分数确切需要什么。在这里，进步从来不是模糊的。' },
-        { num: '03', title: '一个承诺的弧线 ——而非滚动入学', body: '16周课程有一个开始、一个可衡量的中点和一个确认的结果。不是月度订阅。不是开放式入学。一个结构 ——因为累积只有在工作持续且导师（Navigator）的知识不断积累时才有效。' },
+        { num: '03', title: '一个承诺的弧线 ——而非滚动入学', body: 'ELA 课程有一个开始、一个可衡量的中点和一个确认的结果。不是月度订阅。不是开放式入学。一个结构 ——因为累积只有在工作持续且导师（Navigator）的知识不断积累时才有效。' },
       ],
     },
     s8: {
@@ -697,8 +709,8 @@ export const compare = {
     s9: {
       h2: '咨询是我们确定DODO Learning是否适合您孩子的地方。',
       sub: '一切从一次对话开始——20分钟，由导师（Navigator）进行，不是销售电话。如果合适，课程开始后我们首先测量的就是您孩子的Lexile基线。',
-      ctaPrimary: '预约咨询', ctaSecondary: '查看十六周课程',
-      note: '咨询免费，无任何义务。16周课程随后从确认的Lexile基线开始。',
+      ctaPrimary: '预约咨询', ctaSecondary: '查看 ELA 课程',
+      note: '咨询免费，无任何义务。ELA 课程随后从确认的Lexile基线开始。',
     },
   }
 
@@ -720,6 +732,12 @@ export const methodology = {
       '一对一英语语言艺术，秉承MCT gifted-ELA传统。' +
       '每节课都运行The Loop（学习循环）—— 阅读 → 思考 → 表达 → 写作。' +
       '我们培养达到精通水平的英语思维者。双语深度自然涌现。',
+  },
+
+  k2Note: {
+    text:       '都学启蒙（5–8 岁）也运行同样的 Loop —— 节奏和强度做了适龄调整，结构完全相同。',
+    linkLabel:  '了解都学启蒙 →',
+    href:       '/little-dodo',
   },
 
   definition: {
@@ -752,7 +770,7 @@ export const methodology = {
       cjk:      '阅读',
       heading:  '有意地略高于舒适区。',
       body:
-        '16周课程中的每一篇文本都是在或略高于学生当前Lexile水平的位置选择的。不是为了挫败——而是为了拉伸。' +
+        'ELA 课程中的每一篇文本都是在或略高于学生当前Lexile水平的位置选择的。不是为了挫败——而是为了拉伸。' +
         '阅读根植于MCT语言艺术传统：经典文学伴随学生拾级而上——' +
         '低年级的《爱丽丝梦游仙境》、中段的《金银岛》，到高中阶段的SAT经典如《了不起的盖茨比》，辅以' +
         '与学生当前水平匹配的Lexile补充材料。' +
@@ -886,7 +904,7 @@ export const methodology = {
     heading:      '看到语言循环体系应用在您孩子身上。',
     body:         '诊断性咨询让我们精确了解您孩子的当前位置——并向您展示对于与您孩子情况相似的学生，The Loop（学习循环）会是什么样子。',
     ctaPrimary:   '预约咨询',
-    ctaSecondary: '查看16周课程',
+    ctaSecondary: '查看 ELA 课程',
   },
 }
 
@@ -903,6 +921,12 @@ export const lexile = {
     heading:    '什么是Lexile水平——这个数字到底意味着什么？',
     subheading:
       'Lexile是家长可用的最精确的阅读测量工具。一个数字就能告诉您孩子今天的阅读水平在哪里、距离年级水平还有多远、以及在结构化项目后成长了多少。',
+  },
+
+  k2Note: {
+    text:       '正式 Lexile 评估从 3 年级（ELA 课程）开始。5–8 岁孩子在都学启蒙阶段先建立阅读理解的基础——不会过早给五岁孩子打分。',
+    linkLabel:  '了解都学启蒙 →',
+    href:       '/little-dodo',
   },
 
   what: {
@@ -938,7 +962,7 @@ export const lexile = {
     eyebrow: 'DODO如何使用Lexile',
     heading: '三次评估。一条清晰的成长轨迹。',
     body:
-      'DODO在16周课程中的三个时间点使用经MetaMetrics认证的Lexile评估工具。每次评估后72小时内与家长分享结果。您始终会收到一个具体的数字——从来不是模糊的进度更新。',
+      'DODO 在 ELA 课程中的三个时间点使用经 MetaMetrics 认证的 Lexile 评估工具。每次评估后 72 小时内与家长分享结果。您始终会收到一个具体的数字——从来不是模糊的进度更新。',
     points: [
       {
         id:    'week0',
@@ -961,7 +985,7 @@ export const lexile = {
   examples: {
     eyebrow: '典型结果',
     heading: '16周的成长，以Lexile数字呈现。',
-    note:    '数据来自完成16周课程的学生。结果反映了持续的出勤率和课间练习。',
+    note:    '数据来自完成 ELA 课程的学生。结果反映了持续的出勤率和课间练习。',
     bars: [
       { start: 510, end: 670, weeks: 16, label: '三年级学生 — 温哥华' },
       { start: 650, end: 820, weeks: 16, label: '五年级学生 — 多伦多' },
@@ -983,7 +1007,7 @@ export const results = {
     title: '学生成果',
     description:
       '来自DODO Learning学生的真实Lexile成长数据。匿名化结果' +
-      '展示了在16周课程中的阅读和写作进步——通过Lexile水平和6+1特质写作框架衡量。',
+      '展示了在 ELA 课程中的阅读和写作进步——通过 Lexile 水平和 6+1 特质写作框架衡量。',
   },
 
   hero: {
@@ -991,7 +1015,13 @@ export const results = {
     heading:    '可以用数字读到的成长。',
     subheading:
       '以下每个成果都是经过衡量的——不是估计，不是感觉。Lexile分数' +
-      '在16周课程前后。真实的学生。真实的数据。姓名按设计隐藏。',
+      '在 ELA 课程前后。真实的学生。真实的数据。姓名按设计隐藏。',
+  },
+
+  k2Note: {
+    text:       '这些是 ELA 课程的成果——Lexile 测量、6+1 Trait 评分。都学启蒙阶段的成果呈现方式不同：朗读时的自信、面对理解题的从容、每天打开一本书的稳定习惯。正式的 Lexile 轨迹之后才开始。',
+    linkLabel:  '了解都学启蒙 →',
+    href:       '/little-dodo',
   },
 
   proof: {
@@ -1119,7 +1149,7 @@ export const results = {
     eyebrow: '诊断性咨询',
     heading: '精确了解您孩子的真实水平。',
     body:
-      '咨询时长20分钟。由导师（Navigator）进行——不是销售电话。我们测量您孩子的Lexile水平，定位精确的差距，并向您展示对于与您孩子情况相似的学生，16周课程会是什么样子。',
+      '咨询时长20分钟。由导师（Navigator）进行——不是销售电话。我们测量您孩子的Lexile水平，定位精确的差距，并向您展示对于与您孩子情况相似的学生，ELA 课程会是什么样子。',
     cta: '预约咨询',
   },
 }
@@ -1138,6 +1168,11 @@ export const navigators = {
       h1d: '他们要前往哪里',
       h1e: '的人。',
       sub: '大多数项目教授内容。导师（Navigator）教授思考者。',
+    },
+    k2Note: {
+      text:       '导师（Navigator）跨两个年龄段授课——从都学启蒙的 K-2 起步阅读者，到 ELA 课程里的 12 年级 SAT/IB 应试生。',
+      linkLabel:  '了解都学启蒙 →',
+      href:       '/little-dodo',
     },
     s2: {
       eyebrow: '重新定义',
@@ -1245,7 +1280,7 @@ export const demos = {
       eyebrow:   '做决定前先观看',
       h2:        '课堂实录与课程介绍。',
       h2zh:      '课堂实录与课程介绍',
-      row1Label: '课堂实录',
+      row1Label: 'ELA 课程（3 年级+） · 课堂实录',
       row2Label: '关于课程',
       cards: [
         { videoId: YOUTUBE_IDS.demoGr46,       label: '成长期读者',    labelZh: 'Emerging Reader', tag1: '四至六年级', tag2: 'Lexile 580–720', tag3: '阅读 · 思考 · 写作' },
@@ -1255,6 +1290,11 @@ export const demos = {
         { streamKey: 'lcs-detailed',    label: '语言循环体系详解',     labelZh: 'The LCS System',    tag1: '方法论', tag2: '2分钟',  tag3: null },
         { streamKey: 'kimberly-intro',  label: '认识 Kimberly 老师',   labelZh: 'Meet Ms. Kimberly', tag1: '人物',   tag2: '30秒',   tag3: '导师（Navigator）' },
       ],
+    },
+    k2Note: {
+      text:       '都学启蒙的课堂实录正在与 K-2 学生及其导师一同录制。在此之前，可以先了解都学启蒙是什么、它与 ELA 课程如何并行。',
+      linkLabel:  '了解都学启蒙 →',
+      href:       '/little-dodo',
     },
     session: {
       eyebrow:       '一段课堂实录内部',
@@ -1282,13 +1322,13 @@ export const demos = {
       h2zh:    '演示展示方法，数字证明成果',
       lexile: {
         h3:  'Lexile阅读水平',
-        sub: '观看课堂实录后完成16周课程的学生从一个清晰的基线开始，并以一个可衡量的数字结束。',
+        sub: '观看课堂实录后完成 ELA 课程的学生从一个清晰的基线开始，并以一个可衡量的数字结束。',
         note: '七至八年级课堂实录中的学生开始时为<strong>Lexile 820</strong>。16周后：<strong>Lexile 1020</strong>。这相当于四个月内整整两个年级水平。',
         start: 820, end: 1020,
       },
       trait: {
         h3:         '6+1特质写作',
-        sub:        '每段课堂实录都包含一个实时的6+1特质写作环节。以下是所有16周课程学生的平均入学和结业分数。',
+        sub:        '每段课堂实录都包含一个实时的6+1特质写作环节。以下是所有 ELA 课程学生的平均入学和结业分数。',
         startLabel: '入学',
         endLabel:   '结业（16周）',
         scaleLabel: '1–6分制',
@@ -1302,9 +1342,11 @@ export const demos = {
 // /program 枢纽页与 /little-dodo 页面共用，渲染在各自 hero 下方的横条中
 // （而非 hero 内部）。组件通过 current 属性标记当前页面所在的分支。
 export const ageBands = {
-  eyebrow: '按孩子的阶段',
-  heading: '都学英文，两种入口。',
-  here:    '当前页面',
+  eyebrow:      '按孩子的阶段',
+  heading:      '都学英文，两种入口。',
+  homeEyebrow:  '为孩子所处的阶段而设',
+  homeHeading:  '通往都学英语素养的两条路径。',
+  here:         '当前页面',
   bands: [
     {
       href:  '/little-dodo',
@@ -1315,25 +1357,25 @@ export const ageBands = {
     },
     {
       href:  '/program',
-      tag:   '四年级及以上',
-      name:  '十六周课程',
-      blurb: '导师（Navigator）亲授的英文读写：读懂复杂文本、以证据支持立场、有意识地写作。以 Lexile 衡量进步。',
-      cta:   '查看十六周课程',
+      tag:   '三年级及以上',
+      name:  'ELA 课程',
+      blurb: '导师（Navigator）亲授的英文读写：读懂复杂文本、以证据支持立场、有意识地写作。以 Lexile 衡量进步。16 周一个周期，每节课四项技能。',
+      cta:   '探索 ELA 课程',
     },
   ],
 }
 
 
 // ── /little-dodo（都学启蒙）────────────────────────────────────
-// 都学启蒙——十六周课程的 K–2（5–8 岁）启蒙姊妹课程。高频低压的英文阅读
+// 都学启蒙——ELA 课程的 K–2（5–8 岁）启蒙姊妹课程。高频低压的英文阅读
 // 与理解启蒙。共用同一批导师 / 直播模式 / 标准；改变的是节奏与压力。
 // 漏斗：hero 以柔性引导（课堂实录）为先；页面自带坚定收尾，故 /little-dodo
-// 列入 PreCtaBand SUPPRESS。不以 Lexile 为重（K–2 处于测评之前）。
+// 列入 PreCtaBand SUPPRESS。不以 Lexile 为重（K–2 处于测评之前；正式 Lexile 从 ELA 课程 3 年级及以上开始）。
 export const littleDodo = {
   meta: {
     title: '都学启蒙——5–8 岁英文阅读启蒙 | DODO Learning 都学书院',
     description:
-      '都学启蒙是面向 5–8 岁（K–2）孩子的高频低压英文阅读启蒙课程。一位专属导师（Navigator）直播一对一，培养阅读理解力与稳定的理解习惯——通往都学十六周课程的温和起点。',
+      '都学启蒙是面向 5–8 岁（K–2）孩子的高频低压英文阅读启蒙课程。一位专属导师（Navigator）直播一对一，培养阅读理解力与稳定的理解习惯——通往都学 ELA 课程的温和起点。',
   },
   hero: {
     chip: '语言的根，长在阅读里',
@@ -1377,7 +1419,7 @@ export const littleDodo = {
     h2:      '哥哥姐姐将来会升入的课程——为五岁孩子重新设计。',
     h2zh:    null,
     body:
-      '都学启蒙与十六周课程共用同一套体系：直播课程、一位专属导师（Navigator），以及拥有文学与写作背景的导师团队。改变的只是节奏与压力。正式的 Lexile 测评会在之后的十六周课程中开始；在这里，孩子打下的是它所依托的地基——理解力、自信，以及一个会主动伸手去拿下一本书的孩子。',
+      '都学启蒙与 ELA 课程共用同一套体系：直播课程、一位专属导师（Navigator），以及拥有文学与写作背景的导师团队。改变的只是节奏与压力。正式的 Lexile 测评会在之后的 ELA 课程（3 年级及以上）中开始；在这里，孩子打下的是它所依托的地基——理解力、自信，以及一个会主动伸手去拿下一本书的孩子。',
   },
   fit: {
     eyebrow: '适合谁',

@@ -1,13 +1,17 @@
 // components/ui/AgeBandChooser.jsx
 //
 // Program-family chooser band, shown directly below the hero on the /program
-// hub and on /little-dodo. Lets a parent pick the band for their child's stage:
-//   Little DODO (ages 5–8) · The 16-Week Program (grade 4+)
+// hub and on /little-dodo, AND on the home page `/` (current={null} mode).
+// Lets a parent pick the band for their child's stage:
+//   Little DODO (ages 5–8) · ELA Program (Grade 3+)
 //
 // Server component. Copy comes from the `ageBands` export of
 // content/marketing.{en,zh}.js. The `current` prop (the stripped route of the
 // page rendering this) marks that band "You're here" — its CTA becomes a muted
 // label so a parent never clicks through to the page they're already on.
+//
+// When `current` is null (home-page mode), neither band is muted; the eyebrow
+// and heading swap to the `homeEyebrow` / `homeHeading` fields when present.
 //
 // Honours the "no dropdown" nav decision: the program family branches HERE,
 // in-body, instead of in the navbar.
@@ -15,6 +19,9 @@
 import Link from 'next/link'
 
 export default function AgeBandChooser({ locale, copy, current }) {
+  const eyebrow = current ? copy.eyebrow : (copy.homeEyebrow || copy.eyebrow)
+  const heading = current ? copy.heading : (copy.homeHeading || copy.heading)
+
   return (
     <section
       aria-labelledby="ageband-heading"
@@ -26,14 +33,14 @@ export default function AgeBandChooser({ locale, copy, current }) {
           className="text-xs font-semibold uppercase tracking-widest mb-3"
           style={{ color: '#7c79e8' }}
         >
-          {copy.eyebrow}
+          {eyebrow}
         </p>
         <h2
           id="ageband-heading"
           className="text-2xl md:text-3xl font-bold tracking-tight mb-8"
           style={{ color: '#0E0E12', letterSpacing: '-0.02em' }}
         >
-          {copy.heading}
+          {heading}
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">

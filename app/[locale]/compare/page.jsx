@@ -15,6 +15,7 @@ import { isValidLocale, localeParams } from '@/lib/i18n'
 import { buildMetadata }               from '@/lib/metadata'
 import { compare as copyEn }       from '@/content/marketing.en'
 import { compare as copyZh }       from '@/content/marketing.zh'
+import K2Note                       from '@/components/ui/K2Note'
 
 export async function generateMetadata({ params }) {
   const { locale } = await params
@@ -265,6 +266,8 @@ export default async function ComparePage({ params }) {
           <p className="mt-4" style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '13px', color: '#b7b5fe' }}>{c.s9.note}</p>
         </div>
       </Section>
+
+      <K2Note locale={locale} copy={c.k2Note} />
 
     </div>
   )

@@ -31,6 +31,7 @@ import { buildMetadata }                           from '@/lib/metadata'
 import { courseSchema }                            from '@/lib/schema'
 
 import SectionWrapper from '@/components/ui/SectionWrapper'
+import K2Note         from '@/components/ui/K2Note'
 import Button         from '@/components/ui/Button'
 import Badge          from '@/components/ui/Badge'
 import LexileBar      from '@/components/ui/LexileBar'
@@ -432,6 +433,8 @@ export default async function MethodologyPage({ params }) {
           </div>
         </div>
       </SectionWrapper>
+
+      <K2Note locale={locale} copy={t.k2Note} />
     </>
   )
 }

@@ -1,7 +1,7 @@
 # DODO Learning — Successor Handoff
 
 **Authored:** 2026-05-17 (end of session)
-**Last updated:** 2026-06-02 — **video pipeline session** (commits `b3f3ae3` → `fde4af3`): Cloudflare Stream video pipeline shipped with embeds on /about, /methodology, /navigators, /demos via reusable `<StreamVideo />`; section spacing protocol canonicalized in `.interface-design/system.md` (v6.2 — Combine / Alternate / Tighten remedies for same-surface back-to-back sections); `/navigators` swept to the `SectionWrapper` convention with a new `tinted` prop (#EAEAF8) + `ariaLabelledBy` passthrough; **Navbar ZH refresh (D34)** locks descriptive ZH forms `DODO 教学系统` · `有声书` · `故事` (navbar-only) · `课堂实录`, EN unchanged. **Earlier same day:** funnel swap (v6.0), CTA standardization (D27–D33). Design reference: `.interface-design/system.md`. New program **Little DODO** (K–2) shipped (D32, commit `140a7a5`). See "2026-06-02 · Video pipeline + spacing protocol + D34 ZH refresh" below.
+**Last updated:** 2026-06-10 — **program-family-parallel (PFP) full apply + DODO Coding launch staged + source-doc revisions** (uncommitted as of doc write, ready to commit). PFP shipped end-to-end: 12 sequenced steps from brand rename ("16-Week Program" → "ELA Program") through chrome edits, AgeBandChooser on home, kidsChip on /program, K2Notes on five Tier 2 pages via new `components/ui/K2Note.jsx`, /demos row rename, /consult parallel-band subline, /about Families 4th card (The Early-Reader Home), /cities `bandsCallout`, /faq Little DODO category + nav pill, sitemap priority bump `/little-dodo` 0.8 → 0.9. DODO Coding (sister product) — 9 staged docs in `.design/dodo-coding-launch/` covering IA, theme, scaffold, copy pass, naming retirement, marketing-guide revision, curriculum-doc revision, apply log. Source-doc revisions to `F:\PC-Documents\DODO_Coding\` applied: marketing guide v1.0 → v1.1 + curriculum doc v1.0 → v1.1 (Loop terminology retired; language-art positioning locked). **No web `/coding/*` routes yet** — staged, awaits user trigger. See "2026-06-10 · PFP apply + DODO Coding staging" below.
 **Repo:** `aiyoweiah/DL_NEXTJS_NEW` · deploys to dodolearning.com via **Cloudflare Pages** (`dl-nextjs-new`) from `main`. *(2026-06-02: dodoletterhouse.com / Vercel retired — that domain now 301-forwards to www.dodolearning.com at the Cloudflare edge; `ops.dodoletterhouse.com` → the `/ops` tools. www.dodolearning.com is now a Pages custom domain too. Single host.)*
 **Status:** Bilingual site fully shipped. Home + /program + /about rewritten through granular review. Chrome + funnel overhauled (v5 chrome 2026-06-01, v6 funnel 2026-06-02; pre-footer band → soft fallback v6.1, D33; section spacing protocol v6.2). /methodology has video embed + redesigned 1c "See it live" section. /navigators has SectionWrapper sweep + S3.5 selection + S4.5 Kimberly spotlight. **Open:** Ms. Kimberly bio in `navigators.s4half.bio` was filled by an automated agent with "7 years teaching" — verify against actual credentials before next push. Tier 2/3 SEO+GEO + business decisions pending.
 
@@ -10,6 +10,112 @@ This doc is **your entry point if you're picking up this work cold.** Read this 
 2. `.interface-design/system.md` — **interface design system** (chrome, funnel ladder, CTA rules, color tokens). Read before touching navbar/footer/CTAs.
 3. `docs/workflow.md` Open Decisions table — the running list of pending items.
 4. `translation/BRAND_CONTENT_GUIDE.md` — the locked brand truth for content surfaces.
+
+---
+
+## Recent decisions log — 2026-06-10 (PFP apply + DODO Coding staging + source-doc revisions)
+
+End-to-end session arc. Three workstreams landed and one large parallel workstream got fully staged. The web changes are uncommitted as of this doc write; the source-doc changes in `F:\PC-Documents\DODO_Coding\` are written in place.
+
+### Workstream A — Program Family Parallel (PFP) shipped, Steps 1–12
+
+The PFP proposal lived in `.design/program-family-parallel/` since 2026-06-03 (00-NAMING_MODEL → 06b-PROPOSAL-DETAIL → 07-APPLY). Today's session applied Steps 3–12 (Steps 1+2 were already mostly applied in uncommitted state).
+
+**What landed:**
+
+| Step | What |
+|---|---|
+| 1+2 (was in progress, completed today) | Brand rename "16-Week Program" → "ELA Program" across `content/marketing.{en,zh}.js`, `content/faq.js`, `content/cities.js`, `lib/schema.js`, `public/llms.txt`. Navbar primary "ELA Program" → "Programs". Footer column header pluralized; first item "ELA Program (Grade 3+)". Mobile drawer prepended with Little DODO. AgeBands tag "Grade 4+" → "Grade 3+". |
+| 3 | `AgeBandChooser` gained `homeEyebrow` / `homeHeading` fallback fields (used when `current={null}`). `ageBands` content export extended in both locales with `homeEyebrow: 'Built for the stage your child is in'` / `homeHeading: 'Two paths into DODO English literacy.'` |
+| 4 | `AgeBandChooser` inserted on `app/[locale]/page.tsx` between `ProofStrip` and `PhotoIntro` with `current={null}` — both cards clickable, neither muted. `BANDS_COPY` map added next to `HOMEPAGE_COPY`. |
+| 5 | `/program` hero gained a small **gold kidsChip** ("Ages 5–8? See Little DODO →") rendered beside the lavender tagline chip. Content field `program.hero.kidsChip` added in both locales. |
+| 6 | New shared component **`components/ui/K2Note.jsx`** — small inline tinted band (`#EAEAF8`) with body text + right-aligned link to `/little-dodo`. Wired into 5 Tier 2 pages: `/methodology`, `/lexile`, `/results`, `/compare`, `/navigators`. Each page's content slice gained a `k2Note: { text, linkLabel, href }` field in both locales. |
+| 7 | `/demos` row 1 relabeled "ELA Program (Grade 3+) · Demo Classes". K2Note inserted between gallery and InsideSession noting K-2 recordings are in progress. |
+| 8 | `/consult` hero subline appended: "We consult for both age bands — Little DODO (5–8) and the ELA Program (Grade 3+)." Bilingual. |
+| 9 | `/about` Families We Serve gained a 4th archetype card: **"The Early-Reader Home"** (K-2 parents). Iteration renders it; no page-file change needed. |
+| 10 | `content/cities.js` `citiesUi` gained `bandsCallout` field. City template renders it below the hero CTAs as a single muted line. |
+| 11 | `/faq` gained a new "Little DODO (Ages 5–8)" category with 6 Q+A pairs in both locales. **The category-pill nav bar in `content/faq.js :: categories.{en,zh}` was also extended** with the Little DODO pill (anchor `little-dodo`) — initial pass missed this; corrected during verification. |
+| 12 | `app/sitemap.js` bumps `/little-dodo` priority `0.8 → 0.9` (matches `/program`). |
+
+**Build status:** `npx next build` clean (exit 0) before commit.
+
+**Dev-mode quirk encountered:** During visual verification with `npx next dev`, four routes 404'd: `/program`, `/results`, `/consult`, `/little-dodo`. The build artifacts on disk were valid; dev had a stale incremental cache. Fix: stop dev → `rm -rf .next` → restart. After cache clear, all 12 routes rendered cleanly. **If you see this 404 pattern in dev after large edits, clear `.next` before debugging further.**
+
+**Files modified (uncommitted):**
+- `app/[locale]/page.tsx` (AgeBandChooser insertion)
+- `app/[locale]/program/page.jsx` (kidsChip wiring)
+- `app/[locale]/methodology/page.jsx` + `lexile/page.jsx` + `results/page.jsx` + `compare/page.jsx` + `navigators/page.jsx` + `demos/page.jsx` + `cities/[city]/page.jsx` (K2Note imports + bandsCallout)
+- `app/sitemap.js`
+- `components/ui/AgeBandChooser.jsx` (homeEyebrow/homeHeading fallback)
+- `components/ui/K2Note.jsx` (NEW)
+- `content/marketing.en.js` + `marketing.zh.js` (k2Note fields × 5 pages, ageBands home fields, kidsChip, consult subline, families 4th card, demos row label)
+- `content/faq.js` (Little DODO category + pill)
+- `content/cities.js` (bandsCallout)
+- `lib/schema.js` + `public/llms.txt` (already from PFP 1+2)
+
+**Verified visually via Chrome MCP** before this handoff write — see end-of-session Verification block below.
+
+### Workstream B — DODO Coding launch staged (sister product, web NOT shipped)
+
+DODO Coding is positioned as a separate vertical under the DODO Learning master brand — distinct subject matter (machine literacy), distinct identity, **no cross-callouts to ELA pages**. Two-tier home architecture: ELA + Little DODO sit in the 2-card AgeBandChooser; DODO Coding gets its own band lower on `/`.
+
+**9 staged docs in `.design/dodo-coding-launch/`** (no live web files touched):
+
+| Doc | Purpose |
+|---|---|
+| `README.md` | Folder index + guardrails |
+| `01-PROPOSAL.md` | IA — 6 launch routes (home, about, methodology, program, faq, consult), 3 deferred (results, navigators, demos), 3 "built only when needed" (blog, cities, compare). One-way cross-sell from `/coding` home → `/program`; ELA pages stay ELA-focused. |
+| `02-THEME.md` | Token addendum — new `--ink` accent family (`#1F4E8C` / `#7AA8E0` / `#143D6E`, all AAA contrast). Five named places where ink may appear (incl. DODO Coding band on ELA `/`). Inherits canonical depth strategy + button system. |
+| `03-SCAFFOLD.md` | Route plan, `content/coding.{en,zh}.js` shape, new `components/ui/coding/Pillars.jsx`, chrome touch-points (footer 3rd Programs item; PreCtaBand SUPPRESS additions). **Crucially: `AgeBandChooser` stays 2-card** — DODO Coding gets its own home band, not a 3rd card. |
+| `04-COPY-PASS.md` | `/coding` homepage EN + ZH (review draft) with full lint pass. Plus DODO Coding band copy for the ELA home insertion. Brand-guide additive edits to BCG §07/§10/§12. |
+| `05-NAMING-ALTERNATIVES.md` | **SUPERSEDED** — history of the methodology-name decision tree (Loop → Arc → Protocol → retired entirely) |
+| `06-LOOP-SUBSTANCE-EXTRACTION.md` | Archive of the five brand-jobs the retired Loop was carrying. Preserved for future iconic-visual-signature design. |
+| `07-MARKETING-GUIDE-REVISION.md` | Redline proposal for source marketing guide (applied — see Workstream C) |
+| `08-CURRICULUM-DOC-REVISION.md` | Redline proposal for source curriculum doc (applied — see Workstream C) |
+| `09-APPLY.md` | Per-step apply log for source-doc revisions (07 + 08) |
+
+**Direction locked across the staged docs:**
+- DODO Coding is **a language art for the AI age**
+- Hero H1 = two parallel `We teach…` sentences: *"We teach how AI reads, thinks, and writes. We teach your child to think critically about it."*
+- Three machine verbs (Read · Think · Write) as a plain typographic triplet — no methodology name, no graphic asset
+- Critical thinking as the human discipline emphasized throughout (not a fourth phase verb)
+- No `/coding` ↔ ELA cross-callouts beyond the footer Programs column + a single DODO Coding band on the ELA home page
+
+**To trigger the web launch:** user runs the apply order in `01-PROPOSAL.md`. Apply gate respected — no live web files touched.
+
+### Workstream C — DODO Coding source-doc revisions applied
+
+Two source files in `F:\PC-Documents\DODO_Coding\` rewritten in place:
+
+| File | v1.0 → v1.1 |
+|---|---|
+| `marketing/dodo-coding-content-guide.md` | Retired The Loop as named methodology + all four-verb references (Read → Reason → Speak → Decide). New brand promise around language-art positioning. Tagline → "A language art for the AI age." Hero H1 → two parallel `We teach…` sentences. §3 entirely rewritten as "What we teach" (three machine abilities + critical-thinking discipline + why-this-is-a-language-art + pillar mapping). §9 cross-sell explicitly one-way. Appendix A glossary purged of retired terms + explicit do-not-reintroduce list. Appendix B (Loop-shaped hero variations) deleted. |
+| `curriculum/program-streams-v1.md` | §1.1 "The Loop" → "Session structure" (Reason→Think, Speak→Write, Decide→critical-thinking-as-discipline). All 14 cycle "Loop emphasis" fields **removed**. §7 "Loop instantiation by stream" → "Ability progression by stream" with subsection renames. Three sample lesson plans updated (REASON/SPEAK/DECIDE → THINK/WRITE/Critical thinking, "Loop preview" → "Session preview"). Navigator competency line updated. Curriculum substance preserved 100% — only Loop branding came out. |
+
+Apply log at `.design/dodo-coding-launch/09-APPLY.md` with section-by-section verification.
+
+### Open follow-ups
+
+- **DODO Coding web launch is staged but not applied.** Awaits user trigger. Will create 6 new routes under `app/[locale]/coding/`, new `content/coding.{en,zh}.js` content module, `components/ui/coding/Pillars.jsx`, `--ink` CSS additions to `globals.css`, and the DODO Coding band on `app/[locale]/page.tsx`. Apply order in `.design/dodo-coding-launch/01-PROPOSAL.md` §"Apply order (when triggered)."
+- **K-2 demo recordings** — `/demos` row 2 still labeled "About the Program" (not "Little DODO (Ages 5–8)") because no K-2 demo footage exists yet. The K2Note in between is the honest acknowledgement. When K-2 recordings exist, restructure row 2.
+- **Real K-2 Navigator profile** on `/navigators` — current PFP shipped the framing-sentence path (safer first step). When a real K-2 Navigator + photo are available, add a profile card.
+- **K-2 voice testimonial card** on `/compare` s8 — deferred from PFP Step 6.
+- **Marketing guide v1.1 ZH translation** — guide is EN-only currently; no urgency unless a ZH-side writer needs it.
+- **DODO Coding iconic visual signature** — open design question per `06-LOOP-SUBSTANCE-EXTRACTION.md` Job 4. The retired Loop graphic was meant to be the iconic asset; nothing replaces it yet. OG image uses typographic mark in the meantime.
+
+### Verification (end-of-session, Chrome MCP)
+
+Visited `localhost:3000/en` and `/zh` in dev mode after `rm -rf .next` and `npx next dev` restart. Confirmed:
+- Navbar "Programs" (plural)
+- AgeBandChooser on home `/en` with `homeHeading` "Two paths into DODO English literacy." / `/zh` "通往都学英语素养的两条路径。" — both cards clickable
+- `/methodology` K2Note rendering at bottom of page with copy "The Loop runs the same way for our K-2 starters in Little DODO…" + "Explore Little DODO →"
+- `/faq` Little DODO category section + the new 8th pill in nav bar
+- Footer Programs column: ELA Program (Grade 3+) + Little DODO (5–8)
+- ZH home parity confirmed via `/zh`
+
+### Next step (the user picked this thread)
+
+Commit + push the uncommitted PFP work. The `.design/` directory contents (PFP proposal + dodo-coding-launch staged docs + content-review dumps) are also currently untracked — separate commit decision.
 
 ---
 

@@ -204,19 +204,39 @@ function Hero({ locale, c }) {
         }}
       >
         <div style={{ maxWidth: '46rem' }}>
-          {/* Tagline chip */}
-          <div
-            className="inline-flex items-center gap-2 mb-7 rounded-full"
-            style={{
-              padding:         '5px 14px',
-              border:          '1px solid rgba(183,181,254,0.18)',
-              backgroundColor: 'rgba(183,181,254,0.05)',
-            }}
-          >
-            <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: '#b7b5fe' }} />
-            <span style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#b7b5fe' }}>
-              {c.hero.chip}
-            </span>
+          {/* Tagline chip + Little DODO age-band chip */}
+          <div className="flex flex-wrap items-center gap-2 mb-7">
+            <div
+              className="inline-flex items-center gap-2 rounded-full"
+              style={{
+                padding:         '5px 14px',
+                border:          '1px solid rgba(183,181,254,0.18)',
+                backgroundColor: 'rgba(183,181,254,0.05)',
+              }}
+            >
+              <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: '#b7b5fe' }} />
+              <span style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#b7b5fe' }}>
+                {c.hero.chip}
+              </span>
+            </div>
+            {c.hero.kidsChip && (
+              <Link
+                href={`/${locale}/little-dodo`}
+                className="inline-flex items-center rounded-full transition-opacity hover:opacity-80"
+                style={{
+                  padding:         '5px 14px',
+                  border:          '1px solid rgba(245,200,66,0.30)',
+                  backgroundColor: 'rgba(245,200,66,0.06)',
+                  fontSize:        '10px',
+                  fontWeight:      600,
+                  letterSpacing:   '0.07em',
+                  textTransform:   'uppercase',
+                  color:           '#F5C842',
+                }}
+              >
+                {c.hero.kidsChip}
+              </Link>
+            )}
           </div>
 
           <h1

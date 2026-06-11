@@ -128,6 +128,15 @@ export default async function CityPage({ params }) {
             </Link>
           </div>
 
+          {ui.bandsCallout && (
+            <p
+              className="mt-6 text-sm"
+              style={{ color: 'rgba(240,240,240,0.55)', maxWidth: '36rem' }}
+            >
+              {ui.bandsCallout}
+            </p>
+          )}
+
         </div>
       </SectionWrapper>
 
