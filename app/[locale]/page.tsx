@@ -21,8 +21,8 @@ import { isValidLocale, localeParams } from '@/lib/i18n'
 import { buildMetadata }               from '@/lib/metadata'
 import LexileBar                        from '@/components/ui/LexileBar'
 import AgeBandChooser                   from '@/components/ui/AgeBandChooser'
-import { home as homeEn, ageBands as bandsEn }      from '@/content/marketing.en'
-import { home as homeZh, ageBands as bandsZh }      from '@/content/marketing.zh'
+import { home as homeEn, ageBands as bandsEn, codingBand as codingEn } from '@/content/marketing.en'
+import { home as homeZh, ageBands as bandsZh, codingBand as codingZh } from '@/content/marketing.zh'
 
 // ── Metadata ──────────────────────────────────────────────────
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -47,6 +47,11 @@ const HOMEPAGE_COPY: Record<string, any> = {
 const BANDS_COPY: Record<string, any> = {
   en: bandsEn,
   zh: bandsZh,
+}
+
+const CODING_COPY: Record<string, any> = {
+  en: codingEn,
+  zh: codingZh,
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -326,6 +331,85 @@ function ParentTrustSection({ locale, c }: { locale: string; c: any }) {
 }
 
 // ═══════════════════════════════════════════════════════════════
+// SECTION 7 — DODO CODING BAND (sibling-site cross-sell)
+// Spec: .design/dodo-coding-launch/08-DODOLEARNING-TOUCHPOINTS.md
+// Cross-site loop pass 2026-06-11 — sibling-family direction.
+// ═══════════════════════════════════════════════════════════════
+function CodingBand({ c }: { c: any }) {
+  return (
+    <section className="section-light" aria-labelledby="coding-band-heading" style={{ backgroundColor: '#F5F5FF' }}>
+      <div className="container-section">
+        <div style={{ maxWidth: '44rem' }}>
+          <p
+            className="eyebrow mb-3"
+            style={{
+              fontSize:      '0.75rem',
+              fontWeight:    600,
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              color:         '#5856cc',
+            }}
+          >
+            {c.eyebrow}
+          </p>
+          <div style={{ width: '3em', height: '1px', backgroundColor: 'rgba(31,78,140,0.25)', marginBottom: '1.25rem' }} aria-hidden="true" />
+
+          <h2
+            id="coding-band-heading"
+            className="mb-2"
+            style={{
+              fontSize:      'clamp(1.75rem, 3vw + 0.25rem, 2.75rem)',
+              fontWeight:    700,
+              lineHeight:    1.15,
+              letterSpacing: '-0.025em',
+              color:         '#1F4E8C',
+            }}
+          >
+            {c.h2}
+          </h2>
+
+          <p
+            className="mb-6"
+            style={{
+              fontSize:      '1.125rem',
+              fontWeight:    500,
+              color:         '#3b6fcc',
+              letterSpacing: '-0.005em',
+            }}
+          >
+            {c.sub}
+          </p>
+
+          <p style={{ fontSize: '1rem', lineHeight: 1.82, color: '#0E0E12', marginBottom: '1rem', fontWeight: 500 }}>
+            {c.lead}
+          </p>
+          <p style={{ fontSize: '0.9375rem', lineHeight: 1.75, color: '#3D4452', marginBottom: '2rem' }}>
+            {c.body}
+          </p>
+
+          <a
+            href={c.cta.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-outline"
+            aria-label={c.cta.ariaLabel}
+            style={{ marginBottom: '1.5rem' }}
+          >
+            {c.cta.label} →
+          </a>
+
+          <p style={{ fontSize: '0.8125rem', color: '#7B8494', letterSpacing: '0.04em' }}>
+            <span style={{ color: '#0E0E12', fontWeight: 600 }}>{c.preview.machineVerbs}</span>
+            <span style={{ margin: '0 0.75em', color: 'rgba(31,78,140,0.4)' }}>·</span>
+            <span style={{ color: '#1F4E8C', fontWeight: 600 }}>{c.preview.criticalThinking}</span>
+          </p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// ═══════════════════════════════════════════════════════════════
 // PAGE EXPORT
 // ═══════════════════════════════════════════════════════════════
 export function generateStaticParams() {
@@ -337,6 +421,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   if (!isValidLocale(locale)) notFound()
   const c = HOMEPAGE_COPY[locale] ?? HOMEPAGE_COPY.en
   const bands = BANDS_COPY[locale] ?? BANDS_COPY.en
+  const coding = CODING_COPY[locale] ?? CODING_COPY.en
   return (
     <>
       <Hero locale={locale} c={c} />
@@ -346,6 +431,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <LoopSection locale={locale} c={c} />
       <ConfidenceSection locale={locale} c={c} />
       <ParentTrustSection locale={locale} c={c} />
+      <CodingBand c={coding} />
     </>
   )
 }

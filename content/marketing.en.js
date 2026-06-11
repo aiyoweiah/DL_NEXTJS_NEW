@@ -80,6 +80,15 @@ export const nav = {
   logoAria: 'DODO Learning — home',
   menuOpenAria:  'Open navigation menu',
   menuCloseAria: 'Close navigation menu',
+  // codingChip — sibling-site cross-link (cross-site loop pass, 2026-06-11).
+  // Renders beside the wordmark at md+. Ink-blue palette signals the
+  // destination site's brand identity.
+  codingChip: {
+    label:     'DODO Coding',
+    href:      'https://coding.dodolearning.com',
+    ariaLabel: 'Visit DODO Coding — sibling site for AI and computational literacy',
+    arrow:     '→',
+  },
 }
 
 
@@ -126,6 +135,7 @@ export const footer = {
   program: [
     { href: '/program',     label: 'ELA Program (Grade 3+)' },
     { href: '/little-dodo', label: 'Little DODO (5–8)'   },
+    { href: 'https://coding.dodolearning.com', label: 'DODO Coding (Grade 3+)', external: true },
     { href: '/methodology', label: 'The Loop'            },
     { href: '/navigators',  label: 'Navigators'          },
     { href: '/results',     label: 'Results'             },
@@ -1474,4 +1484,22 @@ export const littleDodo = {
     watch:   'Watch a Demo Class',
     note:    'A free consultation with a Navigator. No obligation.',
   },
+}
+
+
+// ── codingBand (home cross-sell, cross-site loop pass 2026-06-11) ─
+// Sibling-site cross-sell band rendered on the ELA homepage between
+// the last in-page content section and the layout-level PreCtaBand.
+// Sized as a full content section (not a chip / not an inline note);
+// >60% of expected DODO Coding buyers are existing ELA parents, so this
+// is the load-bearing discovery surface for that audience.
+// Spec source: .design/dodo-coding-launch/08-DODOLEARNING-TOUCHPOINTS.md.
+export const codingBand = {
+  eyebrow: 'Also from DODO Learning',
+  h2:      'DODO Coding',
+  sub:     'A language art for the AI age.',
+  lead:    'We teach how AI reads, thinks, and writes. We teach your child to think critically about it.',
+  body:    'Grounded in Carnegie Mellon’s CS Academy and the AI4K12 framework. 1-on-1 with a Navigator. 16 weeks. Every claim has a framework behind it.',
+  cta:     { label: 'Visit DODO Coding', href: 'https://coding.dodolearning.com', ariaLabel: 'Visit DODO Coding — sibling site' },
+  preview: { machineVerbs: 'Read · Think · Write', criticalThinking: 'Critical thinking' },
 }

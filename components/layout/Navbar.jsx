@@ -235,6 +235,33 @@ export default function Navbar({ locale, copy }) {
 
           <Wordmark locale={locale} ariaLabel={copy.logoAria} />
 
+          {/* Sibling-site cross-link chip (cross-site loop pass 2026-06-11).
+              Renders only at md+ so the mobile bar stays uncluttered.
+              Ink-blue palette signals destination = DODO Coding.
+              Mirrors the gold kidsChip/growsIntoChip pattern on /program and /little-dodo. */}
+          {copy.codingChip && (
+            <a
+              href={copy.codingChip.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={copy.codingChip.ariaLabel}
+              className="hidden md:inline-flex items-center rounded-full transition-opacity hover:opacity-80 shrink-0"
+              style={{
+                padding:         '5px 12px',
+                border:          '1px solid rgba(31,78,140,0.30)',
+                backgroundColor: 'rgba(31,78,140,0.06)',
+                fontSize:        '10px',
+                fontWeight:      600,
+                letterSpacing:   '0.07em',
+                textTransform:   'uppercase',
+                color:           '#7AA8E0',
+                whiteSpace:      'nowrap',
+              }}
+            >
+              {copy.codingChip.label} {copy.codingChip.arrow}
+            </a>
+          )}
+
           {/*
             Primary nav — single flat row of 6.
             Visible from md:768 (tablet+) with compact gap-4; widens to

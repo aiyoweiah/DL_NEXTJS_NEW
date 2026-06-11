@@ -71,6 +71,13 @@ export const nav = {
   logoAria: 'DODO 都学书院 — 首页',
   menuOpenAria:  '打开导航菜单',
   menuCloseAria: '关闭导航菜单',
+  // codingChip — 姊妹站跨站链接（cross-site loop pass, 2026-06-11）
+  codingChip: {
+    label:     'DODO 机器语言',
+    href:      'https://coding.dodolearning.com',
+    ariaLabel: '访问 DODO 机器语言 —— 都学旗下姊妹品牌（AI 与计算素养）',
+    arrow:     '→',
+  },
 }
 
 
@@ -96,8 +103,8 @@ export const footer = {
   },
   sibling: {
     label:     '都学旗下',
-    name:      'DODO 编程',
-    blurb:     '即将上线',
+    name:      'DODO 机器语言',
+    blurb:     'AI 时代的语言艺术',
     href:      'https://coding.dodolearning.com',
   },
   columns: {
@@ -108,6 +115,7 @@ export const footer = {
   program: [
     { href: '/program',     label: 'ELA 课程（3 年级+）' },
     { href: '/little-dodo', label: '都学启蒙 (5–8)' },
+    { href: 'https://coding.dodolearning.com', label: 'DODO 机器语言（3 年级+）', external: true },
     { href: '/methodology', label: 'The Loop 闭环' },
     { href: '/navigators',  label: '导师团队'      },
     { href: '/results',     label: '学习成果'      },
@@ -1445,4 +1453,20 @@ export const littleDodo = {
     watch:   '课堂实录',
     note:    '由导师进行的免费咨询，无任何义务。',
   },
+}
+
+
+// ── codingBand（首页跨站推介，cross-site loop pass 2026-06-11）─
+// 渲染在 ELA 首页正文最后一节与全站 PreCtaBand 之间的姊妹站推介条。
+// 占据完整内容区段（非小标签 / 非行内提示）；预期 DODO 机器语言买家
+// 60% 以上是现有 ELA 家长，故此为该受众群体的核心发现入口。
+// 设计规范来源：.design/dodo-coding-launch/08-DODOLEARNING-TOUCHPOINTS.md。
+export const codingBand = {
+  eyebrow: '都学旗下另一品牌',
+  h2:      'DODO 机器语言',
+  sub:     'AI 时代的语言艺术。',
+  lead:    '我们教孩子理解 AI 如何阅读、思考、写作。我们教孩子用批判性思维审视 AI 的每一个输出。',
+  body:    '基于卡内基梅隆大学 CS Academy 与 AI4K12 框架。1 对 1 导师授课。16 周。每一句承诺背后都有一个可查证的框架。',
+  cta:     { label: '访问 DODO 机器语言', href: 'https://coding.dodolearning.com', ariaLabel: '访问 DODO 机器语言 —— 都学旗下姊妹站' },
+  preview: { machineVerbs: '阅读 · 思考 · 写作', criticalThinking: '批判性思维' },
 }

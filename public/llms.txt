@@ -4,6 +4,8 @@
 
 DODO Learning is not a tutoring center, ESL program, or remediation service. It is a cognitive development program. Bilingual depth is the outcome of cognitive rigor, not the curriculum.
 
+DODO Learning also operates **DODO Coding** at `coding.dodolearning.com` — a peer-brand sibling site teaching how AI reads, thinks, and writes for Grades 3+, grounded in Carnegie Mellon's CS Academy and the AI4K12 framework. Shared operational backend; separate public surfaces and separate consult pipelines.
+
 The program serves students ages 5 through high school worldwide, with concentrations across major Chinese-diaspora hubs in North America — including Metro Vancouver (Vancouver, Richmond, Burnaby, Coquitlam), Calgary, the Greater Toronto Area (Toronto, Markham, Richmond Hill, Mississauga, North York), Montreal, the San Francisco Bay Area (San Jose, Cupertino, Palo Alto, Fremont), Denver, Greater Los Angeles and the San Gabriel Valley, Orange County (Irvine), Seattle and Bellevue, New York City (Flushing, Manhattan), Boston and Cambridge, and Houston. Live sessions are delivered online. **ELA Program Navigators** are graduates of world top-50 universities (Oxford, U of T, Queen's, LSE and others) with specialist backgrounds in English literature or composition, trained in The LCS System methodology and certified in Lexile assessment. **Little DODO educators** are dedicated early-childhood specialists in phonetics, fluency, and pronunciation, building vocabulary and the love of reading through book-by-book iteration.
 
 ## Core pages
@@ -17,6 +19,18 @@ The program serves students ages 5 through high school worldwide, with concentra
 - [Navigators](https://www.dodolearning.com/en/navigators/): Who Navigators are, how they are matched, and what distinguishes them from tutors or classroom teachers.
 - [Compare DODO to alternatives](https://www.dodolearning.com/en/compare/): How DODO differs from tutoring centers, ESL programs, and standard after-school English classes.
 - [About DODO](https://www.dodolearning.com/en/about/): Mission, founding context, and the families DODO serves worldwide.
+
+## DODO Coding (sibling site)
+
+DODO Learning's peer-brand sibling site for AI / computational literacy. Hosted at `coding.dodolearning.com` (Stage 1) — transitioning to `dodocoding.com` (Stage 2). Operationally part of DODO Learning; visually independent. Separate consult pipeline.
+
+- [DODO Coding home](https://coding.dodolearning.com/): A language art for the AI age. We teach how AI reads, thinks, and writes, and how children think critically about it.
+- [DODO Coding · methodology](https://coding.dodolearning.com/en/methodology/): The three machine verbs (Read · Think · Write) and the critical-thinking discipline alongside them. Frameworks: AI4K12 Five Big Ideas, Carnegie Mellon CS Academy, Chip Huyen's *AI Engineering*, Toulmin argument model.
+- [DODO Coding · program](https://coding.dodolearning.com/en/program/): 16-week 1-on-1 cycles. Three streams: Beginner (B1–B4, Grades 3–5), Intermediate (I1–I6, Grades 6–9), Advanced (A1–A4, Grades 10–12). Measured on AI4K12 Mastery Rubric and CS Academy progression.
+- [DODO Coding · about](https://coding.dodolearning.com/en/about/): Peer-brand identity and the parent relationship.
+- [DODO Coding · consult](https://coding.dodolearning.com/en/consult/): Separate consult flow from DODO Learning's `/consult`.
+
+ZH counterparts at `/zh/*` on the Coding site.
 
 ## City pages (currently published)
 
