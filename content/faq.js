@@ -200,9 +200,9 @@ export const faq = {
         heading: 'What Little DODO is — and how it differs from the ELA Program.',
         variant: 'light', bg: '#F5F5FF',
         items: [
-          { question: 'What is Little DODO?', answer: 'Little DODO is the K-2 foundational-reading sibling of the ELA Program. Live, one-on-one with the same Navigator team. High-frequency, low-pressure sessions that build early reading comprehension and the steady habit of opening a book.' },
+          { question: 'What is Little DODO?', answer: 'Little DODO is the K-2 foundational-reading sibling of the ELA Program. Live, one-on-one with a dedicated early-childhood educator specializing in phonetics, fluency, and pronunciation. High-frequency, low-pressure sessions that build vocabulary and the love of reading, book by book.' },
           { question: 'What ages does Little DODO serve?', answer: 'Ages 5–8 — kindergarten through Grade 2. The point is foundational reading at this stage: confidence to read aloud, comfort with comprehension questions, and the joy of understanding what they read.' },
-          { question: 'How is Little DODO different from the ELA Program?', answer: 'Little DODO is the K-2 entry point. It uses the same Navigator model and live, 1-on-1 format, but pace and pressure are adapted to the age. Formal Lexile measurement begins later, in the ELA Program. Little DODO builds the comprehension foundation that Lexile measures.' },
+          { question: 'How is Little DODO different from the ELA Program?', answer: 'Little DODO is the K-2 entry point. It uses the same live, one-on-one delivery model as the ELA Program, but a different specialist team: dedicated early-childhood educators trained in phonetics, fluency, and pronunciation, rather than literature and composition. Pace and pressure are adapted to the age. Formal Lexile measurement begins later, in the ELA Program. Little DODO builds the comprehension foundation that Lexile measures.' },
           { question: 'How often does a Little DODO student meet with their Navigator?', answer: 'High-frequency, low-pressure. The cadence is set with you during the diagnostic call to match your child’s attention span and family rhythm — never longer than the child can sustain.' },
           { question: 'Does Little DODO use Lexile measurement?', answer: 'No. Lexile is appropriate from Grade 3 in the ELA Program. At Little DODO ages, the outcomes are confidence with reading aloud, comfort with comprehension, and the steady habit of opening a book. Formal Lexile assessment starts later.' },
           { question: 'When should we move from Little DODO to the ELA Program?', answer: 'Typically around Grade 3 — when your child is ready for Lexile-measured reading and the 6+1 Trait writing arc. Your child’s Navigator tracks readiness and recommends the transition with you. There is no automatic age cutoff; the readiness signal is the gate.' },
@@ -325,9 +325,9 @@ export const faq = {
         heading: '什么是都学启蒙——以及它与 ELA 课程有何不同。',
         variant: 'light', bg: '#F5F5FF',
         items: [
-          { question: '什么是都学启蒙？', answer: '都学启蒙是 ELA 课程的 K-2 启蒙姊妹课程。同样由导师（Navigator）团队亲授，1 对 1 直播。高频次、低压力的课程，专门为这一阶段打下英文阅读理解的基础，培养每天打开一本书的稳定习惯。' },
+          { question: '什么是都学启蒙？', answer: '都学启蒙是 ELA 课程的 K-2 启蒙姊妹课程。由专属的幼儿教育导师 1 对 1 直播亲授，深耕语音、发音与流利度。高频次、低压力的课程，一本一本书慢慢建立词汇量与阅读的乐趣。' },
           { question: '都学启蒙服务哪些年龄段？', answer: '5–8 岁——幼儿园至二年级。这一阶段的重点是基础阅读：朗读时的自信、面对理解题的从容、读懂一本书的乐趣。' },
-          { question: '都学启蒙和 ELA 课程有什么不同？', answer: '都学启蒙是 K-2 阶段的入口。它沿用同样的导师模式和 1 对 1 直播形式，但节奏和强度做了适龄调整。正式的 Lexile 评估之后才开始，从 ELA 课程起。都学启蒙为日后的 Lexile 测量打下阅读理解的基础。' },
+          { question: '都学启蒙和 ELA 课程有什么不同？', answer: '都学启蒙是 K-2 阶段的入口。它沿用 ELA 课程同样的直播 1 对 1 授课模式，但师资团队不同：是深耕语音、发音与流利度的幼儿教育导师，而非文学与写作专长的导师。节奏和强度做了适龄调整。正式的 Lexile 评估从 ELA 课程开始。都学启蒙为日后的 Lexile 测量打下阅读理解的基础。' },
           { question: '都学启蒙的学生一周和导师上几次课？', answer: '高频次，低压力。具体节奏在诊断咨询中与您一同确定，匹配孩子的专注时长和家庭节奏——绝不超过孩子能承受的范围。' },
           { question: '都学启蒙使用 Lexile 评估吗？', answer: '不使用。Lexile 适合 3 年级及以上 ELA 课程阶段。在都学启蒙年龄段，成果体现在朗读的自信、阅读理解的从容、以及每天打开一本书的稳定习惯。正式的 Lexile 评估之后才开始。' },
           { question: '什么时候从都学启蒙过渡到 ELA 课程？', answer: '通常在 3 年级前后——孩子准备好接受 Lexile 测量的阅读和 6+1 Trait 写作训练时。孩子的导师会持续追踪是否已经具备过渡条件，并与您一同推荐。没有强制的年龄分界——是否准备好才是真正的过渡信号。' },

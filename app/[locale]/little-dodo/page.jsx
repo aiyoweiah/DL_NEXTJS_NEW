@@ -150,14 +150,35 @@ function Hero({ locale, c }) {
         }}
       >
         <div style={{ maxWidth: '46rem' }}>
-          <div
-            className="inline-flex items-center gap-2 mb-7 rounded-full"
-            style={{ padding: '5px 14px', border: '1px solid rgba(183,181,254,0.18)', backgroundColor: 'rgba(183,181,254,0.05)' }}
-          >
-            <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: '#b7b5fe' }} />
-            <span style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#b7b5fe' }}>
-              {c.hero.chip}
-            </span>
+          {/* Brand chip + growsIntoChip — mirrors /program's chip + kidsChip pair (gold reciprocal) */}
+          <div className="flex flex-wrap items-center gap-2 mb-7">
+            <div
+              className="inline-flex items-center gap-2 rounded-full"
+              style={{ padding: '5px 14px', border: '1px solid rgba(183,181,254,0.18)', backgroundColor: 'rgba(183,181,254,0.05)' }}
+            >
+              <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: '#b7b5fe' }} />
+              <span style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#b7b5fe' }}>
+                {c.hero.chip}
+              </span>
+            </div>
+            {c.hero.growsIntoChip && (
+              <Link
+                href={`/${locale}/program`}
+                className="inline-flex items-center rounded-full transition-opacity hover:opacity-80"
+                style={{
+                  padding:         '5px 14px',
+                  border:          '1px solid rgba(245,200,66,0.30)',
+                  backgroundColor: 'rgba(245,200,66,0.06)',
+                  fontSize:        '10px',
+                  fontWeight:      600,
+                  letterSpacing:   '0.07em',
+                  textTransform:   'uppercase',
+                  color:           '#F5C842',
+                }}
+              >
+                {c.hero.growsIntoChip}
+              </Link>
+            )}
           </div>
 
           <h1
@@ -228,7 +249,7 @@ function ProblemSection({ c }) {
 // ─────────────────────────────────────────────────────────────
 // SECTION 4 — HOW IT WORKS (light, 3 cards)
 // ─────────────────────────────────────────────────────────────
-function HowSection({ c }) {
+function HowSection({ locale, c }) {
   return (
     <section aria-labelledby="ld-how-heading" style={{ backgroundColor: '#F5F5FF', padding: 'var(--section-md) 0' }}>
       <div className="container-section">
@@ -243,7 +264,18 @@ function HowSection({ c }) {
             >
               <div style={{ fontSize: '12px', fontWeight: 700, color: '#7c79e8', letterSpacing: '0.06em', marginBottom: '0.75rem' }}>{s.num}</div>
               <h3 className="text-base font-bold mb-2" style={{ color: '#0E0E12' }}>{s.label}</h3>
-              <p className="text-sm leading-relaxed" style={{ color: '#3D4452' }}>{s.desc}</p>
+              <p className="text-sm leading-relaxed" style={{ color: '#3D4452' }}>
+                {s.desc}
+                {s.descLink && (
+                  <Link
+                    href={`/${locale}${s.descLink.href}`}
+                    style={{ color: '#5856cc', textDecoration: 'underline', textUnderlineOffset: '2px' }}
+                  >
+                    {s.descLink.text}
+                  </Link>
+                )}
+                {s.descTail}
+              </p>
             </div>
           ))}
         </div>
@@ -357,7 +389,7 @@ export default async function LittleDodoPage({ params }) {
       <Hero            locale={locale} c={c} />
       <AgeBandChooser  locale={locale} copy={bands} current="/little-dodo" />
       <ProblemSection  c={c} />
-      <HowSection      c={c} />
+      <HowSection      locale={locale} c={c} />
       <SharedSection   c={c} />
       <FitSection      c={c} />
       <CtaSection      locale={locale} c={c} />

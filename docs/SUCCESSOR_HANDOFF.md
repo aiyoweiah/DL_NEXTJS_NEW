@@ -1,7 +1,9 @@
 # DODO Learning — Successor Handoff
 
 **Authored:** 2026-05-17 (end of session)
-**Last updated:** 2026-06-10 — **program-family-parallel (PFP) full apply + DODO Coding launch staged + source-doc revisions** (uncommitted as of doc write, ready to commit). PFP shipped end-to-end: 12 sequenced steps from brand rename ("16-Week Program" → "ELA Program") through chrome edits, AgeBandChooser on home, kidsChip on /program, K2Notes on five Tier 2 pages via new `components/ui/K2Note.jsx`, /demos row rename, /consult parallel-band subline, /about Families 4th card (The Early-Reader Home), /cities `bandsCallout`, /faq Little DODO category + nav pill, sitemap priority bump `/little-dodo` 0.8 → 0.9. DODO Coding (sister product) — 9 staged docs in `.design/dodo-coding-launch/` covering IA, theme, scaffold, copy pass, naming retirement, marketing-guide revision, curriculum-doc revision, apply log. Source-doc revisions to `F:\PC-Documents\DODO_Coding\` applied: marketing guide v1.0 → v1.1 + curriculum doc v1.0 → v1.1 (Loop terminology retired; language-art positioning locked). **No web `/coding/*` routes yet** — staged, awaits user trigger. See "2026-06-10 · PFP apply + DODO Coding staging" below.
+**Last updated:** 2026-06-11 — **Little DODO cohesion pass applied.** Admin-clarified substance landed: Little DODO is staffed by *dedicated early-childhood educators specializing in phonetics, fluency, and pronunciation*, NOT the same humans as ELA Navigators (overturns the 2026-06-02 brief's "Navigators: Shared/similar" line). Family-level homepage reframe applied (hero eyebrow: "For children who will think and lead in English at the highest levels" → "Live, Navigator-led English literacy — ages 5 through high school"; H1 unchanged). Substance update + ripple sweep across `content/marketing.{en,zh}.js` (12 string locations), `content/faq.js` (4 Little DODO Q+A answers), `public/llms.txt` (lines 1, 7, 13), `public/llms-full.txt` (§Who Navigators are rewritten into two specialist-team profiles), `lib/schema.js` (littleDodoCourseSchema description), `app/[locale]/little-dodo/page.jsx` (new growsIntoChip gold-treatment "Grade 3+? See the ELA Program →"; HowSection inline `/methodology` link on "Read → Think → Speak"; 6-tile stat rail rewritten — Phonetics-Led + Book-By-Book substance, no fabricated numbers per user decision). Staging set at `.design/little-dodo-cohesion-pass/` (01-FINDINGS + 02-COPY-PROPOSALS + 03-APPLY). `npx next build` clean both rounds. Browser-verified on `/en`, `/en/little-dodo`, `/en/faq`. **Uncommitted as of doc write.** See "2026-06-11 · Little DODO cohesion pass" below.
+
+**Previously (2026-06-10):** program-family-parallel (PFP) full apply + DODO Coding launch staged + source-doc revisions. PFP shipped end-to-end: 12 sequenced steps from brand rename ("16-Week Program" → "ELA Program") through chrome edits, AgeBandChooser on home, kidsChip on /program, K2Notes on five Tier 2 pages via new `components/ui/K2Note.jsx`, /demos row rename, /consult parallel-band subline, /about Families 4th card (The Early-Reader Home), /cities `bandsCallout`, /faq Little DODO category + nav pill, sitemap priority bump `/little-dodo` 0.8 → 0.9. DODO Coding (sister product) — 9 staged docs in `.design/dodo-coding-launch/` covering IA, theme, scaffold, copy pass, naming retirement, marketing-guide revision, curriculum-doc revision, apply log. Source-doc revisions to `F:\PC-Documents\DODO_Coding\` applied: marketing guide v1.0 → v1.1 + curriculum doc v1.0 → v1.1 (Loop terminology retired; language-art positioning locked). **No web `/coding/*` routes yet** — staged, awaits user trigger. See "2026-06-10 · PFP apply + DODO Coding staging" below.
 **Repo:** `aiyoweiah/DL_NEXTJS_NEW` · deploys to dodolearning.com via **Cloudflare Pages** (`dl-nextjs-new`) from `main`. *(2026-06-02: dodoletterhouse.com / Vercel retired — that domain now 301-forwards to www.dodolearning.com at the Cloudflare edge; `ops.dodoletterhouse.com` → the `/ops` tools. www.dodolearning.com is now a Pages custom domain too. Single host.)*
 **Status:** Bilingual site fully shipped. Home + /program + /about rewritten through granular review. Chrome + funnel overhauled (v5 chrome 2026-06-01, v6 funnel 2026-06-02; pre-footer band → soft fallback v6.1, D33; section spacing protocol v6.2). /methodology has video embed + redesigned 1c "See it live" section. /navigators has SectionWrapper sweep + S3.5 selection + S4.5 Kimberly spotlight. **Open:** Ms. Kimberly bio in `navigators.s4half.bio` was filled by an automated agent with "7 years teaching" — verify against actual credentials before next push. Tier 2/3 SEO+GEO + business decisions pending.
 
@@ -10,6 +12,80 @@ This doc is **your entry point if you're picking up this work cold.** Read this 
 2. `.interface-design/system.md` — **interface design system** (chrome, funnel ladder, CTA rules, color tokens). Read before touching navbar/footer/CTAs.
 3. `docs/workflow.md` Open Decisions table — the running list of pending items.
 4. `translation/BRAND_CONTENT_GUIDE.md` — the locked brand truth for content surfaces.
+
+---
+
+## Recent decisions log — 2026-06-11 (Little DODO cohesion pass)
+
+Independent positioning review of Little DODO ~9 days after the PFP elevation, plus a substantive staffing correction from admin that overturned the original brief's "Navigators: Shared/similar" line.
+
+### Trigger inputs
+
+1. **User request:** independent review of Little DODO positioning, messaging cohesiveness between the two programs, and optimization opportunities.
+2. **Admin substance input (2026-06-11):** Little DODO is taught by *dedicated early-childhood educators specializing in phonetics, fluency, and pronunciation* — NOT the same Navigator team as the ELA Program. Program substance is decoding/phonetics-led foundational reading; vocabulary builds book by book; the love of reading is the goal. (Direct quote: "dedicated early childhood educators who specializes in phonietics, fluency, and pronunciation. With a program that is designed to improve voacbulary, pronunciation and fluency, and most importantly the love to read and iterate. High frequency with low pressure, we can cover up to 16 books in a phase.")
+3. **Family-level homepage reframe:** user picked option (b) — replace "highest cognitive level" eyebrow with "Live, Navigator-led English literacy — ages 5 through high school." H1 stays rigour-coded.
+
+### Decisions locked
+
+| # | Decision | Notes |
+|---|---|---|
+| 1 | Homepage eyebrow → family-level | "Live, Navigator-led English literacy — ages 5 through high school." H1 unchanged. |
+| 2 | Two specialist teams under one Navigator philosophy | Overturns brief's "Navigators: Shared/similar." Same live model; different specialist teams. |
+| 3 | No specific "16 books" number in copy | Admin said it varies by phase + skill level; "book by book" framing used instead. |
+| 4 | Reciprocal growsIntoChip on /little-dodo hero | Gold "Grade 3+? See the ELA Program →" mirror of /program's `kidsChip`. |
+| 5 | "Read → Think → Speak" inline phrase → `/methodology` link | In K-2 prose. |
+| 6 | EN translation of ZH chip 语言的根，长在阅读里 | "Where language takes root." (replaces "Think Once. In Both Languages." brand chip on /little-dodo only) |
+| 7 | No separate Little DODO Navigator page | Educators get listed on existing `/navigators` page with a "Little DODO" tag. Original handoff open-task #1 scope reduced. |
+
+### Apply rounds
+
+Applied as 5 rounds; build clean after rounds 1–4 and after round 5 (the missed-ripple fix).
+
+| Round | Surface set | Files |
+|---|---|---|
+| R1 | Priority B (false-claim k2Note) + Priority A (llms.txt) | `marketing.{en,zh}.js:1199/1173`; `public/llms.txt:1,7,13` |
+| R2 | Little DODO substance batch | `marketing.{en,zh}.js` (AgeBandChooser, compare s1+k2Note, littleDodo.shared); `lib/schema.js:324` |
+| R3 | Stat rail + chips + methodology link + page chrome | `marketing.{en,zh}.js` littleDodo.hero+how; `app/[locale]/little-dodo/page.jsx` (Hero chip wrap + HowSection inline-link rendering) |
+| R4 | Home + about family-level reframe | `marketing.{en,zh}.js` home.meta+hero, about.meta+hero+navigators |
+| R5 | Missed ripples (post-doc review surfaced 3 more live strings) | `content/faq.js` Little DODO Q+A × 4 (EN+ZH); `public/llms-full.txt` §Who Navigators are rewritten |
+
+### Files touched (uncommitted as of doc write)
+
+- `content/marketing.en.js` + `marketing.zh.js`
+- `content/faq.js`
+- `public/llms.txt` + `public/llms-full.txt`
+- `lib/schema.js`
+- `app/[locale]/little-dodo/page.jsx`
+- `.design/little-dodo-cohesion-pass/{01-FINDINGS,02-COPY-PROPOSALS,03-APPLY}.md` (new — decision history)
+- `docs/HANDOFF_LITTLE_DODO_PARALLEL_2026-06-10.md` (open-task #1 scope reduced)
+- `docs/little-dodo-plan.md` (Navigators-row addendum)
+- `~/.claude/projects/F--PC-Documents-DODO-web/memory/project_dodo_chrome.md` (staffing correction line added)
+- `.claude/launch.json` (new — added to support preview verification this session; safe to commit or gitignore)
+
+### Verified
+
+- `npx next build` clean — both rounds. All routes prerendered EN+ZH.
+- Browser spot-check on dev server (Claude Preview MCP):
+  - `/en` — family-level eyebrow + new consultHook render; H1 unchanged; AgeBandChooser shows new Little DODO substance blurb
+  - `/en/little-dodo` — new chip "WHERE LANGUAGE TAKES ROOT.", growsIntoChip "GRADE 3+? SEE THE ELA PROGRAM →" in gold, new hero sub, full 6-tile stat rail (Phonetics-Led, Book-By-Book)
+  - `/en/faq#little-dodo` — DOM scan confirms `same Navigator team` is gone and new phonetics/fluency phrasing is live
+
+### What ELA Program copy was NOT touched
+
+By design — within-ELA-program continuity claims about "the same Navigator works with the same student for all 16 weeks" remain correct and were left alone (e.g., `content/faq.js:123` ELA continuity question; `content/cities.js:248` Mississauga continuity line; `components/assessment/AssessmentClient.jsx:228` exit-assessment continuity). These describe per-student continuity within the ELA program, not cross-band staffing.
+
+### Pending follow-ups (not in this pass)
+
+| # | Item | Where |
+|---|---|---|
+| 1 | `/navigators` page: add Little DODO educator profile cards with "Little DODO" tag | `content/navigators.*.js` + page rendering |
+| 2 | Little DODO ProofStrip strategy on home | Currently honest-labelled as ELA-only metrics. Could add a K-2 stat tile if/when one becomes meaningful. |
+| 3 | Real K-2 demo footage + testimonial when available | Blocked on real content. |
+| 4 | K-2 specific SEO/GEO prompts (the open seo plan) | Coordinate via memory `project_dodo_seo_geo`. |
+
+### Coordination with the DODO Coding workstream
+
+Verified clear pre-apply: no overlap with `marketing.codingBand`, `marketing.footer.columns[programs].items[2]`, `Organization.subOrganization`, `--ink-deep`, the post-Navigator-band home region, or the `## DODO Coding (sibling site)` block in llms.txt. All those reservations stayed unchanged.
 
 ---
 

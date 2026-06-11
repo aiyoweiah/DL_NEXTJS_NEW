@@ -6,6 +6,21 @@ PreCtaBand SUPPRESS, sitemap + llms.txt + `littleDodoCourseSchema()`. This doc r
 record of the IA/naming decisions below. **Ground rule (followed):** strictly follow
 `.interface-design/system.md` while showing thoughtfulness to the K–2 audience.
 
+> **2026-06-11 ADDENDUM — substance correction from admin (cohesion pass apply).** The
+> "Shared vs. different" table below originally said **Navigators: Shared / similar (same Navigator
+> model)**. This was wrong. Admin clarified that Little DODO is staffed by a **dedicated
+> team of early-childhood educators specializing in phonetics, fluency, and pronunciation** —
+> NOT the same humans as ELA Program Navigators. Program substance is also more specific
+> than "comprehension first": it is **phonetics-led decoding, vocabulary and fluency built book by
+> book, and the love of reading as the gate to comprehension**. Two specialist teams under one
+> Navigator philosophy; same live one-on-one delivery model. The corrected staffing claim now
+> appears across `marketing.{en,zh}.js` (`littleDodo.shared`, AgeBandChooser blurb, compare K-2
+> audience + k2Note, navigators.k2Note), `content/faq.js` Little DODO Q+A, `public/llms.txt`,
+> `public/llms-full.txt` §"Who Navigators are" (rewritten into two specialist-team profiles), and
+> `lib/schema.js` Course description. Full apply log at
+> `.design/little-dodo-cohesion-pass/03-APPLY.md`. The table row below is **superseded** but kept
+> as decision history; treat the addendum as canonical.
+
 ---
 
 ## What it is

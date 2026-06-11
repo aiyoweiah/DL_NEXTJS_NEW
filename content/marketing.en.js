@@ -181,19 +181,19 @@ export const footer = {
 export const home = {
   meta: {
     title:
-      'DODO Learning — English Literacy at the Cognitive Level | Think Once. In Both Languages.',
+      'DODO Learning — Live, Navigator-led English Literacy, ages 5 through high school | Think Once. In Both Languages.',
     description:
-      'Navigator-led English literacy program training the full Read→Think→Speak→Write loop. One grade level of Lexile growth in 16 weeks. Built on the MCT Language Arts framework. Bilingual depth emerges from cognitive rigor.',
+      'Live, Navigator-led English literacy for children ages 5 through high school. Little DODO (K–2): phonetics-led foundational reading with early-childhood educators. ELA Program (Grade 3+): full Read→Think→Speak→Write loop, one grade level of Lexile growth per 16-week cycle. Built on the MCT Language Arts framework. Bilingual depth emerges from cognitive rigor.',
   },
 
   hero: {
-    eyebrow:        'For children who will think and lead in English at the highest levels',
+    eyebrow:        'Live, Navigator-led English literacy — ages 5 through high school',
     eyebrow2:       '',
     h1:             ['English mastery at the cognitive level.', 'Bilingual depth as the natural outcome.'],
     h1Chinese:      '',
     differentiator: '',
     consultHook:
-      'We train English Thinkers — children who read above grade level, argue with evidence, write with precision. Built on the advanced literature and writing framework and Harvard’s thinking science.',
+      'From a five-year-old learning to read with a dedicated early-childhood educator, to a high-schooler arguing complex texts with their Navigator — we train English Thinkers at every stage. Built on the advanced literature and writing framework and Harvard’s thinking science.',
     cta1:      'Watch a Demo Class',
     cta2:      'Book Your Consultation',
     trustLine:
@@ -493,7 +493,7 @@ export const program = {
 export const about = {
   meta: {
     title:
-      'What Is DODO Learning? English Literacy at the Cognitive Level',
+      'What Is DODO Learning? Live, Navigator-led English Literacy from Age 5 through High School',
     description:
       'DODO Learning is the live, Navigator-led English literacy program for families worldwide — trained on the full Read → Think → Speak → Write loop, measured by Lexile levels and the 6+1 Trait writing framework. We build English Thinkers at mastery level. Bilingual depth emerges from that rigor.',
   },
@@ -503,7 +503,7 @@ export const about = {
     h1c:           'is not the same as a child',
     h1d:           'who ', h1em2: 'thinks', h1e: ' in it.',
     sub:
-      'Built for families whose children will lead in English-dominant schools, universities, and boardrooms. Many of these children learn English as a subject — they pass exams, they sound fluent. Ask them to argue a position, read dense analytical prose, or write something original — and the language reaches its limit. DODO’s founder, Janet, saw that gap and built DODO to close it. The goal is English mastery at the cognitive level. Bilingual depth is what emerges when that goal is reached.',
+      'Built for families whose children will lead in English-dominant schools, universities, and boardrooms. Many of these children learn English as a subject — they pass exams, they sound fluent. Ask them to argue a position, read dense analytical prose, or write something original — and the language reaches its limit. DODO’s founder, Janet, saw that gap and built DODO to close it. The work begins as early as age five and runs through high school: phonetics, fluency, and the love of reading in Little DODO; the full Read → Think → Speak → Write Loop in the ELA Program. The goal is English mastery at the cognitive level. Bilingual depth is what emerges when that goal is reached.',
     videoLabel:    'Watch: Janet talks about DODO Learning',
   },
   name: {
@@ -553,7 +553,7 @@ export const about = {
     p2:
       'A Navigator asks questions they don’t already know the answer to. They get genuinely curious about what a seven-year-old thinks about fairness, about loyalty, about why a character made the choice they made. The questions are drawn from Harvard Project Zero’s Visible Thinking routines — structured protocols developed at the Harvard Graduate School of Education — but the curiosity is real.',
     p3:
-      'They are readers. They are thinkers. Every Navigator holds a graduate degree from a world top-50 university (Oxford, U of T, Queen’s, LSE and others) with a specialist background in literature or composition. They care about language because it is how they make sense of everything — and because they know that a child trained to reason rigorously in English has a mind that will carry them further than any test score ever could.',
+      'They are readers. They are thinkers. Our ELA Program Navigators hold graduate degrees from world top-50 universities (Oxford, U of T, Queen’s, LSE and others) with specialist backgrounds in literature or composition. Our Little DODO educators are early-childhood specialists in phonetics, fluency, and pronunciation. Different expertise; the same commitment — to language as the way a child makes sense of everything, and to the long view that a child trained well in English has a mind that will carry them further than any test score ever could.',
     navigatorsLink:  'Meet the Navigators →',
     videoCaption:    'Ms. Kimberly · DODO Navigator',
     videoCaptionSub: 'A 30-second hello',
@@ -578,7 +578,7 @@ export const about = {
       {
         quote: '“We want a gentle, consistent start — and the joy of understanding what they read.”',
         desc:
-          'Parents of 5–8-year-olds choosing the right entry point. You want high-frequency, low-pressure reading with a Navigator who knows your child, not a class. Little DODO is the K-2 sibling of the ELA Program — same Navigator model, adapted in pace and pressure.',
+          'Parents of 5–8-year-olds choosing the right entry point. You want one dedicated early-childhood educator, short and frequent live sessions, and phonetics-led foundational reading — not a class. Little DODO is the K-2 sibling of the ELA Program: same live delivery model, different specialist team.',
       },
     ],
   },
@@ -678,7 +678,7 @@ export const compare = {
       sub: 'For globally-mobile families — this is what makes DODO Learning structurally different from every other option available to your child.',
     },
     k2Note: {
-      text:       'Comparing for a 5–8-year-old? Little DODO is the K-2 entry point — same Navigator model, adapted in pace and pressure.',
+      text:       'Comparing for a 5–8-year-old? Little DODO is the K-2 entry point — same live model, taught by dedicated early-childhood educators.',
       linkLabel:  'Explore Little DODO →',
       href:       '/little-dodo',
     },
@@ -1196,7 +1196,7 @@ export const navigators = {
       sub: 'Most programs teach the content. A Navigator teaches the thinker.',
     },
     k2Note: {
-      text:       'Navigators teach across both age bands — from the K-2 reader in Little DODO to the Grade 12 SAT/IB candidate in the ELA Program.',
+      text:       'Two specialist teams under one Navigator philosophy: early-childhood educators trained in phonetics, fluency, and pronunciation for Little DODO (ages 5–8); literature, composition, and writing specialists for the ELA Program (Grade 3+). Same live model, same dedicated relationship.',
       linkLabel:  'Explore Little DODO →',
       href:       '/little-dodo',
     },
@@ -1379,7 +1379,7 @@ export const ageBands = {
       href:  '/little-dodo',
       tag:   'Ages 5–8',
       name:  'Little DODO',
-      blurb: 'High-frequency, low-pressure reading and comprehension for pre-elementary starters. Where the reader begins.',
+      blurb: 'Live, one-on-one with a dedicated early-childhood educator — phonetics, fluency, vocabulary, and the love of reading. Built book by book. Where the reader begins.',
       cta:   'Explore Little DODO',
     },
     {
@@ -1407,20 +1407,21 @@ export const littleDodo = {
       'Little DODO is the high-frequency, low-pressure start to English literacy for children ages 5–8 (K–2). Live, one-on-one with a dedicated Navigator — building reading comprehension and the steady habit of understanding. The gentle on-ramp to the DODO ELA Program.',
   },
   hero: {
-    chip: 'Think Once. In Both Languages.',
-    h1:   'Where your child’s reading begins.',
-    h1zh: '阅读，从这里开始。',
+    chip:          'Where language takes root.',
+    growsIntoChip: 'Grade 3+? See the ELA Program →',
+    h1:            'Where your child’s reading begins.',
+    h1zh:          '阅读，从这里开始。',
     sub:
-      'Little DODO is the gentle start to English literacy — for children ages 5–8. A real Navigator, short and frequent sessions, and the quiet confidence that they can understand what they read. High-frequency, low-pressure, by design.',
+      'Little DODO is the gentle start to English literacy — for children ages 5–8. A dedicated early-childhood educator, short and frequent sessions, and the quiet confidence that they can understand what they read. Phonetics, fluency, and vocabulary built book by book.',
     cta1: 'Watch a Demo Class',
     cta2: 'Book Your Consultation',
     stats: [
-      { value: '5–8',    unit: 'Years',         desc: 'Pre-elementary starters'   },
-      { value: '1',      unit: 'Navigator',     desc: 'Who knows your child'       },
-      { value: '1-on-1', unit: 'Always',        desc: 'No group rotation'         },
-      { value: 'High',   unit: 'Frequency',     desc: 'Short, frequent sessions'  },
-      { value: 'Low',    unit: 'Pressure',      desc: 'By design'                 },
-      { value: 'Live',   unit: 'Every Session', desc: 'Never pre-recorded'        },
+      { value: 'Ages 5–8',  unit: 'K–2',           desc: 'Pre-elementary starters'            },
+      { value: '1',         unit: 'Educator',      desc: 'Phonetics + fluency specialist'     },
+      { value: '1-on-1',    unit: 'Always',        desc: 'Dedicated relationship'             },
+      { value: 'Live',      unit: 'Every Session', desc: 'Never pre-recorded'                 },
+      { value: 'Phonetics', unit: 'Led',           desc: 'Decoding before comprehension'      },
+      { value: 'Book',      unit: 'By Book',       desc: 'Vocabulary built through iteration' },
     ],
   },
   problem: {
@@ -1440,15 +1441,17 @@ export const littleDodo = {
       { num: '02', label: 'One Navigator who knows them',
         desc: 'Not a rotating tutor. The same Navigator each time — someone who learns your child’s pace, what they love to read, and where they need a gentler hand.' },
       { num: '03', label: 'Read, then talk it through',
-        desc: 'Your child reads, then says what they understood out loud — the early shape of Read → Think → Speak. Comprehension grows by talking through a story, never by drilling it.' },
+        desc:     'Your child reads, then says what they understood out loud — the early shape of ',
+        descLink: { text: 'Read → Think → Speak', href: '/methodology' },
+        descTail: '. Comprehension grows by talking through a story, never by drilling it.' },
     ],
   },
   shared: {
     eyebrow: 'The Same DODO',
-    h2:      'The program your older child would grow into — built for five-year-olds.',
+    h2:      'Built for five-year-olds. The same DODO philosophy.',
     h2zh:    null,
     body:
-      'Little DODO runs on the same machinery as the ELA Program: live sessions, one dedicated Navigator, and Navigators with backgrounds in literature and composition. What changes is the pace and the pressure. Formal Lexile measurement comes later, in the ELA Program (Grade 3+); here the work is the foundation it’s built on — comprehension, confidence, and a child who reaches for the next book.',
+      'Little DODO shares the ELA Program’s delivery model — live one-on-one with a dedicated Navigator, every session. What changes is the specialist team and what they teach: Little DODO is staffed by early-childhood educators trained in phonetics, fluency, and pronunciation. Vocabulary builds book by book. The love of reading is the goal — and the foundation comprehension is built on. Formal Lexile measurement comes later, in the ELA Program (Grade 3+), when your child is ready for it.',
   },
   fit: {
     eyebrow: 'Who It’s For',
