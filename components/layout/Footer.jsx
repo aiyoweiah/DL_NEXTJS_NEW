@@ -82,10 +82,6 @@ function ColHeading({ children }) {
 export default function Footer({ locale, copy }) {
   const currentYear = new Date().getFullYear()
 
-  // Sibling-site cross-link is structurally present but only renders when
-  // explicitly enabled. Set NEXT_PUBLIC_SHOW_CODING=true when DODO Coding ships.
-  const showSibling = process.env.NEXT_PUBLIC_SHOW_CODING === 'true'
-
   return (
     <footer role="contentinfo">
 
@@ -138,31 +134,41 @@ export default function Footer({ locale, copy }) {
               </p>
 
               {/*
-                Sibling-site cross-link (DODO Coding). Hidden by default;
-                opt in with NEXT_PUBLIC_SHOW_CODING=true once Coding ships.
-                Structure reserves the slot now so when the env flag flips
-                the layout doesn't shift.
+                The DODO Family — cross-site sibling link (DODO Coding).
+                Env-gate removed 2026-06-11; stacked layout per visual review:
+                name + arrow on its own line, blurb as muted subtitle below.
               */}
-              {showSibling && (
-                <div className="pt-2 border-t border-[rgba(124,121,232,0.15)]">
+              <div className="pt-4 mt-1 border-t border-[rgba(124,121,232,0.15)]">
+                <p
+                  className="text-[10px] font-semibold uppercase tracking-wider mb-2.5"
+                  style={{ color: '#7c79e8', letterSpacing: '0.12em' }}
+                >
+                  {copy.sibling.label}
+                </p>
+                <a
+                  href={copy.sibling.href}
+                  className="group block"
+                >
                   <p
-                    className="text-[10px] font-semibold uppercase tracking-wider mb-1.5"
-                    style={{ color: '#7c79e8' }}
+                    className="text-sm font-semibold mb-1 inline-flex items-baseline gap-1.5 transition-colors duration-150 group-hover:text-[#7c79e8]"
+                    style={{ color: '#0E0E12' }}
                   >
-                    {copy.sibling.label}
-                  </p>
-                  <a
-                    href={copy.sibling.href}
-                    className="inline-flex items-center gap-1.5 text-sm font-medium text-[#3D4452] hover:text-[#7c79e8] transition-colors duration-150"
-                  >
-                    <span>{copy.sibling.name}</span>
-                    <span className="text-xs" style={{ color: '#7B8494' }}>
-                      · {copy.sibling.blurb}
+                    {copy.sibling.name}
+                    <span
+                      className="text-xs transition-transform duration-150 group-hover:translate-x-0.5"
+                      aria-hidden="true"
+                    >
+                      →
                     </span>
-                    <span aria-hidden="true">→</span>
-                  </a>
-                </div>
-              )}
+                  </p>
+                  <p
+                    className="text-xs leading-relaxed"
+                    style={{ color: '#7B8494' }}
+                  >
+                    {copy.sibling.blurb}
+                  </p>
+                </a>
+              </div>
 
             </div>
 

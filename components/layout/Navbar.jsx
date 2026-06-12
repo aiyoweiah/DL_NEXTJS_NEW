@@ -194,6 +194,206 @@ export default function Navbar({ locale, copy }) {
     )
   }
 
+  // Desktop nav dropdown — "The DODO Family" pattern.
+  // Trigger is a button (not a Link) — opens a menu listing the three programs.
+  // Stability (visual-review fix 2026-06-11):
+  //   - The menu's outer wrapper sits flush at top-full with NO gap, so the
+  //     cursor doesn't cross a dead zone between the trigger and the menu.
+  //   - Visual gap below the trigger comes from paddingTop on the menu wrapper,
+  //     which is itself part of the hover region (no mouseleave when traversing).
+  //   - 150ms close-delay timer absorbs brief mouse-out blips (e.g. cursor
+  //     wobble between rows of items).
+  const DesktopDropdown = ({ item }) => {
+    const [open, setOpen] = useState(false)
+    const wrapRef     = useRef(null)
+    const closeTimer  = useRef(null)
+
+    const cancelClose = () => {
+      if (closeTimer.current) { clearTimeout(closeTimer.current); closeTimer.current = null }
+    }
+    const handleEnter = () => { cancelClose(); setOpen(true) }
+    const handleLeave = () => {
+      cancelClose()
+      closeTimer.current = setTimeout(() => setOpen(false), 150)
+    }
+
+    useEffect(() => {
+      if (!open) return
+      const onDocClick = (e) => { if (!wrapRef.current?.contains(e.target)) setOpen(false) }
+      const onKey      = (e) => { if (e.key === 'Escape') setOpen(false) }
+      document.addEventListener('mousedown', onDocClick)
+      document.addEventListener('keydown', onKey)
+      return () => {
+        document.removeEventListener('mousedown', onDocClick)
+        document.removeEventListener('keydown', onKey)
+      }
+    }, [open])
+
+    useEffect(() => () => cancelClose(), [])
+
+    const triggerActive = item.items.some((s) => !s.external && isActive(s.href))
+
+    return (
+      <div
+        ref={wrapRef}
+        className="relative"
+        onMouseEnter={handleEnter}
+        onMouseLeave={handleLeave}
+      >
+        <button
+          type="button"
+          aria-haspopup="menu"
+          aria-expanded={open}
+          onClick={() => setOpen((p) => !p)}
+          className={`nav-link text-sm font-medium whitespace-nowrap transition-colors duration-150 inline-flex items-center gap-1 ${
+            triggerActive ? 'text-[#b7b5fe]' : 'text-[#F0F0F0] hover:text-[#b7b5fe]'
+          }`}
+        >
+          {item.label}
+          <svg
+            width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true"
+            style={{ transition: 'transform 150ms ease', transform: open ? 'rotate(180deg)' : 'none' }}
+          >
+            <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
+
+        {open && (
+          // Outer wrapper sits flush at top-full (NO gap). The visual offset
+          // comes from paddingTop, which is part of the hover region.
+          <div
+            className="absolute left-0 top-full"
+            style={{ paddingTop: '0.5rem', zIndex: 100 }}
+            onMouseEnter={handleEnter}
+            onMouseLeave={handleLeave}
+          >
+            <div
+              role="menu"
+              aria-label={item.label}
+              className="rounded-xl overflow-hidden"
+              style={{
+                minWidth:        '260px',
+                backgroundColor: '#1A1A22',
+                border:          '1px solid rgba(183,181,254,0.18)',
+                boxShadow:       '0 12px 32px rgba(0,0,0,0.55)',
+              }}
+            >
+            <div style={{ padding: '6px' }}>
+              {item.items.map((sub) => {
+                const isCurrent = !sub.external && isActive(sub.href)
+                const resolvedHref = sub.external
+                  ? sub.href.replace('{locale}', locale)
+                  : `/${locale}${sub.href}`
+                const itemEls = (
+                  <>
+                    <div className="flex items-baseline justify-between gap-3">
+                      <span style={{ fontSize: '0.875rem', fontWeight: 600, color: isCurrent ? '#b7b5fe' : '#F0F0F0', letterSpacing: '-0.005em' }}>
+                        {sub.label}
+                      </span>
+                      {sub.external && (
+                        <span aria-hidden="true" style={{ fontSize: '0.75rem', color: 'rgba(183,181,254,0.55)' }}>↗</span>
+                      )}
+                    </div>
+                    {sub.sub && (
+                      <div style={{ fontSize: '0.6875rem', fontWeight: 500, color: 'rgba(240,240,240,0.45)', marginTop: '2px', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+                        {sub.sub}
+                      </div>
+                    )}
+                  </>
+                )
+                const sharedStyle = {
+                  display:        'block',
+                  padding:        '10px 12px',
+                  borderRadius:   '8px',
+                  textDecoration: 'none',
+                }
+                return sub.external ? (
+                  <a
+                    key={sub.label}
+                    href={resolvedHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    role="menuitem"
+                    className="hover:bg-[rgba(183,181,254,0.08)] transition-colors duration-100"
+                    style={sharedStyle}
+                  >
+                    {itemEls}
+                  </a>
+                ) : (
+                  <Link
+                    key={sub.label}
+                    href={resolvedHref}
+                    role="menuitem"
+                    aria-current={isCurrent ? 'page' : undefined}
+                    onClick={() => setOpen(false)}
+                    className="hover:bg-[rgba(183,181,254,0.08)] transition-colors duration-100"
+                    style={sharedStyle}
+                  >
+                    {itemEls}
+                  </Link>
+                )
+              })}
+            </div>
+            </div>
+          </div>
+        )}
+      </div>
+    )
+  }
+
+  // Mobile dropdown group — renders the parent label as a section header
+  // followed by each sub-item indented. No collapse/expand on mobile (the
+  // drawer is already a vertical list; an extra disclosure layer adds friction).
+  const MobileDropdownGroup = ({ item }) => (
+    <div>
+      <p
+        className="pt-5 pb-2 text-[0.7rem] font-semibold uppercase tracking-widest"
+        style={{ color: 'rgba(183,181,254,0.55)' }}
+      >
+        {item.label}
+      </p>
+      {item.items.map((sub) => {
+        const isCurrent = !sub.external && isActive(sub.href)
+        const resolvedHref = sub.external
+          ? sub.href.replace('{locale}', locale)
+          : `/${locale}${sub.href}`
+        const inner = (
+          <div className="flex items-baseline justify-between gap-3">
+            <span style={{ fontSize: '1rem', fontWeight: 600, color: isCurrent ? '#b7b5fe' : '#F0F0F0' }}>
+              {sub.label}
+              {sub.sub && (
+                <span style={{ fontSize: '0.6875rem', color: 'rgba(240,240,240,0.45)', marginLeft: '0.5rem', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+                  · {sub.sub}
+                </span>
+              )}
+            </span>
+            {sub.external && <span aria-hidden="true" style={{ color: 'rgba(183,181,254,0.55)' }}>↗</span>}
+          </div>
+        )
+        return sub.external ? (
+          <a
+            key={sub.label}
+            href={resolvedHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center py-3 border-b border-[rgba(183,181,254,0.1)]"
+          >
+            {inner}
+          </a>
+        ) : (
+          <Link
+            key={sub.label}
+            href={resolvedHref}
+            aria-current={isCurrent ? 'page' : undefined}
+            className="flex items-center py-3 border-b border-[rgba(183,181,254,0.1)]"
+          >
+            {inner}
+          </Link>
+        )
+      })}
+    </div>
+  )
+
   const MobileNavLink = ({ href, label, gated }) => {
     const active = isActive(href)
     return (
@@ -235,33 +435,6 @@ export default function Navbar({ locale, copy }) {
 
           <Wordmark locale={locale} ariaLabel={copy.logoAria} />
 
-          {/* Sibling-site cross-link chip (cross-site loop pass 2026-06-11).
-              Renders only at md+ so the mobile bar stays uncluttered.
-              Ink-blue palette signals destination = DODO Coding.
-              Mirrors the gold kidsChip/growsIntoChip pattern on /program and /little-dodo. */}
-          {copy.codingChip && (
-            <a
-              href={copy.codingChip.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={copy.codingChip.ariaLabel}
-              className="hidden md:inline-flex items-center rounded-full transition-opacity hover:opacity-80 shrink-0"
-              style={{
-                padding:         '5px 12px',
-                border:          '1px solid rgba(31,78,140,0.30)',
-                backgroundColor: 'rgba(31,78,140,0.06)',
-                fontSize:        '10px',
-                fontWeight:      600,
-                letterSpacing:   '0.07em',
-                textTransform:   'uppercase',
-                color:           '#7AA8E0',
-                whiteSpace:      'nowrap',
-              }}
-            >
-              {copy.codingChip.label} {copy.codingChip.arrow}
-            </a>
-          )}
-
           {/*
             Primary nav — single flat row of 6.
             Visible from md:768 (tablet+) with compact gap-4; widens to
@@ -269,9 +442,11 @@ export default function Navbar({ locale, copy }) {
             until lg:1024) where Book Consultation was hidden until lg.
           */}
           <nav aria-label="Primary navigation" className="hidden md:flex items-center gap-4 lg:gap-8">
-            {copy.primary.map((link) => (
-              <DesktopNavLink key={link.href} {...link} />
-            ))}
+            {copy.primary.map((link) =>
+              link.items
+                ? <DesktopDropdown key={link.label} item={link} />
+                : <DesktopNavLink key={link.href} {...link} />
+            )}
           </nav>
 
           <div className="flex items-center gap-3">
@@ -363,9 +538,11 @@ export default function Navbar({ locale, copy }) {
           </div>
 
           <nav aria-label="Primary navigation">
-            {copy.primary.map((link) => (
-              <MobileNavLink key={link.href} {...link} />
-            ))}
+            {copy.primary.map((link) =>
+              link.items
+                ? <MobileDropdownGroup key={link.label} item={link} />
+                : <MobileNavLink key={link.href} {...link} />
+            )}
           </nav>
 
           {copy.more?.length > 0 && (

@@ -41,7 +41,18 @@ const YOUTUBE_IDS = {
 // 下发的 locale-aware copy 消费。结构与 marketing.en.js 镜像。
 export const nav = {
   primary: [
-    { href: '/program',     label: '课程'          },
+    {
+      href:  '/program',
+      label: '课程',
+      // 都学家族下拉菜单 —— 将三项课程作为一个品牌族群呈现，替代姊妹站
+      // 跨站链接小标签。外部项（跨站）支持 {locale} 模板，由 Navbar 在
+      // 渲染时替换为当前语言。
+      items: [
+        { label: 'ELA 课程',       sub: '3 年级及以上', href: '/program'                                          },
+        { label: '都学启蒙',       sub: '5–8 岁',       href: '/little-dodo'                                      },
+        { label: 'DODO 机器语言',  sub: '3 年级及以上', href: 'https://coding.dodolearning.com', external: true   },
+      ],
+    },
     { href: '/methodology', label: 'DODO 教学系统' },
     { href: '/results',     label: '成果'          },
     { href: '/navigators',  label: '导师'          },
@@ -71,13 +82,6 @@ export const nav = {
   logoAria: 'DODO 都学书院 — 首页',
   menuOpenAria:  '打开导航菜单',
   menuCloseAria: '关闭导航菜单',
-  // codingChip — 姊妹站跨站链接（cross-site loop pass, 2026-06-11）
-  codingChip: {
-    label:     'DODO 机器语言',
-    href:      'https://coding.dodolearning.com',
-    ariaLabel: '访问 DODO 机器语言 —— 都学旗下姊妹品牌（AI 与计算素养）',
-    arrow:     '→',
-  },
 }
 
 
@@ -102,7 +106,7 @@ export const footer = {
     tagline:   '语言的根，长在阅读里',
   },
   sibling: {
-    label:     '都学旗下',
+    label:     '都学家族',
     name:      'DODO 机器语言',
     blurb:     'AI 时代的语言艺术',
     href:      'https://coding.dodolearning.com',

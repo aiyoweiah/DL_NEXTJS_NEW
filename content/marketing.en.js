@@ -50,7 +50,18 @@ const YOUTUBE_IDS = {
 // `members` = the lock-glyph micro-tag on /audiobooks (lg+ only).
 export const nav = {
   primary: [
-    { href: '/program',     label: 'Programs'          },
+    {
+      href:  '/program',
+      label: 'Programs',
+      // The DODO Family dropdown — surfaces the three programs as one branded
+      // group, replaces the sibling-site nav chip. External items (cross-site)
+      // accept a `{locale}` template that Navbar resolves to the current locale.
+      items: [
+        { label: 'DODO ELA',     sub: 'Grade 3+',  href: '/program'                                          },
+        { label: 'Little DODO',  sub: 'Ages 5–8',  href: '/little-dodo'                                      },
+        { label: 'DODO Coding',  sub: 'Grade 3+',  href: 'https://coding.dodolearning.com', external: true   },
+      ],
+    },
     { href: '/methodology', label: 'DODO Method'       },
     { href: '/results',     label: 'Results'           },
     { href: '/navigators',  label: 'Navigators'        },
@@ -80,15 +91,6 @@ export const nav = {
   logoAria: 'DODO Learning — home',
   menuOpenAria:  'Open navigation menu',
   menuCloseAria: 'Close navigation menu',
-  // codingChip — sibling-site cross-link (cross-site loop pass, 2026-06-11).
-  // Renders beside the wordmark at md+. Ink-blue palette signals the
-  // destination site's brand identity.
-  codingChip: {
-    label:     'DODO Coding',
-    href:      'https://coding.dodolearning.com',
-    ariaLabel: 'Visit DODO Coding — sibling site for AI and computational literacy',
-    arrow:     '→',
-  },
 }
 
 
@@ -122,9 +124,9 @@ export const footer = {
     tagline:   'Think Once. In Both Languages.',
   },
   sibling: {
-    label:     'Also from DODO',
+    label:     'The DODO Family',
     name:      'DODO Coding',
-    blurb:     'Coming soon',
+    blurb:     'A language art for the AI age',
     href:      'https://coding.dodolearning.com',
   },
   columns: {
