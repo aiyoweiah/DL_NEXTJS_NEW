@@ -8,8 +8,17 @@
 //   2. Logo import path updated to shared opsAssets.js
 // Everything else is identical to the tested standalone build.
 
-// VERSION: 3.4.1
+// VERSION: 3.5.0
 // DODO Learning — Student Baseline Report PDF Generator
+//
+// v3.5.0 — adopt brand typefaces. Replaced the hardcoded
+// '"DM Sans","Noto Sans SC"' family string and the runtime Google
+// Fonts <link> injection with the site's self-hosted next/font brand
+// variables (--font-latin / --font-cjk, applied on <html> by
+// app/layout.jsx). The PDF now rasterizes with the same DM Sans +
+// Noto Sans SC faces as the rest of the site, with no external CDN
+// dependency. document.fonts.ready still gates generation so
+// html2canvas captures fully-loaded glyphs.
 //
 // v3.4.1 — drop the rating chip frame entirely. Ratings are now plain
 // colored text on white. The white-bg + colored border chip from v3.4.0
@@ -128,6 +137,7 @@ import { useState, useCallback, useEffect, useRef, memo } from "react";
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import { LOGO_B64 } from "@/components/ops/opsAssets";
+import ElaReportTool from "./ElaReportTool";
 
 // ─── BRAND ──────────────────────────────────────────────────────────────
 // DODO Learning brand palette — Version 2.1
@@ -462,7 +472,10 @@ const GRADE_LEXILE = [
 // PDF TEMPLATE COMPONENTS (hidden off-screen, captured by html2canvas)
 // ═══════════════════════════════════════════════════════════════════════
 
-const F = '"DM Sans", "Noto Sans SC", sans-serif';
+// Brand typefaces, self-hosted via next/font and exposed as CSS
+// variables on <html> by app/layout.jsx (--font-latin = DM Sans,
+// --font-cjk = Noto Sans SC). Used by every PDF page template.
+const F = "var(--font-latin), var(--font-cjk), sans-serif";
 // A4 at 96dpi = 794 x 1123px. We render at this size, html2canvas captures at 2x.
 const PW = 794;
 const PH = 1123;
@@ -842,7 +855,7 @@ function AutoResizeTextarea({ value, onChange, placeholder, style }) {
   );
 }
 
-export default function DodoEvalPDF() {
+function DodoEvalPDF() {
   const [info, setInfo] = useState({ name: "", age: "", grade: "", date: new Date().toISOString().split("T")[0], evaluator: "", phase: "" });
   const [ratings, setRatings] = useState({});
   const [comments, setComments] = useState({});
@@ -854,10 +867,10 @@ export default function DodoEvalPDF() {
   const [status, setStatus] = useState("");
 
   useEffect(() => {
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = "https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap";
-    document.head.appendChild(link);
+    // Brand fonts (DM Sans + Noto Sans SC) are self-hosted via next/font
+    // and exposed on <html> as --font-latin / --font-cjk by app/layout.jsx.
+    // No CDN <link> needed — just gate PDF generation on the faces being
+    // loaded so html2canvas captures complete glyphs.
     document.fonts.ready.then(() => setFontsReady(true));
   }, []);
 
@@ -917,7 +930,7 @@ export default function DodoEvalPDF() {
   const lbl = { fontSize: 10, letterSpacing: 1, textTransform: "uppercase", color: B.muted, fontWeight: 700, marginBottom: 4, display: "block" };
 
   return (
-    <div style={{ fontFamily: '"DM Sans", "Noto Sans SC", sans-serif', minHeight: "100vh", background: B.cream }}>
+    <div style={{ fontFamily: F, minHeight: "100vh", background: B.cream }}>
       <div style={{ maxWidth: 900, margin: "0 auto", padding: "24px 20px 80px" }}>
 
         {/* Form Header */}
@@ -1063,6 +1076,73 @@ export default function DodoEvalPDF() {
         <PDFPage3 info={info} ratings={ratings} proficientGrade={proficientGrade} studentLexile={studentLexile} />
         <PDFPage4 info={info} proficientGrade={proficientGrade} notes={notes} />
       </div>
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// PRODUCT-LINE ROUTER  (default export — rendered by AssessmentLoader)
+// ═══════════════════════════════════════════════════════════════════════
+// The admin first chooses a product line, then the matching engine renders:
+//   • Little DODO → DodoEvalPDF   (legacy 12-skill baseline report; preserved)
+//   • DODO ELA    → ElaReportTool (MCT-anchored ELA report, DLCW v2.0)
+
+function ProductChooser({ onSelect }) {
+  const CARDS = [
+    {
+      id: "little_dodo", name: "Little DODO", nameZh: "小都学",
+      tag: "Baseline Report · 12-skill pillars",
+      desc: "The established younger-learner baseline report: Literature & Literacy, Speaking & Discussion, Language Craft & Writing — with grade-band modules and Lexile.",
+      accent: B.lavender, badge: "v3.5.0",
+    },
+    {
+      id: "ela", name: "DODO ELA", nameZh: "都学英语语言艺术",
+      tag: "MCT-anchored · placement report",
+      desc: "The English Language Arts entrance report per DLCW v2.0: placement headline, reading & language strands, AW3A writing, oral & listening — parent-facing.",
+      accent: B.softGreen, badge: "v0.2 · 中/EN",
+    },
+  ];
+  return (
+    <div style={{ fontFamily: F, minHeight: "100vh", background: B.cream, display: "flex", alignItems: "center", justifyContent: "center", padding: "40px 20px" }}>
+      <div style={{ maxWidth: 820, width: "100%" }}>
+        <div style={{ display: "flex", justifyContent: "center", marginBottom: 8 }}>
+          <img src={LOGO_B64} alt="DODO" style={{ height: 38 }} />
+        </div>
+        <div style={{ textAlign: "center", marginBottom: 28 }}>
+          <div style={{ fontSize: 11, letterSpacing: 3, textTransform: "uppercase", color: B.muted }}>Assessment Report Generator</div>
+          <div style={{ fontSize: 22, fontWeight: 700, color: B.ink, marginTop: 4 }}>Choose a report type · 选择报告类型</div>
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 16 }}>
+          {CARDS.map(c => (
+            <button key={c.id} onClick={() => onSelect(c.id)}
+              style={{ textAlign: "left", background: B.white, border: `1px solid ${B.border}`, borderTop: `4px solid ${c.accent}`, borderRadius: 12, padding: 22, cursor: "pointer", fontFamily: "inherit" }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                <div style={{ fontSize: 18, fontWeight: 800, color: B.ink }}>{c.name}</div>
+                <span style={{ fontSize: 10, color: B.muted, border: `1px solid ${B.border}`, borderRadius: 99, padding: "2px 8px" }}>{c.badge}</span>
+              </div>
+              <div style={{ fontSize: 11, color: B.muted, marginTop: 2 }}>{c.nameZh}</div>
+              <div style={{ fontSize: 11, fontWeight: 700, color: c.accent, marginTop: 10, textTransform: "uppercase", letterSpacing: 1 }}>{c.tag}</div>
+              <div style={{ fontSize: 12.5, lineHeight: 1.6, color: B.ink, marginTop: 8 }}>{c.desc}</div>
+              <div style={{ marginTop: 14, fontSize: 13, fontWeight: 700, color: c.accent }}>Open →</div>
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function AssessmentTool() {
+  const [product, setProduct] = useState(null);
+  if (!product) return <ProductChooser onSelect={setProduct} />;
+  const label = product === "little_dodo" ? "Little DODO" : "DODO ELA";
+  return (
+    <div style={{ fontFamily: F, background: B.cream, minHeight: "100vh" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 12, padding: "8px 16px", background: B.white, borderBottom: `1px solid ${B.border}`, position: "sticky", top: 0, zIndex: 10 }}>
+        <button onClick={() => setProduct(null)} style={{ border: `1.5px solid ${B.border}`, background: B.cream, color: B.ink, borderRadius: 7, padding: "6px 12px", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>← Switch report type</button>
+        <span style={{ fontSize: 12, color: B.muted }}>Current: <strong style={{ color: B.ink }}>{label}</strong></span>
+      </div>
+      {product === "little_dodo" ? <DodoEvalPDF /> : <ElaReportTool />}
     </div>
   );
 }

@@ -114,7 +114,7 @@ const D = {
   bgPage: '#F5F5FF',
 }
 
-const F        = '"DM Sans", "Noto Sans SC", sans-serif'
+const F        = 'var(--font-latin), var(--font-cjk), sans-serif'
 const CURSIVE  = '"Dancing Script", "Apple Chancery", cursive'
 const PW       = 794
 const PH       = 1123
@@ -637,14 +637,12 @@ export default function AgreementTool() {
   }
 
   useEffect(() => {
+    // Brand fonts (DM Sans + Noto Sans SC) are self-hosted via next/font and
+    // exposed as --font-latin / --font-cjk by app/layout.jsx. Only the cursive
+    // signature face (Dancing Script) still needs loading from the CDN.
     const link = document.createElement('link')
     link.rel  = 'stylesheet'
-    link.href =
-      'https://fonts.googleapis.com/css2' +
-      '?family=DM+Sans:wght@300;400;500;600;700' +
-      '&family=Noto+Sans+SC:wght@400;500;700' +
-      '&family=Dancing+Script:wght@500;600;700' +
-      '&display=swap'
+    link.href = 'https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&display=swap'
     document.head.appendChild(link)
     document.fonts.ready.then(() => setFontsReady(true))
   }, [])

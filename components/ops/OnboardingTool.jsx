@@ -48,7 +48,7 @@ const D = {
   danger: '#c0504d',
 };
 
-const F   = '"DM Sans", "Noto Sans SC", sans-serif';
+const F   = 'var(--font-latin), var(--font-cjk), sans-serif';
 const PW  = 794;
 const PH  = 1123;
 const PAD = 56;
@@ -468,10 +468,9 @@ export default function OnboardingTool() {
   const [status,          setStatus]          = useState('');
 
   useEffect(() => {
-    const link = document.createElement('link');
-    link.rel  = 'stylesheet';
-    link.href = 'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;800&display=swap';
-    document.head.appendChild(link);
+    // Brand fonts (DM Sans + Noto Sans SC) are self-hosted via next/font and
+    // exposed as --font-latin / --font-cjk by app/layout.jsx. No CDN <link>
+    // needed; just gate PDF generation on the faces being loaded.
     document.fonts.ready.then(() => setFontsReady(true));
   }, []);
 
@@ -548,7 +547,7 @@ export default function OnboardingTool() {
   const textareaStyle = { ...inp, resize: 'vertical', lineHeight: 1.6, fontSize: 13, background: '#f5ede4' };
 
   return (
-    <div style={{ fontFamily: '"Noto Sans SC", "DM Sans", "Avenir Next", sans-serif', minHeight: '100vh', background: D.bg, color: D.text }}>
+    <div style={{ fontFamily: 'var(--font-cjk), var(--font-latin), sans-serif', minHeight: '100vh', background: D.bg, color: D.text }}>
       <div style={{ maxWidth: 900, margin: '0 auto', padding: '24px 20px 80px' }}>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 24, paddingBottom: 16, borderBottom: `2px solid ${D.accent}` }}>

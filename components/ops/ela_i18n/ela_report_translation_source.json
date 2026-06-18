@@ -1,0 +1,190 @@
+{
+  "placement.ready_above.head": {
+    "en": "Ready to Advance",
+    "context": "DODO ELA parent-facing assessment report — placement headline card (top of page 1). Short, warm, confident title (2-5 words). Names no internal program level."
+  },
+  "placement.ready_above.body": {
+    "en": "Your child performs with confidence across current-level material and into more advanced work. They are ready to move up to the next stage.",
+    "context": "DODO ELA parent-facing assessment report — placement narrative under the headline (1-2 sentences). Parent-facing; refers to 'level' / 'stage' generically, never an internal band name."
+  },
+  "placement.on_track.head": {
+    "en": "On Track",
+    "context": "DODO ELA parent-facing assessment report — placement headline card (top of page 1). Short, warm, confident title (2-5 words). Names no internal program level."
+  },
+  "placement.on_track.body": {
+    "en": "Your child meets the current level securely. The foundations are solid; the next phase consolidates and extends them.",
+    "context": "DODO ELA parent-facing assessment report — placement narrative under the headline (1-2 sentences). Parent-facing; refers to 'level' / 'stage' generically, never an internal band name."
+  },
+  "placement.consolidate_current.head": {
+    "en": "Consolidating Foundations",
+    "context": "DODO ELA parent-facing assessment report — placement headline card (top of page 1). Short, warm, confident title (2-5 words). Names no internal program level."
+  },
+  "placement.consolidate_current.body": {
+    "en": "Your child is working within the current level and benefits from consolidating a few core foundations before advancing. A focused start will close the gap.",
+    "context": "DODO ELA parent-facing assessment report — placement narrative under the headline (1-2 sentences). Parent-facing; supportive, not deficit-framed; refers to 'level' / 'stage' generically."
+  },
+  "placement.consolidate_prior.head": {
+    "en": "Strengthening Prior Foundations",
+    "context": "DODO ELA parent-facing assessment report — placement headline card (top of page 1). Short, warm, confident title (2-5 words). Names no internal program level."
+  },
+  "placement.consolidate_prior.body": {
+    "en": "Your child will progress fastest by first strengthening foundations from the preceding stage. We recommend beginning there to build durable confidence.",
+    "context": "DODO ELA parent-facing assessment report — placement narrative under the headline (1-2 sentences). Parent-facing; supportive, forward-looking; refers to 'preceding stage' generically, never an internal band name."
+  },
+  "placement.diagnose_prior.head": {
+    "en": "Foundational Diagnostic Recommended",
+    "context": "DODO ELA parent-facing assessment report — placement headline card (top of page 1). Short, professional title (2-6 words). Names no internal program level."
+  },
+  "placement.diagnose_prior.body": {
+    "en": "We recommend a short foundational diagnostic at the preceding stage so we can place your child precisely and build from a secure starting point.",
+    "context": "DODO ELA parent-facing assessment report — placement narrative under the headline (1-2 sentences). Parent-facing; reassuring, not deficit-framed; refers to 'preceding stage' generically."
+  },
+
+  "strand.reading.comprehension.label": {
+    "en": "Reading Comprehension & Analysis",
+    "context": "DODO ELA parent-facing assessment report — Reading & Language strand name (table heading, page 2). Concise."
+  },
+  "strand.reading.comprehension.desc": {
+    "en": "Literal + inferential understanding, theme, and textual evidence.",
+    "context": "DODO ELA parent-facing assessment report — one-line 'what this measures' under the Reading & Language strand name."
+  },
+  "strand.reading.vocabulary.label": {
+    "en": "Vocabulary & Word Study",
+    "context": "DODO ELA parent-facing assessment report — Reading & Language strand name (table heading, page 2). Concise."
+  },
+  "strand.reading.vocabulary.desc": {
+    "en": "Word meaning, roots/etymology, and precision in context.",
+    "context": "DODO ELA parent-facing assessment report — one-line 'what this measures'. 'etymology' / 'roots' per glossary (MCT linguistic concepts)."
+  },
+  "strand.reading.grammar.label": {
+    "en": "Grammar & Sentence Structure",
+    "context": "DODO ELA parent-facing assessment report — Reading & Language strand name (table heading, page 2). Concise."
+  },
+  "strand.reading.grammar.desc": {
+    "en": "Parts of speech, sentence analysis, and grammatical control.",
+    "context": "DODO ELA parent-facing assessment report — one-line 'what this measures'. MCT grammar concepts per glossary."
+  },
+  "strand.reading.readingFluency.label": {
+    "en": "Reading Fluency & Prosody",
+    "context": "DODO ELA parent-facing assessment report — Reading & Language strand name (table heading, page 2). Concise."
+  },
+  "strand.reading.readingFluency.desc": {
+    "en": "Pace, phrasing, and rhythm in reading aloud.",
+    "context": "DODO ELA parent-facing assessment report — one-line 'what this measures' under the strand name."
+  },
+  "strand.reading.creative.label": {
+    "en": "Poetics & Literary Craft",
+    "context": "DODO ELA parent-facing assessment report — Reading & Language strand name (table heading, page 2). Concise."
+  },
+  "strand.reading.creative.desc": {
+    "en": "Sound devices, figurative language, and authorial craft.",
+    "context": "DODO ELA parent-facing assessment report — one-line 'what this measures'. Poetics terms (metaphor, alliteration, etc.) per glossary."
+  },
+  "strand.reading.organization.label": {
+    "en": "Writing Organization",
+    "context": "DODO ELA parent-facing assessment report — Reading & Language strand name (table heading, page 2). Concise."
+  },
+  "strand.reading.organization.desc": {
+    "en": "Paragraph and argument structure on the quiz items.",
+    "context": "DODO ELA parent-facing assessment report — one-line 'what this measures' under the strand name."
+  },
+
+  "strand.writing.essay_structure.label": {
+    "en": "Essay Structure",
+    "context": "DODO ELA parent-facing assessment report — Writing (AW3A) skill name (table heading, page 3). Concise."
+  },
+  "strand.writing.essay_structure.desc": {
+    "en": "Thesis, topic sentences, evidence + analysis, synthesizing conclusion.",
+    "context": "DODO ELA parent-facing assessment report — one-line 'what this measures' under the Writing skill name."
+  },
+  "strand.writing.ideas.label": {
+    "en": "Ideas",
+    "context": "DODO ELA parent-facing assessment report — Writing (AW3A) skill name (table heading, page 3). Concise."
+  },
+  "strand.writing.ideas.desc": {
+    "en": "Originality, depth, and genuine engagement with the prompt.",
+    "context": "DODO ELA parent-facing assessment report — one-line 'what this measures' under the Writing skill name."
+  },
+  "strand.writing.style.label": {
+    "en": "Style",
+    "context": "DODO ELA parent-facing assessment report — Writing (AW3A) skill name (table heading, page 3). Concise."
+  },
+  "strand.writing.style.desc": {
+    "en": "Voice, sentence variety, word choice, rhetorical control.",
+    "context": "DODO ELA parent-facing assessment report — one-line 'what this measures' under the Writing skill name."
+  },
+  "strand.writing.grammar.label": {
+    "en": "Grammar",
+    "context": "DODO ELA parent-facing assessment report — Writing (AW3A) skill name (table heading, page 3). Concise."
+  },
+  "strand.writing.grammar.desc": {
+    "en": "Agreement, tense, pronoun reference, parallel structure.",
+    "context": "DODO ELA parent-facing assessment report — one-line 'what this measures' under the Writing skill name."
+  },
+  "strand.writing.punctuation.label": {
+    "en": "Punctuation",
+    "context": "DODO ELA parent-facing assessment report — Writing (AW3A) skill name (table heading, page 3). Concise."
+  },
+  "strand.writing.punctuation.desc": {
+    "en": "Commas, semicolons, colons, dashes, apostrophes, quotation marks.",
+    "context": "DODO ELA parent-facing assessment report — one-line 'what this measures' under the Writing skill name."
+  },
+  "strand.writing.usage.label": {
+    "en": "Usage",
+    "context": "DODO ELA parent-facing assessment report — Writing (AW3A) skill name (table heading, page 3). Concise."
+  },
+  "strand.writing.usage.desc": {
+    "en": "Vocabulary precision, idiom, register, word-form accuracy.",
+    "context": "DODO ELA parent-facing assessment report — one-line 'what this measures' under the Writing skill name."
+  },
+  "strand.writing.mla_format.label": {
+    "en": "MLA Format",
+    "context": "DODO ELA parent-facing assessment report — Writing (AW3A) skill name (table heading, page 3). Keep 'MLA' in English."
+  },
+  "strand.writing.mla_format.desc": {
+    "en": "Heading block, in-text citations, works cited, MLA conventions.",
+    "context": "DODO ELA parent-facing assessment report — one-line 'what this measures'. Keep 'MLA' in English."
+  },
+
+  "strand.oral.listening.label": {
+    "en": "Listening Comprehension",
+    "context": "DODO ELA parent-facing assessment report — Oral & Listening strand name (table heading, page 3). Concise."
+  },
+  "strand.oral.listening.desc": {
+    "en": "Following a spoken passage; retell, inference, and detail.",
+    "context": "DODO ELA parent-facing assessment report — one-line 'what this measures' under the Oral & Listening strand name."
+  },
+  "strand.oral.speaking.label": {
+    "en": "Spoken Response & Fluency",
+    "context": "DODO ELA parent-facing assessment report — Oral & Listening strand name (table heading, page 3). Concise."
+  },
+  "strand.oral.speaking.desc": {
+    "en": "Read-aloud, open response, and spoken vocabulary.",
+    "context": "DODO ELA parent-facing assessment report — one-line 'what this measures' under the Oral & Listening strand name."
+  },
+
+  "rating_note.0": {
+    "en": "This area was not assessed in this session.",
+    "context": "DODO ELA parent-facing assessment report — note auto-filled when a strand is scored 0/5 (Did Not Test). Applies across all strands; the Navigator may edit per child."
+  },
+  "rating_note.1": {
+    "en": "Beginning — foundational skills are still forming; this is the Navigator's first focus.",
+    "context": "DODO ELA parent-facing assessment report — note auto-filled when a strand is scored 1/5 (Beginning). Supportive, not deficit-framed. 'Navigator' per glossary."
+  },
+  "rating_note.2": {
+    "en": "Developing — the building blocks are emerging and growing more consistent.",
+    "context": "DODO ELA parent-facing assessment report — note auto-filled when a strand is scored 2/5 (Developing). Applies across all strands; the Navigator may edit."
+  },
+  "rating_note.3": {
+    "en": "Approaching — solid working command, with the next layer of nuance in view.",
+    "context": "DODO ELA parent-facing assessment report — note auto-filled when a strand is scored 3/5 (Approaching). Applies across all strands; the Navigator may edit."
+  },
+  "rating_note.4": {
+    "en": "Proficient — reliable, consistent control with only minor lapses.",
+    "context": "DODO ELA parent-facing assessment report — note auto-filled when a strand is scored 4/5 (Proficient). Applies across all strands; the Navigator may edit."
+  },
+  "rating_note.5": {
+    "en": "Advanced — confident mastery, applied flexibly across new material.",
+    "context": "DODO ELA parent-facing assessment report — note auto-filled when a strand is scored 5/5 (Advanced). Applies across all strands; the Navigator may edit."
+  }
+}

@@ -32,7 +32,7 @@ const TOOLS = [
   {
     href:    '/ops/assessment',
     label:   'Baseline Assessment Report',
-    version: 'v3.4.1',
+    version: 'v3.5.0',
     desc:    'Generate a 5-page PDF report from a student baseline evaluation. Covers Literature & Literacy, Speaking & Discussion, and Language Craft & Writing. Includes Lexile input, grade band modules, comment pools, and evaluator notes.',
     accent:  B.lavender,
     status:  'live',
@@ -60,7 +60,7 @@ export default function OpsIndexPage() {
     <div style={{
       minHeight: '100dvh',
       backgroundColor: B.voidBlack,
-      fontFamily: '"DM Sans", sans-serif',
+      fontFamily: 'var(--font-latin), var(--font-cjk), sans-serif',
       padding: '48px 24px 80px',
     }}>
       <div style={{ maxWidth: 760, margin: '0 auto' }}>

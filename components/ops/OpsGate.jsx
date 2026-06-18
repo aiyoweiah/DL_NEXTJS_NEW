@@ -87,7 +87,7 @@ export default function OpsGate({ children }) {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          fontFamily: '"DM Sans", sans-serif',
+          fontFamily: 'var(--font-latin), var(--font-cjk), sans-serif',
           padding: '24px',
         }}>
           <div
