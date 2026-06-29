@@ -659,6 +659,66 @@ export const consult = {
         '可随时改期——无任何费用',
       ],
     },
+    form: {
+      eyebrow: '咨询信息',
+      h2:      '聊聊您的孩子',
+      h2zh:    'Tell us about your child',
+      intro:   '信息将直接发送给创始人 Janet 本人。她会亲自回复，通常一个工作日内。',
+      sections: {
+        child:    '关于孩子',
+        region:   '您在哪里',
+        topic:    '想聊些什么',
+        contact:  '如何联系您',
+        guardian: '填写人信息',
+      },
+      fields: {
+        childName:    { label: '孩子姓名（或拼音首字母）', placeholder: '名字即可' },
+        grade:        { label: '年级',                     placeholder: '请选择…' },
+        region:       { label: '所在地区',                 placeholder: '请选择…' },
+        topic:        {
+          label:       '您想聊些什么？',
+          placeholder: '阅读困难、转学过渡、资优课程、还在了解中——任何促使您咨询的原因都可以。',
+        },
+        email:        { label: '电子邮箱', placeholder: 'you@example.com' },
+        wechat:       { label: '微信号',   placeholder: '可选' },
+        preferredContact: {
+          label:  '您希望我们如何联系？',
+          email:  '电子邮箱',
+          wechat: '微信',
+        },
+        guardianName: { label: '您的姓名', placeholder: '家长或监护人' },
+      },
+      grades:  ['学前班','幼儿园','一年级','二年级','三年级','四年级','五年级','六年级','七年级','八年级','九年级','十年级','十一年级','十二年级','尚不确定'],
+      regions: ['加拿大','美国','中国大陆','其他'],
+      submit:  { idle: '发送给 Janet', sending: '发送中…' },
+      errors: {
+        required: '请填写此项。',
+        email:    '邮箱格式有误，请检查一下。',
+        network:  '出了点问题。请重试，或直接发邮件至 janet@dodolearning.com。',
+      },
+      success: {
+        eyebrow: '已收到',
+        h2:      '已收到，{name}。',
+        h2zh:    'Got it',
+        body:    'Janet 已收到信息，将在一个工作日内亲自回复。',
+        preface: '若您希望更及时的沟通，欢迎通过微信联系——怎样方便都可以：',
+        emailCard: {
+          label:   '电子邮箱',
+          address: 'janet@dodolearning.com',
+          cta:     '复制邮箱',
+          copied:  '已复制',
+        },
+        wechatCard: {
+          label:        '微信',
+          idLabel:      '微信号',
+          id:           '__PLACEHOLDER__',
+          cta:          '复制微信号',
+          copied:       '已复制',
+          mobileHint:   '使用手机？打开微信 → 点击右上角 +，选「添加朋友」，然后搜索上方微信号。',
+          desktopHint:  '使用微信扫码，或搜索上方微信号添加。',
+        },
+      },
+    },
   }
 
 // ── /compare ─────────────────────────────────────────────────────

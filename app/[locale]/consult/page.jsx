@@ -1,27 +1,19 @@
 // app/[locale]/consult/page.jsx
 //
-// Diagnostic Consultation — Cal.com booking embed.
+// Diagnostic Consultation page.
 // Sections (top → bottom):
-//   1. Hero           — dark bg illustration, h1, 6 stat pills
-//   2. WhatHappens    — white, 4 numbered phase steps (no images)
-//   3. RealCall       — dark bg image, narrative overlay
-//   4. TrustSection   — dark, Navigator-not-sales + bullet points
-//   5. CalendarSection — whisper, Cal.com embed
-//
-// The global footer pre-CTA band (PreCtaBand) closes the page; on /consult it
-// swaps to a soft "Watch a Demo Class" offer, so no in-page charter band here.
-//
-// BACKGROUND UPDATE — April 13 2026
-//   Hero bg: consult-background.webp (harbour with sailboat at sunset, watercolor)
-//   Added <img> + 4-stop overlay to Hero (was plain #0E0E12 + radial)
-//   objectPosition: 'center 40%' — centres sailboat + lighthouse + harbour
-//   Warm amber radial accent echoes the sunset sky on the right
+//   1. Hero        — dark bg illustration, h1, 6 stat pills
+//   2. WhatHappens — white, 4 numbered phase steps (no images)
+//   3. RealCall    — dark bg image, narrative overlay
+//   4. TrustSection — dark, Navigator-not-sales + bullet points
+//   5. FormSection — whisper, custom inquiry form → success-state UI
+//                    (replaced Cal.com embed June 2026 — see consult.form copy)
 
 import Link            from 'next/link'
 import { notFound }   from 'next/navigation'
 import { isValidLocale, localeParams } from '@/lib/i18n'
 import { buildMetadata }               from '@/lib/metadata'
-import ConsultCalEmbed from '@/components/consult/ConsultCalEmbed'
+import ConsultForm    from '@/components/consult/ConsultForm'
 import { consult as copyEn }       from '@/content/marketing.en'
 import { consult as copyZh }       from '@/content/marketing.zh'
 
@@ -148,7 +140,7 @@ function Hero({ locale, c }) {
           <p style={{ fontSize: '1rem', lineHeight: 1.85, color: 'rgba(240,240,240,0.52)', maxWidth: '36rem', marginBottom: '2.25rem' }}>{c.hero.sub}</p>
 
           <div className="flex flex-col sm:flex-row gap-3">
-            <a href="#consult-calendar" className="btn btn-charter" style={{ fontWeight: 700 }}>{c.hero.cta1}</a>
+            <a href="#consult-form" className="btn btn-charter" style={{ fontWeight: 700 }}>{c.hero.cta1}</a>
             <Link href={`/${locale}/program`} className="btn btn-ghost">{c.hero.cta2}</Link>
           </div>
         </div>
@@ -267,40 +259,15 @@ function TrustSection({ locale, c }) {
 }
 
 // ─────────────────────────────────────────────────────────────
-// SECTION 5 — CALENDAR BOOKING
+// SECTION 5 — FORM (replaced Cal.com June 2026)
 // ─────────────────────────────────────────────────────────────
 
-function CalendarSection({ locale, c }) {
+function FormSection({ locale, c }) {
   return (
-    <section id="consult-calendar" aria-labelledby="calendar-heading" style={{ backgroundColor: '#F5F5FF', padding: 'var(--section-md) 0' }}>
+    <section id="consult-form" aria-labelledby="form-heading" style={{ backgroundColor: '#F5F5FF', padding: 'var(--section-md) 0' }}>
       <div className="container-section">
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '2.5rem', marginBottom: '3rem' }} className="lg:grid-cols-2 lg:items-end">
-          <div>
-            <Eyebrow>{c.calendar.eyebrow}</Eyebrow>
-            <BilingualH2 id="calendar-heading" primary={c.calendar.h2} secondary={c.calendar.h2zh} />
-            <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#3D4452', marginTop: '0.875rem', maxWidth: '32rem' }}>{c.calendar.sub}</p>
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', padding: '1.5rem', backgroundColor: '#ffffff', borderRadius: '1rem', border: '1px solid rgba(14,14,18,0.07)', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}>
-            <div className="inline-flex items-center gap-2 self-start rounded-full" style={{ padding: '4px 12px', backgroundColor: 'rgba(183,181,254,0.08)', border: '1px solid rgba(183,181,254,0.2)' }}>
-              <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: '#b7b5fe' }} />
-              <span style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#5856cc' }}>{c.calendar.badge}</span>
-            </div>
-            <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.625rem', margin: 0, padding: 0, listStyle: 'none' }}>
-              {c.calendar.points.map((pt, i) => (
-                <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.625rem' }}>
-                  <span aria-hidden="true" style={{ width: '18px', height: '18px', borderRadius: '50%', flexShrink: 0, backgroundColor: 'rgba(183,181,254,0.12)', border: '1px solid rgba(183,181,254,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <svg width="8" height="6" viewBox="0 0 8 6" fill="none" aria-hidden="true">
-                      <path d="M1 3l2 2 4-4" stroke="#b7b5fe" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </span>
-                  <span style={{ fontSize: '0.875rem', color: '#3D4452', lineHeight: 1.5 }}>{pt}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-        <div style={{ backgroundColor: '#ffffff', borderRadius: '1.25rem', border: '1px solid rgba(14,14,18,0.07)', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', overflow: 'hidden', padding: '0.5rem' }}>
-          <ConsultCalEmbed />
+        <div style={{ maxWidth: '38rem', margin: '0 auto', backgroundColor: '#ffffff', borderRadius: '1.25rem', border: '1px solid rgba(14,14,18,0.07)', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', padding: 'clamp(1.75rem, 4vw, 2.75rem)' }}>
+          <ConsultForm locale={locale} c={c.form} />
         </div>
       </div>
     </section>
@@ -325,11 +292,11 @@ export default async function ConsultPage({ params }) {
   const c = COPY[locale] ?? COPY.en
   return (
     <>
-      <Hero            locale={locale} c={c} />
-      <WhatHappens     locale={locale} c={c} />
-      <RealCall        locale={locale} c={c} />
-      <TrustSection    locale={locale} c={c} />
-      <CalendarSection locale={locale} c={c} />
+      <Hero         locale={locale} c={c} />
+      <WhatHappens  locale={locale} c={c} />
+      <RealCall     locale={locale} c={c} />
+      <TrustSection locale={locale} c={c} />
+      <FormSection  locale={locale} c={c} />
     </>
   )
 }

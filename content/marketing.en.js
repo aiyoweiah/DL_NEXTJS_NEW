@@ -676,6 +676,66 @@ export const consult = {
         'Reschedule any time — no penalty',
       ],
     },
+    form: {
+      eyebrow: 'Your Inquiry',
+      h2:      'Tell us about your child',
+      h2zh:    '聊聊您的孩子',
+      intro:   'This goes straight to Janet, our founder. She replies personally — usually within one business day.',
+      sections: {
+        child:    'About your child',
+        region:   'Where you are',
+        topic:    'What you’d like to discuss',
+        contact:  'How we should reach you',
+        guardian: 'Who is filling this out',
+      },
+      fields: {
+        childName:    { label: 'Child’s name (or initials)', placeholder: 'First name is fine' },
+        grade:        { label: 'Grade or year',              placeholder: 'Select…' },
+        region:       { label: 'Where are you based?',       placeholder: 'Select…' },
+        topic:        {
+          label:       'What’s on your mind?',
+          placeholder: 'Reading struggles, school transition, gifted track, just exploring — whatever’s prompting this.',
+        },
+        email:        { label: 'Email',     placeholder: 'you@example.com' },
+        wechat:       { label: 'WeChat ID', placeholder: 'Optional' },
+        preferredContact: {
+          label:  'How should we reach out?',
+          email:  'Email',
+          wechat: 'WeChat',
+        },
+        guardianName: { label: 'Your name', placeholder: 'Parent or guardian' },
+      },
+      grades:  ['Pre-K','Kindergarten','1st Grade','2nd Grade','3rd Grade','4th Grade','5th Grade','6th Grade','7th Grade','8th Grade','9th Grade','10th Grade','11th Grade','12th Grade','Not sure'],
+      regions: ['Canada','The US','China','Other'],
+      submit:  { idle: 'Send to Janet', sending: 'Sending…' },
+      errors: {
+        required: 'Please fill this in.',
+        email:    'That email looks off — give it another check.',
+        network:  'Something went wrong on our end. Try again, or email janet@dodolearning.com directly.',
+      },
+      success: {
+        eyebrow: 'Received',
+        h2:      'Got it, {name}.',
+        h2zh:    '已收到',
+        body:    'Janet has the details and will reach out personally within one business day.',
+        preface: 'Some families prefer WeChat for a quicker back-and-forth. Whichever works for you:',
+        emailCard: {
+          label:   'Email',
+          address: 'janet@dodolearning.com',
+          cta:     'Copy address',
+          copied:  'Copied',
+        },
+        wechatCard: {
+          label:        'WeChat',
+          idLabel:      'WeChat ID',
+          id:           '__PLACEHOLDER__',
+          cta:          'Copy ID',
+          copied:       'Copied',
+          mobileHint:   'On your phone? Open WeChat → tap +, then Add Contacts, then search the ID above.',
+          desktopHint:  'Scan the QR with WeChat, or search the ID above.',
+        },
+      },
+    },
   }
 
 // ── /compare ─────────────────────────────────────────────────────
