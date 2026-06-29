@@ -60,6 +60,48 @@ a Demo   Consultation          (Week 0 / 8 / 16)
 
 ---
 
+## Inquiry forms (added 2026-06-28, consult form rework)
+
+The firm close (Book Your Consultation) lands on `/consult`, whose closing section is
+now a **custom inquiry form** — not a third-party calendar embed.
+See `components/consult/ConsultForm.jsx`.
+
+**Pattern**, in case more inquiry-style forms get added:
+
+- Single column, ~5 grouped sections with mini-eyebrow labels above each cluster.
+  Labels above inputs (never floating placeholders). Editorial line-height. Required
+  fields marked with a `*` in lavender `#7c79e8`; optional fields left unmarked.
+  Fields collapse to single column at `< 640px` via `grid-template-columns:
+  repeat(auto-fit, minmax(220px, 1fr))`.
+- Sits inside a white card (`#ffffff`, 1.25rem radius, hairline border) centered
+  in the page's light-lavender surface (`#F5F5FF`) — same surface treatment that
+  used to host the Cal.com embed, so the page rhythm is preserved.
+- **Submit moment is honest, not optimistic** — button transitions to spinner
+  ("Sending…"), only swaps to success state on real 2xx from the API. If the
+  POST fails, an inline error appears and the button re-enables. Don't fake-confirm
+  before the backend has actually accepted.
+- **Success state replaces the form in-place** (same component, internal state
+  swap). No page navigation, no scroll jump — the parent stays where they are.
+  Header is a personalised "Got it, {firstName}." with the bilingual mini-line below.
+- **Two equally-weighted contact cards** in the success state (Email | WeChat),
+  with the card matching the user's preferred-contact selection getting a 2px
+  lavender border (`#5856cc`); the other card gets a 1px hairline. Both have
+  copy-to-clipboard. WeChat card surfaces a mobile hint ("Open WeChat → +
+  → Add Contacts → search the ID") since most parents will be on phone.
+- **Locale-aware default**: `preferredContact` defaults to `email` on EN, `wechat`
+  on ZH — cultural fit, easy to override on the page.
+- **Submit button copy**: "Send to {recipient name}" rather than "Submit" or
+  "Send". Names the recipient turns a transaction into a small social act.
+
+**Server-side**: posts to `/api/consult-inquiry`, a Cloudflare Pages Function
+(NOT a Next.js API route — disabled by `output: 'export'`). Lives at
+`functions/api/consult-inquiry.js` with helpers in `functions/_lib/{lark,email}.js`.
+The function writes a row to the Lark Base, posts a 📥 card to Lead Pulse, and
+fires parent ack + team digest emails via Resend. See
+`docs/SUCCESSOR_HANDOFF.md` § 2026-06-28 for full architecture + env vars.
+
+---
+
 ## Navbar conventions (`components/layout/Navbar.jsx`)
 
 - Single flat row of **6** primary links (no dropdown — simplicity/focus is a funnel

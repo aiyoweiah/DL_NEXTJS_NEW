@@ -1,9 +1,9 @@
 # DODO Learning — Successor Handoff
 
 **Authored:** 2026-05-17 (end of session)
-**Last updated:** 2026-06-11 — **Little DODO cohesion pass applied.** Admin-clarified substance landed: Little DODO is staffed by *dedicated early-childhood educators specializing in phonetics, fluency, and pronunciation*, NOT the same humans as ELA Navigators (overturns the 2026-06-02 brief's "Navigators: Shared/similar" line). Family-level homepage reframe applied (hero eyebrow: "For children who will think and lead in English at the highest levels" → "Live, Navigator-led English literacy — ages 5 through high school"; H1 unchanged). Substance update + ripple sweep across `content/marketing.{en,zh}.js` (12 string locations), `content/faq.js` (4 Little DODO Q+A answers), `public/llms.txt` (lines 1, 7, 13), `public/llms-full.txt` (§Who Navigators are rewritten into two specialist-team profiles), `lib/schema.js` (littleDodoCourseSchema description), `app/[locale]/little-dodo/page.jsx` (new growsIntoChip gold-treatment "Grade 3+? See the ELA Program →"; HowSection inline `/methodology` link on "Read → Think → Speak"; 6-tile stat rail rewritten — Phonetics-Led + Book-By-Book substance, no fabricated numbers per user decision). Staging set at `.design/little-dodo-cohesion-pass/` (01-FINDINGS + 02-COPY-PROPOSALS + 03-APPLY). `npx next build` clean both rounds. Browser-verified on `/en`, `/en/little-dodo`, `/en/faq`. **Uncommitted as of doc write.** See "2026-06-11 · Little DODO cohesion pass" below.
+**Last updated:** 2026-06-28 — **Consult form rework shipped (Cal.com retired).** /consult Section 5 swapped from a Cal.com `week_view` embed to a custom on-brand inquiry form (`components/consult/ConsultForm.jsx` — single-column, 5 sections, bilingual, locale-aware preferred-contact default). In-place success-state UI presents two contact paths (email card + WeChat card, copy-to-clipboard each). New Cloudflare Pages Function at `functions/api/consult-inquiry.js` handles POST: writes a record to the `Consultation & Lead` Lark Base (`NU1ibehBKanCRksN2rQjpLZ4pkd` / `tblXJZXEN9FDlRV2`), posts a 📥 interactive card to the Lead Pulse chat (same `LARK_TRIAGE_CHAT_ID` Claude_Lark uses), and fires two emails via Resend from `janet@dodolearning.com` (handwritten-style parent ack + team digest). Helpers in `functions/_lib/{lark,email}.js`. Bilingual copy added under `consult.form` in `content/marketing.{en,zh}.js`. Lark Base schema extended via the existing Claude_Lark Python client: new single-select columns `Preferred Contact` (Email/WeChat) and `Locale` (EN/ZH); `Grade Level` extended with Pre-K, Kindergarten, Not sure. 10 env vars set on CF Pages `dl-nextjs-new` production (Lark App ID/Secret shared with Claude_Lark — rotation breaks both). One gotcha: CF Pages' esbuild was applying the project root `tsconfig.json` (`target: es5`) to function code; fixed by `functions/tsconfig.json` override (`target: es2022`). `ConsultCalEmbed.jsx` left in tree — partners flow still uses it. Cal.com account ready to cancel once you've seen a real submission end-to-end. **WeChat ID is still a placeholder** (`WECHAT_HANDLE=pending` on CF; `__PLACEHOLDER__` in copy); swap both when you have the real handle. See "2026-06-28 · Consult form rework" below.
 
-**Previously (2026-06-10):** program-family-parallel (PFP) full apply + DODO Coding launch staged + source-doc revisions. PFP shipped end-to-end: 12 sequenced steps from brand rename ("16-Week Program" → "ELA Program") through chrome edits, AgeBandChooser on home, kidsChip on /program, K2Notes on five Tier 2 pages via new `components/ui/K2Note.jsx`, /demos row rename, /consult parallel-band subline, /about Families 4th card (The Early-Reader Home), /cities `bandsCallout`, /faq Little DODO category + nav pill, sitemap priority bump `/little-dodo` 0.8 → 0.9. DODO Coding (sister product) — 9 staged docs in `.design/dodo-coding-launch/` covering IA, theme, scaffold, copy pass, naming retirement, marketing-guide revision, curriculum-doc revision, apply log. Source-doc revisions to `F:\PC-Documents\DODO_Coding\` applied: marketing guide v1.0 → v1.1 + curriculum doc v1.0 → v1.1 (Loop terminology retired; language-art positioning locked). **No web `/coding/*` routes yet** — staged, awaits user trigger. See "2026-06-10 · PFP apply + DODO Coding staging" below.
+**Previously (2026-06-11):** Little DODO cohesion pass — admin-clarified substance (dedicated early-childhood educators specializing in phonetics/fluency/pronunciation, NOT the ELA Navigator team) plus family-level homepage reframe; substance update + ripple across 12 string locations, faq, llms.txt, llms-full.txt, schema, /little-dodo page. See "2026-06-11 · Little DODO cohesion pass" below.
 **Repo:** `aiyoweiah/DL_NEXTJS_NEW` · deploys to dodolearning.com via **Cloudflare Pages** (`dl-nextjs-new`) from `main`. *(2026-06-02: dodoletterhouse.com / Vercel retired — that domain now 301-forwards to www.dodolearning.com at the Cloudflare edge; `ops.dodoletterhouse.com` → the `/ops` tools. www.dodolearning.com is now a Pages custom domain too. Single host.)*
 **Status:** Bilingual site fully shipped. Home + /program + /about rewritten through granular review. Chrome + funnel overhauled (v5 chrome 2026-06-01, v6 funnel 2026-06-02; pre-footer band → soft fallback v6.1, D33; section spacing protocol v6.2). /methodology has video embed + redesigned 1c "See it live" section. /navigators has SectionWrapper sweep + S3.5 selection + S4.5 Kimberly spotlight. **Open:** Ms. Kimberly bio in `navigators.s4half.bio` was filled by an automated agent with "7 years teaching" — verify against actual credentials before next push. Tier 2/3 SEO+GEO + business decisions pending.
 
@@ -12,6 +12,78 @@ This doc is **your entry point if you're picking up this work cold.** Read this 
 2. `.interface-design/system.md` — **interface design system** (chrome, funnel ladder, CTA rules, color tokens). Read before touching navbar/footer/CTAs.
 3. `docs/workflow.md` Open Decisions table — the running list of pending items.
 4. `translation/BRAND_CONTENT_GUIDE.md` — the locked brand truth for content surfaces.
+
+---
+
+## 2026-06-28 · Consult form rework — Cal.com retired
+
+Cal.com's `week_view` embed on `/consult` was too high-commitment for a parent who's still deciding whether DODO is the right fit, captured zero qualifying info, served Mainland/WeChat audiences poorly, and parked inquiries inside Cal.com rather than the team's CRM. Replaced with a custom on-brand inquiry form that writes directly into the existing `Consultation & Lead` Lark Base and acknowledges the parent by email from `janet@dodolearning.com`.
+
+### What shipped
+
+| File | Change |
+|---|---|
+| `app/[locale]/consult/page.jsx` | `CalendarSection` → `FormSection`; hero CTA anchor `#consult-calendar` → `#consult-form` |
+| `components/consult/ConsultForm.jsx` | NEW. Client form (5 sections) + in-place success-state UI (two contact cards, copy-to-clipboard, locale-aware emphasis) |
+| `content/marketing.en.js` | NEW `consult.form` block (eyebrow, h2, intro, 5 section labels, 8 fields, 15-option grade list, 4-option regions, submit/error/success copy) |
+| `content/marketing.zh.js` | ZH mirror of the form block (brand-voice rewrite, not literal) |
+| `functions/api/consult-inquiry.js` | NEW. Cloudflare Pages Function — POST handler, validates, writes to Lark Base, posts Lead Pulse card, sends parent ack + team email. Lark write GATES the success response; IM/emails fire `Promise.allSettled` (log on failure, don't fail the request) |
+| `functions/_lib/lark.js` | NEW. Tenant token cache (in-memory), Bitable record create, IM interactive card to Lead Pulse |
+| `functions/_lib/email.js` | NEW. Resend client; plain-text "handwritten" parent ack + team digest |
+| `functions/tsconfig.json` | NEW. Local override (`target: es2022`) so CF Pages' esbuild doesn't inherit the project root's `target: es5` |
+| `components/consult/ConsultCalEmbed.jsx` | UNCHANGED — still imported by `/partners`. Safe to delete only after partners flow is migrated too. |
+
+### Pages Functions vs. Next.js API routes
+
+The project is `output: 'export'` (static export to `/out`, served by Cloudflare Pages with no server runtime). That **disables Next.js API routes** — anything under `app/api/` is silently ignored at build. CF Pages' native pattern for server endpoints alongside a static site is a top-level `functions/` directory. Files there compile into a single Worker that wakes on `/api/*` requests. Same domain, same git deploy, no extra config beyond what's in this repo.
+
+**Build gotcha (one-time fix, but worth knowing):** CF Pages bundles `functions/` with esbuild, and esbuild walks up the directory tree looking for a `tsconfig.json`. It found the Next.js one with `target: es5` and choked on every `const` / `async` / destructuring in our function code. Fix is a tiny `functions/tsconfig.json` that overrides `target` to `es2022` — scoped to the functions directory, leaves the Next.js side untouched. If you add more Pages Functions, the override already applies.
+
+### Lark Base — schema changes (applied via Claude_Lark's Python client)
+
+Three additions to `Consultation & Lead` (`tblXJZXEN9FDlRV2`):
+
+| Column | Type | Options | Field ID |
+|---|---|---|---|
+| `Preferred Contact` (NEW) | SingleSelect | Email, WeChat | `fldQF68I1w` |
+| `Locale` (NEW) | SingleSelect | EN, ZH | `fld4xp9pxG` |
+| `Grade Level` (extended) | SingleSelect | Pre-K, Kindergarten + existing 1st–12th + Not sure | `fldo42rBPY` |
+
+The form auto-stamps `Lead Source = Website`, `Funnel Stage = Inquiry`, `Lead Temperature = Interested` on every write. Sales team can re-stage from there.
+
+### Cloudflare Pages env vars (set on `dl-nextjs-new` production)
+
+```
+LARK_DOMAIN          https://open.larksuite.com
+LARK_APP_ID          cli_…                                  (SHARED with Claude_Lark)
+LARK_APP_SECRET      …                                       (SHARED with Claude_Lark)
+LARK_BASE_TOKEN      NU1ibehBKanCRksN2rQjpLZ4pkd
+LARK_LEADS_TABLE_ID  tblXJZXEN9FDlRV2
+LARK_TRIAGE_CHAT_ID  oc_c64846eee6852c3123c51e551ed42870     (Lead Pulse)
+RESEND_API_KEY       re_…                                    (set by user manually)
+INQUIRY_FROM_EMAIL   janet@dodolearning.com
+INQUIRY_TEAM_EMAIL   janet@dodolearning.com
+WECHAT_HANDLE        pending                                 (replace when real handle known)
+```
+
+**Critical:** `LARK_APP_ID` + `LARK_APP_SECRET` are the **same credentials** Claude_Lark's Python cron uses. Rotating in one place silently breaks the other. If you ever rotate, update both at the same time.
+
+### Email setup
+
+Resend account verified for `dodolearning.com` with SPF/DKIM/DMARC in Cloudflare DNS. From-address is `janet@dodolearning.com`. The parent ack is intentionally plain-text (no HTML chrome) so it reads as a handwritten note — see `enParentText` / `zhParentText` in `functions/_lib/email.js`. **Janet should eyeball both wordings before high-volume launch** since they're signed with her name.
+
+### Outstanding
+
+| # | Item |
+|---|---|
+| 1 | WeChat ID + QR asset — currently `__PLACEHOLDER__` in copy, `pending` in env. Replace both when known. |
+| 2 | Cancel Cal.com subscription once partners flow is also migrated (or just delete the partner Cal embed and clone the form). |
+| 3 | After first live submission: delete the test row from the Base and confirm both emails landed (out of spam). |
+
+### Where to read more
+
+- `.interface-design/system.md` — added a §"Inquiry forms" subsection noting the pattern.
+- `F:\PC-Documents\Claude_Lark\HANDOFF.md` — has the matching entry from the Lark/CRM side.
 
 ---
 
