@@ -72,7 +72,7 @@ You are the official ZH translator for DODO Learning — a bilingual cognitive d
 
 | Name | Role | Render |
 |---|---|---|
-| Janet Sui | Founder & Lead Navigator | Keep English. ZH context: `Janet Sui（创始人）` |
+| Janet | Founder & Lead Navigator | Keep English. ZH context: `Janet（创始人）` |
 | Ms. Jennifer | Example Navigator (/program narrative) | Keep English |
 | Ms. Willow | Example Navigator (/consult narrative) | Keep English |
 

@@ -482,7 +482,7 @@ In May 2026 we ran a full review and rewrite:
 - **Authored a Brand + Content Guide v4.1** (`translation/BRAND_CONTENT_GUIDE.md` · 390 lines · also exported `.docx`).
 - **Consolidated content architecture** — 9 marketing pages now read from one EN file + one ZH file. FAQ + cities are bilingual nested. No more per-page content files.
 - **Rewrote content** across all surfaces per the brand guide. Translated to ZH via DeepSeek using a staged handoff package.
-- **Locked decisions** (workflow.md Open Decisions): pricing restructured to 5 combinations (Summit/Core/Flex 1-3), founder identity = Janet Sui.
+- **Locked decisions** (workflow.md Open Decisions): pricing restructured to 5 combinations (Summit/Core/Flex 1-3), founder identity = Janet.
 
 Build verifies clean. Site is in known-good state.
 
@@ -578,7 +578,7 @@ The non-negotiables, in 30 seconds:
 - Reassurance tails: `而不是猜测`, `我们说的每一个主张，都有数据支撑`, `我们承诺`, `我们保证` → prune
 - `外教` allowed ONLY as contrast term ("外教不代表会教") — never DODO self-positioning
 
-**Owned vocabulary table** is in §09 of the brand guide. Terms now in `dodo-glossary.json`: LCS, Summit, Core, Flex 1-3, Literacy/Writing Session, Visible Thinking, Janet Sui, Ms. Jennifer / Willow / Sarah, MCT components. **Added 2026-05-21**: `外教` (ZH contrast term), `高频低压` (4-char frame), "Enabling students to enjoy the arts of language" (humanistic positioning).
+**Owned vocabulary table** is in §09 of the brand guide. Terms now in `dodo-glossary.json`: LCS, Summit, Core, Flex 1-3, Literacy/Writing Session, Visible Thinking, Janet, Ms. Jennifer / Willow / Sarah, MCT components. **Added 2026-05-21**: `外教` (ZH contrast term), `高频低压` (4-char frame), "Enabling students to enjoy the arts of language" (humanistic positioning).
 
 ---
 
@@ -687,7 +687,7 @@ Only re-fetch mid-session for one reason: before a `git push`. Otherwise trust t
 
 ### Tier 2 work items (from workflow.md, not yet done)
 
-- **Founder Person schema** — JSON-LD `Person` for Janet Sui. Needs bio + credentials beyond just the name.
+- **Founder Person schema** — JSON-LD `Person` for Janet. Needs bio + credentials beyond just the name.
 - **Sample Navigator bios** on `/navigators` (still flagged "pending" per brand v4.1 §12).
 - **Credentials page** (`/about/credentials` or `/credentials`) — MCT, Harvard PZ, 6+1 Trait as `EducationalOccupationalCredential` schema.
 - **6 verification-search city pages** (post-referral search targets, distinct from current `/cities/[city]` discovery pages).

@@ -298,7 +298,7 @@ Cite these wherever credibility is needed. **Update centrally — never edit one
 | Typical Lexile gain | **One grade level over two 16-week cycles** *(canonical 2026-05-21 admin set; supersedes prior 187 points / 1.2 grade levels / 16 weeks. Re-verify against latest cohort data before quoting tighter numbers.)* |
 | Lexile assessment cadence | **Week 0 · Week 8 · Week 16** |
 | Anchor case study | Canadian student, started at age 10. At age 13: **SSAT Vocabulary 92nd percentile · Writing 95th percentile.** |
-| Founder reference | **Janet** (first name) in conversion-page prose — warm register; **Janet Sui** (full) only in formal credits (/compare "From the Founder" byline), legal signatory, and Person schema *(2026-06-01)* |
+| Founder reference | **Janet** — first name only, in every context: conversion prose, formal credits, legal signatory, Person schema. No last name anywhere. *(Updated 2026-08-24 per founder direction — overrides the earlier "Janet Sui in formal contexts" convention.)* |
 
 **Testimonial / result-card style (added 2026-05-21):**
 
@@ -456,7 +456,7 @@ Brand-content effectiveness lives in measurable signals. Track these monthly; on
 - `Flex 3` → `Flex 3（GPA管理自由航行）`
 - `English Thinker` → `英语思维者` (already in glossary; superseded `Bilingual Thinker`)
 - `Founding Family Program` → `创始家庭计划`
-- `Janet Sui (Founder)` → `Janet Sui（创始人）`
+- `Janet (Founder)` → `Janet（创始人）` — first name only, in both locales.
 - `Ms. Jennifer` / `Ms. Willow` (example Navigator names) → keep English, no translation
 
 **Added 2026-05-18 — Navigator-portal program rename:**

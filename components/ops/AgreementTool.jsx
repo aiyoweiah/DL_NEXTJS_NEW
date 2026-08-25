@@ -615,7 +615,7 @@ export default function AgreementTool() {
     teacherFirstName: '',
     teacherFullName:  '',
     teacherGST:       '',
-    signatoryName:    'Janet Sui',
+    signatoryName:    'Janet',
     effectiveDateISO: todayISO(),
     subjectTaught:    '',
     scope:            DEFAULT_SCOPE,
@@ -769,7 +769,7 @@ export default function AgreementTool() {
         {/* DODO Learning signatory + dates */}
         <Card title="DODO Learning Signatory & Dates">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 12 }}>
-            <Field value={info.signatoryName}    onChange={handlers.signatoryName}    label="Signatory Name (renders as cursive signature)" placeholder="e.g. Janet Sui" span={2} />
+            <Field value={info.signatoryName}    onChange={handlers.signatoryName}    label="Signatory Name (renders as cursive signature)" placeholder="e.g. Janet" span={2} />
             <Field value={info.effectiveDateISO} onChange={handlers.effectiveDateISO} label="Effective Date (page 2 preamble)" type="date" />
             <Field value={info.directorDateISO}  onChange={handlers.directorDateISO}  label="DODO Learning Signing Date (page 4)" type="date" />
           </div>

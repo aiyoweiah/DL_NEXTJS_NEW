@@ -90,7 +90,7 @@ These labels appear on `navigators.dodolearning.com` (the Navigator-private comp
 
 | Name | Role | Render |
 |---|---|---|
-| Janet Sui | Founder & Lead Navigator | Keep English. ZH context: `Janet Sui（创始人）` |
+| Janet | Founder & Lead Navigator | Keep English. ZH context: `Janet（创始人）`. **First name only — no last name in any surface, per founder direction (2026-08-24).** |
 | Ms. Jennifer | Example Navigator (/program narrative) | Keep English |
 | Ms. Willow | Example Navigator (/consult narrative) | Keep English |
 

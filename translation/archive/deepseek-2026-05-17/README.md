@@ -34,7 +34,7 @@ Do NOT translate:
 - HTML tags like <strong>, <br />
 - Pricing in $ (keep verbatim)
 - Owned English terms: DODO Learning, MCT, Lexile, MetaMetrics, etc.
-- Founder name: Janet Sui
+- Founder name: Janet
 - Example Navigator names: Ms. Jennifer, Ms. Willow
 - MCT components: Building Language, Caesar's English, Mud Trilogy, Grammar Island, Sentence Island, Music of the Hemispheres
 

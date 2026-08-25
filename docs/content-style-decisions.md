@@ -166,7 +166,7 @@ For each decision above, ask: has this stabilized across 2+ surface reviews? If 
 - **Trigger:** User C-5.
 
 ### D22 · Founder named on /about; closing uses poetic ZH sub-tagline
-- **Decision:** (a) The founder is named on /about as **Janet** (first name — warm conversion register), in the hero sub + video label (founder identity, §12 must-include). Full **"Janet Sui"** is reserved for formal credits (/compare "From the Founder" byline), legal signatory (AgreementTool), and the pending Person schema. (b) The closing-stamp ZH H2 switches from the literal "一次思考，两种语言。" to the canonical poetic sub-tagline **"语言的根，长在阅读里"** (§00). EN tagline unchanged.
+- **Decision:** (a) The founder is named on /about as **Janet** (first name — warm conversion register), in the hero sub + video label (founder identity, §12 must-include). **~~Full "Janet Sui" is reserved for formal credits (/compare "From the Founder" byline), legal signatory (AgreementTool), and the pending Person schema.~~ RETIRED 2026-08-24 — see D-latest below: Janet is the only permitted form in every surface, including formal credits, legal signatory, and Person schema.** (b) The closing-stamp ZH H2 switches from the literal "一次思考，两种语言。" to the canonical poetic sub-tagline **"语言的根，长在阅读里"** (§00). EN tagline unchanged.
 - **Where it lives now:** `marketing.{en,zh}.js` `about.hero` · `about/page.jsx` ClosingStamp.
 - **Trigger:** User C-3, C-6.
 
@@ -273,3 +273,13 @@ Scope: realign the whole visitor funnel around a soft→firm commitment ladder, 
 - **Where it lives now:** `content/marketing.zh.js` (~32 strings across nav, footer, home, about closing, demos, little-dodo) · `content/faq.js` (3 strings) · `app/[locale]/terms/page.jsx` ZH prose (1) · `translation/dodo-glossary.json` (3 new `owned_terms` entries + `context_specific_overrides` section) · `.interface-design/system.md` line 44 · `docs/SUCCESSOR_HANDOFF.md` (cross-refs).
 - **Trigger:** User direction 2026-06-02 — "navbar ZH translation source of truth."
 - **Rule going forward:** Future ZH additions follow the descriptive form. `教学法`/`阅读伴`/`观看示范课`/`示范课` should not reappear in ZH copy unless explicitly justified (e.g., historical quote, archived doc).
+
+## 2026-08-24 · Founder reference — first name only, everywhere
+
+### D35 · "Janet Sui" retired — Janet in every surface, no last name
+
+- **Decision:** The founder is **Janet** — first name only — in every context, without exception: conversion-page prose, formal credits (`/compare` "From the Founder" byline), legal signatory blocks (`components/ops/AgreementTool.jsx`), `Person` schema `name` field, `sameAs` labels, workflow docs, translation glossary, internal handoff docs. No last name appears anywhere.
+- **Overrides:** D18 (the earlier "Janet in warm register; Janet Sui in formal credits / legal / Person schema" convention). That two-form convention is retired.
+- **Where it lives now:** `content/marketing.{en,zh}.js` `/compare` s5 (already stripped 2026-08-24 in the prior session), `components/ops/AgreementTool.jsx:618` signatoryName default + placeholder, `translation/dodo-glossary.json` `owned_terms.Janet`, `translation/BRAND_CONTENT_GUIDE.md` §"Founder reference" row + §"Owned vocabulary", `translation/DEEPSEEK_BRIEF.md` glossary table, `docs/workflow.md` (all mentions), `docs/SUCCESSOR_HANDOFF.md` (all mentions).
+- **Rule going forward:** Never write "Janet Sui" or any last-name form. If a formal byline calls for "Janet Sui — Founder," use "Janet — Founder." When wiring `Person` schema, `name: "Janet"` — do not populate `familyName`. When drafting legal documents, the founder signs as "Janet." Recorded in Claude Code memory (feedback rule) for cross-session enforcement.
+- **Trigger:** User direction 2026-08-24 — "Strip last name from all files & mentions. Be on the lookout going forward."
