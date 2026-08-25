@@ -8,8 +8,20 @@
 //   2. Logo import path updated to shared opsAssets.js
 // Everything else is identical to the tested standalone build.
 
-// VERSION: 3.5.0
+// VERSION: 3.5.1
 // DODO Learning — Student Baseline Report PDF Generator
+//
+// v3.5.1 — typing-lag class removed. Hidden 5-page PDF templates now
+// mount on-demand inside generatePDF() rather than persisting in the
+// DOM. Every keystroke previously reflowed 5× 794×1123 hidden layouts
+// via memo shallow-compare on a new `comments` object; the mount-on-
+// demand pattern removes that coupling entirely (typing is now
+// O(one form input) regardless of report size). Also: AutoResizeTextarea
+// overflow: hidden → overflowY: auto so long input never gets
+// invisibly clipped; comment cells + evaluator notes tagged
+// data-shrinkable="comment" and a fitPageContent helper iteratively
+// shrinks their fontSize (floor 8px) if the fixed-height page would
+// otherwise overflow.
 //
 // v3.5.0 — adopt brand typefaces. Replaced the hardcoded
 // '"DM Sans","Noto Sans SC"' family string and the runtime Google
@@ -553,7 +565,7 @@ function PillarTable({ pillar, ratings, comments }) {
               ) : <span style={{ fontSize: 11, color: B.border }}>—</span>}
             </div>
             <div style={{ padding: "8px 10px", display: "flex", alignItems: "flex-start" }}>
-              <div style={{ fontSize: 9.5, lineHeight: 1.55, color: B.ink, wordBreak: "break-word" }}>{comments[skill.id] || ""}</div>
+              <div data-shrinkable="comment" style={{ fontSize: 9.5, lineHeight: 1.55, color: B.ink, wordBreak: "break-word" }}>{comments[skill.id] || ""}</div>
             </div>
           </div>
         );
@@ -818,7 +830,7 @@ function PDFPage4Impl({ info, proficientGrade, notes }) {
               <span style={{ fontSize: 12, fontWeight: 700, color: B.lavender }}>Evaluator's Notes </span>
               <span style={{ fontSize: 11, color: B.muted }}>评估师备注</span>
             </div>
-            <div style={{ fontSize: 11, lineHeight: 1.7, color: B.ink, whiteSpace: "pre-wrap" }}>{notes}</div>
+            <div data-shrinkable="comment" style={{ fontSize: 11, lineHeight: 1.7, color: B.ink, whiteSpace: "pre-wrap" }}>{notes}</div>
           </div>
         )}
       </div>
@@ -836,6 +848,9 @@ const PDFPage4 = memo(PDFPage4Impl);
 
 // ─── AUTO-RESIZE TEXTAREA ────────────────────────────────────────────────────
 // Expands height to fit content on every value change (typing or programmatic).
+// overflowY: auto is a safety net — if the auto-grow effect ever misses a
+// beat (rapid paste, remount race), the browser adds a scrollbar so the
+// user's text stays reachable instead of being clipped invisibly.
 function AutoResizeTextarea({ value, onChange, placeholder, style }) {
   const ref = useRef(null);
   useEffect(() => {
@@ -850,9 +865,44 @@ function AutoResizeTextarea({ value, onChange, placeholder, style }) {
       value={value}
       onChange={onChange}
       placeholder={placeholder}
-      style={{ ...style, resize: "none", overflow: "hidden" }}
+      style={{ ...style, resize: "none", overflowY: "auto", overflowX: "hidden" }}
     />
   );
+}
+
+// ─── SHRINK-TO-FIT ────────────────────────────────────────────────────────
+// If a fixed-height PDF page's rendered content overflows (long custom
+// comments, dense Chinese, etc.), iteratively shrink the fontSize of nodes
+// marked data-shrinkable="comment" until the content fits or a floor is
+// reached. Called just before html2canvas capture so the exported PDF
+// matches what the shrink pass produced. lineHeight values in these blocks
+// are unitless (e.g. 1.55) so they scale with fontSize automatically.
+function fitPageContent(pageEl) {
+  const nodes = pageEl.querySelectorAll('[data-shrinkable="comment"]');
+  if (!nodes.length) return;
+
+  nodes.forEach(n => {
+    if (!n.dataset.baseFontSize) {
+      n.dataset.baseFontSize = String(parseFloat(getComputedStyle(n).fontSize));
+    }
+    n.style.fontSize = n.dataset.baseFontSize + "px";
+  });
+
+  const FLOOR_PX = 8;
+  const STEP_PX = 0.25;
+  const MAX_STEPS = 40;
+
+  for (let step = 0; step < MAX_STEPS && pageEl.scrollHeight > pageEl.clientHeight; step++) {
+    let didShrink = false;
+    for (const n of nodes) {
+      const cur = parseFloat(n.style.fontSize);
+      if (cur - STEP_PX >= FLOOR_PX) {
+        n.style.fontSize = (cur - STEP_PX) + "px";
+        didShrink = true;
+      }
+    }
+    if (!didShrink) break;
+  }
 }
 
 function DodoEvalPDF() {
@@ -865,6 +915,14 @@ function DodoEvalPDF() {
   const [generating, setGenerating] = useState(false);
   const [fontsReady, setFontsReady] = useState(false);
   const [status, setStatus] = useState("");
+  // Hidden PDF templates only need to exist in the DOM during PDF generation.
+  // Keeping them mounted continuously means every keystroke in a comment
+  // field invalidates their memoized props (new `comments` object) and
+  // triggers a full 794×1123 re-layout of PDFPage1/2/2b — the dominant
+  // source of typing lag. Mount-on-demand removes that class of coupling
+  // entirely: the typing path is now O(one form input) regardless of how
+  // many hidden templates the report grows to.
+  const [showTemplates, setShowTemplates] = useState(false);
 
   useEffect(() => {
     // Brand fonts (DM Sans + Noto Sans SC) are self-hosted via next/font
@@ -893,11 +951,19 @@ function DodoEvalPDF() {
     try {
       setStatus("Waiting for fonts…");
       await document.fonts.ready;
-      await new Promise(r => setTimeout(r, 100)); // brief settle after fonts
 
-      const capture = async (id) => {
+      // Mount the hidden templates and wait for React to commit + browser to
+      // paint before html2canvas queries the DOM. Two rAFs guarantee the
+      // commit is on-screen; the small settle covers font/image warmup.
+      setStatus("Preparing report…");
+      setShowTemplates(true);
+      await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+      await new Promise(r => setTimeout(r, 100));
+
+      const captureFitted = async (id) => {
         const el = document.getElementById(id);
         if (!el) throw new Error(`#${id} not found`);
+        fitPageContent(el);
         return html2canvas(el, { scale: 2, useCORS: true, backgroundColor: B.cream, logging: false });
       };
 
@@ -907,7 +973,7 @@ function DodoEvalPDF() {
       const pages = ["pdf-p1", "pdf-p2", "pdf-p2b", "pdf-p3", "pdf-p4"];
       for (let i = 0; i < pages.length; i++) {
         setStatus(`Capturing page ${i + 1} of 5…`);
-        const canvas = await capture(pages[i]);
+        const canvas = await captureFitted(pages[i]);
         if (i > 0) pdf.addPage();
         const imgW = pageW;
         const imgH = (canvas.height * imgW) / canvas.width;
@@ -921,6 +987,7 @@ function DodoEvalPDF() {
       console.error(err);
       setStatus(`Error: ${err.message}`);
     } finally {
+      setShowTemplates(false);
       setGenerating(false);
     }
   };
@@ -1068,14 +1135,19 @@ function DodoEvalPDF() {
         </div>
       </div>
 
-      {/* ═══ HIDDEN 5-PAGE PDF TEMPLATES ═══ */}
-      <div style={{ position: "fixed", left: -9999, top: 0, zIndex: -1, opacity: 1, pointerEvents: "none" }}>
-        <PDFPage1 info={info} ratings={ratings} comments={comments} />
-        <PDFPage2 info={info} ratings={ratings} comments={comments} />
-        <PDFPage2b info={info} ratings={ratings} comments={comments} />
-        <PDFPage3 info={info} ratings={ratings} proficientGrade={proficientGrade} studentLexile={studentLexile} />
-        <PDFPage4 info={info} proficientGrade={proficientGrade} notes={notes} />
-      </div>
+      {/* ═══ HIDDEN 5-PAGE PDF TEMPLATES ═══
+          Mounted on-demand by generatePDF. See the showTemplates note above:
+          keeping these mounted continuously was the dominant source of
+          typing lag — every keystroke re-flowed 5× 794×1123 hidden layouts. */}
+      {showTemplates && (
+        <div style={{ position: "fixed", left: -9999, top: 0, zIndex: -1, opacity: 1, pointerEvents: "none" }}>
+          <PDFPage1 info={info} ratings={ratings} comments={comments} />
+          <PDFPage2 info={info} ratings={ratings} comments={comments} />
+          <PDFPage2b info={info} ratings={ratings} comments={comments} />
+          <PDFPage3 info={info} ratings={ratings} proficientGrade={proficientGrade} studentLexile={studentLexile} />
+          <PDFPage4 info={info} proficientGrade={proficientGrade} notes={notes} />
+        </div>
+      )}
     </div>
   );
 }
@@ -1093,13 +1165,13 @@ function ProductChooser({ onSelect }) {
       id: "little_dodo", name: "Little DODO", nameZh: "小都学",
       tag: "Baseline Report · 12-skill pillars",
       desc: "The established younger-learner baseline report: Literature & Literacy, Speaking & Discussion, Language Craft & Writing — with grade-band modules and Lexile.",
-      accent: B.lavender, badge: "v3.5.0",
+      accent: B.lavender, badge: "v3.5.1",
     },
     {
       id: "ela", name: "DODO ELA", nameZh: "都学英语语言艺术",
       tag: "MCT-anchored · placement report",
       desc: "The English Language Arts entrance report per DLCW v2.0: placement headline, reading & language strands, AW3A writing, oral & listening — parent-facing.",
-      accent: B.softGreen, badge: "v0.2 · 中/EN",
+      accent: B.softGreen, badge: "v0.3 · 中/EN",
     },
   ];
   return (

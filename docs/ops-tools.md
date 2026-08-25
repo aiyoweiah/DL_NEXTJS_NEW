@@ -9,7 +9,7 @@ Three tools live here today:
 
 | Route | Tool | Version | Purpose |
 |---|---|---|---|
-| `/ops/assessment` | Student Baseline Assessment Report | v3.4.1 | 5-page report from a baseline evaluation — Lit/Lit, Speaking/Discussion, Craft/Writing pillars with Lexile + module recommendations |
+| `/ops/assessment` | Student Baseline Assessment Report | v3.5.1 | Product chooser → **Little DODO** (5-page pillar report — Lit/Lit, Speaking/Discussion, Craft/Writing + Lexile + module recs) or **DODO ELA** v0.3 (4-page MCT-anchored placement report — Reading / Writing / Oral, one page each) |
 | `/ops/onboarding` | Student Enrollment Welcome Packet | v2.8 | 4-page enrollment packet — welcome letter, student info + QR codes, curriculum overview + Navigator intro, terms |
 | `/ops/teacher-agreement` | Teacher Service Agreement | v1.4.1 | 4-page contractor agreement — welcome letter, Schedule A + Schedule B (sections 1–9), execution page with cursive DODO Learning signature and fillable Teacher AcroForm fields |
 
@@ -53,27 +53,86 @@ import { jsPDF, AcroFormTextField } from 'jspdf'
 
 ### Performance pattern (now applied to all three tools)
 
-The typing-lag fix has three parts; together they prevent the form
-from re-rendering all hidden PDF templates on every keystroke.
+Two classes of typing-lag bug get conflated. Fix the class you're
+seeing before reaching for the wrong lever.
 
-- **Each `PDFPageN` wrapped in `React.memo`** with a per-page
-  comparator that checks only the keys *that page* renders. Static
-  pages use `() => true` and never re-render after first mount.
-- **`Field` component lives at module scope** (not nested in the form
-  component) so React keeps stable component identity → `<input>`
-  doesn't remount on every keystroke. *Only `AgreementTool` has a
-  `Field` wrapper; the others use inline inputs.*
-- **`onChange` handlers built once in `useMemo`** so each input
-  receives a stable function reference. *Same scope — only relevant
-  where `Field` is a wrapper.*
+**Class A — cursor "resets" every keystroke.** The focused input
+gets unmounted and remounted. Root cause is almost always a
+sub-component (input row, field wrapper, RatingBlock) defined
+*inside* the parent's render body: each render mints a new function
+reference → React sees a different component type at that JSX slot →
+unmount + fresh mount → the DOM input is destroyed and the caret goes
+with it. Hit on `ElaReportTool` v0.2 with a `RatingBlock` inline in
+the parent; fixed in v0.3 by hoisting it to module scope.
+
+**Rule:** any component that wraps an `<input>` / `<textarea>` — not
+just `Field` — must live at module scope. This includes strand-row
+components, form-block components, anything named `*Block`, `*Row`,
+`*Cell`, `*Field`.
+
+**Class B — typing is slow, characters lag behind keystrokes.** The
+form re-renders on every keystroke, and something *expensive*
+re-runs. Historically this was the hidden PDF templates re-flowing
+their 794×1123 layouts because the memoized props (`comments`,
+`ratings`) got a fresh object identity per keystroke. Three fixes,
+tried in order of durability:
+
+- **v3.5.1: mount hidden templates on-demand** (most permanent).
+  Templates only exist in the DOM during `generatePDF()`; the typing
+  path is O(one form input) regardless of report size or how many
+  hidden pages the report grows to.
+    - Pattern: `const [showTemplates, setShowTemplates] = useState(false);`
+      then inside `generatePDF`: `setShowTemplates(true)` → `await`
+      two `requestAnimationFrame`s (guarantees paint) → capture loop
+      → `finally { setShowTemplates(false) }`.
+    - Applied to `AssessmentTool.jsx` (Little DODO) and
+      `ElaReportTool.jsx`. Prefer this pattern for any new ops tool
+      with heavy hidden templates.
+- **v3.2.0 (superseded by v3.5.1): each `PDFPageN` wrapped in
+  `React.memo`.** Reduced but didn't eliminate the coupling — memo's
+  shallow compare still saw fresh `comments` / `ratings` objects on
+  every keystroke and re-rendered any page that read them.
+- **`Field` component at module scope + `useMemo`-stable
+  handlers.** This is the Class A fix — needed independently of the
+  templates issue. `AgreementTool` uses a `Field` wrapper; the
+  others use inline inputs.
 
 Current coverage:
 
-| Tool | React.memo on all pages | Field at module scope | Stable onChange |
+| Tool | Templates lazy-mount | Sub-components module-scope | Stable onChange |
 |---|---|---|---|
-| `AgreementTool` | ✅ | ✅ | ✅ |
-| `OnboardingTool` | ✅ (v2.8) | n/a (inline inputs) | n/a |
-| `AssessmentTool` | ✅ (v3.2.0) | n/a (inline inputs) | n/a |
+| `AgreementTool` | — (small enough) | ✅ (`Field`) | ✅ (`useMemo`) |
+| `OnboardingTool` | — (small enough) | n/a (inline inputs) | n/a |
+| `AssessmentTool` (Little DODO) | ✅ (v3.5.1) | n/a (inline inputs) | n/a |
+| `ElaReportTool` (DODO ELA) | ✅ (v0.3) | ✅ (`RatingBlock`, v0.3) | ✅ (`useCallback`) |
+
+### Long-input safety net (v3.5.1 / ELA v0.3)
+
+Two symptoms surface when a comment gets long — one in the input,
+one in the PDF. Fix both, always together, because the auto-grow
+textarea and the fixed-height PDF page share a "silent clip"
+failure mode.
+
+- **`AutoResizeTextarea` uses `overflowY: auto`** (not `hidden`).
+  The auto-grow effect sets `el.style.height = scrollHeight` on every
+  value change, but if a paint races a state update, or a
+  measurement returns stale, the browser must have *somewhere* to put
+  the excess text. With `overflow: hidden` and no fallback, long
+  input becomes invisible with no indication. `overflowY: auto`
+  makes the browser show a scrollbar as a safety net.
+- **`fitPageContent(pageEl)` shrinks long comment cells** to fit
+  the 794×1123 PDF page. Comment / notes / narrative divs are tagged
+  `data-shrinkable="comment"`. Before html2canvas capture,
+  `fitPageContent` measures `pageEl.scrollHeight > clientHeight` and
+  iteratively drops fontSize by 0.25px until it fits (floor 8px).
+  `lineHeight` is left unitless (e.g. `1.55`) so it scales with
+  fontSize automatically. Base sizes are cached in
+  `dataset.baseFontSize` so successive generations don't drift.
+
+Neither is a substitute for **page-break planning**: if a section
+genuinely doesn't fit on one page, split it onto its own page
+instead of relying on shrink-to-fit — that's what the ELA v0.3
+Oral & Listening move did.
 
 `OnboardingTool` and `AssessmentTool` use inline `<input onChange={…}>`
 nodes rather than wrapped `Field` components, so the `Field` /

@@ -1,7 +1,7 @@
 'use client'
 
 // components/ops/ElaReportTool.jsx
-// DODO ELA — Parent-facing Assessment Report  ·  v0.2 (skeleton · bilingual)
+// DODO ELA — Parent-facing Assessment Report  ·  v0.3 (skeleton · bilingual)
 //
 // Built per DLCW docs/assessments_design_v2.0.md §13–§14. The DODO ELA
 // program is the MCT-anchored English Language Arts track piloted in DLCW
@@ -23,7 +23,13 @@
 //   • Brand-font-native from creation: var(--font-latin)/var(--font-cjk),
 //     self-hosted via next/font (app/layout.jsx). No CDN font link.
 //
-// SKELETON STATUS (v0.2 · bilingual)
+// SKELETON STATUS (v0.3 · bilingual)
+//   v0.3: fixed RatingBlock-remount cursor-reset bug (hoisted RatingBlock
+//   to module scope); hidden PDF templates now mount on-demand during
+//   generate (removes typing-lag coupling); shrink-to-fit for long comment
+//   cells; page break plan reshuffled — page 1 now holds student-info +
+//   placement + performance-by-challenge + notes; pages 2 / 3 / 4 dedicate
+//   one page each to Reading / Writing / Oral so no section gets clipped.
 //   Structure + flow complete and bilingual (EN + 中文 in one block, matching
 //   the Little DODO COMMENT_POOL template). Placement narratives, strand
 //   names/descriptions, and per-level rating notes carry zh from the DeepSeek
@@ -35,12 +41,12 @@
 // cleanup can hoist the shared kit. Kept local here to leave the live
 // Little DODO engine untouched.
 
-import { useState, useEffect, useRef, memo } from "react";
+import { useState, useEffect, useRef, useCallback, memo } from "react";
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import { LOGO_B64 } from "@/components/ops/opsAssets";
 
-// ─── BRAND (mirror of AssessmentTool.jsx v3.5.0) ────────────────────────
+// ─── BRAND (mirror of AssessmentTool.jsx v3.5.1) ────────────────────────
 const B = {
   cream:      "#F5F5FF",
   white:      "#FFFFFF",
@@ -77,6 +83,13 @@ const RATING_COLORS = {
   4: { bg: "#D4EEDF", text: "#14392A", dot: "#5AAA82" },
   5: { bg: "#EBEBFF", text: "#3535A0", dot: "#B7B5FE" },
 };
+
+// Form-input styles — module scope so RatingBlock (also module scope) can use
+// them, keeping the component identity stable across renders. Any component
+// defined inside the render body would remount every keystroke and destroy
+// the focused textarea → the "cursor resets on every character" bug.
+const inp = { width: "100%", padding: "8px 10px", border: `1.5px solid ${B.border}`, borderRadius: 6, fontSize: 14, fontFamily: "inherit", background: B.white, color: B.ink, outline: "none", boxSizing: "border-box" };
+const lbl = { fontSize: 10, letterSpacing: 1, textTransform: "uppercase", color: B.muted, fontWeight: 700, marginBottom: 4, display: "block" };
 
 // ─── INTERNAL TARGET LEVELS (admin-only; never printed to the parent) ───
 // Drives the §13.2 placement suggestion. Mirrors propose_assessment.py
@@ -269,7 +282,7 @@ function PlacementCard({ placementKey, narrative }) {
         {p && p.zh_head ? <div style={{ fontSize: 13, fontWeight: 600, opacity: 0.82, marginTop: 2 }}>{p.zh_head}</div> : null}
       </div>
       <div style={{ background: B.white, padding: "14px 18px" }}>
-        <div style={{ fontSize: 11.5, lineHeight: 1.65, color: B.ink }}>{(narrative || (p ? `${p.en_body} ${p.zh_body}` : "")) || ""}</div>
+        <div data-shrinkable="comment" style={{ fontSize: 11.5, lineHeight: 1.65, color: B.ink }}>{(narrative || (p ? `${p.en_body} ${p.zh_body}` : "")) || ""}</div>
       </div>
     </div>
   );
@@ -315,7 +328,7 @@ function StrandTable({ title, titleZh, accent, headerTextColor, strands, ratings
               ) : <span style={{ fontSize: 11, color: B.border }}>—</span>}
             </div>
             <div style={{ padding: "8px 10px" }}>
-              <div style={{ fontSize: 9.5, lineHeight: 1.55, color: B.ink, wordBreak: "break-word" }}>{comments[s.id] || ""}</div>
+              <div data-shrinkable="comment" style={{ fontSize: 9.5, lineHeight: 1.55, color: B.ink, wordBreak: "break-word" }}>{comments[s.id] || ""}</div>
             </div>
           </div>
         );
@@ -357,6 +370,44 @@ function BandStrip({ band }) {
   );
 }
 
+// ─── SHRINK-TO-FIT ────────────────────────────────────────────────────────
+// If a fixed-height PDF page's rendered content overflows (long custom notes,
+// dense Chinese, etc.), iteratively shrink the fontSize of nodes marked
+// data-shrinkable="comment" until the content fits or a floor is reached.
+// Called just before html2canvas capture so the exported PDF matches what
+// the shrink pass produced. lineHeight values in these blocks are unitless
+// (e.g. 1.55) so they scale with fontSize automatically.
+function fitPageContent(pageEl) {
+  const nodes = pageEl.querySelectorAll('[data-shrinkable="comment"]');
+  if (!nodes.length) return;
+
+  // Cache each node's original font size on first pass, then reset to it so
+  // successive generations start from the same baseline instead of drifting
+  // smaller each time.
+  nodes.forEach(n => {
+    if (!n.dataset.baseFontSize) {
+      n.dataset.baseFontSize = String(parseFloat(getComputedStyle(n).fontSize));
+    }
+    n.style.fontSize = n.dataset.baseFontSize + "px";
+  });
+
+  const FLOOR_PX = 8;
+  const STEP_PX = 0.25;
+  const MAX_STEPS = 40;
+
+  for (let step = 0; step < MAX_STEPS && pageEl.scrollHeight > pageEl.clientHeight; step++) {
+    let didShrink = false;
+    for (const n of nodes) {
+      const cur = parseFloat(n.style.fontSize);
+      if (cur - STEP_PX >= FLOOR_PX) {
+        n.style.fontSize = (cur - STEP_PX) + "px";
+        didShrink = true;
+      }
+    }
+    if (!didShrink) break;
+  }
+}
+
 function AutoResizeTextarea({ value, onChange, placeholder, style }) {
   const ref = useRef(null);
   useEffect(() => {
@@ -365,9 +416,45 @@ function AutoResizeTextarea({ value, onChange, placeholder, style }) {
     el.style.height = "auto";
     el.style.height = el.scrollHeight + "px";
   }, [value]);
+  // overflowY: auto is a safety net — if the auto-grow effect ever misses a
+  // beat (rapid paste, remount race), the browser adds a scrollbar so the
+  // user's text stays reachable instead of being clipped invisibly.
   return (
     <textarea ref={ref} value={value} onChange={onChange} placeholder={placeholder}
-      style={{ ...style, resize: "none", overflow: "hidden" }} />
+      style={{ ...style, resize: "none", overflowY: "auto", overflowX: "hidden" }} />
+  );
+}
+
+// Module-scope so its component identity is stable across ElaReportTool
+// re-renders. Defined inside the parent, every keystroke minted a NEW
+// function reference → React remounted the whole subtree → the focused
+// textarea was destroyed and rebuilt each character → cursor "reset".
+function RatingBlock({ strands, ratings, comments, setRating, setComments }) {
+  return (
+    <>
+      {strands.map((s, idx) => {
+        const r = ratings[s.id];
+        const rc = (r !== undefined && r !== null) ? RATING_COLORS[r] : null;
+        return (
+          <div key={s.id} style={{ marginBottom: idx < strands.length - 1 ? 14 : 0, paddingBottom: idx < strands.length - 1 ? 14 : 0, borderBottom: idx < strands.length - 1 ? `1px solid ${B.border}` : "none" }}>
+            <div style={{ display: "flex", alignItems: "flex-start", gap: 12, marginBottom: 8 }}>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontSize: 13, fontWeight: 600 }}>{s.en}{s.zh ? <span style={{ color: B.muted, fontWeight: 400 }}>{"  ·  "}{s.zh}</span> : null}</div>
+                <div style={{ fontSize: 11, color: B.muted }}>{s.desc}{s.descZh ? `  ${s.descZh}` : ""}</div>
+              </div>
+              <select value={r !== undefined && r !== null ? r : ""} onChange={e => setRating(s.id, e.target.value)}
+                style={{ ...inp, width: 180, fontWeight: 700, cursor: "pointer", background: rc ? rc.bg : B.white, color: rc ? rc.text : B.muted, border: `2px solid ${rc ? rc.dot : B.border}` }}>
+                <option value="">— Rate 0-5 —</option>
+                {[0, 1, 2, 3, 4, 5].map(n => <option key={n} value={n}>{n} – {RATING_LABELS[n]}</option>)}
+              </select>
+            </div>
+            <AutoResizeTextarea value={comments[s.id] || ""} onChange={e => setComments(c => ({ ...c, [s.id]: e.target.value }))}
+              placeholder="Select a rating to auto-fill, or type a custom note…"
+              style={{ ...inp, minHeight: 64, lineHeight: 1.6, fontSize: 13, background: B.cream }} />
+          </div>
+        );
+      })}
+    </>
   );
 }
 
@@ -381,35 +468,49 @@ const PageShell = ({ id, children }) => (
   </div>
 );
 
-// PAGE 1 — student info + placement headline
-const ElaPage1 = memo(function ElaPage1({ info, placementKey, narrative }) {
+// PAGE 1 — student info + placement + performance strip + navigator notes.
+// Page-break plan (see docs/ops-tools.md "Section / page break planning"):
+// Page 1 collects the parent-facing headline + summary metrics. Pages 2–4
+// dedicate one page to each of the three main strand sections so no section
+// can be clipped by a next-section overflow.
+const ElaPage1 = memo(function ElaPage1({ info, placementKey, narrative, band, notes }) {
   return (
     <PageShell id="ela-p1">
       <ElaHeader info={info} />
-      <div style={{ padding: `14px ${PAD}px 0`, display: "flex", flexDirection: "column", gap: 14 }}>
-        <div style={{ background: B.white, borderRadius: 8, padding: "16px 16px 18px", border: `1px solid ${B.border}` }}>
+      <div style={{ padding: `14px ${PAD}px 0`, paddingBottom: 52, display: "flex", flexDirection: "column", gap: 12 }}>
+        <div style={{ background: B.white, borderRadius: 8, padding: "14px 16px 16px", border: `1px solid ${B.border}` }}>
           <div style={{ marginBottom: 10, paddingBottom: 6, borderBottom: `1px solid ${B.border}` }}>
             <span style={{ fontSize: 11, letterSpacing: 2, textTransform: "uppercase", color: B.lavender, fontWeight: 700 }}>Student Information </span>
             <span style={{ fontSize: 11, color: B.muted }}>学生信息</span>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 12, rowGap: 16 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 10, rowGap: 12 }}>
             {[["Student Name 学生姓名", info.name], ["Age 年龄", info.age], ["Date 评估日期", info.date],
               ["Evaluator 评估师", info.evaluator], ["Assessment Phase 评估阶段", info.phase], ["Assessment 评估", "Entrance · 入学评估"]].map(([lbl, val]) => (
               <div key={lbl}>
-                <div style={{ fontSize: 9, letterSpacing: 1.5, textTransform: "uppercase", color: B.muted, fontWeight: 700, marginBottom: 5 }}>{lbl}</div>
-                <div style={{ fontSize: 14, fontWeight: 600, color: B.ink, minHeight: 20, borderBottom: `1.5px solid ${B.border}`, paddingBottom: 4 }}>{val || "—"}</div>
+                <div style={{ fontSize: 9, letterSpacing: 1.5, textTransform: "uppercase", color: B.muted, fontWeight: 700, marginBottom: 4 }}>{lbl}</div>
+                <div style={{ fontSize: 13, fontWeight: 600, color: B.ink, minHeight: 18, borderBottom: `1.5px solid ${B.border}`, paddingBottom: 3 }}>{val || "—"}</div>
               </div>
             ))}
           </div>
         </div>
         <PlacementCard placementKey={placementKey} narrative={narrative} />
+        <BandStrip band={band} />
+        {notes ? (
+          <div style={{ background: B.white, borderRadius: 8, padding: 12, border: `1px solid ${B.border}` }}>
+            <div style={{ marginBottom: 5 }}>
+              <span style={{ fontSize: 11, fontWeight: 700, color: B.lavender }}>{"Navigator's Notes "}</span>
+              <span style={{ fontSize: 10, color: B.muted }}>领航员备注</span>
+            </div>
+            <div data-shrinkable="comment" style={{ fontSize: 10.5, lineHeight: 1.6, color: B.ink, whiteSpace: "pre-wrap" }}>{notes}</div>
+          </div>
+        ) : null}
       </div>
       <ElaFooter />
     </PageShell>
   );
 });
 
-// PAGE 2 — Reading & Language strands
+// PAGE 2 — Reading & Language strands (own page).
 const ElaPage2 = memo(function ElaPage2({ readingRatings, readingComments }) {
   return (
     <PageShell id="ela-p2">
@@ -423,38 +524,29 @@ const ElaPage2 = memo(function ElaPage2({ readingRatings, readingComments }) {
   );
 });
 
-// PAGE 3 — Writing (AW3A 7) + Oral & Listening
-const ElaPage3 = memo(function ElaPage3({ writingRatings, writingComments, oralRatings, oralComments }) {
+// PAGE 3 — Writing (AW3A 7-skill), own page.
+const ElaPage3 = memo(function ElaPage3({ writingRatings, writingComments }) {
   return (
     <PageShell id="ela-p3">
       <ElaHeaderSpacer />
-      <div style={{ padding: `14px ${PAD}px 0`, paddingBottom: 52, display: "flex", flexDirection: "column", gap: 14 }}>
+      <div style={{ padding: `14px ${PAD}px 0`, paddingBottom: 52 }}>
         <StrandTable title="Writing" titleZh="写作" accent={B.midnight} headerTextColor={B.platinum}
           strands={WRITING_SKILLS} ratings={writingRatings} comments={writingComments} />
-        <StrandTable title="Oral & Listening" titleZh="口语与听力" accent={B.softGreen} headerTextColor={B.voidBlack}
-          strands={ORAL_STRANDS} ratings={oralRatings} comments={oralComments} />
       </div>
       <ElaFooter />
     </PageShell>
   );
 });
 
-// PAGE 4 — challenge-level strip + navigator notes
-const ElaPage4 = memo(function ElaPage4({ band, notes }) {
+// PAGE 4 — Oral & Listening (own page — previously crammed onto page 3
+// with Writing and was silently clipped by the fixed 794×1123 outer div).
+const ElaPage4 = memo(function ElaPage4({ oralRatings, oralComments }) {
   return (
     <PageShell id="ela-p4">
       <ElaHeaderSpacer />
-      <div style={{ padding: `14px ${PAD}px 0`, paddingBottom: 52, display: "flex", flexDirection: "column", gap: 14 }}>
-        <BandStrip band={band} />
-        {notes ? (
-          <div style={{ background: B.white, borderRadius: 8, padding: 14, border: `1px solid ${B.border}` }}>
-            <div style={{ marginBottom: 6 }}>
-              <span style={{ fontSize: 12, fontWeight: 700, color: B.lavender }}>{"Navigator's Notes "}</span>
-              <span style={{ fontSize: 11, color: B.muted }}>领航员备注</span>
-            </div>
-            <div style={{ fontSize: 11, lineHeight: 1.7, color: B.ink, whiteSpace: "pre-wrap" }}>{notes}</div>
-          </div>
-        ) : null}
+      <div style={{ padding: `14px ${PAD}px 0`, paddingBottom: 52 }}>
+        <StrandTable title="Oral & Listening" titleZh="口语与听力" accent={B.softGreen} headerTextColor={B.voidBlack}
+          strands={ORAL_STRANDS} ratings={oralRatings} comments={oralComments} />
       </div>
       <ElaFooter />
     </PageShell>
@@ -508,40 +600,80 @@ export default function ElaReportTool() {
     document.fonts.ready.then(() => setFontsReady(true));
   }, []);
 
-  const makeSetRating = (setRatings, setComments) => (id, val) => {
+  // useState setters are stable; wrap each rating-setter in useCallback so
+  // its identity is also stable across renders (avoids churning downstream
+  // memoized children).
+  const setReadingRating = useCallback((id, val) => {
     if (val === "" || val === null) {
-      setRatings(r => { const n = { ...r }; delete n[id]; return n; });
-      setComments(c => { const n = { ...c }; delete n[id]; return n; });
+      setReadingRatings(r => { const n = { ...r }; delete n[id]; return n; });
+      setReadingComments(c => { const n = { ...c }; delete n[id]; return n; });
       return;
     }
     const n = parseInt(val, 10);
     if (Number.isNaN(n) || n < 0 || n > 5) return;
-    setRatings(r => ({ ...r, [id]: n }));
-    setComments(c => ({ ...c, [id]: genericNote(n) }));
-  };
-  // Setters from useState are stable, so these closures need no memoization.
-  const setReadingRating = makeSetRating(setReadingRatings, setReadingComments);
-  const setWritingRating = makeSetRating(setWritingRatings, setWritingComments);
-  const setOralRating = makeSetRating(setOralRatings, setOralComments);
+    setReadingRatings(r => ({ ...r, [id]: n }));
+    setReadingComments(c => ({ ...c, [id]: genericNote(n) }));
+  }, []);
+  const setWritingRating = useCallback((id, val) => {
+    if (val === "" || val === null) {
+      setWritingRatings(r => { const n = { ...r }; delete n[id]; return n; });
+      setWritingComments(c => { const n = { ...c }; delete n[id]; return n; });
+      return;
+    }
+    const n = parseInt(val, 10);
+    if (Number.isNaN(n) || n < 0 || n > 5) return;
+    setWritingRatings(r => ({ ...r, [id]: n }));
+    setWritingComments(c => ({ ...c, [id]: genericNote(n) }));
+  }, []);
+  const setOralRating = useCallback((id, val) => {
+    if (val === "" || val === null) {
+      setOralRatings(r => { const n = { ...r }; delete n[id]; return n; });
+      setOralComments(c => { const n = { ...c }; delete n[id]; return n; });
+      return;
+    }
+    const n = parseInt(val, 10);
+    if (Number.isNaN(n) || n < 0 || n > 5) return;
+    setOralRatings(r => ({ ...r, [id]: n }));
+    setOralComments(c => ({ ...c, [id]: genericNote(n) }));
+  }, []);
+
+  // Hidden PDF templates only need to exist in the DOM during PDF generation.
+  // Keeping them mounted continuously means every keystroke in a comment
+  // field invalidates their memoized props (new `readingComments` object,
+  // etc.) and triggers a full 794×1123 layout of each hidden page — the
+  // dominant source of typing lag. Mount-on-demand removes that class of
+  // coupling entirely.
+  const [showTemplates, setShowTemplates] = useState(false);
 
   const suggestion = suggestPlacement(band);
 
   const generatePDF = async () => {
     setGenerating(true);
     try {
+      setStatus("Waiting for fonts…");
       await document.fonts.ready;
+
+      // Mount the hidden templates and wait for React to commit + browser to
+      // paint before html2canvas queries the DOM. Two rAFs guarantee the
+      // commit is on-screen; the small settle covers font/image warmup.
+      setStatus("Preparing report…");
+      setShowTemplates(true);
+      await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
       await new Promise(r => setTimeout(r, 100));
-      const capture = async (id) => {
+
+      const captureFitted = async (id) => {
         const el = document.getElementById(id);
         if (!el) throw new Error(`#${id} not found`);
+        fitPageContent(el);
         return html2canvas(el, { scale: 2, useCORS: true, backgroundColor: B.cream, logging: false });
       };
+
       const pdf = new jsPDF("p", "mm", "a4");
       const pageW = 210, pageH = 297;
       const pages = ["ela-p1", "ela-p2", "ela-p3", "ela-p4"];
       for (let i = 0; i < pages.length; i++) {
         setStatus(`Capturing page ${i + 1} of ${pages.length}…`);
-        const canvas = await capture(pages[i]);
+        const canvas = await captureFitted(pages[i]);
         if (i > 0) pdf.addPage();
         const imgW = pageW;
         const imgH = (canvas.height * imgW) / canvas.width;
@@ -554,39 +686,10 @@ export default function ElaReportTool() {
       console.error(err);
       setStatus(`Error: ${err.message}`);
     } finally {
+      setShowTemplates(false);
       setGenerating(false);
     }
   };
-
-  const inp = { width: "100%", padding: "8px 10px", border: `1.5px solid ${B.border}`, borderRadius: 6, fontSize: 14, fontFamily: "inherit", background: B.white, color: B.ink, outline: "none", boxSizing: "border-box" };
-  const lbl = { fontSize: 10, letterSpacing: 1, textTransform: "uppercase", color: B.muted, fontWeight: 700, marginBottom: 4, display: "block" };
-
-  const RatingBlock = ({ strands, ratings, comments, setRating, setComments }) => (
-    <>
-      {strands.map((s, idx) => {
-        const r = ratings[s.id];
-        const rc = (r !== undefined && r !== null) ? RATING_COLORS[r] : null;
-        return (
-          <div key={s.id} style={{ marginBottom: idx < strands.length - 1 ? 14 : 0, paddingBottom: idx < strands.length - 1 ? 14 : 0, borderBottom: idx < strands.length - 1 ? `1px solid ${B.border}` : "none" }}>
-            <div style={{ display: "flex", alignItems: "flex-start", gap: 12, marginBottom: 8 }}>
-              <div style={{ flex: 1 }}>
-                <div style={{ fontSize: 13, fontWeight: 600 }}>{s.en}{s.zh ? <span style={{ color: B.muted, fontWeight: 400 }}>{"  ·  "}{s.zh}</span> : null}</div>
-                <div style={{ fontSize: 11, color: B.muted }}>{s.desc}{s.descZh ? `  ${s.descZh}` : ""}</div>
-              </div>
-              <select value={r !== undefined && r !== null ? r : ""} onChange={e => setRating(s.id, e.target.value)}
-                style={{ ...inp, width: 180, fontWeight: 700, cursor: "pointer", background: rc ? rc.bg : B.white, color: rc ? rc.text : B.muted, border: `2px solid ${rc ? rc.dot : B.border}` }}>
-                <option value="">— Rate 0-5 —</option>
-                {[0, 1, 2, 3, 4, 5].map(n => <option key={n} value={n}>{n} – {RATING_LABELS[n]}</option>)}
-              </select>
-            </div>
-            <AutoResizeTextarea value={comments[s.id] || ""} onChange={e => setComments(c => ({ ...c, [s.id]: e.target.value }))}
-              placeholder="Select a rating to auto-fill, or type a custom note…"
-              style={{ ...inp, minHeight: 64, lineHeight: 1.6, fontSize: 13, background: B.cream }} />
-          </div>
-        );
-      })}
-    </>
-  );
 
   const cardWrap = { background: B.white, borderRadius: 10, padding: 18, marginBottom: 16, border: `1px solid ${B.border}` };
   const cardTitle = { fontSize: 12, fontWeight: 700, color: B.ink, textTransform: "uppercase", letterSpacing: 2, marginBottom: 12 };
@@ -601,7 +704,7 @@ export default function ElaReportTool() {
             <div style={{ fontSize: 11, letterSpacing: 3, textTransform: "uppercase", color: B.muted }}>DODO Learning · DODO ELA</div>
             <div style={{ fontSize: 20, fontWeight: 700, color: B.ink }}>ELA Assessment Report Generator</div>
           </div>
-          <span style={{ marginLeft: "auto", fontSize: 11, color: B.muted, border: `1px solid ${B.border}`, borderRadius: 99, padding: "3px 10px" }}>v0.2 skeleton · 中/EN</span>
+          <span style={{ marginLeft: "auto", fontSize: 11, color: B.muted, border: `1px solid ${B.border}`, borderRadius: 99, padding: "3px 10px" }}>v0.3 skeleton · 中/EN</span>
         </div>
 
         {/* Student info */}
@@ -697,13 +800,18 @@ export default function ElaReportTool() {
         </div>
       </div>
 
-      {/* ═══ HIDDEN PDF TEMPLATES ═══ */}
-      <div style={{ position: "fixed", left: -9999, top: 0, zIndex: -1, opacity: 1, pointerEvents: "none" }}>
-        <ElaPage1 info={info} placementKey={placement} narrative={narrative} />
-        <ElaPage2 readingRatings={readingRatings} readingComments={readingComments} />
-        <ElaPage3 writingRatings={writingRatings} writingComments={writingComments} oralRatings={oralRatings} oralComments={oralComments} />
-        <ElaPage4 band={band} notes={notes} />
-      </div>
+      {/* ═══ HIDDEN PDF TEMPLATES ═══
+          Mounted on-demand by generatePDF. See the showTemplates note above:
+          keeping these mounted continuously was the dominant source of typing
+          lag, since every keystroke re-flowed 4× 794×1123 hidden layouts. */}
+      {showTemplates && (
+        <div style={{ position: "fixed", left: -9999, top: 0, zIndex: -1, opacity: 1, pointerEvents: "none" }}>
+          <ElaPage1 info={info} placementKey={placement} narrative={narrative} band={band} notes={notes} />
+          <ElaPage2 readingRatings={readingRatings} readingComments={readingComments} />
+          <ElaPage3 writingRatings={writingRatings} writingComments={writingComments} />
+          <ElaPage4 oralRatings={oralRatings} oralComments={oralComments} />
+        </div>
+      )}
     </div>
   );
 }
