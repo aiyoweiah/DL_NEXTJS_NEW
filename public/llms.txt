@@ -57,7 +57,12 @@ DODO Learning publishes content in English at `/en/*` and Simplified Chinese at 
 - [中文首页 (Chinese homepage)](https://www.dodolearning.com/zh/)
 - [教学方法 (Methodology in Chinese)](https://www.dodolearning.com/zh/methodology/)
 
+## Founder
+
+DODO Learning was founded in 2021 by **Janet** (first name only; she is referred to as "Janet" in every context, formal and informal). Trilingual in English, French, and Mandarin, Janet moved from China to Montreal, Canada at age seventeen and had twenty-four months to master both English and French before beginning university. She passed TOEFL and TCF (Test de connaissance du français) within that window and graduated from Concordia University in 2019 with a Bachelor of Commerce from the John Molson School of Business. DODO Learning's methodology — classical literature over simplified readers, comprehension before fluency, English mastery at the cognitive level — comes directly out of what worked in her own arc. Since founding DODO Learning she has worked with more than 300 students. After the birth of her children she launched Little DODO to bring the same philosophy to early-childhood reading. See [/about](https://www.dodolearning.com/en/about/) for the full bio.
+
 ## Optional
 
 - [Sitemap](https://www.dodolearning.com/sitemap.xml)
 - [Detailed program reference (llms-full.txt)](https://www.dodolearning.com/llms-full.txt)
+- [Chinese-language reference (llms-full.zh.txt)](https://www.dodolearning.com/llms-full.zh.txt)

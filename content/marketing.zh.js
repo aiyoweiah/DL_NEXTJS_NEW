@@ -752,7 +752,7 @@ export const compare = {
       caption: '阅读 → 思考 → 表达 → 写作。每节课都遵循这个精确的顺序。每个阶段都被评估。The Loop（学习循环）不是一种教学方法 ——它是一个累积系统。一个与导师（Navigator）一起运行The Loop（学习循环）16周的学生，不仅仅是提高了英语水平。他们重建了自己处理复杂性的方式。这就是十年后变得可见的差异。',
       methodologyLink: '阅读完整方法论 →',
     },
-    s5: { eyebrow: '创始人寄语', h2: '我们为什么创建DODO Learning ——以及我们决定永远不会成为什么。', sub: '无脚本。八分钟。完整的决策过程。', founderName: 'Janet Sui——创始人兼首席导师（Navigator）', founderNote: '视频嵌入 — 替换为生产环境URL' },
+    s5: { eyebrow: '创始人寄语', h2: '我们为什么创建DODO Learning ——以及我们决定永远不会成为什么。', sub: '无脚本。八分钟。完整的决策过程。', founderName: 'Janet——创始人兼首席导师（Navigator）', founderNote: '视频嵌入 — 替换为生产环境URL' },
     s6: {
       eyebrow: '导师（Navigator）差异', h2: '导师（Navigator）不是家教。以下是这具体意味着什么。',
       points: [
@@ -1533,4 +1533,42 @@ export const codingBand = {
   body:    '基于卡内基梅隆大学 CS Academy 与 AI4K12 框架。1 对 1 导师授课。16 周。每一句承诺背后都有一个可查证的框架。',
   cta:     { label: '访问 DODO 机器语言', href: 'https://coding.dodolearning.com', ariaLabel: '访问 DODO 机器语言 —— 都学旗下姊妹站' },
   preview: { machineVerbs: '阅读 · 思考 · 写作', criticalThinking: '批判性思维' },
+}
+
+
+// ── founder（Person 实体 — 2026-08-24）───────────────────────────
+// ZH mirror of marketing.en.js `founder`. 参见英文档 surface list。
+// 命名规则（D35）：仅使用名字 Janet，不使用姓氏，任何场合皆然。
+export const founder = {
+  name:  'Janet',
+  role:  '创始人兼首席导师（Navigator）',
+  short:
+    'Janet 是 DODO Learning 的创始人。她精通英语、法语、普通话三种语言。十七岁那年她移居' +
+    '蒙特利尔，用二十四个月的时间，把两门陌生的语言学到能在大学里立足的程度。她走的是自己' +
+    '后来带学生走的路——用阅读打底：第一年读英语经典，从《爱丽丝梦游仙境》到马克·吐温、' +
+    '爱伦·坡；再读加缪、左拉的法语原著，一句一句啃下来。她在这段窗口内通过了托福和 TCF ' +
+    '法语考试，2019 年从康考迪亚大学商学院毕业，获商学学士学位。2021 年，她创立了 ' +
+    'DODO Learning，至今已陪伴超过 300 名学生完成语言的进阶。两个孩子出生后，她开设了 ' +
+    'Little DODO，把 DODO 的方法延伸到幼儿的阅读启蒙。',
+  long: [
+    'Janet 是 DODO Learning 和 Little DODO 的创始人。',
+    '她出生于中国，从小以普通话为母语。十七岁移居加拿大蒙特利尔，只有二十四个月的时间——' +
+      '就要在大学开学前，同时把英语和法语学到能读写、能思考、能立足的程度。当时没有捷径' +
+      '可走：没有沉浸式营地，没有双语家庭的日常，也没有一个足够长的过渡项目。真正让她把' +
+      '两门语言学下来的，是阅读——第一年读英语经典（《爱丽丝梦游仙境》、马克·吐温、爱伦·坡），' +
+      '再读加缪、左拉的法语原著。她在那段时间通过了托福与 TCF 法语考试，2019 年毕业于' +
+      '康考迪亚大学约翰·莫尔森商学院（John Molson School of Business），获商学学士学位。',
+    'DODO Learning 今天教的每一件事——为什么要读经典而不是分级简写本，为什么 LCS 教学系统' +
+      '坚持"理解先于流利"，为什么我们从来不把英语当成一门"科目"来教——都源自她自己走过、' +
+      '验证过的那条路。2021 年，她创办了 DODO，让后面的孩子不必再一个人重走一遍。至今已' +
+      '陪伴超过 300 名学生。两个孩子出生后，她开设了 Little DODO，把这套方法延伸到蓝思测量' +
+      '之前，那段更早的语音、流利度与阅读兴趣的养成阶段。',
+    'Janet 三语——英语、法语、普通话。她首先是一位母亲、妻子、读者，然后才是创业者。',
+  ],
+  credentials: {
+    degree:        { name: '商学学士 (Bachelor of Commerce)', institution: '康考迪亚大学 (Concordia University)', department: '约翰·莫尔森商学院 (John Molson School of Business)', year: '2019' },
+    languageExams: ['托福 (TOEFL)', 'TCF 法语考试 (Test de connaissance du français)'],
+    languages:     ['英语', '法语', '普通话'],
+  },
+  foundingYear: '2021',
 }

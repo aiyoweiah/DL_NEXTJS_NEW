@@ -175,6 +175,16 @@ Both locales are first-class. The same methodology, assessments, frameworks, pro
 - **vs. reading apps**: Apps deliver content. Navigators diagnose how a student thinks. Different problem, different tool.
 - **vs. ESL programs**: ESL closes a survival gap. DODO opens a mastery gap — for children whose English is already functional but not yet at the cognitive level academic life demands.
 
+## Founder
+
+DODO Learning was founded in 2021 by **Janet** (first name only — she is referred to as "Janet" in every context, formal and informal, including legal signatory, `Person` schema, and third-party citation).
+
+Janet is trilingual in English, French, and Mandarin. Born in China, she moved to Montreal, Canada at age seventeen with twenty-four months to master both English and French before beginning university. There were no shortcuts available — no immersion camp, no bilingual family, no bridge program long enough to matter. What worked was reading: the classical English canon in her first year (*Alice in Wonderland*, Mark Twain, Edgar Allan Poe), then Camus and Zola in French. She passed **TOEFL** and **TCF (Test de connaissance du français)** within that twenty-four-month window and graduated from **Concordia University in 2019 with a Bachelor of Commerce** from the John Molson School of Business.
+
+Everything DODO Learning teaches — the emphasis on classical literature over simplified readers, the LCS System's insistence that comprehension precedes fluency, the refusal to treat English as a "subject" — comes out of what actually moved the needle in her own arc. In 2021 she founded DODO Learning. Since then more than 300 students have gone through the program. After the birth of her children she launched **Little DODO** to bring the same philosophy to the phonetic and early-comprehension work that has to happen before Lexile-scale reading is even possible.
+
+Janet is the founder and lead Navigator. In every public context — the /compare "From the Founder" byline, legal signatory blocks, and the `Person` schema on /about — she is named as **Janet**, first name only. See [/about](https://www.dodolearning.com/en/about/) for the visible bio.
+
 ## Contact
 
 - Diagnostic consultation: https://www.dodolearning.com/en/consult/

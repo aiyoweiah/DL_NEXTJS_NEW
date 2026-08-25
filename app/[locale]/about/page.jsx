@@ -18,6 +18,7 @@ import { isValidLocale, localeParams } from '@/lib/i18n'
 import { buildMetadata }               from '@/lib/metadata'
 import { about as copyEn }              from '@/content/marketing.en'
 import { about as copyZh }              from '@/content/marketing.zh'
+import { personSchema }                 from '@/lib/schema'
 import StreamVideo                     from '@/components/media/StreamVideo'
 
 export async function generateMetadata({ params }) {
@@ -469,6 +470,15 @@ export default async function AboutPage({ params }) {
   const c = COPY[locale] ?? COPY.en
   return (
     <>
+      {/* JSON-LD — personSchema (founder, Tier-2 #2, wired 2026-08-24).
+          Injected on /about because /about is the primary "who we are" page.
+          educationOrgSchema on the site-wide layout references this @id, so
+          the Person node needs to exist in at least one page for LLMs to
+          resolve the reference. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema()) }}
+      />
       <Hero c={c} locale={locale} />
       <TheNameSection c={c} locale={locale} />
       <WhatWeBelieve c={c} locale={locale} />

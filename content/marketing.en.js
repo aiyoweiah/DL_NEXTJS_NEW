@@ -769,7 +769,7 @@ export const compare = {
       caption: 'Read → Think → Speak → Write. Every session follows this exact sequence. Every stage is assessed. The Loop is not a teaching method\u00a0— it is a compounding system. A student who runs The Loop with a Navigator across 16 weeks does not simply improve their English. They rebuild how they process complexity. That is the difference that becomes visible a decade later.',
       methodologyLink: 'Read the full methodology →',
     },
-    s5: { eyebrow: 'From the Founder', h2: 'Why we built DODO Learning\u00a0— and what we decided we would never become.', sub: 'Unscripted. Eight minutes. The decision in full.', founderName: 'Janet Sui — Founder & Lead Navigator', founderNote: 'Video embed — replace with production URL' },
+    s5: { eyebrow: 'From the Founder', h2: 'Why we built DODO Learning\u00a0— and what we decided we would never become.', sub: 'Unscripted. Eight minutes. The decision in full.', founderName: 'Janet — Founder & Lead Navigator', founderNote: 'Video embed — replace with production URL' },
     s6: {
       eyebrow: 'The Navigator Difference', h2: 'A Navigator is not a tutor. Here is exactly what that means.',
       points: [
@@ -1564,4 +1564,53 @@ export const codingBand = {
   body:    'Grounded in Carnegie Mellon’s CS Academy and the AI4K12 framework. 1-on-1 with a Navigator. 16 weeks. Every claim has a framework behind it.',
   cta:     { label: 'Visit DODO Coding', href: 'https://coding.dodolearning.com', ariaLabel: 'Visit DODO Coding — sibling site' },
   preview: { machineVerbs: 'Read · Think · Write', criticalThinking: 'Critical thinking' },
+}
+
+
+// ── founder (Person entity — 2026-08-24) ─────────────────────────
+// Source of truth for founder identity across the site. Used in:
+//   - lib/schema.js personSchema() (JSON-LD Person node, /about)
+//   - public/llms.txt + llms-full.txt §Founder blocks
+//   - /about visible bio section (deferred — schema-only ship on 2026-08-24)
+// Name rule (D35): first name only, in every surface. Never "Janet Sui."
+export const founder = {
+  name:  'Janet',
+  role:  'Founder & Lead Navigator',
+  short:
+    'Janet is the founder of DODO Learning. Trilingual in English, French, and Mandarin, ' +
+    'she moved to Montreal at seventeen and had twenty-four months to master two new ' +
+    'languages before university. She did it the way she now teaches students to do it — ' +
+    'by reading the classical English canon (Alice in Wonderland, Mark Twain, Edgar Allan ' +
+    'Poe), then Camus and Zola in French, until the sentences held. She passed TOEFL and ' +
+    'TCF within that window and graduated from Concordia University in 2019 with a ' +
+    'Bachelor of Commerce. In 2021 she founded DODO Learning; since then more than 300 ' +
+    'students have gone through the program. After the birth of her children she launched ' +
+    'Little DODO, DODO’s early-childhood reading program.',
+  long: [
+    'Janet is the founder of DODO Learning and Little DODO.',
+    'She was born in China and raised bilingual in Mandarin. At seventeen she moved to ' +
+      'Montreal, Canada with twenty-four months to master both English and French before ' +
+      'beginning university. There were no shortcuts available to her — no immersion camp, ' +
+      'no bilingual family, no bridge program long enough to matter. What worked, in the ' +
+      'end, was reading: the classical English canon in her first year (Alice in ' +
+      'Wonderland, Mark Twain, Edgar Allan Poe), then Camus and Zola in French. She ' +
+      'passed TOEFL and TCF within that window and graduated from Concordia University in ' +
+      '2019 with a Bachelor of Commerce from the John Molson School of Business.',
+    'Everything DODO Learning teaches — the emphasis on classical literature over ' +
+      'simplified readers, the LCS System’s insistence that comprehension precedes ' +
+      'fluency, the refusal to treat English as a “subject” — comes out of what actually ' +
+      'moved the needle in her own arc. In 2021 she founded DODO so that no student would ' +
+      'have to reinvent that path alone. Since then more than 300 students have gone ' +
+      'through the program. After the birth of her children she launched Little DODO to ' +
+      'bring the same philosophy to the phonetic and early-comprehension work that has to ' +
+      'happen before Lexile-scale reading is even possible.',
+    'Janet is trilingual in English, French, and Mandarin. She is a mother, a wife, a ' +
+      'reader, and an entrepreneur — in that order.',
+  ],
+  credentials: {
+    degree:        { name: 'Bachelor of Commerce', institution: 'Concordia University', department: 'John Molson School of Business', year: '2019' },
+    languageExams: ['TOEFL', 'TCF — Test de connaissance du français'],
+    languages:     ['English', 'French', 'Mandarin'],
+  },
+  foundingYear: '2021',
 }
