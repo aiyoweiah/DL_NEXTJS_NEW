@@ -1,7 +1,7 @@
 # DODO Learning — SEO + GEO Workflow
 
 **Created:** 2026-05-11
-**Status:** Tier 1 ✅ shipped. Tier 2 ready to start.
+**Status:** Tier 1 ✅ shipped (2026-05-11). Tier 2 — 0 of 10 items shipped. Tier 3 — channel undecided. Workstream was dormant 2026-05-28 → 2026-08-24 while product work (PFP, Little DODO, DODO Coding staging, consult-form rework) continued. **Resumed 2026-08-24.**
 **Repo:** `aiyoweiah/DL_NEXTJS_NEW` (deploys to dodolearning.com via Cloudflare Pages from `main`. 2026-06-02: Vercel/dodoletterhouse.com retired → 301-forwards to dodolearning.com. Single host.)
 
 This doc is the source of truth for the SEO + AI-crawl (GEO) initiative. Update it after every working session.
@@ -28,11 +28,40 @@ If you're picking this up cold:
 
 ## Goal & Measurement
 
-**Goal:** By **2026-09-01**, DODO Learning is named in the answer when these 8 parent-shopping prompts are asked of ChatGPT / Claude / Perplexity / Gemini.
+**Original goal (2026-05-11):** By 2026-09-01, DODO named in ≥1 answer per prompt across ChatGPT / Claude / Perplexity / Gemini.
 
-**The 8 prompts:** _TBD by user — see "Open decisions" below._
+**Revised goal (2026-08-24):** By **2026-12-01**, DODO named in **at least 4 / 32 cells** in the monthly tracker. The original 4-month timeline was set before the workstream stalled; 3 additional months to ship Tier-2 entity-building + start Tier-3 mention channel + observe crawl cycles is realistic. Interim milestone: **at least 1 / 32 by 2026-10-01** (proves the entity graph has begun to move at all).
+
+**Tracked prompt set — expanded 2026-08-24 to 14 concepts × 2 locales = 28 monthly prompts:**
+
+- **Tier A — Core commercial (8 concepts, monthly).** Original set locked 2026-05-21; see [2026-05-baseline.md](llm-citations/2026-05-baseline.md). ZH mirrors added 2026-08-24 to close the ZH-LLM measurement gap surfaced by 2026-08 Prompt 4 (Wukong ELA dominance). Prompt A5 flagged for possible rewording — Perplexity read it as a remediation query.
+- **Tier B — Academic prep & writing help (6 concepts, monthly, NEW 2026-08-24).** Help-intent parent queries where DODO's methodology content should be citable (writing improvement, IB/AP readiness, SSAT/ISEE prep, classical vocabulary, bilingual→academic-writing transition). Winning help-intent authority is often the path into the buyer-intent citation graph.
+
+| Concept # | EN prompt | ZH prompt |
+|---|---|---|
+| **A1** | Best English literacy program for Chinese diaspora families in Vancouver | 温哥华 华人家庭 英语读写课程 推荐 |
+| **A2** | Best English literacy program for Chinese diaspora families in Toronto | 多伦多 华人家庭 英语读写课程 推荐 |
+| **A3** | Premium online English tutoring for bilingual Chinese-speaking children | 面向双语华人孩子的高端在线英语一对一辅导 |
+| **A4** | English close-reading program for Chinese-heritage families in North America | 面向北美华人家庭的英语精读课程 *(original ZH prompt from May baseline)* |
+| **A5** | One-on-one English literacy program for middle-grade students *(reword candidate)* | 一对一英语读写课程 面向中年级学生 |
+| **A6** | English literacy curriculum based on MCT Language Arts | 基于 MCT 语言艺术教材的英语读写课程 |
+| **A7** | Online program that uses Lexile assessment for measurable reading growth | 使用蓝思 Lexile 评估追踪阅读进步的在线课程 |
+| **A8** | Alternative to Kumon for analytical English literacy | Kumon 的替代方案 —— 侧重分析能力的英语读写课程 |
+| **B9** | Strategies to improve a middle-school student's analytical writing in English | 提升初中生英文分析性写作的方法 |
+| **B10** | How to prepare a Grade 8 student for IB English Language & Literature | 如何为八年级学生准备 IB 英语语言与文学课程 |
+| **B11** | Reading list to get ready for AP English Language and Composition | 备考 AP 英语语言与写作 的经典阅读书单 |
+| **B12** | How to help a bilingual child move from fluent conversation to academic writing | 如何帮助双语孩子从流利口语过渡到学术写作 |
+| **B13** | SSAT / ISEE verbal and reading prep for a Grade 5–7 student | 五到七年级 SSAT / ISEE 词汇与阅读备考 |
+| **B14** | How to build vocabulary through classical literature instead of word lists | 通过经典文学积累词汇 —— 相对于单词表的另一条路 |
+
+**Cell count:** 28 prompts × 4 LLMs (ChatGPT · Claude · Perplexity · Gemini) = **112 cells / month**. Baseline for the expanded set is [2026-08.md](llm-citations/2026-08.md) (Tier A EN Perplexity already captured; the other 104 cells captured on the next full pass).
 
 **Measurement cadence:** Monthly. Screenshots stored in `docs/llm-citations/YYYY-MM.md`.
+
+**Captures so far:**
+- [`2026-05-baseline.md`](llm-citations/2026-05-baseline.md) — 0 / 6+ cells (baseline).
+- [`2026-08.md`](llm-citations/2026-08.md) — 0 / 8 Perplexity cells for Tier A EN; ChatGPT / Claude / Gemini pending; **Tier A ZH + all of Tier B pending (added 2026-08-24)**. Notable shift: Perplexity's competitor set has moved sharply toward public/institutional sources (TPL, MOSAIC BC, Achieve3000) vs. the private-listicle names in the May baseline.
+- (June, July skipped — workstream dormant.)
 
 ---
 
@@ -105,24 +134,30 @@ Three tiers, restructured per LLM Council session (2026-05-11):
 
 **Updated 2026-05-11:** Tier 2 has been restructured around what Tier 1 + council session surfaced. The original "curate top 20 FAQ" task was overridden — the user chose to wire the full 50 EN + 50 ZH (already shipped). New top priority: founder Person entity (council called it the highest-leverage missing piece).
 
-### Claude Code's part (in priority order)
+### Claude Code's part (priority order — re-ranked 2026-08-24)
+
+Re-ranking driven by 2026-08 tracker findings: Perplexity's competitor set drifted toward public/institutional sources for the *discovery* queries but stayed weak on the *framework-specific* and *comparison* queries — which is where DODO's authored content can actually match. Prioritize surfaces that answer those winnable queries first.
 
 1. ~~**Refactor FAQ duplication**~~ ✅ Done 2026-05-17 (Pass B). FAQ consolidated to `content/faq.js`.
-2. **Founder/Navigator Person schema** — wire `Person` schema for the named expert (pending user decision; see Open Decisions). Add `author` field to every blog post + a richer `/about` author block. Council's top-leverage recommendation.
-3. **Credentials page** — `/about/credentials` (or new `/credentials`). MCT directly attributed to Michael Clay Thompson; Harvard PZ (HGSE); 6+1 Trait (Education Northwest). Each as structured `EducationalOccupationalCredential`.
-4. **6 verification-search city pages** — `DODO Learning [City]` post-referral search targets. Distinct from existing `/cities/[city]` (which target discovery). Pick 6 of the 18 cities now in `areaServed`; user picks which.
-5. **4 comparison pages** — `/vs/private-tutor`, `/vs/outschool`, `/vs/kumon`, `/vs/eye-level`. Honest tradeoff tables, schema'd as standalone Articles.
-6. **AEO snippets** — 40–80-word standalone definitions at top of `/methodology`, `/lexile`, `/faq`. Designed for verbatim LLM lift.
-7. **Internal linking audit** — methodology ↔ lexile ↔ results cross-links; every page → /faq + /consult.
-8. **City pages for the new cities** in `areaServed` (Burnaby, Coquitlam, Calgary, Mississauga, Richmond Hill, San Jose, Cupertino, Irvine, Bellevue, NYC, Boston, Houston) — only if user wants them. Otherwise the cities stay in service-area schema only.
-9. **One-shot programmatic launch**: 36 city × grade pages (6 cities × 6 grades, ages 3–8). Council flagged thin-content risk — must be genuinely differentiated, not template-substituted.
-10. **Self-containment audit** on all 50 EN + 50 ZH FAQ answers (council requirement). Each must read in isolation.
+2. **~~Founder/Navigator Person schema (Janet)~~** ✅ **SHIPPED 2026-08-24.** `personSchema()` wired in `lib/schema.js` with degree (Bachelor of Commerce, Concordia 2019), TOEFL + TCF credentials, alumniOf, knowsLanguage EN/FR/ZH, worksFor + founder bidirectional link. `educationOrgSchema()` now includes `founder: { @id: #founder }` and `foundingDate: '2021'`. Bio (short + long, EN + ZH) added as `founder` export in `content/marketing.{en,zh}.js`. Schema injected on `/about` (both locales). llms.txt + llms-full.txt gained §Founder blocks. **Deferred sub-items:** (a) visible bio section on `/about` (schema present, visible UI is next follow-up), (b) portrait asset `/public/janet-portrait.jpg` — schema `image` field commented out until asset exists, (c) `sameAs` array — blocked on Open Decision #4/#9, (d) `author` field on blog posts — cheap next step but not in this ship.
+3. **`/vs/kumon` comparison page** — promoted from #5 to #3. **Prompt 8 of the 2026-08 tracker showed Perplexity naming Eye Level and Write Edge for "Alternative to Kumon for analytical English literacy" — DODO's most on-nose positioning query.** `/compare` has a Kumon row; extract it into a dedicated `/vs/kumon` page schema'd as a standalone `Article` (title, author, headline argument, evidence, comparison table). Ship this before the other three `/vs/*` pages.
+4. **AEO snippets** — promoted from #6. 40–80-word standalone definitions at top of `/methodology`, `/lexile`, `/faq`, and (new) `/vs/kumon`. Designed for verbatim LLM lift.
+5. **Credentials page** — `/about/credentials` (or new `/credentials`). MCT directly attributed to Michael Clay Thompson; Harvard PZ (HGSE); 6+1 Trait (Education Northwest); Lexile (MetaMetrics). Each as `EducationalOccupationalCredential`. **2026-08 tracker Prompt 6 (MCT-specific) showed Perplexity citing only the MCT publisher — a credentials page names DODO alongside the framework in a citable form.**
+6. **~~`public/llms-full.zh.txt`~~** ✅ **SHIPPED 2026-08-24.** Full ZH mirror of `llms-full.txt` (204 lines): lead blockquote, "DODO Learning 是什么", LCS 教学系统 + The Loop, LCS 三大支柱, 9 levels + 5 combinations with pricing, named frameworks (MCT/Harvard PZ/Lexile/6+1), outcomes (300+ students, SSAT anchor case, 100L-150L per cycle), Navigator teams (both ELA + Little DODO educator distinctions), assessment cadence, payment, cities served (all 20 in ZH), 双语观, "DODO 与常见替代方案的差异" (all 5 comparison bullets including Kumon), §创始人 (Janet's full ZH bio with TOEFL/TCF/BComm/Concordia/2021 founding), 联系方式, 站点结构. Referenced from `llms.txt` §Optional as "Chinese-language reference." Uses ZH glossary per BRAND_CONTENT_GUIDE (LCS 教学系统, 都学启蒙, 蓝思, 6+1 traits as 思考/结构/声音/用词/流畅/规范/呈现).
+7. **3 remaining `/vs/*` pages** — `/vs/private-tutor`, `/vs/outschool`, `/vs/eye-level` (Eye Level added 2026-08-24 after tracker showed it as the head-to-head in the Kumon-alternative query). Honest tradeoff tables, schema'd as standalone Articles.
+8. **6 verification-search city pages** — `DODO Learning [City]` post-referral search targets, distinct from `/cities/[city]` (which target discovery). Pick 6 of the 20 cities in `areaServed`; user picks which. Now that DODO Coding is also linked, wire `parentOrganization` on those pages to strengthen the entity graph.
+9. **Internal linking audit** — methodology ↔ lexile ↔ results cross-links; every page → /faq + /consult; every `/vs/*` → /methodology + /program.
+10. **City pages for the remaining 14 compact cities** — already shipped (Open Decision #11 ✅). Verify they're all in `sitemap.xml` at compact-tier priority.
+11. **One-shot programmatic launch**: 36 city × grade pages — **deferred / de-prioritized**. Council flagged thin-content risk; the tracker didn't surface any city-page evidence that this is the bottleneck. Revisit only if verification-search city pages (#8) prove out.
+12. **Self-containment audit** on all 50 EN + 50 ZH FAQ answers (council requirement). Each must read in isolation.
+13. **Populate `sameAs`** on `EducationalOrganization` and (new) `Person` schemas — Xiaohongshu, WeChat OA, LinkedIn (Janet), any others. Blocked on Open Decision #4 / #9.
 
 ### User's part
 
-- **Re-run the citation baseline** at end of week 4 — same 8 prompts × 4 LLMs. Compare to `docs/llm-citations/2026-05-baseline.md`. Has DODO started appearing? Logged as `docs/llm-citations/2026-06.md`.
-- **Approve drafts** of city-verification pages and comparison pages.
-- **Decide on Xiaohongshu / WeChat strategy and operator** — until this is decided, the diaspora-Chinese-parent channel stays unaddressed.
+- **Complete the 2026-08 tracker** — capture ChatGPT / Claude / Gemini cells for all 8 prompts (24 remaining). Perplexity is done. Priority order in [2026-08.md](llm-citations/2026-08.md) §"Pending capture". Screenshots into `docs/llm-citations/2026-08/`.
+- **Approve drafts** of `/vs/kumon` (first) then `/credentials`, then the remaining `/vs/*` pages.
+- **Decide on Xiaohongshu / WeChat strategy and operator** (Open Decision #4) — 2026-08 tracker showed `huaren.us`-style community forums are LLM-visible, so this channel decision now has concrete Return-on-Effort evidence. Wukong ELA is the head-to-head competitor to benchmark against.
+- **Provide Janet bio + credentials + `sameAs` URLs** — unblocks Tier-2 items #2 and #13 (currently the two highest-leverage items and both blocked on user input).
 - **Provide per-page OG images** (or approve text-based fallbacks) for top 6 pages + each city.
 - **Resolve remaining Open Decisions** below.
 
@@ -131,9 +166,9 @@ Three tiers, restructured per LLM Council session (2026-05-11):
 ## Tier 3 — Ongoing
 
 - Monthly LLM citation review (user) — same 8 prompts × 4 LLMs, log in `docs/llm-citations/`
-- 1 pillar blog post every 2 weeks (NOT 1/week) — 2,000+ words, named author, full Article schema
-- Xiaohongshu content cadence (per operator decision)
-- **Off-site mention building** — the council's strongest critique. Pick a channel: parenting-newsletter sponsorships / podcast guest appearances / school-counselor outreach / education-directory listings / Reddit r/asianamerican / r/Parenting engagement. Claude Code can prep outreach templates.
+- 1 pillar blog post every 2 weeks (NOT 1/week) — 2,000+ words, named author, full Article schema. **Currently 2 posts total in `content/en/blog/` — the cadence never started.** Two immediate candidates suggested by 2026-08 tracker: (a) "MCT Language Arts in a live 1-on-1 program — what actually changes for the student" (targets Prompt 6), (b) "What we mean by 'alternative to Kumon' — 8 things Kumon-style drilling doesn't build" (targets Prompt 8).
+- Xiaohongshu content cadence (per operator decision — Open Decision #4)
+- **Off-site mention building** — the council's strongest critique, still the dominant work. Pick a channel: parenting-newsletter sponsorships / podcast guest appearances / school-counselor outreach / education-directory listings / Reddit r/asianamerican / r/Parenting engagement / `huaren.us` community threads (new candidate — surfaced 2026-08 as LLM-visible). Claude Code can prep outreach templates once channel is picked.
 
 ---
 
@@ -145,7 +180,7 @@ These block downstream work. Updated 2026-05-17.
 |---|---|---|
 | 1 | Verification vs Discovery — strategy | ✅ Hybrid (premium with quota per cohort; quality > volume) |
 | 2 | Price point — locked? | ✅ **Restructured 2026-05-17 to 5 combinations:** Summit $2,830 · Core $2,250 · Flex 1 $1,185 · Flex 2 $2,110 · Flex 3 from $750. Weekly: Flex 1 $74 · Flex 2 $132 · Core $140 · Summit $177 · Flex 3 ~$47. Live on `/program` + `/faq`. |
-| 3 | Founder/Navigator named-expert identity (Person schema) | ✅ **Janet Sui** confirmed as Founder & Lead Navigator (2026-05-17). Named on `/compare` s5. Bio + Person schema still pending. |
+| 3 | Founder/Navigator named-expert identity (Person schema) | ✅ **Janet** confirmed as Founder & Lead Navigator (2026-05-17). **Person schema + full bio + credentials SHIPPED 2026-08-24** — see Tier-2 Claude Code's part #2. |
 | 4 | Xiaohongshu / WeChat operator + cadence | ❌ Pending |
 | 5 | The 8 monthly-tracked prompts | ✅ **Locked 2026-05-21** in `docs/llm-citations/2026-05-baseline.md`. Eight prompts mix Vancouver/Toronto core markets + EN + ZH + framework-specific (MCT, Lexile) + comparison (Kumon). Per-prompt × per-LLM matrix shape documented in baseline. Re-test due 2026-06-21. |
 | 6 | Off-site mention channel for Tier 3 | ❌ Pending — newsletters / podcast guesting / school-counselor outreach / education directories / Reddit |
@@ -187,6 +222,56 @@ These block downstream work. Updated 2026-05-17.
 
 ## Session Log
 
+### 2026-08-24 (afternoon) — Ship: Founder Person schema + ZH llms-full + expanded tracker
+
+**Did (following user "ship" on the bio proposal + expanded prompt set):**
+- **Tier-2 #2 SHIPPED:** `personSchema()` in `lib/schema.js` with full credentials (BComm Concordia 2019, TOEFL, TCF), alumniOf, worksFor + founder bidirectional link. `educationOrgSchema()` now cites `founder: #founder` + `foundingDate: '2021'`. Schema injected on `/about` (both locales). `founder` export added to `content/marketing.{en,zh}.js` (short ~120-word + long ~250-word bios, EN + ZH). Bilingual founder blocks added to `public/llms.txt` + `public/llms-full.txt`.
+- **Tier-2 #6 SHIPPED:** `public/llms-full.zh.txt` — full 204-line ZH mirror of `llms-full.txt`. Referenced from `llms.txt` §Optional. Closes the "Wukong owns the ZH answer" ingest-side gap.
+- **D35 name rule:** stripped "Janet Sui" from every file in the repo (live + archive) — 13 files touched. Legal signatory in `AgreementTool.jsx` now signs as "Janet." Rule documented as D35 in `docs/content-style-decisions.md`, cascaded through `translation/BRAND_CONTENT_GUIDE.md`, `translation/DEEPSEEK_BRIEF.md`, `translation/dodo-glossary.json`. Persisted to Claude Code memory as a feedback rule so future sessions enforce it without re-statement.
+- **Tracker expanded to 14 concepts × EN/ZH = 28 monthly prompts.** Tier B (help-intent: writing improvement, IB/AP, SSAT/ISEE, classical-vocabulary, bilingual→academic-writing) added alongside the original Tier A (buyer-intent). Full matrix in this doc §"Tracked prompt set."
+- **2026-08 tracker captures (partial, [`llm-citations/2026-08.md`](llm-citations/2026-08.md)):** Perplexity Tier A EN = 0/8. ChatGPT Temporary Chat: A1-en **DODO ranked #1** with accurate lifted positioning language; A6-en (MCT) N; A8-en (Kumon) N; B10-en (IB prep) N. **Composite so far 1/12 cells.** Methodology finding: ChatGPT on Peter's non-Temporary account explicitly recognized his founder context and personalized results — all future captures from Peter's account must be Temporary Chat mode.
+
+**Verified:** `npx next build` clean; `node --check` clean on `marketing.{en,zh}.js` + `lib/schema.js`.
+
+**Did NOT do (intentionally):**
+- Visible bio section on `/about` — schema shipped, visible UI is a follow-up (needs JSX + section design). Schema is the GEO-load-bearing bit; visible copy can render from `founder.short` / `founder.long` when the section is designed.
+- `janet-portrait.jpg` asset — schema `image` field commented out until an image exists in `/public/`.
+- `sameAs` array on `personSchema` — still blocked on Open Decision #4/#9.
+- Tier-2 #3 `/vs/kumon`, #4 AEO snippets, #5 `/credentials` page — next candidates.
+- Claude / Gemini tracker captures — user runs in own Temporary/incognito sessions per priority order in `2026-08.md` §"Pending capture."
+
+**For next session, start by:** either (a) capturing the remaining 100 tracker cells, or (b) shipping Tier-2 #3 `/vs/kumon` (no user input needed and directly targets the query the 2026-08 tracker showed as the most on-nose miss across two LLMs).
+
+---
+
+### 2026-08-24 — Resume: 2026-08 tracker capture + Tier-2 re-rank
+
+**Context:** Workstream had been dormant since 2026-05-28. Product work (Program Family Parallel, Little DODO cohesion, DODO Coding source-doc revisions, Cal.com → custom consult form) continued through August. The 2026-06-21 tracker re-test never happened; nor did July.
+
+**Did:**
+- Ran Perplexity for all 8 tracked prompts (unauth session). **DODO 0 / 8.** Logged as [`docs/llm-citations/2026-08.md`](llm-citations/2026-08.md).
+- Scaffolded ChatGPT / Claude / Gemini cells in the same doc — those need the user's logged-in sessions.
+- Extracted 3 new strategic inputs from the capture:
+  1. Perplexity's discovery-query citation set has shifted to public/institutional (TPL, MOSAIC BC, Achieve3000). Private-listicle path is closing.
+  2. Wukong ELA is the head-to-head ZH competitor. `huaren.us` community forums are LLM-visible.
+  3. Framework-specific queries (MCT, Lexile) and comparison queries (Kumon) are the winnable surfaces — DODO's authored content already matches intent there but isn't in the citation graph.
+- Re-ranked Tier-2 items around those findings (this doc §"Claude Code's part"):
+  - **Promoted** `/vs/kumon` to #3 and AEO snippets to #4.
+  - **Added** #6 `public/llms-full.zh.txt` — full ZH mirror of `llms-full.txt`. Today's `llms-full.txt` is EN-only by design; adding the ZH ingest surface closes the "Wukong owns the Chinese answer" gap on the schema/ingest side. The site body is already fully translated so this is consolidation, not authoring from scratch.
+  - **Added** `/vs/eye-level` to the vs-page set (surfaced by Prompt 8).
+  - **De-prioritized** the 36-page programmatic city × grade launch — no tracker evidence it's the bottleneck.
+- Reset the Goal date from 2026-09-01 (already past) to 2026-12-01 (4/32 cells by then; 1/32 interim by 2026-10-01).
+- Restated Status header: Tier 2 is 0-of-10 shipped; Tier 3 channel undecided; workstream resumed today.
+
+**Did NOT do (intentionally — user's part):**
+- Capture ChatGPT / Claude / Gemini cells (need logged-in sessions).
+- Ship any Tier-2 code changes — priorities re-ranked, then paused for user go-ahead. Two of the top four items (#2 Janet Person schema, #13 sameAs) are still blocked on user-provided bio/URLs.
+- Pick an off-site mention channel (Open Decision #6 / #4 still pending).
+
+**For next session, start by:** completing the 2026-08 tracker cells for ChatGPT/Claude/Gemini so we have a full 32-cell baseline for August, OR — if the user's ready — shipping Tier-2 #3 (`/vs/kumon`) since it doesn't require any pending user input and directly targets a query the tracker showed as winnable.
+
+---
+
 ### 2026-05-11 — Initial setup + Tier 1 ship
 
 **Did:**
@@ -225,7 +310,7 @@ These block downstream work. Updated 2026-05-17.
 - Stripped 8 `Hangar` references from `content/*` + `lib/schema.js` (anti-dict).
 - Replaced "bilingual thinking program" framing in 6 infra files (`lib/schema.js`, `lib/metadata.js`, `app/layout.jsx`, `app/[locale]/assessment/page.jsx`) → "English literacy program".
 - Renamed Sarah → Ms. Jennifer (`/program`), Ms. Willow (`/consult`), Ms. Sarah (`/demos`).
-- Founder = Janet Sui on `/compare` s5 (resolves Open Decision #3).
+- Founder = Janet on `/compare` s5 (resolves Open Decision #3).
 - Added SSAT anchor case study to `/results` (92nd/95th percentile, age-10-to-13 long-arc proof).
 - `/about` gained 4th brand-truth belief (Truth 3 — measurable progress) + new By-the-Numbers stats strip (10k hours · 300+ students · 90%+ referral · top-50 unis).
 
@@ -233,7 +318,7 @@ These block downstream work. Updated 2026-05-17.
 - `public/llms.txt` + `public/llms-full.txt` — full rewrite. Names MCT + Harvard Project Zero + Lexile + 6+1 + LCS + 5 combinations + pricing + Navigator credentials + anchor case study. EN-only by design.
 
 **Translation handoff:**
-- Updated `translation/DEEPSEEK_BRIEF.md` to v1.1 (consolidated-architecture workflow). Updated `translation/dodo-glossary.json` (+ 26 new owned terms: LCS, 5 combinations, MCT components, Janet Sui, Ms. names, SSAT, top-50 universities). Staged `translation/deepseek-handoff-2026-05-17/` folder with brief + glossary + 3 source files + README.
+- Updated `translation/DEEPSEEK_BRIEF.md` to v1.1 (consolidated-architecture workflow). Updated `translation/dodo-glossary.json` (+ 26 new owned terms: LCS, 5 combinations, MCT components, Janet, Ms. names, SSAT, top-50 universities). Staged `translation/deepseek-handoff-2026-05-17/` folder with brief + glossary + 3 source files + README.
 - DeepSeek round-trip executed by user: `marketing.zh.js`, `faq.js` ZH, `cities.js` ZH all merged. Validated structure parity per file. Forbidden-word screen passed. Spot-checked rendered HTML across `/zh/*` pages.
 
 **Backlog cleared (2026-05-17 end-of-session):**
