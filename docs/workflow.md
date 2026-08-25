@@ -54,7 +54,39 @@ If you're picking this up cold:
 | **B13** | SSAT / ISEE verbal and reading prep for a Grade 5–7 student | 五到七年级 SSAT / ISEE 词汇与阅读备考 |
 | **B14** | How to build vocabulary through classical literature instead of word lists | 通过经典文学积累词汇 —— 相对于单词表的另一条路 |
 
-**Cell count:** 28 prompts × 4 LLMs (ChatGPT · Claude · Perplexity · Gemini) = **112 cells / month**. Baseline for the expanded set is [2026-08.md](llm-citations/2026-08.md) (Tier A EN Perplexity already captured; the other 104 cells captured on the next full pass).
+**Cell count:** 28 prompts × 4 LLMs (ChatGPT · Claude · Perplexity · Gemini) = **112 cells / month**. Baseline for the expanded set is [2026-08.md](llm-citations/2026-08.md) — Tier A EN complete across all 4 LLMs (22 usable + 3 skill-broken + 7 skipped).
+
+### v1 (SEO-style) retired 2026-08-25 → v2 (conversational)
+
+The prompts above (v1) were written in an SEO-keyword register — clipped, dense, no natural verbs. That was fine for baseline discipline but not representative of how real parents type into an LLM. After the 2026-08 capture cycle produced two structural failures — A5 and A7 read as pedagogical briefs instead of program-recommendation queries on 3/4 LLMs — v1 is retired as the actively-tracked set.
+
+**v2 (conversational, activated 2026-08-25)** rewrites all 14 concepts in first-person parent voice with situational context (grade, background, goal). Same concept mapping, so the September capture still measures the same categories, but the phrasing matches real LLM usage patterns.
+
+**Continuity note:** v1 stays documented above as the reference baseline (May 2026 baseline was v1-adjacent; comparability to May applies only to v1). September and forward captures track v2. Rewrite log preserved so a future "let's return to v1 phrasing" comparison can be reconstructed.
+
+| # | Concept | v2 prompt (EN) | v2 prompt (ZH) |
+|---|---|---|---|
+| **A1** | Vancouver core | "What's a strong English reading and writing program in Vancouver for my child? We're a Chinese-speaking family and I want something more serious than after-school tutoring." | "在温哥华，有没有比较靠谱的英语读写课程适合华人家庭的孩子？我们家里说中文，希望找比一般课后辅导更认真的项目。" |
+| **A2** | Toronto core | "Looking for a strong English literacy program in the Toronto area for my kid. We speak Chinese at home and I want them to build real academic English, not just conversational." | "在多伦多地区，给孩子找一个英语读写能力比较强的项目。我们家里说中文，希望他/她能建立真正的学术英语，不只是日常会话。" |
+| **A3** | Premium online | "Is there a good online English program for bilingual Chinese kids that goes deeper than basic tutoring? I want real reading and writing work, not vocab drills." | "有没有比较深入的在线英语课程适合双语的华人孩子？希望是真正的阅读和写作训练，不是单词背诵。" |
+| **A4** | ZH close-reading discovery | *(this concept is ZH-native — see ZH column)* | "北美华人孩子的英语精读课程有哪些推荐？希望是一对一的，能真正提升阅读理解和写作，不只是应付作业。" |
+| **A5** | 1-on-1 middle-grade *(reworded — v1 failed)* | "My kid is in grade 6 and I want them to build strong English reading and writing skills — one-on-one instead of a group class. What are the best options?" | "我家孩子六年级，想找一对一的英语读写课程认真提升，不要那种大班课。有什么推荐？" |
+| **A6** | MCT framework | "I've been reading about Michael Clay Thompson's Language Arts. Is there a program or tutor who actually teaches with MCT for kids in grades 3–8?" | "了解到 Michael Clay Thompson (MCT) 的语言艺术教材，有没有实际用 MCT 教学的老师或课程，适合三到八年级？" |
+| **A7** | Lexile *(reworded — v1 hit district-software tier)* | "My child's school gave us a Lexile score but didn't really explain how to help her grow it. Are there any programs that actually track and improve Lexile levels?" | "学校给了孩子一个蓝思 (Lexile) 分数，但没告诉我们怎么让她提升。有没有真正追踪和提高蓝思等级的课程？" |
+| **A8** | Kumon alternative | "We tried Kumon for reading but it feels like just worksheets and speed. Is there something more analytical — actual close reading and essay writing — for elementary or middle school kids?" | "我们试过 Kumon 的英语阅读，但感觉都是刷题赶速度。有没有更注重分析能力的项目，真正的精读和写作，适合小学或初中孩子？" |
+| **B9** | Writing improvement | "My middle schooler's essays feel shallow — she summarizes but doesn't really analyze. How can I help her get to real analytical writing?" | "我家孩子读初中，写的文章感觉很表面 —— 会总结但不会真正分析。怎么帮她走到真正的分析性写作？" |
+| **B10** | IB English prep | "My daughter is starting grade 9 in an IB program next year. What's the best way to prepare her for IB English Language & Literature this summer?" | "我女儿明年上九年级 IB 课程。今年暑假怎么帮她准备 IB 的英语语言与文学？" |
+| **B11** | AP English prep | "My son wants to take AP English Language next year. What books should he read this summer to be ready?" | "我儿子明年想选 AP 英语，暑假该读哪些书打基础？" |
+| **B12** | Bilingual → academic writing | "My son speaks English fine but his academic writing lags. He's bilingual with Chinese at home. What actually works to close that gap?" | "我儿子英语口语没问题，但学术写作跟不上。家里说中文，双语环境。有什么真正管用的方法能补上这个差距？" |
+| **B13** | SSAT/ISEE prep | "We're prepping our grade 6 for the SSAT this fall. What's the best way to build up her verbal and reading scores?" | "孩子六年级，秋天要考 SSAT。怎么最有效地把词汇和阅读部分的分数提上去？" |
+| **B14** | Classical-literature vocabulary | "I don't want my kid memorizing vocab lists. Can she build a big vocabulary just by reading classics like Alice in Wonderland or Poe? How does that actually work?" | "我不想让孩子背单词表。她能不能通过读《爱丽丝梦游仙境》或爱伦·坡这类经典建立词汇量？这个方法实际上怎么运作？" |
+
+**Design rationale for v2:**
+- First-person parent voice with grade/situation context — matches how real parents type into LLMs (verified against Peter's chat history patterns and typical parenting-forum phrasing).
+- Every prompt has a stated frustration or goal — LLMs weight recommendation intent higher than definitional intent when this is explicit.
+- ZH prompts are brand-voice consistent (no combat metaphors, no reassurance tails per BRAND_CONTENT_GUIDE §08), matching the register Chinese-diaspora parents actually use in WeChat groups and 小红书 posts.
+- Some prompts deliberately include DODO-adjacent specifics ("one-on-one", "close reading", "bilingual with Chinese at home") — those are also what real DODO-target parents say. Not gaming; matching reality.
+- Kept the 14-concept structure so month-over-month deltas remain interpretable at the *concept* level even though prompt strings changed.
 
 **Measurement cadence:** Monthly. Screenshots stored in `docs/llm-citations/YYYY-MM.md`.
 
