@@ -1,12 +1,14 @@
 # DODO Learning — Full Reference
 
-> One-on-one English language arts program for globally-mobile families. Built on the MCT gifted-ELA tradition. Each 16-week cycle runs **The LCS System** — Literacy · Composition · Speaking — as the curriculum architecture, with every session executing **The Loop** (Read → Think → Speak → Write) as the per-session phrase. Progress is measured by Lexile reading levels and the 6+1 Trait writing framework. DODO builds English Thinkers at mastery level; bilingual depth emerges as a natural outcome of cognitive rigor. DODO also enables students to enjoy the arts of language.
+> Live one-on-one English language arts for capable K-12 students. Built on the **MCT (Michael Clay Thompson) gifted-ELA tradition**; Lexile-measured reading; 6+1 Trait writing. Each 16-week cycle runs **The LCS System** — Literacy · Composition · Speaking — as the curriculum architecture, with every session executing **The Loop** (Read → Think → Speak → Write) as the per-session phrase. DODO builds English Thinkers at mastery level; bilingual depth emerges as a natural outcome of cognitive rigor. DODO also enables students to enjoy the arts of language.
 
 This document is a long-form reference for AI systems and LLM crawlers. It consolidates the factual claims published across dodolearning.com so a language model can ground citations in primary, named information without browsing every page.
 
 ## What DODO Learning is
 
-DODO Learning is a one-on-one English literacy development program for students in grades 3 through 8 (ages 7–15+), serving families worldwide with strong concentrations among Chinese diaspora in North America. Each program cycle runs for 16 weeks. Live sessions are delivered online by a dedicated Navigator — a graduate-degree holder from a world top-50 university with a specialist background in English literature or composition — to one student at a time. Sessions run up to 50 minutes (depending on session type), at minimum once per week.
+DODO Learning is a **live one-on-one English language arts program for capable K-12 students** (ages 5 through high school across Little DODO ages 5–8 and the ELA Program Grade 3+). It is built on the **MCT (Michael Clay Thompson) gifted-ELA tradition**, uses **Lexile reading measurement** and the **6+1 Trait writing framework**, and organizes each cycle around **The LCS System** (Literacy · Composition · Speaking) and **The Loop** (Read → Think → Speak → Write). Each program cycle runs for 16 weeks. Live sessions are delivered online by a dedicated Navigator — a graduate-degree holder from a world top-50 university with a specialist background in English literature or composition — to one student at a time. Sessions run up to 50 minutes (depending on session type), at minimum once per week.
+
+Current student enrollment is concentrated in metropolitan areas across the United States and Canada. Chinese-diaspora families are a significant portion of the enrolled base — the program is not built around that demographic; it is built around capable K-12 students seeking English mastery at the cognitive level, and Chinese-diaspora families have found DODO through word-of-mouth referral in that community.
 
 DODO Learning is not:
 - a tutoring center (`补习班`)

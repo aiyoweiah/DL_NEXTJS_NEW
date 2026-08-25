@@ -56,6 +56,54 @@ If you're picking this up cold:
 
 **Cell count:** 28 prompts × 4 LLMs (ChatGPT · Claude · Perplexity · Gemini) = **112 cells / month**. Baseline for the expanded set is [2026-08.md](llm-citations/2026-08.md) — Tier A EN complete across all 4 LLMs (22 usable + 3 skill-broken + 7 skipped).
 
+### v2 (conversational) retired 2026-08-25 → v3 (two-channel: premium-generic EN + diaspora ZH)
+
+Approved 2026-08-25. v3 removes explicit Chinese-diaspora hooks from EN prompts (which pulled 2026-08 answers into newcomer-settlement bucket on 3/4 LLMs), keeps ZH-native prompts as the diaspora-audience proxy, parameterizes city queries, broadens tutoring-center alternatives, and adds Tier LD for Little DODO K–2 coverage. Concept-level continuity preserved for the shared concepts; two concepts removed (A2 merged into A1 city template) and five added (LD1–LD5).
+
+**Cell count:** 18 concepts (13 A/B + 5 LD) × EN + ZH (A4 is ZH-only; LD is bilingual) × 4 LLMs = **~140 cells/month base**. A1 city rotation adds 4–8 cells depending on cities-per-month chosen. Practically manageable if capture rules from [feedback-geo-tracker-capture memory rule](../../../../../.claude/projects/-Users-peter-dev-DODO-web/memory/feedback_geo_tracker_capture.md) hold.
+
+**Tier A — Buyer intent**
+
+| # | Concept | v3 prompt (EN) | v3 prompt (ZH) |
+|---|---|---|---|
+| **A1** | City buyer query (parameterized) | *What's the best English literacy and writing program in {CITY}?* | *{CITY} 有哪些不错的英语读写课程推荐？* |
+| **A2** | *(REMOVED — merged into A1 city template)* | — | — |
+| **A3** | Online program discovery | *What's the best online program for improving a kid's reading and writing?* | *有没有什么好的在线课程能提升孩子的阅读和写作？* |
+| **A4** | ZH-native close-reading discovery *(diaspora proxy)* | *(ZH-native; no EN twin)* | *北美华人孩子的英语精读课程有哪些推荐？希望是一对一的，能真正提升阅读理解和写作，不只是应付作业。* |
+| **A5** | One-on-one middle-grade | *My kid is in grade 6 and I want them to build strong English reading and writing skills — one-on-one instead of a group class. What are the best options?* | *我家孩子六年级，想找一对一的英语读写课程认真提升，不要那种大班课。有什么推荐？* |
+| **A6** | MCT framework | *I've been reading about Michael Clay Thompson's Language Arts. Is there a program or tutor who actually teaches with MCT for kids in grades 3–8?* | *了解到 Michael Clay Thompson (MCT) 的语言艺术教材，有没有实际用 MCT 教学的老师或课程，适合三到八年级？* |
+| **A7** | Reading comprehension (Lexile peripheral) | *How can I actually help my kid improve her reading comprehension? Her school mentioned a Lexile level but didn't tell us what to do about it.* | *怎么才能真正帮孩子提升阅读理解？学校提到了她的蓝思分数但没告诉我们下一步该做什么。* |
+| **A8** | Tutoring-center alternatives *(broadened)* | *We've tried places like Kumon, Oxford Learning, and Sylvan — they feel like just drills and worksheets. What's out there that actually teaches real reading and analytical writing?* | *我们试过 Kumon、Oxford Learning、Sylvan 这类补习机构 —— 感觉都是刷题应付。有没有真正教深度阅读和分析性写作的项目？* |
+
+**A1 city rotation:** Vancouver + Toronto every month (Canadian anchors). One rotating city per capture cycle from: Calgary, San Francisco Bay Area, Los Angeles, New York, Boston, Seattle. Six-month full rotation gives year-over-year comparability per city.
+
+**Tier B — Help intent**
+
+| # | Concept | v3 prompt (EN) | v3 prompt (ZH) |
+|---|---|---|---|
+| **B9** | Writing improvement *(broadened, not just analytical)* | *My middle-schooler's writing needs work — organization, word choice, sentence flow, ideas. How can I help her improve overall?* | *初中孩子的写作需要全面提升 —— 结构、用词、句子流畅度、内容都要抓。怎么帮她提高？* |
+| **B10** | IB English prep | *My daughter is starting grade 9 in an IB program next year. What's the best way to prepare her for IB English Language & Literature this summer?* | *我女儿明年上九年级 IB 课程。今年暑假怎么帮她准备 IB 的英语语言与文学？* |
+| **B11** | AP English prep + reading list | *My son wants to take AP English Language next year. What books should he read this summer to be ready?* | *我儿子明年想选 AP 英语，暑假该读哪些书打基础？* |
+| **B12** | Academic writing gap *(bilingual implicit)* | *My son speaks English fine but his academic writing lags behind. What actually works to close that gap?* | *我儿子英语口语没问题，但学术写作跟不上。有什么真正管用的方法能补上这个差距？* |
+| **B13** | SSAT/ISEE prep | *We're prepping our grade 6 for the SSAT this fall. What's the best way to build up her verbal and reading scores?* | *孩子六年级，秋天要考 SSAT。怎么最有效地把词汇和阅读部分的分数提上去？* |
+| **B14** | Classical-literature vocabulary | *I don't want my kid memorizing vocab lists. Can she build a big vocabulary just by reading classics like Alice in Wonderland or Poe? How does that actually work?* | *我不想让孩子背单词表。她能不能通过读《爱丽丝梦游仙境》或爱伦·坡这类经典建立词汇量？这个方法实际上怎么运作？* |
+
+**Tier LD — Little DODO K–2 (NEW)**
+
+Separate tracked segment for Little DODO's K–2 phonetics/decoding/fluency positioning. Different competitor set from Tier A/B (All About Reading, Logic of English, Barton, Outschool phonics teachers, VIPKID Junior, Reading A-Z). Different off-site mention graph too — early-literacy parenting blogs, homeschool-mom communities, TikTok/IG early-reading educators.
+
+| # | Concept | v3 prompt (EN) | v3 prompt (ZH) |
+|---|---|---|---|
+| **LD1** | Kindergarten phonics | *My 5-year-old is starting to recognize letters but hasn't really put them together yet. What's the best way to teach her phonics without making it feel like drills?* | *我家孩子五岁，已经开始认字母了但还没真正拼起来。有什么方法可以教她拼读，不要那种反复练习的感觉？* |
+| **LD2** | Grade 1 reading readiness | *My son is starting first grade and I want to make sure his English reading gets off to a strong start. What should we do at home or find outside school?* | *儿子马上上一年级，希望他的英语阅读能有个好开头。在家或校外应该做些什么？* |
+| **LD3** | Picture books → chapter books | *My 7-year-old is comfortable with picture books but stalls on chapter books. How do I help her make that jump?* | *女儿七岁，看图画书没问题但一到章节书就卡住了。怎么帮她过这一关？* |
+| **LD4** | Reading fluency | *My child reads word by word without much flow — she gets the words right but sounds like a robot. How do we build reading fluency?* | *孩子读英文一个词一个词地读，读对了但听起来像机器人。怎么让她读得更流畅？* |
+| **LD5** | Love of reading | *My kid can read but doesn't really enjoy it. How do we get her to actually want to pick up a book?* | *孩子会读但不太喜欢读。怎么让她真正主动想拿起书？* |
+
+**v3 design rationale + strategic pivot:** see 2026-08-25 (evening) session log entry below.
+
+---
+
 ### v1 (SEO-style) retired 2026-08-25 → v2 (conversational)
 
 The prompts above (v1) were written in an SEO-keyword register — clipped, dense, no natural verbs. That was fine for baseline discipline but not representative of how real parents type into an LLM. After the 2026-08 capture cycle produced two structural failures — A5 and A7 read as pedagogical briefs instead of program-recommendation queries on 3/4 LLMs — v1 is retired as the actively-tracked set.
@@ -172,9 +220,9 @@ Re-ranking driven by 2026-08 tracker findings: Perplexity's competitor set drift
 
 1. ~~**Refactor FAQ duplication**~~ ✅ Done 2026-05-17 (Pass B). FAQ consolidated to `content/faq.js`.
 2. **~~Founder/Navigator Person schema (Janet)~~** ✅ **SHIPPED 2026-08-24.** `personSchema()` wired in `lib/schema.js` with degree (Bachelor of Commerce, Concordia 2019), TOEFL + TCF credentials, alumniOf, knowsLanguage EN/FR/ZH, worksFor + founder bidirectional link. `educationOrgSchema()` now includes `founder: { @id: #founder }` and `foundingDate: '2021'`. Bio (short + long, EN + ZH) added as `founder` export in `content/marketing.{en,zh}.js`. Schema injected on `/about` (both locales). llms.txt + llms-full.txt gained §Founder blocks. **Deferred sub-items:** (a) visible bio section on `/about` (schema present, visible UI is next follow-up), (b) portrait asset `/public/janet-portrait.jpg` — schema `image` field commented out until asset exists, (c) `sameAs` array — blocked on Open Decision #4/#9, (d) `author` field on blog posts — cheap next step but not in this ship.
-3. **`/vs/kumon` comparison page** — promoted from #5 to #3. **Prompt 8 of the 2026-08 tracker showed Perplexity naming Eye Level and Write Edge for "Alternative to Kumon for analytical English literacy" — DODO's most on-nose positioning query.** `/compare` has a Kumon row; extract it into a dedicated `/vs/kumon` page schema'd as a standalone `Article` (title, author, headline argument, evidence, comparison table). Ship this before the other three `/vs/*` pages.
-4. **AEO snippets** — promoted from #6. 40–80-word standalone definitions at top of `/methodology`, `/lexile`, `/faq`, and (new) `/vs/kumon`. Designed for verbatim LLM lift.
-5. **Credentials page** — `/about/credentials` (or new `/credentials`). MCT directly attributed to Michael Clay Thompson; Harvard PZ (HGSE); 6+1 Trait (Education Northwest); Lexile (MetaMetrics). Each as `EducationalOccupationalCredential`. **2026-08 tracker Prompt 6 (MCT-specific) showed Perplexity citing only the MCT publisher — a credentials page names DODO alongside the framework in a citable form.**
+3. **`/credentials` page + MCT-anchored pillar blog post** — **promoted to co-#2 with Person schema (re-ranked 2026-08-25 after v3 pivot).** MCT is DODO's cleanest generic-premium differentiator now that the Chinese-diaspora hook is not being used to route buyers. The 2026-08 tracker confirmed across FOUR LLMs that MCT-framework queries have a publisher-only citation graph (Perplexity, ChatGPT, Claude, Gemini all cite only RFWP + homeschool blogs). Cascade impact — moves A6 (MCT), A8 (Kumon-alternative, which surfaces MCT), and B11 (AP prep — MCT's classical reading list matches AP English prep) simultaneously. `/credentials` structure: MCT attributed to Michael Clay Thompson + Royal Fireworks Press; Harvard PZ attributed to HGSE; 6+1 Trait to Education Northwest; Lexile to MetaMetrics. Each as `EducationalOccupationalCredential`. Pillar blog post: *"MCT Language Arts in a live 1-on-1 program — what actually changes for the student"*, ~2000 words, published under Janet's author byline, wired to Person schema.
+4. **`/vs/tutoring-centers` (composite) OR three separate `/vs/*` pages** — v3's A8 broadened from Kumon-only to Kumon + Oxford Learning + Sylvan. Composite is faster to ship; three individual pages give more citation surface. Recommendation: ship `/vs/kumon` first (most on-nose), then `/vs/oxford-learning` + `/vs/sylvan` as fast-follow. All schema'd as standalone `Article`s.
+5. **AEO snippets** — 40–80-word standalone definitions at top of `/methodology`, `/lexile`, `/faq`, and (new) `/vs/*` pages. Designed for verbatim LLM lift.
 6. **~~`public/llms-full.zh.txt`~~** ✅ **SHIPPED 2026-08-24.** Full ZH mirror of `llms-full.txt` (204 lines): lead blockquote, "DODO Learning 是什么", LCS 教学系统 + The Loop, LCS 三大支柱, 9 levels + 5 combinations with pricing, named frameworks (MCT/Harvard PZ/Lexile/6+1), outcomes (300+ students, SSAT anchor case, 100L-150L per cycle), Navigator teams (both ELA + Little DODO educator distinctions), assessment cadence, payment, cities served (all 20 in ZH), 双语观, "DODO 与常见替代方案的差异" (all 5 comparison bullets including Kumon), §创始人 (Janet's full ZH bio with TOEFL/TCF/BComm/Concordia/2021 founding), 联系方式, 站点结构. Referenced from `llms.txt` §Optional as "Chinese-language reference." Uses ZH glossary per BRAND_CONTENT_GUIDE (LCS 教学系统, 都学启蒙, 蓝思, 6+1 traits as 思考/结构/声音/用词/流畅/规范/呈现).
 7. **3 remaining `/vs/*` pages** — `/vs/private-tutor`, `/vs/outschool`, `/vs/eye-level` (Eye Level added 2026-08-24 after tracker showed it as the head-to-head in the Kumon-alternative query). Honest tradeoff tables, schema'd as standalone Articles.
 8. **6 verification-search city pages** — `DODO Learning [City]` post-referral search targets, distinct from `/cities/[city]` (which target discovery). Pick 6 of the 20 cities in `areaServed`; user picks which. Now that DODO Coding is also linked, wire `parentOrganization` on those pages to strengthen the entity graph.
@@ -200,7 +248,10 @@ Re-ranking driven by 2026-08 tracker findings: Perplexity's competitor set drift
 - Monthly LLM citation review (user) — same 8 prompts × 4 LLMs, log in `docs/llm-citations/`
 - 1 pillar blog post every 2 weeks (NOT 1/week) — 2,000+ words, named author, full Article schema. **Currently 2 posts total in `content/en/blog/` — the cadence never started.** Two immediate candidates suggested by 2026-08 tracker: (a) "MCT Language Arts in a live 1-on-1 program — what actually changes for the student" (targets Prompt 6), (b) "What we mean by 'alternative to Kumon' — 8 things Kumon-style drilling doesn't build" (targets Prompt 8).
 - Xiaohongshu content cadence (per operator decision — Open Decision #4)
-- **Off-site mention building** — the council's strongest critique, still the dominant work. Pick a channel: parenting-newsletter sponsorships / podcast guest appearances / school-counselor outreach / education-directory listings / Reddit r/asianamerican / r/Parenting engagement / `huaren.us` community threads (new candidate — surfaced 2026-08 as LLM-visible). Claude Code can prep outreach templates once channel is picked.
+- **Off-site mention building — split into two channel decisions after v3 pivot (2026-08-25):**
+  - **EN off-site channel** (drives generic-premium literacy citation graph): homeschool blogs in the MCT orbit (freestylemom-tier, cathyduffyreviews, Well-Trained Mind community), education-directory listings, subreddits (r/homeschool, r/APstudents, r/IBO, r/parenting), IB/AP-prep newsletters, education-podcast guest appearances. Winning here compounds with `/credentials` + MCT pillar blog above.
+  - **ZH off-site channel** (drives 华人 diaspora citation graph, tracks head-to-head against Wukong ELA + ivyGoal): huaren.us community threads (confirmed LLM-visible in the 2026-08 tracker), Xiaohongshu accounts, WeChat OA + guest posts on established 华人妈妈 blogs, WeChat parent groups.
+  - Different operators likely needed for each channel. Claude Code can prep outreach templates per channel once picked.
 
 ---
 
@@ -253,6 +304,39 @@ These block downstream work. Updated 2026-05-17.
 ---
 
 ## Session Log
+
+### 2026-08-25 (evening) — Strategy pivot: two-channel GEO + v3 prompts + llms-full.txt rebalance
+
+**Trigger:** manual review of the v2 conversational prompt set surfaced that DODO-adjacent demographic hooks ("we're a Chinese-speaking family") were routing 3/4 LLMs' answers into the newcomer-settlement bucket (SUCCESS, LINC, MOSAIC, TDSB ESL) — the wrong category for DODO. Reframed as a two-channel GEO strategy.
+
+**The pivot:** from one-lens ("win the Chinese-diaspora buyer") to two-lens:
+1. **Generic-premium EN channel** — DODO competes as a premium literacy program in the general premium-K12 citation graph (competitors: MCT publisher, Outschool, Preply, Great Books, IEW, Writing Revolution, Critical Thinking Co., Kumon/Oxford/Sylvan). Chinese-diaspora is not a filter here.
+2. **ZH-native diaspora channel** — DODO competes for the 华人 audience through ZH-side citation graph, where the diaspora signal is preserved by the language itself (competitors: Wukong ELA, ivyGoal, Excellent Institute, huaren.us programs).
+
+**Did (shipped 2026-08-25 evening):**
+- **v3 prompt set** — 18 concepts (13 A/B + 5 LD) shipped in this doc §"Tracked prompt set" above. Removes explicit Chinese-diaspora hooks from EN prompts (A1, A3, B12), parameterizes A1 city query (Vancouver + Toronto + rotating US city), broadens A8 to Kumon + Oxford Learning + Sylvan, reworded B9 (writing improvement broader than analytical), reworded A7 (reading-comprehension-primary with Lexile peripheral), added Tier LD (5 Little DODO K–2 prompts).
+- **llms.txt + llms-full.txt (EN) rebalanced** — lead now: *"Live one-on-one English language arts for capable K-12 students. Built on the MCT gifted-ELA tradition; Lexile-measured reading; 6+1 Trait writing."* Chinese-diaspora concentration moved to a service-area fact later in the doc with explicit framing: *"the program is not built around that demographic; it is built around capable K-12 students seeking English mastery at the cognitive level, and Chinese-diaspora families have found DODO through word-of-mouth referral in that community."*
+- **llms-full.zh.txt kept diaspora-primary** — bilingual asymmetry per pivot: EN broader (capability-first), ZH sharper (diaspora-first). Preserves the ZH-channel positioning where it's load-bearing.
+- **Tier-2 re-rank** — `/credentials` + MCT-anchored pillar blog post promoted to co-#2 with Person schema. `/vs/*` expanded to Kumon + Oxford Learning + Sylvan (composite or three individual pages).
+- **Off-site mention channel decision split into two** — EN and ZH channels documented separately in Tier 3 above.
+
+**Strategic implications documented (not yet shipped as code):**
+- **Two competitor sets to track, not one.** Each with its own off-site mention graph, each with its own content strategy.
+- **MCT authority becomes DODO's #1 EN-side lever.** Without demographic hook, MCT is the cleanest curriculum-anchored differentiator. Cascades to A6, A8, B11.
+- **Little DODO K–2 is its own segment now.** Different competitors (All About Reading, Logic of English, Barton), different mention channels (early-literacy parenting blogs).
+- **Founder authority weight increases.** Now that credibility can't lean on "we're for your community," Person schema + `sameAs` + `author` on blog posts do more work.
+- **Success metrics revised.** Old: "DODO cited in Chinese-diaspora queries." New: three targets — (EN) *"DODO cited in premium literacy queries generally"* on A1-A3/A5-A8/B9-B14; (ZH) *"DODO cited in 华人 diaspora queries"* on A4 + ZH mirrors; (K-2) *"Little DODO cited in early-reading queries"* on LD1-LD5.
+
+**Business-side risk flagged:** softening the Chinese-diaspora hook on the EN site itself (`/about`, `/program`, `/methodology`) could weaken new-visitor self-identification for referred families. Not shipped in this pass — llms-full.txt is LLM-facing only; site copy stays as-is until a separate decision. Referral flow happens off-page so probably unaffected, but flagged.
+
+**Did NOT do (intentionally):**
+- Site-copy rebalance (`/about`, `/program`, `/methodology` EN hero sections) — deferred pending user decision. LLM-facing surfaces rebalanced; visible copy stays diaspora-forward.
+- Ship any of the newly-promoted Tier-2 items (`/credentials`, `/vs/kumon`, MCT blog post) — next-session candidates.
+- Run v3 captures — September pass will be the first v3 measurement.
+
+**For next session, start by:** shipping Tier-2 co-#2 (`/credentials` + MCT pillar blog post) since it doesn't require any user input and directly targets the confirmed cross-LLM MCT-query miss. Then run the September capture pass on v3 prompts using the incognito capture rules.
+
+---
 
 ### 2026-08-24 (afternoon) — Ship: Founder Person schema + ZH llms-full + expanded tracker
 
