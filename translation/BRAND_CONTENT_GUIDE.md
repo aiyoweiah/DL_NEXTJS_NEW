@@ -1,10 +1,12 @@
-# DODO Learning · Brand + Content Guide v4.1
+# DODO Learning · Brand + Content Guide v5
 
-**DODO Learning / 都学书院** · Operator guide for website, social, and content production · v4.1 · 2026-05-16
-Distilled from Master Brand Guide v3.1 (Apr 2026) + DLCW curriculum sources. Working copy for site rewrite + DeepSeek ZH handoff.
+**DODO Learning / 都学书院** · Operator guide for website, social, and content production · v5 · 2026-08-26
+Distilled from Master Brand Guide v3.1 (Apr 2026) + DLCW curriculum sources; consolidated through decision **D42**. Canonical operator copy (EN); ZH mirror at `BRAND_CONTENT_GUIDE.zh.md`.
 **Every section answers _"what do I do on a content surface?"_**
 
-> **Active decisions log:** Date-stamped overrides and additions since 2026-05-16 are tracked in `docs/content-style-decisions.md`. When a decision stabilizes, it's promoted into the relevant section below with an explicit `2026-MM-DD admin override` note. Read both this guide AND the active-decisions log before any major content work — recent decisions may not yet be reflected in the locked sections.
+> **v5 consolidation (2026-08-26):** Brings the guide current through the full decisions log (D1–D42). New since v4.1: tagline → **"Think once, in two languages."** (D36); LCS umbrella with the five MCT strands nested + ELA = 7 levels, Poodle retired (D37, §06); **§07a Research Base** (D38); ZH mirror + **§17** branded vocabulary (D39); positioning by **demographic + desire** — local explicit, international implicit (D40, §04); **§01b** positioning statement / objections / AI rebuttal / anti-persona (D41); **§04a** Marketing Direction & Directives (D42). Founder is **Janet — first name only, everywhere** (upstream D35). Customer-surface cascade partially shipped (D38 research base → `/credentials` page + MCT pillar blog + schema + llms-full); remainder tracked in `docs/pending-guide-cascade.md`.
+
+> **Active decisions log:** Date-stamped overrides since 2026-05-16 are in `docs/content-style-decisions.md` (append-only history). The locked sections below already carry every stabilized decision; the log is the provenance trail. Read both before major content work.
 
 ---
 

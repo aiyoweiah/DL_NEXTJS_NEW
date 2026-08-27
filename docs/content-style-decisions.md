@@ -338,3 +338,12 @@ Scope: apply the strategic critique (`docs/brand-guide-critique-2026-08-26.md`) 
 - **Decision:** The guide is confirmed as primarily a copy-production manual **and** now carries a strategic layer. New §04a: category to own ("English language arts at mastery level"), the AI-age signature thesis, market-forces awareness (AI substitute; high buyer power / low switching cost → retention as positioning; category white space), growth-lever directives (referral engine, research-base authority/GEO, community, cultivate local demand), a proof directive, and a guardrail (no discount/deficit/urgency/remediation).
 - **Where it lives now:** `BRAND_CONTENT_GUIDE.md` §04a · ZH mirror §04a.
 - **Trigger:** User — "the brand guide… should also include key marketing direction/directive."
+
+---
+
+## 2026-08-26 (consolidation) · Guide promoted to v5
+
+- **Guide version bumped v4.1 → v5** (`BRAND_CONTENT_GUIDE.md` + `.zh.md` headers), consolidated **through D42**. Header now carries a v5 summary of what changed since v4.1 and the current cascade status. The locked sections already carry every stabilized decision; this log remains the append-only provenance trail (never pruned).
+- **Reconciled with upstream:** founder is **Janet — first name only, everywhere** (upstream D35); my session decisions were renumbered **D35–D41 → D36–D42** on push to avoid colliding with upstream's D35.
+- **Cascade progress (D38 research base + D37 five-strands), shipped by peer 2026-08-26 (commit `334d8de`):** new **`/credentials`** bilingual reference page (canonical attribution surface) + **MCT-anchored pillar blog** (`content/en/blog/mct-language-arts-in-a-live-one-on-one-program.mdx`) + `credentialsSchema()` (CollectionPage + 4 `EducationalOccupationalCredential` + 5 academic `citation` nodes) + `llms-full.txt` seeding. Remaining cascade (tagline D36, `/methodology` block, `/faq` entry, positioning D40 surfaces) tracked in `docs/pending-guide-cascade.md`.
+- **Repo state:** local `main` in sync with `origin/main` at consolidation time. Peer's unrelated uncommitted work (`.design/dodo-coding-launch/` reorg, `content-review/03–04`, `ElaReportTool.jsx` in `stash@{0}`) left untouched per user.
