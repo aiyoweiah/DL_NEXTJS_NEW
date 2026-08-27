@@ -274,6 +274,8 @@ Scope: realign the whole visitor funnel around a soft→firm commitment ladder, 
 - **Trigger:** User direction 2026-06-02 — "navbar ZH translation source of truth."
 - **Rule going forward:** Future ZH additions follow the descriptive form. `教学法`/`阅读伴`/`观看示范课`/`示范课` should not reappear in ZH copy unless explicitly justified (e.g., historical quote, archived doc).
 
+---
+
 ## 2026-08-24 · Founder reference — first name only, everywhere
 
 ### D35 · "Janet Sui" retired — Janet in every surface, no last name
@@ -283,3 +285,56 @@ Scope: realign the whole visitor funnel around a soft→firm commitment ladder, 
 - **Where it lives now:** `content/marketing.{en,zh}.js` `/compare` s5 (already stripped 2026-08-24 in the prior session), `components/ops/AgreementTool.jsx:618` signatoryName default + placeholder, `translation/dodo-glossary.json` `owned_terms.Janet`, `translation/BRAND_CONTENT_GUIDE.md` §"Founder reference" row + §"Owned vocabulary", `translation/DEEPSEEK_BRIEF.md` glossary table, `docs/workflow.md` (all mentions), `docs/SUCCESSOR_HANDOFF.md` (all mentions).
 - **Rule going forward:** Never write "Janet Sui" or any last-name form. If a formal byline calls for "Janet Sui — Founder," use "Janet — Founder." When wiring `Person` schema, `name: "Janet"` — do not populate `familyName`. When drafting legal documents, the founder signs as "Janet." Recorded in Claude Code memory (feedback rule) for cross-session enforcement.
 - **Trigger:** User direction 2026-08-24 — "Strip last name from all files & mentions. Be on the lookout going forward."
+
+---
+
+## 2026-08-26 · MCT research + brand-guide amendment (approved)
+
+Scope: incorporate an MCT research pull + refine positioning after the marketing-skills install. Analysis in `docs/mct-research-and-brand-review-2026-08-26.md`; approved draft in `docs/brand-guide-refresh-draft-2026-08-26.md`. **Applied to the internal guide only** (`translation/BRAND_CONTENT_GUIDE.md` + new ZH mirror + glossary). **Customer-facing surface cascade (site copy, llms.txt, faq, schema) still awaits an explicit "apply."**
+
+### D36 · Tagline → "Think once, in two languages."
+- **Decision:** EN tagline updated from **"Think Once. In Both Languages."** to **"Think once, in two languages."** (sentence case; "two languages"). Role clarified: brand **signature**, not the positioning line — conversion heroes lead with the English-mastery + thinking proposition. ZH sub-tagline (语言的根，长在阅读里) unchanged; the EN-tagline ZH rendering shifts 一次思考。两种语言。 → **一次思考，两种语言。** (comma).
+- **Overrides:** §00 prior tagline; glossary tagline entry; §16 checklist.
+- **Where it lives now:** `BRAND_CONTENT_GUIDE.md` §00/§09/§16 · `BRAND_CONTENT_GUIDE.zh.md` · `dodo-glossary.json` (old string marked retired).
+- **Pending cascade (needs "apply"):** home hero, `about` ClosingStamp, any surface with the old string, `dodo-content-writer` lint rule.
+- **Trigger:** User — "adapt brand tagline to 'Think once, in two languages.'"
+
+### D37 · Five Strands nested under LCS + ELA = 7 levels (Poodle retired)
+- **Decision:** (a) The **MCT Five Strands** (Grammar, Vocabulary, Writing, Poetics, Literature) are described in DODO's own words and **nested under the fitting LCS branch** — **L**: Literature · Vocabulary · Poetics; **C**: Grammar · Writing; **S**: Speaking (DODO's own, no book-curriculum equivalent — the live differentiator). LCS remains the named umbrella. (b) ELA is a **seven-level** ladder (L1 Island → L7 Lens III; L1 = Grade 3+; L7 = college-tier). **Poodle/preliminary is not adapted**; **Little DODO** (separate, non-MCT, ages 5–8) occupies the early-starter slot. Retires the "9 levels / Starter / DODO Poodle" framing.
+- **Overrides:** §06 LCS 3-row table + "9 Curriculum Levels" table.
+- **Where it lives now:** `BRAND_CONTENT_GUIDE.md` §06 + §16 · ZH mirror §06/§16 · review + refresh docs.
+- **Trigger:** User — "five strands will live under LCS… incorporate under the fitting branch"; "not adapting Poodle, use Little DODO in its place… L1 Island → L7 Lens III is true."
+
+### D38 · New §07a "The Research Base"
+- **Decision:** New guide section §07a gives writers dated, citation-backed facts (Gallagher 2017 *Roeper Review*; Goodwin & Ahn 2010/2013 meta-analyses; Bowers/Kirby/Deacon 2010; Henry 1997 60%/90%; challenging-text research) as five permitted claims + a drop-in citation list + original-voice reference sentences. **Hard rule:** frame as *acceleration into mastery*, never ELL/remediation/catch-up. Rationale: GEO — citing sources/statistics/quotations is the highest-leverage citation booster.
+- **Where it lives now:** `BRAND_CONTENT_GUIDE.md` §07a + §16 · ZH mirror §07a/§16.
+- **Pending cascade (needs "apply"):** `/methodology` "why this works" block, `llms-full.txt`, one `/faq`, `schema` `citation` nodes.
+- **Trigger:** User — "the research base contain enough text reference to be practical in the marketing guide."
+
+### D39 · ZH guide mirror + §17 Branded Vocabulary reference
+- **Decision:** A full ZH mirror of the operator guide now exists at `translation/BRAND_CONTENT_GUIDE.zh.md`, current with D36–D38, and adds a **§17 品牌词汇表** (branded EN↔ZH vocabulary as a single readable translation/copywriting reference, sourced from `dodo-glossary.json` + §09). Conflicts resolve to the newest D-number.
+- **Where it lives now:** `translation/BRAND_CONTENT_GUIDE.zh.md`.
+- **Trigger:** User — "draft an identical zh version of the guide… add the branded vocabulary list as translation and copywriting reference."
+
+---
+
+## 2026-08-26 (later) · Positioning shift + critique applied at guide level
+
+Scope: apply the strategic critique (`docs/brand-guide-critique-2026-08-26.md`) at the guide level and execute a major positioning change. Applied to `BRAND_CONTENT_GUIDE.md` + `.zh.md`. **Customer-surface cascade still gated** — see `docs/pending-guide-cascade.md`.
+
+### D40 · Target by demographic + desire (supersedes D10 global positioning)
+- **Decision:** DODO **no longer targets international / globally-mobile families explicitly** — that dimension is now **implicit** (served worldwide; carried by the bilingual EN/ZH site). Targeting is **demographic + aspiration-based: any family that fits the profile and wants to refine their child's language arts to mastery — including local, settled families**, not only relocating/diaspora. Retire "globally-mobile families" / "students around the world" / "面向全球家庭" as headline framing. International stays true and available, just not the headline. §04 family table reworked around situation+desire with **Local & settled** as a new explicit focus row.
+- **Overrides:** D10 (2026-05-21 global positioning) and its cascade targets.
+- **Where it lives now:** `BRAND_CONTENT_GUIDE.md` §04 + §12 llms row · ZH mirror §04 + §12.
+- **Pending cascade (needs "apply"):** the old D10 surfaces — `/program`, `/about`, home PhotoIntro, `/compare`, `llms.txt` lead — plus SEO meta. Re-verify each; drop "globally-mobile/around the world/面向全球" headline framing, keep international as implicit.
+- **Trigger:** User — "no longer targeting international families explicitly, only implicitly… also targeting local families… all who fit the demographic and desire to refine their language arts skills."
+
+### D41 · Critique recommendations applied at guide level
+- **Decision:** Added to §01/§01b: (a) **canonical positioning statement** (single assembled position); (b) sharpened competitor lines — new rows for **gifted-ELA books (MCT/homeschool)** and **free AI tutors**; (c) **objection→response matrix** incl. the **AI question** ("why not just use ChatGPT?"); (d) **switching-anxiety** (JTBD Anxiety force); (e) **anti-persona** (who DODO is NOT for).
+- **Where it lives now:** `BRAND_CONTENT_GUIDE.md` §01 + new §01b · ZH mirror §01 + §01b.
+- **Trigger:** User — "apply the recommendation from critique."
+
+### D42 · New §04a "Marketing Direction & Directives" — guide now carries strategy
+- **Decision:** The guide is confirmed as primarily a copy-production manual **and** now carries a strategic layer. New §04a: category to own ("English language arts at mastery level"), the AI-age signature thesis, market-forces awareness (AI substitute; high buyer power / low switching cost → retention as positioning; category white space), growth-lever directives (referral engine, research-base authority/GEO, community, cultivate local demand), a proof directive, and a guardrail (no discount/deficit/urgency/remediation).
+- **Where it lives now:** `BRAND_CONTENT_GUIDE.md` §04a · ZH mirror §04a.
+- **Trigger:** User — "the brand guide… should also include key marketing direction/directive."

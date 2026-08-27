@@ -13,11 +13,11 @@ Distilled from Master Brand Guide v3.1 (Apr 2026) + DLCW curriculum sources. Wor
 | | EN | ZH |
 |---|---|---|
 | Brand name | **DODO Learning** | **都学书院** |
-| Tagline | **Think Once. In Both Languages.** | **语言的根，长在阅读里** |
+| Tagline | **Think once, in two languages.** | **语言的根，长在阅读里** |
 | Sub-tagline | *(use ZH only; no EN sub-tagline)* | 都学书院以原版文学精读为起点，用写作锤炼思维，用表达释放想象力。 |
 | First mention | `DODO Learning / 都学书院` (both) | 同 |
 | Subsequent | Either name alone | 同 |
-| Forbidden | `Think Twice` (source typo — reject everywhere) | — |
+| Forbidden | `Think Twice` (source typo — reject everywhere) · `Think Once. In Both Languages.` (retired 2026-08-26 → use `Think once, in two languages.`) | — |
 
 **Five-second positioning** *(memorize; deploy as the answer when anyone asks "what is DODO?")*:
 > One-on-one English language arts, built on the MCT gifted-ELA tradition. We build English Thinkers at mastery level. Bilingual depth emerges.
@@ -28,6 +28,9 @@ Distilled from Master Brand Guide v3.1 (Apr 2026) + DLCW curriculum sources. Wor
 
 **One-sentence position:**
 DODO Learning is a one-on-one English language arts program built on gifted-English Language Arts tradition. Every session runs The Loop — Read → Think → Speak → Write — with a credentialed Navigator. Growth is measured by Lexile and the 6+1 Trait framework. Bilingual depth emerges as a natural outcome of cognitive rigor.
+
+**Canonical positioning statement** *(the single assembled position — deploy as the strategic spine of /about, /methodology, sales):*
+> For families who want their child's English refined to the mastery level academic and professional life now demands, **DODO is a live, one-on-one English language arts program** that builds measurable reading and writing mastery — one grade level per two cycles — **unlike** tutoring, apps, or ESL, and unlike the gifted-ELA books parents could buy but can't teach, **because** DODO delivers that tradition through expert Navigators and adds the oral-defence Speaking strand no book or app can.
 
 | DODO is NOT | DODO IS |
 |---|---|
@@ -53,6 +56,24 @@ One grade level of reading growth in sixteen weeks. Specific Lexile delta. Speci
 | After-school English classes | "Group classes build conversational confidence. We build the academic language that determines university and leadership outcomes." |
 | Reading apps | "Apps deliver content. Navigators diagnose how your child thinks. Different problem, different tool." |
 | ESL programs | "ESL closes a survival gap. We open a mastery gap — for children whose English is already functional but not yet at the cognitive level academic life demands." |
+| Gifted-ELA books (MCT / homeschool) | "The gifted-ELA tradition, delivered live by an expert — plus the oral defence a book can't give and the Lexile proof a bookshelf can't." |
+| **Free AI tutors (ChatGPT, Gemini, Khanmigo)** | "AI will answer any question your child asks. It won't notice the one they didn't. That's what a Navigator is for." |
+
+## 01b · Objections, the AI Question & Anti-Persona *(added 2026-08-26)*
+
+**Objection → response** *(the deal-blockers; keep responses affirmative, numbers-first):*
+
+| Objection | Response |
+|---|---|
+| "It's expensive." | "You're not buying sessions — you're buying a measured cognitive architecture. One grade level per two cycles, visible at Week 0 · 8 · 16. The outcome is on paper before you renew." |
+| "My child already gets A's in English." | "School English rewards fluency. We build the analytical reading and academic writing that A's don't yet test — the level university and leadership actually demand." |
+| "Is online 1-on-1 as good as in person?" | "Better for this: one Navigator, your child's full attention, every session measured. Geography stops mattering; the relationship doesn't." |
+| "16 weeks is a big commitment." | "A cycle is one measured arc — Week 0, 8, 16. You see the Lexile move before you decide again. Start with one." |
+| **"Why not just use ChatGPT?"** (the AI question) | "AI is a tool your child will use their whole life. We build the judgment to use it well — the reading, reasoning, and writing AI can't do *for* them. It answers questions; a Navigator teaches your child which questions to ask." |
+
+**Switching anxiety to disarm** *(the JTBD "Anxiety" force — name it, then answer):* "Will this crowd out school subjects?" → high-frequency, low-pressure cadence (高频低压). "Will my child resist the rigor?" → the Navigator meets them at their level; rigor arrives as a better question, not pressure. "Is a remote Navigator real?" → a named, credentialed guide who knows your child's voice, every session recorded.
+
+**Anti-persona — who DODO is NOT for** *(naming this protects the premium and improves lead quality):* families seeking cheap test-prep, quick homework help, conversational-only practice, or a passive hand-off. DODO is for families who want *depth* and will show up for a measured, multi-cycle arc. Don't soften the program to win a family outside this fit.
 
 ---
 
@@ -79,22 +100,46 @@ The double Do is also a commitment to **iteration** — you master a language by
 
 ## 04 · Who We Serve
 
-> **2026-05-21 admin override — global positioning:** Audience broadened from "Chinese immigrant parents in NA" to **globally-mobile families seeking English literacy at the cognitive level**. Chinese-diaspora families remain the strong core market (90%+ of current cohort + the brand's bilingual depth language); positioning copy on `/program` and SEO meta now reads global. Existing surfaces (`/about`, `/compare`, `/home`, `llms.txt`) still reference Chinese-family framing — cascade pending. Re-verify audience copy on each page before quoting tighter geography.
+> **2026-08-26 admin override — target by demographic + desire (supersedes the 2026-05-21 global-positioning pivot):** DODO **no longer targets international / globally-mobile families explicitly** — that dimension is now **implicit** (the program serves worldwide; the bilingual EN/ZH site carries it without a headline). Targeting is now **demographic + aspiration-based: any family that fits the profile and wants to refine their child's language arts to the mastery level — including local, settled families**, not only relocating or diaspora ones. **Retire** "globally-mobile families" / "students around the world" / "面向全球家庭" as headline framing. International remains true and available — it is simply no longer the headline.
 
-**Core market** (continues to drive content + voice): Chinese immigrant parents. Children **ages 7–15+**. Primary markets: Toronto · Vancouver · Calgary · Montreal · major US Chinese-immigrant cities.
+**Core demographic** (drives content + voice): education-invested families whose child's English is capable but not yet at mastery level, children **ages 7–15+**. Strong in North-American Chinese-diaspora hubs (Toronto · Vancouver · Calgary · Montreal · major US metros) and among local families in those markets — but the audience is defined by **aspiration, not geography or mobility.** Local and international both fit.
 
-**Broader market** (post-2026-05-21 admin pivot): families anywhere in the world seeking English literacy at the cognitive level. The Loop + LCS System + Lexile + 6+1 Trait architecture is the same in every market; framing on conversion surfaces uses "students around the world" / "面向全球家庭" where appropriate.
+> **2026-06-01 mother-tongue framing:** In non-core-market body copy, name the child's first language as **"mother tongue" / "母语"**, not "Chinese / 中文" — except on intentionally core-market surfaces. The bilingual-depth argument (Truth 2) is language-agnostic; "Chinese" is a core-market specific, not the default.
 
-> **2026-06-01 mother-tongue framing:** In globalized body copy, name the child's first language as **"mother tongue" / "母语"**, not "Chinese / 中文" — except on intentionally core-market surfaces. Cascaded from /about Pillar 03 + Family 1. The bilingual-depth argument (Truth 2) is language-agnostic; "Chinese" is a core-market specific, not the default.
-
-| Family type | Their real fear | What DODO solves |
+| Family situation | Their real desire / fear | What DODO solves |
 |---|---|---|
-| Newly arrived in NA | "My child speaks English but can't hold their own academically" | Closes survival-English to college-tier-fluency gap |
-| Planning to move | "My child will fall behind the moment they land" | Builds academic infrastructure before arrival |
-| Staying, thinking globally | "My child will be outcompeted by truly capable bilingual peers" | Develops genuinely hard-to-replicate English depth |
-| Academically ambitious | English access at SAT / IB / SSAT / leadership level | The arc is calibrated to these outcomes |
+| **Local & settled** *(new focus 2026-08-26)* | "My child does fine at school — but I want real depth, not just good grades." | Mastery-level reading + writing above what school tests reward |
+| Academically ambitious | English at SAT / IB / SSAT / leadership level | The seven-level arc is calibrated to these outcomes |
+| Bilingual household | "I want strong English without losing the mother tongue." | English mastery first; bilingual depth emerges (reframe, don't reassure) |
+| Relocating / diaspora *(now implicit, not headline)* | "My child will need to hold their own academically, anywhere." | Academic infrastructure that travels |
+| Worried about the AI age | "Will my child have skills AI can't replace?" | Reading, reasoning, and writing judgment AI can't substitute |
 
-**Parent profile to keep in mind when writing:** Reads at college-graduate level in both languages. Skeptical of marketing fluff. Will check claims. Values frameworks they recognise (Lexile, Common Core, IB). Time-poor — won't read a hero longer than 25 words.
+**Parent profile to keep in mind when writing:** Reads at college-graduate level (often in two languages). Skeptical of marketing fluff. Will check claims. Values frameworks they recognise (Lexile, Common Core, IB). Time-poor — won't read a hero longer than 25 words.
+
+---
+
+## 04a · Marketing Direction & Directives *(added 2026-08-26)*
+
+The guide is primarily a copy-production manual — but content without direction drifts. This section is the **strategic layer** every surface should ladder up to. *(Rationale + full analysis: `docs/brand-guide-critique-2026-08-26.md`.)*
+
+**1 · The category to own.** Write to define and own **"English language arts at mastery level"** as a category — not "tutoring," not "English class." Category owners get pricing power and get cited by LLMs. Every methodology/authority surface should reinforce the category, not just the product.
+
+**2 · The signature thesis — the AI age.** DODO's ownable market POV: **the reading, reasoning, and writing judgment AI cannot replace.** Truth 2 is the seed; this is the thesis. Strategic surfaces (home, /about, /methodology, PR, social) should ladder to it. Pairs with the DODO Coding sibling — cross-pollinate, don't duplicate.
+
+**3 · Market forces to respect** *(write with these in view):*
+- **Substitute threat = free AI tutors.** Always keep the AI rebuttal (§01b) within reach; never pretend the substitute doesn't exist — reframe it.
+- **Buyer power is high; switching cost is low.** Retention is a *positioning* job, not only an ops one: frame the **longitudinal Navigator bond**, the **seven-level ladder (sunk, visible progress)**, and **community** as moats — not merely warmth.
+- **White space.** No dominant premium-ELA brand exists — move to own the category before someone else names it.
+
+**4 · Growth levers (directives).**
+- **Referral engine.** 75%+ word-of-mouth is the flywheel — treat it as a *system* (a Founding Family referral loop), not a proof stat. Cheapest CAC lever in a tight community.
+- **Authority / GEO.** The §07a research base is a citable moat. Deploy it as parent-education content + a lead magnet; the measurable goal is **LLM citation** (see §14 + `docs/workflow.md`).
+- **Community.** Diaspora and local parents cluster (WeChat / 小红书 / local networks). A DODO parent community raises switching cost *and* drives referral.
+- **Cultivate local demand.** Per the 2026-08-26 targeting shift, actively court **local, settled families** — not only mobile/diaspora ones.
+
+**5 · Proof directive.** A premium price needs deeper public proof than one anchor case. Build a bank of anonymized outcome case studies + video-testimonial guidance; §07a earns *method* credibility, but *outcome* proof still needs depth.
+
+**6 · Guardrail.** Marketing direction serves the brand truths (§02) and the anti-dictionary (§10). No growth tactic introduces discount, deficit, urgency, or remediation language — ever.
 
 ---
 
@@ -124,26 +169,26 @@ The double Do is also a commitment to **iteration** — you master a language by
 >
 > **Loop vs LCS naming convention (2026-05-21 admin override):** On brand surfaces, **LCS is the named methodology system** ("The LCS System" / "LCS 教学理念"). **The Loop is the per-session phrase** — `Read → Think → Speak → Write` — used inside body copy to describe the per-session sequence. Do NOT use "The Loop" as the named system in section headers, pillar headings, or methodology names on brand-facing pages. Internal Navigator materials may continue to use "The Loop" as the methodology name.
 
-### LCS Teaching System
-DODO's unique curriculum framework. Every level rolls up to LCS.
+### The LCS System — the live delivery architecture (Five Strands nested · 2026-08-26)
+DODO's named curriculum framework. **The LCS System** (语言循环体系) is the umbrella methodology that organizes every cycle; the **five content strands of a complete language education nest under the fitting branch.**
 
-| Strand | Name | Core function |
+| Branch | What it is | Content strands nested here |
 |---|---|---|
-| **L** | Literacy — 文学精读 | Deep engagement with literary classics. Vocabulary accumulation, literary sensibility, intellectual treasury. The root of all language output. |
-| **C** | Composition — 系统写作训练 | Systematic writing training: transforming reading depth into structured, persuasive, precise writing. Sentence → paragraph → academic essay. |
-| **S** | Speaking — 表达 | High-quality 1-on-1 discussion with Navigator. Clarifies perspective, organises thinking, produces rigorous spoken output. |
+| **L · Literacy** — 文学精读 | The reading treasury — where language goes in. The root of all language output. | **Literature** (whole, unabridged classics, read for craft) · **Vocabulary** (the Latin/Greek roots of English — structure, not memorization) · **Poetics** (the ear for how great writing is built) |
+| **C · Composition** — 系统写作训练 | The construction engine — where language comes out. | **Grammar** (the architecture of the sentence, taught first and fast, then applied) · **Writing** (sentence → paragraph → essay → academic composition) |
+| **S · Speaking** — 表达 | **DODO's own strand — the live differentiator.** | Oral defence · Socratic dialogue · perspective-taking. **No equivalent in a curriculum of books** — this is what a live Navigator adds. |
 
-### 9 Curriculum Levels
+**Rules:** LCS stays the named umbrella ("The LCS System" / "语言循环体系"); the five strands are described in **DODO's own words**, never as a resold booklist. **The Loop** (Read → Think → Speak → Write) remains the per-session phrase inside body copy. MCT is named **once**, as the lineage of the L/C content — never as the source of each line, never "we teach MCT." Bridges (use sparingly, only where a section needs them): Poetics also feeds Composition (writing beautifully); Grammar also serves Literacy (four-level analysis of a classic's sentences).
 
-Each level = **2–3 cycles** · Each cycle = **16 weeks**.
+### The ELA Level Ladder — seven levels (2026-08-26)
 
-> **Phase ↔ Cycle note (2026-05-18):** The Navigator portal (`navigators.dodolearning.com`) and its upstream curriculum source (DLCW) label this 16-week unit a **Phase**. Brand surfaces (dodolearning.com, social, parent-facing copy) use **Cycle** per §09 owned vocabulary. Same unit, two surface registers — do not mix within a single surface. When publishing material that crosses surfaces, prefer the audience-appropriate term and footnote the equivalence on first mention.
+DODO ELA is a **seven-level** ladder grounded in the gifted-ELA tradition. Each level = **2–3 cycles** · each cycle = **16 weeks**. L1 begins at **Grade 3+**; **Level 7 = college-tier academic English.**
 
-| Level | Programme name | Age | Key markers |
-|---|---|---|---|
-| **Starter** *(waitlist · de-emphasized in headline copy)* | Little DODO — 英语阅读&口语启蒙 | Asia 5–9 / NA 5–6 | ~100 picture books at completion; I Can Read L1–2 |
-| **Intermediate** | DODO Poodle — 文学阅读&写作进阶 | 7–8 | 7 Poodle series books; foundational grammar; first sentence-→-paragraph work |
-| **Levels 1–7** | DODO 英语文学阅读&系统写作 | 8+ | 3+ SAT-required classics per level; 800+ new vocabulary per level; **Level 7 = college-tier academic English** |
+**L1 Island → L2 Town → L3 Voyage → L4 Classic Literature → L5 Lens I → L6 Lens II → L7 Lens III**
+
+> **Poodle / preliminary is NOT part of ELA (2026-08-26 admin set).** DODO does not adapt the Poodle tier. **Little DODO** — a separate program, **independent of this tradition** — occupies the early-starter slot (ages 5–8). Keep Little DODO out of ELA's methodology narrative; its positioning is a separate work item. *(Supersedes the prior "9 levels / Starter / DODO Poodle" framing.)*
+
+> **Phase ↔ Cycle note (2026-05-18):** The Navigator portal (`navigators.dodolearning.com`) and its upstream curriculum source (DLCW) label this 16-week unit a **Phase**. Brand surfaces (dodolearning.com, social, parent-facing copy) use **Cycle** per §09 owned vocabulary. Same unit, two surface registers — do not mix within a single surface.
 
 ### 5 Programme Combinations
 
@@ -169,6 +214,42 @@ Each level = **2–3 cycles** · Each cycle = **16 weeks**.
 | **6+1 Trait** (Education Northwest) | Writing rubric used in BC / Ontario / US Common Core classrooms | "Ideas, Organization, Voice, Word Choice, Sentence Fluency, Conventions, Presentation" | Reducing to "writing skills" · framing as DODO curriculum | /methodology · /results · FAQ · llms.txt |
 
 > **Internal-only — never parent-facing:** *CT Dispositions / VT* (the Navigator-side taxonomy of thinking modes that selects which Project Zero routine to deploy). Lives in Navigator training docs.
+
+---
+
+## 07a · The Research Base *(added 2026-08-26)*
+
+**Purpose:** give writers dated, quotable, citation-backed facts so any conversion or GEO surface carries evidence, not adjectives. Per the GEO method, **citing sources, statistics, and quotations is the highest-leverage way to be cited by LLMs.** DODO's vocabulary track sits on one of the most-researched strategies in education — this is our strongest GEO asset. **Deploy on:** `/methodology` ("Why this works" block) · `llms-full.txt` · one `/faq` · `schema` `citation` nodes.
+
+**The hard rule (anti-dictionary tie-in):** the evidence is strongest in ELL / struggling-reader / dyslexia populations. **Never deploy it that way.** DODO's frame is **acceleration into mastery**, not catching up. Forbidden: "closes the ELL gap," "for struggling readers," "remediation." Permitted: "one of the most-researched strategies in education."
+
+### Five claims DODO is licensed to make
+
+| # | Permitted claim (writer-ready) | Backed by |
+|---|---|---|
+| 1 | "Teaching the Latin and Greek roots beneath English is one of the most-researched strategies in education." | RFWP framing + meta-analyses below |
+| 2 | "About 60% of English comes from Latin and Greek — over 90% of the words in science. Learn the roots, and you hold a key to the academic vocabulary of every subject." | Henry (1997) |
+| 3 | "In a study of 493 students, root-based vocabulary teaching outperformed memorization — for gifted and typically-developing students alike." | Gallagher (2017), *Roeper Review* |
+| 4 | "Across dozens of controlled studies, teaching the structure of words produces measurable gains in vocabulary, decoding, and spelling." | Goodwin & Ahn (2010, 2013); Bowers, Kirby & Deacon (2010) |
+| 5 | "Children grow most on rich, challenging text — not simplified readers. That is why we read real, unabridged classics, set deliberately above the comfortable level." | Shanahan; Keys to Literacy (challenging-text research) |
+
+### Citation list (drop-in for `/methodology` + `llms-full.txt`)
+
+- **Gallagher, S. A. (2017).** *Exploring the Efficacy of "The Word Within the Word" for Gifted and Typically Developing Students.* Roeper Review 39(2). — 493 middle-school students, 10 teachers; root-based vocabulary beat traditional instruction (moderate effect sizes on sentence completion Gr 6–7; **moderate-to-large on recall at every grade level**), for **both gifted and typically-developing** students.
+- **Goodwin, A. P., & Ahn, S. (2010).** Meta-analysis of morphological interventions. Annals of Dyslexia 60. — 17 studies; overall literacy **d = 0.33**, vocabulary **d = 0.40**.
+- **Goodwin, A. P., & Ahn, S. (2013).** Meta-Analysis of Morphological Interventions in English. Scientific Studies of Reading 17. — 30 studies; overall **d = 0.32**, decoding **d = 0.59**, vocabulary **d = 0.34**, spelling **d = 0.30**.
+- **Bowers, P. N., Kirby, J. R., & Deacon, S. H. (2010).** Effects of Morphological Instruction on Literacy Skills: A Systematic Review. Review of Educational Research 80. — 22 studies; **works best woven into other literacy instruction** (validates DODO's integrated model over isolated drills).
+- **Henry (1997)** — ~60% of words in English text are Latin/Greek in origin; >90% in science and technology.
+- **VanTassel-Baska, J. (2003).** Differentiating the Language Arts for High-Ability Learners. CEC (ERIC E640).
+- **Transfer evidence:** Pampush & Petto (2011, Anatomical Sciences Education); McIntosh (1994, Mathematics Teacher); Rasinski et al. (2011, The Reading Teacher).
+- **L2 evidence (use only reframed as acceleration):** Bellomo (1999, TESL-EJ); Diaz (2010).
+
+### Ready-to-use reference sentences (original DODO voice — no MCT name, no remediation register)
+
+- "English is built from Latin and Greek — about sixty percent of it, and over ninety percent of the language of science. We teach the roots beneath the words, so a term your child has never seen becomes one they can take apart and solve."
+- "We don't ask children to memorize word lists. We teach the structure of the language — the research shows this is what makes vocabulary stick, and transfer, across every subject."
+- "The research is consistent: children grow most on rich, complex text, not simplified readers. So we read real, unabridged classics — set a step above the comfortable level, on purpose."
+- "Measured, not asserted: in a study of 493 students, teaching word roots outperformed memorization for advanced and typical learners alike."
 
 ---
 
@@ -254,7 +335,7 @@ These terms are DODO's. Use consistently across every channel.
 | **Harvard Project Zero** | See §07. Nameable; routine titles not in hero copy. | Naming routines in hero copy |
 | **The 16-Week Program** | One cycle. A commitment with entrance · midpoint · exit assessments. | "Our course" · "subscription" |
 | **Founding Family Program** | Recognition of early commitment. | Discount · promotion · limited-time · Charter Enrollment |
-| **Think Once. In Both Languages.** | Final tagline. | Think Twice (typo) |
+| **Think once, in two languages.** | Final tagline *(updated 2026-08-26 — sentence case, "two languages"; brand **signature**, not the positioning line)*. | Think Twice (typo) · Think Once. In Both Languages. (retired) |
 | **DODO Learning / 都学书院** | Full name first mention. | Lowercase "dodo" · "DODO Academy" |
 | **外教** *(ZH contrast term)* | ZH-only mental category used to contrast DODO's depth — never as DODO self-positioning. Permitted constructions: "外教不代表会教", "却远不止外教". | Calling Navigators 外教 · using 外教 in DODO self-descriptions |
 | **高频低压** *(ZH 4-char frame)* | The methodology cadence — frequent practice without performance pressure. Use in ZH body copy describing how sessions work week-to-week. | EN translation — keep as a ZH-native frame |
@@ -329,7 +410,7 @@ Quick anchors when rewriting each surface. Specifics on tone, must-include eleme
 | `/faq` | Self-service answers + GEO | 50 Q&As, each readable in isolation (council requirement) · pricing facts · LCS/Levels/Combinations explained at the top | — | Precise 50% · Warm 30% · Confident 20% |
 | `/cities/[city]` | Verification post-referral | Local context · cohort cadence · Loop summary · local outcome anchor | H1 ≤ 14 · sub ≤ 30 | Warm 50% · Precise 30% · Confident 20% |
 | `/enroll` *(pending)* | Conversion | Pricing matrix (Summit/Core/Flex) · Founding Family Program · diagnostic-first language | H1 ≤ 10 · sub ≤ 24 | Confident 60% · Precise 40% |
-| `llms.txt` / `llms-full.txt` | Be cited by LLMs | Tagline · what we are · what we are not · The Loop · LCS as named system · frameworks · "one grade level over two 16-week cycles" canon · MCT credit · MCT writing arc · globally-mobile family positioning | — | Precise 100% |
+| `llms.txt` / `llms-full.txt` | Be cited by LLMs | Tagline · what we are · what we are not · The Loop · LCS as named system · frameworks · "one grade level over two 16-week cycles" canon · MCT credit · MCT writing arc · §07a research base · **aspiration-defined audience (local + international, per §04)** | — | Precise 100% |
 
 ---
 
@@ -472,7 +553,7 @@ Brand-content effectiveness lives in measurable signals. Track these monthly; on
 
 ## 16 · Quick Checklist
 
-✓ Tagline = **Think Once. In Both Languages.** · Sub-tagline ZH = **语言的根，长在阅读里**
+✓ Tagline = **Think once, in two languages.** · Sub-tagline ZH = **语言的根，长在阅读里**
 ✓ First mention = `DODO Learning / 都学书院`
 ✓ The Loop named, in order, exact phrase
 ✓ LCS distinguished from The Loop (per-session vs curriculum)
@@ -480,7 +561,9 @@ Brand-content effectiveness lives in measurable signals. Track these monthly; on
 ✓ Lexile cited with a specific number
 ✓ 6+1 Trait spelled out, never reduced to "writing skills"
 ✓ MCT with distancing language ("grounded in / aligned with / in the tradition of")
-✓ MCT components named correctly: Mud Trilogy · Building Language · Caesar's English · Grammar Island · Sentence Island · Music of the Hemispheres
+✓ Five Strands nested under the LCS branch — **L**: Literature · Vocabulary · Poetics · **C**: Grammar · Writing · **S**: Speaking (DODO's own) — described in DODO's words, not as a resold booklist
+✓ Research claims framed as **acceleration into mastery**, never remediation/ELL/catch-up (§07a)
+✓ ELA = 7 levels (L1 Island → L7 Lens III); Poodle not adapted; Little DODO is a separate program
 ✓ Harvard Project Zero nameable; routine titles not in hero copy
 ✓ Founding Family Program — positioning, never promotion
 ✓ Affirmative default; "We Don't / We Do" only when strategic
