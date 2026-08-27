@@ -24,7 +24,7 @@ import { usePathname }  from 'next/navigation'
 // Stripped-path prefixes whose pages own an in-body closing CTA → suppress band.
 const SUPPRESS = [
   '/about', '/program', '/little-dodo', '/methodology', '/lexile', '/results',
-  '/navigators', '/compare', '/demos', '/consult',
+  '/navigators', '/compare', '/demos', '/consult', '/credentials',
   '/blog', '/cities', '/audiobooks', '/privacy', '/terms',
 ]
 

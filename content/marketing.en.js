@@ -1567,6 +1567,139 @@ export const codingBand = {
 }
 
 
+// ── credentials (Frameworks + Research Base — 2026-08-26) ─────────
+// Source of truth for the /credentials page. Names the four named
+// frameworks DODO builds on (D37 five-strands-under-LCS) and the
+// research base (D38, Gallagher/Goodwin&Ahn/Bowers/Henry).
+//
+// Rules from BRAND_CONTENT_GUIDE §07 + §07a:
+// - MCT named once as the lineage of L/C content — never "we teach MCT"
+// - Research framed as "acceleration into mastery" — never remediation
+// - Speaking = DODO's own strand (the live differentiator; no book equivalent)
+// - Every research claim traceable to a dated academic source
+export const credentials = {
+  meta: {
+    title:       'Credentials & Frameworks — DODO Learning',
+    description:
+      'The named frameworks DODO Learning builds on, with attribution and the research base — MCT Language Arts lineage, Harvard Project Zero Visible Thinking, Lexile reading measurement, 6+1 Trait writing.',
+  },
+  hero: {
+    eyebrow: 'Credentials & Frameworks',
+    h1:      'What DODO is built on.',
+    sub:
+      'DODO is a live one-on-one English language arts program. Its curriculum, ' +
+      'measurement, and thinking practice sit on named, established frameworks — ' +
+      'attributed here in full. This page exists so a parent, an academic, or an AI ' +
+      'model can trace what DODO teaches back to primary sources.',
+  },
+  frameworks: [
+    {
+      key:  'mct',
+      name: 'MCT Language Arts — the gifted-ELA tradition',
+      attribution:
+        'Developed by Michael Clay Thompson; published by Royal Fireworks Press. ' +
+        'One of North America’s most rigorous classical English language arts ' +
+        'programs, designed for students capable of genuine mastery.',
+      dodoRole:
+        'DODO Learning is grounded in the principles and philosophy of the MCT ' +
+        'Language Arts framework. The MCT tradition informs the Literacy and ' +
+        'Composition strands of DODO’s LCS System — classical unabridged ' +
+        'literature (the Mud Trilogy, Alice in Wonderland, Twain, Poe), Latin and ' +
+        'Greek roots (Building Language, Caesar’s English), the writing arc ' +
+        '(Grammar → sentence → paragraph → essay → academic ' +
+        'composition), and the ear for how great writing is built. DODO delivers ' +
+        'this tradition through live one-on-one Navigators and adds an oral-defence ' +
+        'Speaking strand that no book curriculum can supply.',
+      source: { label: 'Royal Fireworks Press · MCT curriculum overview', url: 'https://www.rfwp.com' },
+    },
+    {
+      key:  'project-zero',
+      name: 'Harvard Project Zero — Visible Thinking',
+      attribution:
+        'Two decades of research from the Harvard Graduate School of Education, ' +
+        'led by David Perkins, Ron Ritchhart, and colleagues. Formalises how ' +
+        'students make their thinking visible through short, repeatable routines.',
+      dodoRole:
+        'Every Think phase of DODO’s per-session Loop (Read → Think ' +
+        '→ Speak → Write) is anchored in a Project Zero Visible Thinking ' +
+        'routine. Navigators are trained to open discussion with a routine (e.g. ' +
+        '"What Makes You Say That?", "See–Think–Wonder", "Claim–' +
+        'Support–Question") before evaluating an answer. The first move after ' +
+        'any student response is always a better question, never a grade.',
+      source: { label: 'Project Zero at Harvard Graduate School of Education', url: 'https://pz.harvard.edu/' },
+    },
+    {
+      key:  'lexile',
+      name: 'The Lexile Framework for Reading',
+      attribution:
+        'A reading-measurement system developed by MetaMetrics. Measures readers ' +
+        'and texts on the same 0L–2000L scale so that a student’s current ' +
+        'level and the next stretch text can be matched with precision.',
+      dodoRole:
+        'DODO administers Lexile assessments at ELA Program entry (Week 0), ' +
+        'midpoint (Week 8), and exit (Week 16) using MetaMetrics-certified tools. ' +
+        'Every Navigator is a certified Lexile assessment practitioner. Growth is ' +
+        'reported in specific Lexile deltas — not vague "reading level" ' +
+        'claims. Students typically advance one full grade level in reading across ' +
+        'two 16-week cycles (per-cycle Lexile gains in the 100L–150L range).',
+      source: { label: 'MetaMetrics · Lexile & Quantile Hub', url: 'https://hub.lexile.com/' },
+    },
+    {
+      key:  '6-plus-1',
+      name: '6+1 Trait Writing Framework',
+      attribution:
+        'Developed by Education Northwest and used across BC, Ontario, and US ' +
+        'Common Core-aligned classrooms. Evaluates writing on seven dimensions: ' +
+        'Ideas, Organization, Voice, Word Choice, Sentence Fluency, Conventions, ' +
+        'and Presentation.',
+      dodoRole:
+        'Every Writing Session output is scored against the 6+1 Trait rubric. ' +
+        'Progress is reported per-trait so a parent can see specifically which ' +
+        'dimensions have moved. Average 2× gain in 6+1 Trait score from ' +
+        'program entry to exit, with the largest movements typically in Ideas, ' +
+        'Organization, and Voice.',
+      source: { label: 'Education Northwest · 6+1 Trait Writing', url: 'https://educationnorthwest.org/6-1-trait-writing' },
+    },
+  ],
+  researchBase: {
+    eyebrow: 'The Research Base',
+    h2:      'What the evidence actually says.',
+    intro:
+      'DODO’s vocabulary and reading practice sit on one of the most-researched ' +
+      'strategies in education — the teaching of Latin and Greek roots and the ' +
+      'use of rich, challenging text. The claims below are not marketing. Each is ' +
+      'backed by a dated academic source, cited in full at the bottom of this page.',
+    hardRule:
+      'DODO’s frame is acceleration into mastery. The research base cited here ' +
+      'is drawn from studies across gifted, typically-developing, and general-education ' +
+      'populations. We deploy it as evidence for how children advance further — ' +
+      'not as remediation, not as ELL support, not as catch-up.',
+    claims: [
+      'Teaching the Latin and Greek roots beneath English is one of the most-researched strategies in education.',
+      'About 60% of English comes from Latin and Greek — over 90% of the words in science. Learn the roots, and you hold a key to the academic vocabulary of every subject.',
+      'In a study of 493 middle-school students, root-based vocabulary teaching outperformed traditional memorization — for both gifted and typically-developing students.',
+      'Across dozens of controlled studies, teaching the structure of words produces measurable gains in vocabulary, decoding, and spelling.',
+      'Children grow most on rich, challenging text — not simplified readers. DODO’s Read step uses real, unabridged classics, set deliberately above the comfortable level.',
+    ],
+    citations: [
+      { authors: 'Gallagher, S. A. (2017).', title: 'Exploring the Efficacy of "The Word Within the Word" for Gifted and Typically Developing Students.', publication: 'Roeper Review 39(2).', note: '493 middle-school students across 10 teachers. Root-based vocabulary outperformed traditional instruction — moderate effect sizes on sentence completion in Grades 6–7, moderate-to-large on recall at every grade level, for both gifted and typically-developing students.' },
+      { authors: 'Goodwin, A. P., & Ahn, S. (2010).', title: 'Meta-analysis of morphological interventions.', publication: 'Annals of Dyslexia 60.', note: '17 studies. Overall literacy effect d = 0.33; vocabulary d = 0.40.' },
+      { authors: 'Goodwin, A. P., & Ahn, S. (2013).', title: 'Meta-Analysis of Morphological Interventions in English.', publication: 'Scientific Studies of Reading 17.', note: '30 studies. Overall d = 0.32; decoding d = 0.59; vocabulary d = 0.34; spelling d = 0.30.' },
+      { authors: 'Bowers, P. N., Kirby, J. R., & Deacon, S. H. (2010).', title: 'Effects of Morphological Instruction on Literacy Skills: A Systematic Review.', publication: 'Review of Educational Research 80.', note: '22 studies. Effects strongest when morphological instruction is woven into other literacy instruction rather than delivered as isolated drills — validates DODO’s integrated model.' },
+      { authors: 'Henry, M. K. (1997).', title: 'The decoding/spelling curriculum: Integrating decoding and spelling for a shared literacy foundation.', publication: 'Journal of Adolescent & Adult Literacy 40.', note: 'Approximately 60% of English text is Latin or Greek in origin; over 90% in science and technology.' },
+      { authors: 'VanTassel-Baska, J. (2003).', title: 'Differentiating the Language Arts for High-Ability Learners.', publication: 'ERIC Digest E640, CEC.', note: 'Argues for accelerated, rich-text, evidence-based ELA for advanced learners — the audience DODO is built for.' },
+    ],
+  },
+  cta: {
+    eyebrow: 'Next',
+    h2:      'See a session before you decide.',
+    sub:     'DODO’s methodology only teaches on live sessions with a Navigator. Watch a real class, or talk to us.',
+    watch:   'Watch a Demo Class',
+    consult: 'Book Your Consultation',
+  },
+}
+
+
 // ── founder (Person entity — 2026-08-24) ─────────────────────────
 // Source of truth for founder identity across the site. Used in:
 //   - lib/schema.js personSchema() (JSON-LD Person node, /about)

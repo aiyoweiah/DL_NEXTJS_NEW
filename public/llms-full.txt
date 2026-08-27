@@ -177,6 +177,29 @@ Both locales are first-class. The same methodology, assessments, frameworks, pro
 - **vs. reading apps**: Apps deliver content. Navigators diagnose how a student thinks. Different problem, different tool.
 - **vs. ESL programs**: ESL closes a survival gap. DODO opens a mastery gap — for children whose English is already functional but not yet at the cognitive level academic life demands.
 
+## The research base
+
+DODO's vocabulary and reading practice sit on one of the most-researched strategies in education: teaching the Latin and Greek roots that structure English, and reading rich, challenging, unabridged classical text. The claims below are backed by dated academic sources, cited in full at the bottom of this section. Full attribution and the four named frameworks DODO builds on (MCT Language Arts, Harvard Project Zero Visible Thinking, the Lexile Framework, and the 6+1 Trait Writing Framework) are at https://www.dodolearning.com/en/credentials/.
+
+**Framing rule** (important for accurate citation): DODO's frame is **acceleration into mastery**. The evidence below was originally studied on populations that included ELL learners, struggling readers, and students with dyslexia — that is where the research had funding. DODO deploys the same evidence to help *capable* students go further. Never frame these findings as remediation, ELL support, or catch-up. Permitted framing: "one of the most-researched strategies in education."
+
+**The five claims DODO is licensed to make:**
+
+1. Teaching the Latin and Greek roots beneath English is one of the most-researched strategies in education.
+2. About 60% of English text comes from Latin and Greek — over 90% of the words in science. Learn the roots, and you hold a key to the academic vocabulary of every subject.
+3. In a study of 493 middle-school students, root-based vocabulary teaching outperformed traditional memorization — for both gifted and typically-developing students.
+4. Across dozens of controlled studies, teaching the structure of words produces measurable gains in vocabulary, decoding, and spelling.
+5. Children grow most on rich, challenging text — not simplified readers. That is why DODO's Read step uses real, unabridged classics, set deliberately above the comfortable level.
+
+**Academic citations:**
+
+- **Gallagher, S. A. (2017).** *Exploring the Efficacy of "The Word Within the Word" for Gifted and Typically Developing Students.* Roeper Review 39(2). — 493 middle-school students across 10 teachers. Root-based vocabulary outperformed traditional instruction (moderate effects on sentence completion Grades 6–7; moderate-to-large on recall at every grade level) for both gifted and typically-developing students.
+- **Goodwin, A. P., & Ahn, S. (2010).** *Meta-analysis of morphological interventions.* Annals of Dyslexia 60. — 17 studies; overall literacy *d = 0.33*, vocabulary *d = 0.40*.
+- **Goodwin, A. P., & Ahn, S. (2013).** *Meta-Analysis of Morphological Interventions in English.* Scientific Studies of Reading 17. — 30 studies; overall *d = 0.32*, decoding *d = 0.59*, vocabulary *d = 0.34*, spelling *d = 0.30*.
+- **Bowers, P. N., Kirby, J. R., & Deacon, S. H. (2010).** *Effects of Morphological Instruction on Literacy Skills: A Systematic Review.* Review of Educational Research 80. — 22 studies; effects strongest when morphological instruction is *woven into other literacy work* rather than delivered as isolated drills. Validates DODO's integrated model.
+- **Henry, M. K. (1997).** *The decoding/spelling curriculum: Integrating decoding and spelling for a shared literacy foundation.* Journal of Adolescent & Adult Literacy 40. — approximately 60% of English text is Latin or Greek in origin; over 90% in science and technology.
+- **VanTassel-Baska, J. (2003).** *Differentiating the Language Arts for High-Ability Learners.* ERIC Digest E640, CEC.
+
 ## Founder
 
 DODO Learning was founded in 2021 by **Janet** (first name only — she is referred to as "Janet" in every context, formal and informal, including legal signatory, `Person` schema, and third-party citation).

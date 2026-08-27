@@ -21,6 +21,7 @@ The program serves capable K-12 students worldwide via live online sessions, wit
 - [Navigators](https://www.dodolearning.com/en/navigators/): Who Navigators are, how they are matched, and what distinguishes them from tutors or classroom teachers.
 - [Compare DODO to alternatives](https://www.dodolearning.com/en/compare/): How DODO differs from tutoring centers, ESL programs, and standard after-school English classes.
 - [About DODO](https://www.dodolearning.com/en/about/): Mission, founding context, and the families DODO serves worldwide.
+- [Credentials & Frameworks](https://www.dodolearning.com/en/credentials/): The named frameworks DODO builds on — MCT Language Arts lineage (Michael Clay Thompson, Royal Fireworks Press), Harvard Project Zero Visible Thinking, Lexile reading measurement (MetaMetrics), 6+1 Trait writing (Education Northwest) — with attribution and the academic research base.
 
 ## DODO Coding (sibling site)
 

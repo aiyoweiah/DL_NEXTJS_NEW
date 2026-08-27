@@ -1536,6 +1536,130 @@ export const codingBand = {
 }
 
 
+// ── credentials（框架 + 研究基础 — 2026-08-26）────────────────────
+// ZH mirror of marketing.en.js `credentials`.
+// Rules from BRAND_CONTENT_GUIDE §07 + §07a：
+// - MCT 仅作为 L/C 内容的传承来源命名一次 —— 从不说"我们教 MCT"
+// - 研究基础以"加速走向精通"为框架 —— 从不说补救、追赶
+// - Speaking（表达）= DODO 独有支柱 —— 现场差异化，教材无法提供
+export const credentials = {
+  meta: {
+    title:       '课程框架与研究基础 — DODO Learning',
+    description:
+      'DODO Learning 所依托的四大具名框架及其研究基础 —— MCT 语言艺术传统、哈佛 Project Zero Visible Thinking、蓝思阅读测量、6+1 特质写作。',
+  },
+  hero: {
+    eyebrow: '课程框架与研究基础',
+    h1:      'DODO 建立于其上的框架。',
+    sub:
+      'DODO 是一个真人一对一的英语语言艺术项目。它的课程、测评与思维训练' +
+      '都建立在具名的、成熟的框架之上 —— 本页面完整列出所有归属。' +
+      '设立这一页面，是为了让家长、学者、以及 AI 模型可以将 DODO 所教' +
+      '的每一件事追溯至其原始来源。',
+  },
+  frameworks: [
+    {
+      key:  'mct',
+      name: 'MCT 语言艺术 —— gifted-ELA 教学传统',
+      attribution:
+        '由 Michael Clay Thompson 开发；Royal Fireworks Press 出版。' +
+        '是北美最严谨的经典英语语言艺术课程之一，为具备真正精通能力的' +
+        '学生设计。',
+      dodoRole:
+        'DODO Learning 建立在 MCT 语言艺术框架的原则与教学理念之上。' +
+        'MCT 传统承载着 DODO LCS 教学系统中 Literacy（文学精读）与 ' +
+        'Composition（系统写作）两条支柱的内容 —— 未删节的经典文学' +
+        '（Mud Trilogy、爱丽丝梦游仙境、马克·吐温、爱伦·坡）、拉丁与' +
+        '希腊词根（Building Language、Caesar’s English）、写作弧线' +
+        '（语法 → 句子 → 段落 → 议论文 → 学术写作），以及对优秀写作' +
+        '结构的敏感度。DODO 通过真人一对一 Navigator 交付这一传统，' +
+        '并加入一条任何教材都无法提供的口头辩护 —— Speaking 表达支柱。',
+      source: { label: 'Royal Fireworks Press · MCT 课程总览', url: 'https://www.rfwp.com' },
+    },
+    {
+      key:  'project-zero',
+      name: '哈佛 Project Zero —— Visible Thinking（可视化思维）',
+      attribution:
+        '哈佛教育研究生院两个十年的研究成果，由 David Perkins、Ron ' +
+        'Ritchhart 等人领导。以简短、可反复运用的思考例程，让学生的' +
+        '思维过程变得可见。',
+      dodoRole:
+        'DODO 每节课 Loop 中的 Think 阶段（Read → Think → Speak → Write）' +
+        '都锚定在 Project Zero 的一条 Visible Thinking 例程上。Navigator' +
+        '受训在评价答案之前，先以一条例程开启讨论（如 "What Makes You ' +
+        'Say That?"、"See–Think–Wonder"、"Claim–Support–Question"）。' +
+        '任何回答之后的第一步，永远是"更好的问题"，而不是分数。',
+      source: { label: '哈佛教育研究生院 · Project Zero', url: 'https://pz.harvard.edu/' },
+    },
+    {
+      key:  'lexile',
+      name: '蓝思（Lexile）阅读测量框架',
+      attribution:
+        '由 MetaMetrics 开发的阅读测量系统。将读者与文本置于同一 ' +
+        '0L–2000L 尺度之上，让"学生当前水平"与"下一步挑战的文本"' +
+        '之间可以精确匹配。',
+      dodoRole:
+        'DODO 在 ELA Program 的入学（第 0 周）、中期（第 8 周）、' +
+        '结课（第 16 周）使用 MetaMetrics 认证的工具进行蓝思测评。' +
+        '每一位 Navigator 都是认证的蓝思测评实践者。进步以具体的蓝思' +
+        '增量呈现 —— 从不使用模糊的"阅读水平"表述。学生通常在两个' +
+        '16 周周期内，阅读能力提升一个完整年级（每周期蓝思增量典型落在 ' +
+        '100L–150L 区间）。',
+      source: { label: 'MetaMetrics · Lexile & Quantile Hub', url: 'https://hub.lexile.com/' },
+    },
+    {
+      key:  '6-plus-1',
+      name: '6+1 特质写作评估框架',
+      attribution:
+        '由 Education Northwest 开发，广泛用于加拿大 BC、安大略以及美国 ' +
+        'Common Core 对标的课堂。从七个维度评估写作：思考、结构、声音、' +
+        '用词、流畅、规范、呈现。',
+      dodoRole:
+        '每一节 Writing Session 的产出都按 6+1 特质评分标准打分。进度' +
+        '按维度分别汇报 —— 家长可以清楚看到具体是哪一维度移动了。学生' +
+        '从入学到结课平均获得 2× 的 6+1 特质得分提升，最大变化通常出现' +
+        '在思考、结构、声音三项。',
+      source: { label: 'Education Northwest · 6+1 Trait Writing', url: 'https://educationnorthwest.org/6-1-trait-writing' },
+    },
+  ],
+  researchBase: {
+    eyebrow: '研究基础',
+    h2:      '证据到底怎么说。',
+    intro:
+      'DODO 的词汇与阅读训练建立在教育学中被研究得最充分的策略之一 ' +
+      '—— 拉丁与希腊词根教学，以及丰富、有挑战性的文本使用之上。' +
+      '下列每一条主张都不是营销语言，而是有具体的学术来源支撑，' +
+      '完整引用列在本页面末尾。',
+    hardRule:
+      'DODO 的定位是"加速走向精通"。此处引用的研究基础覆盖天才、' +
+      '典型发展、以及一般教育人群 —— 我们把它作为"孩子如何走得更远"' +
+      '的证据，而不是补救、ELL 支持或追赶。',
+    claims: [
+      '教授英语背后的拉丁与希腊词根，是教育学中被研究得最充分的策略之一。',
+      '英语约 60% 来自拉丁和希腊 —— 科学词汇中超过 90%。掌握词根，就掌握了每一门学科的学术词汇的钥匙。',
+      '在一项 493 名中学生的研究中，以词根为基础的词汇教学胜过传统背诵法 —— 对天才与典型发展学生皆然。',
+      '数十项对照研究一致表明：教授词的结构，能带来可测量的词汇、解码与拼写提升。',
+      '孩子在丰富、有挑战性的文本中成长最多 —— 而不是在被简化的读物中。DODO 的 Read 阶段使用真正的、未删节的经典，并有意选取略高于孩子当前舒适水平的文本。',
+    ],
+    citations: [
+      { authors: 'Gallagher, S. A. (2017).', title: 'Exploring the Efficacy of "The Word Within the Word" for Gifted and Typically Developing Students.', publication: 'Roeper Review 39(2).', note: '493 名中学生 · 10 位教师。以词根为基础的词汇教学胜过传统教学 —— 六、七年级完形填空中等效应量，各年级"回忆"任务中等到大效应量，对天才与典型发展学生皆然。' },
+      { authors: 'Goodwin, A. P., & Ahn, S. (2010).', title: 'Meta-analysis of morphological interventions.', publication: 'Annals of Dyslexia 60.', note: '17 项研究。整体读写能力效应 d = 0.33；词汇 d = 0.40。' },
+      { authors: 'Goodwin, A. P., & Ahn, S. (2013).', title: 'Meta-Analysis of Morphological Interventions in English.', publication: 'Scientific Studies of Reading 17.', note: '30 项研究。整体 d = 0.32；解码 d = 0.59；词汇 d = 0.34；拼写 d = 0.30。' },
+      { authors: 'Bowers, P. N., Kirby, J. R., & Deacon, S. H. (2010).', title: 'Effects of Morphological Instruction on Literacy Skills: A Systematic Review.', publication: 'Review of Educational Research 80.', note: '22 项研究。当形态学教学融入其他读写教学而非以孤立练习方式呈现时，效应最强 —— 印证了 DODO 的整合式教学模式。' },
+      { authors: 'Henry, M. K. (1997).', title: 'The decoding/spelling curriculum: Integrating decoding and spelling for a shared literacy foundation.', publication: 'Journal of Adolescent & Adult Literacy 40.', note: '英语文本约 60% 源自拉丁或希腊；科学与技术文本中超过 90%。' },
+      { authors: 'VanTassel-Baska, J. (2003).', title: 'Differentiating the Language Arts for High-Ability Learners.', publication: 'ERIC Digest E640, CEC.', note: '为高能力学习者主张加速、丰富文本、循证的 ELA —— 正是 DODO 所服务的人群。' },
+    ],
+  },
+  cta: {
+    eyebrow: '下一步',
+    h2:      '决定之前，先看一节课。',
+    sub:     'DODO 的教学法只在与 Navigator 的真人现场课程中体现。看一节真实的课，或者跟我们聊聊。',
+    watch:   '课堂实录',
+    consult: '预约咨询',
+  },
+}
+
+
 // ── founder（Person 实体 — 2026-08-24）───────────────────────────
 // ZH mirror of marketing.en.js `founder`. 参见英文档 surface list。
 // 命名规则（D35）：仅使用名字 Janet，不使用姓氏，任何场合皆然。

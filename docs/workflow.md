@@ -305,6 +305,36 @@ These block downstream work. Updated 2026-05-17.
 
 ## Session Log
 
+### 2026-08-26 — Ship: /credentials + MCT pillar blog post (Tier-2 #2 + #3)
+
+**Context:** Directly downstream of the 2026-08-25 two-channel pivot. `/credentials` and the MCT pillar blog post were the two "no user input needed" Tier-2 items called out as next-session candidates. Also landed in this session: reconciliation with the D36–D42 brand-guide refresh that shipped from the parallel session earlier today (commit `352cc53`) — the D37 five-strands-under-LCS and D38 research-base citations were both natural inputs into what shipped here.
+
+**Did (SHIPPED 2026-08-26):**
+- **`/credentials` bilingual reference page** — new route at `app/[locale]/credentials/page.jsx` (EN + ZH). Four named-framework blocks (MCT / Harvard Project Zero / Lexile / 6+1 Trait) with full attribution + how DODO uses each; §Research Base with 5 permitted claims + 6 academic citations (Gallagher 2017, Goodwin & Ahn 2010/2013, Bowers/Kirby/Deacon 2010, Henry 1997, VanTassel-Baska 2003); D38 hard rule enforced (acceleration into mastery, never remediation). Content lives in new `credentials` export of `content/marketing.{en,zh}.js`.
+- **`credentialsSchema()` in `lib/schema.js`** — CollectionPage with 4 `EducationalOccupationalCredential` nodes (one per framework, each with `recognizedBy` pointing to the actual publisher/institution) + 5 `citation` nodes as `ScholarlyArticle`s with authors/year/journal/effect-size notes. Injected on `/credentials`. Closes D38 schema cascade item.
+- **MCT pillar blog post** — `content/en/blog/mct-language-arts-in-a-live-one-on-one-program.mdx`, ~1500 words, authored by Janet as "Founder & Lead Navigator". Category: Methodology. Full research citations at the bottom + link to `/credentials` for canonical attribution. Written per D40 audience framing (no international-headline hook) and D41 canonical positioning (English mastery + measured growth + Speaking-as-live-differentiator).
+- **`public/llms-full.txt`** — new §Research Base section with the 5 permitted claims + 6 citations. Closes D38 llms-full cascade item.
+- **`public/llms.txt` Core pages** — added `/credentials` entry.
+- **`app/sitemap.js`** — `/credentials` at priority 0.7 (matches `/navigators` and `/blog`).
+- **`components/layout/PreCtaBand.jsx`** — `/credentials` added to `SUPPRESS` list per D33 (page owns its own close CTA).
+- **`docs/pending-guide-cascade.md`** — D38 llms-full.txt + schema items marked done; new note added that `/credentials` is now the canonical attribution surface.
+
+**Verified:** `npx next build` clean; both `/en/credentials` and `/zh/credentials` prerendered; MCT blog post at `/en/blog/mct-language-arts-in-a-live-one-on-one-program` prerendered.
+
+**Did NOT do (deferred to a later apply gate):**
+- `/methodology` "Why this works" block (D38 pending cascade item).
+- Home hero tagline update to "Think once, in two languages." (D36 pending cascade item).
+- `/about` ClosingStamp tagline (D36).
+- `/faq` new evidence question (D38).
+- `/compare` new competitor rows for gifted-ELA-books + free-AI-tutors (D41).
+- `/program` + home + `/about` audience reframe to drop "globally-mobile" headline (D40 pending cascade item on the site body — llms.txt already done 2026-08-25).
+- ZH translation of the MCT blog post — EN first, ZH cascade when we have a ZH-native translator pass.
+- September v3 capture pass — deferred; needs its own session and won't reflect impact of the ships above until LLMs recrawl.
+
+**For next session, start by:** Either (a) run the September v3 capture pass now that /credentials and the MCT blog post are seeding new citation surface, or (b) ship the remaining D40/D41 site-copy cascade if that has broader-priority effect on visitors landing today. The GEO investment made in /credentials + MCT blog is durable — the recrawl-and-index cycle for LLMs is weeks to months, so measurement of impact should be run at 2026-09-15+ rather than immediately.
+
+---
+
 ### 2026-08-25 (evening) — Strategy pivot: two-channel GEO + v3 prompts + llms-full.txt rebalance
 
 **Trigger:** manual review of the v2 conversational prompt set surfaced that DODO-adjacent demographic hooks ("we're a Chinese-speaking family") were routing 3/4 LLMs' answers into the newcomer-settlement bucket (SUCCESS, LINC, MOSAIC, TDSB ESL) — the wrong category for DODO. Reframed as a two-channel GEO strategy.

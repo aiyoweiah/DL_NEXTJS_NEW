@@ -15,10 +15,11 @@
 
 ### D38 · Research Base (§07a) seeding
 - [ ] `/methodology` — "Why this works" block (40–80-word GEO-ready + the 5 permitted claims, EN + ZH)
-- [ ] `public/llms-full.txt` — mirror the citation list + claims (EN only)
+- [x] `public/llms-full.txt` — mirror the citation list + claims (EN only) *(shipped 2026-08-26 alongside /credentials)*
 - [ ] One `/faq` entry — "Is DODO's approach evidence-based?" (EN + ZH, `content/faq.js`)
-- [ ] `schema` — `Course`/`EducationalOccupationalProgram` with `citation` nodes (hand to `schema` skill)
+- [x] `schema` — `Course`/`EducationalOccupationalProgram` with `citation` nodes *(shipped 2026-08-26 as `credentialsSchema()` CollectionPage + 4 `EducationalOccupationalCredential` nodes + 5 academic `citation` nodes, injected on `/credentials`)*
 - [ ] Enforce the hard rule everywhere: **acceleration into mastery**, never ELL/remediation/catch-up
+- [x] **NEW (2026-08-26): `/credentials` bilingual reference page + MCT-anchored pillar blog post** shipped — cascade for D37 (five strands under LCS) + D38 (research base) in one pass. All references route to `/credentials` as the canonical attribution surface.
 
 ### D37 · Five-Strands-under-LCS + 7-level ELA (if surfaced)
 - [ ] `/methodology` — optional "comprehensive approach" section (LCS umbrella + nested strands + Speaking-as-differentiator)
