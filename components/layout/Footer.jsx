@@ -32,9 +32,19 @@ import Link           from 'next/link'
 import LocaleSwitcher from '@/components/layout/LocaleSwitcher'
 import PreCtaBand     from '@/components/layout/PreCtaBand'
 
+// ── Helpers ───────────────────────────────────────────────────
+
+// Locale-prefix RELATIVE hrefs only. Content marks cross-site links with
+// `external: true` and stores an absolute URL; blindly prefixing those
+// produced `/enhttps://coding.dodolearning.com` on every page. Navbar already
+// handled this; Footer did not. Fixed v6.5.
+const isExternalHref = (href) => /^(https?:)?\/\//i.test(href || '')
+const resolveHref = (locale, href) =>
+  isExternalHref(href) ? href : `/${locale}${href}`
+
 // ── Sub-components ────────────────────────────────────────────
 
-function FooterLink({ href, label, soon, comingSoonLabel }) {
+function FooterLink({ href, label, soon, comingSoonLabel, external }) {
   // "Coming soon" items render as a non-link span with a muted badge.
   if (soon) {
     return (
@@ -58,12 +68,25 @@ function FooterLink({ href, label, soon, comingSoonLabel }) {
     )
   }
 
+  const linkClass =
+    'text-sm text-[#3D4452] hover:text-[color:var(--link-hover-color)] transition-colors duration-150 focus-visible:outline-none focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-[#b7b5fe] focus-visible:ring-offset-1 focus-visible:ring-offset-[#F5F5FF]'
+
+  // External links leave the site — plain <a>, new tab, and rel guarded.
+  // Matches how Navbar renders `external` items.
+  if (external) {
+    return (
+      <li>
+        <a href={href} target="_blank" rel="noopener noreferrer" className={linkClass}>
+          {label}
+          <span aria-hidden="true" style={{ marginLeft: '0.25rem' }}>↗</span>
+        </a>
+      </li>
+    )
+  }
+
   return (
     <li>
-      <Link
-        href={href}
-        className="text-sm text-[#3D4452] hover:text-[color:var(--link-hover-color)] transition-colors duration-150 focus-visible:outline-none focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-[#b7b5fe] focus-visible:ring-offset-1 focus-visible:ring-offset-[#F5F5FF]"
-      >
+      <Link href={href} className={linkClass}>
         {label}
       </Link>
     </li>
@@ -182,7 +205,8 @@ export default function Footer({ locale, copy }) {
                 {copy.program.map((link) => (
                   <FooterLink
                     key={link.href}
-                    href={`/${locale}${link.href}`}
+                    href={resolveHref(locale, link.href)}
+                    external={link.external}
                     label={link.label}
                     soon={link.soon}
                     comingSoonLabel={copy.comingSoon}
@@ -198,7 +222,8 @@ export default function Footer({ locale, copy }) {
                 {copy.resources.map((link) => (
                   <FooterLink
                     key={link.href}
-                    href={`/${locale}${link.href}`}
+                    href={resolveHref(locale, link.href)}
+                    external={link.external}
                     label={link.label}
                     soon={link.soon}
                     comingSoonLabel={copy.comingSoon}
@@ -214,7 +239,8 @@ export default function Footer({ locale, copy }) {
                 {copy.serving.map((link) => (
                   <FooterLink
                     key={link.href}
-                    href={`/${locale}${link.href}`}
+                    href={resolveHref(locale, link.href)}
+                    external={link.external}
                     label={link.label}
                   />
                 ))}
@@ -279,7 +305,7 @@ export default function Footer({ locale, copy }) {
               {copy.legal.links.map((link) => (
                 <Link
                   key={link.href}
-                  href={`/${locale}${link.href}`}
+                  href={resolveHref(locale, link.href)}
                   className="text-xs text-[color:var(--text-muted)] hover:text-[#212830] transition-colors duration-150 focus-visible:outline-none focus-visible:rounded-sm focus-visible:ring-1 focus-visible:ring-[#b7b5fe] focus-visible:ring-offset-1 focus-visible:ring-offset-[#F5F5FF]"
                 >
                   {link.label}
