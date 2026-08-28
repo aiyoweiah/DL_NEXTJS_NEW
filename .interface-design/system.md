@@ -4,8 +4,9 @@ Living reference for the DODO marketing site chrome (navbar, footer, funnel CTAs
 and its visual token system. Read this before touching navigation, CTAs, the
 pre-footer band, or any colour value.
 
-**Current through:** v6.4 · 2026-08-27 (display typeface D51; token-table correction +
-strategy layer in v6.3).
+**Current through:** v6.5 · 2026-08-28 (live-conformance fixes: button specificity,
+surface-specific muted, external links). v6.4 added display typeface D51; v6.3 the
+token-table correction + strategy layer.
 **Sibling document:** `translation/BRAND_CONTENT_GUIDE.md` (**v5.1**, decisions through
 **D50**) owns voice, copy and positioning; this file owns chrome and visual tokens.
 Decisions are numbered **D** in `docs/content-style-decisions.md` and apply to *both* —
@@ -195,6 +196,7 @@ established. Ratios are measured (WCAG 2.1 relative luminance), not estimated.
 | Label / eyebrow **on light** | `#5856cc` | `#F5F5FF` | 5.36:1 ✅ |
 | Body text on light | `#3D4452` | `#F5F5FF` | 9.03:1 ✅ |
 | Muted text on light | `#5E6879` | `#F5F5FF` | 5.19:1 ✅ |
+| Muted text on **dark** | `#9AA3B2` | `#0E0E12` | 7.57:1 ✅ |
 | Gilt / gold accent (badges, `btn-gilt`) | `#F5C842` | `#0E0E12` | 12.1:1 ✅ |
 | Gilt as *text* on light | `#C49400` | `#F5F5FF` | 4.6:1 ✅ |
 | Success text on light | `#1E6E4B` | `#F5F5FF` | 5.72:1 ✅ |
@@ -232,6 +234,13 @@ established. Ratios are measured (WCAG 2.1 relative luminance), not estimated.
     single text color passes on both black and white, so the secondary MUST match its surface.
 - `btn-gilt` is a safety **alias of `btn-charter`** (it was once undefined → invisible). Prefer
   `btn-charter` directly. When adding a CTA, ask: filled or outline? and dark or light surface?
+- ⚠️ **A section-scoped descendant selector must never set a component's colour.**
+  `.section-dark a { color: … }` is specificity `(0,1,1)`; `.btn-charter { color: … }` is
+  `(0,1,0)`, so the section rule silently repainted every button inside a dark section.
+  Live effect before the v6.5 fix: gold CTAs rendered lavender-on-gold (**1.2:1**), and the
+  404 page's `btn-primary` rendered lavender-on-lavender (**1.0:1 — the label was exactly
+  the same colour as its own fill**). The dark-section link rules now carry `:not(.btn)`.
+  When adding any surface-scoped text rule, exclude components explicitly.
 
 **Token architecture — three layers (added v6.3).** Primitive → semantic → component.
 `globals.css` currently defines primitives (`--color-lavender-signal`) and semantics
@@ -394,7 +403,29 @@ not listed.
 - [x] D51 display face wired (`lib/fonts.js`, root layout, `.font-display`) and
       **piloted on `/methodology` h1 only**.
 
+**Done in v6.5 (2026-08-28) — from the live-conformance audit:**
+
+- [x] `.section-dark a` / `.section-darker a` now carry `:not(.btn)`. Fixes invisible
+      buttons on every dark section and on all 404 pages.
+- [x] `--text-muted-dark` (`#9AA3B2`) added; `.proof-stat-label` re-pointed to it.
+      The v6.4 muted raise was correct on light but regressed dark surfaces
+      (`#7B8494` was 5.11:1 on Void Black; `#5E6879` is 3.42:1). **Muted is
+      surface-specific — the same rule the outline buttons already follow.**
+- [x] Footer now locale-prefixes only relative hrefs. Links flagged `external: true`
+      carry absolute URLs and were becoming `/enhttps://coding.dodolearning.com`
+      on every page. Footer now matches Navbar's existing `external` handling.
+
 **Still open:**
+
+- [ ] **Dark heroes do not declare themselves as `.section-dark`** — they paint their
+      ground with positioned gradient backdrops instead. So `.section-dark .eyebrow`
+      and the dark link rules never fire there. Live effects: `.eyebrow` at `#5856cc`
+      on `#0E0E12` (3.32:1) on `/results` + `/methodology`; body `#3D4452` on dark on
+      `/about`; the `/faq` search placeholder at 1.52:1. **Fix the hook, not the nodes.**
+- [ ] `/results` stat numbers use `#b7b5fe` as text on white cards — 12 nodes at
+      1.90:1, plus 2 on `/program` at 1.67:1. These are the proof numbers (§04a).
+- [ ] `/program` numbered step badges are 9px white-on-lavender (1.90–3.80:1) —
+      below the 12px floor *and* failing contrast.
 
 - [ ] Extend the display face beyond `/methodology` — one surface at a time,
       verifying `/zh` each time. Home hero last.
