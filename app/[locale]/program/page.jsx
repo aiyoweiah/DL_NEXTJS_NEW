@@ -590,7 +590,7 @@ function CombinationsSection({ locale, c }) {
                 <p style={{ fontSize: '0.8125rem', lineHeight: 1.55, color: item.featured ? 'rgba(240,240,240,0.7)' : '#3D4452', marginTop: '0.75rem' }}>
                   {item.format}
                 </p>
-                <p style={{ fontSize: '0.75rem', lineHeight: 1.5, color: item.featured ? 'rgba(240,240,240,0.55)' : '#7B8494', marginTop: '0.5rem' }}>
+                <p style={{ fontSize: '0.75rem', lineHeight: 1.5, color: item.featured ? 'rgba(240,240,240,0.55)' : 'var(--text-muted)', marginTop: '0.5rem' }}>
                   {item.forWhom}
                 </p>
               </div>
@@ -603,7 +603,7 @@ function CombinationsSection({ locale, c }) {
             </article>
           ))}
         </div>
-        <p style={{ fontSize: '0.8125rem', color: '#7B8494', marginBottom: '0.625rem' }}>
+        <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', marginBottom: '0.625rem' }}>
           {k.note}
         </p>
         <Link href={`/${locale}/faq#enrollment`} style={{ fontSize: '0.875rem', fontWeight: 600, color: '#5856cc', textDecoration: 'none' }}>
@@ -808,7 +808,7 @@ function GetStartedSection({ locale, c }) {
             {c.cta.body}
           </p>
           <Link href={`/${locale}/consult`} className="btn btn-charter">{c.cta.btn}</Link>
-          <p style={{ fontSize: '0.8125rem', color: '#7B8494', marginTop: '0.875rem' }}>{c.cta.note}</p>
+          <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', marginTop: '0.875rem' }}>{c.cta.note}</p>
         </div>
       </div>
     </section>

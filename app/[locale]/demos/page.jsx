@@ -64,7 +64,7 @@ function Eyebrow({ children, center = false, dark = false }) {
 
 function Tag({ children, variant = 'default' }) {
   const s = {
-    default: { backgroundColor: 'rgba(14,14,18,0.05)',   border: '1px solid rgba(14,14,18,0.09)',     color: '#7B8494' },
+    default: { backgroundColor: 'rgba(14,14,18,0.05)',   border: '1px solid rgba(14,14,18,0.09)',     color: 'var(--text-muted)' },
     violet:  { backgroundColor: 'rgba(183,181,254,0.08)', border: '1px solid rgba(183,181,254,0.2)',  color: '#5856cc' },
     dark:    { backgroundColor: 'rgba(183,181,254,0.06)', border: '1px solid rgba(183,181,254,0.15)', color: '#b7b5fe', letterSpacing: '0.07em' },
   }

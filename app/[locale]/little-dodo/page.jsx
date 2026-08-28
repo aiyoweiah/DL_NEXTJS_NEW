@@ -42,7 +42,7 @@ function Eyebrow({ children, dark = false }) {
   return (
     <p
       className="text-xs font-semibold uppercase tracking-widest mb-3"
-      style={{ color: dark ? 'rgba(183,181,254,0.65)' : '#7c79e8' }}
+      style={{ color: dark ? 'rgba(183,181,254,0.65)' : 'var(--label-color)' }}
     >
       {children}
     </p>
@@ -64,7 +64,7 @@ function BilingualH2({ primary, secondary, light = false, id }) {
           style={{
             fontFamily: 'var(--font-cjk)',
             fontSize: '15px',
-            color: light ? 'rgba(183,181,254,0.4)' : '#7c79e8',
+            color: light ? 'rgba(183,181,254,0.4)' : 'var(--label-color)',
             marginTop: '0.5rem',
           }}
         >
@@ -262,7 +262,7 @@ function HowSection({ locale, c }) {
               className="rounded-xl p-6"
               style={{ backgroundColor: '#ffffff', border: '1px solid rgba(14,14,18,0.08)' }}
             >
-              <div style={{ fontSize: '12px', fontWeight: 700, color: '#7c79e8', letterSpacing: '0.06em', marginBottom: '0.75rem' }}>{s.num}</div>
+              <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--label-color)', letterSpacing: '0.06em', marginBottom: '0.75rem' }}>{s.num}</div>
               <h3 className="text-base font-bold mb-2" style={{ color: '#0E0E12' }}>{s.label}</h3>
               <p className="text-sm leading-relaxed" style={{ color: '#3D4452' }}>
                 {s.desc}
@@ -316,7 +316,7 @@ function FitSection({ c }) {
           <ul className="mt-6 space-y-3">
             {c.fit.points.map((p, i) => (
               <li key={i} className="flex items-start gap-3">
-                <span className="mt-2 shrink-0 w-1.5 h-1.5 rounded-full" style={{ backgroundColor: '#7c79e8' }} aria-hidden="true" />
+                <span className="mt-2 shrink-0 w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'var(--bullet-color)' }} aria-hidden="true" />
                 <span className="text-[0.9375rem] leading-relaxed" style={{ color: '#3D4452' }}>{p}</span>
               </li>
             ))}
@@ -345,7 +345,7 @@ function CtaSection({ locale, c }) {
             {/* white section → outline (ghost is dark-only) */}
             <Link href={`/${locale}/demos`} className="btn btn-outline">{c.cta.watch}</Link>
           </div>
-          <p style={{ fontSize: '0.8125rem', color: '#7B8494', marginTop: '0.875rem' }}>{c.cta.note}</p>
+          <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', marginTop: '0.875rem' }}>{c.cta.note}</p>
         </div>
       </div>
     </section>

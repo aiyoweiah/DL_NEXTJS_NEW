@@ -60,7 +60,8 @@
   --text-heading:          var(--color-deep-void);
   --text-accent:           #5856cc;                 /* 5.1:1 on Whisper — passes AA */
   --text-accent-dark:      var(--color-lavender-signal);
-  --text-muted:            #6B7280;                 /* ↑ from #7B8494 — now 4.6:1 on Whisper, passes AA */
+  --text-muted:            #5E6879;                 /* 5.19:1 on Whisper — passes AA. Raised v6.4 from
+                                                       #6B7280, which measured 4.46:1 (under the 4.5 line) */
   --text-inverse:          var(--color-platinum);
   --text-inverse-heading:  var(--color-lavender-signal);
   --text-gilt-light:       #C49400;                 /* gilt on light bg — passes AA */
@@ -94,6 +95,30 @@
   /* ── Typography ── */
   --font-latin: 'DM Sans', system-ui, sans-serif;
   --font-cjk:   'Noto Sans SC', system-ui, sans-serif;
+  /* Display faces — D51. Real values come from next/font via the <html>
+     className; these are documented fallbacks. DISPLAY ONLY (h1/h2,
+     ≥24px). See .interface-design/system.md § "Typeface pairing". */
+  --font-display:     'Literata', Georgia, Cambria, serif;
+  --font-display-cjk: 'Noto Serif SC', 'Songti SC', SimSun, serif;
+
+  /* ── Semantic status — light surfaces (v6.4) ── */
+  --text-success:   #1E6E4B;   /* 5.72:1 on Whisper. Replaces #7ec8a0 (1.82:1) as TEXT */
+  --text-error:     #B3261E;   /* 6.03:1 on Whisper. Replaces #c0504d (4.31:1) as TEXT */
+  --accent-success: #7EC8A0;   /* decorative / dark-surface only — never text on light */
+  --accent-error:   #c0504d;   /* decorative only */
+  --text-info:      #3a6ac4;   /* 4.80:1 on Whisper. Raised v6.4 from #3b6fcc (4.48:1) */
+
+  /* ── Component tokens (v6.4) ──
+     Third layer of primitive → semantic → component. Components MUST reach
+     for these instead of inventing hex. If you need a colour with no token
+     here, add the token first — that is what stops the drift structurally. */
+  --label-color:         var(--text-accent);       /* .eyebrow on light */
+  --label-color-dark:    var(--text-accent-dark);  /* .eyebrow on dark  */
+  --form-required-color: var(--text-accent);
+  --form-error-color:    var(--text-error);
+  --link-hover-color:    var(--text-accent);
+  --bullet-color:        var(--text-accent);        /* decorative dots on light.
+                                                       lavender-signal is 1.75:1 here — too faint */
 
   /* ── Transitions ── */
   --transition-fast:   150ms cubic-bezier(0.25,1,0.5,1);
@@ -1009,6 +1034,21 @@
     .container-section { padding-left: 4rem; padding-right: 4rem; }
   }
 
+  /* Display face — D51. h1/h2 on strategic surfaces only. Never below
+     24px, where Literata fights DM Sans instead of complementing it.
+     Labels stay on .eyebrow + DM Sans. */
+  .font-display {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.018em;
+  }
+
+  :lang(zh) .font-display,
+  .font-display:lang(zh) {
+    font-family: var(--font-display-cjk);
+    letter-spacing: 0;
+  }
+
   .eyebrow {
     font-size: 0.75rem;
     font-weight: 600;
@@ -1168,7 +1208,7 @@
    than standard AA. Boosts muted text and border visibility.  */
 @media (prefers-contrast: more) {
   :root {
-    --text-muted:      #4A5160;    /* was #6B7280 — boosts to 6.1:1 on Whisper */
+    --text-muted:      #4A5160;    /* boosts to 6.1:1 on Whisper (base is #5E6879) */
     --text-body:       #2A303C;    /* was #3D4452 — boosts body contrast        */
     --border-light:    rgba(14,14,18,0.25);  /* was 0.1 — more visible dividers */
     --border-medium:   rgba(14,14,18,0.35);  /* was 0.18                        */

@@ -373,7 +373,7 @@ function CodingBand({ c }: { c: any }) {
             style={{
               fontSize:      '1.125rem',
               fontWeight:    500,
-              color:         '#3b6fcc',
+              color:         'var(--text-info)',
               letterSpacing: '-0.005em',
             }}
           >
@@ -398,7 +398,7 @@ function CodingBand({ c }: { c: any }) {
             {c.cta.label} →
           </a>
 
-          <p style={{ fontSize: '0.8125rem', color: '#7B8494', letterSpacing: '0.04em' }}>
+          <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', letterSpacing: '0.04em' }}>
             <span style={{ color: '#0E0E12', fontWeight: 600 }}>{c.preview.machineVerbs}</span>
             <span style={{ margin: '0 0.75em', color: 'rgba(31,78,140,0.4)' }}>·</span>
             <span style={{ color: '#1F4E8C', fontWeight: 600 }}>{c.preview.criticalThinking}</span>

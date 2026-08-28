@@ -349,7 +349,7 @@ function WhoNavigatorsAre({ locale, c }) {
                     {c.navigators.videoCaption}
                   </span>
                 </div>
-                <span style={{ fontSize: '12px', color: '#7B8494', marginTop: '2px', paddingLeft: '14px' }}>
+                <span style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '2px', paddingLeft: '14px' }}>
                   {c.navigators.videoCaptionSub}
                 </span>
               </div>

@@ -251,7 +251,7 @@ function Field({ label, name, required, error, children }) {
   return (
     <div style={{ marginBottom: '1rem' }}>
       <label htmlFor={name} style={S.label}>
-        {label}{required && <span style={{ color: '#7c79e8', marginLeft: 2 }}>*</span>}
+        {label}{required && <span style={{ color: 'var(--form-required-color)', marginLeft: 2 }}>*</span>}
       </label>
       {children}
       {error && <p role="alert" style={S.fieldError}>{error}</p>}
@@ -512,7 +512,7 @@ const S = {
   mobileHint: {
     fontSize:   '0.75rem',
     lineHeight: 1.6,
-    color:      '#7B8494',
+    color:      'var(--text-muted)',
     margin:     '1.125rem 0 0',
     textAlign:  'center',
   },

@@ -22,7 +22,7 @@
 
 import '@/styles/globals.css'
 
-import { fontLatin, fontCJK } from '@/lib/fonts'
+import { fontLatin, fontCJK, fontDisplay, fontDisplayCJK } from '@/lib/fonts'
 import { buildMetadata }      from '@/lib/metadata'
 import { educationOrgSchema, websiteSchema } from '@/lib/schema'
 
@@ -52,7 +52,7 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html
-      className={`${fontLatin.variable} ${fontCJK.variable}`}
+      className={`${fontLatin.variable} ${fontCJK.variable} ${fontDisplay.variable} ${fontDisplayCJK.variable}`}
       suppressHydrationWarning
     >
       <head>

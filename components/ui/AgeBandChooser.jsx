@@ -31,7 +31,7 @@ export default function AgeBandChooser({ locale, copy, current }) {
 
         <p
           className="text-xs font-semibold uppercase tracking-widest mb-3"
-          style={{ color: '#7c79e8' }}
+          style={{ color: 'var(--label-color)' }}
         >
           {eyebrow}
         </p>
@@ -60,14 +60,14 @@ export default function AgeBandChooser({ locale, copy, current }) {
                 <div className="flex items-center gap-2 mb-3">
                   <span
                     className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded"
-                    style={{ color: '#7c79e8', backgroundColor: 'rgba(124,121,232,0.10)' }}
+                    style={{ color: 'var(--label-color)', backgroundColor: 'rgba(124,121,232,0.10)' }}
                   >
                     {b.tag}
                   </span>
                   {isCurrent && (
                     <span
                       className="text-[10px] font-semibold uppercase tracking-wider"
-                      style={{ color: '#7B8494' }}
+                      style={{ color: 'var(--text-muted)' }}
                     >
                       · {copy.here}
                     </span>
@@ -90,7 +90,7 @@ export default function AgeBandChooser({ locale, copy, current }) {
                 {isCurrent ? (
                   <span
                     className="text-sm font-semibold"
-                    style={{ color: '#7B8494' }}
+                    style={{ color: 'var(--text-muted)' }}
                     aria-hidden="true"
                   >
                     {copy.here}

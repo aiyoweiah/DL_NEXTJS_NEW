@@ -166,7 +166,7 @@ export default async function PrivacyPage({ params }) {
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight" style={{ color: '#212830' }}>
           {c.title}
         </h1>
-        <p className="mt-3 text-sm" style={{ color: '#7B8494' }}>
+        <p className="mt-3 text-sm" style={{ color: 'var(--text-muted)' }}>
           {c.updated}
         </p>
         <p className="mt-6 text-base leading-relaxed" style={{ color: '#3D4452' }}>

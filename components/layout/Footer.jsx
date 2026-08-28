@@ -22,8 +22,11 @@
 // resolving content/marketing.[locale].js → footer. EN-hardcoding gone.
 //
 // Logo: uses logo.svg (black fill #000000) — correct for light #F5F5FF.
-// Contrast: body text uses #3D4452, lavender accents use #7c79e8 (AA on #F5F5FF).
-// #b7b5fe (2.8:1 on white) is never used as text on light — #7c79e8 instead.
+// Contrast: body text uses #3D4452; lavender label text uses the
+// --label-color token (#5856cc, 5.36:1 on #F5F5FF — passes AA).
+// Corrected v6.4: #7c79e8 was previously used here and documented as
+// AA-safe, but it measures 3.37:1 on Whisper and fails for normal text.
+// #b7b5fe (1.75:1 on Whisper) is never used as text on light.
 
 import Link           from 'next/link'
 import LocaleSwitcher from '@/components/layout/LocaleSwitcher'
@@ -38,13 +41,13 @@ function FooterLink({ href, label, soon, comingSoonLabel }) {
       <li>
         <span
           className="text-sm inline-flex items-center gap-2"
-          style={{ color: '#7B8494' }}
+          style={{ color: 'var(--text-muted)' }}
         >
           {label}
           <span
             className="text-[10px] uppercase tracking-wider font-semibold px-1.5 py-0.5 rounded"
             style={{
-              color: '#7c79e8',
+              color: 'var(--label-color)',
               backgroundColor: 'rgba(124,121,232,0.10)',
             }}
           >
@@ -59,7 +62,7 @@ function FooterLink({ href, label, soon, comingSoonLabel }) {
     <li>
       <Link
         href={href}
-        className="text-sm text-[#3D4452] hover:text-[#7c79e8] transition-colors duration-150 focus-visible:outline-none focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-[#b7b5fe] focus-visible:ring-offset-1 focus-visible:ring-offset-[#F5F5FF]"
+        className="text-sm text-[#3D4452] hover:text-[color:var(--link-hover-color)] transition-colors duration-150 focus-visible:outline-none focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-[#b7b5fe] focus-visible:ring-offset-1 focus-visible:ring-offset-[#F5F5FF]"
       >
         {label}
       </Link>
@@ -71,7 +74,7 @@ function ColHeading({ children }) {
   return (
     <h3
       className="text-xs font-semibold uppercase tracking-widest mb-5"
-      style={{ color: '#7c79e8' }}
+      style={{ color: 'var(--label-color)' }}
     >
       {children}
     </h3>
@@ -128,7 +131,7 @@ export default function Footer({ locale, copy }) {
 
               <p
                 className="text-xs font-semibold uppercase tracking-widest mb-5"
-                style={{ color: '#7c79e8' }}
+                style={{ color: 'var(--label-color)' }}
               >
                 {copy.brand.tagline}
               </p>
@@ -141,7 +144,7 @@ export default function Footer({ locale, copy }) {
               <div className="pt-4 mt-1 border-t border-[rgba(124,121,232,0.15)]">
                 <p
                   className="text-[10px] font-semibold uppercase tracking-wider mb-2.5"
-                  style={{ color: '#7c79e8', letterSpacing: '0.12em' }}
+                  style={{ color: 'var(--label-color)', letterSpacing: '0.12em' }}
                 >
                   {copy.sibling.label}
                 </p>
@@ -150,7 +153,7 @@ export default function Footer({ locale, copy }) {
                   className="group block"
                 >
                   <p
-                    className="text-sm font-semibold mb-1 inline-flex items-baseline gap-1.5 transition-colors duration-150 group-hover:text-[#7c79e8]"
+                    className="text-sm font-semibold mb-1 inline-flex items-baseline gap-1.5 transition-colors duration-150 group-hover:text-[color:var(--link-hover-color)]"
                     style={{ color: '#0E0E12' }}
                   >
                     {copy.sibling.name}
@@ -163,7 +166,7 @@ export default function Footer({ locale, copy }) {
                   </p>
                   <p
                     className="text-xs leading-relaxed"
-                    style={{ color: '#7B8494' }}
+                    style={{ color: 'var(--text-muted)' }}
                   >
                     {copy.sibling.blurb}
                   </p>
@@ -235,13 +238,13 @@ export default function Footer({ locale, copy }) {
               <div key={signal.id} className="flex items-start gap-3">
                 <span
                   className="mt-1.5 shrink-0 w-1.5 h-1.5 rounded-full"
-                  style={{ backgroundColor: '#7c79e8' }}
+                  style={{ backgroundColor: 'var(--bullet-color)' }}
                   aria-hidden="true"
                 />
                 <div>
                   <p
                     className="text-xs font-semibold mb-0.5"
-                    style={{ color: '#7c79e8' }}
+                    style={{ color: 'var(--label-color)' }}
                   >
                     {signal.label}
                   </p>
@@ -268,7 +271,7 @@ export default function Footer({ locale, copy }) {
         <div className="container-section py-5">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
 
-            <p className="text-xs" style={{ color: '#7B8494' }}>
+            <p className="text-xs" style={{ color: 'var(--text-muted)' }}>
               &copy; {currentYear} {copy.legal.copyright}
             </p>
 
@@ -277,13 +280,13 @@ export default function Footer({ locale, copy }) {
                 <Link
                   key={link.href}
                   href={`/${locale}${link.href}`}
-                  className="text-xs text-[#7B8494] hover:text-[#212830] transition-colors duration-150 focus-visible:outline-none focus-visible:rounded-sm focus-visible:ring-1 focus-visible:ring-[#b7b5fe] focus-visible:ring-offset-1 focus-visible:ring-offset-[#F5F5FF]"
+                  className="text-xs text-[color:var(--text-muted)] hover:text-[#212830] transition-colors duration-150 focus-visible:outline-none focus-visible:rounded-sm focus-visible:ring-1 focus-visible:ring-[#b7b5fe] focus-visible:ring-offset-1 focus-visible:ring-offset-[#F5F5FF]"
                 >
                   {link.label}
                 </Link>
               ))}
 
-              <div className="[&_button]:text-[#7c79e8] [&_button]:border-[rgba(124,121,232,0.3)] [&_button]:hover:border-[rgba(124,121,232,0.7)] [&_button]:hover:bg-[rgba(124,121,232,0.08)] [&_button]:focus-visible:ring-offset-[#F5F5FF]">
+              <div className="[&_button]:text-[color:var(--label-color)] [&_button]:border-[rgba(124,121,232,0.3)] [&_button]:hover:border-[rgba(124,121,232,0.7)] [&_button]:hover:bg-[rgba(124,121,232,0.08)] [&_button]:focus-visible:ring-offset-[#F5F5FF]">
                 <LocaleSwitcher locale={locale} />
               </div>
             </div>

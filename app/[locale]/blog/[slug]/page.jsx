@@ -155,13 +155,13 @@ export default async function BlogPostPage({ params }) {
                 {fm.author}
               </span>
               {fm.authorRole && (
-                <span className="ml-2 text-sm" style={{ color: '#7B8494' }}>
+                <span className="ml-2 text-sm" style={{ color: 'var(--text-muted)' }}>
                   · {fm.authorRole}
                 </span>
               )}
             </div>
 
-            <div className="flex items-center gap-3 text-sm ml-auto" style={{ color: '#7B8494' }}>
+            <div className="flex items-center gap-3 text-sm ml-auto" style={{ color: 'var(--text-muted)' }}>
               {fm.readTime && <span>{fm.readTime}</span>}
               {dateDisplay && fm.readTime && <span aria-hidden="true">·</span>}
               {dateDisplay && <time dateTime={fm.publishedAt}>{dateDisplay}</time>}
@@ -207,7 +207,7 @@ export default async function BlogPostPage({ params }) {
             <div>
               <p className="font-semibold" style={{ color: '#0E0E12' }}>{fm.author}</p>
               {fm.authorRole && (
-                <p className="text-sm mt-0.5" style={{ color: '#7B8494' }}>
+                <p className="text-sm mt-0.5" style={{ color: 'var(--text-muted)' }}>
                   {fm.authorRole} · DODO Learning
                 </p>
               )}
