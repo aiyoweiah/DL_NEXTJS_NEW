@@ -4,7 +4,8 @@ Living reference for the DODO marketing site chrome (navbar, footer, funnel CTAs
 and its visual token system. Read this before touching navigation, CTAs, the
 pre-footer band, or any colour value.
 
-**Current through:** v6.3 · 2026-08-27 (token-table correction + strategy layer).
+**Current through:** v6.4 · 2026-08-27 (display typeface D51; token-table correction +
+strategy layer in v6.3).
 **Sibling document:** `translation/BRAND_CONTENT_GUIDE.md` (**v5.1**, decisions through
 **D50**) owns voice, copy and positioning; this file owns chrome and visual tokens.
 Decisions are numbered **D** in `docs/content-style-decisions.md` and apply to *both* —
@@ -196,6 +197,9 @@ established. Ratios are measured (WCAG 2.1 relative luminance), not estimated.
 | Muted text on light | `#5E6879` | `#F5F5FF` | 5.19:1 ✅ |
 | Gilt / gold accent (badges, `btn-gilt`) | `#F5C842` | `#0E0E12` | 12.1:1 ✅ |
 | Gilt as *text* on light | `#C49400` | `#F5F5FF` | 4.6:1 ✅ |
+| Success text on light | `#1E6E4B` | `#F5F5FF` | 5.72:1 ✅ |
+| Error text on light | `#B3261E` | `#F5F5FF` | 6.03:1 ✅ |
+| Info / link blue on light | `#3a6ac4` | `#F5F5FF` | 4.80:1 ✅ |
 | Lavender — **large text ≥24px & borders only** | `#7c79e8` | `#F5F5FF` | 3.37:1 ⚠️ |
 | Borders | `rgba(183,181,254,0.10)` family (low-opacity lavender) | — | decorative |
 
@@ -206,9 +210,9 @@ established. Ratios are measured (WCAG 2.1 relative luminance), not estimated.
 | `#7B8494` | 3.48:1 | Old muted. Superseded by `#5E6879`. |
 | `#94A3B8` | 2.37:1 | Old muted. **Dark surfaces only** — passes there, fails on light. |
 | `#b7b5fe` | 1.75:1 | Accent-on-dark only. Never as text on light. |
-| `#7ec8a0` | 1.82:1 | Undocumented success-green. Needs a dark-only rule or a darker light variant (`#1E6E4B` = 5.72:1). |
-| `#c0504d` | 4.31:1 | Undocumented error-red. Raise to `#B3261E` (6.03:1). |
-| `#3b6fcc` | 4.48:1 | Undocumented link-blue. Fractionally under AA — raise or remove. |
+| `#7ec8a0` | 1.82:1 | ✅ v6.4 — no longer used in components. Kept as `--accent-success` for decorative/dark use only. |
+| `#c0504d` | 4.31:1 | ✅ v6.4 — kept as `--accent-error` (decorative). Still used in `/ops` report severity scales: internal tooling, **out of scope** for site chrome. |
+| `#3b6fcc` | 4.48:1 | ✅ v6.4 — replaced by `--text-info` `#3a6ac4` (4.80:1) on the home subhead. |
 
 > **Why this table changed (v6.3).** The previous version listed `#7c79e8` as
 > "Brand lavender — AA-safe text on light". It is not: 3.37:1 on Whisper, 3.65:1 on
@@ -259,6 +263,21 @@ with no token to reach for invents one.
   grep -rhoE '#[0-9a-fA-F]{6}' components/ | sort | uniq -c | sort -rn
   ```
 
+**⚠️ Contrast-auditing this site: two traps.** Both produce false failures and
+have already cost one investigation each.
+
+1. **Gradient backdrops are invisible to an ancestor walk.** Several heroes
+   (`/program`, others) paint their dark ground with absolutely-positioned
+   `inset: 0` gradient layers that are *siblings* of the text container, not
+   ancestors. A script that resolves the effective background by walking
+   `parentElement` for a `background-color` will fall through to `body`
+   (Whisper) and report light-on-light. Check for positioned backdrops inside
+   the `<section>` before believing any such result.
+2. **Hidden drawer content still computes.** `getComputedStyle` on a descendant
+   of `display: none` returns that descendant's own display, so the mobile
+   drawer's links get audited against the wrong ground on desktop. Filter with
+   `el.getClientRects().length` — on `/program` that excluded 113 nodes.
+
 **Type scale — minimum sizes (added v6.3).** The live home page runs 66 nodes at 14px,
 51 at 12px and 4 at 10px — ~57% of all text at 14px or below, against a stated *calm,
 editorial* register. Editorial layouts run 16–18px body.
@@ -273,6 +292,33 @@ editorial* register. Editorial layouts run 16–18px body.
 - **Never pair the smallest size with the lowest-contrast colour.** The 10px `#7c79e8`
   age-band labels were both at once; that combination produced the worst failures found
   in the v6.3 audit.
+
+**Typeface pairing (approved 2026-08-27 · D51).** Until now the site set *every* text
+node in DM Sans — 440 of 440 on the home page, with no display face anywhere. A brand
+whose product is reading and writing English was presenting itself in the same register
+a fintech dashboard uses. Literata adds the missing voice.
+
+| Role | Latin | CJK | Token |
+|---|---|---|---|
+| **Display** — `h1`/`h2` on strategic surfaces | Literata 500 | Noto Serif SC 500/600 | `--font-display` / `--font-display-cjk` |
+| **Body, UI, labels, buttons** | DM Sans 400–700 | Noto Sans SC 400–700 | `--font-latin` / `--font-cjk` |
+
+- **Display-only — this is the whole discipline.** Literata never sets body copy, UI,
+  labels or buttons. DM Sans keeps everything it currently owns, so there is no
+  migration cost and no change to reading copy.
+- **Why Literata.** Drawn for Google Play Books, for long-form reading. A literacy brand
+  using a face built for readers is an argument, not a decoration. Deliberately *not*
+  Playfair Display, Fraunces or Space Grotesk — those are the AI-default display serifs
+  and read as generic. (The `ui-ux-pro-max` font database recommends Playfair + Inter for
+  this brief; it was rejected for exactly that reason.)
+- **The CJK half is load-bearing, not an afterthought.** A Latin serif with no CJK
+  counterpart breaks every `/zh` page. **Noto Serif SC (思源宋体)** is the required pair —
+  same superfamily as Noto Sans SC, so the metrics stay coherent. Any future type
+  proposal naming only a Latin face is incomplete and should be rejected.
+- **Rollout is per-surface, never global in one pass.** Pilot one strategic surface,
+  verify EN *and* `/zh`, then extend. Do not start with the home hero.
+- ⛔ **Never below 24px.** Literata is a display face here; at label size it fights
+  DM Sans instead of complementing it. Labels stay on `.eyebrow` + DM Sans.
 
 **Spacing/layout:** `container-section` wrapper; section padding `var(--section-md)`;
 pill badges `rounded-full`, buttons/cards `rounded-lg`. Breakpoints: `md:768`, `lg:1024`.
@@ -330,15 +376,33 @@ not listed.
 | D43 | One-sentence position (LCS / five strands) | Referenced in Direction & feel; cascaded to copy by D46/D49 | ✅ v6.3 |
 | D44 | Redesigned Three Brand Truths | **No visual brief yet — open gap** (copy landed via D46/D49) | ⏳ open |
 | D46–D50 | Home, About, Methodology, Program, Compare reworked to v5.1 + §08 voice | Copy-side cascade; chrome unaffected. Re-audit contrast after these ship | n/a here |
+| D51 | Display typeface — Literata + Noto Serif SC, **display-only** | Type pairing section added; `--font-display` / `--font-display-cjk` tokens; per-surface rollout | ✅ v6.4 |
 
-### Open — carried out of the v6.3 audit, not yet done
+### Cascade status
 
-- [ ] Refactor the four hand-rolled labels onto `.eyebrow`: `ConsultForm.jsx`,
-      `Footer.jsx`, `AgeBandChooser.jsx`, `app/[locale]/little-dodo/page.jsx`.
-- [ ] Add semantic light-surface rules for the undocumented green (`#7ec8a0`) and
-      red (`#c0504d`); raise or retire `#3b6fcc`.
-- [ ] Introduce the component token layer in `globals.css`.
-- [ ] Raise `--text-muted` (`#6B7280` measures **4.46:1**, marginally under AA) to
-      `#5E6879`. The inline comment claiming 4.6:1 is optimistic.
-- [ ] Revisit the type scale against the 16px body floor.
+**Done in v6.4 (2026-08-27):**
+
+- [x] All 11 hand-rolled `#7c79e8` label instances migrated to component tokens
+      across `ConsultForm.jsx`, `Footer.jsx`, `AgeBandChooser.jsx` and
+      `little-dodo/page.jsx`. Clears the 19 live AA failures. (Tokens rather than
+      the `.eyebrow` class — same colour, and tokens also work in inline styles.)
+- [x] Component token layer added to `globals.css` (`--label-color`,
+      `--form-required-color`, `--link-hover-color`, `--bullet-color`, …).
+- [x] `--text-muted` raised `#6B7280` → `#5E6879` (4.46 → 5.19:1).
+- [x] Semantic status tokens added: `--text-success`, `--text-error`, `--text-info`.
+      Home-page subhead blue `#3b6fcc` → `--text-info` `#3a6ac4`.
+- [x] D51 display face wired (`lib/fonts.js`, root layout, `.font-display`) and
+      **piloted on `/methodology` h1 only**.
+
+**Still open:**
+
+- [ ] Extend the display face beyond `/methodology` — one surface at a time,
+      verifying `/zh` each time. Home hero last.
+- [ ] Revisit the type scale against the 16px body floor (57% of home-page text
+      is still ≤14px).
 - [ ] Give D44's Three Brand Truths a visual brief.
+- [ ] Decide the visual motif (see the aesthetic-direction review) — it should
+      anchor the anti-generic section before that section is written.
+- [ ] `/ops` tools carry their own report colour scales (`#c0504d`, `#5aaa82`,
+      `#fde8e8`…). Deliberately untouched — internal tooling, not site chrome.
+      If they should follow this system, that is a separate decision.
