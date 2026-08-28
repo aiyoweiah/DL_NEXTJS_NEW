@@ -31,12 +31,11 @@ import { educationOrgSchema, websiteSchema } from '@/lib/schema'
 // Locale-specific pages pass `locale` — this root call uses the default (en).
 export const metadata = buildMetadata({
   title:
-    'DODO Learning — Think Once. In Both Languages.',
+    'DODO Learning — Think once, in two languages.',
   description:
-    'A live, Navigator-led English literacy program for globally mobile ' +
-    'Chinese-speaking families. The 16-Week Program develops students who ' +
-    'read, think, speak, and write in two languages — measured by Lexile ' +
-    'levels and the 6+1 Trait writing framework.',
+    'A live, online, one-on-one English language arts program. Each 16-week ' +
+    'cycle develops students who read, think, speak, and write at mastery ' +
+    'level — measured by Lexile levels and the 6+1 Trait writing framework.',
   path: '/',
 })
 

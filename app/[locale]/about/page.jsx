@@ -56,8 +56,8 @@ function BilingualHeading({ en, cn, light = false, center = false, locale = 'en'
 const PILLARS_BASE = [
   { id: 'belief-1', num: '01', belief: 'Language is architecture for thought. We build the architecture first.', beliefCn: '\u8bed\u8a00\u662f\u601d\u7ef4\u7684\u67b6\u6784\u3002\u6211\u4eec\u5148\u5efa\u67b6\u6784\u3002' },
   { id: 'belief-2', num: '02', belief: "Children don\u2019t need more content. They need better conversations.", beliefCn: '\u5b69\u5b50\u9700\u8981\u7684\u4e0d\u662f\u66f4\u591a\u5185\u5bb9\uff0c\u800c\u662f\u66f4\u597d\u7684\u5bf9\u8bdd\u3002' },
-  { id: 'belief-3', num: '03', belief: 'A rigorous English mind is a bilingual mind \u2014 by nature, not by design.', beliefCn: '\u4e25\u8c28\u7684\u82f1\u8bed\u601d\u7ef4\u8005\uff0c\u81ea\u7136\u662f\u6d41\u5229\u7684\u53cc\u8bed\u8005\u3002' },
-  { id: 'belief-4', num: '04', belief: 'Progress must be visible, measurable, and felt. We show parents the results.', beliefCn: '进步必须可见、可衡量、可感知。我们让家长看见结果。' },
+  { id: 'belief-3', num: '03', belief: 'The things that matter most are the ones a machine can\u2019t hand you.', beliefCn: '\u6700\u8981\u7d27\u7684\uff0c\u6070\u6070\u662f\u673a\u5668\u7ed9\u4e0d\u4e86\u7684\u3002' },
+  { id: 'belief-4', num: '04', belief: 'We put the growth on paper — you never have to take our word for it.', beliefCn: '我们把成长写在纸上——你从不必只听我们一面之词。' },
 ]
 
 const LOOP_STEPS_BASE = [
@@ -445,8 +445,8 @@ function ClosingStamp({ locale, c }) {
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
           </svg>
         </div>
-        <h2 id="about-closing-heading" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 300, lineHeight: 1.15, letterSpacing: '-0.02em', color: '#ffffff', marginBottom: '0.5rem' }}>Think Once.</h2>
-        <h2 className="mb-6" aria-label="In Both Languages." style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 700, lineHeight: 1.15, letterSpacing: '-0.02em', background: 'linear-gradient(135deg, #b7b5fe 0%, #F5C842 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>In Both Languages.</h2>
+        <h2 id="about-closing-heading" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 300, lineHeight: 1.15, letterSpacing: '-0.02em', color: '#ffffff', marginBottom: '0.5rem' }}>{c.closing.tagline1}</h2>
+        <h2 className="mb-6" aria-label={c.closing.tagline2} style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 700, lineHeight: 1.15, letterSpacing: '-0.02em', background: 'linear-gradient(135deg, #b7b5fe 0%, #F5C842 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{c.closing.tagline2}</h2>
         {locale === 'zh' && <p className="mb-6" style={{ fontFamily: 'var(--font-cjk)', fontSize: '22px', color: 'rgba(183,181,254,0.5)' }}>语言的根，长在阅读里</p>}
         <p className="mx-auto mb-12" style={{ fontSize: '16px', lineHeight: 1.9, color: 'rgba(240,240,240,0.4)', maxWidth: '32rem' }}>{c.closing.sub}</p>
         <Link href={`/${locale}/demos`} className="btn btn-charter" style={{ fontSize: '15px', fontWeight: 700, letterSpacing: '0.02em', padding: '1rem 2.5rem' }} aria-label="Watch a demo class">

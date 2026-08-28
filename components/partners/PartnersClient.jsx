@@ -172,7 +172,7 @@ const COPY = {
       chip:    "Let\u2019s Talk",
       h2:      'We work with a small number of partners.',
       sub:     'DODO Learning does not have a sales team. Partnership conversations begin the same way student consultations do: with an honest diagnostic conversation about fit.\n\nIf you serve students who need what we build, we\u2019d like to talk.',
-      tagline: 'Think Once. In Both Languages.',
+      tagline: 'Think once, in two languages.',
     },
   },
 

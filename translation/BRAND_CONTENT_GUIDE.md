@@ -1,10 +1,10 @@
 # DODO Learning · Brand + Content Guide v5
 
-**DODO Learning / 都学书院** · Operator guide for website, social, and content production · v5 · 2026-08-26
-Distilled from Master Brand Guide v3.1 (Apr 2026) + DLCW curriculum sources; consolidated through decision **D42**. Canonical operator copy (EN); ZH mirror at `BRAND_CONTENT_GUIDE.zh.md`.
+**DODO Learning / 都学书院** · Operator guide for website, social, and content production · v5.1 · 2026-08-27
+Distilled from Master Brand Guide v3.1 (Apr 2026) + DLCW curriculum sources; consolidated through decision **D47**. Canonical operator copy (EN); ZH mirror at `BRAND_CONTENT_GUIDE.zh.md`.
 **Every section answers _"what do I do on a content surface?"_**
 
-> **v5 consolidation (2026-08-26):** Brings the guide current through the full decisions log (D1–D42). New since v4.1: tagline → **"Think once, in two languages."** (D36); LCS umbrella with the five MCT strands nested + ELA = 7 levels, Poodle retired (D37, §06); **§07a Research Base** (D38); ZH mirror + **§17** branded vocabulary (D39); positioning by **demographic + desire** — local explicit, international implicit (D40, §04); **§01b** positioning statement / objections / AI rebuttal / anti-persona (D41); **§04a** Marketing Direction & Directives (D42). Founder is **Janet — first name only, everywhere** (upstream D35). Customer-surface cascade partially shipped (D38 research base → `/credentials` page + MCT pillar blog + schema + llms-full); remainder tracked in `docs/pending-guide-cascade.md`.
+> **v5 consolidation (2026-08-26):** Brings the guide current through the full decisions log (D1–D42). New since v4.1: tagline → **"Think once, in two languages."** (D36); LCS umbrella with the five MCT strands nested + ELA = 7 levels, Poodle retired (D37, §06); **§07a Research Base** (D38); ZH mirror + **§17** branded vocabulary (D39); positioning by **demographic + desire** — local explicit, international implicit (D40, §04); **§01b** positioning statement / objections / AI rebuttal / anti-persona (D41); **§04a** Marketing Direction & Directives (D42). Founder is **Janet — first name only, everywhere** (upstream D35). **v5.1 (2026-08-27):** §08 Voice rewritten to the **"soft in tone, deep in knowledge"** persona + an anti-greasy / anti-AI-cadence standard, with a §10 tone-tells band (D47). Customer-surface cascade in progress (D45 tagline swap live; D46 Home reworked — to be re-voiced under D47); tracked in `docs/customer-site-cascade-plan.md`.
 
 > **Active decisions log:** Date-stamped overrides since 2026-05-16 are in `docs/content-style-decisions.md` (append-only history). The locked sections below already carry every stabilized decision; the log is the provenance trail. Read both before major content work.
 
@@ -22,14 +22,14 @@ Distilled from Master Brand Guide v3.1 (Apr 2026) + DLCW curriculum sources; con
 | Forbidden | `Think Twice` (source typo — reject everywhere) · `Think Once. In Both Languages.` (retired 2026-08-26 → use `Think once, in two languages.`) | — |
 
 **Five-second positioning** *(memorize; deploy as the answer when anyone asks "what is DODO?")*:
-> One-on-one English language arts, built on the MCT gifted-ELA tradition. We build English Thinkers at mastery level. Bilingual depth emerges.
+> Live, online, one-on-one English language arts, built on the MCT gifted-ELA tradition. We build English Thinkers at mastery level.
 
 ---
 
 ## 01 · What DODO Is / Is Not
 
 **One-sentence position:**
-DODO Learning is a one-on-one English language arts program built on gifted-English Language Arts tradition. Every session runs The Loop — Read → Think → Speak → Write — with a credentialed Navigator. Growth is measured by Lexile and the 6+1 Trait framework. Bilingual depth emerges as a natural outcome of cognitive rigor.
+DODO Learning is a live, online, one-on-one English language arts program that builds English mastery through the LCS System — the five strands of a complete language education across Literacy and Composition, plus a live Speaking strand no book or app can teach — with a credentialed Navigator in every session.
 
 **Canonical positioning statement** *(the single assembled position — deploy as the strategic spine of /about, /methodology, sales):*
 > For families who want their child's English refined to the mastery level academic and professional life now demands, **DODO is a live, one-on-one English language arts program** that builds measurable reading and writing mastery — one grade level per two cycles — **unlike** tutoring, apps, or ESL, and unlike the gifted-ELA books parents could buy but can't teach, **because** DODO delivers that tradition through expert Navigators and adds the oral-defence Speaking strand no book or app can.
@@ -41,7 +41,6 @@ DODO Learning is a one-on-one English language arts program built on gifted-Engl
 | A catch-up service | A build-your-edge program |
 | A test-prep company | A program whose students pass tests as a by-product |
 | A homework support platform | A Navigator-led structured learning arc |
-| A language-maintenance program | A program where bilingual depth emerges from English mastery |
 
 **The single sentence that separates DODO:**
 > *"We build English Thinkers at mastery level."*
@@ -63,6 +62,8 @@ One grade level of reading growth in sixteen weeks. Specific Lexile delta. Speci
 
 ## 01b · Objections, the AI Question & Anti-Persona *(added 2026-08-26)*
 
+> **Canonical home for the AI rebuttal.** The full "why not just ChatGPT?" answer lives here. Elsewhere — Truth 2 (§02), the /compare table (§01), §04a — *reference* it; don't restate the whole argument.
+
 **Objection → response** *(the deal-blockers; keep responses affirmative, numbers-first):*
 
 | Objection | Response |
@@ -83,9 +84,9 @@ One grade level of reading growth in sixteen weeks. Specific Lexile delta. Speci
 
 | Truth | What to do with it |
 |---|---|
-| **1. English mastery at the cognitive level is the primary goal.** Precise thinking, evidence-based argument, intentional writing — that discipline transfers across every language a child uses. | Every page must position English mastery as the *primary* outcome. Bilingualism is downstream, never the headline. |
-| **2. Bilingual capacity is a natural outcome of intellectual rigor — not a separate curriculum.** Cognitive depth in English *protects and strengthens* thinking in both languages. A child who can argue a position in formal English, read dense analytical prose, and write with precision — and who also thinks in Chinese — has a mind AI cannot replace. | **Lead with this. Never lead with "maintain Chinese."** When parents raise "I want to keep Chinese strong," reframe — don't reassure. |
-| **3. Progress must be visible, measurable, and felt.** Lexile + 6+1 Trait make growth concrete. We show parents the numbers. | Every conversion page must include at least one specific number (Lexile delta, % referral, week count, or named framework). No vague claims. |
+| **1. English mastery at the cognitive level is the primary goal.** Precise thinking, evidence-based argument, intentional writing — that discipline transfers across every language a child uses. | Position English mastery as the *primary* outcome on every page — the headline, never a sub-point. Bilingualism is downstream. |
+| **2. Mastery is taught by a person, not delivered by a product.** A credentialed Navigator hears how a child reasons, presses on the point they *didn't* make, and coaches the spoken defence of an idea — the work no book, app, or AI can do. | Lead with the live, one-on-one Navigator relationship and the **Speaking strand** — DODO's moat and the seed of the AI-age thesis (§04a). Keep the AI rebuttal (§01b) within reach; never pretend the substitute doesn't exist — reframe it. |
+| **3. We put the growth on paper.** Every cycle is measured against outside standards — a Lexile number, a 6+1 Trait movement — at Week 0, 8, and 16. Parents see the change before they renew. | Every conversion page carries at least one specific number. Frame measurement as **accountability**, not decoration — no vague "proven results." |
 
 ---
 
@@ -106,7 +107,7 @@ The double Do is also a commitment to **iteration** — you master a language by
 
 **Core demographic** (drives content + voice): education-invested families whose child's English is capable but not yet at mastery level, children **ages 7–15+**. Strong in North-American Chinese-diaspora hubs (Toronto · Vancouver · Calgary · Montreal · major US metros) and among local families in those markets — but the audience is defined by **aspiration, not geography or mobility.** Local and international both fit.
 
-> **2026-06-01 mother-tongue framing:** In non-core-market body copy, name the child's first language as **"mother tongue" / "母语"**, not "Chinese / 中文" — except on intentionally core-market surfaces. The bilingual-depth argument (Truth 2) is language-agnostic; "Chinese" is a core-market specific, not the default.
+> **2026-06-01 mother-tongue framing:** In non-core-market body copy, name the child's first language as **"mother tongue" / "母语"**, not "Chinese / 中文" — except on intentionally core-market surfaces. The bilingual-depth by-product (downstream of Truth 1, never the headline) is language-agnostic; "Chinese" is a core-market specific, not the default.
 
 | Family situation | Their real desire / fear | What DODO solves |
 |---|---|---|
@@ -114,7 +115,7 @@ The double Do is also a commitment to **iteration** — you master a language by
 | Academically ambitious | English at SAT / IB / SSAT / leadership level | The seven-level arc is calibrated to these outcomes |
 | Bilingual household | "I want strong English without losing the mother tongue." | English mastery first; bilingual depth emerges (reframe, don't reassure) |
 | Relocating / diaspora *(now implicit, not headline)* | "My child will need to hold their own academically, anywhere." | Academic infrastructure that travels |
-| Worried about the AI age | "Will my child have skills AI can't replace?" | Reading, reasoning, and writing judgment AI can't substitute |
+| Worried about the AI age | "Will my child have skills AI can't replace?" | The judgment AI can't substitute (full rebuttal: Truth 2 · §01b) |
 
 **Parent profile to keep in mind when writing:** Reads at college-graduate level (often in two languages). Skeptical of marketing fluff. Will check claims. Values frameworks they recognise (Lexile, Common Core, IB). Time-poor — won't read a hero longer than 25 words.
 
@@ -255,30 +256,46 @@ DODO ELA is a **seven-level** ladder grounded in the gifted-ELA tradition. Each 
 
 ---
 
-## 08 · Voice — 4 Dimensions
+## 08 · Voice — soft in tone, deep in knowledge
 
-**Default voice:** affirmative, confident, forward-facing. Trusted parent-friend who deeply understands education. Warm authority. Trust first, conversion follows.
+**The persona.** Write the way DODO's best Navigator would talk to a parent across a kitchen table: someone who has actually read the books, who could happily spend an hour on why one sentence works — and would never make you sit through it. Deeply literate, quietly sure of the craft, genuinely fond of both the child and the language. Warm first. The knowledge is in the specifics; it doesn't announce itself.
 
-| Dimension | Sounds like | Never sounds like |
+**Soft in tone, deep in knowledge — on the page:**
+- **Let sentences breathe.** Real sentences, with clauses, that carry a thought to its end. Not every line needs to land a punch. Copy that stops for emphasis every six words reads like a pitch; copy that trusts the reader reads like a person.
+- **Wear the expertise lightly.** Depth shows through one precise, true detail — a child taking apart a Latin root they've never met — not through stacked frameworks or a number in every sentence.
+- **Care without selling.** Name what a parent genuinely hopes for and worries about, plainly and kindly. Then say what we do. No pressure, no fear, no countdown.
+- **A little delight.** Language is genuinely wonderful and it's fine to enjoy it — a note of curiosity, warmth, or play belongs here. Flippancy and jokes for their own sake do not.
+
+| Dimension | Sounds like | Not this |
 |---|---|---|
-| **Confident** | "One grade level in sixteen weeks. We've measured it." | "We think we can help your child…" |
-| **Warm** | "Your child's Navigator knows their voice, their pace, their gaps." | "Our highly trained staff will service your child's needs." |
-| **Precise** | "Lexile 650 to Lexile 820 in sixteen weeks." | "Great improvement in reading!" |
-| **Future-focused** | "Your child will enter college, boardrooms, and leadership conversations where depth determines impact. We build that depth." | "Don't worry about Chinese." |
+| **Warm** | "Most children carry a quiet gap a report card never shows — and it's rarely the one a parent fears." | "Unlock your child's TRUE potential today." |
+| **Well-read** *(depth, lightly worn)* | "We read the whole book, unabridged, because children grow on the sentences a writer actually wrote." | "Our proprietary curriculum leverages best-in-class methodology." |
+| **Unhurried** | "There's no rush. A cycle is sixteen weeks, and the growth tends to arrive quietly, then all at once." | "Results in 16 weeks — GUARANTEED. Don't wait." |
+| **Quietly confident** | "We measure it, so you never have to take our word for it." | "The #1 English program families trust." |
 
-**Affirmative-default rule.** Use: *We teach · We measure · Your child will · Students build · Progress emerges.* Avoid as primary register: *We don't · avoid · worry · support · help.*
+**Strip on sight — the register we're leaving behind** *(the "greasy," pitch-deck, AI-sounding cadence; catch it in your own drafts):*
+- **Rule of three on repeat.** "Read complexity, argue with evidence, write with intention." One triad is fine; three a page is a tic. Vary the rhythm — sometimes say one thing.
+- **The em-dash drumroll.** A dash setting up a mic-drop every other sentence. Dashes are for a real aside, used sparingly.
+- **The reversal formula.** "It's not X. It's Y." / "Not a tagline — a philosophy." Retire it as a reflex.
+- **Fragment-stacking for drama.** "Every session. Every week. Without exception."
+- **Superlative certainty.** "no book or app can replace," "the one thing AI can't do," "built for what comes next." Quieter and more specific beats bigger, every time.
+- **Landing-page voice in body copy.** Body should read like a person explaining, not a hero shouting.
+- **Importance-inflation.** "Here's what most parents miss." "This changes everything." Just say the thing.
 
-**The "We Don't / We Do" structure — strategic and sparse.** Use only when:
-1. The contrast resolves a real misconception that blocks enrollment.
-2. The negative is what parents already experienced elsewhere.
-3. The positive is surprising or counterintuitive.
-4. Category clarity is required (e.g., not a tutoring center).
+**Before → after** *(same claim, un-greased):*
+- ✗ "Live, one-on-one, with a Navigator no book or app can replace." → ✓ "Every session is live and one-to-one — a real Navigator who comes to know how your child thinks."
+- ✗ "…then defend that thinking out loud — the judgment AI cannot replace." → ✓ "…and then talk it through, out loud, defending what they think. It's a hard habit of mind to teach, and a lovely one to watch take hold."
+- ✗ "Every session. Every week. In this order, without exception." → ✓ "The same four steps each session — read, think, speak, then write. The order matters, and keeping it steady lets a child settle in."
+
+**Still affirmative, just not punchy.** Prefer active, plain verbs — *we teach · we read · we measure · your child learns.* You don't have to avoid *help* or *support* to sound strong; warmth is not weakness. What we drop is the hard-sell register, not ordinary human words.
+
+**The "We don't / We do" contrast — sparing.** A useful move, but rationed. Use only when (1) it clears a real misconception blocking a family, (2) the "don't" is something they've actually lived elsewhere, (3) the "do" is genuinely surprising, or (4) category clarity needs it (we're not a tutoring center). Never as a rhythmic tic.
 
 **Channel modifier (apply on top of default voice):**
 
 | Channel | Register modifier |
 |---|---|
-| Website body copy | Formal-confident · third-person address ("your child") · Lexile/framework numbers in every section |
+| Website body copy | Warm-confident · third-person address ("your child") · at least one real number where it earns trust — not one in every line |
 | ClassIn (in-session) | Guided present-tense ("Today we go into Read…") · names the student's current Lexile · forward-facing close |
 | Xiaohongshu / WeChat post body | 老母亲 parent-friend ZH · 我们家孩子 acceptable · specific moments, real numbers, one idea per sentence |
 | Xiaohongshu / WeChat caption / hashtag | Outcome + framework name ("16周，阅读水平提升一个年级 #Lexile") · CES-optimised (earn a comment, not a like) |
@@ -300,8 +317,8 @@ DODO ELA is a **seven-level** ladder grounded in the gifted-ELA tradition. Each 
 
 | Pattern | What it sounds like | Why |
 |---|---|---|
-| **Positioning over poetic abstraction** in headlines | "外教不代表会教：我们只用文学写作专家。" (not "老师与导师的区别，在于那张地图。") | Chinese immigrant parents respond to direct positioning. Save metaphor for body, not H1/H2. Name the worry first, then assert. |
-| **Two-sentence punch openers** for body paragraphs | "导师一对一不间断。 英语是他们的母语，却远不止外教。" then paragraph break, then explanation | ZH eye lands on punch lines before settling into prose. Lead with 2 short declaratives. |
+| **Clarity first, warmth alongside** in headlines | Lead with the parent's real concern in plain words; a legible image is welcome when it lands instantly — e.g. "老师与导师之间，差的是一张地图。" | Chinese immigrant parents respond to directness — but warm-and-clear beats blunt-and-salesy. Name the worry, then reassure like a person, not a pitch. 外教 only as a contrast term (§09). |
+| **Open with a moment, not a punch stack** | Start a paragraph with one clear, warm line or a small real scene, then let the prose breathe | Retire the staccato two-declarative drumbeat — it reads as sales cadence in ZH too. |
 | **Avoid combat metaphors** in ZH | "表达并支持自己的立场" (not "捍卫立场"); "更深入的问题" (not "更尖锐的问题") | Combat verbs that work in EN can feel confrontational in ZH parent register. Replace with collaborative/depth verbs. |
 | **Four-character idiomatic frames** for program qualities | "高频低压" (high cadence, low pressure) · "可见可量化" (visible & measurable) | Compress benefit + experience into 4-char proverbial shorthand. Repeatable across surfaces. |
 | **Drop "we promise/we measure" reassurance tails** | Cut "而不是猜测" / "我们说的每一个主张，都有数据支撑" / "我们保证" | EN can sustain these as voice; ZH treats them as filler that weakens authority. |
@@ -313,7 +330,7 @@ DODO ELA is a **seven-level** ladder grounded in the gifted-ELA tradition. Each 
 |---|---|---|---|
 | Awareness | "What even is this?" | Warm + future-focused · zero jargon load | Soft (read more · see the methodology) |
 | Consideration | "Is this real and right for my child?" | Precise + confident · introduce Lexile / 6+1 / MCT once | Medium (book a diagnostic · watch a demo) |
-| Decision | "Is it worth $X?" | Precise + confident · numbers, case studies, framework citations | Strong (book the consultation · enroll) |
+| Decision | "Is it worth $X?" | Precise + confident, still warm · numbers, case studies, framework citations | Confident, not pushy (book a consultation · enroll when you're ready) |
 | Onboarding | "Did I make the right call?" | Warm + precise · cohort cadence, what to expect this week | Confirming (you're in · here's week 1) |
 
 ---
@@ -364,6 +381,8 @@ These terms are DODO's. Use consistently across every channel.
 | 补习班 · 英语辅导 · 母语老师 · 干预 | Service-model language | These concepts don't belong in DODO content |
 | 领航员 | Non-canonical literal translation of Navigator — drifts from owned vocab | 导师（Navigator） |
 | 综上所述 · 毋庸置疑 · 由此可见 · 综合来看 · 不难发现 · 值得一提的是 | AI-signature ZH phrases | Delete · rewrite |
+
+**Tone tells — strip on sight** *(alongside the word list above; full standard in §08):* stacked tricolons · em-dash drumrolls · "not X — but Y" reversals · fragment-stacking · superlative certainty ("no one else can," "the only") · CTA-voice in body copy · importance-inflation ("what most parents miss"). These aren't forbidden *words* — they're a forbidden *rhythm*. When copy sounds like a pitch, it's usually one of these.
 
 ---
 

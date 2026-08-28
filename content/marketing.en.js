@@ -87,7 +87,7 @@ export const nav = {
     consultAria:    'Book a free diagnostic consultation',
   },
   members:  'Members only',                        // sr-only label on gated items (lock glyph is the visual)
-  tagline:  'Think Once. In Both Languages.',
+  tagline:  'Think once, in two languages.',
   logoAria: 'DODO Learning — home',
   menuOpenAria:  'Open navigation menu',
   menuCloseAria: 'Close navigation menu',
@@ -120,8 +120,8 @@ export const footer = {
   },
   brand: {
     logoAria:  'DODO Learning — home',
-    body:      'A live, Navigator-led English literacy program for globally mobile families. Read → Think → Speak → Write.',
-    tagline:   'Think Once. In Both Languages.',
+    body:      'A live, online, Navigator-led English language arts program. Read → Think → Speak → Write.',
+    tagline:   'Think once, in two languages.',
   },
   sibling: {
     label:     'The DODO Family',
@@ -193,41 +193,41 @@ export const footer = {
 export const home = {
   meta: {
     title:
-      'DODO Learning — Live, Navigator-led English Literacy, ages 5 through high school | Think Once. In Both Languages.',
+      'DODO Learning — Live, Online, Navigator-led English Literacy, ages 5 through high school | Think once, in two languages.',
     description:
-      'Live, Navigator-led English literacy for children ages 5 through high school. Little DODO (K–2): phonetics-led foundational reading with early-childhood educators. ELA Program (Grade 3+): full Read→Think→Speak→Write loop, one grade level of Lexile growth per 16-week cycle. Built on the MCT Language Arts framework. Bilingual depth emerges from cognitive rigor.',
+      'Live, online, Navigator-led English literacy for children ages 5 through high school. Little DODO (K–2): phonetics-led foundational reading with early-childhood educators. ELA Program (Grade 3+): the LCS System — reading, writing, and a live Speaking strand — one grade level of Lexile growth per 16-week cycle. Built on the MCT gifted-ELA tradition.',
   },
 
   hero: {
-    eyebrow:        'Live, Navigator-led English literacy — ages 5 through high school',
+    eyebrow:        'Live, online, Navigator-led English literacy — ages 5 through high school',
     eyebrow2:       '',
-    h1:             ['English mastery at the cognitive level.', 'Bilingual depth as the natural outcome.'],
+    h1:             ['Real English mastery — the kind you can see in how a child thinks.', 'Taught live and one-to-one, by a Navigator who gets to know your child.'],
     h1Chinese:      '',
     differentiator: '',
     consultHook:
-      'From a five-year-old learning to read with a dedicated early-childhood educator, to a high-schooler arguing complex texts with their Navigator — we train English Thinkers at every stage. Built on the advanced literature and writing framework and Harvard’s thinking science.',
+      'From a five-year-old learning to read with a dedicated early-childhood educator, to a high-schooler arguing over a difficult text with their Navigator. At every age the work is really the same: learning to think clearly in English. It grows out of a serious literature-and-writing tradition, and Harvard’s research on how understanding takes shape.',
     cta1:      'Watch a Demo Class',
     cta2:      'Book Your Consultation',
     trustLine:
-      'Lexile-measured progress · 6+1 Trait writing framework · Live Navigator-led sessions · Think Once. In Both Languages.',
+      'Lexile-measured progress · 6+1 Trait writing framework · Live Navigator-led sessions · Think once, in two languages.',
   },
 
   proof: [
     { id: 'families', number: '300+', unit: 'children & families', label: 'served since launch — real Lexile growth, verified results' },
     { id: 'lexile',   number: '1',    unit: 'grade level',          label: 'average Lexile reading growth across two 16-week cycles' },
-    { id: 'writing',  number: '2×', unit: 'writing score gain', label: 'average 6+1 Trait score gain from entry to exit assessment' },
-    { id: 'repeat',   number: '8/10', unit: 'continue after first 16 weeks', label: 'families see the growth and choose to continue' },
+    { id: 'writing',  number: '75%+', unit: 'by word-of-mouth', label: 'of families come to DODO through referral from another family' },
+    { id: 'repeat',   number: '10,000+', unit: 'teaching hours', label: 'delivered one-on-one, live with a Navigator' },
   ],
 
   photoIntro: {
     eyebrow: 'Who We Are',
     heading: 'The difference between a teacher and a Navigator is a map.',
     body0:
-      'Your child’s school knows what grade they’re in. That’s not the same as knowing where they are. Many children carry a reading gap their report card never shows — the distance between what they can decode and what they can actually think through.',
+      'Your child’s school knows what grade they’re in. That’s not the same as knowing where they are. Many children carry a quiet gap a report card never shows — the distance between the words they can read and the ideas they can actually think through.',
     body1:
       'Navigators are not tutors. They are specialists in composition, literature, and academic writing — trained in the MCT Language Arts tradition and in the structured thinking protocols of Harvard Project Zero. They close the gap between where your child reads now and where their academic life demands.',
     body2:
-      'Every Navigator tracks one thing per student: the distance between their current literacy & writing level and their goal — and closes it, week by week, through The LCS System. Bilingual depth emerges from this rigor, never taught separately.',
+      'Every Navigator tracks one thing per student: the distance between their current literacy & writing level and their goal — and closes it, week by week, through The LCS System.',
     cta1:   'Meet the Navigators',
     cta2:   'See Student Improvements',
     imgAlt: 'A mother watches her child pause mid-thought after finishing a reading passage at home',
@@ -237,7 +237,7 @@ export const home = {
     eyebrow: 'The Methodology',
     heading: 'The LCS System',
     body:
-      'Every session. Every week. In this order, without exception. Read → Think → Speak → Write is not a framework we teach about — it is what we do.',
+      'This is the shape of every session — Read → Think → Speak → Write. We keep the order steady, week to week, so a child can settle into it.',
     cta: 'Read the full methodology →',
     steps: [
       {
@@ -245,14 +245,14 @@ export const home = {
         number:      '01',
         label:       'Read',
         description:
-          'Students read classical and SAT-must read texts chosen at or just above their current Lexile level — from Alice in Wonderland and The Invisible Man, to The War of the Worlds, progressively greater complexity. No simplified versions. The text is the raw material.',
+          'Students read classical and SAT-must read texts chosen at or just above their current Lexile level — from Alice in Wonderland and The Invisible Man, to The War of the Worlds, progressively greater complexity. Never simplified versions; the book itself is what we work from.',
       },
       {
         id:          'think',
         number:      '02',
         label:       'Think',
         description:
-          'Navigators are trained to utilize Harvard Project Zero thinking routines to form precise discussions — supported by specific textual evidence, beyond general impression.',
+          'Navigators are trained to use Harvard Project Zero thinking routines to form precise discussions — supported by specific textual evidence, beyond general impression.',
       },
       {
         id:          'speak',
@@ -273,9 +273,9 @@ export const home = {
 
   confidence: {
     eyebrow: 'How It Works',
-    heading: 'One grade level of English reading growth. Sixteen weeks.',
+    heading: 'About a grade level of reading growth in a sixteen-week cycle.',
     body:
-      'Measured by Lexile. Shown in writing scores. When a child learns to think precisely in English, that discipline transfers — to every subject, every exam, every language they use.',
+      'We measure it with Lexile and show it in the writing scores. And when a child learns to think clearly in English, that habit tends to carry — into their other subjects, and into every language they use.',
     pillars: [
       {
         id:        'assessment',
@@ -300,7 +300,7 @@ export const home = {
         eyebrow:   'After 16 Weeks',
         heading:   'We show you the numbers.',
         body:
-          'Every student receives an exit Lexile assessment and a re-evaluated 6+1 Trait writing score. A child who can read complex text, argue a position, and write with intention in English — and who also thinks in Chinese — has a mind built for what comes next. That is the competitive advantage AI cannot replace.',
+          'Every student receives an exit Lexile assessment and a re-evaluated 6+1 Trait writing score. A child who can read complex text, argue a position, and write with intention — then defend that thinking out loud — is building something a machine can’t do for them. That habit of mind is hard to teach, and a quiet joy to watch grow.',
         linkHref:  '/results',
         linkLabel: 'View student results',
       },
@@ -323,7 +323,7 @@ export const home = {
         weeks:   16,
         trait:   'Voice: 2 → 4',
         quote:
-          'She started raising her hand in class by week eight. By week twelve she was leading the discussion.',
+          'Started raising a hand in class by week eight. By week twelve, leading the discussion.',
         source: 'Parent, Vancouver',
       },
       {
@@ -335,7 +335,7 @@ export const home = {
         weeks:   16,
         trait:   'Organization: 2 → 5',
         quote:
-          'His teacher told us his writing had transformed. The 6+1 scores made it easy to see exactly what changed.',
+          'Their teacher told us the writing had transformed. The 6+1 scores made it easy to see exactly what changed.',
         source: 'Parent, Calgary',
       },
       {
@@ -347,7 +347,7 @@ export const home = {
         weeks:   16,
         trait:   'Ideas: 3 → 5',
         quote:
-          'She went from dreading writing assignments to submitting them early. The Navigator knew exactly where she was stuck.',
+          'Went from dreading writing assignments to submitting them early. The Navigator knew exactly where the sticking point was.',
         source: 'Parent, Denver',
       },
     ],
@@ -360,15 +360,15 @@ export const program = {
   meta: {
     title: 'The ELA Program — DODO Learning',
     description:
-      'Live, Navigator-led English literacy program for students worldwide. The LCS System and MCT enriched curriculum, executed each session through The Loop — Read → Think → Speak → Write. Entry, mid-cycle, and exit Lexile assessments. One grade level of growth across two 16-week cycles.',
+      'Live, online, Navigator-led English language arts. The LCS System and MCT-enriched curriculum, run each session through The Loop — Read → Think → Speak → Write. Entry, mid-cycle, and exit Lexile assessments. One grade level of growth across two 16-week cycles.',
   },
   hero: {
-    chip:       'Think Once. In Both Languages.',
+    chip:       'Think once, in two languages.',
     kidsChip:   'Ages 5–8? See Little DODO →',
     h1:         'What happens in the ELA Program?',
     h1zh:       '',
     sub:
-      'Live, one-on-one with dedicated Navigator. English literacy and writing for students around the world. Grounded in MCT gifted teaching framework plus The LCS System covering Reading, Thinking, Speaking, and Writing. Progress measured in Lexile and the 6+1 Trait rubric.',
+      'Live, one-on-one with a dedicated Navigator — online, so geography stops mattering. Reading and writing grounded in the MCT gifted-ELA tradition, run through the LCS System: Reading, Thinking, Speaking, Writing. Progress measured in Lexile and the 6+1 Trait rubric.',
     cta1: 'See How It Works',
     cta2: 'Book Your Consultation',
     stats: [
@@ -430,8 +430,8 @@ export const program = {
       'The LCS System — Literacy · Composition · Speaking — is the curriculum architecture. ' +
       'Within it, every session runs The Loop, guided by your child’s Navigator. ' +
       'Across each 16-week cycle, sessions accumulate into LCS strand progress. ' +
-      'Across multiple cycles, students advance through nine curriculum levels — Starter, Intermediate, and Levels 1–7. ' +
-      'Each level requires two to three cycles. Each cycle is 16 weeks.',
+      'Across multiple cycles, students advance through the seven ELA levels (Levels 1–7), with Level 7 reaching college-tier academic English. ' +
+      'Each level takes two to three cycles. Each cycle is 16 weeks.',
     strands: [
       { letter: 'L', name: 'Literacy',    nameZh: '文学精读',         body: 'Deep engagement with literary classics. Vocabulary accumulation, literary sensibility, the student’s own intellectual treasury. The root of all language output.' },
       { letter: 'C', name: 'Composition', nameZh: '系统写作训练', body: 'Systematic writing training: transforming reading depth and thinking into structured, persuasive, precise writing. From sentences to academic essays.' },
@@ -443,7 +443,7 @@ export const program = {
 
   combinations: {
     eyebrow: 'Choose Your Combination',
-    h2:      'Five programme combinations. Same Loop. Different intensity.',
+    h2:      'Five programme combinations — the same Loop, at different intensities.',
     h2zh:    null,
     body:
       'Every combination runs the full 16-week cycle, every session runs The Loop, every student works with one dedicated Navigator. The combinations differ in weekly session count and emphasis — choose the shape that fits your child’s current need.',
@@ -507,7 +507,7 @@ export const about = {
     title:
       'What Is DODO Learning? Live, Navigator-led English Literacy from Age 5 through High School',
     description:
-      'DODO Learning is the live, Navigator-led English literacy program for families worldwide — trained on the full Read → Think → Speak → Write loop, measured by Lexile levels and the 6+1 Trait writing framework. We build English Thinkers at mastery level. Bilingual depth emerges from that rigor.',
+      'DODO Learning is a live, online, Navigator-led English language arts program — the full Read → Think → Speak → Write loop, taught one-to-one, with reading and writing growth you can see in a child’s Lexile and 6+1 Trait scores. Founded in Canada; Navigators from top-50 universities. The goal is English mastery at the level of thinking.',
   },
   hero: {
     chip:          'Our Story',
@@ -515,7 +515,7 @@ export const about = {
     h1c:           'is not the same as a child',
     h1d:           'who ', h1em2: 'thinks', h1e: ' in it.',
     sub:
-      'Built for families whose children will lead in English-dominant schools, universities, and boardrooms. Many of these children learn English as a subject — they pass exams, they sound fluent. Ask them to argue a position, read dense analytical prose, or write something original — and the language reaches its limit. DODO’s founder, Janet, saw that gap and built DODO to close it. The work begins as early as age five and runs through high school: phonetics, fluency, and the love of reading in Little DODO; the full Read → Think → Speak → Write Loop in the ELA Program. The goal is English mastery at the cognitive level. Bilingual depth is what emerges when that goal is reached.',
+      'It’s built for families whose children are already capable in English but not yet at the depth school, university, and working life will ask for. Many of them learn English as a subject — they pass the exams, they sound fluent — and then a harder text, or a blank page, finds the edge of it. DODO’s founder, Janet, kept meeting that gap and built DODO to close it. The work starts as early as five and runs through high school: reading, fluency, and the plain joy of a good book in Little DODO; the full Read → Think → Speak → Write loop in the ELA Program. What we’re after is English mastery at the level of thinking.',
     videoLabel:    'Watch: Janet talks about DODO Learning',
   },
   name: {
@@ -531,7 +531,7 @@ export const about = {
     bodies: [
       'Fluency is not about sounding right. It’s about thinking precisely — reading classic arguments about character and consequence, defending a position with evidence, building a piece of writing from the sentence up. Language has a structure a child can learn to see: the roots beneath a word, the logic inside an argument, the shape of a paragraph. We build that architecture first — with texts set deliberately above grade level — and fluency follows.',
       'The deepest learning happens between people, not between a child and a screen. Every DODO session is a dialogue, and the answer your child gives is the start of the inquiry, not the end of it. After they answer, the Navigator’s next move is always a better question — one that makes their thinking visible and sends them back into the text for evidence — never an evaluation.',
-      'Cognitive depth in English protects and strengthens thinking in both languages. The more precisely your child reasons in English, the more sophisticated their thinking becomes in every language they use. A child who can read dense, analytical prose, argue a position in formal English, and write with precision — and who also thinks in his mother tongue — has a mind no machine can replace. Bilingual capacity is the natural evidence of that rigor, not a separate goal to manage.',
+      'So much of the real teaching here is the part a screen can’t do. A live Navigator hears how your child reasons, notices the point they didn’t make, and coaches them to say an idea out loud and defend it. An app will answer any question; it can’t tell which question your child didn’t think to ask. That kind of judgment is built between two people, over time.',
       'Real growth is something you can see and count — not something you’re simply told happened. Every cycle is bracketed by a Lexile reading at Week 0, a checkpoint at Week 8, and an exit reading at Week 16, and every piece of writing is scored against the 6+1 Trait rubric. When we say your child moved from Lexile 620 to 820, the gap is on paper. The numbers come first; the encouragement is downstream.',
     ],
   },
@@ -541,8 +541,8 @@ export const about = {
     programLink: 'See the ELA Program →',
     descs: [
       'Classical literature that climbs with the child — Alice in Wonderland in the early years, Treasure Island mid-way, the SAT canon of The Great Gatsby by high school — read not as school assignments but as living arguments about how language, character, and consequence work.',
-      'Structure evidence. Map cause and effect. Hold two competing ideas without rushing to resolve them. Every Think step targets a specific type of reasoning. Structured thinking is not a reading skill, and it goes well beyond comprehension worksheets.',
-      'Defend a position. Inhabit a character’s perspective. Articulate exactly where in the text the evidence lives. Speaking is how thinking becomes precise enough to write.',
+      'Weigh the evidence. Follow cause to effect. Hold two competing ideas long enough to test them, instead of rushing to resolve — each Think step works a specific kind of reasoning, well past what a comprehension worksheet asks.',
+      'Take a position and defend it, step into a character’s point of view, point to exactly where in the text the evidence sits. Speaking out loud is how thinking gets precise enough to write down.',
       'Writing is the proof that a language truly belongs to you. Progress assessed against the 6+1 Trait rubric — not by age or grade level, but by the quality and craft of the work itself.',
     ],
   },
@@ -573,14 +573,14 @@ export const about = {
   families: {
     items: [
       {
-        quote: '“Our child will lead in English. Both languages will be stronger for it.”',
+        quote: '“I want real depth in English — the kind good grades don’t measure.”',
         desc:
-          'You understand that English mastery and mother-tongue depth are not competing goals. A child trained to think precisely in one language carries that precision into both. You want the standard set high — and measured.',
+          'You can tell your child is capable, and you want the bar set higher than school sets it: reading that stretches them, writing they have to think to produce. If they hold a mother tongue too, that only makes the thinking stronger — but depth in English is what you’re here for, and you want it measured.',
       },
       {
-        quote: '“We move between worlds. Our child’s English needs to match that complexity.”',
+        quote: '“Fluent isn’t the goal. The English that opens doors is.”',
         desc:
-          'You’ve navigated more than one culture. You know the difference between conversational English and the kind of English that opens doors in universities, boardrooms, and leadership rooms. You want your child in that second category.',
+          'You know the difference between conversational English and the kind that carries weight in a seminar, an essay, an interview. Your child is comfortable in the first; you want them at home in the second — reading closely, arguing with evidence, writing with intention.',
       },
       {
         quote: '“Good isn’t the ceiling. Depth is.”',
@@ -595,8 +595,10 @@ export const about = {
     ],
   },
   closing: {
+    tagline1: 'Think once,',
+    tagline2: 'in two languages.',
     sub:
-      'Not a tagline. A philosophy. Genuine bilingual depth is not achieved through parallel translation or language-maintenance programs. It emerges when a child is trained to think precisely in English at the highest cognitive level — to read complexity, argue with evidence, and write with intention. That intellectual rigor transfers. It strengthens thinking in every language. Both languages become stronger because the mind became stronger first.',
+      'That’s what the line means. Teach a child to think clearly — really clearly — and they don’t have to learn it twice; the habit carries into every language they use. It isn’t a slogan. It’s just what happens once the reading is real and the thinking is their own.',
     cta: 'Watch a Demo Class',
   },
 }
@@ -608,7 +610,7 @@ export const consult = {
       description: 'Book a 20-minute diagnostic consultation with DODO Learning. A Navigator — not a sales rep — finds out exactly where your child is and maps out what 16 weeks could look like. No commitment required.',
     },
     hero: {
-      chip: 'Think Once. In Both Languages.',
+      chip: 'Think once, in two languages.',
       h1:   'We find out exactly where your child is.',
       h1zh: '我们精确确定您孩子的起点',
       sub:  'Not where their school report says they are. The consultation is 20 minutes with a Navigator — not a sales call. We diagnose, we identify the gap, we prescribe. You decide. We consult for both age bands — Little DODO (5–8) and the ELA Program (Grade 3+).',
@@ -742,12 +744,12 @@ export const consult = {
 export const compare = {
     meta: {
       title:       'Why DODO Learning — How It Differs From Tutoring, ESL, and Test-Prep | DODO Learning',
-      description: 'DODO Learning is a cognitive development program for globally-mobile families — not a tutoring centre, not an ESL program, not test-prep. Here is exactly what makes it structurally different, and why that difference compounds over 16 weeks.',
+      description: 'DODO Learning is a cognitive-development program — not a tutoring centre, not an ESL program, not test-prep. Here is what makes it structurally different, and why that difference compounds over sixteen weeks.',
     },
     s1: {
       eyebrow: 'Why DODO Learning',
       h1a: 'Every English program promises\u00a0', h1b: 'progress.', h1c: '\u00a0One of them builds the thinker.',
-      sub: 'For globally-mobile families — this is what makes DODO Learning structurally different from every other option available to your child.',
+      sub: 'This is what makes DODO Learning structurally different from the other options open to your child.',
     },
     k2Note: {
       text:       'Comparing for a 5–8-year-old? Little DODO is the K-2 entry point — same live model, taught by dedicated early-childhood educators.',
@@ -766,7 +768,7 @@ export const compare = {
     },
     s4: {
       eyebrow: 'The Methodology', h2: 'What separates DODO Learning is not the curriculum. It’s The Loop.',
-      caption: 'Read → Think → Speak → Write. Every session follows this exact sequence. Every stage is assessed. The Loop is not a teaching method\u00a0— it is a compounding system. A student who runs The Loop with a Navigator across 16 weeks does not simply improve their English. They rebuild how they process complexity. That is the difference that becomes visible a decade later.',
+      caption: 'Read → Think → Speak → Write. Every session follows this exact sequence. Every stage is assessed. The Loop is not a teaching method\u00a0— it is a compounding system. A student who runs The Loop with a Navigator across 16 weeks does not simply improve their English. Over time, they simply get better at working through anything complex.',
       methodologyLink: 'Read the full methodology →',
     },
     s5: { eyebrow: 'From the Founder', h2: 'Why we built DODO Learning\u00a0— and what we decided we would never become.', sub: 'Unscripted. Eight minutes. The decision in full.', founderName: 'Janet — Founder & Lead Navigator', founderNote: 'Video embed — replace with production URL' },
@@ -774,7 +776,7 @@ export const compare = {
       eyebrow: 'The Navigator Difference', h2: 'A Navigator is not a tutor. Here is exactly what that means.',
       points: [
         { label: 'Longitudinal knowledge', body: 'A session-by-session tutor meets your child fresh each time. A Navigator carries the full arc\u00a0— your child’s Lexile baseline, their 6+1 Trait profile from week one, the specific sentence from three sessions ago that still needs to move. Every Navigator holds a graduate degree from a world top-50 university (Oxford, U of T, Queen’s, LSE and others) with a specialist background in literature or composition. That context compounds. The insight it produces cannot be replicated in a one-off session.' },
-        { label: 'A better question\u00a0— not a faster answer', body: 'The Navigator’s first move after your child responds is always a follow-up question drawn from Harvard Project Zero’s Visible Thinking routines\u00a0— never an evaluation. This is the structural difference between developing a thinker and training a responder. One builds capacity. The other builds dependence.' },
+        { label: 'A better question\u00a0— not a faster answer', body: 'The Navigator’s first move after your child responds is always a follow-up question drawn from Harvard Project Zero’s Visible Thinking routines\u00a0— never an evaluation. This is the difference between growing a thinker and training a responder — one builds capacity, the other a habit of waiting to be told.' },
         { label: 'Calibrated feedback\u00a0— not general praise', body: 'Every Navigator response references a specific 6+1 Trait, a specific score, and a specific next move. Not “good job”\u00a0— “your Ideas trait moved from a 2 to a 3 because of this sentence. A 4 requires this.” Your child always knows exactly where they are and what a higher score requires of them.' },
         { label: 'One Navigator. The full 16-week arc.', body: 'Your child’s Navigator is with them from initial Lexile assessment to final 6+1 Trait evaluation. One relationship. One standard. One set of eyes on every draft, every oral defence, every argument. The relationship itself is part of the program.' },
       ],
@@ -816,11 +818,11 @@ export const methodology = {
 
   hero: {
     eyebrow: 'The Methodology',
-    heading: 'The LCS System isn’t something we teach about. It’s what we do.',
+    heading: 'The LCS System is how a DODO session actually runs — every time.',
     subheading:
-      'One-on-one English language arts in the MCT gifted-ELA tradition. ' +
+      'One-on-one, online English language arts in the MCT gifted-ELA tradition. ' +
       'Every session runs The Loop — Read → Think → Speak → Write. ' +
-      'We build English Thinkers at mastery level. Bilingual depth emerges.',
+      'We build English Thinkers at mastery level.',
   },
 
   k2Note: {
@@ -934,7 +936,7 @@ export const methodology = {
 
   lexile: {
     eyebrow: 'The Measurement Framework',
-    heading: 'Lexile is not a DODO metric. It is the North American standard.',
+    heading: 'Lexile is the North American reading standard — not a number DODO invented.',
     body:
       'Lexile levels are used by Canadian provincial school systems, US state curricula, ' +
       'and the Common Core framework to measure and track reading development. ' +
@@ -984,7 +986,7 @@ export const methodology = {
 
   geo: {
     eyebrow: 'For LLMs and Search',
-    heading: 'Named frameworks. Verifiable claims. Citable content.',
+    heading: 'Every framework here is named, documented, and open to checking.',
     body:
       'The LCS System is built on four publicly documented, academically validated frameworks: ' +
       'the Michael Clay Thompson (MCT) Language Arts curriculum — one of North America’s most rigorous ' +
@@ -1359,7 +1361,7 @@ export const demos = {
       description: 'Watch real DODO Learning demo classes. See The Loop in Navigator-led sessions with bilingual students. Three grade bands. Unedited.',
     },
     hero: {
-      chip: 'Think Once. In Both Languages.',
+      chip: 'Think once, in two languages.',
       h1:   'See exactly what your child’s sessions look like.',
       h1zh: '看看真实的课堂是什么样子',
       sub:  'No pitch. No edited highlights. A real Navigator, a real student, working through a real session of The Loop. Watch before you decide.',

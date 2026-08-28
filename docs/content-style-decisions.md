@@ -347,3 +347,101 @@ Scope: apply the strategic critique (`docs/brand-guide-critique-2026-08-26.md`) 
 - **Reconciled with upstream:** founder is **Janet — first name only, everywhere** (upstream D35); my session decisions were renumbered **D35–D41 → D36–D42** on push to avoid colliding with upstream's D35.
 - **Cascade progress (D38 research base + D37 five-strands), shipped by peer 2026-08-26 (commit `334d8de`):** new **`/credentials`** bilingual reference page (canonical attribution surface) + **MCT-anchored pillar blog** (`content/en/blog/mct-language-arts-in-a-live-one-on-one-program.mdx`) + `credentialsSchema()` (CollectionPage + 4 `EducationalOccupationalCredential` + 5 academic `citation` nodes) + `llms-full.txt` seeding. Remaining cascade (tagline D36, `/methodology` block, `/faq` entry, positioning D40 surfaces) tracked in `docs/pending-guide-cascade.md`.
 - **Repo state:** local `main` in sync with `origin/main` at consolidation time. Peer's unrelated uncommitted work (`.design/dodo-coding-launch/` reorg, `content-review/03–04`, `ElaReportTool.jsx` in `stash@{0}`) left untouched per user.
+
+---
+
+## 2026-08-27 · Position + Brand Truths revision (marketing-skills pass)
+
+Applied at guide level to `BRAND_CONTENT_GUIDE.md` + `.zh.md` (§00 five-second, §01 position + IS/NOT table, §02 truths, §04 mother-tongue note). Skills applied up front: `copywriting`, `marketing-psychology`, `copy-editing`.
+
+### D43 · One-sentence position revamped — LCS/five-strands + online, bilingualism out
+- **Decision:** §01 one-sentence position rewritten to: *"DODO Learning is a live, online, one-on-one English language arts program that builds English mastery through the LCS System — the five strands of a complete language education across Literacy and Composition, plus a live Speaking strand no book or app can teach — with a credentialed Navigator in every session."*
+- **Rationale:** (1) add the **online / live** delivery model (also pre-empts the AI/app substitute right in the line); (2) **LCS + five strands replace Lexile + 6+1** in the statement — the system is the *offer* (proprietary, category-defining); Lexile/6+1 are third-party *proof*, relocated to Truth 3; (3) **bilingualism removed** from the statement. Accuracy note preserved: LCS = 3 branches; the five strands nest under L & C; **Speaking is the differentiator, not one of the five.**
+- **Also updated:** §00 five-second positioning (dropped "Bilingual depth emerges."; added "Live, online"); §01 IS/NOT table — retired the "language-maintenance / bilingual depth emerges" row.
+- **Trigger:** User — "Add the fact DODO is online/virtual. The 5 strands and LCS should replace Lexile and 6+1… Remove bilingualism. Revamp completely."
+
+### D44 · Three Brand Truths redesigned — retire bilingual truth, add human/AI moat, strengthen proof
+- **Decision:** §02 truths redesigned. **Truth 1 kept** (English mastery at the cognitive level; light polish). **Truth 2 retired** (bilingual-capacity-as-outcome) and **replaced** with *"Mastery is taught by a person, not delivered by a product"* — the credentialed-Navigator + Speaking-strand moat and the work no book/app/AI can do. **Truth 3 redesigned** from the weak *"progress must be visible/measurable/felt / we show numbers"* to *"We put the growth on paper"* — measurement against outside standards (Lexile, 6+1) at Week 0/8/16, framed as **accountability** (regret-aversion: parents see the change before they renew).
+- **Rationale:** New arc = the goal → the uniquely human method/moat → the proof. New Truth 2 absorbs the Speaking differentiator + the AI-age thesis; it makes the §04a *"Truth 2 is the seed"* cross-ref **more** accurate. Lexile/6+1 land in Truth 3 (proof), which is why they leave the position statement (D43).
+- **Ripple reconciliations (same apply):** §04 mother-tongue note — repointed the "(Truth 2)" reference to "bilingual-depth by-product (downstream of Truth 1)" (EN + ZH); §04a "Truth 2 is the seed" left as-is (now more accurate); wider by-product bilingual threads (§10, §16, "English Thinker" identity) **kept as-is per user** — already English-first.
+- **Trigger:** User — "Truth 1 is okay. Truth 2 should be retired. Truth 3 is weak. Completely redesign."
+
+## 2026-08-27 · Customer-site cascade — Unit 0 (Foundations)
+
+### D45 · Global tagline swap (D36 executed on live surfaces) + lint update
+- **Decision:** retired string `Think Once. In Both Languages.` purged from all **live** code. Replaced with **`Think once, in two languages.`** in EN surfaces and **`一次思考，两种语言。`** in the two ZH-locale meta strings (`marketing.zh.js` L178/L194). Live files touched: `content/marketing.en.js` (7×), `content/marketing.zh.js` (2×), `app/layout.jsx`, `lib/metadata.js` (2×, global OG/title), `components/UnderConstruction.jsx`, `components/partners/PartnersClient.jsx`, `components/ops/ElaReportTool.jsx`, `components/ops/AssessmentTool.jsx`. **Left as-is:** `translation/archive/deepseek-2026-05-17/*` (frozen snapshot); guide/log/lint refs that intentionally cite the retired string.
+- **`dodo-content-writer` lint updated** (`.claude/skills/dodo-content-writer/SKILL.md`): the guard that *enforced* the retired tagline was corrected → now rejects both retired forms and enforces the new one; added a **D40 guard** rejecting "globally-mobile / students around the world / 面向全球家庭" as headline framing.
+- **Note:** `PartnersClient.jsx` carries a hardcoded tagline (not sourced from central content) — smell flagged for the Partners page unit (#12).
+- **Trigger:** User — "start #0."
+
+## 2026-08-27 · Customer-site cascade — Page 1 (Home)
+
+### D46 · Home reworked to v5 (position/truths/positioning + proof integrity)
+- **Applied to `content/marketing.{en,zh}.js` home slice + brand chrome.** Guide-conflicts fixed:
+  - **A · hero.h1** — retired the bilingual co-headline ("Bilingual depth as the natural outcome.") → line 2 now the human moat: *"Live, one-on-one, with a Navigator no book or app can replace."* (D43/D44). ZH mirrored (the prior ZH literary line — the §00 sub-tagline — retired from the H1; still available in guide §00 if wanted elsewhere).
+  - **B · confidence results pillar** — reframed the AI payoff off "who also thinks in Chinese" → *"then defend that thinking out loud … the judgment AI cannot replace"* (surfaces Speaking; D44). EN + ZH.
+  - **C · brand.body** (footer chrome) — dropped "globally mobile families" / "面向全球华人家庭" → "live, online … English language arts program" (D40). EN + ZH.
+  - **D · meta** — dropped "Bilingual depth emerges" tail; added **online** + **LCS/Speaking**; MCT → "gifted-ELA tradition." EN + ZH (+ title gains "Online" / "在线").
+  - **E · photoIntro.body2** (EN) — removed the bilingual tail (ZH already lacked it → parity restored).
+  - **F · ZH photoIntro** — de-**外教**/母语: heading mirrors EN ("老师与导师之间，差的是一张地图。"); body1 lead → "导师一对一不间断，却远不止一位英语老师。" (§10).
+  - **Polish:** eyebrow/title gain "online" (D43); `utilize`→`use` (§08).
+- **Flag 1 — unverified proof softened:** the two homepage proof tiles not in the §11 registry — **"2× writing gain"** and **"8/10 continue"** — replaced with **§11-verified** facts: **"75%+ word-of-mouth referral"** and **"10,000+ teaching hours."** Story shifts reach/reading/**referral**/**hours**. *If source data exists for the 2× writing gain and ~80% retention, add to §11 and we can restore those tiles verbatim.*
+- **Flag 2 — results-card pronoun mismatch fixed:** quotes used pronouns that didn't match the card name (Vincent X→"She", Juliette W→"His"/他, River C→"She"). **Neutralized** all three parent quotes (EN + ZH) — no name-based pronoun inference.
+- **Found (routed, not fixed here):** `/program` ZH hero chip uses "一次思考。两种语言。" (periods) — should be the approved "一次思考，两种语言。" (comma). Logged for the **Program unit (#4)**.
+- **Trigger:** User — approved the Home scan/proposal + both flags; "Apply."
+
+### Pending (position/truths pass)
+- **Item 3 — redundancy/refine pass** (Rule of One): dedupe the AI rebuttal (canonical home = §01b), the "acceleration into mastery" guardrail (→ §10), and the "Lexile with a number" rule; other sections cross-reference. Run next, on top of D43/D44.
+- Customer-surface cascade of D43/D44 (position + truths) — **not started**; add to `docs/pending-guide-cascade.md` when greenlit.
+
+## 2026-08-27 · Voice / persona rewrite (§08 + §10 tone)
+
+### D47 · §08 rewritten — "soft in tone, deep in knowledge"; anti-greasy / anti-AI-cadence standard
+- **Decision:** retired the old §08 default ("affirmative, confident, forward-facing · trust-then-convert · two-sentence punch openers"). **New persona:** DODO's best Navigator talking to a parent across a kitchen table — deeply literate, warm, unhurried, quietly confident, a little delighted by language; never salesy. New §08 carries: persona statement · 4 principles (let sentences breathe · wear expertise lightly · care without selling · a little delight) · 4 dimensions (**Warm · Well-read · Unhurried · Quietly confident**) · a **"strip on sight"** list of register tells (rule-of-three on repeat, em-dash drumroll, "not X — but Y" reversal, fragment-stacking, superlative certainty, landing-page voice in body, importance-inflation) · **before→after** un-greasing examples built from the real Home lines shipped in D46.
+- **Reconciled inside §08:** retired the ZH "two-sentence punch opener" rule and the "positioning over poetic abstraction" absolute → "clarity first, warmth alongside" (a legible warm image is welcome; matches the D46 Home ZH heading); softened the funnel-stage CTA intensity (Strong → confident-not-pushy) and the channel rule ("numbers in every section" → "one real number where it earns trust").
+- **§10** gained a **"Tone tells — strip on sight"** band — a forbidden *rhythm*, not words. EN + ZH.
+- **Files:** `BRAND_CONTENT_GUIDE.md` §08 + §10 · `.zh.md` §08 + §10.
+- **Trigger:** User — the shipped copy "tastes greasy / robotic AI"; wants soft tone + deep knowledge, creative/fun/caring, not pitchy. Approved the proposed rewrite.
+- **Next (pending user go):** re-run **Unit 0–1** — redo the Home copy in this voice; the D46 lines are the first to un-grease.
+
+### D48 · Home re-voiced to §08 (D47) — un-greased, EN + ZH
+- **Applied to `content/marketing.{en,zh}.js` home slice.** Un-greased the D46 lines against the new voice:
+  - **hero.h1** → warm: EN *"Real English mastery — the kind you can see in how a child thinks." / "Taught live and one-to-one, by a Navigator who gets to know your child."* (retired "no book or app can replace"). ZH mirrored.
+  - **loop.body** — retired the fragment-stack + "is not a framework we teach about — it is what we do" reversal → *"This is the shape of every session — Read → Think → Speak → Write. We keep the order steady, week to week, so a child can settle into it."*
+  - **confidence results pillar** — retired "built for what comes next / the judgment AI cannot replace" → *"…is building something a machine can't do for them. That habit of mind is hard to teach, and a quiet joy to watch grow."* (keeps the AI point, calm register).
+  - **confidence.heading/body** — de-fragmented ("Sixteen weeks." → "in a sixteen-week cycle"; "Measured by Lexile. Shown in writing scores." → connected sentences; dropped the every-subject/exam/language triad).
+  - **hero.consultHook** — de-jargoned ("we train English Thinkers at every stage" → "at every age the work is really the same…").
+  - **photoIntro.body0** + **loop Read-step** — warmed ("reading gap" → "quiet gap"; "No simplified versions. The text is the raw material." → "Never simplified versions; the book itself is what we work from.").
+- **§09 consistency fix:** the §08 before→after example wrongly used "teacher" for a Navigator → corrected to **Navigator** in both guides (§09 owns the term).
+- **Build gotcha caught:** the pillar edit first used a straight apostrophe ("can't") inside a single-quoted JS string → broke the build; the `npm run build 2>&1 | tail` pipe **masked the real exit code** (reported 0). Fixed to curly `’`; re-verified with a redirect (real `EXIT=0`). *Lesson: use curly apostrophes in these files; don't trust a piped build's exit code.*
+- **Verified:** build clean (real EXIT=0); `/en` + `/zh` render the re-voiced copy; only pre-existing console noise.
+- **Found (not in scope):** the shared **ageBands** "ELA Program" blurb still carries a "read complexity, argue with evidence, write with intention" triad — route to a chrome/ageBands pass.
+- **Trigger:** User — "Warm on H1, apply."
+
+## 2026-08-27 · Customer-site cascade — Page 2 (About)
+
+### D49 · About reworked to v5.1 (D40/D43/D44 + §08 voice) — EN + ZH
+- **Applied to `content/marketing.{en,zh}.js` about slice + `app/[locale]/about/page.jsx`.**
+  - **A · meta.description** — dropped "families worldwide" (D40) + "Bilingual depth emerges" tail (D44); added online / LCS framing.
+  - **B · hero.sub** — dropped worldwide + "boardrooms/lead" flex + bilingual tail; kept the Janet founding story; warmed. (hero.h1 "*speaks* vs *thinks*" kept — it's excellent.)
+  - **C · beliefs pillar 3** — was the old bilingual Truth 2 → replaced with the **human/Navigator/Speaking + AI-judgment moat** (new Truth 2, D44). Also fixed the pillar-3 **heading** in the jsx (`PILLARS_BASE`) — "A rigorous English mind is a bilingual mind…" → "The things that matter most are the ones a machine can't hand you." + **pillar-4 heading** "Progress must be visible, measurable, and felt" → "We put the growth on paper…" (new Truth 3). *(Belief headings were hardcoded in the jsx, not the content slice — a miss Unit 0/D46 would not have caught.)*
+  - **D · families #1 & #2** — reframed off bilingual-lead / mobility-lead → depth + aspiration (D40/D44). #3 ("Good isn't the ceiling. Depth is.") + #4 (Little DODO) kept.
+  - **E · closing** — the tagline was **hardcoded in `about/page.jsx`** as the retired "Think Once." / "In Both Languages." (Unit 0 missed it). Made **locale-aware**: added `closing.tagline1/tagline2` to both content slices (EN "Think once," / "in two languages."; ZH "一次思考，" / "两种语言。") and wired the two gradient `<h2>`s + aria-label to them. Rewrote the bilingual-philosophy + greasy `closing.sub` ("Not a tagline. A philosophy.") to a warm gloss of the signature.
+  - **F · loop Think/Speak** — de-fragmented (§08).
+  - **Polish:** varied pillar-3 body opening so it doesn't echo its heading.
+- **Verified:** real `EXIT=0` build; `/en/about` + `/zh/about` render correctly; locale-aware closing tagline confirmed (EN Latin / ZH 一次思考，两种语言。); JS sweep shows **no** stale strings (Think Once / In Both Languages / worldwide / 面向全球 / 双语深度…涌现 / 机器无法取代); only pre-existing console noise.
+- **Trigger:** User — approved the About scan/proposal + "(ii) locale-aware" + "Apply."
+
+## 2026-08-27 · Customer-site cascade — pages 3–18 (batch run)
+
+### D50 · Methodology, Program, Compare + machine surfaces reworked to v5.1 + §08 (EN + ZH)
+- **Authorized batch run** (user: "complete the rewrite by page… flag problematic areas… sync/commit/push at end"). Full self-critique in `docs/cascade-admin-review-2026-08-27.md`.
+- **Methodology** — hero reversal → plain; bilingual tail dropped + "online" added; `geo` + `lexile` heading fragment/reversal tells softened (EN+ZH).
+- **Program** — **retired "nine curriculum levels — Starter, Intermediate…" → seven ELA levels (D37)** (EN+ZH); "students worldwide / around the world" dropped (D40); combinations heading de-fragmented.
+- **Compare** — "globally-mobile families" ×2 dropped (D40); worst overclaims softened ("decade later", "builds dependence"). Flagged 🔴 for a deeper admin voice pass + missing D41 rows.
+- **ZH tagline chips** — 3 chips using "一次思考。两种语言。" (periods) → the approved comma form (D36). Unit 0 missed these (ZH rendering, not the English string).
+- **Machine surfaces** — `lib/schema.js` (7×) + `app/layout.jsx` global meta: "globally mobile families" → D40 demographic+desire framing / dropped. `llms.txt`/`llms-full.txt` left intact (already D40-aligned; bilingual explicitly by-product).
+- **Lexile / Results / Navigators** — swept, **no hard conflicts**; already on-voice (Navigators is the human-moat page). Left as-is with optional-polish flags.
+- **Verify-only pages** (Consult/Assessment/Demos/Audiobooks/Privacy/Terms/Partners/Little DODO/Credentials) — swept, no hard conflicts.
+- **Verified:** full `npm run build` REAL_EXIT=0, all routes prerendered.
+- **Owed (admin decisions, not done):** §07a research block on /methodology; five-strands surfacing (Methodology+Program); D41 comparison rows + FAQ entries; FAQ "Bilingual Development" category reframe; Compare deep voice pass. All in the admin-review doc.

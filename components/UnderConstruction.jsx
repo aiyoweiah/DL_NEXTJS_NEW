@@ -178,7 +178,7 @@ export default function UnderConstruction({ locale = 'en' }) {
 
           {/* Brand line */}
           <div style={{ marginTop: '5rem', textAlign: 'center', ...fadeUpStyle(650) }}>
-            <p style={{ fontSize: 'clamp(1rem, 2.5vw, 1.5rem)', fontWeight: 300, letterSpacing: '0.05em', color: 'rgba(14,14,18,0.15)' }}>Think Once. In Both Languages.</p>
+            <p style={{ fontSize: 'clamp(1rem, 2.5vw, 1.5rem)', fontWeight: 300, letterSpacing: '0.05em', color: 'rgba(14,14,18,0.15)' }}>Think once, in two languages.</p>
             {locale === 'zh' && (
               <p className="mt-1" style={{ fontFamily: 'var(--font-cjk)', fontSize: '14px', color: 'rgba(183,181,254,0.2)' }}>一次思考，两种语言。</p>
             )}

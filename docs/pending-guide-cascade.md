@@ -1,3 +1,5 @@
+> **⚠️ SUPERSEDED 2026-08-27 →** absorbed into `docs/customer-site-cascade-plan.md` (full customer-site update, one page at a time, folds in D36–D44). Use that plan as the live tracker. This file is kept for provenance of the original D36–D42 queue.
+
 # ⏳ PENDING — customer-facing cascade (do NOT start until guide-level edits are fully approved)
 
 **Created:** 2026-08-26 · **Gate:** implement only after **all** guide-level edits (D36–D39 + any critique-driven revisions) are approved by the user. Per the standing apply-gate ([[feedback_about_review_apply_gate]]): propose at the guide/dump level; touch live customer surfaces only on an explicit "apply."
