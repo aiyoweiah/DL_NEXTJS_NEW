@@ -23,6 +23,7 @@ import StreamVideo                     from '@/components/media/StreamVideo'
 import K2Note                           from '@/components/ui/K2Note'
 import { demos as copyEn }              from '@/content/marketing.en'
 import { demos as copyZh }              from '@/content/marketing.zh'
+import DoCta         from '@/components/ui/DoCta'
 
 const LEXILE_SCALE = [
   { level: 1200, grade: 'Grade 12+' },
@@ -169,7 +170,7 @@ function Hero({ locale, c }) {
           <p style={{ fontSize: '1rem', lineHeight: 1.85, color: 'rgba(240,240,240,0.52)', maxWidth: '36rem', marginBottom: '2.25rem' }}>{c.hero.sub}</p>
           <div className="flex flex-col sm:flex-row gap-3">
             <a href="#demo-videos" className="btn btn-primary" style={{ fontWeight: 700 }}>{c.hero.cta1}</a>
-            <Link href={`/${locale}/consult`} className="btn btn-ghost">{c.hero.cta2}</Link>
+            <DoCta as={Link} href={`/${locale}/consult`}>{c.hero.cta2}</DoCta>
           </div>
         </div>
       </div>

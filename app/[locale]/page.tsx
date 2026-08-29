@@ -23,6 +23,7 @@ import LexileBar                        from '@/components/ui/LexileBar'
 import AgeBandChooser                   from '@/components/ui/AgeBandChooser'
 import { home as homeEn, ageBands as bandsEn, codingBand as codingEn } from '@/content/marketing.en'
 import { home as homeZh, ageBands as bandsZh, codingBand as codingZh } from '@/content/marketing.zh'
+import DoCta         from '@/components/ui/DoCta'
 
 // ── Metadata ──────────────────────────────────────────────────
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -126,9 +127,9 @@ function Hero({ locale, c }: { locale: string; c: any }) {
             <Link href={`/${locale}/demos`} className="btn btn-solid">
               {c.hero.cta1}
             </Link>
-            <Link href={`/${locale}/consult`} className="btn btn-outline">
+            <DoCta as={Link} href={`/${locale}/consult`}>
               {c.hero.cta2}
-            </Link>
+            </DoCta>
           </div>
 
           <p className="text-xs md:text-sm leading-relaxed" style={{ color: '#3D4452', maxWidth: '42rem' }}>{c.hero.trustLine}</p>

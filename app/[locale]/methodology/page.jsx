@@ -36,6 +36,7 @@ import Button         from '@/components/ui/Button'
 import Badge          from '@/components/ui/Badge'
 import LexileBar      from '@/components/ui/LexileBar'
 import StreamVideo    from '@/components/media/StreamVideo'
+import DoCta         from '@/components/ui/DoCta'
 
 // ── Static params ─────────────────────────────────────────────
 export function generateStaticParams() {
@@ -428,9 +429,9 @@ export default async function MethodologyPage({ params }) {
             <Button as={Link} variant="charter" href={`/${locale}/consult`}>
               {t.cta.ctaPrimary}
             </Button>
-            <Button as={Link} variant="ghost" href={`/${locale}/program`}>
+            <DoCta as={Link} href={`/${locale}/program`}>
               {t.cta.ctaSecondary}
-            </Button>
+            </DoCta>
           </div>
         </div>
       </SectionWrapper>

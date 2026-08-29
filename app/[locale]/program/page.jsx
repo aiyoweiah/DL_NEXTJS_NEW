@@ -30,6 +30,7 @@ import LexileBar                       from '@/components/ui/LexileBar'
 import AgeBandChooser                  from '@/components/ui/AgeBandChooser'
 import { program as copyEn, ageBands as bandsEn } from '@/content/marketing.en'
 import { program as copyZh, ageBands as bandsZh } from '@/content/marketing.zh'
+import DoCta         from '@/components/ui/DoCta'
 
 // ─────────────────────────────────────────────────────────────
 // STATIC STRUCTURAL DATA (no locale variants)
@@ -275,7 +276,7 @@ function Hero({ locale, c }) {
 
           <div className="flex flex-col sm:flex-row gap-3">
             <a href="#loop-section" className="btn btn-primary" style={{ fontWeight: 700 }}>{c.hero.cta1}</a>
-            <Link href={`/${locale}/consult`} className="btn btn-ghost">{c.hero.cta2}</Link>
+            <DoCta as={Link} href={`/${locale}/consult`}>{c.hero.cta2}</DoCta>
           </div>
         </div>
       </div>

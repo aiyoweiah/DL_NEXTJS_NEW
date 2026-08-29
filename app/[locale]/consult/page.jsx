@@ -16,6 +16,7 @@ import { buildMetadata }               from '@/lib/metadata'
 import ConsultForm    from '@/components/consult/ConsultForm'
 import { consult as copyEn }       from '@/content/marketing.en'
 import { consult as copyZh }       from '@/content/marketing.zh'
+import DoCta         from '@/components/ui/DoCta'
 
 const COPY = { en: copyEn, zh: copyZh }
 
@@ -141,7 +142,7 @@ function Hero({ locale, c }) {
 
           <div className="flex flex-col sm:flex-row gap-3">
             <a href="#consult-form" className="btn btn-charter" style={{ fontWeight: 700 }}>{c.hero.cta1}</a>
-            <Link href={`/${locale}/program`} className="btn btn-ghost">{c.hero.cta2}</Link>
+            <DoCta as={Link} href={`/${locale}/program`}>{c.hero.cta2}</DoCta>
           </div>
         </div>
       </div>

@@ -20,6 +20,7 @@
 
 import Link             from 'next/link'
 import { usePathname }  from 'next/navigation'
+import DoCta         from '@/components/ui/DoCta'
 
 // Stripped-path prefixes whose pages own an in-body closing CTA → suppress band.
 const SUPPRESS = [
@@ -41,7 +42,7 @@ export default function PreCtaBand({ locale, copy }) {
 
   return (
     <div
-      className="border-t border-b"
+      className="border-t border-b on-dark"
       style={{ borderColor: 'rgba(183,181,254,0.1)', backgroundColor: '#212830' }}
     >
       <div className="container-section py-14 md:py-16">
@@ -77,13 +78,14 @@ export default function PreCtaBand({ locale, copy }) {
             >
               {c.watch}
             </Link>
-            <Link
+            <DoCta
+              as={Link}
               href={`/${locale}/consult`}
-              className="btn btn-ghost text-sm px-6 py-3 justify-center"
+              className="text-sm px-6 py-3 justify-center"
               aria-label={c.consultAria}
             >
               {c.consult}
-            </Link>
+            </DoCta>
           </div>
 
         </div>

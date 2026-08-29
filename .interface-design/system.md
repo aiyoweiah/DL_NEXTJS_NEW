@@ -4,8 +4,8 @@ Living reference for the DODO marketing site chrome (navbar, footer, funnel CTAs
 and its visual token system. Read this before touching navigation, CTAs, the
 pre-footer band, or any colour value.
 
-**Current through:** v6.7 · 2026-08-28 (`.on-dark` hook for hand-rolled dark sections;
-surface-aware badge + LexileBar). v6.6 = D52 filled buttons are surface-specific. v6.5 fixed button specificity, muted-on-dark
+**Current through:** v6.8 · 2026-08-29 (D53: the D-o bracket on funnel CTAs).
+v6.7 added the `.on-dark` hook and surface-aware badge + LexileBar. v6.6 = D52 filled buttons are surface-specific. v6.5 fixed button specificity, muted-on-dark
 and external links; v6.4 added display typeface D51; v6.3 the token-table correction.
 **Sibling document:** `translation/BRAND_CONTENT_GUIDE.md` (**v5.1**, decisions through
 **D50**) owns voice, copy and positioning; this file owns chrome and visual tokens.
@@ -223,6 +223,46 @@ established. Ratios are measured (WCAG 2.1 relative luminance), not estimated.
 > (`.eyebrow` = `#5856cc`). **When a component needs a label, use `.eyebrow` — do not
 > re-derive a lavender.**
 
+**The D-o bracket (D53, v6.8).** Every *funnel* CTA is written as `Do <action>`:
+a cursive capital **D** and lowercase **o** flanking the label. `DoCta`
+(`components/ui/DoCta.jsx`) renders it; `.btn-do` styles it.
+
+| | |
+|---|---|
+| Hand | School cursive — monoline, ~5° from upright, the letterform a child is taught |
+| Marks | `--do-mark` `#7c79e8` — 3.37:1 on Whisper, 5.28:1 on Void Black |
+| Label | `--text-accent` on light, `--text-accent-dark` on dark |
+| Size | 22px glyph box, `size` prop to override |
+| Hover | marks part 1.5px, opacity 0.92 → 1, tinted ground. No layout shift |
+
+- **Monoline is load-bearing, not a style preference.** The modulated hands
+  considered first (chancery, copperplate) drop to ~0.9px hairlines at button
+  size and go muddy — they needed a second small-optical cut. A monoline stroke
+  is the same width everywhere, so **one drawing serves every size**.
+- **`#7c79e8` is the only lavender clearing 3:1 on both grounds**, so there is no
+  light/dark variant. It also gives that token a job: v6.3 demoted it from body
+  text (3.37:1 fails AA) to “large text and borders only”, after which nothing
+  used it. A decorative `aria-hidden` mark is exactly that role.
+- **`DoCta` keeps `.btn` in its class list on purpose.** `.section-dark a:not(.btn)`
+  would otherwise repaint the label — the specificity trap fixed in v6.5.
+- **Scope — funnel CTAs only** (See → Talk → Enrol). ⛔ Never media transport,
+  nav chrome, utility controls, or exploratory “learn more” links. On the home
+  page that means the hero consult CTA carries it and the `/navigators`,
+  `/results` and `/methodology` links do not. **If it is everywhere it means
+  nothing.**
+- Marks are `aria-hidden`; the label carries the accessible name. The letterforms
+  are never the only affordance.
+- ⚠️ **Placing `DoCta` (or `.eyebrow`, or `Badge`) inside a hand-rolled dark
+  section requires `.on-dark` on that section.** This bit during the D53 build:
+  `PreCtaBand` paints `#212830` itself and carried no hook, so its label rendered
+  at **2.56:1** until the marker was added — the same trap v6.7 documented. The
+  v6.7 sweep covered `app/[locale]/*/page.jsx` but **not `components/`**, where
+  `AssessmentClient`, `FAQClient` and `PartnersClient` still paint dark grounds
+  without it. They pass today only because their text is coloured inline.
+  They were left alone deliberately: several contain white cards, and a blanket
+  `.on-dark` would turn that card text platinum-on-white — the `/program` failure
+  from v6.7. **Add the hook per section when you put a system component in one.**
+
 **Buttons — accessibility rule. TWO tests, not one (WCAG 1.4.3 text ≥ 4.5:1 AND
 1.4.11 non-text boundary ≥ 3:1).** Until v6.6 this section only checked the label.
 That is how gilt-on-Whisper shipped: text 12.13:1, but the pill's edge against the
@@ -439,6 +479,7 @@ not listed.
 | D46–D50 | Home, About, Methodology, Program, Compare reworked to v5.1 + §08 voice | Copy-side cascade; chrome unaffected. Re-audit contrast after these ship | n/a here |
 | D51 | Display typeface — Literata + Noto Serif SC, **display-only** | Type pairing section added; `--font-display` / `--font-display-cjk` tokens; per-surface rollout | ✅ v6.4 |
 | D52 | **Filled buttons are surface-specific** (option B) | `.btn-solid` added (deep lavender + white) for light surfaces; button rule now states text *and* boundary contrast; gilt reservation resolved | ✅ v6.6 |
+| D53 | **The D-o bracket on funnel CTAs** | `DoCta` component + `.btn-do`; `--do-mark` token; applied to 9 funnel CTAs across 8 files | ✅ v6.8 |
 
 ### Cascade status
 
@@ -455,6 +496,15 @@ not listed.
       Home-page subhead blue `#3b6fcc` → `--text-info` `#3a6ac4`.
 - [x] D51 display face wired (`lib/fonts.js`, root layout, `.font-display`) and
       **piloted on `/methodology` h1 only**.
+
+**Done in v6.8 (2026-08-29) — D53:**
+
+- [x] `DoCta` component + `.btn-do` + `--do-mark` token.
+- [x] Applied to 9 funnel CTAs: home hero, `/program` hero, `/demos` hero,
+      `/consult` hero, `/little-dodo` hero + close, `/credentials`,
+      `/methodology`, and the global `PreCtaBand` secondary.
+- [x] Deliberately NOT applied: audiobook transport controls, navbar drawer,
+      404 recovery links, and the home page's exploratory links.
 
 **Done in v6.7 (2026-08-28) — closing the open items:**
 

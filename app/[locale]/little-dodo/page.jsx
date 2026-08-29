@@ -28,6 +28,7 @@ import { littleDodoCourseSchema }        from '@/lib/schema'
 import AgeBandChooser                    from '@/components/ui/AgeBandChooser'
 import { littleDodo as copyEn, ageBands as bandsEn } from '@/content/marketing.en'
 import { littleDodo as copyZh, ageBands as bandsZh } from '@/content/marketing.zh'
+import DoCta         from '@/components/ui/DoCta'
 
 // ─────────────────────────────────────────────────────────────
 // BILINGUAL COPY
@@ -201,7 +202,7 @@ function Hero({ locale, c }) {
           <div className="flex flex-col sm:flex-row gap-3">
             {/* Soft close leads on this cold surface */}
             <Link href={`/${locale}/demos`} className="btn btn-primary" style={{ fontWeight: 700 }}>{c.hero.cta1}</Link>
-            <Link href={`/${locale}/consult`} className="btn btn-ghost">{c.hero.cta2}</Link>
+            <DoCta as={Link} href={`/${locale}/consult`}>{c.hero.cta2}</DoCta>
           </div>
         </div>
       </div>
@@ -343,7 +344,7 @@ function CtaSection({ locale, c }) {
           <div className="flex flex-col sm:flex-row gap-3">
             <Link href={`/${locale}/consult`} className="btn btn-solid">{c.cta.btn}</Link>
             {/* white section → outline (ghost is dark-only) */}
-            <Link href={`/${locale}/demos`} className="btn btn-outline">{c.cta.watch}</Link>
+            <DoCta as={Link} href={`/${locale}/demos`}>{c.cta.watch}</DoCta>
           </div>
           <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', marginTop: '0.875rem' }}>{c.cta.note}</p>
         </div>
