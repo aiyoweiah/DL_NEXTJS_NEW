@@ -4,8 +4,8 @@ Living reference for the DODO marketing site chrome (navbar, footer, funnel CTAs
 and its visual token system. Read this before touching navigation, CTAs, the
 pre-footer band, or any colour value.
 
-**Current through:** v6.6 · 2026-08-28 (D52: filled buttons are surface-specific;
-boundary contrast added to the button rule). v6.5 fixed button specificity, muted-on-dark
+**Current through:** v6.7 · 2026-08-28 (`.on-dark` hook for hand-rolled dark sections;
+surface-aware badge + LexileBar). v6.6 = D52 filled buttons are surface-specific. v6.5 fixed button specificity, muted-on-dark
 and external links; v6.4 added display typeface D51; v6.3 the token-table correction.
 **Sibling document:** `translation/BRAND_CONTENT_GUIDE.md` (**v5.1**, decisions through
 **D50**) owns voice, copy and positioning; this file owns chrome and visual tokens.
@@ -306,6 +306,22 @@ have already cost one investigation each.
    of `display: none` returns that descendant's own display, so the mobile
    drawer's links get audited against the wrong ground on desktop. Filter with
    `el.getClientRects().length` — on `/program` that excluded 113 nodes.
+   **Also exclude `sr-only`**: it is 1×1px and clipped, so a `width < 1` test lets it
+   through. That alone invented a 1.52:1 "failure" on `/faq` that does not exist.
+3. **Texture overlays are not grounds.** `/blog`'s hero paints a 1px dot pattern
+   (`radial-gradient(circle, #b7b5fe 1px, transparent 1px)`) at `opacity: 0.08`
+   over `#F5F5FF`. A detector that reads the first hex out of a positioned overlay's
+   `background-image` will call the ground solid Lavender Signal and report 3.06:1
+   where the real value is 5.36:1. Require the overlay's own `opacity` to be high
+   before treating it as the ground.
+
+4. **Low-opacity decorative lettering.** `/navigators` sets a 280px `NAVIGATOR`
+   watermark at `opacity: 0.04`, `aria-hidden`. A scanner that only excludes
+   `opacity: 0` reports it at 1.75:1. At 4% it is a texture, not text, and carries
+   no information — exempt. Factor ancestor opacity before flagging.
+
+All four traps inflate the failure count. Confirm any surprising result against the
+section's actual declared background before acting on it.
 
 **Type scale — minimum sizes (added v6.3).** The live home page runs 66 nodes at 14px,
 51 at 12px and 4 at 10px — ~57% of all text at 14px or below, against a stated *calm,
@@ -348,6 +364,22 @@ a fintech dashboard uses. Literata adds the missing voice.
   verify EN *and* `/zh`, then extend. Do not start with the home hero.
 - ⛔ **Never below 24px.** Literata is a display face here; at label size it fights
   DM Sans instead of complementing it. Labels stay on `.eyebrow` + DM Sans.
+
+**Declaring a dark surface (v6.7) — `.section-dark` is a *background*, `.on-dark` is a *hook*.**
+Every dark-surface text rule (headings, `p`, links, `.eyebrow`, `.badge-lavender`,
+`.text-gilt`) keys off a class. Three pages hand-rolled their own dark heroes with
+positioned image/gradient backdrops and carried none of those classes, so they opted
+out of the entire dark-surface system and rendered light-surface tokens on near-black.
+
+- `.section-dark` / `.section-darker` — paint a background **and** opt into the hooks.
+- `.section-hero-short` — is dark, and was previously excluded from every hook. Now included.
+- **`.on-dark`** — marker only: the text hooks, **no background, no padding**. Put it on any
+  section that paints its own ground. `/results`, `/methodology` and `/lexile` now carry it.
+- ⚠️ `.section-hero` is **LIGHT** (`--color-whisper` + lavender glow), despite the stale
+  "dark hero" wording once in `SectionWrapper`. Do not treat it as a dark surface.
+
+**When you build a section that is dark but not `.section-dark`, add `.on-dark`.**
+Otherwise its eyebrows, badges and links silently fall back to light-surface colours.
 
 **Spacing/layout:** `container-section` wrapper; section padding `var(--section-md)`;
 pill badges `rounded-full`, buttons/cards `rounded-lg`. Breakpoints: `md:768`, `lg:1024`.
@@ -423,6 +455,21 @@ not listed.
       Home-page subhead blue `#3b6fcc` → `--text-info` `#3a6ac4`.
 - [x] D51 display face wired (`lib/fonts.js`, root layout, `.font-display`) and
       **piloted on `/methodology` h1 only**.
+
+**Done in v6.7 (2026-08-28) — closing the open items:**
+
+- [x] `.on-dark` hook added; `/results`, `/methodology`, `/lexile` custom heroes now
+      participate in the dark-surface system. `.section-hero-short` folded into every
+      dark rule (it was excluded from all of them).
+- [x] `.badge-lavender` hardcoded `#5856cc` (the light label colour) — 3.32:1 on Void
+      Black. Now switches to Lavender Signal on dark surfaces. `.badge-lavender-dark`
+      already existed and nothing used it.
+- [x] `LexileBar` had a `light` prop that switched labels and numbers but **not** its
+      three hardcoded `#b7b5fe` accents — 12 failing nodes on `/results` alone (6 cards
+      × 2). Accent now follows `light` (`#5856cc`, 5.80:1).
+- [x] `/program` step numerals: no single text colour passes on all four loop accents
+      (white is 1.90:1 on `#b7b5fe`, near-black 3.32:1 on `#5856cc`), so the numeral
+      colour is now paired per accent. Raised 9px → 12px; the 22px circle allows it.
 
 **Done in v6.6 (2026-08-28) — D52, option B:**
 
