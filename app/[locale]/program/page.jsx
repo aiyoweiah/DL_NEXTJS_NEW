@@ -330,6 +330,9 @@ function Hero({ locale, c }) {
 // ─────────────────────────────────────────────────────────────
 
 const LOOP_ACCENT_COLORS = ['#b7b5fe', '#9896e8', '#7b79d4', '#5856cc']
+// Numeral colour is paired per accent: no single value passes on all four.
+// White is 1.90:1 on #b7b5fe; near-black is 3.32:1 on #5856cc. v6.7.
+const LOOP_ACCENT_ON     = ['#0E0E12', '#0E0E12', '#0E0E12', '#ffffff']
 
 function LoopSection({ locale, c }) {
   return (
@@ -393,11 +396,13 @@ function LoopSection({ locale, c }) {
                     flexShrink: 0, opacity: 0.85,
                   }}
                 >
-                  <span style={{ fontSize: '9px', fontWeight: 800, color: '#ffffff', lineHeight: 1 }}>{i + 1}</span>
+                  <span style={{ fontSize: '12px', fontWeight: 800, color: LOOP_ACCENT_ON[i], lineHeight: 1 }}>{i + 1}</span>
                 </span>
                 <p style={{ fontSize: '1rem', fontWeight: 700, color: '#0E0E12', lineHeight: 1.1 }}>{step.label}</p>
                 {locale === 'zh' && (
-                  <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '11px', color: LOOP_ACCENT_COLORS[i], lineHeight: 1.1, opacity: 0.75 }}>
+                  <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '11px', color: '#5856cc', lineHeight: 1.1 }}>  {/* ZH sub-label sits on a white card. The loop accents are fills, not text
+      colours: #b7b5fe is 1.90:1 here and 0.75 opacity made it worse. The step's
+      colour coding is already carried by the numbered circle above. v6.7. */}
                     {step.labelZh}
                   </p>
                 )}
@@ -510,7 +515,7 @@ function ArchitectureSection({ locale, c }) {
   if (!c.architecture) return null
   const a = c.architecture
   return (
-    <section aria-labelledby="architecture-heading" style={{ backgroundColor: '#212830', padding: 'var(--section-md) 0' }}>
+    <section className="on-dark" aria-labelledby="architecture-heading" style={{ backgroundColor: '#212830', padding: 'var(--section-md) 0' }}>
       <div className="container-section">
         <div style={{ marginBottom: '2rem' }}>
           <Eyebrow dark>{a.eyebrow}</Eyebrow>
@@ -583,7 +588,7 @@ function CombinationsSection({ locale, c }) {
                     {locale === 'zh' ? '最受欢迎' : 'Most Popular'}
                   </span>
                 )}
-                <p style={{ fontSize: '1.125rem', fontWeight: 700, lineHeight: 1.2, letterSpacing: '-0.01em' }}>{item.name}</p>
+                <p style={{ fontSize: '1.125rem', fontWeight: 700, lineHeight: 1.2, letterSpacing: '-0.01em', color: item.featured ? '#F0F0F0' : '#0E0E12' }}>{item.name}</p>
                 <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '11px', color: item.featured ? 'rgba(183,181,254,0.75)' : '#5856cc', marginTop: '2px', lineHeight: 1.3 }}>
                   {item.nameZh}
                 </p>
@@ -723,7 +728,7 @@ function LexileScaleViz({ start, end }) {
 
 function GrowthSection({ locale, c }) {
   return (
-    <section aria-labelledby="growth-heading" style={{ backgroundColor: '#0E0E12', padding: 'var(--section-md) 0' }}>
+    <section className="on-dark" aria-labelledby="growth-heading" style={{ backgroundColor: '#0E0E12', padding: 'var(--section-md) 0' }}>
       <div className="container-section">
         <div style={{ marginBottom: '3.5rem' }}>
           <Eyebrow dark>{c.growth.eyebrow}</Eyebrow>

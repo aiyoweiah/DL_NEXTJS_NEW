@@ -68,6 +68,7 @@ export default async function ResultsPage({ params }) {
         Warm amber radial accent (rgba(200,130,60,…)) echoes the lamp glow.
       */}
       <section
+        className="on-dark"
         aria-labelledby="results-hero-heading"
         style={{
           minHeight:     '80dvh',

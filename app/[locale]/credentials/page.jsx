@@ -180,7 +180,7 @@ export default async function CredentialsPage({ params }) {
           </p>
           <div className="flex flex-wrap items-center justify-center" style={{ gap: '1rem' }}>
             <Button as={Link} href={`/${locale}/demos`} variant="solid">{t.cta.watch}</Button>
-            <Button as={Link} href={`/${locale}/consult`} variant="ghost">{t.cta.consult}</Button>
+            <Button as={Link} href={`/${locale}/consult`} variant="outline">{t.cta.consult}</Button>
           </div>
         </div>
       </SectionWrapper>

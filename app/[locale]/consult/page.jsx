@@ -236,7 +236,7 @@ function RealCall({ locale, c }) {
 
 function TrustSection({ locale, c }) {
   return (
-    <section aria-labelledby="trust-heading" style={{ backgroundColor: '#212830', padding: 'var(--section-md) 0' }}>
+    <section className="on-dark" aria-labelledby="trust-heading" style={{ backgroundColor: '#212830', padding: 'var(--section-md) 0' }}>
       <div className="container-section">
         <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '3rem' }} className="lg:grid-cols-2">
           <div>

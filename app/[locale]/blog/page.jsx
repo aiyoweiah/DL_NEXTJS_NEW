@@ -250,7 +250,7 @@ export default async function BlogPage({ params }) {
 
             <div className="md:w-[55%] flex flex-col justify-center" style={{ padding: '40px' }}>
               <div className="inline-block rounded w-fit mb-4"
-                style={{ backgroundColor: 'rgba(183,181,254,0.15)', color: '#b7b5fe', fontSize: '11px', fontWeight: 500, textTransform: 'uppercase', padding: '4px 12px', letterSpacing: '0.06em' }}>
+                style={{ backgroundColor: 'rgba(183,181,254,0.15)', color: '#5856cc', fontSize: '11px', fontWeight: 500, textTransform: 'uppercase', padding: '4px 12px', letterSpacing: '0.06em' }}>
                 {ui.featuredLabel}
               </div>
 
@@ -286,7 +286,7 @@ export default async function BlogPage({ params }) {
       {/* S3 + S4 rendered inside BlogClient above */}
 
       {/* ══ S5 GEO ANCHOR STRIP ══════════════════════════════ */}
-      <section className="py-16 px-6" style={{ backgroundColor: '#212830' }}>
+      <section className="py-16 px-6 on-dark" style={{ backgroundColor: '#212830' }}>
         <div className="max-w-7xl mx-auto">
           <div className="uppercase text-center mb-10"
             style={{ color: '#b7b5fe', fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em' }}>
@@ -389,7 +389,7 @@ export default async function BlogPage({ params }) {
       </section>
 
       {/* ══ S8 CLOSING CTA ═══════════════════════════════════ */}
-      <section className="py-20 px-6" style={{ backgroundColor: '#212830' }}>
+      <section className="py-20 px-6 on-dark" style={{ backgroundColor: '#212830' }}>
         <div className="max-w-[600px] mx-auto text-center">
           <h2 className="mb-8"
             style={{ color: '#b7b5fe', fontSize: 'clamp(24px, 3vw, 28px)', fontWeight: 700, lineHeight: 1.4, letterSpacing: '-0.02em' }}>

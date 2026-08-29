@@ -224,7 +224,7 @@ function Hero({ c, locale }) {
 
 function TheNameSection({ c, locale }) {
   return (
-    <section className="relative" aria-labelledby="name-heading" style={{ padding: 'var(--section-md) 0' }}>
+    <section className="relative on-dark" aria-labelledby="name-heading" style={{ padding: 'var(--section-md) 0' }}>
       <div aria-hidden="true" className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, #0E0E12 0%, #212830 40%, #212830 100%)' }} />
       <div className="container-section relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -436,7 +436,7 @@ function FamiliesWeServe({ c, locale }) {
 
 function ClosingStamp({ locale, c }) {
   return (
-    <section className="relative overflow-hidden" aria-labelledby="about-closing-heading">
+    <section className="relative overflow-hidden on-dark" aria-labelledby="about-closing-heading">
       <div aria-hidden="true" className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, #0E0E12 0%, #212830 50%, #0E0E12 100%)' }} />
       <div aria-hidden="true" className="absolute inset-0" style={{ background: 'radial-gradient(circle at 50% 50%, rgba(183,181,254,0.08) 0%, transparent 60%)' }} />
       <div className="relative z-10 text-center mx-auto" style={{ maxWidth: '56rem', padding: '10rem 1.5rem' }}>

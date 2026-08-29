@@ -103,7 +103,7 @@ export default async function ComparePage({ params }) {
           objectPosition 'center 42%' keeps island + waterline in frame.
       */}
       <section
-        className="relative flex items-center"
+        className="relative flex items-center on-dark"
         style={{ backgroundColor: '#212830', minHeight: '100dvh', paddingTop: 'calc(var(--nav-height) + 3.5rem)', paddingBottom: '5rem' }}
       >
         <div className="absolute inset-0 overflow-hidden">
@@ -136,7 +136,7 @@ export default async function ComparePage({ params }) {
       </section>
 
       {/* ── S2 THE REFRAME ───────────────────────────────── */}
-      <section className="px-6 py-24 md:py-32" style={{ backgroundColor: '#0E0E12' }}>
+      <section className="px-6 py-24 md:py-32 on-dark" style={{ backgroundColor: '#0E0E12' }}>
         <div className="max-w-7xl mx-auto">
           <p className="text-center max-w-[860px] mx-auto" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: 'clamp(26px, 4vw, 48px)', color: '#F0F0F0', lineHeight: 1.3, letterSpacing: '-0.025em' }}>
             {c.s2.pull}<span style={{ color: '#b7b5fe' }}>{c.s2.pullSpan}</span>{c.s2.pullEnd}
@@ -177,7 +177,7 @@ export default async function ComparePage({ params }) {
       </Section>
 
       {/* ── S5 FOUNDER VIDEO ──────────────────────────────── */}
-      <section className="px-6 py-24 md:py-32" style={{ backgroundColor: '#0E0E12' }}>
+      <section className="px-6 py-24 md:py-32 on-dark" style={{ backgroundColor: '#0E0E12' }}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <Eyebrow dark center>{c.s5.eyebrow}</Eyebrow>
@@ -240,7 +240,7 @@ export default async function ComparePage({ params }) {
       </Section>
 
       {/* ── S8 STUDENT VOICE ──────────────────────────────── */}
-      <section className="px-6 py-24 md:py-32" style={{ backgroundColor: '#0E0E12' }}>
+      <section className="px-6 py-24 md:py-32 on-dark" style={{ backgroundColor: '#0E0E12' }}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <Eyebrow dark center>{c.s8.eyebrow}</Eyebrow>

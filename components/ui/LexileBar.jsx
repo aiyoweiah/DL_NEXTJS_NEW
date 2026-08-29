@@ -41,6 +41,10 @@ export default function LexileBar({
     const labelColor    = light ? '#3D4452'  : '#94A3B8'
     const numberColor   = light ? '#0E0E12'  : '#F0F0F0'
     const trackColor    = light ? 'rgba(14,14,18,0.08)' : 'rgba(183,181,254,0.12)'
+    // Lavender Signal is 1.90:1 on white — dark-surface only. On light the accent
+    // must be deep lavender (5.80:1). This was hardcoded and did not follow `light`,
+    // which put 12 failing nodes on /results alone. Fixed v6.7.
+    const accentColor   = light ? '#5856cc'  : '#b7b5fe'
   
     return (
       <div className={`flex flex-col gap-3 ${className}`.trim()}>
@@ -65,7 +69,7 @@ export default function LexileBar({
           <div className="text-right">
             <span
               className="text-2xl font-bold tabular-nums"
-              style={{ color: '#b7b5fe' }}
+              style={{ color: accentColor }}
             >
               {end}
             </span>
@@ -104,7 +108,7 @@ export default function LexileBar({
             style={{
               left:            `${startPct}%`,
               width:           `${growthPct}%`,
-              backgroundColor: '#b7b5fe',
+              backgroundColor: accentColor,
             }}
           />
         </div>
@@ -114,7 +118,7 @@ export default function LexileBar({
           className="text-xs"
           style={{ color: labelColor }}
         >
-          <span className="font-semibold" style={{ color: '#b7b5fe' }}>
+          <span className="font-semibold" style={{ color: accentColor }}>
             +{growth} Lexile points
           </span>
           {' '}— approximately one grade level of reading growth

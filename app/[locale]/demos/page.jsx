@@ -297,7 +297,7 @@ function InsideSession({ locale, c }) {
 
 function AfterDemo({ locale, c }) {
   return (
-    <section aria-labelledby="after-heading" style={{ backgroundColor: '#212830', padding: 'var(--section-md) 0' }}>
+    <section className="on-dark" aria-labelledby="after-heading" style={{ backgroundColor: '#212830', padding: 'var(--section-md) 0' }}>
       <div className="container-section">
         <div style={{ maxWidth: '40rem' }}>
           <Eyebrow dark>{c.after.eyebrow}</Eyebrow>
@@ -340,7 +340,7 @@ function LexileScaleViz({ start, end }) {
 
 function ResultsSection({ locale, c }) {
   return (
-    <section aria-labelledby="results-heading" style={{ backgroundColor: '#0E0E12', padding: 'var(--section-md) 0' }}>
+    <section className="on-dark" aria-labelledby="results-heading" style={{ backgroundColor: '#0E0E12', padding: 'var(--section-md) 0' }}>
       <div className="container-section">
         <div style={{ marginBottom: '3.5rem' }}>
           <Eyebrow dark>{c.growth.eyebrow}</Eyebrow>

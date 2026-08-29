@@ -80,7 +80,7 @@ function BilingualH2({ primary, secondary, light = false, id }) {
 // ─────────────────────────────────────────────────────────────
 function Hero({ locale, c }) {
   return (
-    <section
+    <section className="on-dark"
       aria-labelledby="ld-hero-heading"
       style={{
         minHeight:     '100dvh',
@@ -289,7 +289,7 @@ function HowSection({ locale, c }) {
 // ─────────────────────────────────────────────────────────────
 function SharedSection({ c }) {
   return (
-    <section aria-labelledby="ld-shared-heading" style={{ backgroundColor: '#212830', padding: 'var(--section-md) 0' }}>
+    <section className="on-dark" aria-labelledby="ld-shared-heading" style={{ backgroundColor: '#212830', padding: 'var(--section-md) 0' }}>
       <div className="container-section">
         <div style={{ maxWidth: '42rem' }}>
           <Eyebrow dark>{c.shared.eyebrow}</Eyebrow>

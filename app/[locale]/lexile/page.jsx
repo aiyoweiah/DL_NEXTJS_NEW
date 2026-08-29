@@ -88,6 +88,7 @@ export default async function LexilePage({ params }) {
           Warm amber/brown radial accent echoes the aged-paper tones.
       */}
       <section
+        className="on-dark"
         aria-labelledby="lexile-hero-heading"
         style={{
           minHeight:     '80dvh',

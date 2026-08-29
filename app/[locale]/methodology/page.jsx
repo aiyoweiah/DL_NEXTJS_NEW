@@ -83,6 +83,7 @@ export default async function MethodologyPage({ params }) {
           • Teal radial accent echoes illustration's cool green palette
       */}
       <section
+        className="on-dark"
         aria-labelledby="methodology-hero-heading"
         style={{
           minHeight:     '80dvh',

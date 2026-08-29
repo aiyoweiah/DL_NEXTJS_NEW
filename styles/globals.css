@@ -183,6 +183,13 @@
   }
 
   /* Dark section headings — flip to Lavender Signal */
+  /* Dark-surface text hooks (v6.7).
+     .section-dark / .section-darker paint a background AND opt into these.
+     .section-hero-short is dark too and was previously excluded from all of them.
+     .on-dark is a MARKER: it carries only these text rules, no background and no
+     padding — for sections that paint their own ground (image, gradient, custom
+     hero). /results, /methodology and /lexile hand-roll dark heroes and were
+     opting out of the whole dark-surface system; they now carry .on-dark. */
   .section-dark h1,
   .section-dark h2,
   .section-dark h3,
@@ -190,6 +197,13 @@
   .section-darker h1,
   .section-darker h2,
   .section-darker h3,
+  .section-hero-short h1,
+  .section-hero-short h2,
+  .section-hero-short h3,
+  .on-dark h1,
+  .on-dark h2,
+  .on-dark h3,
+  .on-dark h4,
   .section-mid h1,
   .section-mid h2,
   .section-mid h3 {
@@ -212,6 +226,8 @@
 
   .section-dark p,
   .section-darker p,
+  .section-hero-short p,
+  .on-dark p,
   .section-mid p {
     color: var(--color-platinum);
   }
@@ -237,12 +253,16 @@
      Rule: a section-scoped descendant selector must never set a
      component's colour. Fixed v6.5. */
   .section-dark a:not(.btn),
-  .section-darker a:not(.btn) {
+  .section-darker a:not(.btn),
+  .section-hero-short a:not(.btn),
+  .on-dark a:not(.btn) {
     color: var(--color-lavender-signal);
   }
 
   .section-dark a:not(.btn):hover,
-  .section-darker a:not(.btn):hover {
+  .section-darker a:not(.btn):hover,
+  .section-hero-short a:not(.btn):hover,
+  .on-dark a:not(.btn):hover {
     color: #d4d3ff;
     text-decoration: none;
   }
@@ -1012,7 +1032,9 @@
   }
 
   .section-dark .text-gilt,
-  .section-darker .text-gilt {
+  .section-darker .text-gilt,
+  .section-hero-short .text-gilt,
+  .on-dark .text-gilt {
     color: var(--text-gilt-dark);
   }
 
@@ -1095,8 +1117,23 @@
     color: #5856cc;
   }
 
-  .section-dark .eyebrow {
+  .section-dark .eyebrow,
+  .section-darker .eyebrow,
+  .section-hero-short .eyebrow,
+  .on-dark .eyebrow {
     color: var(--color-lavender-signal);
+  }
+
+  /* .badge-lavender hardcodes #5856cc (the LIGHT label colour) — 3.32:1 on Void
+     Black. On dark surfaces it must use Lavender Signal, which .badge-lavender-dark
+     already defines but nothing was using. Fixed v6.7. */
+  .section-dark .badge-lavender,
+  .section-darker .badge-lavender,
+  .section-hero-short .badge-lavender,
+  .on-dark .badge-lavender {
+    background-color: rgba(183,181,254,0.15);
+    color: var(--color-lavender-signal);
+    border-color: rgba(183,181,254,0.3);
   }
 
   .divider {

@@ -13,7 +13,9 @@
 // for anchor/Link usage (e.g. when href is needed).
 //
 // Props:
-//   variant   'primary' | 'solid' | 'charter' | 'ghost'  — default: 'primary'
+//   variant   'primary' | 'solid' | 'charter' | 'ghost' | 'outline'  — default: 'primary'
+//             Secondaries are surface-specific: ghost on DARK, outline on LIGHT.
+//             btn-ghost is #b7b5fe — 1.75:1 on Whisper, unusable on light.
 //   as        element or component              — default: 'button'
 //   className string                            — appended to resolved classes
 //   children  ReactNode
@@ -23,7 +25,8 @@ const VARIANT_CLASSES = {
     primary: 'btn btn-primary',
     solid:   'btn btn-solid',
     charter: 'btn btn-charter',
-    ghost:   'btn btn-ghost',
+    ghost:   'btn btn-ghost',   // DARK surfaces only (#b7b5fe text)
+    outline: 'btn btn-outline', // LIGHT surfaces (#5856cc text)
   }
   
   export default function Button({
