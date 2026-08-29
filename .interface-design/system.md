@@ -445,8 +445,29 @@ have already cost one investigation each.
    `opacity: 0` reports it at 1.75:1. At 4% it is a texture, not text, and carries
    no information — exempt. Factor ancestor opacity before flagging.
 
-All four traps inflate the failure count. Confirm any surprising result against the
+5. **A collapsed viewport silently invalidates the whole run (added v6.10).** If the
+   audit runs in a browser pane that is hidden or zero-width, `innerWidth` is 0 and
+   every `getBoundingClientRect()` comes back 0-wide. Nothing errors. Layout-dependent
+   checks (does this backdrop *cover* the element?) then fail everywhere, and the run
+   reports scores of impossible failures — a 36px heading at 1.05:1. During the D54
+   inspection this produced ~200 phantom failures before it was caught.
+   **Set an explicit viewport and assert `innerWidth` before trusting any number.**
+   Gradient parsing matters here too: trap 1's backdrops carry their colour in
+   `background-image: linear-gradient(...)` with `background-color: transparent`, so
+   the ground must be composited from the gradient's own stops, not read off
+   `backgroundColor`. Treat `repeating-`, `radial-` and `conic-` as texture, not ground.
+
+All five traps inflate the failure count. Confirm any surprising result against the
 section's actual declared background before acting on it.
+
+**The reliable regression check is a baseline diff, not an absolute score.** The site
+carries a standing population of failures (the sub-12px type floor below, ~271 nodes
+across 21 pages). Chasing "0 failures" against that backdrop tells you nothing about
+your own change. Instead: `git stash` the change, run the identical scanner over the
+same pages, unstash, and diff the **failure signatures** (text + ratio) and `.btn-do`
+pass counts page by page. That is how D54 was cleared — 12 mark-bearing pages, byte-identical
+signatures before and after. Pages containing none of the classes you touched cannot
+be affected and do not need the round trip.
 
 **Type scale — minimum sizes (added v6.3).** The live home page runs 66 nodes at 14px,
 51 at 12px and 4 at 10px — ~57% of all text at 14px or below, against a stated *calm,
