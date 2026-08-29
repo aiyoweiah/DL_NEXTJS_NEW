@@ -807,7 +807,7 @@ function GetStartedSection({ locale, c }) {
           <p style={{ fontSize: '1rem', lineHeight: 1.82, color: '#3D4452', marginTop: '1.125rem', marginBottom: '1.875rem' }}>
             {c.cta.body}
           </p>
-          <Link href={`/${locale}/consult`} className="btn btn-charter">{c.cta.btn}</Link>
+          <Link href={`/${locale}/consult`} className="btn btn-solid">{c.cta.btn}</Link>
           <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', marginTop: '0.875rem' }}>{c.cta.note}</p>
         </div>
       </div>

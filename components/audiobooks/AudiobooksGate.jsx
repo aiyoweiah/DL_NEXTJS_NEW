@@ -146,7 +146,7 @@ export default function AudiobooksGate({ children }) {
 
           <div style={{
             fontSize:     14,
-            color:        'var(--text-muted, #5E6879)',
+            color:        'var(--text-muted-dark, #9AA3B2)',
             lineHeight:   1.5,
             marginBottom: 28,
           }}>

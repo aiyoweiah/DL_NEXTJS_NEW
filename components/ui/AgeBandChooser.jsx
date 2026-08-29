@@ -98,7 +98,7 @@ export default function AgeBandChooser({ locale, copy, current }) {
                 ) : (
                   <Link
                     href={`/${locale}${b.href}`}
-                    className="btn btn-charter text-sm px-5 py-2.5 self-start"
+                    className="btn btn-solid text-sm px-5 py-2.5 self-start"
                   >
                     {b.cta}
                   </Link>

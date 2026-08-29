@@ -366,7 +366,7 @@ export default async function ResultsPage({ params }) {
               </p>
               <Button
                 as={Link}
-                variant="primary"
+                variant="solid"
                 href={`/${locale}${t.methodology.ctaHref}`}
               >
                 {t.methodology.cta}

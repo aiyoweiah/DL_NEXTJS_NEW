@@ -1,7 +1,10 @@
 // components/ui/Button.jsx
 //
 // Two variants:
-//   primary  — general CTAs. Uses .btn-primary (lavender).
+//   primary  — general CTAs on DARK surfaces. Uses .btn-primary (lavender).
+//   solid    — general CTAs on LIGHT surfaces. Uses .btn-solid (deep lavender).
+//              Filled buttons are surface-specific: lavender/gilt fills are
+//              1.75:1 and 1.47:1 against Whisper, so the pill has no edge.
 //   charter  — enrollment/conversion only. Uses .btn-charter (Gilt #F5C842).
 //              Never label with discount language — see §8 of handoff.
 //   ghost    — secondary/outline CTA. Uses .btn-ghost.
@@ -10,7 +13,7 @@
 // for anchor/Link usage (e.g. when href is needed).
 //
 // Props:
-//   variant   'primary' | 'charter' | 'ghost'  — default: 'primary'
+//   variant   'primary' | 'solid' | 'charter' | 'ghost'  — default: 'primary'
 //   as        element or component              — default: 'button'
 //   className string                            — appended to resolved classes
 //   children  ReactNode
@@ -18,6 +21,7 @@
 
 const VARIANT_CLASSES = {
     primary: 'btn btn-primary',
+    solid:   'btn btn-solid',
     charter: 'btn btn-charter',
     ghost:   'btn btn-ghost',
   }

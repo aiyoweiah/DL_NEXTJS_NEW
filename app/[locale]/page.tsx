@@ -121,8 +121,9 @@ function Hero({ locale, c }: { locale: string; c: any }) {
 
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
             {/* cta1 = Watch a Demo Class (soft close); cta2 = Book Your Consultation (firm).
-                Light hero → filled gold primary + outline secondary (NOT ghost, which is dark-only). */}
-            <Link href={`/${locale}/demos`} className="btn btn-charter">
+                Light hero → btn-solid + outline secondary. Filled buttons are surface-specific:
+                gilt is 1.47:1 against Whisper at the edge, so the pill has no shape (v6.6). */}
+            <Link href={`/${locale}/demos`} className="btn btn-solid">
               {c.hero.cta1}
             </Link>
             <Link href={`/${locale}/consult`} className="btn btn-outline">

@@ -116,7 +116,7 @@ export default async function CityPage({ params }) {
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
               href={`/${locale}/consult`}
-              className="btn btn-charter text-base px-8 py-4 justify-center"
+              className="btn btn-solid text-base px-8 py-4 justify-center"
             >
               {ui.ctaPrimary}
             </Link>

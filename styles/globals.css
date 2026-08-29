@@ -38,6 +38,9 @@
 :root {
   /* ── Brand primitives ── */
   --color-lavender-signal: #b7b5fe;
+  --color-lavender-deep:   #5856cc;   /* promoted to a primitive v6.6 — it is the
+                                         light-surface workhorse: label text, outline
+                                         buttons, and now the solid light-surface fill */
   --color-deep-void:       #212830;
   --color-gilt:            #F5C842;
   --color-void-black:      #0E0E12;
@@ -58,7 +61,7 @@
   --text-body:             #3D4452;
   --text-body-dark:        var(--color-void-black);
   --text-heading:          var(--color-deep-void);
-  --text-accent:           #5856cc;                 /* 5.1:1 on Whisper — passes AA */
+  --text-accent:           var(--color-lavender-deep);  /* 5.36:1 on Whisper — passes AA */
   --text-accent-dark:      var(--color-lavender-signal);
   --text-muted:            #5E6879;                 /* 5.19:1 on Whisper — passes AA. Raised v6.4 from
                                                        #6B7280, which measured 4.46:1 (under the 4.5 line) */
@@ -653,6 +656,30 @@
   .btn-gilt:active {
     transform: translateY(0);
     box-shadow: none;
+  }
+
+  /* Solid primary for LIGHT surfaces (v6.6, option B).
+     Filled buttons are SURFACE-SPECIFIC, exactly like the outline pair below.
+     Gilt and Lavender Signal fills clear text contrast on any ground but only
+     1.47:1 and 1.75:1 against Whisper — WCAG 1.4.11 wants 3:1 for the control's
+     own boundary, so the label reads while the button has no discernible edge.
+     Deep lavender + white passes both: text 5.80:1, edge 5.36:1 (6.66:1 hover).
+     Use this instead of btn-charter / btn-primary on any light section.
+     btn-charter stays for dark sections and genuine Charter Enrolment moments. */
+  .btn-solid {
+    background-color: var(--color-lavender-deep);
+    color: #ffffff;
+  }
+
+  .btn-solid:hover {
+    background-color: #4a48b8;
+    color: #ffffff;
+    text-decoration: none;
+    transform: translateY(-1px);
+  }
+
+  .btn-solid:active {
+    transform: translateY(0);
   }
 
   /* Outline — secondary on LIGHT surfaces. Deep-lavender text (#5856cc ≈ 5.8:1
