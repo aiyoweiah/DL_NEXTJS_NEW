@@ -57,6 +57,7 @@ function Eyebrow({ children, center = false, dark = false }) {
 function Hero({ locale, c }) {
   return (
     <section
+      className="on-dark"
       aria-labelledby="consult-hero-heading"
       style={{
         minHeight:     '100dvh',
@@ -141,7 +142,7 @@ function Hero({ locale, c }) {
           <p style={{ fontSize: '1rem', lineHeight: 1.85, color: 'rgba(240,240,240,0.52)', maxWidth: '36rem', marginBottom: '2.25rem' }}>{c.hero.sub}</p>
 
           <div className="flex flex-col sm:flex-row gap-3">
-            <a href="#consult-form" className="btn btn-charter" style={{ fontWeight: 700 }}>{c.hero.cta1}</a>
+            <a href="#consult-form" className="btn btn-do btn-do-primary" style={{ fontWeight: 700 }}>{c.hero.cta1}</a>
             <DoCta as={Link} href={`/${locale}/program`}>{c.hero.cta2}</DoCta>
           </div>
         </div>
@@ -204,7 +205,7 @@ const CALL_IMG = 'https://images.unsplash.com/photo-1589872880544-76e896b0592c?c
 
 function RealCall({ locale, c }) {
   return (
-    <section aria-labelledby="call-heading" style={{ position: 'relative', overflow: 'hidden', minHeight: '480px' }}>
+    <section className="on-dark" aria-labelledby="call-heading" style={{ position: 'relative', overflow: 'hidden', minHeight: '480px' }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={CALL_IMG} alt="" aria-hidden="true" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
       <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(105deg, rgba(14,14,18,0.97) 0%, rgba(14,14,18,0.90) 45%, rgba(14,14,18,0.55) 100%)' }} />

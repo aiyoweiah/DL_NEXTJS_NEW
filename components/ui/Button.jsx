@@ -22,11 +22,15 @@
 //   ...rest   forwarded to the rendered element (href, onClick, type, etc.)
 
 const VARIANT_CLASSES = {
-    primary: 'btn btn-primary',
-    solid:   'btn btn-solid',
-    charter: 'btn btn-charter',
-    ghost:   'btn btn-ghost',   // DARK surfaces only (#b7b5fe text)
-    outline: 'btn btn-outline', // LIGHT surfaces (#5856cc text)
+    // Option B (D53/v6.9): no fills. Weight + label colour carry hierarchy.
+    primary: 'btn btn-do btn-do-primary',
+    solid:   'btn btn-do btn-do-primary',
+    // RESERVED: gilt label, Charter Enrolment only. Unused today because the
+    // site has no enrolment CTA yet — every former btn-charter was a demo or
+    // consult control and is now `primary`. Do not reach for this casually.
+    charter: 'btn btn-do btn-do-charter',
+    ghost:   'btn btn-do',
+    outline: 'btn btn-do',
   }
   
   export default function Button({

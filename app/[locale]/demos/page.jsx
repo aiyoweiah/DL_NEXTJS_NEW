@@ -84,6 +84,7 @@ function Tag({ children, variant = 'default' }) {
 function Hero({ locale, c }) {
   return (
     <section
+      className="on-dark"
       aria-labelledby="demos-hero-heading"
       style={{
         minHeight:     '100dvh',
@@ -169,7 +170,7 @@ function Hero({ locale, c }) {
           <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '17px', fontWeight: 500, color: 'rgba(183,181,254,0.40)', marginBottom: '1.25rem', lineHeight: 1.5 }}>{c.hero.h1zh}</p>
           <p style={{ fontSize: '1rem', lineHeight: 1.85, color: 'rgba(240,240,240,0.52)', maxWidth: '36rem', marginBottom: '2.25rem' }}>{c.hero.sub}</p>
           <div className="flex flex-col sm:flex-row gap-3">
-            <a href="#demo-videos" className="btn btn-primary" style={{ fontWeight: 700 }}>{c.hero.cta1}</a>
+            <a href="#demo-videos" className="btn btn-do btn-do-primary" style={{ fontWeight: 700 }}>{c.hero.cta1}</a>
             <DoCta as={Link} href={`/${locale}/consult`}>{c.hero.cta2}</DoCta>
           </div>
         </div>
@@ -304,7 +305,7 @@ function AfterDemo({ locale, c }) {
           <Eyebrow dark>{c.after.eyebrow}</Eyebrow>
           <BilingualH2 id="after-heading" primary={c.after.h2} secondary={c.after.h2zh} light />
           <p style={{ fontSize: '1rem', lineHeight: 1.82, color: 'rgba(240,240,240,0.55)', marginTop: '1.125rem', marginBottom: '1.875rem' }}>{c.after.body}</p>
-          <Link href={`/${locale}/consult`} className="btn btn-primary">{c.after.cta}</Link>
+          <Link href={`/${locale}/consult`} className="btn btn-do btn-do-primary">{c.after.cta}</Link>
         </div>
       </div>
     </section>

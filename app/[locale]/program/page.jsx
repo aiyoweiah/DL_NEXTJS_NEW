@@ -136,6 +136,7 @@ function Eyebrow({ children, center = false, dark = false }) {
 function Hero({ locale, c }) {
   return (
     <section
+      className="on-dark"
       aria-labelledby="program-hero-heading"
       style={{
         minHeight:     '100dvh',
@@ -275,7 +276,7 @@ function Hero({ locale, c }) {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3">
-            <a href="#loop-section" className="btn btn-primary" style={{ fontWeight: 700 }}>{c.hero.cta1}</a>
+            <a href="#loop-section" className="btn btn-do btn-do-primary" style={{ fontWeight: 700 }}>{c.hero.cta1}</a>
             <DoCta as={Link} href={`/${locale}/consult`}>{c.hero.cta2}</DoCta>
           </div>
         </div>
@@ -813,7 +814,7 @@ function GetStartedSection({ locale, c }) {
           <p style={{ fontSize: '1rem', lineHeight: 1.82, color: '#3D4452', marginTop: '1.125rem', marginBottom: '1.875rem' }}>
             {c.cta.body}
           </p>
-          <Link href={`/${locale}/consult`} className="btn btn-solid">{c.cta.btn}</Link>
+          <Link href={`/${locale}/consult`} className="btn btn-do btn-do-primary">{c.cta.btn}</Link>
           <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', marginTop: '0.875rem' }}>{c.cta.note}</p>
         </div>
       </div>

@@ -4,7 +4,8 @@ Living reference for the DODO marketing site chrome (navbar, footer, funnel CTAs
 and its visual token system. Read this before touching navigation, CTAs, the
 pre-footer band, or any colour value.
 
-**Current through:** v6.8 · 2026-08-29 (D53: the D-o bracket on funnel CTAs).
+**Current through:** v6.9 · 2026-08-29 (D53 option B: the D-o bracket is the
+control chrome sitewide; **all fills removed**).
 v6.7 added the `.on-dark` hook and surface-aware badge + LexileBar. v6.6 = D52 filled buttons are surface-specific. v6.5 fixed button specificity, muted-on-dark
 and external links; v6.4 added display typeface D51; v6.3 the token-table correction.
 **Sibling document:** `translation/BRAND_CONTENT_GUIDE.md` (**v5.1**, decisions through
@@ -223,7 +224,7 @@ established. Ratios are measured (WCAG 2.1 relative luminance), not estimated.
 > (`.eyebrow` = `#5856cc`). **When a component needs a label, use `.eyebrow` — do not
 > re-derive a lavender.**
 
-**The D-o bracket (D53, v6.8).** Every *funnel* CTA is written as `Do <action>`:
+**The D-o bracket (D53 · v6.9 option B).** **Every control** is written as `Do <action>`:
 a cursive capital **D** and lowercase **o** flanking the label. `DoCta`
 (`components/ui/DoCta.jsx`) renders it; `.btn-do` styles it.
 
@@ -245,11 +246,34 @@ a cursive capital **D** and lowercase **o** flanking the label. `DoCta`
   used it. A decorative `aria-hidden` mark is exactly that role.
 - **`DoCta` keeps `.btn` in its class list on purpose.** `.section-dark a:not(.btn)`
   would otherwise repaint the label — the specificity trap fixed in v6.5.
-- **Scope — funnel CTAs only** (See → Talk → Enrol). ⛔ Never media transport,
-  nav chrome, utility controls, or exploratory “learn more” links. On the home
-  page that means the hero consult CTA carries it and the `/navigators`,
-  `/results` and `/methodology` links do not. **If it is everywhere it means
-  nothing.**
+- **Scope — every control.** Primaries, secondaries, exploratory links, navbar,
+  404, form submits. ⛔ Still excluded: **media transport** (audiobook play/skip —
+  “Do ⏵” is nonsense), **non-interactive badges and eyebrow pills** (a label wearing
+  the button's mark makes the device mean “DODO made this” rather than “press
+  this”), and utility chrome (locale switcher, pagination).
+- **Correction to v6.8.** That version said “if it is everywhere it means nothing”
+  and scoped the bracket to 9 funnel CTAs. That was wrong. Two bracketed CTAs side
+  by side read **Do + Do = DODO** — the repetition *is* the brand. The line to hold
+  is control vs label, not funnel vs exploratory.
+- **No fills anywhere (option B).** `btn-solid`, `btn-charter`, `btn-primary`,
+  `btn-outline` and `btn-ghost` are retired from call sites. Hierarchy is weight
+  and label colour only:
+
+  | Class | Weight | Label light | Label dark |
+  |---|---|---|---|
+  | `.btn-do` | 400 | `--text-accent` 5.36:1 | `--text-accent-dark` 10.14:1 |
+  | `.btn-do-primary` | 700 | ink 17.78:1 | platinum 16.9:1 |
+  | `.btn-do-charter` | 700 | gilt 4.6:1 | gilt 12.13:1 |
+
+- **Gilt moved from a fill to the label**, so the Charter signal survives option B.
+  It is currently used **nowhere**: the site has no enrolment CTA, and every former
+  `btn-charter` was a demo or consult control. Do not reach for `charter` until a
+  real enrolment CTA exists.
+- **Marks are CSS pseudo-elements with a baked data-URI**, not markup — possible
+  only because `--do-mark` clears 3:1 on both grounds. That made the rollout a class
+  swap rather than ~50 JSX conversions, and keeps the marks out of the a11y tree.
+- **Marks shrink to 18px below 640px.** A bracketed pair gains ~104px, which wraps a
+  hero CTA row on a 375px phone at full size.
 - Marks are `aria-hidden`; the label carries the accessible name. The letterforms
   are never the only affordance.
 - ⚠️ **Placing `DoCta` (or `.eyebrow`, or `Badge`) inside a hand-rolled dark
@@ -479,7 +503,8 @@ not listed.
 | D46–D50 | Home, About, Methodology, Program, Compare reworked to v5.1 + §08 voice | Copy-side cascade; chrome unaffected. Re-audit contrast after these ship | n/a here |
 | D51 | Display typeface — Literata + Noto Serif SC, **display-only** | Type pairing section added; `--font-display` / `--font-display-cjk` tokens; per-surface rollout | ✅ v6.4 |
 | D52 | **Filled buttons are surface-specific** (option B) | `.btn-solid` added (deep lavender + white) for light surfaces; button rule now states text *and* boundary contrast; gilt reservation resolved | ✅ v6.6 |
-| D53 | **The D-o bracket on funnel CTAs** | `DoCta` component + `.btn-do`; `--do-mark` token; applied to 9 funnel CTAs across 8 files | ✅ v6.8 |
+| D53 | **The D-o bracket on funnel CTAs** | `DoCta` component + `.btn-do`; `--do-mark` token | ✅ v6.8 |
+| D53b | **Option B — bracket is the control chrome, no fills** | 40 class swaps; hierarchy by weight; gilt to label; marks via CSS pseudo-elements; 73 controls verified | ✅ v6.9 |
 
 ### Cascade status
 
@@ -496,6 +521,19 @@ not listed.
       Home-page subhead blue `#3b6fcc` → `--text-info` `#3a6ac4`.
 - [x] D51 display face wired (`lib/fonts.js`, root layout, `.font-display`) and
       **piloted on `/methodology` h1 only**.
+
+**Done in v6.9 (2026-08-29) — D53 option B:**
+
+- [x] `.btn-do` rewritten as CSS pseudo-elements; 40 class swaps across 22 files.
+- [x] All filled pills retired from call sites. Hierarchy is weight + label colour.
+- [x] **`.on-dark` added to five more surfaces the earlier sweeps missed** — the
+      navbar `<header>`, the mobile drawer (which sits *outside* the header), and
+      the `/program`, `/consult` and `/demos` heroes. Each paints its own dark
+      ground. The navbar case rendered a primary label ink-on-void at **1.0:1**.
+      **This trap has now bitten four times. Treat “does this surface paint its own
+      dark ground?” as the first question when adding any control.**
+- [x] Verified: 73 controls across 13 page/viewport combinations, EN + ZH,
+      1280px and 375px — zero contrast failures, zero failing controls.
 
 **Done in v6.8 (2026-08-29) — D53:**
 

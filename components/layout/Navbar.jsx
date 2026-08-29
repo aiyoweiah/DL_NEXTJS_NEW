@@ -424,7 +424,7 @@ export default function Navbar({ locale, copy }) {
       {/* ── Nav bar ───────────────────────────────────────── */}
       <header
         role="banner"
-        className={`nav ${scrolled ? 'scrolled' : ''}`}
+        className={`nav on-dark ${scrolled ? 'scrolled' : ''}`}
         style={{
           backgroundColor: '#0E0E12',
           borderBottom:    '1px solid rgba(183,181,254,0.10)',
@@ -456,7 +456,7 @@ export default function Navbar({ locale, copy }) {
             {showDemoCTA && (
               <Link
                 href={`/${locale}/demos`}
-                className="btn btn-charter hidden md:inline-flex text-sm px-5 py-2.5"
+                className="btn btn-do btn-do-primary hidden md:inline-flex text-sm px-5 py-2.5"
                 aria-label={copy.cta.demoAria}
               >
                 {/* "Watch Demo" at md, "Watch Demo Class" at lg+ */}
@@ -500,7 +500,7 @@ export default function Navbar({ locale, copy }) {
         aria-modal="true"
         aria-label="Navigation menu"
         className={`
-          fixed left-0 right-0 bottom-0 z-[95] md:hidden
+          fixed left-0 right-0 bottom-0 z-[95] md:hidden on-dark
           bg-[#0E0E12] border-t border-[rgba(183,181,254,0.12)]
           overflow-y-auto
           transition-transform duration-300 ease-[cubic-bezier(0.25,1,0.5,1)]
@@ -520,7 +520,7 @@ export default function Navbar({ locale, copy }) {
             {showDemoCTA && (
               <Link
                 href={`/${locale}/demos`}
-                className="btn btn-charter w-full justify-center text-base py-3.5"
+                className="btn btn-do btn-do-primary w-full justify-center text-base py-3.5"
                 aria-label={copy.cta.demoAria}
               >
                 {copy.cta.demo}
@@ -529,7 +529,7 @@ export default function Navbar({ locale, copy }) {
             {showCharterCTA && (
               <Link
                 href={`/${locale}/consult`}
-                className="btn btn-ghost w-full justify-center text-base py-3.5"
+                className="btn btn-do w-full justify-center text-base py-3.5"
                 aria-label={copy.cta.consultAria}
               >
                 {copy.cta.consult}

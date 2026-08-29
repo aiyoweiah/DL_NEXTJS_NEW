@@ -683,60 +683,99 @@
     box-shadow: none;
   }
 
-  /* ── The D-o bracket (D53, v6.8) ───────────────────────────
-     A funnel CTA reads `Do <action>`: a cursive capital D and lowercase o
-     flanking the label. School-cursive hand — monoline, near upright, the
-     letterform a child is taught to write. Monoline is load-bearing: there
-     are no hairlines, so ONE drawing works at every size (the modulated
-     hands needed a separate small cut).
+  /* ── The D-o bracket (D53 · v6.9 option B) ─────────────────
+     EVERY control reads `Do <action>`: a cursive capital D and lowercase o
+     flanking the label. Two bracketed CTAs side by side spell Do + Do = DODO,
+     which is the point — this is the brand's control chrome, not an accent.
 
-     Carries `.btn` as well as `.btn-do` — deliberately. `.section-dark
-     a:not(.btn)` would otherwise repaint the label, which is the exact
-     specificity trap fixed in v6.5. Keeping `.btn` immunises it.
+     Marks are CSS pseudo-elements carrying a baked data-URI, NOT markup. That
+     is only possible because --do-mark clears 3:1 on both grounds, so one
+     colour serves everywhere and nothing needs currentColor. It makes the
+     sitewide rollout a class swap instead of ~50 JSX conversions.
 
-     Marks are aria-hidden; the label carries the accessible name. Reserved
-     for FUNNEL CTAs (See → Talk → Enrol) — never media, nav or utility. */
+     OPTION B — no fills anywhere. Weight and colour carry the hierarchy:
+       .btn-do              secondary — regular weight, accent label
+       .btn-do-primary      primary   — bold, ink label
+       .btn-do-charter      enrolment — bold, gilt label
+     Gilt moved from a fill to the label so the Charter signal survives
+     option B's removal of every filled pill.
+
+     Keeps `.btn` in the class list: `.section-dark a:not(.btn)` would
+     otherwise repaint the label (the v6.5 specificity trap). */
   .btn-do {
     background-color: transparent;
     padding: 0.5rem 0.625rem;
     border-radius: var(--radius-md);
     gap: 0;
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: 0.05em;
     color: var(--text-accent);
   }
 
-  .btn-do:hover {
-    background-color: rgba(124,121,232,0.10);
-    color: var(--text-accent);
-    text-decoration: none;
-  }
-
-  .btn-do .do-label { padding: 0 0.375rem; }
-
-  .btn-do .do-mark {
-    color: var(--do-mark);
+  .btn-do::before,
+  .btn-do::after {
+    content: "";
     flex: none;
-    opacity: 0.92;
+    width: 22px;
+    height: 22px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.9;
     transition: transform var(--transition-base), opacity var(--transition-fast);
   }
-  .btn-do:hover .do-mark { opacity: 1; }
-  .btn-do:hover .do-mark-l { transform: translateX(-1.5px); }
-  .btn-do:hover .do-mark-r { transform: translateX(1.5px); }
 
-  /* Label follows the surface, exactly like the outline pair. */
+  .btn-do::before {
+    margin-right: 0.4375rem;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80' fill='none' stroke='%237c79e8' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'><path d='M13.5 18 C 15.5 13.5, 18.5 11.5, 21 13 C 20.5 30, 20 47, 19.5 64'/><path d='M21 13 C 42 14, 54 25, 53.5 38.5 C 53 52, 40 63, 19.5 64'/></svg>");
+  }
+
+  .btn-do::after {
+    margin-left: 0.4375rem;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80' fill='none' stroke='%237c79e8' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'><path d='M41 37 C 36 31.5, 24 30.5, 17 36.5 C 10 42.5, 10.5 56, 19 60.5 C 27.5 65, 38.5 61, 41 53.5 C 42.5 49, 41 43.5, 37.5 40.5 C 42 39, 48 38.5, 53 39.5'/></svg>");
+  }
+
+  .btn-do:hover {
+    background-color: rgba(124,121,232,0.10);
+    text-decoration: none;
+  }
+  .btn-do:hover::before,
+  .btn-do:hover::after { opacity: 1; }
+  .btn-do:hover::before { transform: translateX(-1.5px); }
+  .btn-do:hover::after  { transform: translateX(1.5px); }
+
+  /* Hierarchy — weight and label colour only. No fills. */
+  .btn-do-primary { font-weight: 700; color: var(--text-body-dark); }
+  .btn-do-charter { font-weight: 700; color: var(--text-gilt-light); }
+
+  /* Label follows the surface, exactly like the outline pair used to. */
   .section-dark .btn-do,
   .section-darker .btn-do,
   .section-hero-short .btn-do,
-  .on-dark .btn-do {
-    color: var(--text-accent-dark);
-  }
+  .on-dark .btn-do { color: var(--text-accent-dark); }
+
+  .section-dark .btn-do-primary,
+  .section-darker .btn-do-primary,
+  .section-hero-short .btn-do-primary,
+  .on-dark .btn-do-primary { color: var(--text-inverse); }
+
+  .section-dark .btn-do-charter,
+  .section-darker .btn-do-charter,
+  .section-hero-short .btn-do-charter,
+  .on-dark .btn-do-charter { color: var(--text-gilt-dark); }
+
   .section-dark .btn-do:hover,
   .section-darker .btn-do:hover,
   .section-hero-short .btn-do:hover,
-  .on-dark .btn-do:hover {
-    background-color: rgba(183,181,254,0.10);
-    color: var(--text-accent-dark);
+  .on-dark .btn-do:hover { background-color: rgba(183,181,254,0.10); }
+
+  /* Marks shrink on small screens — a bracketed pair gains ~104px, which
+     wraps a hero CTA row on a 375px phone at full size. */
+  @media (max-width: 639px) {
+    .btn-do::before,
+    .btn-do::after { width: 18px; height: 18px; }
+    .btn-do::before { margin-right: 0.3125rem; }
+    .btn-do::after  { margin-left: 0.3125rem; }
   }
 
   /* Solid primary for LIGHT surfaces (v6.6, option B).

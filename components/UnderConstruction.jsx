@@ -157,7 +157,7 @@ export default function UnderConstruction({ locale = 'en' }) {
                 <div className="flex gap-3">
                   <label htmlFor="notify-email" className="sr-only">Your email address</label>
                   <input id="notify-email" type="email" placeholder="your@email.com" value={email} onChange={(e) => setEmail(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter') handleSubmit(e) }} style={{ flex: 1, padding: '12px 16px', borderRadius: '0.75rem', backgroundColor: '#F5F5FF', border: '1px solid rgba(183,181,254,0.1)', fontSize: '14px', color: '#0E0E12', outline: 'none', fontFamily: 'var(--font-latin)' }} />
-                  <button type="button" onClick={handleSubmit} className="btn btn-charter shrink-0" style={{ fontSize: '14px', fontWeight: 600, padding: '12px 24px', borderRadius: '0.75rem' }}>
+                  <button type="button" onClick={handleSubmit} className="btn btn-do btn-do-primary shrink-0" style={{ fontSize: '14px', fontWeight: 600, padding: '12px 24px', borderRadius: '0.75rem' }}>
                     {locale === 'zh' ? '通知我' : 'Notify Me'}
                   </button>
                 </div>

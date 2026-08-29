@@ -58,10 +58,10 @@ export default function LocaleNotFound() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link href={`/${locale}`} className="btn btn-primary px-8 py-3 justify-center">
+          <Link href={`/${locale}`} className="btn btn-do btn-do-primary px-8 py-3 justify-center">
             {c.home}
           </Link>
-          <Link href={`/${locale}/consult`} className="btn btn-ghost px-8 py-3 justify-center">
+          <Link href={`/${locale}/consult`} className="btn btn-do px-8 py-3 justify-center">
             {c.consult}
           </Link>
         </div>

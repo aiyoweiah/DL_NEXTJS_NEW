@@ -124,7 +124,7 @@ function Hero({ locale, c }: { locale: string; c: any }) {
             {/* cta1 = Watch a Demo Class (soft close); cta2 = Book Your Consultation (firm).
                 Light hero → btn-solid + outline secondary. Filled buttons are surface-specific:
                 gilt is 1.47:1 against Whisper at the edge, so the pill has no shape (v6.6). */}
-            <Link href={`/${locale}/demos`} className="btn btn-solid">
+            <Link href={`/${locale}/demos`} className="btn btn-do btn-do-primary">
               {c.hero.cta1}
             </Link>
             <DoCta as={Link} href={`/${locale}/consult`}>
@@ -185,10 +185,10 @@ function PhotoIntro({ locale, c }: { locale: string; c: any }) {
             <p className="text-base md:text-lg leading-relaxed mb-8" style={{ color: '#3D4452' }}>{c.photoIntro.body2}</p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href={`/${locale}/navigators`} className="btn btn-outline">
+              <Link href={`/${locale}/navigators`} className="btn btn-do">
                 {c.photoIntro.cta1}
               </Link>
-              <Link href={`/${locale}/results`} className="btn btn-outline">
+              <Link href={`/${locale}/results`} className="btn btn-do">
                 {c.photoIntro.cta2}
               </Link>
             </div>
@@ -242,7 +242,7 @@ function LoopSection({ locale, c }: { locale: string; c: any }) {
         <div className="mt-12 flex justify-start">
           <Link
             href={`/${locale}/methodology`}
-            className="btn btn-ghost text-sm px-6 py-3"
+            className="btn btn-do text-sm px-6 py-3"
             aria-label="Read the full Loop methodology breakdown"
           >
             {c.loop.cta}
@@ -300,7 +300,7 @@ function ParentTrustSection({ locale, c }: { locale: string; c: any }) {
           </div>
           <Link
             href={`/${locale}/results`}
-            className="btn btn-ghost text-sm px-6 py-3 shrink-0"
+            className="btn btn-do text-sm px-6 py-3 shrink-0"
             aria-label="View all student results and Lexile data"
           >
             {c.trust.viewAll}
@@ -393,7 +393,7 @@ function CodingBand({ c }: { c: any }) {
             href={c.cta.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-outline"
+            className="btn btn-do"
             aria-label={c.cta.ariaLabel}
             style={{ marginBottom: '1.5rem' }}
           >

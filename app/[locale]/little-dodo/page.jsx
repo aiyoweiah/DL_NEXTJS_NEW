@@ -201,7 +201,7 @@ function Hero({ locale, c }) {
 
           <div className="flex flex-col sm:flex-row gap-3">
             {/* Soft close leads on this cold surface */}
-            <Link href={`/${locale}/demos`} className="btn btn-primary" style={{ fontWeight: 700 }}>{c.hero.cta1}</Link>
+            <Link href={`/${locale}/demos`} className="btn btn-do btn-do-primary" style={{ fontWeight: 700 }}>{c.hero.cta1}</Link>
             <DoCta as={Link} href={`/${locale}/consult`}>{c.hero.cta2}</DoCta>
           </div>
         </div>
@@ -342,7 +342,7 @@ function CtaSection({ locale, c }) {
             {c.cta.body}
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
-            <Link href={`/${locale}/consult`} className="btn btn-solid">{c.cta.btn}</Link>
+            <Link href={`/${locale}/consult`} className="btn btn-do btn-do-primary">{c.cta.btn}</Link>
             {/* white section → outline (ghost is dark-only) */}
             <DoCta as={Link} href={`/${locale}/demos`}>{c.cta.watch}</DoCta>
           </div>

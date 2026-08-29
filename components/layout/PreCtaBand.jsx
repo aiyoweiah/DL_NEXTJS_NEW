@@ -73,7 +73,7 @@ export default function PreCtaBand({ locale, copy }) {
             {/* Soft close leads (Watch); firm close (Consult) is the ghost. */}
             <Link
               href={`/${locale}/demos`}
-              className="btn btn-charter text-sm px-6 py-3 justify-center"
+              className="btn btn-do btn-do-primary text-sm px-6 py-3 justify-center"
               aria-label={c.watchAria}
             >
               {c.watch}

@@ -232,7 +232,7 @@ export default async function BlogPostPage({ params }) {
             </p>
           </div>
           <div className="shrink-0">
-            <Link href={`/${locale}/consult`} className="btn btn-charter text-base px-8 py-4">
+            <Link href={`/${locale}/consult`} className="btn btn-do btn-do-primary text-base px-8 py-4">
               {ui.charterCta}
             </Link>
           </div>
