@@ -138,7 +138,7 @@ export default async function ResultsPage({ params }) {
           }}
         >
           <div className="py-4 max-w-3xl">
-            <Badge className="mb-6">{t.hero.eyebrow}</Badge>
+            <Badge className="mb-6 label-quote">{t.hero.eyebrow}</Badge>
             <h1
               id="results-hero-heading"
               className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6 text-gradient"
@@ -199,7 +199,7 @@ export default async function ResultsPage({ params }) {
       {t.anchor && (
         <SectionWrapper dark>
           <div className="py-16 md:py-20 max-w-3xl">
-            <p className="eyebrow mb-4" style={{ color: '#b7b5fe' }}>{t.anchor.eyebrow}</p>
+            <p className="eyebrow mb-4 label-quote" style={{ color: '#b7b5fe' }}>{t.anchor.eyebrow}</p>
             <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-5" style={{ color: '#F0F0F0' }}>
               {t.anchor.heading}
             </h2>
@@ -277,7 +277,7 @@ export default async function ResultsPage({ params }) {
         <div className="py-20 md:py-24">
 
           <div className="max-w-2xl mb-12">
-            <p className="eyebrow mb-4">{t.writing.eyebrow}</p>
+            <p className="eyebrow mb-4 label-quote">{t.writing.eyebrow}</p>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5 text-gradient">
               {t.writing.heading}
             </h2>
@@ -351,7 +351,7 @@ export default async function ResultsPage({ params }) {
 
             <div>
               <p
-                className="eyebrow mb-4"
+                className="eyebrow mb-4 label-quote"
                 style={{ color: '#5856cc' }}
               >
                 {t.methodology.eyebrow}

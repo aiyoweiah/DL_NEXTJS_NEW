@@ -4,8 +4,9 @@ Living reference for the DODO marketing site chrome (navbar, footer, funnel CTAs
 and its visual token system. Read this before touching navigation, CTAs, the
 pre-footer band, or any colour value.
 
-**Current through:** v6.9 · 2026-08-29 (D53 option B: the D-o bracket is the
-control chrome sitewide; **all fills removed**).
+**Current through:** v6.10 · 2026-08-29 (D54: the lead-in quote on claim labels —
+letterforms enclose a control, punctuation introduces a label).
+v6.9 = D53 option B: the D-o bracket is the control chrome sitewide; **all fills removed**.
 v6.7 added the `.on-dark` hook and surface-aware badge + LexileBar. v6.6 = D52 filled buttons are surface-specific. v6.5 fixed button specificity, muted-on-dark
 and external links; v6.4 added display typeface D51; v6.3 the token-table correction.
 **Sibling document:** `translation/BRAND_CONTENT_GUIDE.md` (**v5.1**, decisions through
@@ -250,7 +251,8 @@ a cursive capital **D** and lowercase **o** flanking the label. `DoCta`
   404, form submits. ⛔ Still excluded: **media transport** (audiobook play/skip —
   “Do ⏵” is nonsense), **non-interactive badges and eyebrow pills** (a label wearing
   the button's mark makes the device mean “DODO made this” rather than “press
-  this”), and utility chrome (locale switcher, pagination).
+  this” — those get their own mark instead, the lead-in quote, D54 below), and
+  utility chrome (locale switcher, pagination).
 - **Correction to v6.8.** That version said “if it is everywhere it means nothing”
   and scoped the bracket to 9 funnel CTAs. That was wrong. Two bracketed CTAs side
   by side read **Do + Do = DODO** — the repetition *is* the brand. The line to hold
@@ -286,6 +288,65 @@ a cursive capital **D** and lowercase **o** flanking the label. `DoCta`
   They were left alone deliberately: several contain white cards, and a blanket
   `.on-dark` would turn that card text platinum-on-white — the `/program` failure
   from v6.7. **Add the hook per section when you put a system component in one.**
+
+**The lead-in quote (D54 · v6.10).** Claim labels are introduced by an **opening
+double quotation mark** in the same monoline school-cursive hand as the D-o.
+`.label-quote` in `styles/globals.css` renders it as a `::before` data-URI.
+
+**THE GRAMMAR — this is the rule the system now rests on:**
+
+| | Device | Means |
+|---|---|---|
+| **Control** | letterforms **enclose** it — the D-o bracket | *press this* |
+| **Label** | punctuation **introduces** it — the lead-in quote | *DODO is claiming this* |
+
+Same pen, same ink, different job. ⛔ **Never put the quote on anything
+interactive.** A quoted button makes the D-o read as "DODO made this" instead of
+"press this", and the two devices stop meaning anything distinct.
+
+| | |
+|---|---|
+| Hand | School cursive — monoline, same pen as the D-o |
+| Mark | `--do-mark` `#7c79e8` baked into the file — 3.37:1 Whisper, 5.28:1 Void Black |
+| Geometry | `viewBox 10 15 55 32`, two strokes, `stroke-width 6`, round caps/joins |
+| Size | 19 x 12px against a 12px label; 16 x 10px below 640px |
+| Alignment | **Cap height** — `align-items: flex-start`. Never centred |
+
+- **Why a lead-in and not a margin rule.** The mark's aspect is **1.54 — wide and
+  short**. A margin tick needs tall and narrow; that was the bracket's job at 0.36.
+  A wide mark in the margin reads as a stray dash. It hangs before the first word.
+  **Vertically centring it is the single most reliable way to make it look broken.**
+- **Why a quote at all.** Every eyebrow and badge is DODO *making a claim* — a quote
+  mark says exactly that. It lands on **Speak** in Read -> Think -> Speak -> Write, and
+  it matches §07a: proof renders as **citation**, not as badge.
+- **⛔ The guillemet was considered and rejected — do not re-propose it.** It fails a
+  bilingual test, not a taste test: a guillemet reads as *French* quotation, while
+  Chinese uses 「」 for speech and 《》 for titles. Beside `在线 · 导师亲授英文读写`
+  it is meaningless at best and reads as a **book title** at worst. A device that
+  misreads in one of two shipped languages is not a device.
+- **Baked colour, like the D-o marks.** `--do-mark` clears 3:1 on both grounds, so
+  one file serves every surface — no `currentColor`, no `.on-dark` variant, and the
+  rollout is a class change per label instead of a component migration.
+- **The mark REPLACES badge chrome.** Wherever `.label-quote` lands on a `.badge`,
+  the fill, border and side padding are dropped. The whole point is that a claim
+  stops looking like a control.
+- **⚠️ Scope is OPT-IN, and that is deliberate — `.badge` is polymorphic.** It also
+  carries blog categories, Navigator credential chips and 6+1 trait tags. Those are
+  **taxonomy values, not claims**: four quoted credential chips in a row read as a
+  bug, and on `/navigators` they would sit directly beneath the Navigator's *actual*
+  pull-quote. Card-level eyebrows (the home-page pillar cards, audiobook cards) are
+  excluded for the same wall-of-marks reason, as are the 404 eyebrows.
+
+  | Gets the quote | Does not |
+  |---|---|
+  | Section-level `.eyebrow` | Card-level `.eyebrow` (pillars, audiobook cards) |
+  | Hero `Badge` / hero pill | Blog category `Badge` |
+  | | Navigator credential chips |
+  | | `6+1` trait tags, 404 eyebrows |
+
+  **Landed on 27 labels across 8 files** — 5 hero badges + 22 section eyebrows.
+  Ask "is this label a claim, or a taxonomy value?" before adding it to a 28th.
+
 
 **Buttons — accessibility rule. TWO tests, not one (WCAG 1.4.3 text ≥ 4.5:1 AND
 1.4.11 non-text boundary ≥ 3:1).** Until v6.6 this section only checked the label.
@@ -505,6 +566,7 @@ not listed.
 | D52 | **Filled buttons are surface-specific** (option B) | `.btn-solid` added (deep lavender + white) for light surfaces; button rule now states text *and* boundary contrast; gilt reservation resolved | ✅ v6.6 |
 | D53 | **The D-o bracket on funnel CTAs** | `DoCta` component + `.btn-do`; `--do-mark` token | ✅ v6.8 |
 | D53b | **Option B — bracket is the control chrome, no fills** | 40 class swaps; hierarchy by weight; gilt to label; marks via CSS pseudo-elements; 73 controls verified | ✅ v6.9 |
+| D54 | **The lead-in quote on claim labels** | `.label-quote` + baked data-URI; 27 labels marked; badge chrome dropped where marked; taxonomy labels excluded; guillemet rejected on a bilingual test | ✅ v6.10 |
 
 ### Cascade status
 
@@ -521,6 +583,30 @@ not listed.
       Home-page subhead blue `#3b6fcc` → `--text-info` `#3a6ac4`.
 - [x] D51 display face wired (`lib/fonts.js`, root layout, `.font-display`) and
       **piloted on `/methodology` h1 only**.
+
+**Done in v6.10 (2026-08-29) — D54:**
+
+- [x] `.label-quote` added to `styles/globals.css` (`@layer utilities`, placed *below*
+      the `.on-dark .badge-lavender` overrides so the chrome-strip wins on equal
+      specificity). Opening quote as a `::before` data-URI, `#7c79e8` baked.
+- [x] Applied to **27 claim labels** across 8 files — 5 hero badges, 22 section eyebrows.
+- [x] Badge fill + border + side padding dropped wherever the mark lands.
+- [x] Taxonomy labels deliberately excluded (blog category, Navigator credential chips,
+      6+1 trait tags, card-level eyebrows, 404 eyebrows). See the scope table above.
+- [x] Build green: exit 0, **122 static pages / 45 routes**.
+- [x] **49 marks across 21 pages, all 49 rendering.** 0 vertically centred,
+      0 keeping a pill border, 0 on an interactive element, 0 `.btn-do` quoted.
+- [x] **Zero contrast regressions.** 12 mark-bearing pages were audited against a
+      stashed baseline of the same commit: identical failure signatures, identical
+      ratios, identical `.btn-do` pass counts. Every `.btn-do` passed on every page,
+      EN and ZH, desktop and 375px. The other 9 pages carry no `.label-quote`, and
+      the D54 rules are all scoped to that class, so they cannot be affected.
+- [x] The remaining site-wide failures are the **sub-12px type floor** already logged
+      as an open gap — pre-existing, unchanged by D54, and still out of scope.
+- [x] Mobile: mark shrinks to 16x10 below 640px. The home hero label is 7px
+      **narrower** than before (dropping the 28px pill padding beats the 21px mark),
+      so D54 slightly reduces the pre-existing nowrap clipping there.
+
 
 **Done in v6.9 (2026-08-29) — D53 option B:**
 

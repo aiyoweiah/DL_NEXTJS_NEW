@@ -82,7 +82,7 @@ export default async function AudiobooksPage({ params }) {
       {/* ── Hero ───────────────────────────────────────────── */}
       <section className="section-hero-short">
         <div className="container-section">
-          <div className="eyebrow" style={{ marginBottom: '0.75rem' }}>
+          <div className="eyebrow label-quote" style={{ marginBottom: '0.75rem' }}>
             {ui.eyebrow}
           </div>
           <h1 className="text-gradient" style={{ marginBottom: '1rem' }}>
@@ -97,7 +97,7 @@ export default async function AudiobooksPage({ params }) {
       {/* ── Gate note ──────────────────────────────────────── */}
       <section className="section-tinted">
         <div className="container-section" style={{ maxWidth: '52rem' }}>
-          <div className="eyebrow" style={{ marginBottom: '0.5rem' }}>
+          <div className="eyebrow label-quote" style={{ marginBottom: '0.5rem' }}>
             {ui.gateNoteEyebrow}
           </div>
           <p style={{ color: 'var(--text-body)', margin: 0 }}>

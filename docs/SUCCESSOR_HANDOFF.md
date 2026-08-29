@@ -785,8 +785,12 @@ Good luck.
 
 ## 14. D54 — Family 2 lead-in marks (HANDOFF, opened 2026-08-29)
 
-**Status: NOT STARTED.** Design approved, nothing written to code. Repo clean at
-`e426883`, 0 ahead / 0 behind.
+**Status: DONE (2026-08-29).** Shipped as guide **v6.10** / decision **D54**.
+`.label-quote` in `styles/globals.css` + 27 labels across 8 files. Build green
+(122 pages / 45 routes); 49 marks over 21 pages all rendering; **zero contrast
+regressions** against a stashed baseline on all 12 mark-bearing pages. Resolved
+as option C (opening quote); the guillemet stays rejected. Scope came out
+**opt-in** rather than automatic — see 14.5 note below.
 
 ### 14.1 The task, verbatim
 
@@ -855,6 +859,21 @@ Must cover **all three label vocabularies together**, or the site ends up with t
 same pen, different grammar. Breaking it makes the D-o mean "DODO made this"
 rather than "press this".
 
+**RESOLVED AT BUILD TIME (2026-08-29) — the scope is OPT-IN, not automatic.**
+Item 3 turned out to *be* item 2: the hero pill is a `.badge.badge-lavender`, so
+those two vocabularies were already one. The real discovery was that `.badge` is
+**polymorphic**. It also carries blog category chips, Navigator credential chips
+and `6+1` trait tags — taxonomy values, not claims. Blanket-applying the mark to
+`.badge` would have put four quote marks in a row on `/navigators`, directly
+beneath each Navigator's *actual* pull-quote. Card-level `.eyebrow`s (home-page
+pillars, audiobook cards) have the same wall-of-marks problem.
+
+So the mark ships as an opt-in `.label-quote` class on **section-level claim
+labels only** — 27 of them across 8 files, which is exactly what 14.6's phrase
+"a class change per label" describes. The scope table is in `system.md` under
+D54. **Before adding a 28th, ask: is this label a claim, or a taxonomy value?**
+
+
 ### 14.6 Implementation recipe — copy the `.btn-do` pattern
 
 `.btn-do` in globals.css (v6.9) is the working precedent. Mirror it:
@@ -900,7 +919,13 @@ a real TypeScript failure in this session — exit 0, zero routes, nearly shippe
 Always:
 
     npm run build > /tmp/build.log 2>&1; echo "EXIT: $?"
-    grep -cE "^[|+-].*/(en|zh)/" /tmp/build.log
+    grep -cE "/(en|zh)/" /tmp/build.log
+
+**Correction (2026-08-29): the earlier form of this grep was wrong.** It anchored
+on ASCII `^[|+-]`, but Next prints its route tree with box-drawing characters
+(U+251C/U+2502/U+2514), so it matched nothing and reported 0 on a perfectly green build —
+the exact false alarm this trap exists to prevent. Note also that `grep -c`
+exits 1 when the count is 0, which can make the whole command line look failed.
 
 A green build emits **122 static pages / 45 routes**. No route table means it failed.
 

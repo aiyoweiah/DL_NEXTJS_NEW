@@ -158,7 +158,7 @@ export default async function LexilePage({ params }) {
           }}
         >
           <div className="py-4 max-w-3xl">
-            <Badge className="mb-6">{t.hero.eyebrow}</Badge>
+            <Badge className="mb-6 label-quote">{t.hero.eyebrow}</Badge>
             <h1
               id="lexile-hero-heading"
               className="font-bold leading-tight tracking-tight mb-6 text-gradient"
@@ -195,7 +195,7 @@ export default async function LexilePage({ params }) {
       <SectionWrapper darker>
         <div className="py-20 md:py-24">
           <div className="max-w-2xl mb-10">
-            <p className="eyebrow mb-4">{t.grades.eyebrow}</p>
+            <p className="eyebrow mb-4 label-quote">{t.grades.eyebrow}</p>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5 text-gradient">
               {t.grades.heading}
             </h2>
@@ -252,7 +252,7 @@ export default async function LexilePage({ params }) {
       <SectionWrapper dark>
         <div className="py-20 md:py-24">
           <div className="max-w-2xl mb-12">
-            <p className="eyebrow mb-4">{t.dodo.eyebrow}</p>
+            <p className="eyebrow mb-4 label-quote">{t.dodo.eyebrow}</p>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5 text-gradient">
               {t.dodo.heading}
             </h2>
@@ -286,7 +286,7 @@ export default async function LexilePage({ params }) {
       <SectionWrapper darker>
         <div className="py-20 md:py-24">
           <div className="max-w-2xl mb-12">
-            <p className="eyebrow mb-4">{t.examples.eyebrow}</p>
+            <p className="eyebrow mb-4 label-quote">{t.examples.eyebrow}</p>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5 text-gradient">
               {t.examples.heading}
             </h2>

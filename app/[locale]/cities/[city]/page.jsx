@@ -100,7 +100,7 @@ export default async function CityPage({ params }) {
       <SectionWrapper hero>
         <div className="py-24 md:py-32 max-w-3xl">
 
-          <Badge className="mb-6">{ui.badge}</Badge>
+          <Badge className="mb-6 label-quote">{ui.badge}</Badge>
 
           <h1
             id="city-heading"
@@ -164,7 +164,7 @@ export default async function CityPage({ params }) {
       {/* ── 3. Local Context ─────────────────────────────── */}
       <SectionWrapper white>
         <div className="py-16 md:py-20 max-w-3xl">
-          <p className="eyebrow mb-4">{ui.contextEyebrow} — {cityName}</p>
+          <p className="eyebrow mb-4 label-quote">{ui.contextEyebrow} — {cityName}</p>
           <p className="text-lg leading-relaxed" style={{ color: '#3D4452' }}>
             {copy.context}
           </p>
@@ -176,7 +176,7 @@ export default async function CityPage({ params }) {
         <div className="py-16 md:py-20">
 
           <div className="max-w-2xl mb-14">
-            <p className="eyebrow mb-4">{ui.loopEyebrow}</p>
+            <p className="eyebrow mb-4 label-quote">{ui.loopEyebrow}</p>
             <h2 className="mb-5">{ui.loopHeading}</h2>
             <p className="text-lg leading-relaxed" style={{ color: '#94A3B8' }}>
               {ui.loopBody}
@@ -232,7 +232,7 @@ export default async function CityPage({ params }) {
         <div className="py-16 md:py-20">
 
           <div className="max-w-2xl mb-12">
-            <p className="eyebrow mb-4">{ui.structureEyebrow}</p>
+            <p className="eyebrow mb-4 label-quote">{ui.structureEyebrow}</p>
             <h2 className="mb-5">{ui.structureHeading}</h2>
             <p className="text-lg leading-relaxed">{ui.structureBody}</p>
           </div>
@@ -269,7 +269,7 @@ export default async function CityPage({ params }) {
           style={{ paddingTop: 'var(--section-md)', paddingBottom: 'var(--section-md)' }}
         >
           <div className="max-w-xl">
-            <p className="eyebrow mb-4" style={{ color: 'rgba(183,181,254,0.6)' }}>
+            <p className="eyebrow mb-4 label-quote" style={{ color: 'rgba(183,181,254,0.6)' }}>
               {ui.charterEyebrow}
             </p>
             <h2 className="mb-5">{ui.charterHeading}</h2>

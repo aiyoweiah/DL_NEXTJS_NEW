@@ -102,7 +102,7 @@ function Hero({ locale, c }: { locale: string; c: any }) {
       >
         <div className="max-w-3xl">
           <div className="flex items-center gap-3 mb-8">
-            <span className="badge badge-lavender" aria-label="Program audience">{c.hero.eyebrow}</span>
+            <span className="badge badge-lavender label-quote" aria-label="Program audience">{c.hero.eyebrow}</span>
             {c.hero.eyebrow2 && (
               <span className="hidden sm:flex items-center gap-1.5 text-xs font-medium" style={{ color: '#5856cc' }}>
                 <span className="inline-block w-1.5 h-1.5 rounded-full" style={{ backgroundColor: '#F5C842' }} aria-hidden="true" />
@@ -177,7 +177,7 @@ function PhotoIntro({ locale, c }: { locale: string; c: any }) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Text column */}
           <article className="max-w-xl">
-            <p className="eyebrow mb-4" style={{ color: '#5856cc' }}>{c.photoIntro.eyebrow}</p>
+            <p className="eyebrow mb-4 label-quote" style={{ color: '#5856cc' }}>{c.photoIntro.eyebrow}</p>
             <h2 id="photo-intro-heading" className="mb-6" style={{ color: '#212830' }}>{c.photoIntro.heading}</h2>
 
             <p className="text-base md:text-lg leading-relaxed mb-5" style={{ color: '#3D4452' }}>{c.photoIntro.body0}</p>
@@ -217,7 +217,7 @@ function LoopSection({ locale, c }: { locale: string; c: any }) {
     <section className="section-dark" aria-labelledby="loop-heading">
       <div className="container-section">
         <div className="max-w-2xl mb-14 md:mb-16">
-          <p className="eyebrow mb-4" style={{ color: 'rgba(183,181,254,0.6)' }}>{c.loop.eyebrow}</p>
+          <p className="eyebrow mb-4 label-quote" style={{ color: 'rgba(183,181,254,0.6)' }}>{c.loop.eyebrow}</p>
           <h2 id="loop-heading">{c.loop.heading}</h2>
           <p className="mt-4 text-base md:text-lg leading-relaxed" style={{ color: '#94A3B8' }}>{c.loop.body}</p>
         </div>
@@ -261,7 +261,7 @@ function ConfidenceSection({ locale, c }: { locale: string; c: any }) {
     <section className="section-light" aria-labelledby="confidence-heading">
       <div className="container-section">
         <div className="max-w-2xl mb-14">
-          <p className="eyebrow mb-4">{c.confidence.eyebrow}</p>
+          <p className="eyebrow mb-4 label-quote">{c.confidence.eyebrow}</p>
           <h2 id="confidence-heading">{c.confidence.heading}</h2>
           <p className="mt-4 text-base md:text-lg leading-relaxed" style={{ color: '#3D4452' }}>{c.confidence.body}</p>
         </div>
@@ -295,7 +295,7 @@ function ParentTrustSection({ locale, c }: { locale: string; c: any }) {
       <div className="container-section">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
           <div className="max-w-xl">
-            <p className="eyebrow mb-4" style={{ color: 'rgba(183,181,254,0.6)' }}>{c.trust.eyebrow}</p>
+            <p className="eyebrow mb-4 label-quote" style={{ color: 'rgba(183,181,254,0.6)' }}>{c.trust.eyebrow}</p>
             <h2 id="results-heading">{c.trust.heading1}<br />{c.trust.heading2}</h2>
           </div>
           <Link
@@ -343,7 +343,7 @@ function CodingBand({ c }: { c: any }) {
       <div className="container-section">
         <div style={{ maxWidth: '44rem' }}>
           <p
-            className="eyebrow mb-3"
+            className="eyebrow mb-3 label-quote"
             style={{
               fontSize:      '0.75rem',
               fontWeight:    600,

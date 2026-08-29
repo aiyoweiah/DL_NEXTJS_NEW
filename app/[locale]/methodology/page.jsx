@@ -154,7 +154,7 @@ export default async function MethodologyPage({ params }) {
           }}
         >
           <div className="py-4 max-w-3xl">
-            <Badge className="mb-6">{t.hero.eyebrow}</Badge>
+            <Badge className="mb-6 label-quote">{t.hero.eyebrow}</Badge>
             <h1
               id="methodology-hero-heading"
               className="font-display leading-tight mb-6 text-gradient"
@@ -306,7 +306,7 @@ export default async function MethodologyPage({ params }) {
       <SectionWrapper dark>
         <div className="py-20 md:py-24">
           <div className="max-w-2xl mb-12">
-            <p className="eyebrow mb-4">{t.sessionTypes.eyebrow}</p>
+            <p className="eyebrow mb-4 label-quote">{t.sessionTypes.eyebrow}</p>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-gradient">
               {t.sessionTypes.heading}
             </h2>
@@ -331,7 +331,7 @@ export default async function MethodologyPage({ params }) {
         <div className="py-20 md:py-24">
 
           <div className="max-w-2xl mb-14">
-            <p className="eyebrow mb-4">{t.lexile.eyebrow}</p>
+            <p className="eyebrow mb-4 label-quote">{t.lexile.eyebrow}</p>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5 text-gradient">
               {t.lexile.heading}
             </h2>
@@ -406,7 +406,7 @@ export default async function MethodologyPage({ params }) {
       {/* ── 6. GEO signal ─────────────────────────────────── */}
       <SectionWrapper dark>
         <div className="py-20 md:py-24 max-w-3xl">
-          <p className="eyebrow mb-4">{t.geo.eyebrow}</p>
+          <p className="eyebrow mb-4 label-quote">{t.geo.eyebrow}</p>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5 text-gradient">
             {t.geo.heading}
           </h2>

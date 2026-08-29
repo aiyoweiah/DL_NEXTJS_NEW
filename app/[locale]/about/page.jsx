@@ -387,7 +387,7 @@ function ByTheNumbers({ c, locale }) {
     <section className="section-light" aria-labelledby="bynumbers-heading" style={{ backgroundColor: '#F5F5FF' }}>
       <div className="container-section">
         <div className="mb-12 max-w-2xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.15em] mb-3" style={{ color: '#5856cc' }}>{s.eyebrow}</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.15em] mb-3 label-quote" style={{ color: '#5856cc' }}>{s.eyebrow}</p>
           <h2 id="bynumbers-heading" className="text-3xl md:text-4xl font-bold tracking-tight mb-4" style={{ color: '#0E0E12', letterSpacing: '-0.025em' }}>{s.h2}</h2>
           <p className="text-base leading-relaxed" style={{ color: '#3D4452' }}>{s.sub}</p>
         </div>
