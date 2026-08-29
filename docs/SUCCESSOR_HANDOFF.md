@@ -780,3 +780,197 @@ Pages remaining in §12 priority order: `/about` → `/methodology` (apply workf
 ---
 
 Good luck.
+
+---
+
+## 14. D54 — Family 2 lead-in marks (HANDOFF, opened 2026-08-29)
+
+**Status: NOT STARTED.** Design approved, nothing written to code. Repo clean at
+`e426883`, 0 ahead / 0 behind.
+
+### 14.1 The task, verbatim
+
+> Family 2 — lead-in marks. Update design guide and cascade in implementation on
+> production site. Finish the loop by conducting an inspection like last time.
+> This inspection should be inclusive of our edits.
+
+### 14.2 Confirm this before you build
+
+"Family 2" in the proposal artifact contained **two** options:
+
+| | Mark | Verdict |
+|---|---|---|
+| **C** | Opening quote | The viable one — build this |
+| **D** | Guillemet | **Rejected**, and the rejection stands |
+
+D was rejected on a bilingual test, not on looks: a guillemet reads as *French*
+quotation, while Chinese uses 「」 for speech and 《》 for titles. Beside
+`在线 · 导师亲授英文读写` it is meaningless at best and reads as a book title at
+worst. A device that misreads in one of two shipped languages is not a device.
+
+**Read "Family 2" as option C.** If the user meant "offer both", ask — do not ship
+D silently.
+
+### 14.3 What the mark is
+
+An **opening double quotation mark, written** in the same monoline school-cursive
+hand as the D-o controls. Rationale, grounded in the guide:
+
+- Every badge/eyebrow label is DODO **making a claim** — a quote mark says that.
+- Lands on **Speak** in the Read → Think → Speak → Write loop.
+- Matches §07a: proof renders as **citation**, not as badge.
+
+Geometry, already drawn and verified — do not re-derive:
+
+    stroke 1:  M33 23 C 26 25.5, 21 32, 22.5 41
+    stroke 2:  M50 23 C 43 25.5, 38 32, 39.5 41
+    viewBox (tight crop):  10 15 55 32
+    fill none / stroke #7c79e8 / stroke-width 6 / linecap round / linejoin round
+
+Measured: aspect **1.54** (wide and short), both strokes 23 units, 1.35px stroke at
+18px render.
+
+### 14.4 The layout constraint that decides the implementation
+
+**A quote cannot be a margin tick.** Aspect 1.54 is wide and short; a margin rule
+needs tall and narrow (the bracket, at 0.36, was the margin-family answer). So:
+
+- The mark **hangs at cap height** — `align-items: flex-start`, never `center`.
+- It is a **lead-in** before the first word, not a rule beside the block.
+- Suggested render about **19 x 12px** against a 12px label. If it reads heavy on
+  mobile, shrink it with the same breakpoint logic `.btn-do` uses (640px).
+
+Vertically centring it is the single most likely way to make this look broken.
+
+### 14.5 Scope — which labels
+
+Must cover **all three label vocabularies together**, or the site ends up with three:
+
+1. `.eyebrow` (globals.css) — section eyebrows
+2. `Badge` (`components/ui/Badge.jsx`), including `.badge-lavender`
+3. The hero pill (the outlined `在线 · 导师亲授…` lozenge)
+
+**Do NOT** put it on anything interactive. The line the system holds:
+**letterforms (D-o) enclose a control; punctuation introduces a label.** Same ink,
+same pen, different grammar. Breaking it makes the D-o mean "DODO made this"
+rather than "press this".
+
+### 14.6 Implementation recipe — copy the `.btn-do` pattern
+
+`.btn-do` in globals.css (v6.9) is the working precedent. Mirror it:
+
+1. Bake the two strokes into **one data-URI** with `#7c79e8` hard-coded. This works
+   because `--do-mark` clears 3:1 on **both** grounds (3.37 Whisper / 5.28 Void
+   Black) — no `currentColor`, no light/dark variant needed.
+2. Deliver as a CSS **`::before` pseudo-element**, not markup. Keeps it out of the
+   accessibility tree (correct — it is decorative) and makes the rollout a **class
+   change per label** rather than a component migration.
+3. Encode with Python `urllib.parse.quote(svg, safe="/:='<>? .,")` then replace `#`
+   with `%23`. Single-quote the SVG attributes so no double-quote escaping is needed.
+4. Remove the pill border/background in the same change — the whole point is that
+   the label stops looking like a control.
+
+### 14.7 Guide update required
+
+`.interface-design/system.md` to **v6.10**, decision **D54**. Add beside the D-o
+bracket section:
+
+- The mark, its geometry, and the cap-height alignment rule.
+- The scope list (three label vocabularies).
+- **The grammar rule stated explicitly**: letterforms = controls, punctuation = labels.
+- Why the guillemet was rejected, so nobody re-proposes it.
+- A row in the decision-log table and an entry in the cascade-status block.
+
+### 14.8 Traps — read before touching anything
+
+**A. The `.on-dark` trap has bitten FOUR times.** Any surface painting its own dark
+ground without `.on-dark` renders light-surface tokens on near-black. Already fixed:
+navbar `<header>`, mobile drawer (sits *outside* the header), `PreCtaBand`, and the
+`/program`, `/consult`, `/demos`, `/results`, `/methodology`, `/lexile` heroes.
+**Still latent**: `AssessmentClient`, `FAQClient`, `PartnersClient` in `components/`.
+They pass today only because their text is coloured inline. **Do not blanket-apply
+`.on-dark` to them** — several contain white cards, and `.on-dark p` would turn that
+card text platinum-on-white. Add the hook per section, only where you place a system
+component.
+
+Ask "does this surface paint its own dark ground?" before adding any mark.
+
+**B. `npm run build | tail` reports tail's exit code, not the build's.** This masked
+a real TypeScript failure in this session — exit 0, zero routes, nearly shipped.
+Always:
+
+    npm run build > /tmp/build.log 2>&1; echo "EXIT: $?"
+    grep -cE "^[|+-].*/(en|zh)/" /tmp/build.log
+
+A green build emits **122 static pages / 45 routes**. No route table means it failed.
+
+**C. Four documented contrast-audit false positives.** All four are in system.md;
+each has already cost an investigation:
+
+1. Gradient-filled headings — `-webkit-text-fill-color: transparent` with
+   `background-clip: text`. `color` still computes; the painted text is a gradient.
+2. Hidden drawer content **and `sr-only`** — 1x1px and clipped, slips past a
+   `width < 1` test.
+3. Texture overlays read as grounds — `/blog`'s 1px dot pattern at `opacity: 0.08`
+   scored 3.06 where the real value is 5.36.
+4. Low-opacity decorative lettering — `/navigators`' 280px watermark, `aria-hidden`
+   at `opacity: 0.04`.
+
+### 14.9 The inspection — "like last time", inclusive of these edits
+
+Run against the **dev server first**, then the **live site after deploy**. The
+scanner must implement all four exclusions above, plus:
+
+- **Backdrop-aware background resolution**: walk ancestors for a `background-color`
+  with alpha > 0.85, but at each level first check for an absolutely/fixed
+  positioned child with `opacity >= 0.85` that fully covers the element — several
+  heroes paint their ground that way. Skip `repeating-` and `circle,` gradients
+  (patterns, not fills).
+- **Use `-webkit-text-fill-color` when opaque**, falling back to `color`.
+- **Effective opacity** = product of all ancestor opacities; skip below 0.3.
+
+Cover at minimum: `/en/`, `/en/program/`, `/en/consult/`, `/en/demos/`,
+`/en/methodology/`, `/en/about/`, `/en/results/`, `/en/little-dodo/`,
+`/en/credentials/`, `/en/faq/`, plus `/zh/`, `/zh/program/`, `/zh/consult/`, and
+`/en/` at **375px** width.
+
+**Additionally inspect the new marks specifically:**
+
+- every `.eyebrow` / `Badge` / hero pill renders its `::before` data-URI;
+- the mark is top-aligned, not centred;
+- no label kept a pill border;
+- no *interactive* element picked the mark up.
+
+### 14.10 Definition of done
+
+- Build: exit 0, 122 pages, 45 routes.
+- Contrast: **0 failures** across the matrix above, EN and ZH.
+- Controls: **73 `.btn-do` instances still passing** — the regression bar from v6.9.
+  Do not let the label work break the control work.
+- Guide at v6.10 with D54 logged.
+- Pushed, then re-inspected **on the live site** after Cloudflare deploys. The deploy
+  runs a few minutes behind the push, and a cached page can read as "not deployed"
+  when it is — use a cache-buster (`?cb=` + timestamp, `cache: 'no-store'`) and check
+  the built CSS bundle, not just the DOM.
+
+### 14.11 Explicitly out of scope
+
+Do not start these without asking:
+
+- **Type floor** — `/demos` 64 sub-12px nodes, `/program` 54, `/consult` 31. A design
+  pass, not a mechanical fix; changes page rhythm and risks tight layouts.
+- **Literata rollout** — still piloted on `/methodology` h1 only. H1 weights remain
+  inconsistent sitewide (home 700, `/about` 300, `/methodology` 500).
+- **D44's Three Brand Truths** — still has no visual brief.
+- **`btn-do-charter`** — defined, gilt label, used nowhere. There is no enrolment CTA
+  on the site. Do not reach for it until one exists.
+
+### 14.12 Reference
+
+- Design proposals, live specimens on both grounds, EN + ZH:
+  `https://claude.ai/code/artifact/e8bf85b8-1dfa-4c96-8fde-7a395f08eb4e`
+- Shipped control chrome: `e426883` (option B, no fills) and `d1e2686` (D53).
+- Guide: `.interface-design/system.md` v6.9 — read the "D-o bracket" and
+  "Contrast-auditing this site" sections before starting.
+- A parallel bot also commits to this repo. Sync before editing and again before
+  pushing, per CLAUDE.md.
