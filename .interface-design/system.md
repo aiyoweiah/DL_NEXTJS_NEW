@@ -317,7 +317,7 @@ interactive.** A quoted button makes the D-o read as "DODO made this" instead of
   A wide mark in the margin reads as a stray dash. It hangs before the first word.
   **Vertically centring it is the single most reliable way to make it look broken.**
 - **Why a quote at all.** Every eyebrow and badge is DODO *making a claim* — a quote
-  mark says exactly that. It lands on **Speak** in Read -> Think -> Speak -> Write, and
+  mark says exactly that. It lands on **Speak** in Read → Think → Speak → Write, and
   it matches §07a: proof renders as **citation**, not as badge.
 - **⛔ The guillemet was considered and rejected — do not re-propose it.** It fails a
   bilingual test, not a taste test: a guillemet reads as *French* quotation, while
