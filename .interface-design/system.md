@@ -4,9 +4,9 @@ Living reference for the DODO marketing site chrome (navbar, footer, funnel CTAs
 and its visual token system. Read this before touching navigation, CTAs, the
 pre-footer band, or any colour value.
 
-**Current through:** v6.5 · 2026-08-28 (live-conformance fixes: button specificity,
-surface-specific muted, external links). v6.4 added display typeface D51; v6.3 the
-token-table correction + strategy layer.
+**Current through:** v6.6 · 2026-08-28 (D52: filled buttons are surface-specific;
+boundary contrast added to the button rule). v6.5 fixed button specificity, muted-on-dark
+and external links; v6.4 added display typeface D51; v6.3 the token-table correction.
 **Sibling document:** `translation/BRAND_CONTENT_GUIDE.md` (**v5.1**, decisions through
 **D50**) owns voice, copy and positioning; this file owns chrome and visual tokens.
 Decisions are numbered **D** in `docs/content-style-decisions.md` and apply to *both* —
@@ -223,10 +223,24 @@ established. Ratios are measured (WCAG 2.1 relative luminance), not estimated.
 > (`.eyebrow` = `#5856cc`). **When a component needs a label, use `.eyebrow` — do not
 > re-derive a lavender.**
 
-**Buttons — accessibility rule (WCAG AA: text ≥ 4.5:1, boundary ≥ 3:1):**
-- **Filled primaries are surface-agnostic** (near-black text on a light fill): `btn-charter`
-  (gold `#F5C842`, **12.1:1** — firm close / Watch on light heroes) · `btn-primary` (lavender
-  `#b7b5fe`, **10.1:1** — Watch on dark heroes). Use either on any surface.
+**Buttons — accessibility rule. TWO tests, not one (WCAG 1.4.3 text ≥ 4.5:1 AND
+1.4.11 non-text boundary ≥ 3:1).** Until v6.6 this section only checked the label.
+That is how gilt-on-Whisper shipped: text 12.13:1, but the pill's edge against the
+page only **1.47:1**, so the label read fine while the control had no visible shape.
+**Every button row below states both numbers. A fill that passes text and fails
+boundary is not usable — it is an invisible control with legible words on it.**
+- **Filled primaries are surface-SPECIFIC (D52, v6.6 — they were wrongly documented as
+  surface-agnostic).** Their labels pass anywhere; their edges do not.
+
+  | Class | Fill + text | Use on | Text | Edge |
+  |---|---|---|---|---|
+  | `btn-charter` | gilt `#F5C842` + void black | **DARK only** | 12.13:1 ✅ | 9.37:1 ✅ |
+  | `btn-primary` | lavender `#b7b5fe` + void black | **DARK only** | 10.14:1 ✅ | 7.84:1 ✅ |
+  | `btn-solid` | deep lavender `#5856cc` + white | **LIGHT only** | 5.80:1 ✅ | 5.36:1 ✅ |
+
+  ⚠️ On Whisper, `btn-charter` is **1.47:1** at the edge and `btn-primary` is **1.75:1**.
+  Both are unusable on light. Use `btn-solid` there — hover `#4a48b8` (edge 6.66:1).
+  `btn-solid` also clears white cards (5.80:1) and the tinted surface `#EAEAF8` (4.87:1).
 - **Outline secondaries are surface-SPECIFIC — this is the load-bearing rule:**
   - On **DARK** surfaces → `btn-ghost` (light-lavender text `#b7b5fe`, **10.1:1**).
   - On **LIGHT** surfaces → `btn-outline` (deep-lavender text `#5856cc`, **5.36:1**).
@@ -234,6 +248,12 @@ established. Ratios are measured (WCAG 2.1 relative luminance), not estimated.
     single text color passes on both black and white, so the secondary MUST match its surface.
 - `btn-gilt` is a safety **alias of `btn-charter`** (it was once undefined → invisible). Prefer
   `btn-charter` directly. When adding a CTA, ask: filled or outline? and dark or light surface?
+  Both halves of that question now change the class — **there is no surface-agnostic button.**
+- **Gilt reservation, resolved (D52).** §Strategy reserves gilt for Charter Enrolment
+  moments, while this section used to hand it to the firm close on every surface —
+  the guide contradicted itself and gilt was spent sitewide. Light-surface firm closes
+  now use `btn-solid`; gilt survives on dark sections and genuine enrolment moments,
+  which is what the reservation intended.
 - ⚠️ **A section-scoped descendant selector must never set a component's colour.**
   `.section-dark a { color: … }` is specificity `(0,1,1)`; `.btn-charter { color: … }` is
   `(0,1,0)`, so the section rule silently repainted every button inside a dark section.
@@ -386,6 +406,7 @@ not listed.
 | D44 | Redesigned Three Brand Truths | **No visual brief yet — open gap** (copy landed via D46/D49) | ⏳ open |
 | D46–D50 | Home, About, Methodology, Program, Compare reworked to v5.1 + §08 voice | Copy-side cascade; chrome unaffected. Re-audit contrast after these ship | n/a here |
 | D51 | Display typeface — Literata + Noto Serif SC, **display-only** | Type pairing section added; `--font-display` / `--font-display-cjk` tokens; per-surface rollout | ✅ v6.4 |
+| D52 | **Filled buttons are surface-specific** (option B) | `.btn-solid` added (deep lavender + white) for light surfaces; button rule now states text *and* boundary contrast; gilt reservation resolved | ✅ v6.6 |
 
 ### Cascade status
 
@@ -402,6 +423,18 @@ not listed.
       Home-page subhead blue `#3b6fcc` → `--text-info` `#3a6ac4`.
 - [x] D51 display face wired (`lib/fonts.js`, root layout, `.font-display`) and
       **piloted on `/methodology` h1 only**.
+
+**Done in v6.6 (2026-08-28) — D52, option B:**
+
+- [x] `.btn-solid` added: deep lavender `#5856cc` + white, for light surfaces.
+      Text 5.80:1, edge 5.36:1; hover `#4a48b8` at 6.66:1.
+- [x] `--color-lavender-deep` promoted to a primitive; `--text-accent` now points at it.
+- [x] Two light-ground filled buttons migrated off gilt — `AgeBandChooser` (white card,
+      edge was 1.59:1) and the `/program` closing CTA (Whisper, edge was 1.47:1).
+      A runtime scan of every filled button across the site found only these two;
+      the rest sit on dark grounds and keep gilt correctly.
+- [x] Button rule rewritten to state **both** tests. The old rule checked label
+      contrast only, which is how a 1.47:1 edge shipped looking compliant.
 
 **Done in v6.5 (2026-08-28) — from the live-conformance audit:**
 
