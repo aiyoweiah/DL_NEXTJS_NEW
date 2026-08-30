@@ -254,7 +254,7 @@ export default async function ComparePage({ params }) {
           <h2 className="mb-5" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: 'clamp(28px, 3vw, 42px)', color: '#b7b5fe', lineHeight: 1.3, letterSpacing: '-0.02em' }}>{c.s9.h2}</h2>
           <p className="max-w-[520px] mx-auto mb-8" style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '16px', color: 'rgba(240,240,240,0.75)', lineHeight: 1.6 }}>{c.s9.sub}</p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-3">
-            <Link href={`/${locale}/consult`} className="w-full md:w-auto rounded-lg transition-all hover:opacity-90" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: '16px', backgroundColor: '#F5C842', color: '#0E0E12', padding: '16px 32px', textDecoration: 'none', display: 'inline-block', textAlign: 'center', minWidth: '280px' }}>{c.s9.ctaPrimary}</Link>
+            <Link href={`/${locale}/consult`} className="btn btn-do btn-do-primary w-full md:w-auto justify-center" style={{ minWidth: '280px' }}>{c.s9.ctaPrimary}</Link>
             <Link href={`/${locale}/program`} className="w-full md:w-auto rounded-lg transition-all hover:border-white" style={{ fontFamily: 'var(--font-latin)', fontWeight: 500, fontSize: '16px', backgroundColor: 'transparent', color: '#F0F0F0', border: '1.5px solid rgba(240,240,240,0.50)', padding: '14px 32px', textDecoration: 'none', display: 'inline-block', textAlign: 'center', minWidth: '280px' }}>{c.s9.ctaSecondary}</Link>
           </div>
           <p className="mt-4" style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '13px', color: '#b7b5fe' }}>{c.s9.note}</p>

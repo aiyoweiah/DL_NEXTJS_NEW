@@ -4,7 +4,7 @@ Living reference for the DODO marketing site chrome (navbar, footer, funnel CTAs
 and its visual token system. Read this before touching navigation, CTAs, the
 pre-footer band, or any colour value.
 
-**Current through:** v6.18 · 2026-08-30 (D64 built: Latin preload trimmed; D63 built: CJK frequency-tiered subset; D62 logged: ZH adopts LXGW WenKai, EN stays
+**Current through:** v6.19 · 2026-08-30 (D65 built: btn-do sweep finished; D64 built: Latin preload trimmed; D63 built: CJK frequency-tiered subset; D62 logged: ZH adopts LXGW WenKai, EN stays
 Source Sans 3 — decision recorded, implementation not started).
 v6.15 = D61 target size 24×24. v6.14 = D59 one Latin face + D60 the Surface guard.
 v6.10 = D54 the lead-in quote on claim labels: letterforms enclose a control, punctuation introduces a label.
@@ -386,7 +386,9 @@ says *press this **one***.
   spent sitewide; a gilt wash on every secondary would re-spend it exactly as that
   decision forbids. Measured anyway, for the record: gilt clears the label test all
   the way to 38% — it is the **reservation**, not the contrast, that rules it out.
-- **The last non-`btn-do` CTA is gone.** `/cities/[city]` still carried a
+- **The last non-`btn-do` CTA is gone.** ⚠️ **This claim was wrong — see D65.**
+  Six inline-styled gilt CTAs survived this sweep and every sweep after it, because
+  they carried no button class to swap. Fixed in v6.19. `/cities/[city]` still carried a
   `btn btn-secondary` that D53b's sweep missed. Only `AudiobookPlayer`'s four
   transport controls now sit outside the system, which is correct — "Do ⏵" is nonsense.
 
@@ -584,6 +586,41 @@ lead-in quote by construction.
   the mobile hamburger at **40×40**. It clears 24 comfortably. Worth raising on its own
   merits as the most-tapped control on mobile.
 
+
+**The `btn-do` sweep is actually finished now (D65 · v6.19 — BUILT).**
+v6.9 and v6.12 both recorded that the last non-`btn-do` CTA was gone. **Neither was
+true.** Six conversion CTAs were still painted gilt:
+
+| Surface | Ground | Was |
+|---|---|---|
+| `/navigators` S8 | `SectionWrapper darker` | gilt fill + gilt glow shadow |
+| `/blog` S8 | `#212830` (`on-dark`) | gilt fill |
+| `/compare` S9 | `#0E0E12` (`on-dark`) | gilt fill, 280px min-width |
+| `/faq` ×2 | `#F5F5FF` **and** `#212830` | gilt fill |
+| `/assessment` | `#0E0E12` | gilt fill |
+
+- **Why every sweep missed them.** The sweeps swapped *classes* — `btn-secondary`,
+  `btn-solid`, `btn-charter`. These six carried no button class at all: they were
+  `<Link>`s with `style={{ backgroundColor: '#F5C842', … }}` inline. A grep for retired
+  class names cannot see an inline hex. Same failure shape as the nine private
+  `Eyebrow` copies (D57) and the 33 hand-rolled panels (D60): **hand-rolled markup
+  escapes a system sweep, every time.**
+- **They also broke D52.** Gilt is reserved for Charter Enrolment. D53b states plainly
+  that it is "currently used nowhere" — but it was used on six consult CTAs, which is
+  precisely the "gilt spent sitewide" contradiction D52 was written to resolve.
+- **All six are consult/diagnostic CTAs**, so per D53b they become `.btn-do-primary`,
+  not `.btn-do-charter`. Charter still has no call site, correctly.
+- **The D53 dark-ground trap fired exactly as predicted.** `FAQClient` and
+  `AssessmentClient` were named in v6.9 as painting dark grounds with no `.on-dark`
+  hook. Converting their CTAs would have put an ink label on near-black. Both sections
+  got the hook; neither contains white cards, so the v6.7 `/program` failure does not
+  repeat. Measured after: 7.84–17.78:1 across every `.btn-do`, zero failures.
+- ⚠️ **Still open — the two interactive gilt chips.** `/program` and `/little-dodo`
+  heroes carry a cross-link chip (`<Link>`, gilt border + 6% gilt ground + gilt text,
+  10px uppercase). They are **controls**, so D53b's scope says they take the bracket —
+  but a 22px D-o against a 10px chip is absurd, and the guide's grammar has no third
+  category between "control" and "non-interactive pill". **This needs a design
+  decision, not a mechanical fix.** They are the last two gilt users on the public site.
 
 **The Latin preload covers only what the site uses (D64 · v6.18 — BUILT).**
 `lib/fonts.js` declared `subsets: ['latin', 'latin-ext']` with `preload: true`, which
@@ -931,6 +968,7 @@ not listed.
 | D62 | **ZH adopts LXGW WenKai GB; EN stays Source Sans 3** | Decision logged, not built. CJK-only subset (229.8 KB Regular / 224.8 KB Medium) so Latin stays Source Sans 3 and D59 holds. Display-only concern raised and overruled by admin | 📋 logged v6.16 |
 | D63 | **CJK served from a frequency-tiered local subset** | Hosted Noto (303 `@font-face`, 13.2 MB declared) replaced by 5 generated chunks, 437 KB total across the whole 400–700 range (variable font). ZH page CJK **1,090 → 437 KB** measured cold; EN unchanged at 0 KB. `check-cjk-coverage.mjs` guards `prebuild` **and** `postbuild`. Fixes a dead `<link rel=preload>` that 404'd on every ZH page | ✅ v6.17 |
 | D64 | **Latin preload trimmed to the subset actually used** | `subsets: ['latin','latin-ext']` → `['latin']`. latin-ext usage across the whole export: **zero characters**; it cost 116.6 KB of forced preload per route. EN font payload **183.3 → 66.6 KB**. `check-font-preload.mjs` ratchets it on `postbuild`. Remaining 10.7 KB is a next/font 16.x bug (spurious cyrillic-ext italic preload), tolerated with reason | ✅ v6.18 |
+| D65 | **The `btn-do` sweep finished — 6 inline-styled gilt CTAs found** | v6.9/v6.12 claimed "the last non-`btn-do` CTA is gone"; **that was false.** Six gilt-filled consult CTAs (`/navigators`, `/blog`, `/compare`, `/faq` ×2, `/assessment`) used inline `backgroundColor: '#F5C842'` and were invisible to a class-based sweep. Converted to `.btn-do-primary`; `.on-dark` added to the two hand-rolled dark sections the D53 note predicted. Zero contrast failures. **2 interactive gilt chips remain — open design question** | ✅ v6.19 |
 
 ### Cascade status
 
@@ -983,7 +1021,8 @@ not listed.
 **Done in v6.12 (2026-08-29) — D56 + D57:**
 
 - [x] Swash widened to every `.btn-do`; tiers now read as ink weight (pale vs deep).
-- [x] `/cities/[city]` `btn-secondary` retired — the last non-`btn-do` CTA on the site.
+- [x] `/cities/[city]` `btn-secondary` retired — ~~the last non-`btn-do` CTA on the site~~
+      **(incorrect — 6 inline-styled gilt CTAs remained; see D65 / v6.19).**
 - [x] Nine local `Eyebrow` definitions replaced by `components/ui/Eyebrow.jsx`;
       **50 additional section labels** now carry the D54 quote.
 - [x] `.eyebrow:lang(zh)` tracking rule added (0.06em).

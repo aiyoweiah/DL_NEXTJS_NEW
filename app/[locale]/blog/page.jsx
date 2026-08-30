@@ -396,8 +396,7 @@ export default async function BlogPage({ params }) {
             {ui.ctaHeading}
           </h2>
           <Link href={`/${locale}/consult`}
-            className="inline-block rounded-lg transition-all hover:opacity-90 mb-4"
-            style={{ fontFamily: 'var(--font-latin)', backgroundColor: '#F5C842', color: '#0E0E12', fontSize: '16px', fontWeight: 700, padding: '16px 32px', textDecoration: 'none' }}>
+            className="btn btn-do btn-do-primary mb-4">
             {ui.ctaButton}
           </Link>
           <p style={{ color: '#b7b5fe', fontSize: '13px', fontWeight: 400, marginTop: '16px' }}>

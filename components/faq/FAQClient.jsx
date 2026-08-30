@@ -306,9 +306,7 @@ export default function FAQClient({ locale = 'en' }) {
             fontWeight: 400, color: '#212830', lineHeight: 1.6, marginBottom: '28px' }}>
             {ui.stillSub}
           </p>
-          <Link href={`/${locale}/consult`} className="inline-block rounded-lg transition-all hover:opacity-90"
-            style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: '16px',
-              backgroundColor: '#F5C842', color: '#0E0E12', padding: '16px 32px', textDecoration: 'none' }}>
+          <Link href={`/${locale}/consult`} className="btn btn-do btn-do-primary">
             {ui.ctaButton}
           </Link>
           <div style={{ marginTop: '14px' }}>
@@ -321,7 +319,7 @@ export default function FAQClient({ locale = 'en' }) {
       </section>
 
       {/* ── CLOSING CTA ───────────────────────────────────── */}
-      <section className="px-6" style={{ backgroundColor: '#212830', paddingTop: '96px', paddingBottom: '96px' }}>
+      <section className="px-6 on-dark" style={{ backgroundColor: '#212830', paddingTop: '96px', paddingBottom: '96px' }}>
         <div className="max-w-[600px] mx-auto text-center">
           <h2 className="max-w-[580px] mx-auto" style={{ fontFamily: 'var(--font-latin)', fontSize: '32px',
             fontWeight: 700, color: '#b7b5fe', lineHeight: 1.3, letterSpacing: '-0.02em', marginBottom: '16px' }}>
@@ -331,9 +329,7 @@ export default function FAQClient({ locale = 'en' }) {
             fontWeight: 400, color: 'rgba(240,240,240,0.70)', lineHeight: 1.6, marginBottom: '32px' }}>
             {ui.closingSub}
           </p>
-          <Link href={`/${locale}/consult`} className="inline-block rounded-lg transition-all hover:opacity-90"
-            style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: '16px',
-              backgroundColor: '#F5C842', color: '#0E0E12', padding: '16px 32px', textDecoration: 'none' }}>
+          <Link href={`/${locale}/consult`} className="btn btn-do btn-do-primary">
             {ui.ctaButton}
           </Link>
           <p style={{ fontFamily: 'var(--font-latin)', fontSize: '13px', fontWeight: 400,

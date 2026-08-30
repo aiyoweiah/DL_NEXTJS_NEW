@@ -581,7 +581,7 @@ export default function AssessmentClient({ locale = 'en' }) {
       </section>
 
       {/* S10 CLOSING CTA */}
-      <section className="px-6 py-24 md:py-32 text-center" style={{ backgroundColor: '#0E0E12' }}>
+      <section className="px-6 py-24 md:py-32 text-center on-dark" style={{ backgroundColor: '#0E0E12' }}>
         <div className="container-section">
           <div className="max-w-2xl mx-auto">
             <h2 className="mb-4 max-w-[560px] mx-auto" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: '32px', color: '#b7b5fe', letterSpacing: '-0.02em', lineHeight: 1.3 }}>
@@ -591,9 +591,7 @@ export default function AssessmentClient({ locale = 'en' }) {
               The entrance assessment is included in every enrollment. Book a diagnostic call — and we will tell you what your child&rsquo;s first number is likely to look like before you commit to anything.
             </p>
             <div className="flex flex-col items-center gap-3 max-w-md mx-auto">
-              <Link href="/consult" className="w-full inline-flex items-center justify-center rounded-lg transition-all hover:opacity-90"
-                style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: '16px',
-                  backgroundColor: '#F5C842', color: '#0E0E12', padding: '16px 32px', textDecoration: 'none' }}>
+              <Link href="/consult" className="btn btn-do btn-do-primary w-full justify-center">
                 Book a Diagnostic Call
               </Link>
               <Link href="/program" className="w-full inline-flex items-center justify-center rounded-lg transition-all hover:border-white"

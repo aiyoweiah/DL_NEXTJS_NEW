@@ -367,8 +367,7 @@ export default async function NavigatorsPage({ params }) {
             {c.s8.h2a}<span style={{ color: '#b7b5fe' }}>{c.s8.h2b}</span>{c.s8.h2c}<span style={{ color: '#b7b5fe' }}>{c.s8.h2d}</span>{c.s8.h2e}
           </h2>
           <p className="mb-10 mx-auto" style={{ fontSize: '18px', fontWeight: 400, color: '#F0F0F0', opacity: 0.75, lineHeight: 1.6, maxWidth: '600px' }}>{c.s8.sub}</p>
-          <Link href={`/${locale}/consult`} className="inline-block transition-all hover:scale-105 active:scale-95 rounded-lg"
-            style={{ backgroundColor: '#F5C842', color: '#0E0E12', fontSize: '18px', fontWeight: 600, padding: '16px 40px', boxShadow: '0 4px 20px rgba(245,200,66,0.3)', textDecoration: 'none' }}>
+          <Link href={`/${locale}/consult`} className="btn btn-do btn-do-primary">
             {c.s8.cta}
           </Link>
           <p className="mt-6" style={{ fontSize: '14px', fontWeight: 400, color: '#F0F0F0', opacity: 0.5 }}>{c.s8.note}</p>
