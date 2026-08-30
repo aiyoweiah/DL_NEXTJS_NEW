@@ -1,7 +1,7 @@
 # DODO Learning — Successor Handoff
 
 **Authored:** 2026-05-17 (end of session)
-**Last updated:** 2026-08-29 — **Design system D53–D62 (guide v6.16).** The drawn hand shipped across the site: D-o bracket on every control, lead-in quote on claim labels, the highlighter swash tiered by ink weight, and the hand extended past the button (divider, card edge, quote glyph, the marked score). Structural fixes behind it: one canonical `Eyebrow` (nine private copies consolidated, 50 more labels joined the system), one canonical `Surface` with the two variants the system was missing, and **two build guards** — `check-surfaces.mjs` ratchets hand-rolled panels, wired to `prebuild`. Typography: **D51's display pair retired** (it cost 546 `@font-face` declarations to set one heading) and **DM Sans → Source Sans 3**, which is the Latin that Noto Sans SC was actually drawn beside — fixing a live bug where the same words rendered in different Latin faces depending on locale. Accessibility: **footer targets raised to WCAG 2.2 SC 2.5.8** (22 of 25 links were 20/16px on every route; the fix moved nothing). Docs: superseded working docs archived to `docs/_archive/`, shipped proposals to `.design/_shipped/`, all inbound links rewritten. **⚠️ ACTIVE TASK at the top of this file: the CJK subsetting pipeline — an English page currently downloads 1,197 KB of fonts to render 5 hanzi.** D62 (ZH adopts LXGW WenKai) is logged but deliberately NOT built; it rides on that pipeline.
+**Last updated:** 2026-08-30 — **CJK subsetting pipeline shipped (D63, guide v6.17).** A Chinese page's font payload drops from 1,089.7 KB to 436.5 KB, measured cold; font bytes in the export drop from 4,820 KB to 735 KB and `@font-face` declarations from 373 to 75. Five frequency-tiered chunks generated from a pinned, SHA-256-verified variable font, guarded on both `prebuild` and `postbuild`. Four corrections to the original spec — including that **the English page never had a CJK problem** and that the real character set is 1,574, not 1,021 — are written up at the top of this file. A dead `<link rel=preload>` that 404'd on every ZH page is fixed. **D62 (WenKai) still deliberately unbuilt**; it is now a flag on the generator.
 
 **Previously (2026-06-28):** — **Consult form rework shipped (Cal.com retired).** /consult Section 5 swapped from a Cal.com `week_view` embed to a custom on-brand inquiry form (`components/consult/ConsultForm.jsx` — single-column, 5 sections, bilingual, locale-aware preferred-contact default). In-place success-state UI presents two contact paths (email card + WeChat card, copy-to-clipboard each). New Cloudflare Pages Function at `functions/api/consult-inquiry.js` handles POST: writes a record to the `Consultation & Lead` Lark Base (`NU1ibehBKanCRksN2rQjpLZ4pkd` / `tblXJZXEN9FDlRV2`), posts a 📥 interactive card to the Lead Pulse chat (same `LARK_TRIAGE_CHAT_ID` Claude_Lark uses), and fires two emails via Resend from `janet@dodolearning.com` (handwritten-style parent ack + team digest). Helpers in `functions/_lib/{lark,email}.js`. Bilingual copy added under `consult.form` in `content/marketing.{en,zh}.js`. Lark Base schema extended via the existing Claude_Lark Python client: new single-select columns `Preferred Contact` (Email/WeChat) and `Locale` (EN/ZH); `Grade Level` extended with Pre-K, Kindergarten, Not sure. 10 env vars set on CF Pages `dl-nextjs-new` production (Lark App ID/Secret shared with Claude_Lark — rotation breaks both). One gotcha: CF Pages' esbuild was applying the project root `tsconfig.json` (`target: es5`) to function code; fixed by `functions/tsconfig.json` override (`target: es2022`). `ConsultCalEmbed.jsx` left in tree — partners flow still uses it. Cal.com account ready to cancel once you've seen a real submission end-to-end. **WeChat ID is still a placeholder** (`WECHAT_HANDLE=pending` on CF; `__PLACEHOLDER__` in copy); swap both when you have the real handle. See "2026-06-28 · Consult form rework" below.
 
@@ -16,7 +16,99 @@ This doc is **your entry point if you're picking up this work cold.** Read this 
 4. `translation/BRAND_CONTENT_GUIDE.md` — the locked brand truth for content surfaces.
 
 
-## ACTIVE TASK — CJK font subsetting pipeline (HANDOFF, opened 2026-08-29)
+## CLOSED — CJK font subsetting pipeline (opened 2026-08-29, **built 2026-08-30**)
+
+**Status: SHIPPED as D63 (guide v6.17).** Built to the spec below, with four
+corrections to it — all four found by measuring first, which the original handoff was
+right to insist on.
+
+### What shipped
+
+| File | |
+|---|---|
+| `scripts/cjk-charset.mjs` | shared scanner — generator and guard import the same block list and file globs so they can never disagree |
+| `scripts/build-cjk-subset.mjs` | generator. `npm run fonts:cjk` · `npm run fonts:report` |
+| `scripts/check-cjk-coverage.mjs` | guard. `prebuild` (source) + `postbuild` (build output) |
+| `public/fonts/cjk/*.woff2` | 5 committed chunks, content-hashed filenames |
+| `scripts/cjk-manifest.json` | full manifest — deliberately **outside** `public/` so it is never served |
+| `lib/cjk-preload.json` | tiny generated preload list consumed by `app/[locale]/layout.jsx` |
+| `styles/cjk-fonts.css` | generated `@font-face` rules, imported by `app/layout.jsx` |
+
+### Measured result
+
+| | before | after |
+|---|---|---|
+| `/zh/faq` CJK bytes, cold | **1,089.7 KB** | **436.5 KB** |
+| `/en/credentials` CJK bytes, cold | **0 KB** | **0 KB** |
+| woff2 files in `out/` | 115 | 19 |
+| font bytes in `out/` | 4,820 KB | 735 KB |
+| `@font-face` declarations | 373 | 75 |
+
+Chunks: `chrome` 5 glyphs / 2.3 KB · `t1` 150 / 38.2 KB · `t2` 250 / 61.3 KB ·
+`t3` 400 / 105.4 KB · `t4` 768 / 229.3 KB. **437 KB is the entire site's Chinese, at
+every weight** — the source is a variable font, so one chunk serves 300–700 instead of
+one file per range per weight. That is where most of the win came from.
+
+Build green: 122 pages / 45 routes, both guards passing. Guard regression-tested both
+ways (uncovered hanzi → build fails naming file + codepoint; regenerate → passes).
+No tofu on ZH desktop or 375px, punctuation and inline Latin both correct.
+
+### ⚠️ Four corrections to the original spec — read these before trusting its numbers
+
+1. **"An English page downloads 1,197 KB of fonts to render 5 hanzi" — did not
+   reproduce.** On the production export an EN route downloads **0 KB of CJK**. The 5
+   switcher glyphs (切换到中文) resolve through the platform CJK face. The ~1.1 MB
+   figure is real but it is a **ZH-page** cost (`/zh/faq`, 1,089.7 KB) — the premise was
+   inverted. An EN page does load 183 KB, but it is **all Source Sans 3**, untouched by
+   this work and still open.
+2. **The character universe was 1,021; it is 1,574.** The spec scoped scanning to
+   `content/*.zh.js`. That misses: both ZH blog posts (`content/zh/blog/*.mdx`), the
+   `/ops` tools (client-rendered — **146 characters appear in no prerendered HTML**),
+   dependency-shipped glyphs (html2canvas/jsPDF carry 壹 貳 參 萬 and katakana), and
+   **all CJK punctuation** — ，。、：；！？“” are CJK-face glyphs, so subsetting
+   U+4E00–9FFF alone would have dropped every comma in the Chinese copy. Building to the
+   original scan would have shipped a subset missing ~300 glyphs, most visibly in the
+   admin assessment tool.
+3. **`next/font/local` cannot do this.** Its `src` entries take only
+   `{ path, weight, style }` — there is no per-source `unicode-range`, and unicode-range
+   is the entire mechanism. The `@font-face` rules are therefore generated directly into
+   `styles/cjk-fonts.css`. `lib/fonts.js` still exports a next/font-shaped `fontCJK`, so
+   `app/layout.jsx`, `globals.css :lang(zh)` and the Tailwind token are all unchanged.
+4. **The guard must run `postbuild`, not only `prebuild`.** A prebuild source scan
+   cannot see client-only components or dependency glyphs (see 2). Both passes now run;
+   the postbuild pass is the one that actually catches the hard cases.
+
+### Fixed in passing
+
+`app/[locale]/layout.jsx` carried a hand-written
+`<link rel="preload" href="/_next/static/media/noto-sans-sc.woff2">` on every ZH route.
+**That filename never existed — it 404'd on every Chinese page,** and its own comment
+asked whoever bumped Next.js to hand-sync the hash. A dead preload fails silently, which
+is why it survived. The href is now generated from the manifest and cannot drift.
+
+### Still open
+
+- **D62 (LXGW WenKai GB) deliberately NOT built** — that was step 2, after banking the
+  pipeline. It is now a `--source` flag on the generator plus a regeneration. The traps
+  in the original spec still stand: **subset CJK-only** (WenKai inherits Latin from Klee
+  One; shipping it would re-split the brand's Latin by locale, the exact bug D59 fixed),
+  **use the GB edition**, and weight 700 will synthesise (no true Bold — accepted).
+- **The 183 KB of Source Sans 3 on every route.** Five files including latin-ext and a
+  Cyrillic chunk, normal and italic. Unexamined; likely the next real payload win.
+- Everything under "Explicitly out of scope" below is untouched: the type floor, the 15
+  images without dimensions, the 40×40 hamburger, the 31 remaining hand-rolled panels.
+
+### Content bug noticed, NOT fixed (needs the copy apply-gate)
+
+`content/marketing.en.js` `labelZh: '诺断'` on the assessment step — almost certainly
+meant to be **诊断** (diagnose). 诺 is "promise". Left alone: copy changes go through the
+apply gate.
+
+---
+
+<details>
+<summary>Original handoff spec, kept for the reasoning (numbers superseded above)</summary>
+
 
 **Status: NOT STARTED.** Design finalised, measured, nothing written to code.
 Guide is at **v6.16**; this implements the finding recorded under **D62**.
@@ -156,6 +248,8 @@ Three parts. The third is what makes it permanent rather than a one-off subset.
 - **The 40×40 hamburger** — clears WCAG 24×24; below the 44px *recommendation* only.
 - **Migrating the remaining 31 hand-rolled panels** — tracked by
   `scripts/surface-baseline.json`, migrate opportunistically.
+
+</details>
 
 ---
 

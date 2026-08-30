@@ -41,3 +41,4 @@ next-env.d.ts
 
 # firecrawl CLI scrape cache (firecrawl writes scrape output here)
 .firecrawl/
+.fontcache/

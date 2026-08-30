@@ -21,6 +21,7 @@
 //   differing between server render and the first client paint.
 
 import '@/styles/globals.css'
+import '@/styles/cjk-fonts.css'   // GENERATED — npm run fonts:cjk
 
 import { fontLatin, fontCJK } from '@/lib/fonts'
 import { buildMetadata }      from '@/lib/metadata'
