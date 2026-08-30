@@ -14,7 +14,7 @@ const OnboardingTool = dynamic(
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        fontFamily: '"DM Sans", sans-serif',
+        fontFamily: 'var(--font-latin)',
         color: '#5E6879',
         fontSize: 14,
       }}>

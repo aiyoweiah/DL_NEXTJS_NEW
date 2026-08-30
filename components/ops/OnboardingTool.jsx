@@ -13,7 +13,7 @@
 //   * Signature block right-aligned in standard letter format.
 //   * English paragraphs lose Chinese-style textIndent (kept on
 //     Chinese paragraphs where it's the convention).
-//   * Font stack now DM Sans first to match lib/fonts.js + sibling tools.
+//   * Font stack now Source Sans 3 first to match lib/fonts.js + sibling tools.
 //   * Hidden PDF templates wrapped in React.memo so typing in the form
 //     stops triggering full template re-renders.
 
@@ -468,7 +468,7 @@ export default function OnboardingTool() {
   const [status,          setStatus]          = useState('');
 
   useEffect(() => {
-    // Brand fonts (DM Sans + Noto Sans SC) are self-hosted via next/font and
+    // Brand fonts (Source Sans 3 + Noto Sans SC) are self-hosted via next/font and
     // exposed as --font-latin / --font-cjk by app/layout.jsx. No CDN <link>
     // needed; just gate PDF generation on the faces being loaded.
     document.fonts.ready.then(() => setFontsReady(true));

@@ -24,10 +24,10 @@
 // otherwise overflow.
 //
 // v3.5.0 — adopt brand typefaces. Replaced the hardcoded
-// '"DM Sans","Noto Sans SC"' family string and the runtime Google
+// '"Source Sans 3","Noto Sans SC"' family string and the runtime Google
 // Fonts <link> injection with the site's self-hosted next/font brand
 // variables (--font-latin / --font-cjk, applied on <html> by
-// app/layout.jsx). The PDF now rasterizes with the same DM Sans +
+// app/layout.jsx). The PDF now rasterizes with the same Source Sans 3 +
 // Noto Sans SC faces as the rest of the site, with no external CDN
 // dependency. document.fonts.ready still gates generation so
 // html2canvas captures fully-loaded glyphs.
@@ -485,7 +485,7 @@ const GRADE_LEXILE = [
 // ═══════════════════════════════════════════════════════════════════════
 
 // Brand typefaces, self-hosted via next/font and exposed as CSS
-// variables on <html> by app/layout.jsx (--font-latin = DM Sans,
+// variables on <html> by app/layout.jsx (--font-latin = Source Sans 3,
 // --font-cjk = Noto Sans SC). Used by every PDF page template.
 const F = "var(--font-latin), var(--font-cjk), sans-serif";
 // A4 at 96dpi = 794 x 1123px. We render at this size, html2canvas captures at 2x.
@@ -925,7 +925,7 @@ function DodoEvalPDF() {
   const [showTemplates, setShowTemplates] = useState(false);
 
   useEffect(() => {
-    // Brand fonts (DM Sans + Noto Sans SC) are self-hosted via next/font
+    // Brand fonts (Source Sans 3 + Noto Sans SC) are self-hosted via next/font
     // and exposed on <html> as --font-latin / --font-cjk by app/layout.jsx.
     // No CDN <link> needed — just gate PDF generation on the faces being
     // loaded so html2canvas captures complete glyphs.

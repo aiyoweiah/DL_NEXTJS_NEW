@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "check:surfaces": "node scripts/check-surfaces.mjs",
+    "prebuild": "node scripts/check-surfaces.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

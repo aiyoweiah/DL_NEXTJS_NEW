@@ -81,7 +81,7 @@
 // Signature / Print Name / Date / GST# — Print Name and GST# are
 // pre-filled from form data when known.
 //
-// Brand fonts: DM Sans + Noto Sans SC (matches lib/fonts.js).
+// Brand fonts: Source Sans 3 + Noto Sans SC (matches lib/fonts.js).
 // Cursive signature font: Dancing Script (loaded from Google Fonts).
 
 import { useState, useEffect, useMemo, memo } from 'react'
@@ -637,7 +637,7 @@ export default function AgreementTool() {
   }
 
   useEffect(() => {
-    // Brand fonts (DM Sans + Noto Sans SC) are self-hosted via next/font and
+    // Brand fonts (Source Sans 3 + Noto Sans SC) are self-hosted via next/font and
     // exposed as --font-latin / --font-cjk by app/layout.jsx. Only the cursive
     // signature face (Dancing Script) still needs loading from the CDN.
     const link = document.createElement('link')

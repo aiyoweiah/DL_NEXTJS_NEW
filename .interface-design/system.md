@@ -4,9 +4,9 @@ Living reference for the DODO marketing site chrome (navbar, footer, funnel CTAs
 and its visual token system. Read this before touching navigation, CTAs, the
 pre-footer band, or any colour value.
 
-**Current through:** v6.13 · 2026-08-29 (D58: the drawn hand extended past the button —
-divider, card edge, quote glyph, marked score; plus a budget rule to keep it rare).
-v6.12 = D56 swash on every control + D57 one canonical Eyebrow. v6.11 = D55 the swash.
+**Current through:** v6.14 · 2026-08-29 (D59 one Latin face that matches the CJK face,
+display pair retired; D60 the Surface primitive and the build guard that keeps it).
+v6.13 = D58 the drawn hand past the button. v6.12 = D56/D57. v6.11 = D55 the swash.
 v6.10 = D54 the lead-in quote on claim labels: letterforms enclose a control, punctuation introduces a label.
 v6.9 = D53 option B: the D-o bracket is the control chrome sitewide; **all fills removed**.
 v6.7 added the `.on-dark` hook and surface-aware badge + LexileBar. v6.6 = D52 filled buttons are surface-specific. v6.5 fixed button specificity, muted-on-dark
@@ -517,6 +517,50 @@ lead-in quote by construction.
   available to this brand, the same test that rejected the guillemet in D54.
 
 
+**Surfaces — one primitive, and a guard (D60 · v6.14).**
+`components/ui/Surface.jsx` is the canonical panel. Variants: `card` (white),
+`tinted` (lavender), `panel` (dark).
+
+- **⛔ ROOT CAUSE OF THE "SPOTTY REFRESH", stated properly.** D58 delivered its
+  improvements on system classes, and a page only receives such a refresh if it uses
+  the class. But **`.card` only ever covered the WHITE surface.** The two commonest
+  surfaces on the site — a lavender-tinted panel and a dark panel — **had no class at
+  all**, so they were hand-rolled inline and a class-level refresh could not reach them
+  by construction. It was not that pages declined to use the system; **the system was
+  missing two of the three surfaces it needed.**
+- **They drifted, exactly as the nine private `Eyebrow` copies did (D57):**
+
+  | | Spellings found in the wild |
+  |---|---|
+  | tinted background | `rgba(183,181,254, .05 / .07 / .10 / .15)` |
+  | panel background | `#212830` · `#2E3848` · `#1C2330` |
+  | tinted border | `rgba(183,181,254, .10 / .12 / .18 / .20)` |
+  | corner radius | `0.75rem` · `0.875rem` vs `--radius-xl` `1.25rem` |
+
+  `/program` hand-wrote `0.875rem` — that is `--radius-lg` — against `.card`'s
+  `1.25rem`, **a 6px corner difference**. `/little-dodo` hand-wrote white plus
+  `1px solid rgba(14,14,18,0.08)`, character-for-character what `.card` provides.
+- **⚠️ `variant="panel"` emits `.on-dark` itself, and that is half the point.** The
+  `.on-dark` trap has fired **five** times (navbar, mobile drawer, `PreCtaBand`, six
+  page heroes, `PartnersClient`). A surface that paints its own dark ground now carries
+  the hook by construction, so it cannot fire again *from a panel*.
+- **Count the right thing.** A **panel** is one element with both an inline background
+  and an inline border: there were **33**. A **section band** — a `<section>` with a
+  background and no border — is a legitimate page-level surface, and there are **56**.
+  Do not migrate section bands; they are not what drifted.
+- **⛔ THE GUARD IS THE ACTUAL FIX — `scripts/check-surfaces.mjs`.** Extraction alone
+  expires: D57 consolidated the eyebrows, and the surfaces had *already* drifted in
+  parallel without anyone noticing. The guard runs as `prebuild`, so Cloudflare enforces
+  it. It is a **ratchet**: the 31 remaining panels are recorded in
+  `scripts/surface-baseline.json` and tolerated; counts may fall freely, never rise.
+  Migrate a page, run `npm run check:surfaces -- --update`, commit the smaller baseline.
+- **Migration queue** (31 panels, highest first): `PartnersClient` 5, `about` 4,
+  `methodology` 3, `compare` 2, `consult` 2, `demos` 2, `navigators` 2, `program` 2,
+  and one each in `lexile`, `AssessmentClient`, `StreamVideo`, `UnderConstruction`.
+  Each is independently verifiable against its own contrast baseline, so this lands in
+  small commits rather than one risky sweep.
+
+
 **Buttons — accessibility rule. TWO tests, not one (WCAG 1.4.3 text ≥ 4.5:1 AND
 1.4.11 non-text boundary ≥ 3:1).** Until v6.6 this section only checked the label.
 That is how gilt-on-Whisper shipped: text 12.13:1, but the pill's edge against the
@@ -653,32 +697,34 @@ editorial* register. Editorial layouts run 16–18px body.
   age-band labels were both at once; that combination produced the worst failures found
   in the v6.3 audit.
 
-**Typeface pairing (approved 2026-08-27 · D51).** Until now the site set *every* text
-node in DM Sans — 440 of 440 on the home page, with no display face anywhere. A brand
-whose product is reading and writing English was presenting itself in the same register
-a fintech dashboard uses. Literata adds the missing voice.
+**Typeface pairing (D59 · v6.14 — supersedes D51).** Two faces, one per script:
+**Source Sans 3** (Latin) and **Noto Sans SC** (CJK). There is no display face.
 
-| Role | Latin | CJK | Token |
-|---|---|---|---|
-| **Display** — `h1`/`h2` on strategic surfaces | Literata 500 | Noto Serif SC 500/600 | `--font-display` / `--font-display-cjk` |
-| **Body, UI, labels, buttons** | DM Sans 400–700 | Noto Sans SC 400–700 | `--font-latin` / `--font-cjk` |
+- **⛔ D51's display pair is RETIRED.** Literata + Noto Serif SC were piloted on
+  **one `<h1>`, on `/methodology`**, and never completed or reverted. All four families
+  were attached to `<html>`, so the site shipped **546 `@font-face` declarations and
+  ~1.69 MB of fonts on a ZH page** to set that one heading. The methodology hero simply
+  read as the odd page out — which is exactly how it was reported.
+- **Source Sans 3 replaced DM Sans to fix a real bug, not for taste.** Noto Sans SC
+  **is** Source Han Sans, and its Latin glyphs are **Source Sans**, scaled to 115% to
+  sit beside Chinese. Pairing it with DM Sans meant Latin inside Chinese copy rendered
+  in Source Sans while **the same words on the English site rendered in DM Sans** —
+  measured at **122px vs 119px** for `Lexile 187 DODO` at 16px. Two Latin designs for
+  one brand, split by locale. Source Sans 3 is the face the CJK font was drawn beside.
+- **⚠️ Hard-coded font stacks are a real hazard here.** The swap broke nine call sites
+  that named `"DM Sans"` literally — `AudiobooksGate`, three `/ops` loaders, and ten
+  SVG `<text fontFamily>` attributes in `compare` and `AssessmentClient`. Inline stacks
+  now use `var(--font-latin)`; the SVG attributes were **removed** so the text inherits
+  the cascade (including `:lang(zh)`). **Never name a font family literally.**
+- **⛔ Google Fonts ships only NINE Simplified-Chinese faces, and just two are
+  multi-weight** (Noto Sans SC, Noto Serif SC). ZCOOL XiaoWei is single-weight; the
+  other six are single-weight handwriting/display. **Any real change to the CJK face
+  means self-hosting.** Do not plan a CJK type change assuming Google Fonts has options.
+- **If a display face is wanted again:** pilot it **with a written expiry date**, and
+  prefer one covering *both* scripts so it replaces two families rather than adding two.
+  LXGW WenKai (霞鹜文楷, OFL) is the standing candidate — 楷体 is the script Chinese
+  children are taught to write, which is the same argument as the school-cursive D-o.
 
-- **Display-only — this is the whole discipline.** Literata never sets body copy, UI,
-  labels or buttons. DM Sans keeps everything it currently owns, so there is no
-  migration cost and no change to reading copy.
-- **Why Literata.** Drawn for Google Play Books, for long-form reading. A literacy brand
-  using a face built for readers is an argument, not a decoration. Deliberately *not*
-  Playfair Display, Fraunces or Space Grotesk — those are the AI-default display serifs
-  and read as generic. (The `ui-ux-pro-max` font database recommends Playfair + Inter for
-  this brief; it was rejected for exactly that reason.)
-- **The CJK half is load-bearing, not an afterthought.** A Latin serif with no CJK
-  counterpart breaks every `/zh` page. **Noto Serif SC (思源宋体)** is the required pair —
-  same superfamily as Noto Sans SC, so the metrics stay coherent. Any future type
-  proposal naming only a Latin face is incomplete and should be rejected.
-- **Rollout is per-surface, never global in one pass.** Pilot one strategic surface,
-  verify EN *and* `/zh`, then extend. Do not start with the home hero.
-- ⛔ **Never below 24px.** Literata is a display face here; at label size it fights
-  DM Sans instead of complementing it. Labels stay on `.eyebrow` + DM Sans.
 
 **Declaring a dark surface (v6.7) — `.section-dark` is a *background*, `.on-dark` is a *hook*.**
 Every dark-surface text rule (headings, `p`, links, `.eyebrow`, `.badge-lavender`,
@@ -761,6 +807,8 @@ not listed.
 | D56 | **Swash on every control, tiered by ink weight** | `.btn-do` pale `#b7b5fe` @26%, `.btn-do-primary` deep @30%; gilt rejected (D52 reservation); last non-`btn-do` CTA retired | ✅ v6.12 |
 | D57 | **One canonical `Eyebrow` component** | Nine local copies consolidated; 50 more labels gain the D54 quote; weight/tracking/margin drift corrected; `.eyebrow:lang(zh)` tracking added | ✅ v6.12 |
 | D58 | **The drawn hand past the button** | `.divider` + `.accent-top` redrawn; `.quote-glyph`; language-aware `q` (fixes ZH testimonial marks); `.score-marked` on outcomes only; `.check-list` defined-unused; budget rule set | ✅ v6.13 |
+| D59 | **Source Sans 3 + Noto Sans SC; D51 display pair retired** | Fixes Latin-face split across locales; drops 2 families, 546 `@font-face`, ~1.69 MB on ZH; 9 hard-coded stacks removed | ✅ v6.14 |
+| D60 | **`Surface` primitive + build guard** | `.surface-tinted` / `.surface-panel` added — the system was missing 2 of 3 surfaces; `panel` emits `.on-dark`; `check-surfaces.mjs` ratchets on `prebuild` | ✅ v6.14 |
 
 ### Cascade status
 
@@ -777,6 +825,17 @@ not listed.
       Home-page subhead blue `#3b6fcc` → `--text-info` `#3a6ac4`.
 - [x] D51 display face wired (`lib/fonts.js`, root layout, `.font-display`) and
       **piloted on `/methodology` h1 only**.
+
+**Done in v6.14 (2026-08-29) — D59 + D60:**
+
+- [x] D51 retired: Literata + Noto Serif SC removed, `.font-display` deleted,
+      `/methodology` h1 back on the site face.
+- [x] DM Sans → Source Sans 3; 9 hard-coded `"DM Sans"` stacks fixed or removed.
+- [x] `Surface` primitive + `.surface-tinted` / `.surface-panel` + surface tokens.
+- [x] `/program` and `/little-dodo` panels migrated (the two pages reported).
+- [x] `scripts/check-surfaces.mjs` wired to `prebuild`; baseline 31; regression-tested.
+- [x] Build green: exit 0, 122 pages / 45 routes.
+
 
 **Done in v6.13 (2026-08-29) — D58:**
 

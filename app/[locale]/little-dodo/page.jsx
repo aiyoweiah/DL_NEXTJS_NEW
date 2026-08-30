@@ -30,6 +30,7 @@ import { littleDodo as copyEn, ageBands as bandsEn } from '@/content/marketing.e
 import { littleDodo as copyZh, ageBands as bandsZh } from '@/content/marketing.zh'
 import DoCta         from '@/components/ui/DoCta'
 import Eyebrow from '@/components/ui/Eyebrow'
+import Surface from '@/components/ui/Surface'
 
 // ─────────────────────────────────────────────────────────────
 // BILINGUAL COPY
@@ -249,11 +250,7 @@ function HowSection({ locale, c }) {
         <BilingualH2 id="ld-how-heading" primary={c.how.h2} secondary={c.how.h2zh} />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-8">
           {c.how.steps.map((s) => (
-            <div
-              key={s.num}
-              className="rounded-xl p-6"
-              style={{ backgroundColor: '#ffffff', border: '1px solid rgba(14,14,18,0.08)' }}
-            >
+            <Surface key={s.num} className="p-6">
               <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--label-color)', letterSpacing: '0.06em', marginBottom: '0.75rem' }}>{s.num}</div>
               <h3 className="text-base font-bold mb-2" style={{ color: '#0E0E12' }}>{s.label}</h3>
               <p className="text-sm leading-relaxed" style={{ color: '#3D4452' }}>
@@ -268,7 +265,7 @@ function HowSection({ locale, c }) {
                 )}
                 {s.descTail}
               </p>
-            </div>
+            </Surface>
           ))}
         </div>
       </div>

@@ -32,6 +32,7 @@ import { program as copyEn, ageBands as bandsEn } from '@/content/marketing.en'
 import { program as copyZh, ageBands as bandsZh } from '@/content/marketing.zh'
 import DoCta         from '@/components/ui/DoCta'
 import Eyebrow from '@/components/ui/Eyebrow'
+import Surface from '@/components/ui/Surface'
 
 // ─────────────────────────────────────────────────────────────
 // STATIC STRUCTURAL DATA (no locale variants)
@@ -512,8 +513,7 @@ function ArchitectureSection({ locale, c }) {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4" style={{ marginBottom: '1.5rem' }}>
           {a.strands.map((strand) => (
-            <article key={strand.letter}
-              style={{ padding: '1.5rem', backgroundColor: 'rgba(183,181,254,0.06)', border: '1px solid rgba(183,181,254,0.18)', borderRadius: '0.75rem' }}>
+            <Surface key={strand.letter} as="article" variant="tinted" className="p-6">
               <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.625rem', marginBottom: '0.625rem' }}>
                 <span style={{ fontSize: '2rem', fontWeight: 800, color: '#b7b5fe', lineHeight: 1, letterSpacing: '-0.03em' }} aria-hidden="true">
                   {strand.letter}
@@ -528,7 +528,7 @@ function ArchitectureSection({ locale, c }) {
                 </div>
               </div>
               <p style={{ fontSize: '0.875rem', lineHeight: 1.75, color: 'rgba(240,240,240,0.65)' }}>{strand.body}</p>
-            </article>
+            </Surface>
           ))}
         </div>
         <p style={{ fontSize: '0.8125rem', lineHeight: 1.7, color: 'rgba(240,240,240,0.45)', maxWidth: '52rem' }}>

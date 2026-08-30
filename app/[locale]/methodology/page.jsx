@@ -157,7 +157,7 @@ export default async function MethodologyPage({ params }) {
             <Badge className="mb-6 label-quote">{t.hero.eyebrow}</Badge>
             <h1
               id="methodology-hero-heading"
-              className="font-display leading-tight mb-6 text-gradient"
+              className="leading-tight mb-6 text-gradient"
               style={{ fontSize: 'clamp(32px, 5vw, 60px)', letterSpacing: '-0.018em' }}
             >
               {t.hero.heading}

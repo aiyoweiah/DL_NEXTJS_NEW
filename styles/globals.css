@@ -99,13 +99,11 @@
   --radius-pill: 9999px;
 
   /* ── Typography ── */
-  --font-latin: 'DM Sans', system-ui, sans-serif;
+  /* Real values come from next/font via the <html> className; these are
+     documented fallbacks. Source Sans 3 is the Latin face Noto Sans SC
+     (= Source Han Sans) was drawn to sit beside — see lib/fonts.js. */
+  --font-latin: 'Source Sans 3', system-ui, sans-serif;
   --font-cjk:   'Noto Sans SC', system-ui, sans-serif;
-  /* Display faces — D51. Real values come from next/font via the <html>
-     className; these are documented fallbacks. DISPLAY ONLY (h1/h2,
-     ≥24px). See .interface-design/system.md § "Typeface pairing". */
-  --font-display:     'Literata', Georgia, Cambria, serif;
-  --font-display-cjk: 'Noto Serif SC', 'Songti SC', SimSun, serif;
 
   /* ── Semantic status — light surfaces (v6.4) ── */
   --text-success:   #1E6E4B;   /* 5.72:1 on Whisper. Replaces #7ec8a0 (1.82:1) as TEXT */
@@ -123,6 +121,17 @@
   --form-required-color: var(--text-accent);
   --form-error-color:    var(--text-error);
   --link-hover-color:    var(--text-accent);
+  /* ── Surface tokens (D60) ──
+     `.card` only ever covered the WHITE surface. The two commonest
+     surfaces on the site had no class at all, so 77 of 103 panels were
+     hand-rolled — and drifted into 4 tinted alphas, 3 panel darks and 4
+     border alphas. These are the modal values, chosen so the majority of
+     existing panels migrate with no visual change. */
+  --surface-tinted:        rgba(183,181,254,0.10);
+  --surface-tinted-border: rgba(183,181,254,0.18);
+  --surface-panel:         #212830;
+  --surface-panel-border:  rgba(183,181,254,0.12);
+
   --do-mark:             #7c79e8;                   /* the D-o bracket letterforms (D53).
                                                        3.37:1 on Whisper, 5.28:1 on Void Black —
                                                        the ONLY lavender clearing 3:1 on both, so
@@ -972,6 +981,30 @@
       transform var(--transition-slow);
   }
 
+  /* ── The two surfaces the system was missing (D60) ─────────
+     Use `Surface` (components/ui/Surface.jsx) rather than these directly;
+     the classes exist so the component stays a thin wrapper and so a
+     refresh can target every panel at once — which is exactly what D58
+     could not do.
+
+       .card            white       — 26 hand-rolled copies
+       .surface-tinted  lavender    — 47 hand-rolled copies
+       .surface-panel   dark        — 30 hand-rolled copies
+
+     All three share --radius-xl, so panels stop disagreeing about their
+     corners (0.75rem and 0.875rem were both in the wild against 1.25rem). */
+  .surface-tinted {
+    background-color: var(--surface-tinted);
+    border: 1px solid var(--surface-tinted-border);
+    border-radius: var(--radius-xl);
+  }
+
+  .surface-panel {
+    background-color: var(--surface-panel);
+    border: 1px solid var(--surface-panel-border);
+    border-radius: var(--radius-xl);
+  }
+
   .card:hover {
     border-color: rgba(183,181,254,0.5);
     box-shadow: 0 8px 32px rgba(183,181,254,0.18), 0 2px 8px rgba(0,0,0,0.06);
@@ -1268,20 +1301,16 @@
     .container-section { padding-left: 4rem; padding-right: 4rem; }
   }
 
-  /* Display face — D51. h1/h2 on strategic surfaces only. Never below
-     24px, where Literata fights DM Sans instead of complementing it.
-     Labels stay on .eyebrow + DM Sans. */
-  .font-display {
-    font-family: var(--font-display);
-    font-weight: 500;
-    letter-spacing: -0.018em;
-  }
+  /* ⛔ .font-display and the D51 display pair were RETIRED in D59.
+     Literata + Noto Serif SC shipped on every page in both languages —
+     546 @font-face declarations and ~1.69 MB of fonts on a ZH page — to
+     set ONE h1 on /methodology. The pilot ran from 2026-08-27 without
+     ever being completed or reverted, so the methodology hero simply read
+     as the odd page out.
 
-  :lang(zh) .font-display,
-  .font-display:lang(zh) {
-    font-family: var(--font-display-cjk);
-    letter-spacing: 0;
-  }
+     If a display face is wanted again, pilot it WITH A WRITTEN EXPIRY and
+     prefer one that covers both scripts, so it replaces two families
+     rather than adding two. */
 
   .eyebrow {
     font-size: 0.75rem;
@@ -1295,7 +1324,7 @@
      0.06em keeps a little air without disconnecting the glyphs. This was
      the one thing PartnersClient's private Eyebrow got right that the
      canonical class did not — carried over here when the nine copies were
-     consolidated. Mirrors how .font-display already drops tracking for zh. */
+     consolidated. The retired .font-display did the same for zh. */
   :lang(zh) .eyebrow,
   .eyebrow:lang(zh) {
     letter-spacing: 0.06em;

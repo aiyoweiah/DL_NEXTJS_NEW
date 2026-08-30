@@ -65,7 +65,7 @@ const B = {
 };
 
 // Brand typefaces — self-hosted via next/font, exposed on <html> by
-// app/layout.jsx as --font-latin (DM Sans) / --font-cjk (Noto Sans SC).
+// app/layout.jsx as --font-latin (Source Sans 3) / --font-cjk (Noto Sans SC).
 const F = "var(--font-latin), var(--font-cjk), sans-serif";
 
 // A4 at 96dpi; html2canvas captures at 2x.
