@@ -4,8 +4,9 @@ Living reference for the DODO marketing site chrome (navbar, footer, funnel CTAs
 and its visual token system. Read this before touching navigation, CTAs, the
 pre-footer band, or any colour value.
 
-**Current through:** v6.10 · 2026-08-29 (D54: the lead-in quote on claim labels —
-letterforms enclose a control, punctuation introduces a label).
+**Current through:** v6.11 · 2026-08-29 (D55: the highlighter swash on the primary —
+a third hierarchy tier, with no fill and no enclosing shape).
+v6.10 = D54 the lead-in quote on claim labels: letterforms enclose a control, punctuation introduces a label.
 v6.9 = D53 option B: the D-o bracket is the control chrome sitewide; **all fills removed**.
 v6.7 added the `.on-dark` hook and surface-aware badge + LexileBar. v6.6 = D52 filled buttons are surface-specific. v6.5 fixed button specificity, muted-on-dark
 and external links; v6.4 added display typeface D51; v6.3 the token-table correction.
@@ -348,6 +349,60 @@ interactive.** A quoted button makes the D-o read as "DODO made this" instead of
   Ask "is this label a claim, or a taxonomy value?" before adding it to a 28th.
 
 
+**The highlighter swash (D55 · v6.11).** The **primary** control carries a marker
+stroke behind the lower portion of its label. `.btn-do-primary` in
+`styles/globals.css` renders it as a `::background-image` data-URI.
+
+**This is not a fill returning.** Option B's argument is that the letterforms *are*
+the control chrome; a swash never encloses, so that argument survives intact. What
+it adds is a **third hierarchy tier** — the D-o marks say *press this*, the swash
+says *press this **one***.
+
+| | |
+|---|---|
+| Mark | `--do-mark` `#7c79e8` at **30%**, baked — one file, every ground |
+| Geometry | `viewBox 0 0 160 14`, `preserveAspectRatio='none'`, one skip knocked out |
+| Anchor | `background-origin: content-box`, inset 25px (21px below 640px) |
+| Size | `calc(100% - 50px) × 15px` (`calc(100% - 42px) × 13px` below 640px) |
+| Scope | `.btn-do-primary` only — **not** `.btn-do`, **not** `.btn-do-charter` |
+
+- **Primary-only is a measured decision, not a stylistic one.** The wash sits under
+  the label, so the *label's* contrast sets the density ceiling:
+
+  | Class | Label | Ceiling |
+  |---|---|---|
+  | `.btn-do` | lavender `#5856cc` | caps near **10%**, fails by 18% |
+  | `.btn-do-primary` | ink `#212830` | **9.97:1 even at 30%** |
+
+  A wash the secondary could survive would be too faint to signify. Applying it to
+  both would spend the signal until it stopped being one.
+- **One baked file serves every ground**, exactly like the D-o marks. At 30%,
+  `#7c79e8` leaves the primary label at **9.97:1** on Whisper, **11.27:1** on Void
+  Black and **8.65:1** on the `#212830` band — and ~9.2:1 under the existing hover
+  tint, which composites beneath it.
+- **⛔ The swash must never reach the marks.** A lavender ground behind the D-o drops
+  the letterform to **2.97:1**, under the 3:1 non-text floor — the brush swallows the
+  mark it is meant to support. This is why the ground is lavender under *text* and
+  never under a *mark*. Keep ≥3px of bare ground on each side if you retune.
+- **⚠️ `background-origin: content-box` is load-bearing — do not "simplify" it away.**
+  Controls ship in at least **three padding variants (10 / 20 / 24px)**. An inset
+  measured from the border box lands differently on each: the first attempt used a
+  fixed 45px and it overlapped the mark by 1px on the `#212830` band while starting
+  6px *past* the first letter on the compact variant. Measured from the content box,
+  padding drops out of the arithmetic and only the mark (22px + 7px gap) remains —
+  which the 640px breakpoint already tracks. Verified at 3px clearance and 4px
+  overshoot across all three variants, EN and ZH.
+- **Decorative, so WCAG 1.4.11 does not apply.** The control is still identified by
+  its marks and its label, not by this shape. That is also why it may sit at a
+  visibility of only ~1.4:1 against its own ground without being a boundary failure.
+- **Hover is unchanged.** The marks already part 1.5px and the ground already tints;
+  the swash deepens with that tint rather than moving. Two things travelling at once
+  reads as wobble.
+- **Charter is deliberately excluded for now.** When a real enrolment CTA exists,
+  `.btn-do-charter` should take the same swash in gilt — the third tier, already
+  defined and still used nowhere.
+
+
 **Buttons — accessibility rule. TWO tests, not one (WCAG 1.4.3 text ≥ 4.5:1 AND
 1.4.11 non-text boundary ≥ 3:1).** Until v6.6 this section only checked the label.
 That is how gilt-on-Whisper shipped: text 12.13:1, but the pill's edge against the
@@ -588,6 +643,7 @@ not listed.
 | D53 | **The D-o bracket on funnel CTAs** | `DoCta` component + `.btn-do`; `--do-mark` token | ✅ v6.8 |
 | D53b | **Option B — bracket is the control chrome, no fills** | 40 class swaps; hierarchy by weight; gilt to label; marks via CSS pseudo-elements; 73 controls verified | ✅ v6.9 |
 | D54 | **The lead-in quote on claim labels** | `.label-quote` + baked data-URI; 27 labels marked; badge chrome dropped where marked; taxonomy labels excluded; guillemet rejected on a bilingual test | ✅ v6.10 |
+| D55 | **The highlighter swash on the primary control** | `.btn-do-primary` background-image; `#7c79e8` at 30%; content-box anchored; restores a third hierarchy tier without a fill | ✅ v6.11 |
 
 ### Cascade status
 
@@ -604,6 +660,18 @@ not listed.
       Home-page subhead blue `#3b6fcc` → `--text-info` `#3a6ac4`.
 - [x] D51 display face wired (`lib/fonts.js`, root layout, `.font-display`) and
       **piloted on `/methodology` h1 only**.
+
+**Done in v6.11 (2026-08-29) — D55:**
+
+- [x] `.btn-do-primary` swash added — baked `#7c79e8` at 30%, `background-origin:
+      content-box`, inset 25px / 21px below 640px.
+- [x] Geometry verified across all three padding variants (10 / 20 / 24px): **3px
+      clearance from the mark, 4px overshoot before the label**, EN and ZH.
+- [x] Build green: exit 0, **122 static pages / 45 routes**.
+- [x] Zero contrast regressions against a stashed baseline; every `.btn-do` still
+      passes on every page, both grounds, desktop and 375px.
+- [x] Secondary and charter deliberately untouched.
+
 
 **Done in v6.10 (2026-08-29) — D54:**
 
