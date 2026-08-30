@@ -22,6 +22,7 @@
 // Inquiry email: janet@dodolearning.com
 
 import { useState, useEffect, useRef } from 'react'
+import Eyebrow from '@/components/ui/Eyebrow'
 
 // ── Access constants ──────────────────────────────────────────
 const CORRECT_PIN = 'dodopartners'
@@ -330,22 +331,6 @@ const COPY = {
 const font = (locale) => locale === 'zh' ? 'var(--font-cjk)' : 'var(--font-latin)'
 
 // ── Sub-components ────────────────────────────────────────────
-function Eyebrow({ children, center = false, dark = false, locale = 'en' }) {
-  return (
-    <div style={{
-      fontFamily:    font(locale),
-      fontWeight:    500,
-      fontSize:      '12px',
-      letterSpacing: locale === 'zh' ? '0.06em' : '0.1em',
-      textTransform: 'uppercase',
-      color:         dark ? '#b7b5fe' : '#5856cc',
-      marginBottom:  '16px',
-      textAlign:     center ? 'center' : undefined,
-    }}>
-      {children}
-    </div>
-  )
-}
 
 function Pill({ children, locale = 'en' }) {
   return (

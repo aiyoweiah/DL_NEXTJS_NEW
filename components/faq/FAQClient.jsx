@@ -16,6 +16,7 @@
 import { useState, useMemo, useCallback } from 'react'
 import Link from 'next/link'
 import { faq } from '@/content/faq'
+import Eyebrow from '@/components/ui/Eyebrow'
 
 // ─── Markdown-lite renderer ─────────────────────────────────
 // Parses [text](href) and **text** inside an answer string.
@@ -80,14 +81,6 @@ function IconChevron({ open }) {
 }
 
 // ─── Small visual primitives ────────────────────────────────
-function Eyebrow({ children, dark = false }) {
-  return (
-    <div style={{ fontFamily: 'var(--font-latin)', fontSize: '12px', fontWeight: 500,
-      letterSpacing: '0.1em', textTransform: 'uppercase', color: dark ? '#b7b5fe' : '#5856cc', marginBottom: '12px' }}>
-      {children}
-    </div>
-  )
-}
 function SectionH2({ children, dark = false }) {
   return (
     <h2 style={{ fontFamily: 'var(--font-latin)', fontSize: '28px', fontWeight: 700,

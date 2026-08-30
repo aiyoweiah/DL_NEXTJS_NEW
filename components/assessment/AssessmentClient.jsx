@@ -6,18 +6,9 @@
 
 import { useState, useCallback } from 'react'
 import Link from 'next/link'
+import Eyebrow from '@/components/ui/Eyebrow'
 
 // ─── Eyebrow ──────────────────────────────────────────────────
-function Eyebrow({ children }) {
-  return (
-    <div style={{
-      fontFamily: 'var(--font-latin)', fontSize: '12px', fontWeight: 500,
-      letterSpacing: '0.1em', textTransform: 'uppercase', color: '#b7b5fe', marginBottom: '16px',
-    }}>
-      {children}
-    </div>
-  )
-}
 
 // ─── LexileBar ────────────────────────────────────────────────
 function LexileBar({ beforeScore, afterScore, dark = false }) {
@@ -271,7 +262,7 @@ export default function AssessmentClient({ locale = 'en' }) {
           backgroundSize: '24px 24px', backgroundPosition: '0 66%', opacity: 0.05 }} />
         <div className="container-section relative z-10">
           <div className="max-w-3xl">
-            <Eyebrow>Assessment at DODO</Eyebrow>
+            <Eyebrow dark>Assessment at DODO</Eyebrow>
             <h1 className="mb-4" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700,
               fontSize: 'clamp(36px,5vw,64px)', color: '#F0F0F0', maxWidth: '740px',
               letterSpacing: '-0.03em', lineHeight: 1.15 }}>
@@ -306,7 +297,7 @@ export default function AssessmentClient({ locale = 'en' }) {
       <section className="px-6 py-24 md:py-28" style={{ backgroundColor: '#0E0E12' }}>
         <div className="container-section">
           <div className="text-center mb-12">
-            <Eyebrow>The Philosophy</Eyebrow>
+            <Eyebrow dark>The Philosophy</Eyebrow>
             <h2 style={{ fontFamily: 'var(--font-latin)', fontWeight: 600, fontSize: '32px',
               color: '#F0F0F0', letterSpacing: '-0.02em', lineHeight: 1.3 }}>
               Three reasons DODO measures — when most programs guess.
@@ -337,7 +328,7 @@ export default function AssessmentClient({ locale = 'en' }) {
       <section id="entrance" className="px-6 py-24 md:py-28" style={{ backgroundColor: '#F5F5FF' }}>
         <div className="container-section">
           <div className="max-w-3xl mb-12">
-            <Eyebrow>Entrance Assessment</Eyebrow>
+            <Eyebrow dark>Entrance Assessment</Eyebrow>
             <h2 className="mb-3" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: '32px',
               color: '#0E0E12', maxWidth: '640px', letterSpacing: '-0.02em', lineHeight: 1.3 }}>
               Before we begin, we find out exactly where your child is.
@@ -371,7 +362,7 @@ export default function AssessmentClient({ locale = 'en' }) {
       <section className="px-6 py-24 md:py-28" style={{ backgroundColor: '#212830' }}>
         <div className="container-section">
           <div className="max-w-3xl mx-auto">
-            <Eyebrow>Week 8</Eyebrow>
+            <Eyebrow dark>Week 8</Eyebrow>
             <h2 className="mb-8" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: '32px',
               color: '#F0F0F0', maxWidth: '600px', letterSpacing: '-0.02em', lineHeight: 1.3 }}>
               We look at the numbers before the numbers are final.
@@ -399,7 +390,7 @@ export default function AssessmentClient({ locale = 'en' }) {
       <section id="results-anchor" className="px-6 py-24 md:py-28" style={{ backgroundColor: '#F5F5FF' }}>
         <div className="container-section">
           <div className="mb-12">
-            <Eyebrow>Exit Assessment + Results</Eyebrow>
+            <Eyebrow dark>Exit Assessment + Results</Eyebrow>
             <h2 style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: '32px',
               color: '#0E0E12', letterSpacing: '-0.02em', lineHeight: 1.3 }}>
               Week 16. The numbers that show what the Loop produced.
@@ -436,7 +427,7 @@ export default function AssessmentClient({ locale = 'en' }) {
       <section id="lexile" className="px-6 py-24 md:py-28" style={{ backgroundColor: '#0E0E12' }}>
         <div className="container-section">
           <div className="max-w-4xl mx-auto">
-            <Eyebrow>Lexile Explained</Eyebrow>
+            <Eyebrow dark>Lexile Explained</Eyebrow>
             <h2 className="mb-12" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700,
               fontSize: 'clamp(30px,4vw,34px)', color: '#F0F0F0', maxWidth: '680px', lineHeight: 1.3, letterSpacing: '-0.02em' }}>
               What is a Lexile level — and what does my child&rsquo;s score actually mean?
@@ -478,7 +469,7 @@ export default function AssessmentClient({ locale = 'en' }) {
       <section id="six-plus-one" className="px-6 py-24 md:py-28" style={{ backgroundColor: '#F5F5FF' }}>
         <div className="container-section">
           <div className="max-w-4xl mx-auto">
-            <Eyebrow>6+1 Traits Explained</Eyebrow>
+            <Eyebrow dark>6+1 Traits Explained</Eyebrow>
             <h2 className="mb-12" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700,
               fontSize: 'clamp(30px,4vw,34px)', color: '#0E0E12', maxWidth: '680px', lineHeight: 1.3, letterSpacing: '-0.02em' }}>
               What is the 6+1 Trait writing framework — and how does it score my child&rsquo;s writing?
@@ -545,7 +536,7 @@ export default function AssessmentClient({ locale = 'en' }) {
       <section className="px-6 py-24 md:py-28" style={{ backgroundColor: '#212830' }}>
         <div className="container-section">
           <div className="max-w-3xl mx-auto">
-            <Eyebrow>Questions</Eyebrow>
+            <Eyebrow dark>Questions</Eyebrow>
             <h2 className="mb-12" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: '28px', color: '#F0F0F0', letterSpacing: '-0.02em' }}>
               What parents ask most about assessment — answered directly.
             </h2>
@@ -563,7 +554,7 @@ export default function AssessmentClient({ locale = 'en' }) {
       <section className="px-6 py-24 md:py-28" style={{ backgroundColor: '#F5F5FF' }}>
         <div className="container-section">
           <div className="max-w-5xl mx-auto">
-            <Eyebrow>Assessment + The Loop</Eyebrow>
+            <Eyebrow dark>Assessment + The Loop</Eyebrow>
             <h2 className="mb-12" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: '28px', color: '#0E0E12', letterSpacing: '-0.02em' }}>
               Assessment is not outside the program. It is what makes the program measurable.
             </h2>

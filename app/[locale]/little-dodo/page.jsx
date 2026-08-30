@@ -29,6 +29,7 @@ import AgeBandChooser                    from '@/components/ui/AgeBandChooser'
 import { littleDodo as copyEn, ageBands as bandsEn } from '@/content/marketing.en'
 import { littleDodo as copyZh, ageBands as bandsZh } from '@/content/marketing.zh'
 import DoCta         from '@/components/ui/DoCta'
+import Eyebrow from '@/components/ui/Eyebrow'
 
 // ─────────────────────────────────────────────────────────────
 // BILINGUAL COPY
@@ -39,16 +40,6 @@ const BANDS = { en: bandsEn, zh: bandsZh }
 // ─────────────────────────────────────────────────────────────
 // SHARED HELPERS
 // ─────────────────────────────────────────────────────────────
-function Eyebrow({ children, dark = false }) {
-  return (
-    <p
-      className="text-xs font-semibold uppercase tracking-widest mb-3"
-      style={{ color: dark ? 'rgba(183,181,254,0.65)' : 'var(--label-color)' }}
-    >
-      {children}
-    </p>
-  )
-}
 
 function BilingualH2({ primary, secondary, light = false, id }) {
   return (

@@ -748,26 +748,38 @@
   .btn-do-primary { font-weight: 700; color: var(--text-body-dark); }
   .btn-do-charter { font-weight: 700; color: var(--text-gilt-light); }
 
-  /* ── The highlighter swash (D55 · v6.11) ───────────────────
+  /* ── The highlighter swash (D55 · v6.11, widened by D56 · v6.12) ──
      A marker stroke behind the LOWER PORTION OF THE LABEL ONLY — not a
      container, and not a fill returning. Option B's argument is that the
      letterforms are the control chrome; a swash never encloses, so that
      still holds. What it adds is a THIRD hierarchy tier: the D-o marks say
      "press this", the swash says "press this ONE".
 
-     PRIMARY ONLY, and the reason is measured, not stylistic. The wash sits
-     under the label, so the label's own contrast sets the density ceiling:
+     EVERY control carries one (D56). The tiers differ by INK WEIGHT in the
+     same hue, not by a second colour — the primary is simply pressed
+     harder. That is a brush idea rather than a palette one, and it is also
+     the only version the contrast maths allows:
 
-       .btn-do          lavender #5856cc label — caps near 10%, fails by 18%
-       .btn-do-primary  ink #212830 label      — 9.97:1 even at 30%
+       .btn-do          pale  #b7b5fe @26%  — label 4.67:1 light / 5.86:1 dark
+       .btn-do-primary  deep  #7c79e8 @30%  — label 9.97:1 light / 11.27:1 dark
 
-     A wash the secondary could survive would be too faint to mean anything.
-     Applying it to both would spend the signal until it stopped being one.
+     ⛔ The secondary may NOT take the deep ink. Its label is lavender
+     #5856cc at only 5.36:1 bare, so a deep-lavender wash drops it to
+     4.44:1 at just 18% and 3.89:1 at 30% — lavender ink under a lavender
+     label eats its own contrast, the same failure that keeps the wash off
+     the D-o marks. The pale ink is light enough to leave the label alone.
 
-     One baked file serves every ground, exactly like --do-mark: #7c79e8 at
-     30% leaves the primary label at 9.97:1 on Whisper, 11.27:1 on Void
-     Black and 8.65:1 on the #212830 band — and still ~9.2:1 under the
-     existing hover tint, which composites beneath it.
+     ⛔ And it may NOT take gilt, the obvious "alternating colour". D52
+     resolved a contradiction in which gilt was spent sitewide; gilt is
+     reserved for Charter Enrolment, so a gilt wash on every secondary
+     would re-spend it exactly as that decision forbids. (Measured anyway,
+     for the record: gilt survives the label test to 38% — it is the
+     reservation, not the contrast, that rules it out.)
+
+     Both files are baked and surface-blind, exactly like --do-mark: the
+     primary reads 9.97:1 on Whisper, 11.27:1 on Void Black, 8.65:1 on the
+     #212830 band and ~9.2:1 under the hover tint; the secondary 4.67:1 on
+     light and 5.86:1 on dark.
 
      Geometry uses `background-origin: content-box`, and that is load-
      bearing. Controls ship in at least three padding variants (10 / 20 /
@@ -787,18 +799,24 @@
 
      Decorative, so WCAG 1.4.11 does not apply: the control is still
      identified by its marks and label, not by this shape. */
-  .btn-do-primary {
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 14' preserveAspectRatio='none'><path fill='%237c79e8' fill-opacity='.30' fill-rule='evenodd' d='M1.6 6.4 C 2.2 4.1, 4 3.1, 7 2.9 C 30 2.2, 62 1.9, 96 2 C 120 2.05, 142 2.3, 151 2.6 C 155.6 2.75, 158.8 4.2, 158.9 6.6 C 159 9.2, 157 11.1, 153 11.6 C 138 12.5, 104 12.9, 74 12.8 C 48 12.7, 22 12.5, 9 12.1 C 4.4 11.95, 1.1 10.3, 1.6 6.4 Z M22 5.4 C 56 4.6, 100 4.5, 138 5 C 100 5.9, 56 6, 22 5.4 Z'/></svg>");
+  .btn-do {
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 14' preserveAspectRatio='none'><path fill='%23b7b5fe' fill-opacity='.26' fill-rule='evenodd' d='M1.6 6.4 C 2.2 4.1, 4 3.1, 7 2.9 C 30 2.2, 62 1.9, 96 2 C 120 2.05, 142 2.3, 151 2.6 C 155.6 2.75, 158.8 4.2, 158.9 6.6 C 159 9.2, 157 11.1, 153 11.6 C 138 12.5, 104 12.9, 74 12.8 C 48 12.7, 22 12.5, 9 12.1 C 4.4 11.95, 1.1 10.3, 1.6 6.4 Z M22 5.4 C 56 4.6, 100 4.5, 138 5 C 100 5.9, 56 6, 22 5.4 Z'/></svg>");
     background-repeat: no-repeat;
     background-origin: content-box;
     background-size: calc(100% - 50px) 15px;
     background-position: left 25px bottom 13px;
   }
 
+  /* The primary presses harder — same hand, denser ink. Equal specificity to
+     the rule above, so this must stay BELOW it. */
+  .btn-do-primary {
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 14' preserveAspectRatio='none'><path fill='%237c79e8' fill-opacity='.30' fill-rule='evenodd' d='M1.6 6.4 C 2.2 4.1, 4 3.1, 7 2.9 C 30 2.2, 62 1.9, 96 2 C 120 2.05, 142 2.3, 151 2.6 C 155.6 2.75, 158.8 4.2, 158.9 6.6 C 159 9.2, 157 11.1, 153 11.6 C 138 12.5, 104 12.9, 74 12.8 C 48 12.7, 22 12.5, 9 12.1 C 4.4 11.95, 1.1 10.3, 1.6 6.4 Z M22 5.4 C 56 4.6, 100 4.5, 138 5 C 100 5.9, 56 6, 22 5.4 Z'/></svg>");
+  }
+
   /* Marks drop to 18px below 640px, so the label starts 6px earlier and the
      swash follows it in — still 4px clear of the mark. */
   @media (max-width: 639px) {
-    .btn-do-primary {
+    .btn-do {
       background-size: calc(100% - 42px) 13px;
       background-position: left 21px bottom 12px;
     }
@@ -1271,6 +1289,16 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: #5856cc;
+  }
+
+  /* CJK is already full-width; Latin label tracking pulls it apart (D57).
+     0.06em keeps a little air without disconnecting the glyphs. This was
+     the one thing PartnersClient's private Eyebrow got right that the
+     canonical class did not — carried over here when the nine copies were
+     consolidated. Mirrors how .font-display already drops tracking for zh. */
+  :lang(zh) .eyebrow,
+  .eyebrow:lang(zh) {
+    letter-spacing: 0.06em;
   }
 
   .section-dark .eyebrow,

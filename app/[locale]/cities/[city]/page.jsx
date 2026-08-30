@@ -122,7 +122,7 @@ export default async function CityPage({ params }) {
             </Link>
             <Link
               href={`/${locale}/program`}
-              className="btn btn-secondary text-base px-8 py-4 justify-center"
+              className="btn btn-do text-base px-8 py-4 justify-center"
             >
               {ui.ctaSecondary}
             </Link>

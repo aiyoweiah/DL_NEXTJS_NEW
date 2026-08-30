@@ -4,8 +4,9 @@ Living reference for the DODO marketing site chrome (navbar, footer, funnel CTAs
 and its visual token system. Read this before touching navigation, CTAs, the
 pre-footer band, or any colour value.
 
-**Current through:** v6.11 · 2026-08-29 (D55: the highlighter swash on the primary —
-a third hierarchy tier, with no fill and no enclosing shape).
+**Current through:** v6.12 · 2026-08-29 (D56 swash on every control, tiered by ink weight;
+D57 one canonical Eyebrow — 50 more labels join the system).
+v6.11 = D55 the highlighter swash. v6.10 = D54 the lead-in quote on claim labels.
 v6.10 = D54 the lead-in quote on claim labels: letterforms enclose a control, punctuation introduces a label.
 v6.9 = D53 option B: the D-o bracket is the control chrome sitewide; **all fills removed**.
 v6.7 added the `.on-dark` hook and surface-aware badge + LexileBar. v6.6 = D52 filled buttons are surface-specific. v6.5 fixed button specificity, muted-on-dark
@@ -349,7 +350,7 @@ interactive.** A quoted button makes the D-o read as "DODO made this" instead of
   Ask "is this label a claim, or a taxonomy value?" before adding it to a 28th.
 
 
-**The highlighter swash (D55 · v6.11).** The **primary** control carries a marker
+**The highlighter swash (D55 · v6.11 — widened to every control by D56 · v6.12).** Controls carry a marker
 stroke behind the lower portion of its label. `.btn-do-primary` in
 `styles/globals.css` renders it as a `::background-image` data-URI.
 
@@ -360,11 +361,72 @@ says *press this **one***.
 
 | | |
 |---|---|
-| Mark | `--do-mark` `#7c79e8` at **30%**, baked — one file, every ground |
+| Mark | deep `#7c79e8` @30% (primary) · pale `#b7b5fe` @26% (all others) — baked, surface-blind |
 | Geometry | `viewBox 0 0 160 14`, `preserveAspectRatio='none'`, one skip knocked out |
 | Anchor | `background-origin: content-box`, inset 25px (21px below 640px) |
 | Size | `calc(100% - 50px) × 15px` (`calc(100% - 42px) × 13px` below 640px) |
-| Scope | `.btn-do-primary` only — **not** `.btn-do`, **not** `.btn-do-charter` |
+| Scope | **every `.btn-do`** — pale ink; `.btn-do-primary` overrides with deep ink |
+
+- **Every control carries one (D56), and the tiers differ by INK WEIGHT, not by a
+  second colour.** The primary is simply pressed harder. That is a brush idea rather
+  than a palette one — and it is the only version the maths permits:
+
+  | Class | Ink | Label on light | Label on dark |
+  |---|---|---|---|
+  | `.btn-do` | pale `#b7b5fe` @26% | 4.67:1 | 5.86:1 |
+  | `.btn-do-primary` | deep `#7c79e8` @30% | 9.97:1 | 11.27:1 |
+
+- **⛔ The secondary may not take the deep ink.** Its label is lavender `#5856cc` at
+  only **5.36:1 bare**, so a deep wash drops it to **4.44:1 at just 18%** and 3.89:1
+  at 30%. Lavender ink under a lavender label eats its own contrast — the same
+  failure that keeps the wash off the D-o marks. The pale ink is light enough to
+  leave the label alone.
+- **⛔ And it may not take gilt**, which is the obvious "alternating colour" and was
+  the first thing tried. **D52 reserved gilt for Charter Enrolment** after it had been
+  spent sitewide; a gilt wash on every secondary would re-spend it exactly as that
+  decision forbids. Measured anyway, for the record: gilt clears the label test all
+  the way to 38% — it is the **reservation**, not the contrast, that rules it out.
+- **The last non-`btn-do` CTA is gone.** `/cities/[city]` still carried a
+  `btn btn-secondary` that D53b's sweep missed. Only `AudiobookPlayer`'s four
+  transport controls now sit outside the system, which is correct — "Do ⏵" is nonsense.
+
+
+**One canonical eyebrow (D57 · v6.12).** `components/ui/Eyebrow.jsx` is now the only
+definition. It renders `.eyebrow .label-quote`, so every section label gets the D54
+lead-in quote by construction.
+
+- **This closes the gap D54 actually left.** D54 searched for `className="eyebrow"`
+  and found 27 labels. It missed **50 more** rendered by a local `Eyebrow` *component*
+  — and there were **nine** of those, one defined privately inside each of `compare`,
+  `consult`, `demos`, `little-dodo`, `navigators`, `program`, `AssessmentClient`,
+  `FAQClient` and `PartnersClient`. Exactly the "site ends up with three vocabularies"
+  outcome D54 was written to prevent, hiding behind a component boundary.
+- **They had drifted, which is the argument for consolidating rather than patching:**
+
+  | | Variants found |
+  |---|---|
+  | weight | 500 (×5), 600 (×3), `font-semibold` (×1) |
+  | tracking | `0.10em`, `0.12em`, `tracking-widest` |
+  | margin | 12px, 14px, 16px |
+  | colour | `#5856cc`, `#b7b5fe`, `var(--label-color)`, `rgba(183,181,254,0.65)` |
+
+  Canonical is 600 / `0.12em` / `1rem`, so the five weight-500 pages got very slightly
+  bolder and wider-tracked. That is the drift being corrected, not a new design.
+- **CJK tracking came from the consolidation.** `PartnersClient` was the only copy that
+  tightened tracking for Chinese; the canonical class applied Latin `0.12em` to
+  full-width glyphs sitewide. `.eyebrow:lang(zh)` now sets `0.06em`, mirroring what
+  `.font-display` already did for zh.
+- **⚠️ `AssessmentClient`'s copy was dark-only** — it hard-coded `#b7b5fe` and took no
+  `dark` prop, so its nine call sites passed nothing. Routing them through a component
+  that defaults to light would have rendered them at **3.32:1** on `#212830`. All nine
+  now pass `dark` explicitly. The shared component sets the colour itself rather than
+  relying on `.on-dark`, because those three client components still paint dark grounds
+  without the hook.
+- **Two surfaces can't be verified in the browser:** `/assessment` renders an
+  Under Construction placeholder and `/partners` sits behind a code gate, so their
+  eyebrows are consolidated in code but unproven at runtime. Check them when those
+  surfaces open.
+
 
 - **Primary-only is a measured decision, not a stylistic one.** The wash sits under
   the label, so the *label's* contrast sets the density ceiling:
@@ -644,6 +706,8 @@ not listed.
 | D53b | **Option B — bracket is the control chrome, no fills** | 40 class swaps; hierarchy by weight; gilt to label; marks via CSS pseudo-elements; 73 controls verified | ✅ v6.9 |
 | D54 | **The lead-in quote on claim labels** | `.label-quote` + baked data-URI; 27 labels marked; badge chrome dropped where marked; taxonomy labels excluded; guillemet rejected on a bilingual test | ✅ v6.10 |
 | D55 | **The highlighter swash on the primary control** | `.btn-do-primary` background-image; `#7c79e8` at 30%; content-box anchored; restores a third hierarchy tier without a fill | ✅ v6.11 |
+| D56 | **Swash on every control, tiered by ink weight** | `.btn-do` pale `#b7b5fe` @26%, `.btn-do-primary` deep @30%; gilt rejected (D52 reservation); last non-`btn-do` CTA retired | ✅ v6.12 |
+| D57 | **One canonical `Eyebrow` component** | Nine local copies consolidated; 50 more labels gain the D54 quote; weight/tracking/margin drift corrected; `.eyebrow:lang(zh)` tracking added | ✅ v6.12 |
 
 ### Cascade status
 
@@ -660,6 +724,20 @@ not listed.
       Home-page subhead blue `#3b6fcc` → `--text-info` `#3a6ac4`.
 - [x] D51 display face wired (`lib/fonts.js`, root layout, `.font-display`) and
       **piloted on `/methodology` h1 only**.
+
+**Done in v6.12 (2026-08-29) — D56 + D57:**
+
+- [x] Swash widened to every `.btn-do`; tiers now read as ink weight (pale vs deep).
+- [x] `/cities/[city]` `btn-secondary` retired — the last non-`btn-do` CTA on the site.
+- [x] Nine local `Eyebrow` definitions replaced by `components/ui/Eyebrow.jsx`;
+      **50 additional section labels** now carry the D54 quote.
+- [x] `.eyebrow:lang(zh)` tracking rule added (0.06em).
+- [x] `AssessmentClient`'s nine call sites marked `dark` to preserve its dark-only default.
+- [x] Build green: exit 0, 122 pages / 45 routes.
+- [x] Contrast unchanged against baseline: program 36=36, consult 23=23, demos 38=38,
+      faq 1=1, /zh/ 7=7; little-dodo improved 8 → 7. Navigators 0 failures.
+      All newly quoted labels pass; every `.btn-do` passes.
+
 
 **Done in v6.11 (2026-08-29) — D55:**
 

@@ -19,6 +19,7 @@ import { navigators as copyZh }    from '@/content/marketing.zh'
 import StreamVideo                 from '@/components/media/StreamVideo'
 import SectionWrapper              from '@/components/ui/SectionWrapper'
 import K2Note                       from '@/components/ui/K2Note'
+import Eyebrow from '@/components/ui/Eyebrow'
 
 export async function generateMetadata({ params }) {
   const { locale } = await params
@@ -26,13 +27,6 @@ export async function generateMetadata({ params }) {
   return buildMetadata({ locale, title: meta.title, description: meta.description, path: '/navigators' })
 }
 
-function Eyebrow({ children, center = false, dark = false }) {
-  return (
-    <div style={{ fontFamily: 'var(--font-latin)', fontWeight: 500, fontSize: '12px', letterSpacing: '0.1em', textTransform: 'uppercase', color: dark ? '#b7b5fe' : '#5856cc', marginBottom: '16px', textAlign: center ? 'center' : undefined }}>
-      {children}
-    </div>
-  )
-}
 
 function Badge({ children }) {
   return (

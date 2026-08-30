@@ -24,6 +24,7 @@ import K2Note                           from '@/components/ui/K2Note'
 import { demos as copyEn }              from '@/content/marketing.en'
 import { demos as copyZh }              from '@/content/marketing.zh'
 import DoCta         from '@/components/ui/DoCta'
+import Eyebrow from '@/components/ui/Eyebrow'
 
 const LEXILE_SCALE = [
   { level: 1200, grade: 'Grade 12+' },
@@ -59,9 +60,6 @@ function BilingualH2({ primary, secondary, light = false, center = false, id }) 
   )
 }
 
-function Eyebrow({ children, center = false, dark = false }) {
-  return <p style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: dark ? '#b7b5fe' : '#5856cc', marginBottom: '0.875rem', textAlign: center ? 'center' : undefined }}>{children}</p>
-}
 
 function Tag({ children, variant = 'default' }) {
   const s = {
