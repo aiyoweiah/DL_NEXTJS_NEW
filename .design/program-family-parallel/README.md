@@ -2,7 +2,11 @@
 
 **Workstream:** Elevate Little DODO to true parallel visibility with the ELA Program across the entire site (not just the home page). Retire "16-Week Program" as a brand name; reframe as a format descriptor that applies to both bands.
 
-**Status:** Audit + proposal in progress. **No live files have been edited.** Per the content apply-gate, every change is staged in this folder. The user must give an explicit "apply" trigger before any of these land.
+**Status:** ✅ **SHIPPED 2026-06-10** — Steps 1–12 applied to live files (see `07-APPLY.md` and the 2026-06-10 entry in `docs/SUCCESSOR_HANDOFF.md`). This folder is now **decision history**, not a pending proposal.
+
+> ⚠️ **Corrected 2026-08-29.** This line previously read *"Audit + proposal in progress. No live files have been edited."* — which stayed unchanged after the work shipped. Anyone trusting it would have re-applied live work. Original staging note follows for provenance.
+
+**Originally staged as:** Audit + proposal in progress. No live files edited. Per the content apply-gate, every change is staged in this folder. The user must give an explicit "apply" trigger before any of these land.
 
 **Started:** 2026-06-03
 

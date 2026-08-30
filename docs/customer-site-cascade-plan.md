@@ -26,9 +26,9 @@
 
 ## Unit 0 · Foundations (global chrome + mechanical swaps) — do first, unblocks all pages
 
-- [ ] **Tagline swap (D36)** — replace `Think Once. In Both Languages.` → `Think once, in two languages.` (ZH: 一次思考，两种语言。) in the **global** slots: `marketing.en.js` `cta.tagline` (L90), `brand.tagline` (L124); `app/layout.jsx` (L34); ZH equivalents. *(Per-page `meta`/`chip` taglines — L196, L212, L366, L611, L1362, zh L178/L194 — are swapped inside each page's unit below.)*
-- [ ] **`dodo-content-writer` skill lint** — add the retired-tagline guard (same mechanism as the "Think Twice" guard) + flag "globally-mobile / students around the world / 面向全球家庭" as headline framing to retire.
-- [ ] Footer/nav copy audit for any position/tagline drift.
+- [x] **Tagline swap (D36)** — *verified 2026-08-29: 0 occurrences of the old string in live code.* — replace `Think Once. In Both Languages.` → `Think once, in two languages.` (ZH: 一次思考，两种语言。) in the **global** slots: `marketing.en.js` `cta.tagline` (L90), `brand.tagline` (L124); `app/layout.jsx` (L34); ZH equivalents. *(Per-page `meta`/`chip` taglines — L196, L212, L366, L611, L1362, zh L178/L194 — are swapped inside each page's unit below.)*
+- [ ] ⚠️ **`dodo-content-writer` skill lint** *(cannot be verified from this repo — the skill is registered at user scope, not under `.agents/skills/` here. Confirm separately.)* — add the retired-tagline guard (same mechanism as the "Think Twice" guard) + flag "globally-mobile / students around the world / 面向全球家庭" as headline framing to retire.
+- [x] Footer/nav copy audit for any position/tagline drift. — *verified 2026-08-29: 0 occurrences of `globally-mobile` in live code.*
 
 ---
 
