@@ -287,7 +287,7 @@ split, the build errors on `output: 'export'`.
 3. Build the tool in `components/ops/XxxTool.jsx`. Match the existing
    shape: form state → hidden 794×1123 divs → `html2canvas` →
    `jsPDF.addImage` loop → `pdf.save()`.
-4. Brand fonts: `DM Sans` + `Noto Sans SC` from Google Fonts, loaded
+4. Brand fonts: `Source Sans 3` + `Noto Sans SC` from Google Fonts, loaded
    via a `<link>` injected in a `useEffect`. Gate the Generate button
    on `document.fonts.ready`.
 5. Logos and Janet's signature image are in `components/ops/opsAssets.js`
