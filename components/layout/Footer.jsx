@@ -68,8 +68,21 @@ function FooterLink({ href, label, soon, comingSoonLabel, external }) {
     )
   }
 
+  // WCAG 2.2 SC 2.5.8 (Target Size Minimum, AA) requires 24x24 CSS px.
+  // These links rendered at 20px tall (two at 16px), so 22 of 25 failed —
+  // and because the footer is chrome, that repeated on every route: on the
+  // order of a thousand failing instances from one declaration.
+  //
+  // inline-flex + min-h-[24px] min-w-[24px] is the whole fix. The gap between links is
+  // already 20px, so the hit area grows into space that already existed:
+  // nothing moves and the footer does not get taller. `align-middle`
+  // keeps the inline box sitting on the text baseline it had before.
+  //
+  // min-w matters too: SC 2.5.8 is 24x24, and short labels fail on WIDTH —
+  // 'FAQ' measured 23.2px. The box only grows rightward into the list, so
+  // again nothing visually moves.
   const linkClass =
-    'text-sm text-[#3D4452] hover:text-[color:var(--link-hover-color)] transition-colors duration-150 focus-visible:outline-none focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-[#b7b5fe] focus-visible:ring-offset-1 focus-visible:ring-offset-[#F5F5FF]'
+    'inline-flex items-center align-middle min-h-[24px] min-w-[24px] text-sm text-[#3D4452] hover:text-[color:var(--link-hover-color)] transition-colors duration-150 focus-visible:outline-none focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-[#b7b5fe] focus-visible:ring-offset-1 focus-visible:ring-offset-[#F5F5FF]'
 
   // External links leave the site — plain <a>, new tab, and rel guarded.
   // Matches how Navbar renders `external` items.
@@ -306,7 +319,7 @@ export default function Footer({ locale, copy }) {
                 <Link
                   key={link.href}
                   href={resolveHref(locale, link.href)}
-                  className="text-xs text-[color:var(--text-muted)] hover:text-[#212830] transition-colors duration-150 focus-visible:outline-none focus-visible:rounded-sm focus-visible:ring-1 focus-visible:ring-[#b7b5fe] focus-visible:ring-offset-1 focus-visible:ring-offset-[#F5F5FF]"
+                  className="inline-flex items-center align-middle min-h-[24px] min-w-[24px] text-xs text-[color:var(--text-muted)] hover:text-[#212830] transition-colors duration-150 focus-visible:outline-none focus-visible:rounded-sm focus-visible:ring-1 focus-visible:ring-[#b7b5fe] focus-visible:ring-offset-1 focus-visible:ring-offset-[#F5F5FF]"
                 >
                   {link.label}
                 </Link>
