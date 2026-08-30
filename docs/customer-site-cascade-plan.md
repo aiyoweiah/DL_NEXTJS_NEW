@@ -1,6 +1,6 @@
 # Customer-Site Content Update — v5 Guide Cascade Plan
 
-**Created:** 2026-08-27 · **Supersedes & absorbs:** `docs/pending-guide-cascade.md` (the earlier D36–D42 queue is folded in below, per-page).
+**Created:** 2026-08-27 · **Supersedes & absorbs:** `docs/_archive/pending-guide-cascade.md` (the earlier D36–D42 queue is folded in below, per-page).
 **Goal:** bring **every customer-facing surface** into line with Brand Guide **v5 (D36–D44)** — the new one-sentence position (D43), the redesigned Three Brand Truths (D44), the retired tagline (D36), the positioning shift (D40), LCS/five-strands/7-levels (D37), the research base (D38), objections/AI rebuttal (D41), and marketing direction (D42).
 
 **Method (user-set 2026-08-27):** **one surface at a time.** Scan a page → fully rework it → verify → log → only then move to the next. No parallel half-edits across pages.
@@ -105,4 +105,4 @@
 - [x] 17 · Global schema — **done (D50)**; `lib/schema.js` ×7 + `app/layout.jsx` globally-mobile → D40 framing
 - [x] 18 · Per-page meta — audited during each page; global meta (layout.jsx) fixed
 
-**Admin review:** self-critique + owed items in `docs/cascade-admin-review-2026-08-27.md`.
+**Admin review:** self-critique + owed items in `docs/_archive/cascade-admin-review-2026-08-27.md`.

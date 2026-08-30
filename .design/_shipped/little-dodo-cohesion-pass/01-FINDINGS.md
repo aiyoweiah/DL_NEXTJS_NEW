@@ -29,7 +29,7 @@ Two inputs shape this pass:
 | 5 | **"Read → Think → Speak" inline phrase becomes a link** | Wrap the phrase in `littleDodo.how.steps[2].desc` as a link to `/methodology`. |
 | 6 | **EN translation of ZH chip** | "Where language takes root." (option #2 from the proposal set) |
 | 7 | **No separate Little DODO Navigator page** | K-2 educators get listed on the existing `/navigators` page alongside ELA Navigators, distinguished by a "Little DODO" tag. Original handoff open-task #1 scope changes accordingly. |
-| 8 | **Staging folder** | `.design/little-dodo-cohesion-pass/` (this folder). |
+| 8 | **Staging folder** | `.design/_shipped/little-dodo-cohesion-pass/` (this folder). |
 
 ---
 

@@ -18,7 +18,7 @@ record of the IA/naming decisions below. **Ground rule (followed):** strictly fo
 > audience + k2Note, navigators.k2Note), `content/faq.js` Little DODO Q+A, `public/llms.txt`,
 > `public/llms-full.txt` §"Who Navigators are" (rewritten into two specialist-team profiles), and
 > `lib/schema.js` Course description. Full apply log at
-> `.design/little-dodo-cohesion-pass/03-APPLY.md`. The table row below is **superseded** but kept
+> `.design/_shipped/little-dodo-cohesion-pass/03-APPLY.md`. The table row below is **superseded** but kept
 > as decision history; treat the addendum as canonical.
 
 ---

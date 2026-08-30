@@ -123,7 +123,7 @@ The double Do is also a commitment to **iteration** — you master a language by
 
 ## 04a · Marketing Direction & Directives *(added 2026-08-26)*
 
-The guide is primarily a copy-production manual — but content without direction drifts. This section is the **strategic layer** every surface should ladder up to. *(Rationale + full analysis: `docs/brand-guide-critique-2026-08-26.md`.)*
+The guide is primarily a copy-production manual — but content without direction drifts. This section is the **strategic layer** every surface should ladder up to. *(Rationale + full analysis: `docs/_archive/brand-guide-critique-2026-08-26.md`.)*
 
 **1 · The category to own.** Write to define and own **"English language arts at mastery level"** as a category — not "tutoring," not "English class." Category owners get pricing power and get cited by LLMs. Every methodology/authority surface should reinforce the category, not just the product.
 

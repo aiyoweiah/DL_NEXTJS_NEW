@@ -1,7 +1,7 @@
 # Brand guide refresh — DRAFT for approval (2026-08-26)
 
 **Status:** proposed guide-ready sections. **Not applied** to `translation/BRAND_CONTENT_GUIDE.md` yet — awaiting your approval, then it cascades on "apply."
-**Companion:** rationale + full analysis in `docs/mct-research-and-brand-review-2026-08-26.md`.
+**Companion:** rationale + full analysis in `docs/_archive/mct-research-and-brand-review-2026-08-26.md`.
 **Contains three modules for the guide:** (A) new **§ Research Base** · (B) refreshed **§06 LCS + Five Strands nested** · (C) **§00 tagline** update.
 **Register:** written to slot into the existing guide (matches §07/§11 table style). MCT named sparingly; research reframed as *acceleration into mastery*, never remediation.
 

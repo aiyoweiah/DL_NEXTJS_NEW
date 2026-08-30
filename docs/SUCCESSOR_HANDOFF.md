@@ -128,7 +128,7 @@ Applied as 5 rounds; build clean after rounds 1–4 and after round 5 (the misse
 - `public/llms.txt` + `public/llms-full.txt`
 - `lib/schema.js`
 - `app/[locale]/little-dodo/page.jsx`
-- `.design/little-dodo-cohesion-pass/{01-FINDINGS,02-COPY-PROPOSALS,03-APPLY}.md` (new — decision history)
+- `.design/_shipped/little-dodo-cohesion-pass/{01-FINDINGS,02-COPY-PROPOSALS,03-APPLY}.md` (new — decision history)
 - `docs/HANDOFF_LITTLE_DODO_PARALLEL_2026-06-10.md` (open-task #1 scope reduced)
 - `docs/little-dodo-plan.md` (Navigators-row addendum)
 - `~/.claude/projects/F--PC-Documents-DODO-web/memory/project_dodo_chrome.md` (staffing correction line added)
@@ -167,7 +167,7 @@ End-to-end session arc. Three workstreams landed and one large parallel workstre
 
 ### Workstream A — Program Family Parallel (PFP) shipped, Steps 1–12
 
-The PFP proposal lived in `.design/program-family-parallel/` since 2026-06-03 (00-NAMING_MODEL → 06b-PROPOSAL-DETAIL → 07-APPLY). Today's session applied Steps 3–12 (Steps 1+2 were already mostly applied in uncommitted state).
+The PFP proposal lived in `.design/_shipped/program-family-parallel/` since 2026-06-03 (00-NAMING_MODEL → 06b-PROPOSAL-DETAIL → 07-APPLY). Today's session applied Steps 3–12 (Steps 1+2 were already mostly applied in uncommitted state).
 
 **What landed:**
 

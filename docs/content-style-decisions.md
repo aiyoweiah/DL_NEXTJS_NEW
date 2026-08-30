@@ -290,7 +290,7 @@ Scope: realign the whole visitor funnel around a soft→firm commitment ladder, 
 
 ## 2026-08-26 · MCT research + brand-guide amendment (approved)
 
-Scope: incorporate an MCT research pull + refine positioning after the marketing-skills install. Analysis in `docs/mct-research-and-brand-review-2026-08-26.md`; approved draft in `docs/brand-guide-refresh-draft-2026-08-26.md`. **Applied to the internal guide only** (`translation/BRAND_CONTENT_GUIDE.md` + new ZH mirror + glossary). **Customer-facing surface cascade (site copy, llms.txt, faq, schema) still awaits an explicit "apply."**
+Scope: incorporate an MCT research pull + refine positioning after the marketing-skills install. Analysis in `docs/_archive/mct-research-and-brand-review-2026-08-26.md`; approved draft in `docs/_archive/brand-guide-refresh-draft-2026-08-26.md`. **Applied to the internal guide only** (`translation/BRAND_CONTENT_GUIDE.md` + new ZH mirror + glossary). **Customer-facing surface cascade (site copy, llms.txt, faq, schema) still awaits an explicit "apply."**
 
 ### D36 · Tagline → "Think once, in two languages."
 - **Decision:** EN tagline updated from **"Think Once. In Both Languages."** to **"Think once, in two languages."** (sentence case; "two languages"). Role clarified: brand **signature**, not the positioning line — conversion heroes lead with the English-mastery + thinking proposition. ZH sub-tagline (语言的根，长在阅读里) unchanged; the EN-tagline ZH rendering shifts 一次思考。两种语言。 → **一次思考，两种语言。** (comma).
@@ -320,7 +320,7 @@ Scope: incorporate an MCT research pull + refine positioning after the marketing
 
 ## 2026-08-26 (later) · Positioning shift + critique applied at guide level
 
-Scope: apply the strategic critique (`docs/brand-guide-critique-2026-08-26.md`) at the guide level and execute a major positioning change. Applied to `BRAND_CONTENT_GUIDE.md` + `.zh.md`. **Customer-surface cascade still gated** — see `docs/pending-guide-cascade.md`.
+Scope: apply the strategic critique (`docs/_archive/brand-guide-critique-2026-08-26.md`) at the guide level and execute a major positioning change. Applied to `BRAND_CONTENT_GUIDE.md` + `.zh.md`. **Customer-surface cascade still gated** — see `docs/_archive/pending-guide-cascade.md`.
 
 ### D40 · Target by demographic + desire (supersedes D10 global positioning)
 - **Decision:** DODO **no longer targets international / globally-mobile families explicitly** — that dimension is now **implicit** (served worldwide; carried by the bilingual EN/ZH site). Targeting is **demographic + aspiration-based: any family that fits the profile and wants to refine their child's language arts to mastery — including local, settled families**, not only relocating/diaspora. Retire "globally-mobile families" / "students around the world" / "面向全球家庭" as headline framing. International stays true and available, just not the headline. §04 family table reworked around situation+desire with **Local & settled** as a new explicit focus row.
@@ -345,7 +345,7 @@ Scope: apply the strategic critique (`docs/brand-guide-critique-2026-08-26.md`) 
 
 - **Guide version bumped v4.1 → v5** (`BRAND_CONTENT_GUIDE.md` + `.zh.md` headers), consolidated **through D42**. Header now carries a v5 summary of what changed since v4.1 and the current cascade status. The locked sections already carry every stabilized decision; this log remains the append-only provenance trail (never pruned).
 - **Reconciled with upstream:** founder is **Janet — first name only, everywhere** (upstream D35); my session decisions were renumbered **D35–D41 → D36–D42** on push to avoid colliding with upstream's D35.
-- **Cascade progress (D38 research base + D37 five-strands), shipped by peer 2026-08-26 (commit `334d8de`):** new **`/credentials`** bilingual reference page (canonical attribution surface) + **MCT-anchored pillar blog** (`content/en/blog/mct-language-arts-in-a-live-one-on-one-program.mdx`) + `credentialsSchema()` (CollectionPage + 4 `EducationalOccupationalCredential` + 5 academic `citation` nodes) + `llms-full.txt` seeding. Remaining cascade (tagline D36, `/methodology` block, `/faq` entry, positioning D40 surfaces) tracked in `docs/pending-guide-cascade.md`.
+- **Cascade progress (D38 research base + D37 five-strands), shipped by peer 2026-08-26 (commit `334d8de`):** new **`/credentials`** bilingual reference page (canonical attribution surface) + **MCT-anchored pillar blog** (`content/en/blog/mct-language-arts-in-a-live-one-on-one-program.mdx`) + `credentialsSchema()` (CollectionPage + 4 `EducationalOccupationalCredential` + 5 academic `citation` nodes) + `llms-full.txt` seeding. Remaining cascade (tagline D36, `/methodology` block, `/faq` entry, positioning D40 surfaces) tracked in `docs/_archive/pending-guide-cascade.md`.
 - **Repo state:** local `main` in sync with `origin/main` at consolidation time. Peer's unrelated uncommitted work (`.design/dodo-coding-launch/` reorg, `content-review/03–04`, `ElaReportTool.jsx` in `stash@{0}`) left untouched per user.
 
 ---
@@ -392,7 +392,7 @@ Applied at guide level to `BRAND_CONTENT_GUIDE.md` + `.zh.md` (§00 five-second,
 
 ### Pending (position/truths pass)
 - **Item 3 — redundancy/refine pass** (Rule of One): dedupe the AI rebuttal (canonical home = §01b), the "acceleration into mastery" guardrail (→ §10), and the "Lexile with a number" rule; other sections cross-reference. Run next, on top of D43/D44.
-- Customer-surface cascade of D43/D44 (position + truths) — **not started**; add to `docs/pending-guide-cascade.md` when greenlit.
+- Customer-surface cascade of D43/D44 (position + truths) — **not started**; add to `docs/_archive/pending-guide-cascade.md` when greenlit.
 
 ## 2026-08-27 · Voice / persona rewrite (§08 + §10 tone)
 
@@ -435,7 +435,7 @@ Applied at guide level to `BRAND_CONTENT_GUIDE.md` + `.zh.md` (§00 five-second,
 ## 2026-08-27 · Customer-site cascade — pages 3–18 (batch run)
 
 ### D50 · Methodology, Program, Compare + machine surfaces reworked to v5.1 + §08 (EN + ZH)
-- **Authorized batch run** (user: "complete the rewrite by page… flag problematic areas… sync/commit/push at end"). Full self-critique in `docs/cascade-admin-review-2026-08-27.md`.
+- **Authorized batch run** (user: "complete the rewrite by page… flag problematic areas… sync/commit/push at end"). Full self-critique in `docs/_archive/cascade-admin-review-2026-08-27.md`.
 - **Methodology** — hero reversal → plain; bilingual tail dropped + "online" added; `geo` + `lexile` heading fragment/reversal tells softened (EN+ZH).
 - **Program** — **retired "nine curriculum levels — Starter, Intermediate…" → seven ELA levels (D37)** (EN+ZH); "students worldwide / around the world" dropped (D40); combinations heading de-fragmented.
 - **Compare** — "globally-mobile families" ×2 dropped (D40); worst overclaims softened ("decade later", "builds dependence"). Flagged 🔴 for a deeper admin voice pass + missing D41 rows.

@@ -317,7 +317,7 @@ These block downstream work. Updated 2026-05-17.
 - **`public/llms.txt` Core pages** — added `/credentials` entry.
 - **`app/sitemap.js`** — `/credentials` at priority 0.7 (matches `/navigators` and `/blog`).
 - **`components/layout/PreCtaBand.jsx`** — `/credentials` added to `SUPPRESS` list per D33 (page owns its own close CTA).
-- **`docs/pending-guide-cascade.md`** — D38 llms-full.txt + schema items marked done; new note added that `/credentials` is now the canonical attribution surface.
+- **`docs/_archive/pending-guide-cascade.md`** — D38 llms-full.txt + schema items marked done; new note added that `/credentials` is now the canonical attribution surface.
 
 **Verified:** `npx next build` clean; both `/en/credentials` and `/zh/credentials` prerendered; MCT blog post at `/en/blog/mct-language-arts-in-a-live-one-on-one-program` prerendered.
 
