@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "check:surfaces": "node scripts/check-surfaces.mjs",
-    "prebuild": "node scripts/check-surfaces.mjs && node scripts/check-cjk-coverage.mjs",
+    "prebuild": "node scripts/check-surfaces.mjs && node scripts/check-cjk-coverage.mjs && node scripts/check-gilt-escrow.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

@@ -4,7 +4,7 @@ Living reference for the DODO marketing site chrome (navbar, footer, funnel CTAs
 and its visual token system. Read this before touching navigation, CTAs, the
 pre-footer band, or any colour value.
 
-**Current through:** v6.19 · 2026-08-30 (D65 built: btn-do sweep finished; D64 built: Latin preload trimmed; D63 built: CJK frequency-tiered subset; D62 logged: ZH adopts LXGW WenKai, EN stays
+**Current through:** v6.20 · 2026-08-30 (D66 built: gilt escrow enforced; D65 built: btn-do sweep finished; D64 built: Latin preload trimmed; D63 built: CJK frequency-tiered subset; D62 logged: ZH adopts LXGW WenKai, EN stays
 Source Sans 3 — decision recorded, implementation not started).
 v6.15 = D61 target size 24×24. v6.14 = D59 one Latin face + D60 the Surface guard.
 v6.10 = D54 the lead-in quote on claim labels: letterforms enclose a control, punctuation introduces a label.
@@ -587,6 +587,28 @@ lead-in quote by construction.
   merits as the most-tapped control on mobile.
 
 
+**The gilt reservation is now enforced (D66 · v6.20 — BUILT).**
+D52 reserved gilt for Charter Enrolment in v6.6. Between then and v6.19 the guide
+recorded gilt as "used nowhere" **three times**, while six gilt-filled consult CTAs
+shipped continuously. The reservation was real; the enforcement never existed.
+
+- **`scripts/check-gilt-escrow.mjs`, wired to `prebuild`.** Any interactive
+  `<Link>`/`<a>`/`<button>` carrying `#F5C842`, `rgba(245,200,66,…)`, `--color-gilt` or
+  a gilt utility class fails the build. `.btn-do-charter` — the one sanctioned use — is
+  exempt, and still has no call sites.
+- **It catches the inline case, which is the whole point.** The three previous sweeps
+  matched class names; all six escapees were inline styles. This matches the *rendered
+  colour*, not the spelling of a class.
+- **The error names the fix**, including the `.on-dark` hook a hand-rolled dark section
+  needs — the D53 trap that would otherwise turn each conversion into a contrast bug.
+- **Two allowlist entries**, each with a reason and the condition that retires it: the
+  `/program` and `/little-dodo` hero chips, pending the design decision about what an
+  interactive chip wears. An allowlist without an expiry is just a slower way of losing
+  the rule.
+- **Scope is controls only.** Decorative gilt (`/about`'s gradient headline, accent dot
+  and pull-quote; the `/compare` SVG) is deliberately unchecked — D52 reserves gilt on
+  *conversion controls*, not the colour's existence. Widen this if that intent changes.
+
 **The `btn-do` sweep is actually finished now (D65 · v6.19 — BUILT).**
 v6.9 and v6.12 both recorded that the last non-`btn-do` CTA was gone. **Neither was
 true.** Six conversion CTAs were still painted gilt:
@@ -969,6 +991,7 @@ not listed.
 | D63 | **CJK served from a frequency-tiered local subset** | Hosted Noto (303 `@font-face`, 13.2 MB declared) replaced by 5 generated chunks, 437 KB total across the whole 400–700 range (variable font). ZH page CJK **1,090 → 437 KB** measured cold; EN unchanged at 0 KB. `check-cjk-coverage.mjs` guards `prebuild` **and** `postbuild`. Fixes a dead `<link rel=preload>` that 404'd on every ZH page | ✅ v6.17 |
 | D64 | **Latin preload trimmed to the subset actually used** | `subsets: ['latin','latin-ext']` → `['latin']`. latin-ext usage across the whole export: **zero characters**; it cost 116.6 KB of forced preload per route. EN font payload **183.3 → 66.6 KB**. `check-font-preload.mjs` ratchets it on `postbuild`. Remaining 10.7 KB is a next/font 16.x bug (spurious cyrillic-ext italic preload), tolerated with reason | ✅ v6.18 |
 | D65 | **The `btn-do` sweep finished — 6 inline-styled gilt CTAs found** | v6.9/v6.12 claimed "the last non-`btn-do` CTA is gone"; **that was false.** Six gilt-filled consult CTAs (`/navigators`, `/blog`, `/compare`, `/faq` ×2, `/assessment`) used inline `backgroundColor: '#F5C842'` and were invisible to a class-based sweep. Converted to `.btn-do-primary`; `.on-dark` added to the two hand-rolled dark sections the D53 note predicted. Zero contrast failures. **2 interactive gilt chips remain — open design question** | ✅ v6.19 |
+| D66 | **The gilt reservation is enforced, not just written down** | `check-gilt-escrow.mjs` on `prebuild`: gilt on any interactive control fails the build. D52 reserved gilt in v6.6 and three later sweeps each declared the job done while six gilt CTAs shipped — a reservation nobody enforces quietly expires. 2 hero chips allowlisted with a stated retirement condition | ✅ v6.20 |
 
 ### Cascade status
 
