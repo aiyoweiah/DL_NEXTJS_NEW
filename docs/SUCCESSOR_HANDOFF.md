@@ -1,7 +1,9 @@
 # DODO Learning — Successor Handoff
 
 **Authored:** 2026-05-17 (end of session)
-**Last updated:** 2026-06-28 — **Consult form rework shipped (Cal.com retired).** /consult Section 5 swapped from a Cal.com `week_view` embed to a custom on-brand inquiry form (`components/consult/ConsultForm.jsx` — single-column, 5 sections, bilingual, locale-aware preferred-contact default). In-place success-state UI presents two contact paths (email card + WeChat card, copy-to-clipboard each). New Cloudflare Pages Function at `functions/api/consult-inquiry.js` handles POST: writes a record to the `Consultation & Lead` Lark Base (`NU1ibehBKanCRksN2rQjpLZ4pkd` / `tblXJZXEN9FDlRV2`), posts a 📥 interactive card to the Lead Pulse chat (same `LARK_TRIAGE_CHAT_ID` Claude_Lark uses), and fires two emails via Resend from `janet@dodolearning.com` (handwritten-style parent ack + team digest). Helpers in `functions/_lib/{lark,email}.js`. Bilingual copy added under `consult.form` in `content/marketing.{en,zh}.js`. Lark Base schema extended via the existing Claude_Lark Python client: new single-select columns `Preferred Contact` (Email/WeChat) and `Locale` (EN/ZH); `Grade Level` extended with Pre-K, Kindergarten, Not sure. 10 env vars set on CF Pages `dl-nextjs-new` production (Lark App ID/Secret shared with Claude_Lark — rotation breaks both). One gotcha: CF Pages' esbuild was applying the project root `tsconfig.json` (`target: es5`) to function code; fixed by `functions/tsconfig.json` override (`target: es2022`). `ConsultCalEmbed.jsx` left in tree — partners flow still uses it. Cal.com account ready to cancel once you've seen a real submission end-to-end. **WeChat ID is still a placeholder** (`WECHAT_HANDLE=pending` on CF; `__PLACEHOLDER__` in copy); swap both when you have the real handle. See "2026-06-28 · Consult form rework" below.
+**Last updated:** 2026-08-29 — **Design system D53–D62 (guide v6.16).** The drawn hand shipped across the site: D-o bracket on every control, lead-in quote on claim labels, the highlighter swash tiered by ink weight, and the hand extended past the button (divider, card edge, quote glyph, the marked score). Structural fixes behind it: one canonical `Eyebrow` (nine private copies consolidated, 50 more labels joined the system), one canonical `Surface` with the two variants the system was missing, and **two build guards** — `check-surfaces.mjs` ratchets hand-rolled panels, wired to `prebuild`. Typography: **D51's display pair retired** (it cost 546 `@font-face` declarations to set one heading) and **DM Sans → Source Sans 3**, which is the Latin that Noto Sans SC was actually drawn beside — fixing a live bug where the same words rendered in different Latin faces depending on locale. Accessibility: **footer targets raised to WCAG 2.2 SC 2.5.8** (22 of 25 links were 20/16px on every route; the fix moved nothing). Docs: superseded working docs archived to `docs/_archive/`, shipped proposals to `.design/_shipped/`, all inbound links rewritten. **⚠️ ACTIVE TASK at the top of this file: the CJK subsetting pipeline — an English page currently downloads 1,197 KB of fonts to render 5 hanzi.** D62 (ZH adopts LXGW WenKai) is logged but deliberately NOT built; it rides on that pipeline.
+
+**Previously (2026-06-28):** — **Consult form rework shipped (Cal.com retired).** /consult Section 5 swapped from a Cal.com `week_view` embed to a custom on-brand inquiry form (`components/consult/ConsultForm.jsx` — single-column, 5 sections, bilingual, locale-aware preferred-contact default). In-place success-state UI presents two contact paths (email card + WeChat card, copy-to-clipboard each). New Cloudflare Pages Function at `functions/api/consult-inquiry.js` handles POST: writes a record to the `Consultation & Lead` Lark Base (`NU1ibehBKanCRksN2rQjpLZ4pkd` / `tblXJZXEN9FDlRV2`), posts a 📥 interactive card to the Lead Pulse chat (same `LARK_TRIAGE_CHAT_ID` Claude_Lark uses), and fires two emails via Resend from `janet@dodolearning.com` (handwritten-style parent ack + team digest). Helpers in `functions/_lib/{lark,email}.js`. Bilingual copy added under `consult.form` in `content/marketing.{en,zh}.js`. Lark Base schema extended via the existing Claude_Lark Python client: new single-select columns `Preferred Contact` (Email/WeChat) and `Locale` (EN/ZH); `Grade Level` extended with Pre-K, Kindergarten, Not sure. 10 env vars set on CF Pages `dl-nextjs-new` production (Lark App ID/Secret shared with Claude_Lark — rotation breaks both). One gotcha: CF Pages' esbuild was applying the project root `tsconfig.json` (`target: es5`) to function code; fixed by `functions/tsconfig.json` override (`target: es2022`). `ConsultCalEmbed.jsx` left in tree — partners flow still uses it. Cal.com account ready to cancel once you've seen a real submission end-to-end. **WeChat ID is still a placeholder** (`WECHAT_HANDLE=pending` on CF; `__PLACEHOLDER__` in copy); swap both when you have the real handle. See "2026-06-28 · Consult form rework" below.
 
 **Previously (2026-06-11):** Little DODO cohesion pass — admin-clarified substance (dedicated early-childhood educators specializing in phonetics/fluency/pronunciation, NOT the ELA Navigator team) plus family-level homepage reframe; substance update + ripple across 12 string locations, faq, llms.txt, llms-full.txt, schema, /little-dodo page. See "2026-06-11 · Little DODO cohesion pass" below.
 **Repo:** `aiyoweiah/DL_NEXTJS_NEW` · deploys to dodolearning.com via **Cloudflare Pages** (`dl-nextjs-new`) from `main`. *(2026-06-02: dodoletterhouse.com / Vercel retired — that domain now 301-forwards to www.dodolearning.com at the Cloudflare edge; `ops.dodoletterhouse.com` → the `/ops` tools. www.dodolearning.com is now a Pages custom domain too. Single host.)*
@@ -13,7 +15,150 @@ This doc is **your entry point if you're picking up this work cold.** Read this 
 3. `docs/workflow.md` Open Decisions table — the running list of pending items.
 4. `translation/BRAND_CONTENT_GUIDE.md` — the locked brand truth for content surfaces.
 
+
+## ACTIVE TASK — CJK font subsetting pipeline (HANDOFF, opened 2026-08-29)
+
+**Status: NOT STARTED.** Design finalised, measured, nothing written to code.
+Guide is at **v6.16**; this implements the finding recorded under **D62**.
+
+### 1. The task, verbatim
+
+> Do the permanent and optimized way, not a temp fix or shortcut.
+> Finalize plan and write handoff for successor to implement.
+
+Preceded by the agreed sequencing: **build the pipeline against Noto Sans SC first.**
+That banks the payload win independently of the typeface decision and de-risks the
+pipeline before D62's WenKai swap rides on it.
+
+### 2. The bug you are fixing (measure it yourself before you start)
+
+A **cold English page** — `/en/credentials`, which contains **5 unique hanzi** — downloads
+**24 font files totalling 1,197 KB**.
+
+Verify, do not take my word:
+
+    // in the browser console on a cold load
+    const f = performance.getEntriesByType('resource').filter(r => /\.woff2?/.test(r.name))
+    for (const r of f) { const b = await (await fetch(r.name, {cache:'no-store'})).arrayBuffer() }
+
+⚠️ **`transferSize` reads 0 for cache hits, and `encodedBodySize` reports full size even
+when cached.** I nearly published a wrong number because of this. Re-fetch with
+`cache: 'no-store'` or you will measure your own cache.
+
+**Cause:** Google's CJK chunks are 60–75 KB each and split by unicode-range, so a handful
+of *scattered* hanzi pulls one chunk **per range per weight**. Five glyphs × 3 weights
+≈ 15 chunks. **English visitors pay ~1 MB for the logo, the 中文 switcher and a footer
+tagline.**
+
+**This is a subsetting problem, not a typeface problem.** Do not let it get entangled
+with D62 — if the typeface is ever reverted, this fix must survive.
+
+### 3. Why frequency-tiered chunks (the measured basis)
+
+ZH content is 1,021 unique hanzi with a textbook Zipf distribution:
+
+| | Share of all ZH character instances |
+|---|---|
+| top 100 glyphs | 53.1% |
+| top 250 | 78.2% |
+| top 500 | 93.2% |
+| top 1000 | 99.9% |
+
+So chunk **by frequency**, not by Unicode block. Measured on the real font
+(`fonttools`, WOFF2, one weight):
+
+| Chunk | Glyphs | Size |
+|---|---|---|
+| chrome (logo · 中文 · tagline) | 14 | **3.8 KB** |
+| tier 1 (top 150) | 150 | 32.0 KB |
+| tier 2 (151–400) | 250 | 55.7 KB |
+| tier 3 (401–1021) | 621 | 153.5 KB |
+
+**An English page fetches the chrome chunk alone: 3.8 KB instead of 1,197 KB.**
+A ZH page fetches ~245 KB instead of ~1,050 KB. Per weight.
+
+### 4. The architecture — build exactly this
+
+Three parts. The third is what makes it permanent rather than a one-off subset.
+
+**(a) `scripts/build-cjk-subset.mjs` — regeneration, run deliberately, not on every build**
+
+- Scans `content/*.zh.js` (and any other ZH source) for the CJK character set **and
+  frequency**.
+- Fetches the source font from a **pinned release URL, verified against a committed
+  SHA-256**, into a gitignored cache dir. **Do not vendor the 24 MB source into git.**
+- Emits frequency-tiered WOFF2 chunks + `manifest.json` (chunk → unicode-range → glyphs).
+- Writes committed output to `public/fonts/cjk/`. The chunks are small; commit them so
+  the build has **no network dependency and no build-time font work**.
+- **Font-agnostic — takes the source font as a parameter.** This is the point: swapping
+  Noto → WenKai for D62 becomes a config change, not a rewrite.
+
+**(b) `lib/fonts.js` — `next/font/local`, one `@font-face` per chunk with explicit
+`unicode-range`**
+
+- Keep **Noto Sans SC last in the stack as a safety net**. Costs nothing until a glyph
+  falls outside the subset, and prevents tofu outright.
+- `preload: false` on all CJK chunks. `display: 'swap'`.
+
+**(c) `scripts/check-cjk-coverage.mjs` — the guard, wired to `prebuild`**
+
+- Scans ZH content for CJK characters; fails the build if any is missing from
+  `manifest.json`, naming the file, the character and the regeneration command.
+- **This is what makes it permanent.** Without it, the first new hanzi in new copy
+  silently falls back and nobody notices for months — the exact failure mode of the
+  nine `Eyebrow` copies (D57), the 33 hand-rolled panels (D60) and the D51 font pilot.
+- **Follow the `scripts/check-surfaces.mjs` pattern already in the repo** — same shape,
+  same `prebuild` hook, same actionable error text. Consistency matters more than
+  cleverness here.
+
+### 5. Build order
+
+1. **Noto Sans SC through the pipeline.** Ship it. Measure. Bank the win.
+2. **Only then** swap the source font to LXGW WenKai GB for the ZH side (D62). Because
+   the pipeline is font-agnostic, this is a parameter change plus a regeneration.
+
+### 6. Traps
+
+- **⛔ Subset CJK-ONLY when you get to WenKai — exclude Latin.** WenKai inherits Latin
+  from Klee One. If it ships, Latin inside Chinese copy renders in WenKai while the same
+  words on the English site render in Source Sans 3 — **exactly the split D59 exists to
+  fix.** Excluding Latin makes it fall through correctly and is cheaper.
+- **⛔ Use the GB edition** of WenKai. The default carries traditional-leaning forms; GB
+  follows PRC standard shapes.
+- **⚠️ WenKai has no true Bold** (Light / Regular / Medium) against a 300–700 scale.
+  Weight 700 will synthesise or fall back to Medium. Admin accepted this (D62); do not
+  re-litigate it, but do not be surprised by it either.
+- **⚠️ Measure cold.** See §2. `encodedBodySize` lies about cache hits.
+- **⚠️ Do not chunk by Unicode block.** That reproduces the current bug — scattered
+  glyphs across many blocks. Frequency order is the whole optimisation.
+- **⚠️ `min-h-6` and friends do not exist here.** Tailwind is pinned at **3.3.3**; the
+  `min-h-*` spacing scale arrived in 3.4. A missing utility fails **silently** — the
+  class sits in the DOM computing to nothing. Verify any utility resolves before
+  trusting it (this cost a debugging cycle during D61).
+
+### 7. Definition of done
+
+- `npm run build` green, guard running on `prebuild`, 122 pages / 45 routes.
+- Cold-load font bytes on `/en/credentials` **under 50 KB** (from 1,197 KB).
+- Cold-load font bytes on a ZH page **under 400 KB** for two weights.
+- No tofu on any page, EN or ZH, at 375px and desktop.
+- Guard regression-tested **both ways**: add an uncovered hanzi to ZH copy → build fails
+  with a useful message; regenerate → build passes.
+- Re-run the mobile scan; contrast and target-size results unchanged.
+- Guide updated with the achieved numbers, and D62 marked built if you did step 5.2.
+
+### 8. Explicitly out of scope
+
+- **The type floor** (558 sub-12px nodes; `/demos` and `/program` carry ~22%). Still a
+  design pass, not a mechanical fix.
+- **The 15 images without `width`/`height`/`aspect-ratio`** — a CLS fix, unrelated. Each
+  needs its real intrinsic dimensions; guessing distorts them.
+- **The 40×40 hamburger** — clears WCAG 24×24; below the 44px *recommendation* only.
+- **Migrating the remaining 31 hand-rolled panels** — tracked by
+  `scripts/surface-baseline.json`, migrate opportunistically.
+
 ---
+
 
 ## 2026-06-28 · Consult form rework — Cal.com retired
 
