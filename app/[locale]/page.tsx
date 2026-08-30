@@ -321,7 +321,7 @@ function ParentTrustSection({ locale, c }: { locale: string; c: any }) {
               <LexileBar start={result.start} end={result.end} weeks={result.weeks} />
               <span className="badge badge-lavender-dark self-start">6+1 {result.trait}</span>
               <blockquote className="mt-auto">
-                <p className="text-sm leading-relaxed italic" style={{ color: '#94A3B8' }}>&ldquo;{result.quote}&rdquo;</p>
+                <p className="text-sm leading-relaxed italic" style={{ color: '#94A3B8' }}><q>{result.quote}</q></p>
                 <footer className="mt-3 text-xs font-medium" style={{ color: 'rgba(183,181,254,0.5)' }}>&mdash; {result.source}</footer>
               </blockquote>
             </article>

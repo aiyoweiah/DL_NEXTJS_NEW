@@ -4,9 +4,9 @@ Living reference for the DODO marketing site chrome (navbar, footer, funnel CTAs
 and its visual token system. Read this before touching navigation, CTAs, the
 pre-footer band, or any colour value.
 
-**Current through:** v6.12 · 2026-08-29 (D56 swash on every control, tiered by ink weight;
-D57 one canonical Eyebrow — 50 more labels join the system).
-v6.11 = D55 the highlighter swash. v6.10 = D54 the lead-in quote on claim labels.
+**Current through:** v6.13 · 2026-08-29 (D58: the drawn hand extended past the button —
+divider, card edge, quote glyph, marked score; plus a budget rule to keep it rare).
+v6.12 = D56 swash on every control + D57 one canonical Eyebrow. v6.11 = D55 the swash.
 v6.10 = D54 the lead-in quote on claim labels: letterforms enclose a control, punctuation introduces a label.
 v6.9 = D53 option B: the D-o bracket is the control chrome sitewide; **all fills removed**.
 v6.7 added the `.on-dark` hook and surface-aware badge + LexileBar. v6.6 = D52 filled buttons are surface-specific. v6.5 fixed button specificity, muted-on-dark
@@ -465,6 +465,58 @@ lead-in quote by construction.
   defined and still used nowhere.
 
 
+**The hand past the button (D58 · v6.13).** D53–D57 put one drawn hand into the
+*chrome*. D58 extends the same hand to the furniture around it. Every item is the
+**brush** — the third part of speech — so nothing here adds a fourth device.
+
+| Primitive | Class | Where |
+|---|---|---|
+| Section rule | `.divider` | redrawn as a dry-brush stroke (surface-aware) |
+| Card edge | `.accent-top` | painted top edge instead of a 3px rule |
+| Decorative quote | `.quote-glyph` | the oversized mark opening a testimonial |
+| Quotation marks | `q` | real punctuation, language-aware |
+| Marked score | `.score-marked` | a teacher's circle round a proof number |
+| Check | `.check-list` | **defined, deliberately unused** |
+
+- **⚠️ THE BUDGET RULE — this is the governing constraint, not a footnote.** At most
+  **one drawn device per section, two on a hero.** The D-o reads *because* most of the
+  page is not drawn. If dividers, cards, quotes and numbers all go hand-drawn at once,
+  the marks stop being a signature and become a texture — a craft-fair flyer rather
+  than a premium literacy programme. **Do not "finish the set" on a page that already
+  has one.**
+- **⛔ The marked score marks a MEASURED OUTCOME, never a feature count.** `187 points
+  average Lexile gain` is proof and may be circled. `16 Weeks`, `4 Skills`,
+  `3 Assessments` are brochure facts, and circling them would claim they had been
+  earned. **At most one per row** — a teacher circles the thing that matters, not the
+  whole page. Live on two numbers sitewide: `/results` `avg-lexile`, and `/about`'s
+  referral rate. Both are **content-flagged** (`marked: true`), not index-based, so a
+  reordered row cannot drift the circle onto a different stat.
+- **Real quotation punctuation stays text.** `.quote-glyph` is only for a *decorative*
+  standalone mark. Quoted speech uses `q`, so it can be selected, read aloud and
+  translated. This fixed a live bilingual bug: `&ldquo;{quote}&rdquo;` was hard-coded
+  around strings that render in **both** languages, so every ZH testimonial carried
+  Latin marks. `q:lang(zh)` now yields 「」. Six call sites converted.
+- **⛔ `AgreementTool`'s `&ldquo;` are legal contract text** — *(the "Teacher")* — not
+  pull-quotes. They were deliberately left alone. Do not sweep them.
+- **`.accent-top` keeps a transparent 3px border rather than swapping to padding.**
+  A padding swap loses to Tailwind's `p-6`/`p-8` on the same element and shifts every
+  card by 3px; `background-origin: border-box` paints the brush over the reserved strip
+  with the box unchanged.
+- **`.check-list` is defined and used nowhere on purpose.** The site has no
+  customer-facing feature list today — every `✓` in the repo is an `/ops/` status
+  message. Reach for it when a list that deserves it exists; do not hunt for lists.
+- **Held deliberately, with reasons:** the **swashed word** (competes with the button
+  swash for "this one first" — revisit once the marked score has been live a while);
+  the **torn section edge** (structural, changes section boundaries, which is where the
+  `.on-dark` trap lives — do it alone and re-audit); the **inkstone blot** behind the
+  marks (needs a warm neutral token the palette does not have — gilt is reserved, and
+  a lavender blot drops the D-o to 2.97:1).
+- **⛔ Handwritten marginalia was proposed and refused.** It needs real handwriting,
+  therefore an image per string, therefore it cannot be translated — the ZH site would
+  silently fall back to nothing. A device that cannot survive translation is not
+  available to this brand, the same test that rejected the guillemet in D54.
+
+
 **Buttons — accessibility rule. TWO tests, not one (WCAG 1.4.3 text ≥ 4.5:1 AND
 1.4.11 non-text boundary ≥ 3:1).** Until v6.6 this section only checked the label.
 That is how gilt-on-Whisper shipped: text 12.13:1, but the pill's edge against the
@@ -708,6 +760,7 @@ not listed.
 | D55 | **The highlighter swash on the primary control** | `.btn-do-primary` background-image; `#7c79e8` at 30%; content-box anchored; restores a third hierarchy tier without a fill | ✅ v6.11 |
 | D56 | **Swash on every control, tiered by ink weight** | `.btn-do` pale `#b7b5fe` @26%, `.btn-do-primary` deep @30%; gilt rejected (D52 reservation); last non-`btn-do` CTA retired | ✅ v6.12 |
 | D57 | **One canonical `Eyebrow` component** | Nine local copies consolidated; 50 more labels gain the D54 quote; weight/tracking/margin drift corrected; `.eyebrow:lang(zh)` tracking added | ✅ v6.12 |
+| D58 | **The drawn hand past the button** | `.divider` + `.accent-top` redrawn; `.quote-glyph`; language-aware `q` (fixes ZH testimonial marks); `.score-marked` on outcomes only; `.check-list` defined-unused; budget rule set | ✅ v6.13 |
 
 ### Cascade status
 
@@ -724,6 +777,19 @@ not listed.
       Home-page subhead blue `#3b6fcc` → `--text-info` `#3a6ac4`.
 - [x] D51 display face wired (`lib/fonts.js`, root layout, `.font-display`) and
       **piloted on `/methodology` h1 only**.
+
+**Done in v6.13 (2026-08-29) — D58:**
+
+- [x] `.divider` and `.accent-top` redrawn as brush strokes (card height preserved via
+      a transparent border, not a padding swap).
+- [x] `.quote-glyph` replaces the decorative 48px mark on `/compare`.
+- [x] Six inline `&ldquo;…&rdquo;` pairs converted to `q`; `q:lang(zh)` yields 「」.
+      Verified live on `/zh/results`. `AgreementTool`'s legal quotes left untouched.
+- [x] `.score-marked` live on exactly two numbers, both content-flagged.
+- [x] `.check-list` defined, no call sites (no list deserves it yet).
+- [x] Budget rule recorded: one drawn device per section, two on a hero.
+- [x] Build green: exit 0, 122 pages / 45 routes.
+
 
 **Done in v6.12 (2026-08-29) — D56 + D57:**
 

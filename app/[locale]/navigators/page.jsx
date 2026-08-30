@@ -318,7 +318,7 @@ export default async function NavigatorsPage({ params }) {
                 <img src={nav.photo} alt={nav.alt} className="rounded-lg object-cover mb-6" style={{ width: '96px', height: '96px', display: 'block' }} />
                 <div className="mb-2" style={{ fontSize: '18px', fontWeight: 600, color: '#F0F0F0' }}>{nav.name}</div>
                 <p className="mb-4" style={{ fontSize: '14px', fontWeight: 400, color: '#F0F0F0', opacity: 0.7, lineHeight: 1.5 }}>{loc.bio}</p>
-                <p className="mb-4" style={{ fontSize: '14px', fontWeight: 400, fontStyle: 'italic', color: '#b7b5fe', lineHeight: 1.5 }}>&ldquo;{loc.quote}&rdquo;</p>
+                <p className="mb-4" style={{ fontSize: '14px', fontWeight: 400, fontStyle: 'italic', color: '#b7b5fe', lineHeight: 1.5 }}><q>{loc.quote}</q></p>
                 <div className="mb-4 flex flex-wrap">{nav.badges.map((b) => <Badge key={b}>{b}</Badge>)}</div>
                 <p style={{ fontSize: '13px', fontWeight: 500, color: '#F0F0F0', lineHeight: 1.5 }}>{nav.result}<br />{nav.lexile}</p>
               </div>
@@ -352,7 +352,7 @@ export default async function NavigatorsPage({ params }) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {c.s7.testimonials.map(({ quote, city, detail }) => (
             <div key={city + detail} className="rounded-lg" style={{ backgroundColor: '#2E3848', padding: '32px' }}>
-              <p className="mb-6" style={{ fontSize: '16px', fontWeight: 400, color: '#F0F0F0', lineHeight: 1.7, fontStyle: 'italic' }}>&ldquo;{quote}&rdquo;</p>
+              <p className="mb-6" style={{ fontSize: '16px', fontWeight: 400, color: '#F0F0F0', lineHeight: 1.7, fontStyle: 'italic' }}><q>{quote}</q></p>
               <div style={{ fontSize: '14px', fontWeight: 600, color: '#b7b5fe' }}>{city}</div>
               <div style={{ fontSize: '13px', fontWeight: 400, color: '#F0F0F0', opacity: 0.6 }}>{detail}</div>
             </div>

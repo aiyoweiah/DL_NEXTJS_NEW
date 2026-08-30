@@ -1394,12 +1394,32 @@
     }
   }
 
+  /* ── The drawn hand, past the button (D58 · v6.13) ─────────
+     D53–D57 put one hand into the CHROME. These extend the same hand to
+     the furniture around it. Every one of them is the BRUSH — the third
+     part of speech (letterforms enclose a control, punctuation introduces
+     a label, brush weights a thing). None of them adds a fourth device,
+     because a fourth would need a fourth meaning.
+
+     ⚠️ BUDGET: at most one drawn device per section, two on a hero. The
+     D-o reads because most of the page is NOT drawn. If dividers, cards,
+     quotes and numbers all go hand-drawn at once, the marks stop being a
+     signature and become a texture — a craft-fair flyer, not a premium
+     literacy programme. Do not "finish the set" on a page that already
+     has one. */
+
   .divider {
-    width: 36px;
-    height: 2px;
-    background: var(--color-lavender-signal);
-    border-radius: var(--radius-pill);
+    width: 74px;
+    height: 7px;
+    background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 7' preserveAspectRatio='none'><path fill='%237c79e8' fill-opacity='.85' d='M1.5 3.6 C 18 1.9, 44 1.2, 68 1.5 C 92 1.8, 110 2.6, 118.5 3.4 C 110 5.4, 92 6.1, 68 5.9 C 44 5.7, 18 5.4, 1.5 3.6 Z'/></svg>") no-repeat center/100% 100%;
     margin: 1.25rem 0;
+  }
+
+  .section-dark .divider,
+  .section-darker .divider,
+  .section-hero-short .divider,
+  .on-dark .divider {
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 7' preserveAspectRatio='none'><path fill='%23b7b5fe' fill-opacity='.9' d='M1.5 3.6 C 18 1.9, 44 1.2, 68 1.5 C 92 1.8, 110 2.6, 118.5 3.4 C 110 5.4, 92 6.1, 68 5.9 C 44 5.7, 18 5.4, 1.5 3.6 Z'/></svg>");
   }
 
   .divider-center {
@@ -1407,12 +1427,108 @@
     margin-right: auto;
   }
 
+  /* A painted top edge instead of a ruled one. border-top is replaced by
+     equivalent padding so card height does not shift. */
   .accent-top {
-    border-top: 3px solid var(--color-lavender-signal);
+    /* A transparent border keeps the box EXACTLY as it was — a padding
+       swap would lose to Tailwind's p-6/p-8 on the same element and shift
+       every card by 3px. background-origin: border-box lets the brush
+       paint over that reserved strip. */
+    border-top: 3px solid transparent;
+    background-origin: border-box;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 7' preserveAspectRatio='none'><path fill='%23b7b5fe' d='M0 3.4 C 26 1.4, 70 0.7, 128 1.1 C 186 1.5, 250 2.4, 300 3.2 L300 6.4 C 250 5.6, 186 5.2, 128 5 C 70 4.8, 26 5.2, 0 6.2 Z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: 100% 6px;
   }
 
   .accent-top-gilt {
     border-top: 3px solid var(--color-gilt);
+  }
+
+  /* ── The pull-quote glyph (D58) ────────────────────────────
+     For a DECORATIVE standalone quote mark only — the oversized one that
+     opens a testimonial card. Real quotation punctuation around real
+     quoted text is NOT this; that is `q` below, which is text and must
+     stay text so it can be selected, read aloud and translated. */
+  .quote-glyph {
+    display: block;
+    width: 38px;
+    height: 24px;
+    background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='10 15 55 32' fill='none' stroke='%237c79e8' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'><path d='M33 23 C 26 25.5, 21 32, 22.5 41'/><path d='M50 23 C 43 25.5, 38 32, 39.5 41'/></svg>") no-repeat center/contain;
+  }
+
+  /* ── Language-aware quotation marks (D58) ──────────────────
+     A Latin “ ” in front of Chinese is simply wrong typography — Chinese
+     uses 「 」 for speech and 『 』 for a quote inside a quote. The site
+     had `&ldquo;{quote}&rdquo;` hard-coded around strings that render in
+     BOTH languages, so every ZH testimonial carried Latin marks. Using
+     `q` lets CSS pick per language, and keeps the marks as real text. */
+  q {
+    quotes: '\201C' '\201D' '\2018' '\2019';
+    font-style: inherit;
+  }
+
+  :lang(zh) q,
+  q:lang(zh) {
+    quotes: '\300C' '\300D' '\300E' '\300F';
+  }
+
+  /* ── The marked score (D58) ────────────────────────────────
+     A teacher's circle round a number. The one gesture here that is about
+     TEACHING rather than decoration, and the visual home for §07a's
+     "proof renders as citation, not badge".
+
+     ⛔ THE RULE: mark a MEASURED OUTCOME, never a feature count.
+     "100–150L per cycle" is proof and may be circled. "16 Weeks",
+     "4 Skills", "3 Assessments" are program facts and may not — circling
+     them would say a brochure fact had been earned. At most ONE per row:
+     a teacher circles the thing that matters, not the whole page.
+
+     Baked #7c79e8 like --do-mark: 3.37:1 on Whisper, 5.28:1 on Void
+     Black, so one file serves both grounds. It is a stroke BESIDE the
+     digits, not a ground behind them, so it carries no text-contrast
+     cost at all. */
+  .score-marked {
+    position: relative;
+    display: inline-block;
+    padding: 0.10em 0.30em;
+  }
+
+  .score-marked::after {
+    content: "";
+    position: absolute;
+    inset: -0.22em -0.14em -0.26em -0.14em;
+    pointer-events: none;
+    background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 52' preserveAspectRatio='none'><path fill='none' stroke='%237c79e8' stroke-opacity='.85' stroke-width='2.4' stroke-linecap='round' d='M74 5 C 44 2, 14 9, 8 22 C 2 35, 24 47, 58 49 C 92 51, 114 41, 115 28 C 116 16, 98 7, 70 5 C 56 4, 42 6, 32 10'/></svg>") no-repeat center/100% 100%;
+  }
+
+  /* ── The check (D58) ───────────────────────────────────────
+     A drawn tick for "what's included" lists. DEFINED BUT UNUSED — the
+     site has no customer-facing feature list today (every ✓ in the repo
+     is an /ops/ status message). Do not go hunting for lists to convert;
+     reach for this when a list that deserves it actually exists. */
+  .check-list {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .check-list > li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+
+  .check-list > li::before {
+    content: "";
+    flex: none;
+    width: 17px;
+    height: 17px;
+    margin-top: 0.18em;
+    background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%237c79e8' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'><path d='M3.5 11 C 5.5 12.5, 7 14.5, 8 17 C 10.5 11, 14 5.5, 18 2'/></svg>") no-repeat center/contain;
   }
 
   .hairline {

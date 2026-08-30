@@ -28,7 +28,7 @@ export async function generateMetadata({ params }) {
 function StudentVoiceCard({ quote, grade, city, weeksInProgram, hangarDetail }) {
   return (
     <div className="rounded-2xl" style={{ backgroundColor: '#2E3848', border: '1px solid rgba(183,181,254,0.10)', padding: '32px' }}>
-      <div aria-hidden="true" style={{ fontFamily: 'var(--font-latin)', fontSize: '48px', fontWeight: 700, color: '#b7b5fe', opacity: 0.25, lineHeight: 1, marginBottom: '12px' }}>&ldquo;</div>
+      <div aria-hidden="true" className="quote-glyph" style={{ width: '44px', height: '28px', marginBottom: '12px' }} />
       <p style={{ fontFamily: 'var(--font-latin)', fontWeight: 300, fontSize: '16px', fontStyle: 'italic', color: '#F0F0F0', lineHeight: 1.7, marginBottom: '24px' }}>{quote}</p>
       <div className="flex items-center gap-2" style={{ fontFamily: 'var(--font-latin)', fontSize: '13px', fontWeight: 600, color: '#b7b5fe', marginBottom: '8px' }}>
         <span>{grade}</span><span style={{ opacity: 0.4 }}>·</span><span>{city}</span><span style={{ opacity: 0.4 }}>·</span>

@@ -272,7 +272,7 @@ function WhatWeBelieve({ c, locale }) {
                   <BeliefIcon id={item.id} />
                 </div>
                 <div className="min-w-0">
-                  <p style={{ fontSize: '18px', fontWeight: 600, lineHeight: 1.3, color: '#0E0E12' }}>&ldquo;{item.belief}&rdquo;</p>
+                  <p style={{ fontSize: '18px', fontWeight: 600, lineHeight: 1.3, color: '#0E0E12' }}><q>{item.belief}</q></p>
                   {locale === 'zh' && <p className="mt-1" style={{ fontFamily: 'var(--font-cjk)', fontSize: '13px', color: '#5856cc' }}>{item.beliefCn}</p>}
                 </div>
                 <p style={{ fontSize: '15px', lineHeight: 1.8, color: '#2E3848' }}>{c.beliefs.bodies[i]}</p>
@@ -396,7 +396,9 @@ function ByTheNumbers({ c, locale }) {
             <div key={i} className="rounded-xl p-6"
               style={{ backgroundColor: '#ffffff', border: '1px solid rgba(14,14,18,0.06)' }}>
               <p className="text-3xl md:text-4xl font-bold tracking-tight" style={{ color: '#5856cc', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
-                {item.number}
+                {/* D58 — content-flagged, not index-based, so the row can be
+                    reordered without the circle drifting onto a different stat. */}
+                <span className={item.marked ? 'score-marked' : undefined}>{item.number}</span>
               </p>
               <p className="mt-3 text-sm leading-relaxed" style={{ color: '#3D4452' }}>{item.label}</p>
             </div>

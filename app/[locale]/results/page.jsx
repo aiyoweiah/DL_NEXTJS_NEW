@@ -165,7 +165,13 @@ export default async function ResultsPage({ params }) {
                 className="flex flex-col items-center text-center sm:px-6 pt-8 sm:pt-0 first:pt-0"
               >
                 <p className="proof-stat-number">
-                  {stat.number}
+                  {/* D58 — one marked score per row, and only on a measured
+                      outcome. avg-lexile is the headline proof number; the
+                      other two are proof too, but a teacher circles the one
+                      that matters, not the whole page. */}
+                  <span className={stat.id === 'avg-lexile' ? 'score-marked' : undefined}>
+                    {stat.number}
+                  </span>
                   <span
                     className="ml-1 text-xl font-medium"
                     style={{ color: 'rgba(183,181,254,0.7)' }}
@@ -254,7 +260,7 @@ export default async function ResultsPage({ params }) {
                     <blockquote
                       className="text-sm leading-relaxed italic text-[#3D4452] mb-2"
                     >
-                      &ldquo;{result.quote}&rdquo;
+                      <q>{result.quote}</q>
                     </blockquote>
                     {result.quoteSource && (
                       <p

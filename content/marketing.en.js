@@ -553,7 +553,7 @@ export const about = {
     items: [
       { number: '10,000+', label: 'teaching hours delivered'                                     },
       { number: '300+',    label: 'students across the programme'                                },
-      { number: '75%+',    label: 'of enrollments from genuine word-of-mouth referrals'         },
+      { number: '75%+',    label: 'of enrollments from genuine word-of-mouth referrals', marked: true         },
       { number: 'Top 50',  label: 'world-ranked universities for every Navigator (Oxford, U of T, Queen’s, LSE…)' },
     ],
   },

@@ -159,7 +159,7 @@ function ResultCard({ lexileStart, lexileEnd, weeks, quote, light, className }) 
             borderColor: 'rgba(183,181,254,0.3)',
           }}
         >
-          &ldquo;{quote}&rdquo;
+          <q>{quote}</q>
         </blockquote>
       )}
 

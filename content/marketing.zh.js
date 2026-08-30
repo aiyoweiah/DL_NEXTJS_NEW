@@ -536,7 +536,7 @@ export const about = {
     items: [
       { number: '10,000+', label: '已交付教学小时'                                          },
       { number: '300+',    label: '在册学生人数'                                            },
-      { number: '75%+',    label: '报名来自真实口碑推荐'                                    },
+      { number: '75%+',    label: '报名来自真实口碑推荐', marked: true                                    },
       { number: '世界前50',  label: '所有导师（Navigator）毕业院校（牛津、多大、皇后、LSE…）' },
     ],
   },
