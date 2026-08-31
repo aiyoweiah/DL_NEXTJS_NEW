@@ -4,7 +4,7 @@ Living reference for the DODO marketing site chrome (navbar, footer, funnel CTAs
 and its visual token system. Read this before touching navigation, CTAs, the
 pre-footer band, or any colour value.
 
-**Current through:** v6.22 · 2026-08-30 (D68 built: gilt means earned proof; D62 built: ZH on LXGW WenKai GB; D67 built: Latin leads the CJK stack; D66 built: gilt escrow enforced; D65 built: btn-do sweep finished; D64 built: Latin preload trimmed; D63 built: CJK frequency-tiered subset; D62 logged: ZH adopts LXGW WenKai, EN stays
+**Current through:** v6.23 · 2026-08-30 (D69 built: hero eyebrow pills; D68 built: gilt means earned proof; D62 built: ZH on LXGW WenKai GB; D67 built: Latin leads the CJK stack; D66 built: gilt escrow enforced; D65 built: btn-do sweep finished; D64 built: Latin preload trimmed; D63 built: CJK frequency-tiered subset; D62 logged: ZH adopts LXGW WenKai, EN stays
 Source Sans 3 — decision recorded, implementation not started).
 v6.15 = D61 target size 24×24. v6.14 = D59 one Latin face + D60 the Surface guard.
 v6.10 = D54 the lead-in quote on claim labels: letterforms enclose a control, punctuation introduces a label.
@@ -587,6 +587,35 @@ lead-in quote by construction.
   merits as the most-tapped control on mobile.
 
 
+**The hero eyebrow pills finally carry the quote (D69 · v6.23 — BUILT).**
+Reported from a phone as "the brackets in the hero still seem outdated." They were.
+
+- **Four pages hand-rolled a *pill* eyebrow**: `/program`, `/little-dodo`, `/demos`,
+  `/consult`, each a `<div className="inline-flex … rounded-full">` holding a **1.5px
+  bullet dot** and a styled `<span>` at 10px / 600 / 0.07em.
+- **D57 swept those same four pages and missed these.** Its header names compare /
+  consult / demos / little-dodo / navigators / program among the nine copies it
+  replaced — but it replaced each page's **plain** eyebrow. The pill variant was a
+  different shape, so the sweep did not match it. Result: every one of those pages
+  carried D54-quoted labels throughout **and a pre-D54 dotted label at the very top**.
+  On `/program` that is 14 quoted labels sitting under one dotted one — which is
+  exactly why the hero read as stale while the rest of the page did not.
+- **The dot is gone.** A pill is a label, and D54 says a label is introduced by the
+  lead-in quote. The mark now comes from `.label-quote`, like every other label.
+- **Type deliberately unchanged.** The pill has always run 10px / 0.07em against the
+  canonical `.eyebrow`'s 12px / 0.12em. Migrating to canonical type would have resized
+  four heroes; this fix is about the marker. The quote is scaled to 15×9px so it does
+  not overpower 10px text. ⚠️ **That 10px remains part of the open sub-12px type floor.**
+- **`Eyebrow` gained a `pill` prop** rather than the pages gaining more inline styles —
+  the same structural argument as D57. There is now one place to change, so a fifth
+  copy cannot appear by accident.
+
+**Note on how this was found.** Two earlier reports against a
+`d9a5409f.…pages.dev` URL were dismissed as a stale deployment — correctly for the
+*colour*, since that build predates D68. But the *marker* was genuinely wrong the whole
+time, on production too. A frozen preview URL is a real trap, and it is also a very
+easy way to explain away a real bug. Check the live origin before concluding staleness.
+
 **Gilt has exactly one job now: earned proof (D68 · v6.22 — BUILT).**
 Gilt was not rare, it was *unused*. `.btn-do-charter`, `.badge-gilt` and `.text-gilt`
 were all fully specified with **zero call sites**, while gilt actually rendered in ten
@@ -1051,6 +1080,7 @@ not listed.
 | D66 | **The gilt reservation is enforced, not just written down** | `check-gilt-escrow.mjs` on `prebuild`: gilt on any interactive control fails the build. D52 reserved gilt in v6.6 and three later sweeps each declared the job done while six gilt CTAs shipped — a reservation nobody enforces quietly expires. 2 hero chips allowlisted with a stated retirement condition | ✅ v6.20 |
 | D67 | **The Latin face leads the CJK stack** | Fixes a regression D63 introduced: a CJK-only subset at the head of `--font-cjk` meant Latin inside Chinese copy missed it and fell to PingFang/YaHei. Measured: "Reading Thinking Lexile MCT" set **436.26px in PingFang vs 380.29px in Source Sans 3** — the D59 split, reintroduced. Latin now leads; verified back to 380.29px | ✅ v6.21 |
 | D68 | **Gilt gets one job: earned proof** | `--gilt-mark` `#AD8100` added — the one gold clearing 3:1 on both grounds, so one baked colour serves every surface. `.score-marked` restroked from `--do-mark` lavender to gilt, fixing a grammar bug where the *control* mark circled an unpressable number. Hero chips gilt → lavender-signal (wayfinding, not conversion) — which closes D65 and empties the D66 allowlist. **Also fixes `--text-gilt-light`: it claimed "passes AA" at 2.56:1** | ✅ v6.22 |
+| D69 | **The hero eyebrow pills finish the D57 sweep** | `/program`, `/little-dodo`, `/demos`, `/consult` each hand-rolled a *pill* eyebrow as `<div>` + 1.5px dot + styled `<span>`. D57 consolidated those same four pages' PLAIN eyebrows and missed the pills — so each page carried quoted labels throughout and a **pre-D54 dotted label at the very top**. `.eyebrow-pill` + `pill` prop on `Eyebrow`; dot replaced by the D54 quote | ✅ v6.23 |
 
 ### Cascade status
 

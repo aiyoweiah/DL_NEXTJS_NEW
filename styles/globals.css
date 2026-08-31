@@ -1345,6 +1345,48 @@
     letter-spacing: 0.06em;
   }
 
+  /* ── The eyebrow pill (D69) ──────────────────────────────────
+     The hero variant: the same label, wearing pill chrome.
+
+     Four pages hand-rolled this — /program, /little-dodo, /demos,
+     /consult — each as a <div> holding a 1.5px dot and a styled <span>.
+     D57 consolidated those same four pages' PLAIN eyebrows into
+     components/ui/Eyebrow.jsx, but the pill copies did not match the
+     shape being swept and were left behind. So every page ended up with
+     its section labels carrying the D54 lead-in quote while the label at
+     the very TOP of the page still wore the pre-D54 dot — most visible on
+     /program, where 14 quoted labels sit under one dotted one.
+
+     The dot is gone: a pill is a label, and D54 says a label is
+     introduced by the quote. The mark now comes from .label-quote like
+     every other label on the site.
+
+     Type is deliberately NOT the canonical .eyebrow 12px/0.12em — the
+     pill has always run 10px/0.07em, and this fix is about the marker,
+     not about resizing four heroes. ⚠️ That 10px is part of the known
+     sub-12px type floor, which is still an open design pass. */
+  .eyebrow-pill {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 9999px;
+    padding: 5px 14px;
+    border: 1px solid rgba(183,181,254,0.18);
+    background-color: rgba(183,181,254,0.05);
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    color: var(--color-lavender-signal);
+  }
+
+  /* The quote is drawn at a fixed 19x12px, sized for the 12px eyebrow.
+     At 10px it would overpower the label, so the pill scales it down and
+     tightens the gap to match. */
+  .eyebrow-pill.label-quote::before {
+    width: 15px;
+    height: 9px;
+    margin-right: 0.3rem;
+    margin-top: 0.02em;
+  }
+
   .section-dark .eyebrow,
   .section-darker .eyebrow,
   .section-hero-short .eyebrow,
