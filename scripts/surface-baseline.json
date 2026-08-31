@@ -1,5 +1,5 @@
 {
-  "total": 31,
+  "total": 29,
   "counts": {
     "app/[locale]/about/page.jsx": 4,
     "app/[locale]/compare/page.jsx": 2,
@@ -8,10 +8,10 @@
     "app/[locale]/lexile/page.jsx": 1,
     "app/[locale]/methodology/page.jsx": 3,
     "app/[locale]/navigators/page.jsx": 2,
-    "app/[locale]/program/page.jsx": 2,
+    "app/[locale]/program/page.jsx": 1,
+    "components/UnderConstruction.jsx": 6,
     "components/assessment/AssessmentClient.jsx": 1,
     "components/media/StreamVideo.jsx": 1,
-    "components/partners/PartnersClient.jsx": 5,
-    "components/UnderConstruction.jsx": 6
+    "components/partners/PartnersClient.jsx": 4
   }
 }

@@ -30,6 +30,7 @@ import { citySchema }             from '@/lib/schema'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Badge          from '@/components/ui/Badge'
 import Button         from '@/components/ui/Button'
+import Eyebrow from '@/components/ui/Eyebrow'
 
 // ── City data ─────────────────────────────────────────────────
 
@@ -100,7 +101,7 @@ export default async function CityPage({ params }) {
       <SectionWrapper hero>
         <div className="py-24 md:py-32 max-w-3xl">
 
-          <Badge className="mb-6 label-quote">{ui.badge}</Badge>
+          <Eyebrow dark mb="1.5rem">{ui.badge}</Eyebrow>
 
           <h1
             id="city-heading"

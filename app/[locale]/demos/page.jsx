@@ -25,6 +25,7 @@ import { demos as copyEn }              from '@/content/marketing.en'
 import { demos as copyZh }              from '@/content/marketing.zh'
 import DoCta         from '@/components/ui/DoCta'
 import Eyebrow from '@/components/ui/Eyebrow'
+import TagRun from '@/components/ui/TagRun'
 
 const LEXILE_SCALE = [
   { level: 1200, grade: 'Grade 12+' },
@@ -60,15 +61,6 @@ function BilingualH2({ primary, secondary, light = false, center = false, id }) 
   )
 }
 
-
-function Tag({ children, variant = 'default' }) {
-  const s = {
-    default: { backgroundColor: 'rgba(14,14,18,0.05)',   border: '1px solid rgba(14,14,18,0.09)',     color: 'var(--text-muted)' },
-    violet:  { backgroundColor: 'rgba(183,181,254,0.08)', border: '1px solid rgba(183,181,254,0.2)',  color: '#5856cc' },
-    dark:    { backgroundColor: 'rgba(183,181,254,0.06)', border: '1px solid rgba(183,181,254,0.15)', color: '#b7b5fe', letterSpacing: '0.07em' },
-  }
-  return <span style={{ padding: '2px 9px', borderRadius: '9999px', fontSize: '10px', fontWeight: 700, lineHeight: 1.5, whiteSpace: 'nowrap', ...s[variant] }}>{children}</span>
-}
 
 // ─────────────────────────────────────────────────────────────
 // SECTION 1 — HERO
@@ -152,7 +144,7 @@ function Hero({ locale, c }) {
         }}
       >
         <div style={{ maxWidth: '46rem' }}>
-          <Eyebrow pill mb="1.75rem">{c.hero.chip}</Eyebrow>
+          <Eyebrow dark mb="1.75rem">{c.hero.chip}</Eyebrow>
           <h1
             id="demos-hero-heading"
             style={{ fontSize: 'clamp(2.25rem, 5vw + 0.5rem, 4rem)', fontWeight: 700, lineHeight: 1.06, letterSpacing: '-0.03em', color: '#F0F0F0', marginBottom: '0.625rem', textWrap: 'balance' }}
@@ -209,9 +201,7 @@ function VideoGallery({ locale, c }) {
         {player}
         <div style={{ padding: '0.625rem 0.75rem 0.875rem' }}>
           <div style={{ display: 'flex', gap: '0.3rem', flexWrap: 'wrap', marginBottom: '0.5rem' }}>
-            <Tag variant="violet">{card.tag1}</Tag>
-            <Tag variant="default">{card.tag2}</Tag>
-            {card.tag3 && <Tag variant="default">{card.tag3}</Tag>}
+            <TagRun items={[card.tag1, card.tag2, card.tag3]} />
           </div>
           <p style={{ fontSize: '0.875rem', fontWeight: 700, color: '#0E0E12', lineHeight: 1.3, marginBottom: '1px' }}>{card.label}</p>
           <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '10px', color: '#5856cc', lineHeight: 1.3 }}>{card.labelZh}</p>

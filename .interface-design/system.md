@@ -4,7 +4,7 @@ Living reference for the DODO marketing site chrome (navbar, footer, funnel CTAs
 and its visual token system. Read this before touching navigation, CTAs, the
 pre-footer band, or any colour value.
 
-**Current through:** v6.23 · 2026-08-30 (D69 built: hero eyebrow pills; D68 built: gilt means earned proof; D62 built: ZH on LXGW WenKai GB; D67 built: Latin leads the CJK stack; D66 built: gilt escrow enforced; D65 built: btn-do sweep finished; D64 built: Latin preload trimmed; D63 built: CJK frequency-tiered subset; D62 logged: ZH adopts LXGW WenKai, EN stays
+**Current through:** v6.24 · 2026-08-30 (D70 built: pills retired sitewide; D69 built: hero eyebrow pills; D68 built: gilt means earned proof; D62 built: ZH on LXGW WenKai GB; D67 built: Latin leads the CJK stack; D66 built: gilt escrow enforced; D65 built: btn-do sweep finished; D64 built: Latin preload trimmed; D63 built: CJK frequency-tiered subset; D62 logged: ZH adopts LXGW WenKai, EN stays
 Source Sans 3 — decision recorded, implementation not started).
 v6.15 = D61 target size 24×24. v6.14 = D59 one Latin face + D60 the Surface guard.
 v6.10 = D54 the lead-in quote on claim labels: letterforms enclose a control, punctuation introduces a label.
@@ -587,6 +587,52 @@ lead-in quote by construction.
   merits as the most-tapped control on mobile.
 
 
+**Pills are retired (D70 · v6.24 — BUILT).** 46 text-bearing capsules → 0.
+
+**Why.** The v6.x system is a drawn hand — the D-o bracket, the lead-in quote, the
+swash, the brush divider, the marked score. A bordered capsule is generic UI-kit chrome
+from the language that preceded all of it, which is why these read as dated next to
+everything around them. Removing them finishes the D53–D58 transition instead of adding
+a seventh device to it.
+
+Three roles, three different answers:
+
+- **Label pills → plain `Eyebrow`.** The capsule went, nothing replaced it. Already the
+  dominant pattern — 14 quoted labels sat under the one pill on `/program`.
+- **Taxonomy capsules → `TagRun`** (`components/ui/TagRun.jsx`, `.tag-run`). The capsule
+  was doing one real job: making a row of values read as a SET. A middot run keeps that
+  grouping with typography instead of chrome. D58's budget rule — one drawn device per
+  section — forbids giving each tag its own mark.
+- **`/faq` filters → the D55 swash.** The last place a pill did real work, because a
+  filter genuinely needs a selected state. The swash already means *"press this ONE"*,
+  which is exactly what a chosen filter is, so this reuses the system's device rather
+  than inventing a seventh. No D-o bracket: D53b excludes utility chrome.
+
+**What the first sweep missed, and why.** A `rounded-full` scan found 46 pills and
+declared victory. It could not see `.badge`, which uses `border-radius: var(--radius-pill)`
+— six more label pills on `/`, `/methodology`, `/results`, `/lexile`, `/cities/[city]`
+and `/blog/[slug]`, including the template behind all 20 city pages. **Third time this
+exact shape of miss has appeared** (D65's inline gilt, D69's pill eyebrows, now
+`.badge`): a sweep matches one spelling, and the escapees wear another.
+
+**Type floor.** Six sites moved off sub-12px — the `/program` step badge was **8px**.
+`.tag-run` sets 0.75rem as its own floor so the pattern cannot reintroduce them.
+
+**⚠️ Regression caught during the close-out, worth remembering.** The capsule's tinted
+background had been carrying the label's contrast. Removing it drops every converted
+label onto its section ground, and three hero eyebrows needed `dark` as a result.
+**A contrast probe that walks up to a `backgroundColor` cannot judge these heroes** —
+they layer a dark `<img>` over a Whisper ground, so the probe reports 1.75:1 for labels
+that are plainly legible. Those readings are false positives; the heroes were verified
+by eye. Do not trust a computed-ground number on a photographic hero.
+
+**Still open — 46 hand-rolled uppercase labels** across the site (`/credentials`,
+`/blog`, `AssessmentClient`, `PartnersClient`, `ConsultForm`, Navbar and others). Not
+pills, so out of scope here, but the same drift D57 set out to fix: the `/faq` hero
+eyebrow is a bare `<div>` with no quote while `❝ THE PROGRAM` sits directly beneath it.
+Most are not eyebrows at all (form labels, table headers), so this needs triage before
+any sweep.
+
 **The hero eyebrow pills finally carry the quote (D69 · v6.23 — BUILT).**
 Reported from a phone as "the brackets in the hero still seem outdated." They were.
 
@@ -1081,6 +1127,7 @@ not listed.
 | D67 | **The Latin face leads the CJK stack** | Fixes a regression D63 introduced: a CJK-only subset at the head of `--font-cjk` meant Latin inside Chinese copy missed it and fell to PingFang/YaHei. Measured: "Reading Thinking Lexile MCT" set **436.26px in PingFang vs 380.29px in Source Sans 3** — the D59 split, reintroduced. Latin now leads; verified back to 380.29px | ✅ v6.21 |
 | D68 | **Gilt gets one job: earned proof** | `--gilt-mark` `#AD8100` added — the one gold clearing 3:1 on both grounds, so one baked colour serves every surface. `.score-marked` restroked from `--do-mark` lavender to gilt, fixing a grammar bug where the *control* mark circled an unpressable number. Hero chips gilt → lavender-signal (wayfinding, not conversion) — which closes D65 and empties the D66 allowlist. **Also fixes `--text-gilt-light`: it claimed "passes AA" at 2.56:1** | ✅ v6.22 |
 | D69 | **The hero eyebrow pills finish the D57 sweep** | `/program`, `/little-dodo`, `/demos`, `/consult` each hand-rolled a *pill* eyebrow as `<div>` + 1.5px dot + styled `<span>`. D57 consolidated those same four pages' PLAIN eyebrows and missed the pills — so each page carried quoted labels throughout and a **pre-D54 dotted label at the very top**. `.eyebrow-pill` + `pill` prop on `Eyebrow`; dot replaced by the D54 quote | ✅ v6.23 |
+| D70 | **Pills retired sitewide** | 46 capsules → 0. Label pills → plain `Eyebrow`; taxonomy capsules → `TagRun` (middot run, `components/ui/TagRun.jsx`); `/faq` filters → D55 swash as the selected state. `.badge`/`radius-pill` cases were invisible to a `rounded-full` scan and had to be found separately. Six sub-12px sites raised to 12px. D69's `.eyebrow-pill` superseded after one version | ✅ v6.24 |
 
 ### Cascade status
 

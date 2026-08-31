@@ -149,14 +149,17 @@ function CategoryBar({ active, onSelect, categories }) {
         {categories.map(({ label, anchor }) => {
           const isActive = active === anchor
           return (
-            <button key={anchor} onClick={() => scrollTo(anchor)} style={{
-              fontFamily: 'var(--font-latin)', fontSize: '13px',
-              fontWeight: isActive ? 600 : 400, whiteSpace: 'nowrap',
-              padding: '6px 14px', borderRadius: '9999px',
-              backgroundColor: isActive ? '#b7b5fe' : 'transparent',
-              color: isActive ? '#0E0E12' : 'rgba(240,240,240,0.6)',
-              border: isActive ? 'none' : '1px solid rgba(183,181,254,0.15)',
-              cursor: 'pointer', transition: 'all 150ms ease' }}>
+            // Selected state is the D55 swash, not a filled capsule. The
+            // swash's defined meaning is "press this ONE", which is exactly
+            // what a chosen filter is — so this reuses the system's own
+            // device rather than inventing a seventh. Unselected is plain
+            // text: no chrome at all.
+            <button
+              key={anchor}
+              onClick={() => scrollTo(anchor)}
+              aria-current={isActive ? 'true' : undefined}
+              className={isActive ? 'filter-tab filter-tab-active' : 'filter-tab'}
+            >
               {label}
             </button>
           )

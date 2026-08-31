@@ -37,6 +37,7 @@ import Badge          from '@/components/ui/Badge'
 import LexileBar      from '@/components/ui/LexileBar'
 import StreamVideo    from '@/components/media/StreamVideo'
 import DoCta         from '@/components/ui/DoCta'
+import Eyebrow from '@/components/ui/Eyebrow'
 
 // ── Static params ─────────────────────────────────────────────
 export function generateStaticParams() {
@@ -154,7 +155,7 @@ export default async function MethodologyPage({ params }) {
           }}
         >
           <div className="py-4 max-w-3xl">
-            <Badge className="mb-6 label-quote">{t.hero.eyebrow}</Badge>
+            <Eyebrow dark mb="1.5rem">{t.hero.eyebrow}</Eyebrow>
             <h1
               id="methodology-hero-heading"
               className="leading-tight mb-6 text-gradient"

@@ -121,7 +121,7 @@ function Hero({ locale, c }) {
         }}
       >
         <div style={{ maxWidth: '46rem' }}>
-          <Eyebrow pill mb="1.75rem">{c.hero.chip}</Eyebrow>
+          <Eyebrow dark mb="1.75rem">{c.hero.chip}</Eyebrow>
 
           <h1
             id="consult-hero-heading"
@@ -175,7 +175,7 @@ function WhatHappens({ locale, c }) {
               <div aria-hidden="true" style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', backgroundColor: i === 0 ? '#b7b5fe' : 'rgba(183,181,254,0.15)' }} />
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
                 <span style={{ fontSize: 'clamp(2rem, 3vw, 2.75rem)', fontWeight: 800, letterSpacing: '-0.04em', color: 'rgba(183,181,254,0.18)', lineHeight: 1 }}>{step.num}</span>
-                <span style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(88,86,204,0.5)', padding: '2px 8px', border: '1px solid rgba(183,181,254,0.2)', borderRadius: '9999px' }}>{step.time}</span>
+                <span style={{ fontSize: '12px', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-accent)' }}>{step.time}</span>
               </div>
               <p style={{ fontSize: '1.0625rem', fontWeight: 700, color: '#0E0E12', lineHeight: 1.25, marginBottom: '2px' }}>{step.label}</p>
               <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '11px', color: '#5856cc', lineHeight: 1.3, marginBottom: '0.875rem' }}>{step.labelZh}</p>

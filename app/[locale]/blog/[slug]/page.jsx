@@ -127,7 +127,7 @@ export default async function BlogPostPage({ params }) {
           )}
 
           {fm.category && (
-            <Badge className="mb-6">{fm.category}</Badge>
+            <p className="tag-run" style={{ marginBottom: '1.5rem' }}>{fm.category}</p>
           )}
 
           <h1 id="post-heading" className="mb-6" style={{ color: '#0E0E12' }}>

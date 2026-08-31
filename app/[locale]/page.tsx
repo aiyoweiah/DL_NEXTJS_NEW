@@ -24,6 +24,7 @@ import AgeBandChooser                   from '@/components/ui/AgeBandChooser'
 import { home as homeEn, ageBands as bandsEn, codingBand as codingEn } from '@/content/marketing.en'
 import { home as homeZh, ageBands as bandsZh, codingBand as codingZh } from '@/content/marketing.zh'
 import DoCta         from '@/components/ui/DoCta'
+import Eyebrow from '@/components/ui/Eyebrow'
 
 // ── Metadata ──────────────────────────────────────────────────
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -102,7 +103,7 @@ function Hero({ locale, c }: { locale: string; c: any }) {
       >
         <div className="max-w-3xl">
           <div className="flex items-center gap-3 mb-8">
-            <span className="badge badge-lavender label-quote" aria-label="Program audience">{c.hero.eyebrow}</span>
+            <Eyebrow as="span" mb="0" aria-label="Program audience">{c.hero.eyebrow}</Eyebrow>
             {c.hero.eyebrow2 && (
               <span className="hidden sm:flex items-center gap-1.5 text-xs font-medium" style={{ color: '#5856cc' }}>
                 <span className="inline-block w-1.5 h-1.5 rounded-full" style={{ backgroundColor: '#F5C842' }} aria-hidden="true" />
@@ -319,7 +320,7 @@ function ParentTrustSection({ locale, c }: { locale: string; c: any }) {
                 <p className="text-xs mt-0.5" style={{ color: '#94A3B8' }}>{result.detail} &nbsp;&middot;&nbsp; {result.weeks} {c.trust.weeksLabel}</p>
               </div>
               <LexileBar start={result.start} end={result.end} weeks={result.weeks} />
-              <span className="badge badge-lavender-dark self-start">6+1 {result.trait}</span>
+              <span className="tag-run self-start" style={{ color: 'var(--color-lavender-signal)' }}>6+1 {result.trait}</span>
               <blockquote className="mt-auto">
                 <p className="text-sm leading-relaxed italic" style={{ color: '#94A3B8' }}><q>{result.quote}</q></p>
                 <footer className="mt-3 text-xs font-medium" style={{ color: 'rgba(183,181,254,0.5)' }}>&mdash; {result.source}</footer>

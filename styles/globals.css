@@ -1345,47 +1345,98 @@
     letter-spacing: 0.06em;
   }
 
-  /* ── The eyebrow pill (D69) ──────────────────────────────────
-     The hero variant: the same label, wearing pill chrome.
+  /* ── The taxonomy run (D70) ──────────────────────────────────
+     Replaces six capsule-badge patterns: Navigator credentials, the
+     /demos card tags, partner categories, Navigator traits, and the
+     /program + /consult step badges.
 
-     Four pages hand-rolled this — /program, /little-dodo, /demos,
-     /consult — each as a <div> holding a 1.5px dot and a styled <span>.
-     D57 consolidated those same four pages' PLAIN eyebrows into
-     components/ui/Eyebrow.jsx, but the pill copies did not match the
-     shape being swept and were left behind. So every page ended up with
-     its section labels carrying the D54 lead-in quote while the label at
-     the very TOP of the page still wore the pre-D54 dot — most visible on
-     /program, where 14 quoted labels sit under one dotted one.
+     The capsule was doing one real job — making a row of values read as a
+     SET rather than loose words. A middot run keeps the grouping with
+     typography instead of chrome, which is the point: the system's
+     vocabulary is drawn marks, not bordered rectangles, and D58's budget
+     rule (one drawn device per section) forbids giving each tag its own.
 
-     The dot is gone: a pill is a label, and D54 says a label is
-     introduced by the quote. The mark now comes from .label-quote like
-     every other label on the site.
+     0.75rem is a deliberate floor. These ran 10–13px as capsules; several
+     were below the 12px type floor that is still an open pass. */
+  .tag-run {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.7;
+  }
 
-     Type is deliberately NOT the canonical .eyebrow 12px/0.12em — the
-     pill has always run 10px/0.07em, and this fix is about the marker,
-     not about resizing four heroes. ⚠️ That 10px is part of the known
-     sub-12px type floor, which is still an open design pass. */
-  .eyebrow-pill {
+  .tag-run-item {
     display: inline-flex;
-    align-items: center;
-    border-radius: 9999px;
-    padding: 5px 14px;
-    border: 1px solid rgba(183,181,254,0.18);
-    background-color: rgba(183,181,254,0.05);
-    font-size: 10px;
-    letter-spacing: 0.07em;
+    align-items: baseline;
+    gap: 0.3rem;
+    white-space: nowrap;
+  }
+
+  /* The separator sits between values, never after the last one, and is
+     dimmed so the values carry the emphasis rather than the punctuation. */
+  .tag-run-sep {
+    margin-left: 0.5rem;
+    opacity: 0.45;
+  }
+
+  .tag-run-symbol {
+    font-size: 0.9em;
+    opacity: 0.8;
+  }
+
+  /* CJK is already full-width — Latin tracking pulls it apart, same
+     correction the eyebrow carries (D57). */
+  .tag-run:lang(zh) {
+    letter-spacing: 0.04em;
+  }
+
+  /* ── Filter tabs (D70) ───────────────────────────────────────
+     The /faq category filters. Previously a filled capsule for the
+     selected tab and a bordered capsule for the rest — the last place a
+     pill was doing real work, because a filter genuinely needs a
+     selected state.
+
+     It gets the D55 swash instead of a capsule. The swash's defined
+     meaning is "press this ONE" (a third hierarchy tier beneath the D-o
+     marks), which is precisely what a chosen filter is, so this reuses the
+     system's own device rather than inventing a seventh one. Unselected
+     tabs carry no chrome at all.
+
+     No D-o bracket here: the bracket is scoped to content controls, and
+     D53b excludes utility chrome (locale switcher, pagination). A filter
+     row is that. */
+  .filter-tab {
+    font-family: var(--font-latin);
+    font-size: 0.8125rem;
+    font-weight: 400;
+    white-space: nowrap;
+    padding: 6px 10px;
+    background-color: transparent;
+    border: none;
+    color: rgba(240,240,240,0.6);
+    cursor: pointer;
+    transition: color 150ms ease;
+  }
+
+  .filter-tab:hover {
     color: var(--color-lavender-signal);
   }
 
-  /* The quote is drawn at a fixed 19x12px, sized for the 12px eyebrow.
-     At 10px it would overpower the label, so the pill scales it down and
-     tightens the gap to match. */
-  .eyebrow-pill.label-quote::before {
-    width: 15px;
-    height: 9px;
-    margin-right: 0.3rem;
-    margin-top: 0.02em;
+  .filter-tab-active {
+    font-weight: 600;
+    color: #F0F0F0;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 14' preserveAspectRatio='none'><path fill='%23b7b5fe' fill-opacity='.26' fill-rule='evenodd' d='M1.6 6.4 C 2.2 4.1, 4 3.1, 7 2.9 C 30 2.2, 62 1.9, 96 2 C 120 2.05, 142 2.3, 151 2.6 C 155.6 2.75, 158.8 4.2, 158.9 6.6 C 159 9.2, 157 11.1, 153 11.6 C 138 12.5, 104 12.9, 74 12.8 C 48 12.7, 22 12.5, 9 12.1 C 4.4 11.95, 1.1 10.3, 1.6 6.4 Z M22 5.4 C 56 4.6, 100 4.5, 138 5 C 100 5.9, 56 6, 22 5.4 Z'/></svg>");
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    background-size: 100% 13px;
+    background-position: left bottom 1px;
   }
+
 
   .section-dark .eyebrow,
   .section-darker .eyebrow,

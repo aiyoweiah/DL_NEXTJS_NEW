@@ -193,20 +193,17 @@ function Hero({ locale, c }) {
         <div style={{ maxWidth: '46rem' }}>
           {/* Tagline chip + Little DODO age-band chip */}
           <div className="flex flex-wrap items-center gap-2 mb-7">
-            <Eyebrow pill mb={0}>{c.hero.chip}</Eyebrow>
+            <Eyebrow dark mb={0}>{c.hero.chip}</Eyebrow>
             {c.hero.kidsChip && (
               <Link
                 href={`/${locale}/little-dodo`}
-                className="inline-flex items-center rounded-full transition-opacity hover:opacity-80"
+                className="inline-flex items-center transition-opacity hover:opacity-80"
                 style={{
-                  padding:         '5px 14px',
-                  border:          '1px solid rgba(183,181,254,0.30)',
-                  backgroundColor: 'rgba(183,181,254,0.06)',
-                  fontSize:        '10px',
-                  fontWeight:      600,
-                  letterSpacing:   '0.07em',
-                  textTransform:   'uppercase',
-                  color:           'var(--color-lavender-signal)',
+                  fontSize:      '12px',
+                  fontWeight:    600,
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                  color:         'var(--color-lavender-signal)',
                 }}
               >
                 {c.hero.kidsChip}
@@ -382,7 +379,7 @@ function LoopSection({ locale, c }) {
                   </p>
                 )}
                 {step.badge && (
-                  <span style={{ marginLeft: 'auto', padding: '1px 7px', backgroundColor: 'rgba(183,181,254,0.1)', borderRadius: '9999px', border: '1px solid rgba(183,181,254,0.25)', fontSize: '8px', fontWeight: 600, letterSpacing: '0.08em', color: '#5856cc', whiteSpace: 'nowrap' }}>
+                  <span style={{ marginLeft: 'auto', fontSize: '12px', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#5856cc', whiteSpace: 'nowrap' }}>
                     {step.badge}
                   </span>
                 )}

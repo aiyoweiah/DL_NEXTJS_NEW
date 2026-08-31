@@ -145,20 +145,17 @@ function Hero({ locale, c }) {
         <div style={{ maxWidth: '46rem' }}>
           {/* Brand chip + growsIntoChip — mirrors /program's chip + kidsChip pair (gold reciprocal) */}
           <div className="flex flex-wrap items-center gap-2 mb-7">
-            <Eyebrow pill mb={0}>{c.hero.chip}</Eyebrow>
+            <Eyebrow dark mb={0}>{c.hero.chip}</Eyebrow>
             {c.hero.growsIntoChip && (
               <Link
                 href={`/${locale}/program`}
-                className="inline-flex items-center rounded-full transition-opacity hover:opacity-80"
+                className="inline-flex items-center transition-opacity hover:opacity-80"
                 style={{
-                  padding:         '5px 14px',
-                  border:          '1px solid rgba(183,181,254,0.30)',
-                  backgroundColor: 'rgba(183,181,254,0.06)',
-                  fontSize:        '10px',
-                  fontWeight:      600,
-                  letterSpacing:   '0.07em',
-                  textTransform:   'uppercase',
-                  color:           'var(--color-lavender-signal)',
+                  fontSize:      '12px',
+                  fontWeight:    600,
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                  color:         'var(--color-lavender-signal)',
                 }}
               >
                 {c.hero.growsIntoChip}

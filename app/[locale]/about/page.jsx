@@ -20,6 +20,8 @@ import { about as copyEn }              from '@/content/marketing.en'
 import { about as copyZh }              from '@/content/marketing.zh'
 import { personSchema }                 from '@/lib/schema'
 import StreamVideo                     from '@/components/media/StreamVideo'
+import Eyebrow from '@/components/ui/Eyebrow'
+import TagRun from '@/components/ui/TagRun'
 
 export async function generateMetadata({ params }) {
   const { locale } = await params
@@ -176,15 +178,7 @@ function Hero({ c, locale }) {
       >
         <div className="grid lg:grid-cols-5 gap-12 items-center w-full">
           <div className="lg:col-span-3">
-            <div
-              className="inline-flex items-center gap-2 mb-10 rounded-full"
-              style={{ padding: '6px 16px', border: '1px solid rgba(183,181,254,0.2)', backgroundColor: 'rgba(183,181,254,0.05)' }}
-            >
-              <span className="w-2 h-2 rounded-full" style={{ backgroundColor: '#b7b5fe' }} aria-hidden="true" />
-              <span style={{ fontSize: '12px', fontWeight: 500, letterSpacing: '0.05em', textTransform: 'uppercase', color: '#b7b5fe' }}>
-                {c.hero.chip}
-              </span>
-            </div>
+            <Eyebrow dark mb="2.5rem">{c.hero.chip}</Eyebrow>
             <h1
               id="about-hero-heading"
               className="mb-6"
@@ -362,14 +356,14 @@ function WhoNavigatorsAre({ locale, c }) {
               <p>{c.navigators.p2}</p>
               <p>{c.navigators.p3}</p>
             </div>
-            <div className="flex flex-wrap gap-3 mt-10" aria-label="Navigator traits">
-              {NAVIGATOR_TRAITS.map((item) => (
-                <span key={item.trait} className="inline-flex items-center gap-2 rounded-full" style={{ padding: '10px 20px', backgroundColor: '#0E0E12', color: '#ffffff', fontSize: '13px', fontWeight: 500 }}>
-                  <span aria-hidden="true" style={{ fontSize: '11px', color: '#b7b5fe' }}>{item.symbol}</span>
-                  {locale === 'zh' ? item.traitZh : item.trait}
-                </span>
-              ))}
-            </div>
+            <TagRun
+              className="mt-10"
+              aria-label="Navigator traits"
+              items={NAVIGATOR_TRAITS.map((item) => ({
+                label:  locale === 'zh' ? item.traitZh : item.trait,
+                symbol: item.symbol,
+              }))}
+            />
             <div style={{ marginTop: '1.5rem' }}>
               <Link href={`/${locale}/navigators`} style={{ fontSize: '14px', fontWeight: 600, color: '#5856cc', textDecoration: 'none' }}>{c.navigators.navigatorsLink}</Link>
             </div>

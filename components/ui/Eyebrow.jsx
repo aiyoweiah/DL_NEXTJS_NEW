@@ -28,11 +28,6 @@
 //           flex row, so this needs justify-content; text-align alone
 //           would leave the quote mark stranded at the left edge.
 //   mb      bottom margin, default 1rem (the majority value).
-//   pill    the hero variant — same label, wearing pill chrome (D69).
-//           Four pages hand-rolled this as a <div> + dot + <span>, and the
-//           D57 sweep missed them because they were not shaped like the
-//           plain eyebrows it was replacing. The dot is gone: a pill is a
-//           label, and a label takes the D54 quote.
 //
 // ZH tracking is handled in CSS (`.eyebrow:lang(zh)`), not here — a
 // `locale` prop passed by an old call site is accepted and ignored.
@@ -41,23 +36,26 @@ export default function Eyebrow({
   children,
   dark      = false,
   center    = false,
-  pill      = false,
   mb        = '1rem',
   className = '',
-  style,
+  style     = undefined,
   as: Tag   = 'p',
+  // Pass through aria-label and friends. Without this the component
+  // silently DROPS them — the home hero's aria-label="Program audience"
+  // was lost the moment it moved off a raw <span>.
+  ...rest
 }) {
   return (
     <Tag
-      className={`eyebrow label-quote ${pill ? 'eyebrow-pill' : ''} ${className}`.replace(/\s+/g, ' ').trim()}
+      className={`eyebrow label-quote ${className}`.trim()}
       style={{
-        // .eyebrow-pill sets its own colour; don't fight it from here.
-        color:          dark && !pill ? 'var(--color-lavender-signal)' : undefined,
+        color:          dark   ? 'var(--color-lavender-signal)' : undefined,
         justifyContent: center ? 'center' : undefined,
         textAlign:      center ? 'center' : undefined,
         marginBottom:   mb,
         ...style,
       }}
+      {...rest}
     >
       {children}
     </Tag>

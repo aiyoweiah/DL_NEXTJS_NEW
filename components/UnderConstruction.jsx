@@ -100,7 +100,7 @@ export default function UnderConstruction({ locale = 'en' }) {
 
           {/* Central content */}
           <div className="text-center" style={{ maxWidth: '42rem', ...fadeUpStyle(0) }}>
-            <div className="inline-flex items-center gap-2 rounded-full mb-8" style={{ padding: '8px 16px', backgroundColor: 'rgba(245,200,66,0.1)', border: '1px solid rgba(245,200,66,0.2)' }}>
+            <div className="inline-flex items-center gap-2 mb-8">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5C842" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M2 20h20" /><path d="M6 20V10l6-7 6 7v10" /><path d="M10 20v-5h4v5" /></svg>
               <span style={{ fontSize: '13px', fontWeight: 500, color: '#0E0E12' }}>
                 {locale === 'zh' ? '建设中' : 'Under Construction'}

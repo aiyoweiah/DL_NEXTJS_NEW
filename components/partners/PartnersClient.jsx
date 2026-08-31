@@ -23,6 +23,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Eyebrow from '@/components/ui/Eyebrow'
+import TagRun from '@/components/ui/TagRun'
 
 // ── Access constants ──────────────────────────────────────────
 const CORRECT_PIN = 'dodopartners'
@@ -331,26 +332,6 @@ const COPY = {
 const font = (locale) => locale === 'zh' ? 'var(--font-cjk)' : 'var(--font-latin)'
 
 // ── Sub-components ────────────────────────────────────────────
-
-function Pill({ children, locale = 'en' }) {
-  return (
-    <span style={{
-      display:         'inline-block',
-      fontFamily:      font(locale),
-      fontSize:        '12px',
-      fontWeight:      500,
-      color:           '#b7b5fe',
-      backgroundColor: 'rgba(183,181,254,0.12)',
-      border:          '1px solid rgba(183,181,254,0.25)',
-      borderRadius:    '9999px',
-      padding:         '4px 12px',
-      marginRight:     '8px',
-      marginBottom:    '8px',
-    }}>
-      {children}
-    </span>
-  )
-}
 
 // ── Gate view (locked) ────────────────────────────────────────
 function GateView({ g, locale, input, setInput, onSubmit, onKeyDown, error, shake }) {
@@ -746,7 +727,7 @@ function PartnersContent({ c, locale }) {
                 {c.s5.toolkitLabel}
               </div>
               <div style={{ display: 'flex', flexWrap: 'wrap', marginBottom: '32px' }}>
-                {c.s5.pills.map((tag) => <Pill key={tag} locale={locale}>{tag}</Pill>)}
+                <TagRun items={c.s5.pills} dark />
               </div>
               <div style={{ borderTop: '1px solid rgba(183,181,254,0.12)', paddingTop: '28px' }}>
                 <div style={{ fontSize: '13px', fontWeight: 400, color: 'rgba(240,240,240,0.4)', marginBottom: '4px' }}>{c.s5.citiesLabel}</div>

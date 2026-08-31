@@ -27,6 +27,7 @@ import K2Note         from '@/components/ui/K2Note'
 import Button         from '@/components/ui/Button'
 import Badge          from '@/components/ui/Badge'
 import LexileBar      from '@/components/ui/LexileBar'
+import Eyebrow from '@/components/ui/Eyebrow'
 
 // ── Static params ─────────────────────────────────────────────
 export function generateStaticParams() {
@@ -158,7 +159,7 @@ export default async function LexilePage({ params }) {
           }}
         >
           <div className="py-4 max-w-3xl">
-            <Badge className="mb-6 label-quote">{t.hero.eyebrow}</Badge>
+            <Eyebrow dark mb="1.5rem">{t.hero.eyebrow}</Eyebrow>
             <h1
               id="lexile-hero-heading"
               className="font-bold leading-tight tracking-tight mb-6 text-gradient"

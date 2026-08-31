@@ -31,6 +31,7 @@ import K2Note         from '@/components/ui/K2Note'
 import Button         from '@/components/ui/Button'
 import Badge          from '@/components/ui/Badge'
 import LexileBar      from '@/components/ui/LexileBar'
+import Eyebrow from '@/components/ui/Eyebrow'
 
 // ── Static params ─────────────────────────────────────────────
 export function generateStaticParams() {
@@ -138,7 +139,7 @@ export default async function ResultsPage({ params }) {
           }}
         >
           <div className="py-4 max-w-3xl">
-            <Badge className="mb-6 label-quote">{t.hero.eyebrow}</Badge>
+            <Eyebrow dark mb="1.5rem">{t.hero.eyebrow}</Eyebrow>
             <h1
               id="results-hero-heading"
               className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6 text-gradient"

@@ -20,6 +20,7 @@ import StreamVideo                 from '@/components/media/StreamVideo'
 import SectionWrapper              from '@/components/ui/SectionWrapper'
 import K2Note                       from '@/components/ui/K2Note'
 import Eyebrow from '@/components/ui/Eyebrow'
+import TagRun from '@/components/ui/TagRun'
 
 export async function generateMetadata({ params }) {
   const { locale } = await params
@@ -27,14 +28,6 @@ export async function generateMetadata({ params }) {
   return buildMetadata({ locale, title: meta.title, description: meta.description, path: '/navigators' })
 }
 
-
-function Badge({ children }) {
-  return (
-    <span style={{ display: 'inline-block', fontFamily: 'var(--font-latin)', fontSize: '12px', fontWeight: 500, color: '#b7b5fe', backgroundColor: 'rgba(183,181,254,0.15)', borderRadius: '9999px', padding: '4px 12px', marginRight: '8px', marginBottom: '8px' }}>
-      {children}
-    </span>
-  )
-}
 
 const COPY = { en: copyEn, zh: copyZh }
 
@@ -319,7 +312,7 @@ export default async function NavigatorsPage({ params }) {
                 <div className="mb-2" style={{ fontSize: '18px', fontWeight: 600, color: '#F0F0F0' }}>{nav.name}</div>
                 <p className="mb-4" style={{ fontSize: '14px', fontWeight: 400, color: '#F0F0F0', opacity: 0.7, lineHeight: 1.5 }}>{loc.bio}</p>
                 <p className="mb-4" style={{ fontSize: '14px', fontWeight: 400, fontStyle: 'italic', color: '#b7b5fe', lineHeight: 1.5 }}><q>{loc.quote}</q></p>
-                <div className="mb-4 flex flex-wrap">{nav.badges.map((b) => <Badge key={b}>{b}</Badge>)}</div>
+                <TagRun items={nav.badges} dark mb="1rem" aria-label="Credentials" />
                 <p style={{ fontSize: '13px', fontWeight: 500, color: '#F0F0F0', lineHeight: 1.5 }}>{nav.result}<br />{nav.lexile}</p>
               </div>
             )
