@@ -562,10 +562,7 @@ function PartnersContent({ c, locale }) {
         </div>
 
         <div className="px-6 relative z-10" style={{ maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', backgroundColor: 'rgba(183,181,254,0.1)', border: '1px solid rgba(183,181,254,0.25)', borderRadius: '9999px', padding: '5px 14px', marginBottom: '32px' }}>
-            <span style={{ width: '7px', height: '7px', borderRadius: '9999px', backgroundColor: '#b7b5fe', display: 'inline-block' }} />
-            <span style={{ fontSize: '12px', fontWeight: 600, color: '#b7b5fe', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{c.hero.chip}</span>
-          </div>
+          <Eyebrow dark mb="2rem">{c.hero.chip}</Eyebrow>
 
           <h1 style={{ fontSize: 'clamp(36px, 5vw, 64px)', fontWeight: 700, color: '#F0F0F0', lineHeight: 1.15, maxWidth: '820px', marginBottom: '28px', fontFamily: 'var(--font-latin)' }}>
             {c.hero.h1a}<span style={{ color: '#b7b5fe' }}>{c.hero.h1b}</span>{c.hero.h1c}
@@ -742,10 +739,7 @@ function PartnersContent({ c, locale }) {
       {/* ── S6 PARTNER INQUIRY ────────────────────────────── */}
       <section className="px-6 py-32" style={{ backgroundColor: '#0E0E12' }}>
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', backgroundColor: 'rgba(183,181,254,0.08)', border: '1px solid rgba(183,181,254,0.2)', borderRadius: '9999px', padding: '5px 16px', marginBottom: '32px' }}>
-            <span style={{ width: '6px', height: '6px', borderRadius: '9999px', backgroundColor: '#b7b5fe', display: 'inline-block' }} />
-            <span style={{ fontSize: '12px', fontWeight: 600, color: '#b7b5fe', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{c.s6.chip}</span>
-          </div>
+          <Eyebrow dark mb="2rem">{c.s6.chip}</Eyebrow>
 
           <h2 style={{ fontSize: 'clamp(30px, 5vw, 52px)', fontWeight: 700, color: '#F0F0F0', lineHeight: 1.2, marginBottom: '20px', fontFamily: 'var(--font-latin)' }}>
             {c.s6.h2}

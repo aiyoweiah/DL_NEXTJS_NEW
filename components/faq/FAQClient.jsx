@@ -240,10 +240,7 @@ export default function FAQClient({ locale = 'en' }) {
       <section style={{ backgroundColor: '#212830' }}>
         <div className="max-w-[680px] mx-auto text-center px-6"
           style={{ paddingTop: 'calc(var(--nav-height) + 2rem)', paddingBottom: '64px' }}>
-          <div style={{ fontFamily: 'var(--font-latin)', fontSize: '12px', fontWeight: 500,
-            letterSpacing: '0.1em', textTransform: 'uppercase', color: '#b7b5fe', marginBottom: '24px' }}>
-            {ui.eyebrow}
-          </div>
+          <Eyebrow dark mb="1.5rem">{ui.eyebrow}</Eyebrow>
           <h1 style={{ fontFamily: 'var(--font-latin)', fontSize: 'clamp(32px, 5vw, 52px)',
             fontWeight: 700, color: '#F0F0F0', lineHeight: 1.2, letterSpacing: '-0.03em', marginBottom: '16px' }}>
             {ui.h1}

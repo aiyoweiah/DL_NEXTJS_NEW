@@ -27,6 +27,7 @@ import { credentialsSchema } from '@/lib/schema'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Button from '@/components/ui/Button'
 import DoCta         from '@/components/ui/DoCta'
+import Eyebrow from '@/components/ui/Eyebrow'
 
 export function generateStaticParams() {
   return localeParams()
@@ -74,10 +75,7 @@ function ResearchBlock({ r }) {
   return (
     <div className="max-w-3xl mx-auto">
       <div style={{ marginBottom: '2rem' }}>
-        <div style={{
-          fontSize: '13px', letterSpacing: '0.08em', textTransform: 'uppercase',
-          color: 'var(--accent-lavender-deep)', fontWeight: 700, marginBottom: '0.75rem',
-        }}>{r.eyebrow}</div>
+        <Eyebrow mb="0.75rem">{r.eyebrow}</Eyebrow>
         <h2 style={{
           fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)', fontWeight: 700, lineHeight: 1.15,
           letterSpacing: '-0.02em', marginBottom: '1.5rem', color: 'var(--ink-deep)',
@@ -138,10 +136,7 @@ export default async function CredentialsPage({ params }) {
       {/* Hero */}
       <SectionWrapper white>
         <div className="max-w-3xl mx-auto text-center" style={{ paddingBlock: '2rem' }}>
-          <div style={{
-            fontSize: '13px', letterSpacing: '0.08em', textTransform: 'uppercase',
-            color: 'var(--accent-lavender-deep)', fontWeight: 700, marginBottom: '0.75rem',
-          }}>{t.hero.eyebrow}</div>
+          <Eyebrow mb="0.75rem">{t.hero.eyebrow}</Eyebrow>
           <h1 style={{
             fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 300, lineHeight: 1.15,
             letterSpacing: '-0.02em', marginBottom: '1.5rem', color: 'var(--ink-deep)',
@@ -168,10 +163,7 @@ export default async function CredentialsPage({ params }) {
       {/* CTA */}
       <SectionWrapper white>
         <div className="max-w-2xl mx-auto text-center" style={{ paddingBlock: '2rem' }}>
-          <div style={{
-            fontSize: '13px', letterSpacing: '0.08em', textTransform: 'uppercase',
-            color: 'var(--accent-lavender-deep)', fontWeight: 700, marginBottom: '0.75rem',
-          }}>{t.cta.eyebrow}</div>
+          <Eyebrow mb="0.75rem">{t.cta.eyebrow}</Eyebrow>
           <h2 style={{
             fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 300, lineHeight: 1.2,
             letterSpacing: '-0.02em', marginBottom: '1rem', color: 'var(--ink-deep)',

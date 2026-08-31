@@ -555,7 +555,7 @@ function CombinationsSection({ locale, c }) {
               }}>
               <div>
                 {item.featured && (
-                  <span style={{ display: 'inline-block', padding: '2px 8px', borderRadius: '9999px', backgroundColor: '#b7b5fe', color: '#0E0E12', fontSize: '9px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
+                  <span className="tag-run" style={{ display: 'inline-flex', color: 'var(--text-accent)', marginBottom: '0.5rem' }}>
                     {locale === 'zh' ? '最受欢迎' : 'Most Popular'}
                   </span>
                 )}
@@ -606,10 +606,7 @@ function SessionSection({ locale, c }) {
       <div className="container-section relative z-10" style={{ padding: 'var(--section-md) 1.25rem' }}>
         <div style={{ maxWidth: '40rem' }}>
 
-          <div
-            className="inline-flex items-center gap-2.5 rounded-full mb-7"
-            style={{ padding: '7px 14px 7px 7px', backgroundColor: 'rgba(183,181,254,0.07)', border: '1px solid rgba(183,181,254,0.14)' }}
-          >
+          <div className="inline-flex items-center gap-2.5 mb-7">
             <span
               aria-hidden="true"
               style={{
