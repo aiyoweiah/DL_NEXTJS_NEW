@@ -54,6 +54,12 @@ export default function RootLayout({ children }) {
   return (
     <html
       className={`${fontLatin.variable} ${fontCJK.variable}`}
+      /* --font-latin-family feeds the CJK stack in styles/cjk-fonts.css, which
+         must list the Latin face FIRST — the CJK subset carries no Latin glyphs,
+         so Latin inside Chinese copy would otherwise fall to the platform face
+         and diverge from the English site (the D59 split). next/font hashes the
+         family name at build time, so it can only be injected from here. */
+      style={{ '--font-latin-family': fontLatin.style.fontFamily.split(',')[0].trim() }}
       suppressHydrationWarning
     >
       <head>

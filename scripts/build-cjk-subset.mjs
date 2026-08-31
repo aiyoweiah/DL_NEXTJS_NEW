@@ -61,12 +61,45 @@ const SOURCES = {
     // the subset does not carry masters nothing renders.
     axes: { wght: { min: 400, max: 700, default: 400 } },
   },
-  // D62 — not built yet. Ships once the pipeline is banked on Noto.
-  // ⛔ When enabling: subset CJK ONLY. WenKai inherits Latin from Klee
-  // One, and shipping that Latin would re-split the brand's Latin by
-  // locale — the exact bug D59 exists to fix.
-  // ⚠️ WenKai has Light/Regular/Medium and no true Bold; weight 700
-  // synthesises. Accepted under D62.
+  // ── D62 — LXGW WenKai GB, the ZH face ──────────────────────────────
+  // 楷体: the script Chinese children are taught to write, the model in
+  // 语文 instruction and 字帖 copybooks. The English chrome is already a
+  // school-cursive hand (D53's D-o, D54's quote, D55's brush); Kai is that
+  // same register in the other script.
+  //
+  // ⛔ GB edition, deliberately. The default LxgwWenKai carries
+  //    traditional-leaning forms; GB follows PRC standard shapes.
+  //
+  // ⛔ CJK-ONLY — and it comes for free: the scanner in cjk-charset.mjs
+  //    only ever collects CJK-block codepoints, so no Latin glyph can
+  //    enter the subset. This matters. WenKai inherits its Latin from Klee
+  //    One, and shipping that would set Latin inside Chinese copy in a
+  //    different face from the English site: the D59 split, again.
+  //
+  // ⚠️ NOT a variable font. Noto Sans SC ships one file covering 300–700;
+  //    WenKai ships separate 25 MB statics and has NO TRUE BOLD (Light /
+  //    Regular / Medium) against a 300–700 scale. Medium is therefore
+  //    declared `font-weight: 500 700`, so 700 RESOLVES to Medium instead
+  //    of being synthesised — a synthetic bold smears a calligraphic hand.
+  //    Admin accepted the missing bold (D62); this picks the less ugly of
+  //    the two ways to not have it.
+  'lxgw-wenkai-gb': {
+    family: 'DODO CJK Subset',
+    weights: [
+      {
+        weight: '400',
+        file: 'LXGWWenKaiGB-Regular.ttf',
+        url: 'https://github.com/lxgw/LxgwWenkaiGB/releases/download/v1.522/LXGWWenKaiGB-Regular.ttf',
+        sha256: '295568c131648062107543aa159c97dd49564be791136c2abf74cad83eba3f7f',
+      },
+      {
+        weight: '500 700',
+        file: 'LXGWWenKaiGB-Medium.ttf',
+        url: 'https://github.com/lxgw/LxgwWenkaiGB/releases/download/v1.522/LXGWWenKaiGB-Medium.ttf',
+        sha256: 'b885c51ec0d3f325974013801dfcefda1a9ba0bf385c607cf5f2582dafa2e5ab',
+      },
+    ],
+  },
 }
 
 // ── Tier boundaries, by frequency rank ───────────────────────────────
@@ -92,6 +125,12 @@ const REPORT_ONLY = args.includes('--report')
 const sourceKey = (args.find((a) => a.startsWith('--source=')) || '--source=noto-sans-sc').split('=')[1]
 
 const source = SOURCES[sourceKey]
+// A source is either ONE variable file spanning a weight range, or SEVERAL
+// static files, one per weight. Normalise both shapes into a list of faces
+// so the fetch and subset loops below do not care which they were handed.
+const faces = source
+  ? source.weights ?? [{ weight: null, file: source.file, url: source.url, sha256: source.sha256 }]
+  : []
 if (!source) {
   console.error(`✖ Unknown --source=${sourceKey}. Known: ${Object.keys(SOURCES).join(', ')}`)
   process.exit(1)
@@ -141,33 +180,36 @@ if (REPORT_ONLY) {
 }
 
 // ── 2. Source font: fetch on demand, always verify ───────────────────
-const srcPath = path.join(CACHE_DIR, source.file)
 fs.mkdirSync(CACHE_DIR, { recursive: true })
 
-if (!fs.existsSync(srcPath)) {
-  console.log(`\nFetching source font…\n  ${source.url}`)
-  const res = await fetch(source.url)
-  if (!res.ok) {
-    console.error(`✖ Download failed: HTTP ${res.status}`)
+console.log('')
+for (const face of faces) {
+  const srcPath = path.join(CACHE_DIR, face.file)
+  if (!fs.existsSync(srcPath)) {
+    console.log(`Fetching ${face.file}…`)
+    const res = await fetch(face.url)
+    if (!res.ok) {
+      console.error(`✖ Download failed for ${face.file}: HTTP ${res.status}`)
+      process.exit(1)
+    }
+    fs.writeFileSync(srcPath, Buffer.from(await res.arrayBuffer()))
+  }
+  face.raw = fs.readFileSync(srcPath)
+  const digest = crypto.createHash('sha256').update(face.raw).digest('hex')
+  if (digest !== face.sha256) {
+    console.error(
+      `\n✖ SHA-256 mismatch on ${face.file}\n` +
+        `    expected ${face.sha256}\n` +
+        `    actual   ${digest}\n\n` +
+        `  The cached font is not the pinned release. Delete .fontcache/ and\n` +
+        `  rerun to refetch. If it still mismatches, the pinned URL moved —\n` +
+        `  review the new file before updating the sha256 in this script.\n`
+    )
     process.exit(1)
   }
-  fs.writeFileSync(srcPath, Buffer.from(await res.arrayBuffer()))
+  console.log(`  verified ${face.file}  ${(face.raw.length / 1024 / 1024).toFixed(1)} MB` +
+    (face.weight ? `  → weight ${face.weight}` : '  → variable'))
 }
-
-const raw = fs.readFileSync(srcPath)
-const digest = crypto.createHash('sha256').update(raw).digest('hex')
-if (digest !== source.sha256) {
-  console.error(
-    `\n✖ SHA-256 mismatch on ${source.file}\n` +
-      `    expected ${source.sha256}\n` +
-      `    actual   ${digest}\n\n` +
-      `  The cached font is not the pinned release. Delete .fontcache/ and\n` +
-      `  rerun to refetch. If it still mismatches, the pinned URL moved —\n` +
-      `  review the new file before updating the sha256 in this script.\n`
-  )
-  process.exit(1)
-}
-console.log(`\nSource verified: ${(raw.length / 1024 / 1024).toFixed(1)} MB, sha256 ok`)
 
 // ── 3. Subset ────────────────────────────────────────────────────────
 fs.rmSync(OUT_DIR, { recursive: true, force: true })
@@ -175,16 +217,20 @@ fs.mkdirSync(OUT_DIR, { recursive: true })
 
 const manifest = {
   $comment: 'GENERATED by scripts/build-cjk-subset.mjs — do not hand-edit. Run: npm run fonts:cjk',
-  source: { key: sourceKey, family: source.family, url: source.url, sha256: source.sha256 },
+  source: {
+    key: sourceKey,
+    family: source.family,
+    faces: faces.map((f) => ({ weight: f.weight, file: f.file, url: f.url, sha256: f.sha256 })),
+  },
   axes: source.axes ?? null,
   generatedFrom: { uniqueChars: freq.size, instances: totalInstances },
   chunks: [],
 }
 
 let totalOut = 0
-for (const b of buckets) {
+for (const b of buckets) for (const face of faces) {
   const text = b.chars.join('')
-  const buf = await subsetFont(raw, text, {
+  const buf = await subsetFont(face.raw, text, {
     targetFormat: 'woff2',
     ...(source.axes ? { variationAxes: source.axes } : {}),
   })
@@ -192,19 +238,21 @@ for (const b of buckets) {
   // a new URL a returning visitor keeps a cached chunk that is missing the
   // characters the new copy needs, and renders tofu. Cheap insurance.
   const hash = crypto.createHash('sha256').update(buf).digest('hex').slice(0, 8)
-  const file = `${sourceKey}.${b.name}.${hash}.woff2`
+  const wtag = face.weight ? `.w${face.weight.replace(/\s+/g, '-')}` : ''
+  const file = `${sourceKey}.${b.name}${wtag}.${hash}.woff2`
   fs.writeFileSync(path.join(OUT_DIR, file), buf)
   totalOut += buf.length
 
   manifest.chunks.push({
     name: b.name,
+    weight: face.weight ?? (source.axes?.wght ? `${source.axes.wght.min} ${source.axes.wght.max}` : null),
     file: `/fonts/cjk/${file}`,
     glyphs: b.chars.length,
     bytes: buf.length,
     unicodeRange: toUnicodeRange(b.chars),
     chars: text, // the guard checks membership against this
   })
-  console.log(`  ${b.name.padEnd(7)} ${String(b.chars.length).padStart(5)} glyphs \u2192 ${(buf.length / 1024).toFixed(1).padStart(7)} KB  ${file}`)
+  console.log(`  ${b.name.padEnd(7)} ${(face.weight ? 'w' + face.weight : 'var').padEnd(9)} ${String(b.chars.length).padStart(5)} glyphs \u2192 ${(buf.length / 1024).toFixed(1).padStart(7)} KB`)
 }
 
 fs.writeFileSync(MANIFEST_PATH, JSON.stringify(manifest, null, 2) + '\n')
@@ -221,9 +269,13 @@ fs.writeFileSync(
   JSON.stringify(
     {
       $comment: 'GENERATED by scripts/build-cjk-subset.mjs — do not hand-edit.',
-      chunks: manifest.chunks
-        .filter((c) => PRELOAD_TIERS.includes(c.name))
-        .map((c) => ({ name: c.name, file: c.file })),
+      // Only the FIRST face of each preload tier. On a multi-weight source
+      // that means Regular; preloading Medium too would double the hint for
+      // a weight most of the page does not use.
+      chunks: PRELOAD_TIERS.flatMap((t) => {
+        const c = manifest.chunks.find((x) => x.name === t)
+        return c ? [{ name: c.name, file: c.file }] : []
+      }),
     },
     null,
     2
@@ -238,7 +290,8 @@ fs.writeFileSync(
 // whose range matches glyphs actually on the page.
 const css = `/* GENERATED by scripts/build-cjk-subset.mjs — do not hand-edit.
    Regenerate with: npm run fonts:cjk
-   Source: ${source.family} (${sourceKey}), sha256 ${source.sha256.slice(0, 16)}…
+   Source: ${source.family} (${sourceKey})
+${faces.map((f) => `     ${(f.weight ? 'weight ' + f.weight : 'variable').padEnd(16)} ${f.file}  sha256 ${f.sha256.slice(0, 16)}…`).join('\n')}
 
    Frequency-tiered CJK subset. Chunk selection is the browser's job:
    each @font-face declares the unicode-range it covers, so a page that
@@ -253,12 +306,10 @@ ${manifest.chunks
   .map(
     (c) => `@font-face {
   font-family: '${CJK_FAMILY}';
-  src: url('${c.file}') format('woff2');${
-      source.axes?.wght ? `\n  font-weight: ${source.axes.wght.min} ${source.axes.wght.max};` : ''
-    }
+  src: url('${c.file}') format('woff2');${c.weight ? `\n  font-weight: ${c.weight};` : ''}
   font-style: normal;
   font-display: swap;
-  /* ${c.name} — ${c.glyphs} glyphs, ${(c.bytes / 1024).toFixed(1)} KB */
+  /* ${c.name}${c.weight ? ` @ ${c.weight}` : ''} — ${c.glyphs} glyphs, ${(c.bytes / 1024).toFixed(1)} KB */
   unicode-range: ${c.unicodeRange};
 }`
   )
@@ -268,19 +319,35 @@ ${manifest.chunks
    next/font className used to be. Nothing downstream changes: globals.css
    :lang(zh) and every consumer still read var(--font-cjk).
 
-   The platform CJK faces stay in the stack behind the subset. If a glyph
-   ever falls outside the generated ranges the page degrades to PingFang /
-   YaHei instead of tofu — the guard exists to stop that happening, this
-   is the seatbelt behind the guard. */
+   ⛔ THE LATIN FAMILY MUST COME FIRST. This subset is CJK-ONLY, so if the
+   CJK family led the stack, every Latin run inside Chinese copy — ELA, MCT,
+   Lexile, Reading/Thinking/Speaking/Writing — would miss it and fall to the
+   next family that HAS Latin, which is the platform face (PingFang SC on
+   macOS, Microsoft YaHei on Windows). Measured when that happened:
+   "Reading Thinking Lexile MCT" set 436.26px in PingFang against 380.29px
+   in Source Sans 3 — a 15% divergence, and the SAME words on the English
+   site in a different typeface. That is exactly the split D59 exists to
+   fix. Latin first, CJK behind it, and each script resolves to its own
+   designed face.
+
+   --font-latin-family is set by app/layout.jsx from next/font's resolved
+   family name (it cannot be written here — the name is hashed at build
+   time). The literal fallback keeps this stylesheet sane on its own.
+
+   The platform CJK faces stay at the back. If a glyph ever falls outside
+   the generated ranges the page degrades to PingFang / YaHei instead of
+   tofu — the guard exists to stop that happening, this is the seatbelt
+   behind the guard. */
 .${CJK_VAR_CLASS} {
-  --font-cjk: '${CJK_FAMILY}', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
-              'WenQuanYi Micro Hei', system-ui, sans-serif;
+  --font-cjk: var(--font-latin-family, 'Source Sans 3'),
+              '${CJK_FAMILY}', 'PingFang SC', 'Hiragino Sans GB',
+              'Microsoft YaHei', 'WenQuanYi Micro Hei', system-ui, sans-serif;
 }
 `
 fs.writeFileSync(path.join(ROOT, 'styles/cjk-fonts.css'), css)
 
-console.log(`\nTotal subset payload: ${(totalOut / 1024).toFixed(1)} KB across ${buckets.length} chunks`)
-console.log(`Wrote ${path.relative(ROOT, OUT_DIR)}/ (${buckets.length} woff2)`)
+console.log(`\nTotal subset payload: ${(totalOut / 1024).toFixed(1)} KB — ${buckets.length} tiers x ${faces.length} face(s) = ${manifest.chunks.length} files`)
+console.log(`Wrote ${path.relative(ROOT, OUT_DIR)}/ (${manifest.chunks.length} woff2)`)
 console.log(`Wrote scripts/cjk-manifest.json · lib/cjk-preload.json · styles/cjk-fonts.css\n`)
 
 // Collapses a character list into compact CSS unicode-range syntax.
