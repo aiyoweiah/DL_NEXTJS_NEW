@@ -4,7 +4,7 @@ Living reference for the DODO marketing site chrome (navbar, footer, funnel CTAs
 and its visual token system. Read this before touching navigation, CTAs, the
 pre-footer band, or any colour value.
 
-**Current through:** v6.21 · 2026-08-30 (D62 built: ZH on LXGW WenKai GB; D67 built: Latin leads the CJK stack; D66 built: gilt escrow enforced; D65 built: btn-do sweep finished; D64 built: Latin preload trimmed; D63 built: CJK frequency-tiered subset; D62 logged: ZH adopts LXGW WenKai, EN stays
+**Current through:** v6.22 · 2026-08-30 (D68 built: gilt means earned proof; D62 built: ZH on LXGW WenKai GB; D67 built: Latin leads the CJK stack; D66 built: gilt escrow enforced; D65 built: btn-do sweep finished; D64 built: Latin preload trimmed; D63 built: CJK frequency-tiered subset; D62 logged: ZH adopts LXGW WenKai, EN stays
 Source Sans 3 — decision recorded, implementation not started).
 v6.15 = D61 target size 24×24. v6.14 = D59 one Latin face + D60 the Surface guard.
 v6.10 = D54 the lead-in quote on claim labels: letterforms enclose a control, punctuation introduces a label.
@@ -587,6 +587,38 @@ lead-in quote by construction.
   merits as the most-tapped control on mobile.
 
 
+**Gilt has exactly one job now: earned proof (D68 · v6.22 — BUILT).**
+Gilt was not rare, it was *unused*. `.btn-do-charter`, `.badge-gilt` and `.text-gilt`
+were all fully specified with **zero call sites**, while gilt actually rendered in ten
+places as hand-rolled inline hex. That is why D52's reservation could be violated six
+times unnoticed (D65) — nothing countable was ever using it.
+
+- **The rule: gilt marks what was earned; it never marks a control.** D52 keeps gold off
+  every control so that Charter Enrolment still means something when it exists. A gold
+  mark on something unpressable cannot be confused with "press this", because the
+  grammar already gives that to the D-o bracket. **One** new meaning, not several —
+  three meanings is decoration, which is how it was spent last time.
+- **`--gilt-mark` `#AD8100`.** Neither existing gold could do the job: raw `#F5C842` is
+  **1.59:1 on white** and `--text-gilt-light` was **2.77:1**. `#AD8100` measures
+  **3.55:1 white · 3.28:1 Whisper · 5.43:1 Void Black** — clearing 3:1 on both grounds,
+  so a single baked data-URI serves every surface. Exactly the property that made
+  `--do-mark` `#7c79e8` cheap to roll out in D53.
+- **`.score-marked` was stroked in the control colour.** It used `#7c79e8` — the same
+  hex and the same monoline hand as the D-o bracket — around a Lexile score. By this
+  system's own grammar that circle said *press this* about a number. It now says
+  *earned*, which is what a score is.
+- ⚠️ **`--text-gilt-light` was a latent a11y bug.** `#C49400`, commented "passes AA",
+  measures **2.56:1 on Whisper** — failing AA text and even the 3:1 non-text floor. The
+  `.btn-do` table's claim of "gilt 4.6:1" was wrong. Nothing shipped it, because
+  `.btn-do-charter` and `.badge-gilt` have no call sites — but **the Charter CTA would
+  have launched with a failing label on day one.** Corrected to `#8F6B00` (4.54:1
+  Whisper / 4.92:1 white). A reserved class that fails on arrival is worse than a
+  slightly deeper gold; overrule this if the lighter tone matters more.
+- **The hero chips were a third meaning.** They used gilt for *wayfinding* — "the other
+  age band" — alongside "enrolment" and now "earned proof". Moved to
+  `--color-lavender-signal`, which reads as navigation, so they need no D-o bracket
+  either: **D65's open question closes with them, and the D66 allowlist is now empty.**
+
 **ZH is set in LXGW WenKai GB, and Latin leads the stack (D62 + D67 · v6.21 — BUILT).**
 
 - **D62 shipped as a flag, exactly as D63 promised.** `npm run fonts:cjk --
@@ -1018,6 +1050,7 @@ not listed.
 | D65 | **The `btn-do` sweep finished — 6 inline-styled gilt CTAs found** | v6.9/v6.12 claimed "the last non-`btn-do` CTA is gone"; **that was false.** Six gilt-filled consult CTAs (`/navigators`, `/blog`, `/compare`, `/faq` ×2, `/assessment`) used inline `backgroundColor: '#F5C842'` and were invisible to a class-based sweep. Converted to `.btn-do-primary`; `.on-dark` added to the two hand-rolled dark sections the D53 note predicted. Zero contrast failures. **2 interactive gilt chips remain — open design question** | ✅ v6.19 |
 | D66 | **The gilt reservation is enforced, not just written down** | `check-gilt-escrow.mjs` on `prebuild`: gilt on any interactive control fails the build. D52 reserved gilt in v6.6 and three later sweeps each declared the job done while six gilt CTAs shipped — a reservation nobody enforces quietly expires. 2 hero chips allowlisted with a stated retirement condition | ✅ v6.20 |
 | D67 | **The Latin face leads the CJK stack** | Fixes a regression D63 introduced: a CJK-only subset at the head of `--font-cjk` meant Latin inside Chinese copy missed it and fell to PingFang/YaHei. Measured: "Reading Thinking Lexile MCT" set **436.26px in PingFang vs 380.29px in Source Sans 3** — the D59 split, reintroduced. Latin now leads; verified back to 380.29px | ✅ v6.21 |
+| D68 | **Gilt gets one job: earned proof** | `--gilt-mark` `#AD8100` added — the one gold clearing 3:1 on both grounds, so one baked colour serves every surface. `.score-marked` restroked from `--do-mark` lavender to gilt, fixing a grammar bug where the *control* mark circled an unpressable number. Hero chips gilt → lavender-signal (wayfinding, not conversion) — which closes D65 and empties the D66 allowlist. **Also fixes `--text-gilt-light`: it claimed "passes AA" at 2.56:1** | ✅ v6.22 |
 
 ### Cascade status
 

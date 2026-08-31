@@ -42,7 +42,15 @@
                                          light-surface workhorse: label text, outline
                                          buttons, and now the solid light-surface fill */
   --color-deep-void:       #212830;
-  --color-gilt:            #F5C842;
+  --color-gilt:            #F5C842;   /* the brand gold. 12.13:1 on Void Black, but only
+                                        1.59:1 on white — DECORATIVE ON LIGHT, never text
+                                        and never a meaningful mark. See --gilt-mark. */
+  /* Mark-weight gilt (D68). The one gold clearing 3:1 on BOTH grounds
+     (3.55:1 white · 3.28:1 Whisper · 5.43:1 Void Black), so a single baked
+     colour serves every surface — the same property that let --do-mark
+     #7c79e8 ship as one data-URI instead of a light and a dark variant.
+     This is what a drawn gilt mark is stroked in. */
+  --gilt-mark:             #AD8100;
   --color-void-black:      #0E0E12;
   --color-whisper:         #F5F5FF;
   --color-platinum:        #F0F0F0;
@@ -70,7 +78,14 @@
                                                        outline buttons: --text-muted is light-only. */
   --text-inverse:          var(--color-platinum);
   --text-inverse-heading:  var(--color-lavender-signal);
-  --text-gilt-light:       #C49400;                 /* gilt on light bg — passes AA */
+  --text-gilt-light:       #8F6B00;                 /* gilt as TEXT on light. 4.54:1 on Whisper,
+                                                       4.92:1 on white — passes AA.
+                                                       ⚠️ WAS #C49400, commented "passes AA".
+                                                       It did not: 2.56:1 on Whisper. Nothing
+                                                       shipped it (btn-do-charter and badge-gilt
+                                                       both have zero call sites), but the
+                                                       Charter CTA would have launched with a
+                                                       failing label the day it landed. D68. */
   --text-gilt-dark:        var(--color-gilt);
 
   /* ── Border tokens ── */
@@ -1518,6 +1533,13 @@
      Black, so one file serves both grounds. It is a stroke BESIDE the
      digits, not a ground behind them, so it carries no text-contrast
      cost at all. */
+  /* The marked score (D58, recoloured D68).
+     Stroked in --gilt-mark, NOT --do-mark. It used to be drawn in #7c79e8 —
+     the exact colour and the same monoline hand as the D-o bracket — around
+     a Lexile number. By the system's own grammar that circle was saying
+     "press this" about something unpressable. Gilt says "earned" instead,
+     which is what a score is, and it gives the reserved gold a job that
+     cannot be confused with a control (D52 keeps gilt off every control). */
   .score-marked {
     position: relative;
     display: inline-block;
@@ -1529,7 +1551,7 @@
     position: absolute;
     inset: -0.22em -0.14em -0.26em -0.14em;
     pointer-events: none;
-    background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 52' preserveAspectRatio='none'><path fill='none' stroke='%237c79e8' stroke-opacity='.85' stroke-width='2.4' stroke-linecap='round' d='M74 5 C 44 2, 14 9, 8 22 C 2 35, 24 47, 58 49 C 92 51, 114 41, 115 28 C 116 16, 98 7, 70 5 C 56 4, 42 6, 32 10'/></svg>") no-repeat center/100% 100%;
+    background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 52' preserveAspectRatio='none'><path fill='none' stroke='%23AD8100' stroke-opacity='.9' stroke-width='2.4' stroke-linecap='round' d='M74 5 C 44 2, 14 9, 8 22 C 2 35, 24 47, 58 49 C 92 51, 114 41, 115 28 C 116 16, 98 7, 70 5 C 56 4, 42 6, 32 10'/></svg>") no-repeat center/100% 100%;
   }
 
   /* ── The check (D58) ───────────────────────────────────────

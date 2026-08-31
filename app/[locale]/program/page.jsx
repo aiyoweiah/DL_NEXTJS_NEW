@@ -212,13 +212,13 @@ function Hero({ locale, c }) {
                 className="inline-flex items-center rounded-full transition-opacity hover:opacity-80"
                 style={{
                   padding:         '5px 14px',
-                  border:          '1px solid rgba(245,200,66,0.30)',
-                  backgroundColor: 'rgba(245,200,66,0.06)',
+                  border:          '1px solid rgba(183,181,254,0.30)',
+                  backgroundColor: 'rgba(183,181,254,0.06)',
                   fontSize:        '10px',
                   fontWeight:      600,
                   letterSpacing:   '0.07em',
                   textTransform:   'uppercase',
-                  color:           '#F5C842',
+                  color:           'var(--color-lavender-signal)',
                 }}
               >
                 {c.hero.kidsChip}

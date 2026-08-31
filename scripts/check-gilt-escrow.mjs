@@ -54,19 +54,18 @@ const CONTROL = /<(Link|a|button)\b((?:[^<>]|\{[^{}]*\}|\{\{[^{}]*\}\})*?)>/gs
 // Each needs a reason and an expiry condition. An allowlist without those
 // is just a slower way of losing the rule.
 const ALLOWED = [
-  {
-    file: 'app/[locale]/program/page.jsx',
-    what: 'hero cross-link chip → /little-dodo',
-    reason:
-      'Interactive <Link> wearing gilt. D53b scope says a control takes the D-o bracket, ' +
-      'but a 22px mark against 10px uppercase is absurd and the grammar has no category ' +
-      'between "control" and "non-interactive pill". Open design decision (D65).',
-  },
-  {
-    file: 'app/[locale]/little-dodo/page.jsx',
-    what: 'hero cross-link chip → /program',
-    reason: 'Mirror of the /program chip. Same open design decision (D65).',
-  },
+  // EMPTY, and that is the point.
+  //
+  // This list held the /program and /little-dodo hero cross-link chips,
+  // with a stated retirement condition: resolve what an interactive chip
+  // wears. It was resolved in D68 — they were using gilt for WAYFINDING
+  // ("the other age band"), a third meaning alongside "enrolment" and
+  // "earned proof". They moved to --color-lavender-signal, which reads as
+  // navigation rather than conversion, so they need no D-o bracket either
+  // and the open D65 question closes with them.
+  //
+  // Keep it empty. An entry here needs a reason AND the condition that
+  // retires it, or the rule leaks one exception at a time.
 ]
 
 function walk(dir, out = []) {
