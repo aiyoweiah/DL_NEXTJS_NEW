@@ -4,7 +4,7 @@ Living reference for the DODO marketing site chrome (navbar, footer, funnel CTAs
 and its visual token system. Read this before touching navigation, CTAs, the
 pre-footer band, or any colour value.
 
-**Current through:** v6.25 · 2026-08-30 (D71 built: hand-rolled eyebrows conformed; D70 built: pills retired sitewide; D69 built: hero eyebrow pills; D68 built: gilt means earned proof; D62 built: ZH on LXGW WenKai GB; D67 built: Latin leads the CJK stack; D66 built: gilt escrow enforced; D65 built: btn-do sweep finished; D64 built: Latin preload trimmed; D63 built: CJK frequency-tiered subset; D62 logged: ZH adopts LXGW WenKai, EN stays
+**Current through:** v6.26 · 2026-08-30 (D72 built: /credentials tokens + cohesion proposal; D71 built: hand-rolled eyebrows conformed; D70 built: pills retired sitewide; D69 built: hero eyebrow pills; D68 built: gilt means earned proof; D62 built: ZH on LXGW WenKai GB; D67 built: Latin leads the CJK stack; D66 built: gilt escrow enforced; D65 built: btn-do sweep finished; D64 built: Latin preload trimmed; D63 built: CJK frequency-tiered subset; D62 logged: ZH adopts LXGW WenKai, EN stays
 Source Sans 3 — decision recorded, implementation not started).
 v6.15 = D61 target size 24×24. v6.14 = D59 one Latin face + D60 the Surface guard.
 v6.10 = D54 the lead-in quote on claim labels: letterforms enclose a control, punctuation introduces a label.
@@ -1158,6 +1158,7 @@ not listed.
 | D69 | **The hero eyebrow pills finish the D57 sweep** | `/program`, `/little-dodo`, `/demos`, `/consult` each hand-rolled a *pill* eyebrow as `<div>` + 1.5px dot + styled `<span>`. D57 consolidated those same four pages' PLAIN eyebrows and missed the pills — so each page carried quoted labels throughout and a **pre-D54 dotted label at the very top**. `.eyebrow-pill` + `pill` prop on `Eyebrow`; dot replaced by the D54 quote | ✅ v6.23 |
 | D70 | **Pills retired sitewide** | 46 capsules → 0. Label pills → plain `Eyebrow`; taxonomy capsules → `TagRun` (middot run, `components/ui/TagRun.jsx`); `/faq` filters → D55 swash as the selected state. `.badge`/`radius-pill` cases were invisible to a `rounded-full` scan and had to be found separately. Six sub-12px sites raised to 12px. D69's `.eyebrow-pill` superseded after one version | ✅ v6.24 |
 | D71 | **Hand-rolled eyebrows conformed; the last 6 pills found** | 44 hand-rolled uppercase labels triaged: **9 were genuine eyebrows** → `Eyebrow`; the other 35 are stat labels, form fields, nav items and badges and correctly keep no quote. D70's "0 pills" was **wrong** — its detector needed text as a direct child, missing 6 nested ones. Now 0, verified with a parser. Retires 3 uses of the **undefined** `--accent-lavender-deep` | ✅ v6.25 |
+| D72 | **`/credentials` token aliases + cohesion retrospective** | Six custom properties used by `/credentials` were **never defined**, so every colour there inherited — shipped that way. Aliased to canonical tokens by role (⚠️ best-guess, review live). `--z-nav` / `--color-border` carry fallbacks and were never broken. Findings + permanent-fix proposal in [`docs/architecture-cohesion-proposal.md`](../docs/architecture-cohesion-proposal.md) | ✅ v6.26 |
 
 ### Cascade status
 

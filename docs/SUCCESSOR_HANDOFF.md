@@ -16,6 +16,24 @@ This doc is **your entry point if you're picking up this work cold.** Read this 
 4. `translation/BRAND_CONTENT_GUIDE.md` — the locked brand truth for content surfaces.
 
 
+## START HERE — architecture cohesion proposal (2026-08-30)
+
+**[`docs/architecture-cohesion-proposal.md`](architecture-cohesion-proposal.md)** — the
+retrospective for D63–D72. Read it before starting another sweep of anything.
+
+It documents a pattern that produced nine defects in a row: **every escapee was
+hand-rolled inline, and every sweep matched one spelling of one shape.** Three times
+this guide recorded a completeness claim that was false when written. The proposal's
+first two items — move the remaining guards onto the built output, and add a token
+guard — close the two root causes and are about a day's work.
+
+It also lists five measurement traps, each of which produced a wrong number during that
+run, including a contrast probe that reports false failures on photographic heroes and
+an immutable preview URL that caused two false "not updated" reports (one of which was
+hiding a real bug).
+
+---
+
 ## CLOSED — CJK font subsetting pipeline (opened 2026-08-29, **built 2026-08-30**)
 
 **Status: SHIPPED as D63 (guide v6.17).** Built to the spec below, with four
