@@ -51,7 +51,7 @@ const routeOf = (f) => '/' + path.relative(OUT, path.dirname(f)).split(path.sep)
 // because it read app/ and components/. Those are family 6.
 const FAMILY = [
   { id: 'framework',  test: /^(read|think|speak|write|阅读|思考|表达|写作)$/i,
-    note: 'The Loop's four step names — brand canon. Load-bearing. (NB: the Loop is not the Five Strands; D37's five-strand debt is separate.)' },
+    note: 'The Loop — four step names, brand canon. Load-bearing. (NB: the Loop is not the Five Strands; D37 five-strand debt is separate.)' },
   { id: 'proof-axis', test: /lexile|after \d+ ?wks|16wks|32wks|ssat/i,
     note: 'Axis labels on a sanctioned proof device (D74).' },
   // ⚠️ These two were ONE family in the first version of this file, matched on a
