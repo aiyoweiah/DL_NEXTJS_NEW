@@ -105,7 +105,7 @@ Everything here applies to new work.
 | D61 | Target size 24×24 (WCAG 2.2 SC 2.5.8) | Live | — |
 | D70 | Pills retired sitewide | Live · count corrected by D71 | — |
 | D71 | Hand-rolled eyebrows conformed; the last 6 pills | Live | — |
-| D72 | `/credentials` token aliases | Live · **aliases unmigrated** | `check-tokens` |
+| D72 | `/credentials` token aliases → migrated, alias block deleted | **Fulfilled** 2026-09-01 — verified on the live render, 19 call sites moved to canonical tokens | `check-tokens` |
 | D73 | Guards read the built output; every `var()` must resolve | Live | itself |
 | D74 | The gauge ⛔ scopes to the ladder; outcome bars are sanctioned | Live | — |
 | D75 | `.badge` retired at the definition — component, 5 imports, 8 rule blocks | Live · tail of D70/D71 | — |
@@ -164,7 +164,6 @@ open one.
 | D41 | `/compare` AI-tutor + gifted-books rows, `/faq` objection entries | content |
 | D38 | §07a research block not on `/methodology` | content |
 | D37 | Five strands surfaced on neither `/methodology` nor `/program` | content |
-| D72 | Alias block is a best-guess; call sites unmigrated | design |
 
 ### Resolved conflicts
 

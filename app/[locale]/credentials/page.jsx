@@ -50,18 +50,18 @@ function FrameworkBlock({ f }) {
     <article id={f.key} className="max-w-3xl mx-auto" style={{ paddingBlock: '3rem' }}>
       <h2 style={{
         fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 700, lineHeight: 1.2,
-        letterSpacing: '-0.01em', marginBottom: '1rem', color: 'var(--ink-deep)',
+        letterSpacing: '-0.01em', marginBottom: '1rem', color: 'var(--text-heading)',
       }}>{f.name}</h2>
-      <p style={{ fontSize: '17px', lineHeight: 1.7, color: 'var(--ink)', marginBottom: '1.25rem' }}>
+      <p style={{ fontSize: '17px', lineHeight: 1.7, color: 'var(--text-body)', marginBottom: '1.25rem' }}>
         <strong>Attribution.</strong> {f.attribution}
       </p>
-      <p style={{ fontSize: '17px', lineHeight: 1.7, color: 'var(--ink)', marginBottom: '1.25rem' }}>
+      <p style={{ fontSize: '17px', lineHeight: 1.7, color: 'var(--text-body)', marginBottom: '1.25rem' }}>
         <strong>How DODO uses it.</strong> {f.dodoRole}
       </p>
       {f.source && (
-        <p style={{ fontSize: '15px', color: 'var(--ink-soft)', marginBottom: 0 }}>
+        <p style={{ fontSize: '15px', color: 'var(--text-muted)', marginBottom: 0 }}>
           Source: <a href={f.source.url} target="_blank" rel="noopener noreferrer"
-            style={{ color: 'var(--accent-lavender-deep)', textDecoration: 'underline' }}>
+            style={{ color: 'var(--text-accent)', textDecoration: 'underline' }}>
             {f.source.label}
           </a>
         </p>
@@ -78,14 +78,14 @@ function ResearchBlock({ r }) {
         <Eyebrow mb="0.75rem">{r.eyebrow}</Eyebrow>
         <h2 style={{
           fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)', fontWeight: 700, lineHeight: 1.15,
-          letterSpacing: '-0.02em', marginBottom: '1.5rem', color: 'var(--ink-deep)',
+          letterSpacing: '-0.02em', marginBottom: '1.5rem', color: 'var(--text-heading)',
         }}>{r.h2}</h2>
-        <p style={{ fontSize: '17px', lineHeight: 1.7, color: 'var(--ink)', marginBottom: '1.25rem' }}>
+        <p style={{ fontSize: '17px', lineHeight: 1.7, color: 'var(--text-body)', marginBottom: '1.25rem' }}>
           {r.intro}
         </p>
         <p style={{
-          fontSize: '15px', lineHeight: 1.7, color: 'var(--ink-soft)',
-          borderInlineStart: '3px solid var(--accent-lavender)', paddingInlineStart: '1rem',
+          fontSize: '15px', lineHeight: 1.7, color: 'var(--text-muted)',
+          borderInlineStart: '3px solid var(--color-lavender-signal)', paddingInlineStart: '1rem',
           marginBottom: '2rem', fontStyle: 'italic',
         }}>
           {r.hardRule}
@@ -94,23 +94,23 @@ function ResearchBlock({ r }) {
 
       <h3 style={{
         fontSize: 'clamp(1.15rem, 2vw, 1.35rem)', fontWeight: 700, marginBottom: '1rem',
-        color: 'var(--ink-deep)',
+        color: 'var(--text-heading)',
       }}>What the evidence lets DODO say.</h3>
       <ul style={{ listStyle: 'disc', paddingInlineStart: '1.5rem', marginBottom: '2.5rem' }}>
         {r.claims.map((c, i) => (
-          <li key={i} style={{ fontSize: '16px', lineHeight: 1.7, color: 'var(--ink)', marginBottom: '0.65rem' }}>{c}</li>
+          <li key={i} style={{ fontSize: '16px', lineHeight: 1.7, color: 'var(--text-body)', marginBottom: '0.65rem' }}>{c}</li>
         ))}
       </ul>
 
       <h3 style={{
         fontSize: 'clamp(1.15rem, 2vw, 1.35rem)', fontWeight: 700, marginBottom: '1rem',
-        color: 'var(--ink-deep)',
+        color: 'var(--text-heading)',
       }}>Citations.</h3>
       <ol style={{ listStyle: 'decimal', paddingInlineStart: '1.5rem' }}>
         {r.citations.map((c, i) => (
-          <li key={i} style={{ fontSize: '15px', lineHeight: 1.65, color: 'var(--ink)', marginBottom: '1rem' }}>
+          <li key={i} style={{ fontSize: '15px', lineHeight: 1.65, color: 'var(--text-body)', marginBottom: '1rem' }}>
             <strong>{c.authors}</strong> <em>{c.title}</em> {c.publication}
-            {c.note && <><br /><span style={{ color: 'var(--ink-soft)' }}>{c.note}</span></>}
+            {c.note && <><br /><span style={{ color: 'var(--text-muted)' }}>{c.note}</span></>}
           </li>
         ))}
       </ol>
@@ -139,10 +139,10 @@ export default async function CredentialsPage({ params }) {
           <Eyebrow mb="0.75rem">{t.hero.eyebrow}</Eyebrow>
           <h1 style={{
             fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 300, lineHeight: 1.15,
-            letterSpacing: '-0.02em', marginBottom: '1.5rem', color: 'var(--ink-deep)',
+            letterSpacing: '-0.02em', marginBottom: '1.5rem', color: 'var(--text-heading)',
           }}>{t.hero.h1}</h1>
           <p style={{
-            fontSize: '17px', lineHeight: 1.7, color: 'var(--ink)', maxWidth: '38rem',
+            fontSize: '17px', lineHeight: 1.7, color: 'var(--text-body)', maxWidth: '38rem',
             marginInline: 'auto',
           }}>{t.hero.sub}</p>
         </div>
@@ -150,7 +150,7 @@ export default async function CredentialsPage({ params }) {
 
       {/* Frameworks */}
       <SectionWrapper>
-        <div style={{ borderBlockStart: '1px solid var(--divider)' }}>
+        <div style={{ borderBlockStart: '1px solid var(--border-light)' }}>
           {t.frameworks.map((f) => <FrameworkBlock key={f.key} f={f} />)}
         </div>
       </SectionWrapper>
@@ -166,9 +166,9 @@ export default async function CredentialsPage({ params }) {
           <Eyebrow mb="0.75rem">{t.cta.eyebrow}</Eyebrow>
           <h2 style={{
             fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 300, lineHeight: 1.2,
-            letterSpacing: '-0.02em', marginBottom: '1rem', color: 'var(--ink-deep)',
+            letterSpacing: '-0.02em', marginBottom: '1rem', color: 'var(--text-heading)',
           }}>{t.cta.h2}</h2>
-          <p style={{ fontSize: '16px', lineHeight: 1.7, color: 'var(--ink)', marginBottom: '2rem' }}>
+          <p style={{ fontSize: '16px', lineHeight: 1.7, color: 'var(--text-body)', marginBottom: '2rem' }}>
             {t.cta.sub}
           </p>
           <div className="flex flex-wrap items-center justify-center" style={{ gap: '1rem' }}>
