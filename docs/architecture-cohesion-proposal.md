@@ -1,6 +1,7 @@
 # Architecture cohesion — findings and proposal
 
-**Written:** 2026-08-30 · **Status:** proposal, nothing here is built
+**Written:** 2026-08-30 · **Status:** **§3.1 and §3.2 BUILT 2026-08-30 (D73, guide v6.27).**
+§3.3-§3.5 remain proposals.
 **Covers:** D63–D72 (guide v6.17 → v6.26)
 **Audience:** whoever picks this up next
 
@@ -91,7 +92,7 @@ a typo'd or invented token is indistinguishable from a working one.
 
 Ordered by leverage. 1–3 are the ones that matter.
 
-### 1 · Move every guard to the built output
+### 1 · Move every guard to the built output — BUILT (D73)
 
 `check-surfaces.mjs` and `check-gilt-escrow.mjs` still scan source. Convert both to
 parse `out/` on `postbuild`, as `check-cjk-coverage --build` does. Parse the HTML —
@@ -99,7 +100,21 @@ parse `out/` on `postbuild`, as `check-cjk-coverage --build` does. Parse the HTM
 
 This one change closes root cause B and would have caught D70 and D71 outright.
 
-### 2 · Add `check-tokens.mjs`
+> **Built 2026-08-30.** Both guards gained a `--build` pass on `postbuild`; the parser is
+> `scripts/html-parse.mjs` (dependency-free, ~200 lines — the build must not acquire an
+> install step). The gilt pass now reads the emitted CSS, works out which class selectors
+> actually paint gilt, and checks the controls that really rendered — so gilt arriving
+> through a class name the source pass never heard of is caught.
+>
+> **It found one on its first run.** `.skip-link` paints `var(--color-gilt)` on all 114
+> routes. The JSX says only `className="skip-link"` and the gilt lives in `globals.css`,
+> so no scan for gilt-spelled-near-an-anchor could ever have reached it — the predicted
+> shape, one layer further out than D65. Allowlisted with a stated retirement condition
+> pending an owner ruling; it is a WCAG bypass link, not a conversion control.
+>
+> Both ratchets were regression-tested in both directions.
+
+### 2 · Add `check-tokens.mjs` — BUILT (D73)
 
 Fail the build on any `var(--x)` that is neither defined in `globals.css` nor given an
 inline fallback. Perhaps thirty lines. It would have caught `/credentials` the day it
@@ -109,7 +124,16 @@ was written, and it makes token renames safe for the first time.
 `var(--color-border, #2E3848)` carry fallbacks and are **fine**. Only bare references
 are bugs.
 
-### 3 · Ratchet inline styles
+> **Built 2026-08-30**, two passes. Source (`prebuild`) reports file and line; build
+> (`postbuild`) reads emitted CSS, parsed inline styles and the client JS chunks, so it
+> covers components that never reach the prerendered HTML. Currently 54 bare references
+> in source and 109 in the build, all resolving.
+>
+> Regression-tested by removing one D72 alias: the guard named `--ink-deep` and all six
+> `/credentials` call sites. Two framework namespaces are exempt — `--tw-*` and
+> `--next-*` are declared by Tailwind and Next themselves, and we do not author them.
+
+### 3 · Ratchet inline styles — next, and now the highest-leverage item left
 
 Extend the `surface-baseline.json` pattern to a second baseline counting inline
 `style={{…}}` blocks that set colour or typography. Ratchet downward; fail on increase.
@@ -168,7 +192,8 @@ Every one of these produced a wrong number during this run.
 | **35 hand-rolled uppercase labels** | medium | Triaged in D71 — not eyebrows, so no quote. But each is private type. Needs a decision on whether the system should define `stat-label`, `field-label`, `column-header`. |
 | **24 hand-rolled panels** | medium | Ratcheted by `check-surfaces.mjs`. |
 | **15 images without dimensions** | small | CLS. Needs real intrinsic sizes; guessing distorts them. |
-| **`.badge` / `.badge-gilt` / `.text-gilt`** | small | Now unused. Delete, or keep `badge-gilt` for the Charter CTA that does not exist yet. |
+| **`.badge` / `.badge-gilt` / `.text-gilt`** | small | **Confirmed unused 2026-08-30, with more attached than this row said:** `components/ui/Badge.jsx` has **zero `<Badge` call sites** — D70 removed the render sites and left the component, plus dead imports in `blog/[slug]`, `cities/[city]`, `lexile`, `methodology`, `results`. Delete the component, the 5 imports and ~8 CSS rule blocks, or keep `badge-gilt` for the Charter CTA that does not exist yet. |
+| **`.skip-link` gilt ruling** | small | Found by the D73 build pass; allowlisted pending a call. Either record a stated a11y carve-out in D52, or restyle to `--color-lavender-signal` as the D68 chips were. |
 | **next/font cyrillic-ext italic** | tiny | 10.7 KB, a next/font 16.x bug, tolerated with a reason in `check-font-preload.mjs`. Recheck on the next Next upgrade. |
 | **WenKai payload** | medium | D62 costs 726 KB against Noto's 437 KB because WenKai ships static weights, not a variable axis. Revisit if a variable release appears. |
 
@@ -176,8 +201,15 @@ Every one of these produced a wrong number during this run.
 
 ## 6. If you only do one thing
 
-**Convert the two source-scanning guards to parse the built output (§3.1), and add the
-token guard (§3.2).** Together they are perhaps a day's work and they close the two root
-causes that produced every bug in §1.
+~~**Convert the two source-scanning guards to parse the built output (§3.1), and add the
+token guard (§3.2).**~~ **Done 2026-08-30 (D73).** They closed the two root causes, and
+the build-output pass found a real escapee the same day.
 
-Then, before writing "X is gone" anywhere in the guide, run the check that proves it.
+**The one thing now is §3.3 — ratchet inline styles.** It is the only proposal here that
+reduces the *supply* of future bugs rather than detecting them afterwards, and every
+defect in §1 lived in an inline style.
+
+And, still: before writing "X is gone" anywhere in the guide, run the check that proves
+it. Status for every decision now lives in [`decision-index.md`](decision-index.md),
+which records the enforcing guard per decision — or leaves the column empty, which is
+itself the warning.

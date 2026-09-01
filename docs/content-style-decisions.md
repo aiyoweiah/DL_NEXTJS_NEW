@@ -4,6 +4,8 @@
 
 **How to read:** Each entry includes (1) the decision, (2) what it overrides if anything, (3) where it lives now (brand guide section, glossary entry, skill lint rule), and (4) the trigger (which review surfaced it).
 
+**Status lives elsewhere.** This log is append-only and records what was *decided*; [`docs/decision-index.md`](decision-index.md) records what is still *true* — every D across both logs, with Live / Superseded / Fulfilled / Open and the guard that enforces it. Check the index before assuming an entry here is current.
+
 ---
 
 ## 2026-05-21 · Home page review (first granular pass)
@@ -21,6 +23,7 @@
 - **Trigger:** User Write-step EN edit replacing 6+1 Trait framework reference with MCT writing-arc progression. 6+1 retained as the scoring rubric for the same step.
 
 ### D3 · ZH H1 = brand sub-tagline
+> **⤴ SUPERSEDED by D48** — the home hero H1 was rewritten in EN and ZH (D46, re-voiced D48). Kept for provenance.
 - **Decision:** On the home hero, the ZH H1 is the brand sub-tagline: **"以原版文学精读为起点，用写作锤炼思维，用表达释放声音。"** (Master Brand Guide v3.1 origin.) ZH H1 line 2 left empty.
 - **Overrides:** Prior poetic two-line ZH H1 ("孩子的英文根基..."). The sub-tagline replaces it as the H1 source.
 - **Where it lives now:** `BRAND_CONTENT_GUIDE.md` §12 home row (H1 = brand sub-tagline in ZH).
@@ -88,6 +91,7 @@ For each decision above, ask: has this stabilized across 2+ surface reviews? If 
 ## 2026-05-21 (later) · /program review Round 2 + audience pivot
 
 ### D10 · Audience pivot to global positioning (Q1)
+> **⤴ SUPERSEDED by D40** (2026-08-26) — explicit international targeting retired; see also D26, purged by D45.
 - **Decision:** Drop "Chinese immigrant families in Canada and the US" framing from positioning surfaces. Use "globally-mobile families" / "面向全球家庭" on `/program`, `/about`, home PhotoIntro body0, `/compare`, and `llms.txt` lead blockquote. Preserve Chinese-diaspora references where authentically operational (FAQ city coverage, bilingual cognitive-system descriptions).
 - **Overrides:** Prior brand guide §04 NA-Chinese-immigrant scoping.
 - **Where it lives now:** `BRAND_CONTENT_GUIDE.md` §04 dual-market block; cascaded across `/program`, `/about`, `/home`, `/compare`, llms files. Workflow #16 marked done.
@@ -166,6 +170,7 @@ For each decision above, ask: has this stabilized across 2+ surface reviews? If 
 - **Trigger:** User C-5.
 
 ### D22 · Founder named on /about; closing uses poetic ZH sub-tagline
+> **⤴ SUPERSEDED — (a) by D35** (Janet, first name only, everywhere) **and (b) by D49** (the closing stamp is now the locale-aware tagline).
 - **Decision:** (a) The founder is named on /about as **Janet** (first name — warm conversion register), in the hero sub + video label (founder identity, §12 must-include). **~~Full "Janet Sui" is reserved for formal credits (/compare "From the Founder" byline), legal signatory (AgreementTool), and the pending Person schema.~~ RETIRED 2026-08-24 — see D-latest below: Janet is the only permitted form in every surface, including formal credits, legal signatory, and Person schema.** (b) The closing-stamp ZH H2 switches from the literal "一次思考，两种语言。" to the canonical poetic sub-tagline **"语言的根，长在阅读里"** (§00). EN tagline unchanged.
 - **Where it lives now:** `marketing.{en,zh}.js` `about.hero` · `about/page.jsx` ClosingStamp.
 - **Trigger:** User C-3, C-6.
@@ -181,6 +186,7 @@ For each decision above, ask: has this stabilized across 2+ surface reviews? If 
 Scope: redesign navbar + footer for simplicity, fix tablet UX cliff, kill nav/footer redundancy, fix EN-hardcoded-chrome translation bug, ship Privacy + Terms stubs, reserve a slot for the future DODO Coding sibling site. Plan file: `~/.claude/plans/study-the-current-navbar-sharded-sundae.md`. Commit: `03f1131`.
 
 ### D23 · "The Method" as cold-traffic nav label for /methodology
+> **⤴ SUPERSEDED by D30** — the nav label is **DODO Method** (ZH DODO 教学系统 per D34).
 - **Decision:** The global nav uses **"The Method" / "方法"** as the top-level label for `/methodology`. Brand-owned term **"The Loop"** is preserved inside the page body (hero, anchors, JSON-LD) and across the broader methodology vocabulary. The nav label is the cold-traffic translation; the page itself still names "The Loop" and "The LCS System" per D1/D19.
 - **Reasoning:** "The Loop" reads as in-group vocabulary to a parent landing on the site for the first time. "The Method" is unambiguous in chrome; the owned term carries weight inside the page where the parent has committed to reading.
 - **Where it lives now:** `content/marketing.{en,zh}.js` `nav.primary` array · `components/layout/Navbar.jsx` (label only — href unchanged at `/methodology`).
@@ -200,6 +206,7 @@ Scope: redesign navbar + footer for simplicity, fix tablet UX cliff, kill nav/fo
 - **Trigger:** Chrome overhaul scope; flagged in plan as "the single biggest correctness bug the redesign should fix."
 
 ### D26 · Audience cue — "globally mobile families" on chrome surfaces
+> **⤴ SUPERSEDED by D40**, executed by **D45** — 0 occurrences of `globally-mobile` in live code, verified 2026-08-29.
 - **Decision:** The brand-blurb sentence rendered in the footer Brand column reads **"A live, Navigator-led English literacy program for globally mobile families."** in EN and the ZH-equivalent in `marketing.zh.js` `footer.brand.body`. Aligns with D10 (audience pivot to globally-mobile positioning) on a chrome surface where the brand blurb appears on every page.
 - **Where it lives now:** `content/marketing.{en,zh}.js` `footer.brand.body`.
 - **Trigger:** Audit of footer copy during the rebucket; existing chrome copy still said "Chinese-speaking" pre-D10. Now cascaded to chrome.
@@ -228,6 +235,7 @@ Scope: realign the whole visitor funnel around a soft→firm commitment ladder, 
 - **Trigger:** User funnel-redesign direction — "replace booking consultation with watch demo class as top-of-page soft closer; consult is the firmer close on the demo page."
 
 ### D28 · One conversion moment per page — charter bands removed, PreCtaBand is path-aware
+> **⤴ SUPERSEDED by D33** — the band is a soft fallback, suppressed where a page owns its close. The `/consult` swap and `footer.preCtaWatch` are gone. The one-conversation-moment *principle* survives; this implementation does not.
 - **Decision:** No page renders the dark consult panel twice. The per-page `charter` bands (duplicates of the global footer band) were **deleted from `/program`, `/demos`, `/consult`** plus the duplicate `BookCall` on `/demos`. The global pre-footer band was extracted to a client component **`PreCtaBand.jsx`** that is **path-aware**: firm consult close on every page, but on `/consult` itself it swaps to a soft "Watch a Demo Class" offer (`footer.preCtaWatch`) so it never links back to the page you're on. Default-band ghost changed `See The Program → Watch a Class`.
 - **Overrides:** The additive pattern where most pages stacked an in-body `cta` band + a near-identical `charter` band + the global footer band (up to 3–4 consult asks in a row).
 - **Where it lives now:** `components/layout/PreCtaBand.jsx` (new) + `Footer.jsx`; `footer.preCta` (ghost→watch) + new `footer.preCtaWatch`; charter sections removed from the 3 page files.
@@ -281,7 +289,7 @@ Scope: realign the whole visitor funnel around a soft→firm commitment ladder, 
 ### D35 · "Janet Sui" retired — Janet in every surface, no last name
 
 - **Decision:** The founder is **Janet** — first name only — in every context, without exception: conversion-page prose, formal credits (`/compare` "From the Founder" byline), legal signatory blocks (`components/ops/AgreementTool.jsx`), `Person` schema `name` field, `sameAs` labels, workflow docs, translation glossary, internal handoff docs. No last name appears anywhere.
-- **Overrides:** D18 (the earlier "Janet in warm register; Janet Sui in formal credits / legal / Person schema" convention). That two-form convention is retired.
+- **Overrides:** **D22(a)** (the earlier "Janet in warm register; Janet Sui in formal credits / legal / Person schema" convention). That two-form convention is retired. *(Corrected 2026-08-30: this line read "D18" from 2026-08-24 to 2026-08-30. D18 is the top-50 university credential decision and is untouched by D35 — it remains Live.)*
 - **Where it lives now:** `content/marketing.{en,zh}.js` `/compare` s5 (already stripped 2026-08-24 in the prior session), `components/ops/AgreementTool.jsx:618` signatoryName default + placeholder, `translation/dodo-glossary.json` `owned_terms.Janet`, `translation/BRAND_CONTENT_GUIDE.md` §"Founder reference" row + §"Owned vocabulary", `translation/DEEPSEEK_BRIEF.md` glossary table, `docs/workflow.md` (all mentions), `docs/SUCCESSOR_HANDOFF.md` (all mentions).
 - **Rule going forward:** Never write "Janet Sui" or any last-name form. If a formal byline calls for "Janet Sui — Founder," use "Janet — Founder." When wiring `Person` schema, `name: "Janet"` — do not populate `familyName`. When drafting legal documents, the founder signs as "Janet." Recorded in Claude Code memory (feedback rule) for cross-session enforcement.
 - **Trigger:** User direction 2026-08-24 — "Strip last name from all files & mentions. Be on the lookout going forward."

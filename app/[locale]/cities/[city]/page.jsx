@@ -28,7 +28,6 @@ import { buildCityMetadata }      from '@/lib/metadata'
 import { citySchema }             from '@/lib/schema'
 
 import SectionWrapper from '@/components/ui/SectionWrapper'
-import Badge          from '@/components/ui/Badge'
 import Button         from '@/components/ui/Button'
 import Eyebrow from '@/components/ui/Eyebrow'
 

@@ -4,7 +4,7 @@ Living reference for the DODO marketing site chrome (navbar, footer, funnel CTAs
 and its visual token system. Read this before touching navigation, CTAs, the
 pre-footer band, or any colour value.
 
-**Current through:** v6.26 · 2026-08-30 (D72 built: /credentials tokens + cohesion proposal; D71 built: hand-rolled eyebrows conformed; D70 built: pills retired sitewide; D69 built: hero eyebrow pills; D68 built: gilt means earned proof; D62 built: ZH on LXGW WenKai GB; D67 built: Latin leads the CJK stack; D66 built: gilt escrow enforced; D65 built: btn-do sweep finished; D64 built: Latin preload trimmed; D63 built: CJK frequency-tiered subset; D62 logged: ZH adopts LXGW WenKai, EN stays
+**Current through:** v6.29 · 2026-08-30 (D75: `.badge` retired at the definition; D74: the gauge ⛔ scoped to the ladder, D44's brief closed; D73 built: the guards read the built output + a token guard; D72 built: /credentials tokens + cohesion proposal; D71 built: hand-rolled eyebrows conformed; D70 built: pills retired sitewide; D69 built: hero eyebrow pills; D68 built: gilt means earned proof; D62 built: ZH on LXGW WenKai GB; D67 built: Latin leads the CJK stack; D66 built: gilt escrow enforced; D65 built: btn-do sweep finished; D64 built: Latin preload trimmed; D63 built: CJK frequency-tiered subset; D62 logged: ZH adopts LXGW WenKai, EN stays
 Source Sans 3 — decision recorded, implementation not started).
 v6.15 = D61 target size 24×24. v6.14 = D59 one Latin face + D60 the Surface guard.
 v6.10 = D54 the lead-in quote on claim labels: letterforms enclose a control, punctuation introduces a label.
@@ -46,14 +46,30 @@ no rule here yet, that is a gap to fill deliberately — not licence to improvis
 Render as an ordered, cumulative ladder where cleared levels stay visible. The parent
 should see both where their child sits *and* how far the road runs — that visible sunk
 progress is a retention moat, not a decoration.
-- ⛔ Never a score, gauge, or dial. Those read as *assessment*, which the funnel ladder
-  deliberately keeps out of acquisition (see below).
+- ⛔ **The ladder itself** is never a score, gauge, or dial. A child's position on the
+  curriculum, rendered as a measurement, reads as *assessment* — which the funnel
+  deliberately keeps out of acquisition (D29, and see below).
+- ✅ **Scope clause (D74).** That ⛔ governs the ladder, **not outcome proof.**
+  Measurement against an **outside standard** — a Lexile number, a 6+1 Trait movement —
+  MAY render as a bar. A result a family already owns is not the same act as assessing a
+  prospect, and D44 Truth 3 requires a specific number on every conversion page; a blanket
+  ban would leave that instruction unbuildable.
+  **The test is whose number it is:** a measured outcome, yes; a visitor's own standing,
+  no. Sanctioned instances: `components/ui/LexileBar.jsx` (home · /lexile · /methodology ·
+  /program · /demos) and the `/results` 6+1 trait bars. Both predate this clause and were
+  in tension with the ⛔ as written — that tension is what D74 resolves.
 - ⛔ No "9 levels" or Poodle-era framing anywhere — retired by D37.
 
-**2 · Navigator presence — the bond is a person, not a feature.**
-Navigators appear as named humans at real size, with their own words. Never stock
+**2 · Navigator presence (D44 Truth 2) — the bond is a person, not a feature.**
+This is the visual rule for **Truth 2 — "mastery is taught by a person, not delivered by
+a product."** Navigators appear as named humans at real size, with their own words. Never stock
 imagery, never an anonymous "our teachers" grid, never an avatar row. The longitudinal
 Navigator bond is the moat; a generic teacher grid actively destroys it.
+- **Carry the Speaking strand with it (D74).** §02 names Speaking as the specific work no
+  book, app or AI can do — hearing how a child reasons, pressing on the point they didn't
+  make, coaching the spoken defence of an idea. A Navigator surface showing only
+  credentials and warmth states half of Truth 2. Where a surface has room, the spoken
+  defence is the thing to show.
 - Precedent: `/navigators` S4 → S4.5 (Kimberly spotlight). The surface-alternation rule
   in the spacing protocol exists partly to give these spotlights their own ground.
 
@@ -1121,6 +1137,11 @@ belong together, choose one:
 
 ## Decision log — what has landed in *this* file
 
+> **Status for every decision, both logs, in one table:**
+> [`docs/decision-index.md`](../docs/decision-index.md). Check it before assuming a
+> decision here is still current — several rows in this table were superseded by a
+> later row that said so in its own cell and nowhere else.
+
 Shared **D**-numbering with `docs/content-style-decisions.md`, so a strategy decision can
 be traced into the visual system. Content-side decisions with no visual consequence are
 not listed.
@@ -1134,11 +1155,11 @@ not listed.
 | D42 | §04a Marketing Direction | Strategy → visual brief section added | ✅ v6.3 |
 | D36 · D45 | Tagline "Think once, in two languages." + live swap | No chrome consequence — copy-side only | n/a here |
 | D43 | One-sentence position (LCS / five strands) | Referenced in Direction & feel; cascaded to copy by D46/D49 | ✅ v6.3 |
-| D44 | Redesigned Three Brand Truths | **No visual brief yet — open gap** (copy landed via D46/D49) | ⏳ open |
+| D44 | Redesigned Three Brand Truths | Visual brief **resolved by D74**. Truth 2's rule existed but was unlabelled; Truth 3's device was already shipping against a ⛔ that appeared to forbid it; Truth 1 needs no device — it is a positioning instruction, not a visual one | ✅ v6.28 |
 | D46–D50 | Home, About, Methodology, Program, Compare reworked to v5.1 + §08 voice | Copy-side cascade; chrome unaffected. Re-audit contrast after these ship | n/a here |
-| D51 | Display typeface — Literata + Noto Serif SC, **display-only** | Type pairing section added; `--font-display` / `--font-display-cjk` tokens; per-surface rollout | ✅ v6.4 |
+| D51 | Display typeface — Literata + Noto Serif SC, **display-only** | Type pairing section added; `--font-display` / `--font-display-cjk` tokens; per-surface rollout | ⤴ superseded by D59 |
 | D52 | **Filled buttons are surface-specific** (option B) | `.btn-solid` added (deep lavender + white) for light surfaces; button rule now states text *and* boundary contrast; gilt reservation resolved | ✅ v6.6 |
-| D53 | **The D-o bracket on funnel CTAs** | `DoCta` component + `.btn-do`; `--do-mark` token | ✅ v6.8 |
+| D53 | **The D-o bracket on funnel CTAs** | `DoCta` component + `.btn-do`; `--do-mark` token | ⤴ superseded by D53b |
 | D53b | **Option B — bracket is the control chrome, no fills** | 40 class swaps; hierarchy by weight; gilt to label; marks via CSS pseudo-elements; 73 controls verified | ✅ v6.9 |
 | D54 | **The lead-in quote on claim labels** | `.label-quote` + baked data-URI; 27 labels marked; badge chrome dropped where marked; taxonomy labels excluded; guillemet rejected on a bilingual test | ✅ v6.10 |
 | D55 | **The highlighter swash on the primary control** | `.btn-do-primary` background-image; `#7c79e8` at 30%; content-box anchored; restores a third hierarchy tier without a fill | ✅ v6.11 |
@@ -1151,14 +1172,20 @@ not listed.
 | D62 | **ZH adopts LXGW WenKai GB; EN stays Source Sans 3** | **BUILT v6.21.** GB edition v1.522, CJK-only subset via the D63 pipeline — a `--source` flag, as designed. Static font, so 2 weights: Regular 400 + Medium declared `500 700` so bold RESOLVES to Medium rather than synthesising. 726.3 KB across 10 chunks (vs Noto's 436.5 KB variable) — the cost of no variable axis | ✅ v6.21 |
 | D63 | **CJK served from a frequency-tiered local subset** | Hosted Noto (303 `@font-face`, 13.2 MB declared) replaced by 5 generated chunks, 437 KB total across the whole 400–700 range (variable font). ZH page CJK **1,090 → 437 KB** measured cold; EN unchanged at 0 KB. `check-cjk-coverage.mjs` guards `prebuild` **and** `postbuild`. Fixes a dead `<link rel=preload>` that 404'd on every ZH page | ✅ v6.17 |
 | D64 | **Latin preload trimmed to the subset actually used** | `subsets: ['latin','latin-ext']` → `['latin']`. latin-ext usage across the whole export: **zero characters**; it cost 116.6 KB of forced preload per route. EN font payload **183.3 → 66.6 KB**. `check-font-preload.mjs` ratchets it on `postbuild`. Remaining 10.7 KB is a next/font 16.x bug (spurious cyrillic-ext italic preload), tolerated with reason | ✅ v6.18 |
-| D65 | **The `btn-do` sweep finished — 6 inline-styled gilt CTAs found** | v6.9/v6.12 claimed "the last non-`btn-do` CTA is gone"; **that was false.** Six gilt-filled consult CTAs (`/navigators`, `/blog`, `/compare`, `/faq` ×2, `/assessment`) used inline `backgroundColor: '#F5C842'` and were invisible to a class-based sweep. Converted to `.btn-do-primary`; `.on-dark` added to the two hand-rolled dark sections the D53 note predicted. Zero contrast failures. **2 interactive gilt chips remain — open design question** | ✅ v6.19 |
+| D65 | **The `btn-do` sweep finished — 6 inline-styled gilt CTAs found** | v6.9/v6.12 claimed "the last non-`btn-do` CTA is gone"; **that was false.** Six gilt-filled consult CTAs (`/navigators`, `/blog`, `/compare`, `/faq` ×2, `/assessment`) used inline `backgroundColor: '#F5C842'` and were invisible to a class-based sweep. Converted to `.btn-do-primary`; `.on-dark` added to the two hand-rolled dark sections the D53 note predicted. Zero contrast failures. 2 interactive gilt chips remained — **that open question was answered by D68** | ✅ v6.19 |
 | D66 | **The gilt reservation is enforced, not just written down** | `check-gilt-escrow.mjs` on `prebuild`: gilt on any interactive control fails the build. D52 reserved gilt in v6.6 and three later sweeps each declared the job done while six gilt CTAs shipped — a reservation nobody enforces quietly expires. 2 hero chips allowlisted with a stated retirement condition | ✅ v6.20 |
 | D67 | **The Latin face leads the CJK stack** | Fixes a regression D63 introduced: a CJK-only subset at the head of `--font-cjk` meant Latin inside Chinese copy missed it and fell to PingFang/YaHei. Measured: "Reading Thinking Lexile MCT" set **436.26px in PingFang vs 380.29px in Source Sans 3** — the D59 split, reintroduced. Latin now leads; verified back to 380.29px | ✅ v6.21 |
 | D68 | **Gilt gets one job: earned proof** | `--gilt-mark` `#AD8100` added — the one gold clearing 3:1 on both grounds, so one baked colour serves every surface. `.score-marked` restroked from `--do-mark` lavender to gilt, fixing a grammar bug where the *control* mark circled an unpressable number. Hero chips gilt → lavender-signal (wayfinding, not conversion) — which closes D65 and empties the D66 allowlist. **Also fixes `--text-gilt-light`: it claimed "passes AA" at 2.56:1** | ✅ v6.22 |
-| D69 | **The hero eyebrow pills finish the D57 sweep** | `/program`, `/little-dodo`, `/demos`, `/consult` each hand-rolled a *pill* eyebrow as `<div>` + 1.5px dot + styled `<span>`. D57 consolidated those same four pages' PLAIN eyebrows and missed the pills — so each page carried quoted labels throughout and a **pre-D54 dotted label at the very top**. `.eyebrow-pill` + `pill` prop on `Eyebrow`; dot replaced by the D54 quote | ✅ v6.23 |
+| D69 | **The hero eyebrow pills finish the D57 sweep** | `/program`, `/little-dodo`, `/demos`, `/consult` each hand-rolled a *pill* eyebrow as `<div>` + 1.5px dot + styled `<span>`. D57 consolidated those same four pages' PLAIN eyebrows and missed the pills — so each page carried quoted labels throughout and a **pre-D54 dotted label at the very top**. `.eyebrow-pill` + `pill` prop on `Eyebrow`; dot replaced by the D54 quote | ⤴ superseded by D70 |
 | D70 | **Pills retired sitewide** | 46 capsules → 0. Label pills → plain `Eyebrow`; taxonomy capsules → `TagRun` (middot run, `components/ui/TagRun.jsx`); `/faq` filters → D55 swash as the selected state. `.badge`/`radius-pill` cases were invisible to a `rounded-full` scan and had to be found separately. Six sub-12px sites raised to 12px. D69's `.eyebrow-pill` superseded after one version | ✅ v6.24 |
 | D71 | **Hand-rolled eyebrows conformed; the last 6 pills found** | 44 hand-rolled uppercase labels triaged: **9 were genuine eyebrows** → `Eyebrow`; the other 35 are stat labels, form fields, nav items and badges and correctly keep no quote. D70's "0 pills" was **wrong** — its detector needed text as a direct child, missing 6 nested ones. Now 0, verified with a parser. Retires 3 uses of the **undefined** `--accent-lavender-deep` | ✅ v6.25 |
 | D72 | **`/credentials` token aliases + cohesion retrospective** | Six custom properties used by `/credentials` were **never defined**, so every colour there inherited — shipped that way. Aliased to canonical tokens by role (⚠️ best-guess, review live). `--z-nav` / `--color-border` carry fallbacks and were never broken. Findings + permanent-fix proposal in [`docs/architecture-cohesion-proposal.md`](../docs/architecture-cohesion-proposal.md) | ✅ v6.26 |
+
+| D73 | **The guards read the built output; every `var()` must resolve** | Closes the two root causes in [`architecture-cohesion-proposal.md`](../docs/architecture-cohesion-proposal.md) §3.1–3.2. `check-surfaces` and `check-gilt-escrow` gain a `--build` pass that PARSES `out/` (new `scripts/html-parse.mjs`) instead of scanning source; the gilt pass resolves gilt class rules out of the emitted CSS, so gilt arriving through a class name the source pass never heard of is now caught. New `check-tokens.mjs` fails the build on any bare `var(--x)` with no definition — the D72 defect, in ~30 lines. Found on its first run: **`.skip-link` paints `var(--color-gilt)` on all 114 routes**, invisible to the source pass by construction. Allowlisted with a stated retirement condition, pending an owner ruling | ✅ v6.27 |
+
+| D74 | **The ⛔ on gauges governs the ladder, not outcome proof** | Closes D44's open visual brief. `LexileBar` (5 routes) and the `/results` trait bars are `role="progressbar"` devices that had been shipping since long before the ⛔ was written, while D44 Truth 3 requires a specific number on every conversion page — the rule and the code contradicted each other on the home page. Narrowed rather than enforced: the test is **whose number it is** — a measured outcome a family owns, yes; a visitor's own standing, no. Also labels brief item 2 as Truth 2's rule and adds the **Speaking strand**, which §02 calls the moat and the brief had omitted. **No code changed** | ✅ v6.28 |
+
+| D75 | **`.badge` retired at the definition, not just the call sites** | The tail of D70/D71. Those two removed every rendered pill but left the *definitions* standing: `components/ui/Badge.jsx` with **zero call sites**, dead `import Badge` in five pages (`blog/[slug]`, `cities/[city]`, `lexile`, `methodology`, `results`), and 8 CSS rule blocks (`.badge`, `.badge-lavender`, `.badge-lavender-dark`, `.badge-neutral` ×2, `.badge-gilt`, `.badge.label-quote`, `.text-gilt`). All deleted. **`.badge-gilt` was the one real question** — keep it for the Charter enrolment CTA that does not exist yet (§14.11, `btn-do-charter`)? Deleted: D52 is the record of the gilt reservation and `check-gilt-escrow` enforces it, so re-adding a rule when a Charter CTA finally exists is cheaper than carrying a dead one every future sweep must re-triage | ✅ v6.29 |
 
 ### Cascade status
 

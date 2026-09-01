@@ -106,13 +106,17 @@ is why it survived. The href is now generated from the manifest and cannot drift
 
 ### Still open
 
-- **D62 (LXGW WenKai GB) deliberately NOT built** — that was step 2, after banking the
+- ~~**D62 (LXGW WenKai GB) deliberately NOT built**~~ — **BUILT**, guide v6.21, as a
+  `--source` flag exactly as designed. Costs 726 KB against Noto's 437 KB (static weights,
+  no variable axis) — accepted 2026-08-30. Original note follows. That was step 2, after banking the
   pipeline. It is now a `--source` flag on the generator plus a regeneration. The traps
   in the original spec still stand: **subset CJK-only** (WenKai inherits Latin from Klee
   One; shipping it would re-split the brand's Latin by locale, the exact bug D59 fixed),
   **use the GB edition**, and weight 700 will synthesise (no true Bold — accepted).
-- **The 183 KB of Source Sans 3 on every route.** Five files including latin-ext and a
-  Cyrillic chunk, normal and italic. Unexamined; likely the next real payload win.
+- ~~**The 183 KB of Source Sans 3 on every route.**~~ **CLOSED by D64** (guide v6.18):
+  `subsets: ['latin','latin-ext']` → `['latin']`. latin-ext usage across the whole export
+  was **zero characters** and cost 116.6 KB of forced preload per route. EN font payload
+  **183.3 → 66.6 KB**, ratcheted by `check-font-preload.mjs`.
 - Everything under "Explicitly out of scope" below is untouched: the type floor, the 15
   images without dimensions, the 40×40 hamburger, the 31 remaining hand-rolled panels.
 

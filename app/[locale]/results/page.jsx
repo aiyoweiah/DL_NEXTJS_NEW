@@ -29,7 +29,6 @@ import { buildMetadata }               from '@/lib/metadata'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import K2Note         from '@/components/ui/K2Note'
 import Button         from '@/components/ui/Button'
-import Badge          from '@/components/ui/Badge'
 import LexileBar      from '@/components/ui/LexileBar'
 import Eyebrow from '@/components/ui/Eyebrow'
 

@@ -5,13 +5,14 @@
   "scripts": {
     "dev": "next dev",
     "check:surfaces": "node scripts/check-surfaces.mjs",
-    "prebuild": "node scripts/check-surfaces.mjs && node scripts/check-cjk-coverage.mjs && node scripts/check-gilt-escrow.mjs",
+    "prebuild": "node scripts/check-surfaces.mjs && node scripts/check-cjk-coverage.mjs && node scripts/check-gilt-escrow.mjs && node scripts/check-tokens.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postbuild": "node scripts/check-cjk-coverage.mjs --build && node scripts/check-font-preload.mjs",
+    "postbuild": "node scripts/check-cjk-coverage.mjs --build && node scripts/check-font-preload.mjs && node scripts/check-surfaces.mjs --build && node scripts/check-gilt-escrow.mjs --build && node scripts/check-tokens.mjs --build",
     "fonts:cjk": "node scripts/build-cjk-subset.mjs",
-    "fonts:report": "node scripts/build-cjk-subset.mjs --report"
+    "fonts:report": "node scripts/build-cjk-subset.mjs --report",
+    "check:tokens": "node scripts/check-tokens.mjs"
   },
   "dependencies": {
     "@types/node": "20.6.2",

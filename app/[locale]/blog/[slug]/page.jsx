@@ -16,7 +16,6 @@ import { articleSchema }           from '@/lib/schema'
 import { getAllSlugs, getPost, mdxToHtml } from '@/lib/blog'
 
 import SectionWrapper from '@/components/ui/SectionWrapper'
-import Badge          from '@/components/ui/Badge'
 
 // ── Static params ─────────────────────────────────────────────
 export function generateStaticParams() {
