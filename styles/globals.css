@@ -78,15 +78,18 @@
                                                        outline buttons: --text-muted is light-only. */
   --text-inverse:          var(--color-platinum);
   --text-inverse-heading:  var(--color-lavender-signal);
-  --text-gilt-light:       #8F6B00;                 /* gilt as TEXT on light. 4.54:1 on Whisper,
-                                                       4.92:1 on white — passes AA.
-                                                       ⚠️ WAS #C49400, commented "passes AA".
-                                                       It did not: 2.56:1 on Whisper. Nothing
-                                                       shipped it (btn-do-charter and badge-gilt
-                                                       both have zero call sites), but the
-                                                       Charter CTA would have launched with a
-                                                       failing label the day it landed. D68. */
-  --text-gilt-dark:        var(--color-gilt);
+  /* --text-gilt-light / --text-gilt-dark lived here: gilt as TEXT, light and
+     dark ground. Both deleted by D76, which retired gold-as-text entirely.
+     Gilt now appears on a control only as the decorative lead swash.
+
+     Worth keeping the history, because the note that stood here was wrong in
+     a way that mattered. It read: "⚠️ WAS #C49400, commented 'passes AA'. It
+     did not: 2.56:1 on Whisper. Nothing shipped it (btn-do-charter and
+     badge-gilt both have zero call sites)." The first half was right and the
+     parenthesis was false — `.btn-do-charter` had been rendering on /lexile,
+     /methodology and /results since 2026-03-19. So #C49400 DID ship, on three
+     conversion pages, in both locales, for about five months. D68 read as a
+     pre-emptive fix and was actually an unwitting repair. */
 
   /* ── Border tokens ── */
   --border-light:          rgba(14,14,18,0.1);
@@ -768,9 +771,13 @@
   .btn-do:hover::before { transform: translateX(-1.5px); }
   .btn-do:hover::after  { transform: translateX(1.5px); }
 
-  /* Hierarchy — weight, label colour, and (primary only) the swash below. */
+  /* Hierarchy — weight, label colour, and (leads only) the gilt swash below.
+     ⛔ Neither takes a gilt LABEL. D76 retired gold-as-text: #F5C842 is 1.59:1
+     on white, and `.btn-do-charter` shipped #C49400 at 2.56:1 on Whisper for
+     five months while five separate comments called it unused. Gold rides
+     UNDER the label now, where it is decorative and cannot fail. */
   .btn-do-primary { font-weight: 700; color: var(--text-body-dark); }
-  .btn-do-charter { font-weight: 700; color: var(--text-gilt-light); }
+  .btn-do-charter { font-weight: 700; color: var(--text-body-dark); }
 
   /* ── The highlighter swash (D55 · v6.11, widened by D56 · v6.12) ──
      A marker stroke behind the LOWER PORTION OF THE LABEL ONLY — not a
@@ -785,7 +792,9 @@
      the only version the contrast maths allows:
 
        .btn-do          pale  #b7b5fe @26%  — label 4.67:1 light / 5.86:1 dark
-       .btn-do-primary  deep  #7c79e8 @30%  — label 9.97:1 light / 11.27:1 dark
+       .btn-do-fork     deep  #7c79e8 @30%  — label 9.97:1 light / 11.27:1 dark
+       .btn-do-primary  gilt  #F5C842 @30%  — the LEAD of its section (D76)
+       .btn-do-charter  gilt  #F5C842 @30%  — same, via the primary rule
 
      ⛔ The secondary may NOT take the deep ink. Its label is lavender
      #5856cc at only 5.36:1 bare, so a deep-lavender wash drops it to
@@ -793,12 +802,20 @@
      label eats its own contrast, the same failure that keeps the wash off
      the D-o marks. The pale ink is light enough to leave the label alone.
 
-     ⛔ And it may NOT take gilt, the obvious "alternating colour". D52
-     resolved a contradiction in which gilt was spent sitewide; gilt is
-     reserved for Charter Enrolment, so a gilt wash on every secondary
-     would re-spend it exactly as that decision forbids. (Measured anyway,
-     for the record: gilt survives the label test to 38% — it is the
-     reservation, not the contrast, that rules it out.)
+     ⛔ The SECONDARY may not take gilt — that would spend the signal on
+     every control, which is the state D52 was written to end.
+
+     ✅ The LEAD does (D76). This note used to read "it may NOT take gilt",
+     on D52's reservation — and recorded the measurement that made the
+     reservation the only objection: "gilt survives the label test to 38%".
+     D76 retired the reservation, so the measurement is now the whole
+     answer. The lead ink is gilt at 30%, inside that measured ceiling.
+
+     What makes gilt legal here and illegal as a label is the same fact
+     twice: the swash is DECORATIVE (WCAG 1.4.11 does not apply, see the
+     foot of this comment), so gilt's 1.59:1 on white never has to clear a
+     text floor. The label keeps its own accessible colour and the gold
+     rides underneath it.
 
      Both files are baked and surface-blind, exactly like --do-mark: the
      primary reads 9.97:1 on Whisper, 11.27:1 on Void Black, 8.65:1 on the
@@ -831,9 +848,22 @@
     background-position: left 25px bottom 13px;
   }
 
-  /* The primary presses harder — same hand, denser ink. Equal specificity to
-     the rule above, so this must stay BELOW it. */
-  .btn-do-primary {
+  /* The LEAD presses harder, and in gold (D76). Same hand, different ink.
+     Equal specificity to the rule above, so this must stay BELOW it. */
+  .btn-do-primary,
+  .btn-do-charter {
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 14' preserveAspectRatio='none'><path fill='%23F5C842' fill-opacity='.30' fill-rule='evenodd' d='M1.6 6.4 C 2.2 4.1, 4 3.1, 7 2.9 C 30 2.2, 62 1.9, 96 2 C 120 2.05, 142 2.3, 151 2.6 C 155.6 2.75, 158.8 4.2, 158.9 6.6 C 159 9.2, 157 11.1, 153 11.6 C 138 12.5, 104 12.9, 74 12.8 C 48 12.7, 22 12.5, 9 12.1 C 4.4 11.95, 1.1 10.3, 1.6 6.4 Z M22 5.4 C 56 4.6, 100 4.5, 138 5 C 100 5.9, 56 6, 22 5.4 Z'/></svg>");
+  }
+
+  /* ── The fork opt-out (D76) ───────────────────────────────────────
+     A section with TWO co-equal controls is not a close, it is a choice:
+     the age-band chooser asks which child you have, it does not ask you to
+     press one of them. Gilt marks the lead of a conversion moment, and a
+     fork has no lead — so both controls keep the deep-lavender ink that
+     `.btn-do-primary` used to carry, and the section takes no gold.
+
+     Must stay BELOW the rule above: equal specificity, later wins. */
+  .btn-do-fork {
     background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 14' preserveAspectRatio='none'><path fill='%237c79e8' fill-opacity='.30' fill-rule='evenodd' d='M1.6 6.4 C 2.2 4.1, 4 3.1, 7 2.9 C 30 2.2, 62 1.9, 96 2 C 120 2.05, 142 2.3, 151 2.6 C 155.6 2.75, 158.8 4.2, 158.9 6.6 C 159 9.2, 157 11.1, 153 11.6 C 138 12.5, 104 12.9, 74 12.8 C 48 12.7, 22 12.5, 9 12.1 C 4.4 11.95, 1.1 10.3, 1.6 6.4 Z M22 5.4 C 56 4.6, 100 4.5, 138 5 C 100 5.9, 56 6, 22 5.4 Z'/></svg>");
   }
 
@@ -857,10 +887,12 @@
   .section-hero-short .btn-do-primary,
   .on-dark .btn-do-primary { color: var(--text-inverse); }
 
+  /* Charter follows the primary onto dark ground. It used to take
+     `--text-gilt-dark` here — a gilt LABEL, retired by D76. */
   .section-dark .btn-do-charter,
   .section-darker .btn-do-charter,
   .section-hero-short .btn-do-charter,
-  .on-dark .btn-do-charter { color: var(--text-gilt-dark); }
+  .on-dark .btn-do-charter { color: var(--text-inverse); }
 
   .section-dark .btn-do:hover,
   .section-darker .btn-do:hover,
@@ -1218,12 +1250,8 @@
   }
 
 
-  .section-dark .text-gilt,
-  .section-darker .text-gilt,
-  .section-hero-short .text-gilt,
-  .on-dark .text-gilt {
-    color: var(--text-gilt-dark);
-  }
+  /* `.text-gilt`'s dark-ground override lived here. D75 deleted the class and
+     left this behind — the same tail D75 was itself written about. Removed. */
 
   .elevated {
     background: #ffffff;

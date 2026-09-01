@@ -96,9 +96,19 @@ export default function AgeBandChooser({ locale, copy, current }) {
                     {copy.here}
                   </span>
                 ) : (
+                  /*
+                    `btn-do-fork` — this chooser asks WHICH CHILD you have, it
+                    does not ask you to press one of the two (D76). On the home
+                    page both bands render, so the section has two co-equal
+                    controls and no lead; on /program and /little-dodo one is
+                    the current page and the other is a cross-link. Either way
+                    it is wayfinding, which is the exact meaning D68 took gilt
+                    away from when it moved the hero cross-link chips to
+                    lavender. So: no gold here, on any page.
+                  */
                   <Link
                     href={`/${locale}${b.href}`}
-                    className="btn btn-do btn-do-primary text-sm px-5 py-2.5 self-start"
+                    className="btn btn-do btn-do-primary btn-do-fork text-sm px-5 py-2.5 self-start"
                   >
                     {b.cta}
                   </Link>

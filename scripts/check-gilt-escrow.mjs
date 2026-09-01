@@ -1,59 +1,59 @@
 #!/usr/bin/env node
 // scripts/check-gilt-escrow.mjs
 //
-// Build guard: gilt (#F5C842) may not appear on an interactive control.
+// Build guard for the gilt rule (D76).
 //
-// WHY THIS EXISTS
+// ── THE RULE ─────────────────────────────────────────────────────────
 //
-// D52 reserved gilt for Charter Enrolment. D53b removed all button fills,
-// leaving gilt alive only as the LABEL colour on `.btn-do-charter` — which
-// has no call sites, because the site has no enrolment CTA. The guide
-// recorded gilt as "currently used nowhere".
+//   1. Gilt is NEVER paint on a control — not a label colour, not a fill,
+//      not a border. Gold as text is what kept failing contrast.
+//   2. Gilt IS the swash under the single LEAD control of a conversion
+//      section. One per section, or none.
 //
-// It was used in six places. /navigators, /blog, /compare, /faq (x2) and
-// /assessment all shipped gilt-FILLED consult CTAs, which is precisely the
-// "gilt spent sitewide" contradiction D52 was written to resolve (D65).
+// D52 used to reserve gilt for a Charter Enrolment CTA that did not exist.
+// D76 retired that reservation: gilt is now positional — it marks which
+// control leads — rather than semantic.
 //
-// They survived v6.8, v6.9 and v6.12 — three sweeps that each declared the
-// job finished — because every one of those sweeps swapped CLASS NAMES
-// (`btn-secondary`, `btn-solid`, `btn-charter`) and these six carried no
-// button class at all: they were `<Link>`s with an inline
-// `style={{ backgroundColor: '#F5C842' }}`. A grep for retired class names
-// cannot see an inline hex.
+// ── WHY THIS FILE IS SHAPED LIKE THIS ────────────────────────────────
 //
-// That is the same failure shape as the nine private `Eyebrow` copies
-// (D57), the 33 hand-rolled panels (D60) and the dead font preload (D64):
-// hand-rolled markup escapes a system sweep, every single time. The lesson
-// the guide keeps re-learning is that a reservation nobody enforces is a
-// reservation that quietly expires. So: a ratchet, like the others.
+// Under D52 this guard asserted "no gilt on any control". It shipped that
+// way and it was still wrong, because the premise was false: the guide
+// asserted FIVE times, in five places, that `.btn-do-charter` had no call
+// sites, while `/lexile`, `/methodology` and `/results` had been rendering
+// it since 2026-03-19 — six controls, EN + ZH. For five months before D68
+// its label was `#C49400`, 2.56:1 on Whisper: failing AA text AND the 3:1
+// non-text floor, live, on three conversion pages. D68's token correction
+// was written as a pre-emptive fix for a CTA that did not exist; it was
+// actually repairing a shipped accessibility failure.
 //
-// Scope is CONTROLS ONLY. Decorative gilt (the /about gradient headline,
-// its accent dot and pull-quote, the /compare SVG) is deliberately not
-// checked — D52's reservation is written about conversion controls, not
-// about the colour existing. If the intent is ever "gilt means enrolment
-// anywhere", widen this.
+// The class was invisible to every sweep because it lived in a VARIANT MAP
+// (`components/ui/Button.jsx`), not in the page markup any of them read.
+// That is the same failure shape as D65's inline hex, D69's pill eyebrows,
+// D71's nested pills and D73's `.skip-link` — the detector's blind spot is
+// where the bug lives, every single time.
 //
-// ── TWO PASSES (D73) ─────────────────────────────────────────────────
+// So this guard checks RENDERED OUTPUT and distinguishes gilt-as-paint from
+// gilt-as-swash by reading which PROPERTY the colour lands in, rather than
+// trusting any class name to mean what it is called.
+//
+// ── TWO PASSES ───────────────────────────────────────────────────────
 //
 //   node scripts/check-gilt-escrow.mjs            source pass  (prebuild)
 //   node scripts/check-gilt-escrow.mjs --build    build pass   (postbuild)
 //
-// The source pass is a source-shape rule and needs no build. It has one
-// structural blind spot, named in docs/architecture-cohesion-proposal.md §2B:
-// it can only recognise gilt spelled the way it expects, on markup that
-// appears in our own source. It cannot see gilt that arrives through a CSS
-// CLASS whose rule it never read, and it cannot see a control rendered only
-// on the client.
+// The source pass forbids hand-rolled gilt on a control: gilt must arrive
+// through the system class, never through an inline hex. It is a cheap
+// shape rule and it has a structural blind spot (docs/architecture-
+// cohesion-proposal.md §2B) — it cannot see gilt arriving via a CSS class
+// whose rule it never read, nor a control rendered only on the client.
 //
-// The build pass closes both. It reads the emitted CSS, works out which class
-// selectors actually paint gilt — whatever they are called — and then PARSES
-// every page in out/ and checks the controls that really rendered. It is the
-// difference between "no source file spells gilt near a <Link>" and "no
-// control on this site is gilt".
+// The build pass closes both. It reads the emitted CSS, works out which
+// class selectors actually paint gilt and HOW, then parses every page in
+// out/ and checks the controls that really rendered.
 
 import fs from 'node:fs'
 import path from 'node:path'
-import { parse, findAll, classList, styleMap, describe } from './html-parse.mjs'
+import { parse, findAll, classList, styleMap, describe, closest, text } from './html-parse.mjs'
 
 const ROOT = process.cwd()
 const DIRS = ['app', 'components']
@@ -63,40 +63,40 @@ const BUILD = process.argv.includes('--build')
 // `/ops` is internal admin tooling, not the public design system.
 const SKIP = /(^|\/)(node_modules|\.next|out|ops)(\/|$)/
 
-// Anything that renders gilt.
+// Anything that renders gilt in SOURCE.
 const GILT = /#F5C842|#f5c842|245,\s*200,\s*66|--color-gilt|text-gilt|badge-gilt|btn-gilt/
 
-// Interactive elements — the things D52's reservation is about.
+// Interactive elements — the things the rule is about.
 const CONTROL = /<(Link|a|button)\b((?:[^<>]|\{[^{}]*\}|\{\{[^{}]*\}\})*?)>/gs
 
+// The classes that carry the sanctioned gilt swash (D76). A control wearing
+// one of these is a LEAD, and is checked for the one-per-section rule rather
+// than treated as an escape.
+const LEAD_CLASSES = ['btn-do-primary', 'btn-do-charter']
+
+// The opt-out. A section where two controls are genuinely co-equal — an
+// age-band fork, not a conversion close — has no lead, so it takes no gilt.
+const FORK_CLASS = 'btn-do-fork'
+
 // ── Known exceptions ─────────────────────────────────────────────────
-// An entry takes `file` (source pass) or `class` (build pass), and MUST carry a
-// reason AND the condition that retires it. An allowlist without those is just
-// a slower way of losing the rule.
-//
-// This list was empty before D73, and that was the point: it had held the
-// /program and /little-dodo hero cross-link chips with a stated retirement
-// condition, and D68 retired them (they were using gilt for WAYFINDING, a
-// third meaning alongside "enrolment" and "earned proof"; they moved to
-// --color-lavender-signal).
+// An entry takes `file` (source pass) or `class` (build pass), and MUST carry
+// a reason AND the condition that retires it. An allowlist without those is
+// just a slower way of losing the rule.
 const ALLOWED = [
   {
     class: 'skip-link',
     // Found by the build pass on its first run (D73). Invisible to the source
     // pass by construction: the JSX says only `className="skip-link"` and the
-    // gilt lives in globals.css, so a scan for gilt spelled near an anchor
-    // cannot reach it. Same shape as D65, one layer further out.
+    // gilt lives in globals.css.
     //
-    // Reason it is tolerated rather than restyled: D52 escrows gilt against
-    // CONVERSION controls, to stop the enrolment signal being spent sitewide.
-    // The skip link is neither decorative nor conversion — it is a WCAG 2.4.1
-    // bypass affordance that renders only on keyboard focus, so it spends the
-    // signal in front of approximately no prospective parent, and gilt on Void
-    // Black is 12.13:1, which is a real argument for a focus target that has
-    // to be unmissable.
+    // Survives D76 unchanged. D76 is about which CONVERSION control leads; the
+    // skip link is a WCAG 2.4.1 bypass affordance that renders only on keyboard
+    // focus, so it spends the signal in front of approximately no prospective
+    // parent, and gilt on Void Black is 12.13:1 — a real argument for a focus
+    // target that has to be unmissable.
     //
     // RETIRES WHEN: the owner rules on it. Either (a) confirm the exception and
-    // record it in D52 as a stated carve-out for a11y affordances, at which
+    // record it in D76 as a stated carve-out for a11y affordances, at which
     // point this entry cites that instead of arguing the case, or (b) restyle
     // the skip link — --color-lavender-signal is the natural alternative, as it
     // was for the D68 chips — and delete this entry.
@@ -129,85 +129,94 @@ function sourcePass() {
     for (const m of src.matchAll(CONTROL)) {
       const attrs = m[2]
       if (!GILT.test(attrs)) continue
-      // A gilt LABEL via the system class is the one sanctioned use.
-      if (/btn-do-charter/.test(attrs)) continue
+      // Gilt arriving through the system class is the sanctioned route.
+      if (new RegExp(LEAD_CLASSES.join('|')).test(attrs)) continue
 
       const line = src.slice(0, m.index).split('\n').length
-      if (ALLOWED.some((a) => a.file === rel)) {
-        allowedHit++
-        continue
-      }
+      if (ALLOWED.some((a) => a.file === rel)) { allowedHit++; continue }
       violations.push({ file: rel, line, snippet: attrs.replace(/\s+/g, ' ').trim().slice(0, 90) })
     }
   }
 
   if (violations.length === 0) {
     console.log(
-      `✓ gilt escrow (source): no gilt on interactive controls` +
-        (allowedHit ? ` (${allowedHit} allowlisted — see ALLOWED in this script)` : '') +
-        `.`
+      `✓ gilt escrow (source): no hand-rolled gilt on interactive controls` +
+        (allowedHit ? ` (${allowedHit} allowlisted — see ALLOWED in this script)` : '') + `.`
     )
     return 0
   }
 
   console.error(
-    `\n✖ gilt escrow guard: ${violations.length} interactive control(s) use gilt.\n\n` +
-      `  Gilt (#F5C842) is reserved for Charter Enrolment (D52). The site has no\n` +
-      `  enrolment CTA, so the only sanctioned use is \`.btn-do-charter\` — and that\n` +
-      `  currently has no call sites, by design.\n`
+    `\n✖ gilt escrow (source): ${violations.length} control(s) spell gilt by hand.\n\n` +
+      `  Gilt reaches a control through the system class and nowhere else (D76).\n` +
+      `  An inline hex is invisible to a class rename and to every sweep that\n` +
+      `  reads class names — which is how six of these shipped before (D65).\n`
   )
   for (const v of violations) {
     console.error(`    ${v.file}:${v.line}`)
     console.error(`        ${v.snippet}\n`)
   }
   console.error(
-    `  Fix — if it is a consult/demo/exploratory control, it takes the ordinary\n` +
-      `  bracket, not gilt:\n\n` +
+    `  Fix — if this control LEADS its section, it takes the lead class and the\n` +
+      `  gilt swash comes with it:\n\n` +
       `      className="btn btn-do btn-do-primary"\n\n` +
-      `  ⚠️ If the enclosing section paints a dark ground by hand, it also needs the\n` +
-      `  \`on-dark\` hook or the label lands near-black on near-black (D53/D65).\n\n` +
-      `  If this genuinely IS the Charter Enrolment CTA, use \`.btn-do-charter\` and\n` +
-      `  update D52. If it is something else, add it to ALLOWED with a reason and\n` +
-      `  the condition that would retire it.\n`
+      `  If it does not lead, it is a secondary and keeps the pale swash:\n\n` +
+      `      className="btn btn-do"\n\n` +
+      `  ⚠️ If the enclosing section paints a dark ground by hand, it also needs\n` +
+      `  the \`on-dark\` hook or the label lands near-black on near-black (D53/D65).\n`
   )
   return 1
 }
 
 // ── Build pass ───────────────────────────────────────────────────────
 
-// Gilt as it can appear in an emitted declaration.
+// Gilt as it can appear in an emitted declaration. `%23F5C842` is the same
+// colour inside a data-URI SVG, which is how the swash ships — omit it and the
+// guard cannot see the very thing D76 is about.
 //
 // `--gilt-mark` (#AD8100) is deliberately NOT here. D68 gave that colour one
-// job — stroking an earned-proof mark — and it is not the escrowed brand gold.
-// Conflating them would make the guard fail on `.score-marked`, which is the
-// D68 grammar working correctly.
+// job — stroking an earned-proof mark — and it is not the brand gold.
+// Conflating them would fail `.score-marked`, which is D68 working correctly.
 const GILT_VALUE =
-  /#F5C842\b|#8F6B00\b|rgba?\(\s*245\s*,\s*200\s*,\s*66|var\(\s*--color-gilt|var\(\s*--text-gilt-(light|dark)/i
+  /#F5C842\b|%23F5C842\b|#8F6B00\b|rgba?\(\s*245\s*,\s*200\s*,\s*66|var\(\s*--color-gilt|var\(\s*--text-gilt-(light|dark)/i
 
-// The one sanctioned gilt control.
-const SANCTIONED = 'btn-do-charter'
+/** Split a declaration block on top-level `;` — data URIs contain their own. */
+function declarations(block) {
+  const out = []
+  let depth = 0, buf = ''
+  const flush = () => { const d = buf.trim(); buf = ''; if (d) out.push(d) }
+  for (const ch of block) {
+    if (ch === '(') depth++
+    else if (ch === ')') depth--
+    if (ch === ';' && depth === 0) { flush(); continue }
+    buf += ch
+  }
+  flush()
+  return out
+}
 
 /**
  * Class names in the SUBJECT compound of a selector — the element the rule
- * actually paints.
- *
- * `.on-dark .btn-do-charter` paints the charter button, not everything with
- * `.on-dark`; taking every class in the selector would blacklist `.on-dark`
- * sitewide and fail every control inside a dark section. So: strip functional
- * pseudos, split on combinators, keep the last compound.
- *
- * Returns the classes that must ALL be present for the rule to apply, so
- * `.a.b { … }` does not condemn `.a` on its own.
+ * actually paints. `.on-dark .btn-do-charter` paints the charter button, not
+ * everything with `.on-dark`.
  */
 function subjectClasses(selector) {
   const cleaned = selector.replace(/:(not|is|where|has)\([^)]*\)/g, '')
   const parts = cleaned.trim().split(/\s*[\s>+~]\s*/).filter(Boolean)
   const subject = parts[parts.length - 1] ?? ''
-  // Class tokens may carry CSS escapes: `.md\:p-8`, `.w-1\.5`.
   return [...subject.matchAll(/\.((?:\\.|[A-Za-z0-9_-])+)/g)].map((m) => m[1].replace(/\\/g, ''))
 }
 
-/** Every class-rule in the emitted CSS whose declarations paint gilt. */
+/**
+ * Every class-rule in the emitted CSS that paints gilt, classified by HOW.
+ *
+ *   kind 'swash' — the colour arrives inside a background-image. Decorative,
+ *                  WCAG 1.4.11 does not apply (D55), and this is the D76 mark.
+ *   kind 'paint' — the colour arrives as text, fill or border. Forbidden.
+ *
+ * Reading the property rather than the class name is the point: a class called
+ * `btn-do-charter` told five separate places it was unused while it shipped.
+ */
 function giltRulesFromCss() {
   const cssDir = path.join(OUT, '_next', 'static')
   const files = []
@@ -224,13 +233,25 @@ function giltRulesFromCss() {
   const rules = []
   for (const file of files) {
     const css = fs.readFileSync(file, 'utf8')
-    // Innermost blocks only — an @media wrapper cannot match `[^{}]*`, so its
-    // nested rules are matched individually, which is what we want.
     for (const m of css.matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
       if (!GILT_VALUE.test(m[2])) continue
+      // Which declarations actually carry the gilt?
+      let kind = null
+      for (const decl of declarations(m[2])) {
+        if (!GILT_VALUE.test(decl)) continue
+        const prop = decl.slice(0, decl.indexOf(':')).trim().toLowerCase()
+        if (/^background(-image)?$/.test(prop) && /url\(/i.test(decl)) {
+          kind = kind === 'paint' ? 'paint' : 'swash'
+        } else {
+          kind = 'paint'
+        }
+      }
+      if (!kind) continue
       for (const sel of m[1].split(',')) {
         const classes = subjectClasses(sel)
-        if (classes.length) rules.push({ classes, selector: sel.trim(), decl: m[2].trim().slice(0, 80) })
+        if (classes.length) {
+          rules.push({ classes, kind, selector: sel.trim(), decl: m[2].trim().slice(0, 80) })
+        }
       }
     }
   }
@@ -241,6 +262,19 @@ const isControl = (el) =>
   el.tag === 'a' ||
   el.tag === 'button' ||
   (el.tag === 'input' && /^(submit|button|reset)$/i.test(el.attrs.type || ''))
+
+// The unit the one-lead rule is measured in. `<section>` is the design
+// system's own unit — D58's budget rule is already written per section, and
+// measured against the built output it is the grouping that fits: 97.4% of
+// sections already held exactly one lead before D76 was written, against 92%
+// for a nearest-common-ancestor grouping.
+//
+// ⚠️ KNOWN COARSENESS. A control outside every `<section>` falls back to
+// `<body>`, so all such controls on a page share one bucket. Today that is
+// safe — no page has two section-less leads — but it is luck, not design. If
+// this guard ever reports a `<body>` section with two leads that are visually
+// far apart, the fix is to wrap them in real sections, not to loosen this.
+const SECTIONISH = new Set(['section', 'footer', 'nav', 'header', 'main', 'body'])
 
 const routeOf = (file) =>
   '/' + path.relative(OUT, file).split(path.sep).join('/')
@@ -264,79 +298,116 @@ function buildPass() {
   }
   collect(OUT)
 
-  const violations = []
-  let allowedHit = 0
+  const painted = []     // gilt as text/fill/border — always a violation
+  const crowded = []     // more than one gilt lead in one section
+  let allowedHit = 0, leadCount = 0, sectionCount = 0
 
   for (const file of htmlFiles) {
     const route = routeOf(file)
     const root = parse(fs.readFileSync(file, 'utf8'))
+    const leadsBySection = new Map()
 
     for (const el of findAll(root, isControl)) {
       const classes = classList(el)
-      if (classes.includes(SANCTIONED)) continue
 
+      // ── 1. gilt as paint, from an inline style or a class rule ──
       let why = null
-
-      // 1. Gilt written straight onto the control.
       const inline = el.attrs.style || ''
       if (GILT_VALUE.test(inline)) {
-        why = `inline style: ${inline.replace(/\s+/g, ' ').slice(0, 70)}`
+        // An inline background-image is still a swash.
+        const inlineIsSwash = [...styleMap(el)].some(
+          ([p, v]) => /^background(-image)?$/.test(p) && /url\(/i.test(v) && GILT_VALUE.test(v)
+        )
+        if (!inlineIsSwash) why = `inline style: ${inline.replace(/\s+/g, ' ').slice(0, 70)}`
       }
-
-      // 2. Gilt arriving through a class, whatever that class is called. This
-      //    is the half the source pass cannot see: it matches known gilt class
-      //    NAMES, so a new one would pass it and ship.
       if (!why) {
         for (const rule of rules) {
+          if (rule.kind !== 'paint') continue
           if (rule.classes.every((c) => classes.includes(c))) {
             why = `class rule: ${rule.selector} { ${rule.decl} }`
             break
           }
         }
       }
+      if (why) {
+        if (ALLOWED.some((a) => a.class && classes.includes(a.class))) allowedHit++
+        else painted.push({ route, node: describe(el), why })
+        continue
+      }
 
-      if (!why) continue
-      if (ALLOWED.some((a) => a.class && classes.includes(a.class))) { allowedHit++; continue }
+      // ── 2. the sanctioned swash — subject to one per section ──
+      const isLead =
+        !classes.includes(FORK_CLASS) &&
+        (LEAD_CLASSES.some((c) => classes.includes(c)) ||
+          rules.some((r) => r.kind === 'swash' && r.classes.every((c) => classes.includes(c))))
 
-      violations.push({ route, line: el.line, node: describe(el), why })
+      if (!isLead) continue
+      leadCount++
+      const sec = closest(el, (n) => SECTIONISH.has(n.tag)) || root
+      if (!leadsBySection.has(sec)) leadsBySection.set(sec, [])
+      leadsBySection.get(sec).push(el)
+    }
+
+    for (const [, members] of leadsBySection) {
+      sectionCount++
+      if (members.length > 1) {
+        crowded.push({
+          route,
+          labels: members.map((m) => (text(m) || describe(m)).slice(0, 28)),
+        })
+      }
     }
   }
 
-  if (violations.length === 0) {
+  if (painted.length === 0 && crowded.length === 0) {
     console.log(
       `✓ gilt escrow (build): ${htmlFiles.length} pages parsed, ` +
-        `${rules.length} gilt class rule(s) resolved from CSS, no gilt on any rendered control` +
+        `${rules.length} gilt rule(s) resolved from CSS; ` +
+        `${leadCount} gilt lead(s) across ${sectionCount} section(s), never more than one` +
         (allowedHit ? ` (${allowedHit} allowlisted)` : '') + `.`
     )
     return 0
   }
 
-  // One control in a shared component is one violation per route. Group so the
-  // output names the problem once, with its blast radius.
-  const grouped = new Map()
-  for (const v of violations) {
-    const key = `${v.node}|${v.why}`
-    if (!grouped.has(key)) grouped.set(key, { ...v, routes: [] })
-    grouped.get(key).routes.push(v.route)
+  if (painted.length) {
+    const grouped = new Map()
+    for (const v of painted) {
+      const key = `${v.node}|${v.why}`
+      if (!grouped.has(key)) grouped.set(key, { ...v, routes: [] })
+      grouped.get(key).routes.push(v.route)
+    }
+    console.error(
+      `\n✖ gilt escrow (build): ${grouped.size} rendered control(s) paint gilt as ` +
+        `text, fill or border, across ${new Set(painted.map((v) => v.route)).size} route(s).\n\n` +
+        `  Gold is never paint on a control (D76). It failed contrast every time it\n` +
+        `  was: #F5C842 is 1.59:1 on white, and .btn-do-charter shipped #C49400 at\n` +
+        `  2.56:1 on Whisper for five months. Gilt rides UNDER the label as a swash.\n`
+    )
+    for (const g of grouped.values()) {
+      console.error(`    ${g.node}  — ${g.routes.length} route(s), e.g. ${g.routes[0]}`)
+      console.error(`        ${g.why}\n`)
+    }
   }
 
-  console.error(
-    `\n✖ gilt escrow (build): ${grouped.size} rendered control(s) paint gilt, ` +
-      `across ${new Set(violations.map((v) => v.route)).size} route(s).\n\n` +
-      `  Gilt (#F5C842) is reserved for Charter Enrolment (D52). The only\n` +
-      `  sanctioned control is \`.btn-do-charter\`.\n`
-  )
-  for (const g of grouped.values()) {
-    console.error(`    ${g.node}  — ${g.routes.length} route(s), e.g. ${g.routes[0]}:${g.line}`)
-    console.error(`        ${g.why}\n`)
+  if (crowded.length) {
+    console.error(
+      `\n✖ gilt escrow (build): ${crowded.length} section(s) contain more than one ` +
+        `gilt lead.\n\n` +
+        `  A section has one conversion moment, so it has one lead (D76), and D58's\n` +
+        `  budget rule already allows it one drawn device. Two gilt swashes in a\n` +
+        `  section means the page has not decided which control it wants pressed.\n`
+    )
+    for (const c of crowded.slice(0, 12)) {
+      console.error(`    ${c.route}`)
+      console.error(`        ${c.labels.join('   |   ')}\n`)
+    }
+    console.error(
+      `  Fix — demote all but one to \`btn btn-do\` (secondary), OR, if the two are\n` +
+        `  genuinely co-equal and the section is a FORK rather than a close (the\n` +
+        `  age-band chooser is the real case), add \`${FORK_CLASS}\` to both. A fork\n` +
+        `  has no lead, so it takes no gilt.\n`
+    )
   }
-  console.error(
-    `  This pass reads the emitted CSS and the parsed pages, so it catches gilt\n` +
-      `  arriving through a class the source pass has never heard of, and controls\n` +
-      `  that only render on the client. A green source pass does not clear it.\n\n` +
-      `  Fix — an ordinary consult/demo control takes the bracket, not gilt:\n\n` +
-      `      className="btn btn-do btn-do-primary"\n`
-  )
   return 1
 }
 

@@ -22,13 +22,30 @@
 //   ...rest   forwarded to the rendered element (href, onClick, type, etc.)
 
 const VARIANT_CLASSES = {
-    // Option B (D53/v6.9): no fills. Weight + label colour carry hierarchy.
+    // Option B (D53/v6.9): no fills. Weight + label colour carry hierarchy,
+    // and since D76 the gilt swash marks whichever control LEADS its section.
     primary: 'btn btn-do btn-do-primary',
     solid:   'btn btn-do btn-do-primary',
-    // RESERVED: gilt label, Charter Enrolment only. Unused today because the
-    // site has no enrolment CTA yet — every former btn-charter was a demo or
-    // consult control and is now `primary`. Do not reach for this casually.
+
+    // ⚠️ This comment used to read "RESERVED … Unused today because the site
+    // has no enrolment CTA yet". That was false, and it was one of FIVE places
+    // asserting it. `/lexile`, `/methodology` and `/results` have passed
+    // variant="charter" since 2026-03-19 — six rendered controls, EN + ZH.
+    // For five months before D68 the label was #C49400: 2.56:1 on Whisper,
+    // failing AA text and the 3:1 non-text floor, live on three conversion
+    // pages. It was invisible to every sweep because a variant MAP is not
+    // markup, and every sweep read markup.
+    //
+    // Today `charter` is a synonym for `primary` — same gilt swash, same label
+    // colour. It is kept as a distinct name only so the three call sites keep
+    // working; if no true enrolment CTA ever needs its own treatment, fold it
+    // into `primary` and delete the class.
     charter: 'btn btn-do btn-do-charter',
+
+    // A section whose two controls are co-equal is a FORK, not a close, so it
+    // has no lead and takes no gold (D76). Pair with `primary`.
+    fork:    'btn btn-do btn-do-primary btn-do-fork',
+
     ghost:   'btn btn-do',
     outline: 'btn btn-do',
   }

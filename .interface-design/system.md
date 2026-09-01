@@ -4,7 +4,7 @@ Living reference for the DODO marketing site chrome (navbar, footer, funnel CTAs
 and its visual token system. Read this before touching navigation, CTAs, the
 pre-footer band, or any colour value.
 
-**Current through:** v6.29 · 2026-08-30 (D75: `.badge` retired at the definition; D74: the gauge ⛔ scoped to the ladder, D44's brief closed; D73 built: the guards read the built output + a token guard; D72 built: /credentials tokens + cohesion proposal; D71 built: hand-rolled eyebrows conformed; D70 built: pills retired sitewide; D69 built: hero eyebrow pills; D68 built: gilt means earned proof; D62 built: ZH on LXGW WenKai GB; D67 built: Latin leads the CJK stack; D66 built: gilt escrow enforced; D65 built: btn-do sweep finished; D64 built: Latin preload trimmed; D63 built: CJK frequency-tiered subset; D62 logged: ZH adopts LXGW WenKai, EN stays
+**Current through:** v6.30 · 2026-09-01 (D76: gilt leads the conversion section, the reservation retired; D75: `.badge` retired at the definition; D74: the gauge ⛔ scoped to the ladder, D44's brief closed; D73 built: the guards read the built output + a token guard; D72 built: /credentials tokens + cohesion proposal; D71 built: hand-rolled eyebrows conformed; D70 built: pills retired sitewide; D69 built: hero eyebrow pills; D68 built: gilt means earned proof; D62 built: ZH on LXGW WenKai GB; D67 built: Latin leads the CJK stack; D66 built: gilt escrow enforced; D65 built: btn-do sweep finished; D64 built: Latin preload trimmed; D63 built: CJK frequency-tiered subset; D62 logged: ZH adopts LXGW WenKai, EN stays
 Source Sans 3 — decision recorded, implementation not started).
 v6.15 = D61 target size 24×24. v6.14 = D59 one Latin face + D60 the Surface guard.
 v6.10 = D54 the lead-in quote on claim labels: letterforms enclose a control, punctuation introduces a label.
@@ -283,12 +283,19 @@ a cursive capital **D** and lowercase **o** flanking the label. `DoCta`
   |---|---|---|---|
   | `.btn-do` | 400 | `--text-accent` 5.36:1 | `--text-accent-dark` 10.14:1 |
   | `.btn-do-primary` | 700 | ink 17.78:1 | platinum 16.9:1 |
-  | `.btn-do-charter` | 700 | gilt 4.6:1 | gilt 12.13:1 |
+  | `.btn-do-charter` | 700 | ink 17.78:1 | platinum 16.9:1 |
 
-- **Gilt moved from a fill to the label**, so the Charter signal survives option B.
-  It is currently used **nowhere**: the site has no enrolment CTA, and every former
-  `btn-charter` was a demo or consult control. Do not reach for `charter` until a
-  real enrolment CTA exists.
+- ⚠️ **Both claims in this block were wrong; corrected by D76.** It read: *"Gilt moved
+  from a fill to the label, so the Charter signal survives option B. It is currently
+  used **nowhere**: the site has no enrolment CTA."*
+  - The **label** is no longer gilt. D76 retired gold-as-text; `.btn-do-charter` now
+    takes the ordinary ink/platinum label and a gilt *swash*. The row above used to
+    claim "gilt 4.6:1" on light, which was itself false — the token measured 2.56:1.
+  - **"Used nowhere" was false when written and stayed false for five months.**
+    `/lexile`, `/methodology` and `/results` have passed `variant="charter"` since
+    2026-03-19 — six rendered controls, EN + ZH — so a 2.56:1 label shipped on three
+    conversion pages. This is one of the five places that asserted zero call sites.
+    Enforced now: `check-gilt-escrow` reads rendered output, not prose.
 - **Marks are CSS pseudo-elements with a baked data-URI**, not markup — possible
   only because `--do-mark` clears 3:1 on both grounds. That made the rollout a class
   swap rather than ~50 JSX conversions, and keeps the marks out of the a11y tree.
@@ -707,7 +714,70 @@ Reported from a phone as "the brackets in the hero still seem outdated." They we
 time, on production too. A frozen preview URL is a real trap, and it is also a very
 easy way to explain away a real bug. Check the live origin before concluding staleness.
 
+**Gilt leads the conversion section (D76 · v6.30 — BUILT).**
+The reservation is retired. Gilt is no longer a semantic escrow held for a Charter
+Enrolment CTA — it is a **positional** signal: it marks which control leads.
+
+- **The rule.** A section with exactly one lead (`.btn-do-primary` / `.btn-do-charter`)
+  paints that control's swash gilt. A section with none, or with two co-equal controls,
+  takes no gold. **The unit is the `<section>`** — the same unit D58's budget rule
+  already uses, and the one the built output supports: measured before writing this,
+  **97.4% of sections already held exactly one lead** (368/378), against 92% for a
+  nearest-common-ancestor grouping. The rule was mostly already true; this names it.
+- **Gold is never text (retires `--text-gilt-light` / `--text-gilt-dark`).** Gilt rides
+  *under* the label as the D55 swash, where it is decorative — WCAG 1.4.11 does not
+  apply — so `#F5C842`'s 1.59:1 on white never has to clear a text floor. The label
+  keeps its own accessible colour. This is what makes the rule buildable on the light
+  half of the site at all: the footer is Whisper, and a gilt *label* there is illegible.
+- **The measurement already existed.** The D55 comment forbidding a gilt swash recorded,
+  parenthetically, that "gilt survives the label test to 38% — it is the reservation,
+  not the contrast, that rules it out." D76 retires the reservation, so that measurement
+  became the whole answer. The lead ink is gilt at 30%, inside the measured ceiling.
+- **The fork exception, which the data found.** Two sections had two leads: the age-band
+  chooser on the home page. Those controls are co-equal by design — the chooser asks
+  *which child you have*, it does not ask you to press one. A fork has no lead, so
+  `.btn-do-fork` keeps both on the deep lavender `.btn-do-primary` used to carry.
+  `AgeBandChooser` is marked fork on **every** page, including `/program` and
+  `/little-dodo` where only one band renders: it is wayfinding either way, and
+  wayfinding is the exact third meaning D68 took gilt away from.
+- **Eight sections have no lead at all** (home, EN + ZH) — "View all results →",
+  "Visit DODO Coding →". They are wayfinding too, and correctly take no gold. "The lead
+  of every group" would have put gilt on them; "the lead of a *conversion* section" does
+  not. That distinction is D76's whole precision.
+- ⚠️ **The premise of D52 and D68 was false, and had been for five months.**
+  `.btn-do-charter` was described as having **zero call sites in five separate places** —
+  §14.11, D68's entry, `Button.jsx:28`, the `--text-gilt-light` comment, and this guide's
+  gilt section. It had been rendering on `/lexile`, `/methodology` and `/results` since
+  **2026-03-19** — six controls, EN + ZH. Its label was `#C49400`, **2.56:1 on Whisper**:
+  failing AA text *and* the 3:1 non-text floor, live, on three conversion pages. D68's
+  token correction reads as pre-emptive and was in fact an unwitting repair of a shipped
+  a11y failure. Every sweep missed it because the call sites are a **variant map**
+  (`Button.jsx`), not markup — and every sweep read markup. Fourth false completeness
+  claim; same shape as D65, D69, D71 and D73.
+- **`check-gilt-escrow` was inverted, and regression-tested both ways.** It no longer
+  asks "is gilt on a control" — gilt on a control is now correct. It reads the emitted
+  CSS, classifies each gilt rule by the **property** the colour lands in (a
+  `background-image` is a swash and legal; anything else is paint and is not), then
+  asserts one lead per section over `out/`. Verified in both directions: injecting gilt
+  as a label colour fails with the control named; promoting a second lead into a section
+  fails with both labels named. Both exit 1.
+- **Known coarseness, stated rather than discovered later:** a control outside every
+  `<section>` falls back to `<body>`, so all such controls on a page share one bucket.
+  No page currently has two section-less leads, so this is safe today — by luck, not by
+  design. If it ever reports a `<body>` section with two distant leads, wrap them in real
+  sections rather than loosening the guard.
+- **The honest cost.** D68's "gilt has exactly one job" ends. Gold now has two: *earned
+  proof* (a drawn mark, `--gilt-mark` `#AD8100`, on an unpressable number) and *lead
+  action* (a swash, under a pressable one). They are separated by device and by target,
+  and D58's one-drawn-device-per-section budget is the structural firewall that stops
+  them co-occurring. That is a weaker guarantee than D68 had. It is not the
+  three-meanings-is-decoration state D52 was written to end.
+
 **Gilt has exactly one job now: earned proof (D68 · v6.22 — BUILT).**
+> ⤴ **AMENDED by D76** — the "never a control" half is retired; gilt marks the lead
+> control of a conversion section. The earned-proof mark (`--gilt-mark`) is unchanged
+> and still Live. The "zero call sites" claim below is **false** — see D76.
+
 Gilt was not rare, it was *unused*. `.btn-do-charter`, `.badge-gilt` and `.text-gilt`
 were all fully specified with **zero call sites**, while gilt actually rendered in ten
 places as hand-rolled inline hex. That is why D52's reservation could be violated six
@@ -1158,7 +1228,7 @@ not listed.
 | D44 | Redesigned Three Brand Truths | Visual brief **resolved by D74**. Truth 2's rule existed but was unlabelled; Truth 3's device was already shipping against a ⛔ that appeared to forbid it; Truth 1 needs no device — it is a positioning instruction, not a visual one | ✅ v6.28 |
 | D46–D50 | Home, About, Methodology, Program, Compare reworked to v5.1 + §08 voice | Copy-side cascade; chrome unaffected. Re-audit contrast after these ship | n/a here |
 | D51 | Display typeface — Literata + Noto Serif SC, **display-only** | Type pairing section added; `--font-display` / `--font-display-cjk` tokens; per-surface rollout | ⤴ superseded by D59 |
-| D52 | **Filled buttons are surface-specific** (option B) | `.btn-solid` added (deep lavender + white) for light surfaces; button rule now states text *and* boundary contrast; gilt reservation resolved | ✅ v6.6 |
+| D52 | **Filled buttons are surface-specific** (option B) | `.btn-solid` added (deep lavender + white) for light surfaces; button rule now states text *and* boundary contrast; gilt reservation resolved · ⤴ **reservation retired by D76** | ✅ v6.6 |
 | D53 | **The D-o bracket on funnel CTAs** | `DoCta` component + `.btn-do`; `--do-mark` token | ⤴ superseded by D53b |
 | D53b | **Option B — bracket is the control chrome, no fills** | 40 class swaps; hierarchy by weight; gilt to label; marks via CSS pseudo-elements; 73 controls verified | ✅ v6.9 |
 | D54 | **The lead-in quote on claim labels** | `.label-quote` + baked data-URI; 27 labels marked; badge chrome dropped where marked; taxonomy labels excluded; guillemet rejected on a bilingual test | ✅ v6.10 |
@@ -1175,7 +1245,7 @@ not listed.
 | D65 | **The `btn-do` sweep finished — 6 inline-styled gilt CTAs found** | v6.9/v6.12 claimed "the last non-`btn-do` CTA is gone"; **that was false.** Six gilt-filled consult CTAs (`/navigators`, `/blog`, `/compare`, `/faq` ×2, `/assessment`) used inline `backgroundColor: '#F5C842'` and were invisible to a class-based sweep. Converted to `.btn-do-primary`; `.on-dark` added to the two hand-rolled dark sections the D53 note predicted. Zero contrast failures. 2 interactive gilt chips remained — **that open question was answered by D68** | ✅ v6.19 |
 | D66 | **The gilt reservation is enforced, not just written down** | `check-gilt-escrow.mjs` on `prebuild`: gilt on any interactive control fails the build. D52 reserved gilt in v6.6 and three later sweeps each declared the job done while six gilt CTAs shipped — a reservation nobody enforces quietly expires. 2 hero chips allowlisted with a stated retirement condition | ✅ v6.20 |
 | D67 | **The Latin face leads the CJK stack** | Fixes a regression D63 introduced: a CJK-only subset at the head of `--font-cjk` meant Latin inside Chinese copy missed it and fell to PingFang/YaHei. Measured: "Reading Thinking Lexile MCT" set **436.26px in PingFang vs 380.29px in Source Sans 3** — the D59 split, reintroduced. Latin now leads; verified back to 380.29px | ✅ v6.21 |
-| D68 | **Gilt gets one job: earned proof** | `--gilt-mark` `#AD8100` added — the one gold clearing 3:1 on both grounds, so one baked colour serves every surface. `.score-marked` restroked from `--do-mark` lavender to gilt, fixing a grammar bug where the *control* mark circled an unpressable number. Hero chips gilt → lavender-signal (wayfinding, not conversion) — which closes D65 and empties the D66 allowlist. **Also fixes `--text-gilt-light`: it claimed "passes AA" at 2.56:1** | ✅ v6.22 |
+| D68 | **Gilt gets one job: earned proof** | `--gilt-mark` `#AD8100` added — the one gold clearing 3:1 on both grounds, so one baked colour serves every surface. `.score-marked` restroked from `--do-mark` lavender to gilt, fixing a grammar bug where the *control* mark circled an unpressable number. Hero chips gilt → lavender-signal (wayfinding, not conversion) — which closes D65 and empties the D66 allowlist. **Also fixes `--text-gilt-light`: it claimed "passes AA" at 2.56:1** | ✅ v6.22 · ⤴ amended by **D76** (gilt may mark a control again; the earned-proof mark is untouched) |
 | D69 | **The hero eyebrow pills finish the D57 sweep** | `/program`, `/little-dodo`, `/demos`, `/consult` each hand-rolled a *pill* eyebrow as `<div>` + 1.5px dot + styled `<span>`. D57 consolidated those same four pages' PLAIN eyebrows and missed the pills — so each page carried quoted labels throughout and a **pre-D54 dotted label at the very top**. `.eyebrow-pill` + `pill` prop on `Eyebrow`; dot replaced by the D54 quote | ⤴ superseded by D70 |
 | D70 | **Pills retired sitewide** | 46 capsules → 0. Label pills → plain `Eyebrow`; taxonomy capsules → `TagRun` (middot run, `components/ui/TagRun.jsx`); `/faq` filters → D55 swash as the selected state. `.badge`/`radius-pill` cases were invisible to a `rounded-full` scan and had to be found separately. Six sub-12px sites raised to 12px. D69's `.eyebrow-pill` superseded after one version | ✅ v6.24 |
 | D71 | **Hand-rolled eyebrows conformed; the last 6 pills found** | 44 hand-rolled uppercase labels triaged: **9 were genuine eyebrows** → `Eyebrow`; the other 35 are stat labels, form fields, nav items and badges and correctly keep no quote. D70's "0 pills" was **wrong** — its detector needed text as a direct child, missing 6 nested ones. Now 0, verified with a parser. Retires 3 uses of the **undefined** `--accent-lavender-deep` | ✅ v6.25 |
@@ -1186,6 +1256,8 @@ not listed.
 | D74 | **The ⛔ on gauges governs the ladder, not outcome proof** | Closes D44's open visual brief. `LexileBar` (5 routes) and the `/results` trait bars are `role="progressbar"` devices that had been shipping since long before the ⛔ was written, while D44 Truth 3 requires a specific number on every conversion page — the rule and the code contradicted each other on the home page. Narrowed rather than enforced: the test is **whose number it is** — a measured outcome a family owns, yes; a visitor's own standing, no. Also labels brief item 2 as Truth 2's rule and adds the **Speaking strand**, which §02 calls the moat and the brief had omitted. **No code changed** | ✅ v6.28 |
 
 | D75 | **`.badge` retired at the definition, not just the call sites** | The tail of D70/D71. Those two removed every rendered pill but left the *definitions* standing: `components/ui/Badge.jsx` with **zero call sites**, dead `import Badge` in five pages (`blog/[slug]`, `cities/[city]`, `lexile`, `methodology`, `results`), and 8 CSS rule blocks (`.badge`, `.badge-lavender`, `.badge-lavender-dark`, `.badge-neutral` ×2, `.badge-gilt`, `.badge.label-quote`, `.text-gilt`). All deleted. **`.badge-gilt` was the one real question** — keep it for the Charter enrolment CTA that does not exist yet (§14.11, `btn-do-charter`)? Deleted: D52 is the record of the gilt reservation and `check-gilt-escrow` enforces it, so re-adding a rule when a Charter CTA finally exists is cheaper than carrying a dead one every future sweep must re-triage | ✅ v6.29 |
+
+| D76 | **Gilt leads the conversion section — the reservation is retired** | Gilt becomes **positional**, not semantic: the single lead of a conversion `<section>` takes a gilt swash; a section with no lead, or a co-equal **fork**, takes none. `<section>` is the unit — 97.4% of them already held exactly one lead (368/378) before the rule was written. **Gold is never text**: `--text-gilt-light` / `--text-gilt-dark` deleted, the swash carries the colour where it is decorative and 1.59:1-on-white cannot fail. D55 had already measured that gilt survives the label test to 38%; only D52 blocked it. New `.btn-do-fork` keeps the age-band chooser on lavender (wayfinding, per D68). ⚠️ **`.btn-do-charter` was called unused in FIVE places and had shipped since 2026-03-19 on 3 pages × 2 locales, with a 2.56:1 label for five months** — fourth false completeness claim, invisible because its call sites are a variant map, not markup. `check-gilt-escrow` inverted: classifies gilt by the CSS *property* it lands in, asserts one lead per section, regression-tested both ways | ✅ v6.30 |
 
 ### Cascade status
 

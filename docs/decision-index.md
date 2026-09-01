@@ -1,14 +1,14 @@
-# Decision index — D1 … D75
+# Decision index — D1 … D76
 
-**Created:** 2026-08-30 · **Covers:** every numbered decision in both logs · **last updated 2026-08-30 (D75)**
+**Created:** 2026-08-30 · **Covers:** every numbered decision in both logs · **last updated 2026-09-01 (D76)**
 **Source of truth for STATUS.** The two logs remain the source of truth for *content*.
 
-There are 75 decisions across two append-only logs that share one number sequence:
+There are 76 decisions across two append-only logs that share one number sequence:
 
 | Log | Holds |
 |---|---|
 | [`docs/content-style-decisions.md`](content-style-decisions.md) | D1–D50 — voice, vocabulary, positioning, copy |
-| [`.interface-design/system.md`](../.interface-design/system.md) | D33–D75 — chrome, type, colour, controls, guards |
+| [`.interface-design/system.md`](../.interface-design/system.md) | D33–D76 — chrome, type, colour, controls, guards |
 
 Decisions with both a content and a visual consequence appear in both. Neither log
 records status: to answer *"is D26 still true?"* you previously had to read every later
@@ -92,9 +92,9 @@ Everything here applies to new work.
 | D | Decision | Status | Enforced by |
 |---|---|---|---|
 | D53b | The D-o bracket is the control chrome — no fills | Live · supersedes D53 | — |
-| D52 | Gilt is reserved for Charter Enrolment | Live (reservation) · `.btn-solid` → D53b | `check-gilt-escrow` |
-| D66 | The gilt reservation is enforced, not merely written down | Live | `check-gilt-escrow` |
-| D68 | Gilt has one job: earned proof · `--gilt-mark` | Live | `check-gilt-escrow` |
+| D52 | Gilt is reserved for Charter Enrolment | **Superseded → D76** — the reservation is retired; gilt is positional now | `check-gilt-escrow` |
+| D66 | The gilt rule is enforced, not merely written down | Live · **restated by D76** — the guard survives, the rule it asserts inverted | `check-gilt-escrow` |
+| D68 | Gilt has one job: earned proof · `--gilt-mark` | Live · **amended → D76** — the earned-proof mark stands; "never a control" does not | `check-gilt-escrow` |
 | D65 | The `btn-do` sweep — six inline gilt CTAs converted | Live · its open chip question answered by D68 | `check-gilt-escrow` |
 | D54 | The lead-in quote on claim labels | Live | — |
 | D55 | The highlighter swash on the primary control | Live | — |
@@ -109,6 +109,7 @@ Everything here applies to new work.
 | D73 | Guards read the built output; every `var()` must resolve | Live | itself |
 | D74 | The gauge ⛔ scopes to the ladder; outcome bars are sanctioned | Live | — |
 | D75 | `.badge` retired at the definition — component, 5 imports, 8 rule blocks | Live · tail of D70/D71 | — |
+| D76 | Gilt leads the conversion section; the D52 reservation retired; gold is never text | Live · supersedes **D52**, amends **D68** | `check-gilt-escrow` |
 
 ### Type & payload
 
@@ -140,6 +141,7 @@ files are the record.
 | D28 | Path-aware `PreCtaBand` with a `/consult` swap | **D33** | `footer.preCtaWatch` removed |
 | D51 | Literata + Noto Serif SC as a display pair | **D59** | Faces removed, `.font-display` deleted |
 | D53 | The D-o bracket on funnel CTAs (with fills) | **D53b** | — |
+| D52 | Gilt reserved for Charter Enrolment | **D76** | Reservation retired for a positional rule. Its premise was also false: `.btn-do-charter` had 3 call sites, not 0 |
 | D69 | `.eyebrow-pill` for hero eyebrows | **D70** | Superseded one version later |
 
 ## Fulfilled — completed cascades
