@@ -51,11 +51,19 @@ const routeOf = (f) => '/' + path.relative(OUT, path.dirname(f)).split(path.sep)
 // because it read app/ and components/. Those are family 6.
 const FAMILY = [
   { id: 'framework',  test: /^(read|think|speak|write|阅读|思考|表达|写作)$/i,
-    note: 'Loop strand names — brand canon (D37). Load-bearing.' },
+    note: 'The Loop's four step names — brand canon. Load-bearing. (NB: the Loop is not the Five Strands; D37's five-strand debt is separate.)' },
   { id: 'proof-axis', test: /lexile|after \d+ ?wks|16wks|32wks|ssat/i,
     note: 'Axis labels on a sanctioned proof device (D74).' },
-  { id: 'state',      test: /you.?re here|当前页面|^·/i,
-    note: 'State indicator. Functional, not decoration.' },
+  // ⚠️ These two were ONE family in the first version of this file, matched on a
+  // leading "·". They are not one thing: the navbar renders `· {sub.sub}` as a
+  // descriptor on every submenu item (Navbar.jsx:366, 57 routes), while
+  // "You're here" is a genuine current-page marker (AgeBandChooser, 2 routes).
+  // Grouping them put 228 chrome descriptors under a heading that said
+  // "functional state" — the same over-broad match this report exists to catch.
+  { id: 'state',      test: /you.?re here|当前页面/i,
+    note: 'Current-page marker. Functional. Small: 2 routes.' },
+  { id: 'nav-qualifier', test: /^·/,
+    note: 'Navbar submenu descriptor (Navbar.jsx:366). Chrome, not state.' },
   { id: 'step',       test: /^(week|第)\s*\d+|^\d+\s*周/i,
     note: 'Timeline marker.' },
   { id: 'chrome',     test: /^(programs|resources|serving|the dodo family|课程|资源|服务地区|都学家族|coming soon|即将上线)$/i,
@@ -186,11 +194,16 @@ console.log('\n  by family — the triage D71 could not complete:')
 for (const fam of [...byFamily.keys()].sort()) {
   const recs = byFamily.get(fam).sort((a, b) => b.routes.size - a.routes.size)
   const meta = FAMILY.find((f) => f.id === fam)
-  const drift = recs.filter((r) => r.spellings.size > 1).length
+  // ⚠️ ">1 spelling" is NOT the same as drift, and this line used to imply it was.
+  // `LexileBar.jsx:41` is `light ? '#3D4452' : '#94A3B8'` — one deliberate
+  // surface-aware pair, exactly like --text-muted / --text-muted-dark, and the
+  // first version of this report flagged it as drift. A detector that cannot
+  // tell intent should say so rather than assert. Look before believing it.
+  const multi = recs.filter((r) => r.spellings.size > 1).length
   console.log(
     '    ' + fam.padEnd(14) + pad(recs.length) + ' strings, ' +
     String(recs.reduce((a, r) => a + r.routes.size, 0)).padStart(5) + ' instances' +
-    (drift ? '   ⚠ ' + drift + ' with >1 spelling' : '')
+    (multi ? '   · ' + multi + ' with >1 spelling (may be surface-aware — check)' : '')
   )
   if (meta) console.log('                   ' + meta.note)
   if (ONLY_LABELS) {
