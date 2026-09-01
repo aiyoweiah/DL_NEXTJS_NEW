@@ -1,14 +1,14 @@
-# Decision index — D1 … D76
+# Decision index — D1 … D77
 
-**Created:** 2026-08-30 · **Covers:** every numbered decision in both logs · **last updated 2026-09-01 (D76)**
+**Created:** 2026-08-30 · **Covers:** every numbered decision in both logs · **last updated 2026-09-01 (D77)**
 **Source of truth for STATUS.** The two logs remain the source of truth for *content*.
 
-There are 76 decisions across two append-only logs that share one number sequence:
+There are 77 decisions across two append-only logs that share one number sequence:
 
 | Log | Holds |
 |---|---|
 | [`docs/content-style-decisions.md`](content-style-decisions.md) | D1–D50 — voice, vocabulary, positioning, copy |
-| [`.interface-design/system.md`](../.interface-design/system.md) | D33–D76 — chrome, type, colour, controls, guards |
+| [`.interface-design/system.md`](../.interface-design/system.md) | D33–D77 — chrome, type, colour, controls, guards |
 
 Decisions with both a content and a visual consequence appear in both. Neither log
 records status: to answer *"is D26 still true?"* you previously had to read every later
@@ -104,12 +104,13 @@ Everything here applies to new work.
 | D60 | `Surface` primitive; hand-rolled panels ratcheted | Live | `check-surfaces` (both passes) |
 | D61 | Target size 24×24 (WCAG 2.2 SC 2.5.8) | Live | — |
 | D70 | Pills retired sitewide | Live · count corrected by D71 | — |
-| D71 | Hand-rolled eyebrows conformed; the last 6 pills | Live | — |
+| D71 | Hand-rolled eyebrows conformed; the last 6 pills | Live · **triage corrected by D77** — 9 more eyebrows lived in `content/` | — |
 | D72 | `/credentials` token aliases → migrated, alias block deleted | **Fulfilled** 2026-09-01 — verified on the live render, 19 call sites moved to canonical tokens | `check-tokens` |
 | D73 | Guards read the built output; every `var()` must resolve | Live | itself |
 | D74 | The gauge ⛔ scopes to the ladder; outcome bars are sanctioned | Live | — |
 | D75 | `.badge` retired at the definition — component, 5 imports, 8 rule blocks | Live · tail of D70/D71 | — |
 | D76 | Gilt leads the conversion section; the D52 reservation retired; gold is never text | Live · supersedes **D52**, amends **D68** | `check-gilt-escrow` |
+| D77 | D57 finished — the eyebrows declared in `content/`, invisible to D71 | Live · corrects **D71** triage | `npm run conformance` |
 
 ### Type & payload
 

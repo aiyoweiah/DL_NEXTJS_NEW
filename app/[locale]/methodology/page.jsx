@@ -189,9 +189,7 @@ export default async function MethodologyPage({ params }) {
           </div>
 
           <div className="mt-16 md:mt-20">
-            <p className="text-xs font-semibold uppercase tracking-[0.15em] mb-4" style={{ color: '#5856cc' }}>
-              {t.seeItLive.eyebrow}
-            </p>
+            <Eyebrow>{t.seeItLive.eyebrow}</Eyebrow>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5" style={{ color: '#0E0E12', letterSpacing: '-0.025em' }}>
               {t.seeItLive.h2}
             </h2>
@@ -211,9 +209,7 @@ export default async function MethodologyPage({ params }) {
       {/* ── 2. Why a Loop ─────────────────────────────────── */}
       <SectionWrapper white>
         <div className="py-20 md:py-24 max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.15em] mb-4" style={{ color: '#5856cc' }}>
-            {t.why.eyebrow}
-          </p>
+          <Eyebrow>{t.why.eyebrow}</Eyebrow>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6" style={{ color: '#0E0E12', letterSpacing: '-0.025em' }}>
             {t.why.heading}
           </h2>
@@ -376,9 +372,7 @@ export default async function MethodologyPage({ params }) {
         <div className="py-20 md:py-24">
 
           <div className="max-w-2xl mb-12">
-            <p className="text-xs font-semibold uppercase tracking-[0.15em] mb-4" style={{ color: '#5856cc' }}>
-              {t.trait.eyebrow}
-            </p>
+            <Eyebrow>{t.trait.eyebrow}</Eyebrow>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5" style={{ color: '#0E0E12', letterSpacing: '-0.025em' }}>
               {t.trait.heading}
             </h2>

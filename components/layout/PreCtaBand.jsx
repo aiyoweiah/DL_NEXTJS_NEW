@@ -21,6 +21,7 @@
 import Link             from 'next/link'
 import { usePathname }  from 'next/navigation'
 import DoCta         from '@/components/ui/DoCta'
+import Eyebrow       from '@/components/ui/Eyebrow'
 
 // Stripped-path prefixes whose pages own an in-body closing CTA → suppress band.
 const SUPPRESS = [
@@ -49,12 +50,7 @@ export default function PreCtaBand({ locale, copy }) {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
 
           <div className="max-w-xl">
-            <p
-              className="text-xs font-semibold uppercase tracking-widest mb-3"
-              style={{ color: 'rgba(183,181,254,0.5)' }}
-            >
-              {c.eyebrow}
-            </p>
+            <Eyebrow dark mb="0.75rem">{c.eyebrow}</Eyebrow>
             <h2
               className="text-2xl md:text-3xl font-bold leading-tight tracking-tight"
               style={{ color: '#b7b5fe' }}

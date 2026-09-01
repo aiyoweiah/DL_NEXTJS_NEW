@@ -424,12 +424,7 @@ export default async function ResultsPage({ params }) {
       <SectionWrapper darker>
         <div className="py-20 md:py-24 max-w-2xl">
 
-          <p
-            className="text-xs font-semibold uppercase tracking-widest mb-4"
-            style={{ color: 'rgba(183,181,254,0.5)' }}
-          >
-            {t.foundingFamily.eyebrow}
-          </p>
+          <Eyebrow dark>{t.foundingFamily.eyebrow}</Eyebrow>
 
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5 text-gradient">
             {t.foundingFamily.heading}

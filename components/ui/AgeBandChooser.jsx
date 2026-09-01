@@ -17,6 +17,7 @@
 // in-body, instead of in the navbar.
 
 import Link from 'next/link'
+import Eyebrow from '@/components/ui/Eyebrow'
 
 export default function AgeBandChooser({ locale, copy, current }) {
   const eyebrow = current ? copy.eyebrow : (copy.homeEyebrow || copy.eyebrow)
@@ -29,12 +30,7 @@ export default function AgeBandChooser({ locale, copy, current }) {
     >
       <div className="container-section">
 
-        <p
-          className="text-xs font-semibold uppercase tracking-widest mb-3"
-          style={{ color: 'var(--label-color)' }}
-        >
-          {eyebrow}
-        </p>
+        <Eyebrow mb="0.75rem">{eyebrow}</Eyebrow>
         <h2
           id="ageband-heading"
           className="text-2xl md:text-3xl font-bold tracking-tight mb-8"

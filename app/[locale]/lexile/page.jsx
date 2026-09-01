@@ -179,9 +179,7 @@ export default async function LexilePage({ params }) {
       {/* ── 2. What Is Lexile ─────────────────────────────── */}
       <SectionWrapper white>
         <div className="py-20 md:py-24 max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.15em] mb-4" style={{ color: '#5856cc' }}>
-            {t.what.eyebrow}
-          </p>
+          <Eyebrow>{t.what.eyebrow}</Eyebrow>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6" style={{ color: '#0E0E12', letterSpacing: '-0.025em' }}>
             {t.what.heading}
           </h2>
@@ -236,9 +234,7 @@ export default async function LexilePage({ params }) {
       {/* ── 4. Bilingual Gap ──────────────────────────────── */}
       <SectionWrapper>
         <div className="py-20 md:py-24 max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.15em] mb-4" style={{ color: '#5856cc' }}>
-            {t.bilingual.eyebrow}
-          </p>
+          <Eyebrow>{t.bilingual.eyebrow}</Eyebrow>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6" style={{ color: '#0E0E12', letterSpacing: '-0.025em' }}>
             {t.bilingual.heading}
           </h2>
