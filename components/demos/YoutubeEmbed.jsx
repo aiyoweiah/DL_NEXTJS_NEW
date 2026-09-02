@@ -26,7 +26,7 @@ export default function YoutubeEmbed({ videoId, title, aspectRatio = '16/9', rou
           width:        '100%',
           borderRadius: rounded,
           overflow:     'hidden',
-          backgroundColor: '#0E0E12',
+          backgroundColor: 'var(--color-void-black)',
         }}
       >
         <iframe

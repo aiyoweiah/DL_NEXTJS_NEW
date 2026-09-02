@@ -204,7 +204,7 @@ function Hero({ locale, c }) {
               fontWeight:    700,
               lineHeight:    1.06,
               letterSpacing: '-0.03em',
-              color:         '#F0F0F0',
+              color: 'var(--text-inverse)',
               marginBottom:  '0.625rem',
               textWrap:      'balance',
             }}
@@ -264,7 +264,7 @@ function Hero({ locale, c }) {
                     borderBottom: isInFirstHalf ? '1px solid rgba(183,181,254,0.07)' : 'none',
                   }}
                 >
-                  <p style={{ fontSize: 'clamp(1.375rem, 2.5vw, 2rem)', fontWeight: 700, letterSpacing: '-0.03em', lineHeight: 1, color: '#b7b5fe' }}>
+                  <p style={{ fontSize: 'clamp(1.375rem, 2.5vw, 2rem)', fontWeight: 700, letterSpacing: '-0.03em', lineHeight: 1, color: 'var(--text-accent-dark)' }}>
                     {stat.value}
                   </p>
                   <p style={{ fontSize: '0.6875rem', fontWeight: 700, color: 'rgba(240,240,240,0.75)', marginTop: '3px', lineHeight: 1.2 }}>
@@ -294,7 +294,7 @@ const LOOP_ACCENT_ON     = ['#0E0E12', '#0E0E12', '#0E0E12', '#ffffff']
 
 function LoopSection({ locale, c }) {
   return (
-    <section id="loop-section" aria-labelledby="loop-heading" style={{ backgroundColor: '#ffffff', padding: '2.5rem 0' }}>
+    <section id="loop-section" aria-labelledby="loop-heading" style={{ backgroundColor: 'var(--surface-raised)', padding: '2.5rem 0' }}>
       <div className="container-section">
 
         <div
@@ -342,7 +342,7 @@ function LoopSection({ locale, c }) {
             <article
               key={step.num}
               aria-label={`${step.label} — ${step.labelZh}`}
-              style={{ backgroundColor: '#ffffff', padding: '1rem 1.25rem 1.125rem' }}
+              style={{ backgroundColor: 'var(--surface-raised)', padding: '1rem 1.25rem 1.125rem' }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.625rem', flexWrap: 'wrap' }}>
                 <span
@@ -356,27 +356,27 @@ function LoopSection({ locale, c }) {
                 >
                   <span style={{ fontSize: '12px', fontWeight: 800, color: LOOP_ACCENT_ON[i], lineHeight: 1 }}>{i + 1}</span>
                 </span>
-                <p style={{ fontSize: '1rem', fontWeight: 700, color: '#0E0E12', lineHeight: 1.1 }}>{step.label}</p>
+                <p style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-body-dark)', lineHeight: 1.1 }}>{step.label}</p>
                 {locale === 'zh' && (
-                  <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '11px', color: '#5856cc', lineHeight: 1.1 }}>  {/* ZH sub-label sits on a white card. The loop accents are fills, not text
+                  <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '11px', color: 'var(--text-accent)', lineHeight: 1.1 }}>  {/* ZH sub-label sits on a white card. The loop accents are fills, not text
       colours: #b7b5fe is 1.90:1 here and 0.75 opacity made it worse. The step's
       colour coding is already carried by the numbered circle above. v6.7. */}
                     {step.labelZh}
                   </p>
                 )}
                 {step.badge && (
-                  <span style={{ marginLeft: 'auto', fontSize: '12px', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#5856cc', whiteSpace: 'nowrap' }}>
+                  <span style={{ marginLeft: 'auto', fontSize: '12px', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-accent)', whiteSpace: 'nowrap' }}>
                     {step.badge}
                   </span>
                 )}
               </div>
-              <p style={{ fontSize: '0.8125rem', lineHeight: 1.7, color: '#3D4452' }}>{step.desc}</p>
+              <p style={{ fontSize: '0.8125rem', lineHeight: 1.7, color: 'var(--text-body)' }}>{step.desc}</p>
             </article>
           ))}
         </div>
 
         {c.loop.typeAB && (
-          <p style={{ marginTop: '1.25rem', fontSize: '0.875rem', lineHeight: 1.8, color: '#3D4452', maxWidth: '48rem' }}>
+          <p style={{ marginTop: '1.25rem', fontSize: '0.875rem', lineHeight: 1.8, color: 'var(--text-body)', maxWidth: '48rem' }}>
             {c.loop.typeAB}
           </p>
         )}
@@ -384,7 +384,7 @@ function LoopSection({ locale, c }) {
         <div style={{ marginTop: '1.25rem' }}>
           <Link
             href={`/${locale}/methodology`}
-            style={{ fontSize: '0.875rem', fontWeight: 600, color: '#5856cc', textDecoration: 'none' }}
+            style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-accent)', textDecoration: 'none' }}
           >
             {c.loop.methodologyLink}
           </Link>
@@ -401,7 +401,7 @@ function LoopSection({ locale, c }) {
 
 function JourneySection({ locale, c }) {
   return (
-    <section id="structure" aria-labelledby="journey-heading" style={{ backgroundColor: '#F5F5FF', padding: '2.25rem 0' }}>
+    <section id="structure" aria-labelledby="journey-heading" style={{ backgroundColor: 'var(--color-whisper)', padding: '2.25rem 0' }}>
       <div className="container-section">
         <div style={{ marginBottom: '1.5rem' }}>
           <Eyebrow>{c.journey.eyebrow}</Eyebrow>
@@ -421,7 +421,7 @@ function JourneySection({ locale, c }) {
           className="sm:grid-cols-2 lg:grid-cols-4"
         >
           {c.journey.steps.map((step, i) => (
-            <article key={step.label} style={{ backgroundColor: '#ffffff', padding: '1rem 1.25rem 1.125rem' }}>
+            <article key={step.label} style={{ backgroundColor: 'var(--surface-raised)', padding: '1rem 1.25rem 1.125rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.625rem' }}>
                 <span
                   style={{
@@ -431,29 +431,29 @@ function JourneySection({ locale, c }) {
                     display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
                   }}
                 >
-                  <span style={{ fontSize: '10px', fontWeight: 800, color: '#5856cc', lineHeight: 1 }}>{i + 1}</span>
+                  <span style={{ fontSize: '10px', fontWeight: 800, color: 'var(--text-accent)', lineHeight: 1 }}>{i + 1}</span>
                 </span>
-                <span style={{ fontSize: '9px', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: '#5856cc', opacity: 0.65 }}>
+                <span style={{ fontSize: '9px', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-accent)', opacity: 0.65 }}>
                   {step.week}
                 </span>
               </div>
-              <p style={{ fontSize: '0.9375rem', fontWeight: 700, color: '#0E0E12', lineHeight: 1.2, marginBottom: '2px' }}>{step.label}</p>
+              <p style={{ fontSize: '0.9375rem', fontWeight: 700, color: 'var(--text-body-dark)', lineHeight: 1.2, marginBottom: '2px' }}>{step.label}</p>
               {locale === 'zh' && (
-                <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '11px', color: '#5856cc', opacity: 0.75, marginBottom: '0.375rem', lineHeight: 1.3 }}>
+                <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '11px', color: 'var(--text-accent)', opacity: 0.75, marginBottom: '0.375rem', lineHeight: 1.3 }}>
                   {step.labelZh}
                 </p>
               )}
-              <p style={{ fontSize: '0.8125rem', lineHeight: 1.65, color: '#3D4452' }}>{step.desc}</p>
+              <p style={{ fontSize: '0.8125rem', lineHeight: 1.65, color: 'var(--text-body)' }}>{step.desc}</p>
             </article>
           ))}
 
           {/* LexileBar cell */}
           <div style={{ backgroundColor: '#f0efff', padding: '1rem 1.25rem 1.125rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '0.75rem' }}>
-            <p style={{ fontSize: '9px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#5856cc' }}>
+            <p style={{ fontSize: '9px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-accent)' }}>
               {locale === 'zh' ? 'Lexile \u6210\u957f' : 'Lexile Growth'}
             </p>
             <LexileBar start={620} end={820} weeks={16} light />
-            <p style={{ fontSize: '0.75rem', lineHeight: 1.5, color: '#5856cc', opacity: 0.6 }}>
+            <p style={{ fontSize: '0.75rem', lineHeight: 1.5, color: 'var(--text-accent)', opacity: 0.6 }}>
               {locale === 'zh' ? '\u5178\u578b16\u5468\u6210\u679c\uff1a620L \u2192 820L' : 'Typical 16-week result: 620L \u2192 820L'}
             </p>
           </div>
@@ -473,7 +473,7 @@ function ArchitectureSection({ locale, c }) {
   if (!c.architecture) return null
   const a = c.architecture
   return (
-    <section className="on-dark" aria-labelledby="architecture-heading" style={{ backgroundColor: '#212830', padding: 'var(--section-md) 0' }}>
+    <section className="on-dark" aria-labelledby="architecture-heading" style={{ backgroundColor: 'var(--color-deep-void)', padding: 'var(--section-md) 0' }}>
       <div className="container-section">
         <div style={{ marginBottom: '2rem' }}>
           <Eyebrow dark>{a.eyebrow}</Eyebrow>
@@ -486,11 +486,11 @@ function ArchitectureSection({ locale, c }) {
           {a.strands.map((strand) => (
             <Surface key={strand.letter} as="article" variant="tinted" className="p-6">
               <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.625rem', marginBottom: '0.625rem' }}>
-                <span style={{ fontSize: '2rem', fontWeight: 800, color: '#b7b5fe', lineHeight: 1, letterSpacing: '-0.03em' }} aria-hidden="true">
+                <span style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--text-accent-dark)', lineHeight: 1, letterSpacing: '-0.03em' }} aria-hidden="true">
                   {strand.letter}
                 </span>
                 <div>
-                  <p style={{ fontSize: '1rem', fontWeight: 700, color: '#F0F0F0', lineHeight: 1.2 }}>{strand.name}</p>
+                  <p style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-inverse)', lineHeight: 1.2 }}>{strand.name}</p>
                   {locale === 'zh' ? (
                     <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '11px', color: 'var(--text-muted-dark)', lineHeight: 1.3 }}>{strand.nameZh}</p>
                   ) : (
@@ -518,12 +518,12 @@ function CombinationsSection({ locale, c }) {
   if (!c.combinations) return null
   const k = c.combinations
   return (
-    <section id="combinations" aria-labelledby="combinations-heading" style={{ backgroundColor: '#F5F5FF', padding: 'var(--section-md) 0' }}>
+    <section id="combinations" aria-labelledby="combinations-heading" style={{ backgroundColor: 'var(--color-whisper)', padding: 'var(--section-md) 0' }}>
       <div className="container-section">
         <div style={{ marginBottom: '2rem' }}>
           <Eyebrow>{k.eyebrow}</Eyebrow>
           <BilingualH2 id="combinations-heading" primary={k.h2} secondary={k.h2zh} />
-          <p style={{ marginTop: '1.25rem', fontSize: '1rem', lineHeight: 1.82, color: '#3D4452', maxWidth: '48rem' }}>
+          <p style={{ marginTop: '1.25rem', fontSize: '1rem', lineHeight: 1.82, color: 'var(--text-body)', maxWidth: '48rem' }}>
             {k.body}
           </p>
         </div>
@@ -568,7 +568,7 @@ function CombinationsSection({ locale, c }) {
         <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', marginBottom: '0.625rem' }}>
           {k.note}
         </p>
-        <Link href={`/${locale}/faq#enrollment`} style={{ fontSize: '0.875rem', fontWeight: 600, color: '#5856cc', textDecoration: 'none' }}>
+        <Link href={`/${locale}/faq#enrollment`} style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-accent)', textDecoration: 'none' }}>
           {k.faqLink}
         </Link>
       </div>
@@ -597,7 +597,7 @@ function SessionSection({ locale, c }) {
               aria-hidden="true"
               style={{
                 width: '30px', height: '30px', borderRadius: '50%',
-                backgroundColor: '#b7b5fe', color: '#0E0E12',
+                backgroundColor: 'var(--color-lavender-signal)', color: 'var(--text-body-dark)',
                 fontSize: '10px', fontWeight: 800,
                 display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
               }}
@@ -605,7 +605,7 @@ function SessionSection({ locale, c }) {
               NV
             </span>
             <div>
-              <p style={{ fontSize: '11px', fontWeight: 700, color: '#F0F0F0', lineHeight: 1.2 }}>{c.session.navigatorName}</p>
+              <p style={{ fontSize: '11px', fontWeight: 700, color: 'var(--text-inverse)', lineHeight: 1.2 }}>{c.session.navigatorName}</p>
               <p style={{ fontSize: '10px', color: 'var(--text-muted-dark)', lineHeight: 1.2 }}>{c.session.sessionPhase}</p>
             </div>
           </div>
@@ -634,7 +634,7 @@ function SessionSection({ locale, c }) {
           <div style={{ marginTop: '1.5rem' }}>
             <Link
               href={`/${locale}/navigators`}
-              style={{ fontSize: '0.875rem', fontWeight: 600, color: '#b7b5fe', textDecoration: 'none' }}
+              style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-accent-dark)', textDecoration: 'none' }}
             >
               {c.session.navigatorsLink}
             </Link>
@@ -662,7 +662,7 @@ function LexileScaleViz({ start, end }) {
   return (
     <div style={{ position: 'relative', height: '300px', width: '160px', flexShrink: 0 }} role="img" aria-label={`Lexile scale. Highlighted range: ${start}L to ${end}L`}>
       <div aria-hidden="true" style={{ position: 'absolute', left: '16px', top: 0, bottom: 0, width: '3px', backgroundColor: 'rgba(183,181,254,0.1)', borderRadius: '9999px' }} />
-      <div aria-hidden="true" style={{ position: 'absolute', left: '16px', top: `${hlTop}%`, height: `${hlH}%`, width: '3px', backgroundColor: '#b7b5fe', borderRadius: '9999px', boxShadow: '0 0 12px rgba(183,181,254,0.5)' }} />
+      <div aria-hidden="true" style={{ position: 'absolute', left: '16px', top: `${hlTop}%`, height: `${hlH}%`, width: '3px', backgroundColor: 'var(--color-lavender-signal)', borderRadius: '9999px', boxShadow: '0 0 12px rgba(183,181,254,0.5)' }} />
       {LEXILE_SCALE.map((row) => {
         const yPct    = topPct(row.level)
         const inRange = row.level >= start && row.level <= end
@@ -682,7 +682,7 @@ function LexileScaleViz({ start, end }) {
 
 function GrowthSection({ locale, c }) {
   return (
-    <section className="on-dark" aria-labelledby="growth-heading" style={{ backgroundColor: '#0E0E12', padding: 'var(--section-md) 0' }}>
+    <section className="on-dark" aria-labelledby="growth-heading" style={{ backgroundColor: 'var(--color-void-black)', padding: 'var(--section-md) 0' }}>
       <div className="container-section">
         <div style={{ marginBottom: '3.5rem' }}>
           <Eyebrow dark>{c.growth.eyebrow}</Eyebrow>
@@ -693,7 +693,7 @@ function GrowthSection({ locale, c }) {
 
           {/* Lexile */}
           <div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: 700, color: '#b7b5fe', marginBottom: '0.375rem', letterSpacing: '-0.01em' }}>{c.growth.lexile.h3}</h3>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: 700, color: 'var(--text-accent-dark)', marginBottom: '0.375rem', letterSpacing: '-0.01em' }}>{c.growth.lexile.h3}</h3>
             <p style={{ fontSize: '0.875rem', lineHeight: 1.72, color: 'var(--platinum-60)', marginBottom: '1.75rem' }}>{c.growth.lexile.sub}</p>
             <div className="flex flex-col sm:flex-row gap-6 items-start">
               <LexileScaleViz start={c.growth.lexile.start} end={c.growth.lexile.end} />
@@ -703,7 +703,7 @@ function GrowthSection({ locale, c }) {
 
           {/* 6+1 Trait */}
           <div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: 700, color: '#b7b5fe', marginBottom: '0.375rem', letterSpacing: '-0.01em' }}>{c.growth.trait.h3}</h3>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: 700, color: 'var(--text-accent-dark)', marginBottom: '0.375rem', letterSpacing: '-0.01em' }}>{c.growth.trait.h3}</h3>
             <p style={{ fontSize: '0.875rem', lineHeight: 1.72, color: 'var(--platinum-60)', marginBottom: '1.25rem' }}>{c.growth.trait.sub}</p>
 
             <div className="flex items-center gap-4" style={{ marginBottom: '0.75rem' }} aria-hidden="true">
@@ -712,7 +712,7 @@ function GrowthSection({ locale, c }) {
                 <span style={{ fontSize: '10px', fontWeight: 600, color: 'var(--text-muted-dark)' }}>{c.growth.trait.startLabel}</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <div style={{ width: '10px', height: '10px', borderRadius: '2px', backgroundColor: '#b7b5fe' }} />
+                <div style={{ width: '10px', height: '10px', borderRadius: '2px', backgroundColor: 'var(--color-lavender-signal)' }} />
                 <span style={{ fontSize: '10px', fontWeight: 600, color: 'var(--text-muted-dark)' }}>{c.growth.trait.endLabel}</span>
               </div>
               <span style={{ fontSize: '10px', color: 'rgba(183,181,254,0.22)', marginLeft: 'auto' }}>{c.growth.trait.scaleLabel}</span>
@@ -730,13 +730,13 @@ function GrowthSection({ locale, c }) {
                     key={trait.id}
                     style={{ display: 'grid', gridTemplateColumns: '110px 1fr 52px', gap: '0.75rem', alignItems: 'center', padding: '0.5rem 0', borderBottom: '1px solid rgba(183,181,254,0.05)' }}
                   >
-                    <p style={{ fontSize: '0.8125rem', fontWeight: 600, color: '#F0F0F0', lineHeight: 1.2 }}>{label}</p>
+                    <p style={{ fontSize: '0.8125rem', fontWeight: 600, color: 'var(--text-inverse)', lineHeight: 1.2 }}>{label}</p>
                     <div style={{ position: 'relative', height: '7px', backgroundColor: 'rgba(183,181,254,0.07)', borderRadius: '9999px', overflow: 'hidden' }} aria-label={`${label}: ${trait.start} to ${trait.end} out of ${maxScale}`}>
                       <div aria-hidden="true" style={{ position: 'absolute', left: 0, top: 0, height: '100%', width: `${sPct}%`, backgroundColor: 'var(--lavender-15)', borderRadius: '9999px' }} />
-                      <div aria-hidden="true" style={{ position: 'absolute', left: `${sPct}%`, top: 0, height: '100%', width: `${gainPct}%`, backgroundColor: '#b7b5fe', borderRadius: '9999px' }} />
+                      <div aria-hidden="true" style={{ position: 'absolute', left: `${sPct}%`, top: 0, height: '100%', width: `${gainPct}%`, backgroundColor: 'var(--color-lavender-signal)', borderRadius: '9999px' }} />
                     </div>
                     <p style={{ fontSize: '0.75rem', color: 'var(--text-muted-dark)', textAlign: 'right', whiteSpace: 'nowrap' }}>
-                      {trait.start}→<span style={{ color: '#b7b5fe', fontWeight: 700 }}>{trait.end}</span>
+                      {trait.start}→<span style={{ color: 'var(--text-accent-dark)', fontWeight: 700 }}>{trait.end}</span>
                     </p>
                   </div>
                 )
@@ -758,12 +758,12 @@ function GrowthSection({ locale, c }) {
 
 function GetStartedSection({ locale, c }) {
   return (
-    <section aria-labelledby="get-started-heading" style={{ backgroundColor: '#F5F5FF', padding: 'var(--section-md) 0' }}>
+    <section aria-labelledby="get-started-heading" style={{ backgroundColor: 'var(--color-whisper)', padding: 'var(--section-md) 0' }}>
       <div className="container-section">
         <div style={{ maxWidth: '40rem' }}>
           <Eyebrow>{c.cta.eyebrow}</Eyebrow>
           <BilingualH2 id="get-started-heading" primary={c.cta.h2} />
-          <p style={{ fontSize: '1rem', lineHeight: 1.82, color: '#3D4452', marginTop: '1.125rem', marginBottom: '1.875rem' }}>
+          <p style={{ fontSize: '1rem', lineHeight: 1.82, color: 'var(--text-body)', marginTop: '1.125rem', marginBottom: '1.875rem' }}>
             {c.cta.body}
           </p>
           <Link href={`/${locale}/consult`} className="btn btn-do btn-do-primary">{c.cta.btn}</Link>

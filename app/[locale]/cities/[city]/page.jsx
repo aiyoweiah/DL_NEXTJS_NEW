@@ -165,7 +165,7 @@ export default async function CityPage({ params }) {
       <SectionWrapper white>
         <div className="py-16 md:py-20 max-w-3xl">
           <p className="eyebrow mb-4 label-quote">{ui.contextEyebrow} — {cityName}</p>
-          <p className="text-lg leading-relaxed" style={{ color: '#3D4452' }}>
+          <p className="text-lg leading-relaxed" style={{ color: 'var(--text-body)' }}>
             {copy.context}
           </p>
         </div>
@@ -205,7 +205,7 @@ export default async function CityPage({ params }) {
                 </div>
                 <p
                   className="font-semibold text-sm uppercase tracking-widest"
-                  style={{ color: '#b7b5fe' }}
+                  style={{ color: 'var(--text-accent-dark)' }}
                 >
                   {step.label}
                 </p>
@@ -219,7 +219,7 @@ export default async function CityPage({ params }) {
           <Link
             href={`/${locale}/methodology`}
             className="text-sm font-semibold"
-            style={{ color: '#b7b5fe' }}
+            style={{ color: 'var(--text-accent-dark)' }}
           >
             {ui.loopCta}
           </Link>
@@ -245,14 +245,14 @@ export default async function CityPage({ params }) {
               >
                 <p
                   className="text-xs font-semibold uppercase tracking-widest"
-                  style={{ color: '#5856cc' }}
+                  style={{ color: 'var(--text-accent)' }}
                 >
                   {phase.week}
                 </p>
-                <h3 className="text-lg font-semibold" style={{ color: '#0E0E12' }}>
+                <h3 className="text-lg font-semibold" style={{ color: 'var(--text-body-dark)' }}>
                   {phase.label}
                 </h3>
-                <p className="text-sm leading-relaxed" style={{ color: '#3D4452' }}>
+                <p className="text-sm leading-relaxed" style={{ color: 'var(--text-body)' }}>
                   {phase.body}
                 </p>
               </div>

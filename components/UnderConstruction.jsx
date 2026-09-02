@@ -67,7 +67,7 @@ export default function UnderConstruction({ locale = 'en' }) {
 
       <div
         className="relative overflow-hidden"
-        style={{ minHeight: '100dvh', backgroundColor: '#F5F5FF', color: '#0E0E12', fontFamily: 'var(--font-latin)' }}
+        style={{ minHeight: '100dvh', backgroundColor: 'var(--color-whisper)', color: 'var(--text-body-dark)', fontFamily: 'var(--font-latin)' }}
       >
         {/* Background blobs */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -84,17 +84,17 @@ export default function UnderConstruction({ locale = 'en' }) {
 
           {/* Floating icons */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-            <div className="flex items-center justify-center" style={{ position: 'absolute', top: '18%', left: '15%', width: 48, height: 48, borderRadius: '0.75rem', backgroundColor: '#ffffff', border: '1px solid rgba(183,181,254,0.1)', boxShadow: '0 4px 16px rgba(183,181,254,0.1)', animation: 'float 4s ease-in-out infinite' }}>
+            <div className="flex items-center justify-center" style={{ position: 'absolute', top: '18%', left: '15%', width: 48, height: 48, borderRadius: '0.75rem', backgroundColor: 'var(--surface-raised)', border: '1px solid rgba(183,181,254,0.1)', boxShadow: '0 4px 16px rgba(183,181,254,0.1)', animation: 'float 4s ease-in-out infinite' }}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b7b5fe" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 12l-8.5 8.5a2.121 2.121 0 0 1-3-3L12 9" /><path d="M17.64 15L22 10.36" /><path d="M20.41 8.59l-3-3a2 2 0 0 0-2.83 0L12 8.17l3.83 3.83 2.58-2.58a2 2 0 0 0 0-2.83z" /></svg>
             </div>
-            <div className="flex items-center justify-center" style={{ position: 'absolute', top: '25%', right: '18%', width: 40, height: 40, borderRadius: '0.5rem', backgroundColor: '#ffffff', border: '1px solid rgba(183,181,254,0.1)', boxShadow: '0 4px 16px rgba(183,181,254,0.1)', animation: 'floatSlow 5s ease-in-out infinite', animationDelay: '1s' }}>
+            <div className="flex items-center justify-center" style={{ position: 'absolute', top: '25%', right: '18%', width: 40, height: 40, borderRadius: '0.5rem', backgroundColor: 'var(--surface-raised)', border: '1px solid rgba(183,181,254,0.1)', boxShadow: '0 4px 16px rgba(183,181,254,0.1)', animation: 'floatSlow 5s ease-in-out infinite', animationDelay: '1s' }}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5C842" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z" /></svg>
             </div>
-            <div className="flex items-center justify-center" style={{ position: 'absolute', bottom: '28%', left: '20%', width: 40, height: 40, borderRadius: '0.5rem', backgroundColor: '#ffffff', border: '1px solid rgba(183,181,254,0.1)', boxShadow: '0 4px 16px rgba(183,181,254,0.1)', animation: 'float 4s ease-in-out infinite', animationDelay: '0.5s' }}>
-              <span style={{ fontSize: '16px', color: '#0E0E12' }}>Do</span>
+            <div className="flex items-center justify-center" style={{ position: 'absolute', bottom: '28%', left: '20%', width: 40, height: 40, borderRadius: '0.5rem', backgroundColor: 'var(--surface-raised)', border: '1px solid rgba(183,181,254,0.1)', boxShadow: '0 4px 16px rgba(183,181,254,0.1)', animation: 'float 4s ease-in-out infinite', animationDelay: '0.5s' }}>
+              <span style={{ fontSize: '16px', color: 'var(--text-body-dark)' }}>Do</span>
             </div>
-            <div className="flex items-center justify-center" style={{ position: 'absolute', bottom: '32%', right: '15%', width: 44, height: 44, borderRadius: '0.75rem', backgroundColor: '#ffffff', border: '1px solid rgba(183,181,254,0.1)', boxShadow: '0 4px 16px rgba(183,181,254,0.1)', animation: 'floatSlow 5s ease-in-out infinite', animationDelay: '0.3s' }}>
-              <span style={{ fontSize: '14px', fontWeight: 700, color: '#b7b5fe' }}>Do</span>
+            <div className="flex items-center justify-center" style={{ position: 'absolute', bottom: '32%', right: '15%', width: 44, height: 44, borderRadius: '0.75rem', backgroundColor: 'var(--surface-raised)', border: '1px solid rgba(183,181,254,0.1)', boxShadow: '0 4px 16px rgba(183,181,254,0.1)', animation: 'floatSlow 5s ease-in-out infinite', animationDelay: '0.3s' }}>
+              <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--text-accent-dark)' }}>Do</span>
             </div>
           </div>
 
@@ -102,18 +102,18 @@ export default function UnderConstruction({ locale = 'en' }) {
           <div className="text-center" style={{ maxWidth: '42rem', ...fadeUpStyle(0) }}>
             <div className="inline-flex items-center gap-2 mb-8">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5C842" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M2 20h20" /><path d="M6 20V10l6-7 6 7v10" /><path d="M10 20v-5h4v5" /></svg>
-              <span style={{ fontSize: '13px', fontWeight: 500, color: '#0E0E12' }}>
+              <span style={{ fontSize: '13px', fontWeight: 500, color: 'var(--text-body-dark)' }}>
                 {locale === 'zh' ? '建设中' : 'Under Construction'}
               </span>
             </div>
 
-            <h1 className="mb-4" style={{ fontSize: 'clamp(2rem, 5vw, 3.25rem)', fontWeight: 300, lineHeight: 1.15, letterSpacing: '-0.02em', color: '#0E0E12' }}>
+            <h1 className="mb-4" style={{ fontSize: 'clamp(2rem, 5vw, 3.25rem)', fontWeight: 300, lineHeight: 1.15, letterSpacing: '-0.02em', color: 'var(--text-body-dark)' }}>
               {locale === 'zh'
-                ? <><span style={{ fontWeight: 600, color: '#b7b5fe' }}>精心打造中。</span></>
-                : <>Something <span style={{ fontWeight: 600, color: '#b7b5fe' }}>thoughtful</span> is being built.</>
+                ? <><span style={{ fontWeight: 600, color: 'var(--text-accent-dark)' }}>精心打造中。</span></>
+                : <>Something <span style={{ fontWeight: 600, color: 'var(--text-accent-dark)' }}>thoughtful</span> is being built.</>
               }
             </h1>
-            <p className="mx-auto mb-4" style={{ fontSize: '16px', lineHeight: 1.8, color: '#2E3848', maxWidth: '32rem' }}>
+            <p className="mx-auto mb-4" style={{ fontSize: '16px', lineHeight: 1.8, color: 'var(--color-midnight)', maxWidth: '32rem' }}>
               {locale === 'zh'
                 ? '这个页面还没有准备好，但我们正在用心打造。好的东西值得等待。'
                 : <>This page isn&rsquo;t ready yet — but we&rsquo;re working on it with the same care we bring to everything at DODO.</>
@@ -124,8 +124,8 @@ export default function UnderConstruction({ locale = 'en' }) {
           {/* Progress bar */}
           <div style={{ marginTop: '3rem', width: '100%', maxWidth: '24rem', ...fadeUpStyle(200) }}>
             <div className="flex items-center justify-between mb-3">
-              <span style={{ fontSize: '12px', fontWeight: 500, color: '#2E3848' }}>Progress</span>
-              <span style={{ fontSize: '12px', fontWeight: 600, color: '#b7b5fe' }}>65%</span>
+              <span style={{ fontSize: '12px', fontWeight: 500, color: 'var(--color-midnight)' }}>Progress</span>
+              <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--text-accent-dark)' }}>65%</span>
             </div>
             <div style={{ width: '100%', height: 8, borderRadius: 9999, backgroundColor: 'rgba(183,181,254,0.1)', overflow: 'hidden' }} role="progressbar" aria-valuenow={65} aria-valuemin={0} aria-valuemax={100} aria-label="Page construction progress: 65%">
               <div style={{ height: '100%', borderRadius: 9999, background: 'linear-gradient(to right, #b7b5fe 0%, rgba(183,181,254,0.7) 100%)', animation: 'progressFill 1.5s ease-out both', animationDelay: '0.5s' }} />
@@ -135,28 +135,28 @@ export default function UnderConstruction({ locale = 'en' }) {
           {/* Email form */}
           <div style={{ marginTop: '3rem', width: '100%', maxWidth: '28rem', ...fadeUpStyle(350) }}>
             {submitted ? (
-              <div className="text-center" style={{ backgroundColor: '#ffffff', borderRadius: '1rem', padding: '1.5rem', border: '1px solid rgba(183,181,254,0.15)', boxShadow: '0 1px 4px rgba(0,0,0,0.04)', animation: 'scaleIn 0.3s ease-out both' }}>
+              <div className="text-center" style={{ backgroundColor: 'var(--surface-raised)', borderRadius: '1rem', padding: '1.5rem', border: '1px solid rgba(183,181,254,0.15)', boxShadow: '0 1px 4px rgba(0,0,0,0.04)', animation: 'scaleIn 0.3s ease-out both' }}>
                 <div className="flex items-center justify-center mx-auto mb-4" style={{ width: 48, height: 48, borderRadius: '50%', backgroundColor: 'rgba(183,181,254,0.1)' }} aria-hidden="true">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b7b5fe" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" /><path d="M13.73 21a2 2 0 0 1-3.46 0" /></svg>
                 </div>
-                <p style={{ fontSize: '16px', fontWeight: 600, color: '#0E0E12', marginBottom: '4px' }}>
+                <p style={{ fontSize: '16px', fontWeight: 600, color: 'var(--text-body-dark)', marginBottom: '4px' }}>
                   {locale === 'zh' ? '已加入通知名单！' : "You're on the list!"}
                 </p>
-                <p style={{ fontSize: '14px', color: '#2E3848' }}>
+                <p style={{ fontSize: '14px', color: 'var(--color-midnight)' }}>
                   {locale === 'zh' ? '页面准备好后，我们会通知您。' : "We'll let you know when this page is ready."}
                 </p>
               </div>
             ) : (
-              <div style={{ backgroundColor: '#ffffff', borderRadius: '1rem', padding: '1.5rem', border: '1px solid rgba(183,181,254,0.1)', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}>
+              <div style={{ backgroundColor: 'var(--surface-raised)', borderRadius: '1rem', padding: '1.5rem', border: '1px solid rgba(183,181,254,0.1)', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}>
                 <div className="flex items-center gap-3 mb-4">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b7b5fe" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" /><path d="M13.73 21a2 2 0 0 1-3.46 0" /></svg>
-                  <span style={{ fontSize: '14px', fontWeight: 500, color: '#0E0E12' }}>
+                  <span style={{ fontSize: '14px', fontWeight: 500, color: 'var(--text-body-dark)' }}>
                     {locale === 'zh' ? '页面上线时通知我' : 'Get notified when we launch'}
                   </span>
                 </div>
                 <div className="flex gap-3">
                   <label htmlFor="notify-email" className="sr-only">Your email address</label>
-                  <input id="notify-email" type="email" placeholder="your@email.com" value={email} onChange={(e) => setEmail(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter') handleSubmit(e) }} style={{ flex: 1, padding: '12px 16px', borderRadius: '0.75rem', backgroundColor: '#F5F5FF', border: '1px solid rgba(183,181,254,0.1)', fontSize: '14px', color: '#0E0E12', outline: 'none', fontFamily: 'var(--font-latin)' }} />
+                  <input id="notify-email" type="email" placeholder="your@email.com" value={email} onChange={(e) => setEmail(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter') handleSubmit(e) }} style={{ flex: 1, padding: '12px 16px', borderRadius: '0.75rem', backgroundColor: 'var(--color-whisper)', border: '1px solid rgba(183,181,254,0.1)', fontSize: '14px', color: 'var(--text-body-dark)', outline: 'none', fontFamily: 'var(--font-latin)' }} />
                   <button type="button" onClick={handleSubmit} className="btn btn-do btn-do-primary shrink-0" style={{ fontSize: '14px', fontWeight: 600, padding: '12px 24px', borderRadius: '0.75rem' }}>
                     {locale === 'zh' ? '通知我' : 'Notify Me'}
                   </button>
@@ -170,7 +170,7 @@ export default function UnderConstruction({ locale = 'en' }) {
 
           {/* Back home */}
           <div style={{ marginTop: '2.5rem', textAlign: 'center', ...fadeUpStyle(500) }}>
-            <Link href={`/${locale}`} className="inline-flex items-center gap-2 transition-colors duration-150" style={{ padding: '12px 24px', borderRadius: '0.75rem', backgroundColor: '#0E0E12', color: '#ffffff', fontSize: '14px', fontWeight: 500, textDecoration: 'none' }}>
+            <Link href={`/${locale}`} className="inline-flex items-center gap-2 transition-colors duration-150" style={{ padding: '12px 24px', borderRadius: '0.75rem', backgroundColor: 'var(--color-void-black)', color: 'var(--surface-raised)', fontSize: '14px', fontWeight: 500, textDecoration: 'none' }}>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
               {locale === 'zh' ? '返回首页' : 'Return to Home Page'}
             </Link>

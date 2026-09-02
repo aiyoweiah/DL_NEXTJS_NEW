@@ -182,11 +182,11 @@ function Hero({ c, locale }) {
             <h1
               id="about-hero-heading"
               className="mb-6"
-              style={{ fontSize: 'clamp(2.25rem, 5.5vw, 4rem)', fontWeight: 300, lineHeight: 1.08, letterSpacing: '-0.02em', color: '#F0F0F0' }}
+              style={{ fontSize: 'clamp(2.25rem, 5.5vw, 4rem)', fontWeight: 300, lineHeight: 1.08, letterSpacing: '-0.02em', color: 'var(--text-inverse)' }}
             >
-              {c.hero.h1a}<em className="not-italic" style={{ fontWeight: 600, color: '#b7b5fe' }}>{c.hero.h1em1}</em>{c.hero.h1b}<br />
+              {c.hero.h1a}<em className="not-italic" style={{ fontWeight: 600, color: 'var(--text-accent-dark)' }}>{c.hero.h1em1}</em>{c.hero.h1b}<br />
               {c.hero.h1c}<br />
-              {c.hero.h1d}<em className="not-italic" style={{ fontWeight: 600, color: '#F5C842' }}>{c.hero.h1em2}</em>{c.hero.h1e}
+              {c.hero.h1d}<em className="not-italic" style={{ fontWeight: 600, color: 'var(--color-gilt)' }}>{c.hero.h1em2}</em>{c.hero.h1e}
             </h1>
             {locale === 'zh' && (
               <p className="mb-8" style={{ fontFamily: 'var(--font-cjk)', fontSize: '20px', color: 'var(--text-muted-dark)' }}>
@@ -225,7 +225,7 @@ function TheNameSection({ c, locale }) {
           <div>
             <BilingualHeading en="The Name" cn="名字的故事" light locale={locale} />
             <div className="mt-10 space-y-5" style={{ fontSize: '17px', lineHeight: 1.9, color: 'rgba(240,240,240,0.92)' }}>
-              <p>{c.name.p1}<strong style={{ color: '#F0F0F0' }}>{c.name.p1strong}</strong></p>
+              <p>{c.name.p1}<strong style={{ color: 'var(--text-inverse)' }}>{c.name.p1strong}</strong></p>
               <p>{c.name.p2}</p>
               <p>{c.name.p3}</p>
             </div>
@@ -235,12 +235,12 @@ function TheNameSection({ c, locale }) {
               <div className="flex items-center justify-center" style={{ width: 256, height: 256, borderRadius: '50%', border: '2px solid rgba(183,181,254,0.2)', position: 'relative' }}>
                 <div aria-hidden="true" style={{ position: 'absolute', inset: '1rem', borderRadius: '50%', border: '1px solid rgba(183,181,254,0.1)' }} />
                 <div className="flex items-center gap-4 relative z-10" aria-label="Do plus Do">
-                  <span style={{ fontSize: '56px', fontWeight: 700, color: '#b7b5fe', letterSpacing: '-0.02em', lineHeight: 1 }}>Do</span>
-                  <span aria-hidden="true" style={{ fontSize: '32px', fontWeight: 300, color: '#F5C842', lineHeight: 1 }}>+</span>
-                  <span style={{ fontSize: '56px', fontWeight: 700, color: '#b7b5fe', letterSpacing: '-0.02em', lineHeight: 1 }}>Do</span>
+                  <span style={{ fontSize: '56px', fontWeight: 700, color: 'var(--text-accent-dark)', letterSpacing: '-0.02em', lineHeight: 1 }}>Do</span>
+                  <span aria-hidden="true" style={{ fontSize: '32px', fontWeight: 300, color: 'var(--color-gilt)', lineHeight: 1 }}>+</span>
+                  <span style={{ fontSize: '56px', fontWeight: 700, color: 'var(--text-accent-dark)', letterSpacing: '-0.02em', lineHeight: 1 }}>Do</span>
                 </div>
               </div>
-              <div aria-hidden="true" style={{ position: 'absolute', top: -8, right: -8, width: 24, height: 24, borderRadius: '50%', backgroundColor: '#F5C842' }} />
+              <div aria-hidden="true" style={{ position: 'absolute', top: -8, right: -8, width: 24, height: 24, borderRadius: '50%', backgroundColor: 'var(--color-gilt)' }} />
               <div aria-hidden="true" style={{ position: 'absolute', bottom: -12, left: -12, width: 16, height: 16, borderRadius: '50%', backgroundColor: 'var(--lavender-40)' }} />
             </div>
           </div>
@@ -262,14 +262,14 @@ function WhatWeBelieve({ c, locale }) {
           {PILLARS_BASE.map((item, i) => (
             <div key={item.id} className="py-8 md:py-12" style={{ borderBottom: i < PILLARS_BASE.length - 1 ? '1px solid rgba(14,14,18,0.08)' : 'none' }} aria-label={`Pillar ${item.num}: ${item.belief}`}>
               <div className="flex flex-col gap-4 md:grid md:grid-cols-[3rem_1fr_1fr] md:gap-8 md:items-start">
-                <div className="flex items-center justify-center shrink-0" style={{ width: 44, height: 44, borderRadius: '50%', backgroundColor: 'rgba(183,181,254,0.1)', color: '#b7b5fe' }} aria-hidden="true">
+                <div className="flex items-center justify-center shrink-0" style={{ width: 44, height: 44, borderRadius: '50%', backgroundColor: 'rgba(183,181,254,0.1)', color: 'var(--text-accent-dark)' }} aria-hidden="true">
                   <BeliefIcon id={item.id} />
                 </div>
                 <div className="min-w-0">
-                  <p style={{ fontSize: '18px', fontWeight: 600, lineHeight: 1.3, color: '#0E0E12' }}><q>{item.belief}</q></p>
-                  {locale === 'zh' && <p className="mt-1" style={{ fontFamily: 'var(--font-cjk)', fontSize: '13px', color: '#5856cc' }}>{item.beliefCn}</p>}
+                  <p style={{ fontSize: '18px', fontWeight: 600, lineHeight: 1.3, color: 'var(--text-body-dark)' }}><q>{item.belief}</q></p>
+                  {locale === 'zh' && <p className="mt-1" style={{ fontFamily: 'var(--font-cjk)', fontSize: '13px', color: 'var(--text-accent)' }}>{item.beliefCn}</p>}
                 </div>
-                <p style={{ fontSize: '15px', lineHeight: 1.8, color: '#2E3848' }}>{c.beliefs.bodies[i]}</p>
+                <p style={{ fontSize: '15px', lineHeight: 1.8, color: 'var(--color-midnight)' }}>{c.beliefs.bodies[i]}</p>
               </div>
             </div>
           ))}
@@ -292,10 +292,10 @@ function TheLoop({ locale, c }) {
           <ol className="grid sm:grid-cols-2 lg:grid-cols-4" aria-label="The Loop methodology">
             {LOOP_STEPS_BASE.map((item, i) => (
               <li key={item.id} className="text-center px-8 py-8">
-                <div className="flex items-center justify-center mx-auto mb-6 relative z-10" style={{ width: 56, height: 56, borderRadius: '50%', backgroundColor: 'rgba(183,181,254,0.1)', border: '1px solid rgba(183,181,254,0.2)', color: '#b7b5fe' }} aria-hidden="true">
+                <div className="flex items-center justify-center mx-auto mb-6 relative z-10" style={{ width: 56, height: 56, borderRadius: '50%', backgroundColor: 'rgba(183,181,254,0.1)', border: '1px solid rgba(183,181,254,0.2)', color: 'var(--text-accent-dark)' }} aria-hidden="true">
                   <LoopStepIcon id={item.id} />
                 </div>
-                <h3 style={{ fontSize: '24px', fontWeight: 600, letterSpacing: '-0.01em', color: '#ffffff', marginBottom: '4px' }}>{item.step}</h3>
+                <h3 style={{ fontSize: '24px', fontWeight: 600, letterSpacing: '-0.01em', color: 'var(--surface-raised)', marginBottom: '4px' }}>{item.step}</h3>
                 {locale === 'zh' && <p className="mb-4" style={{ fontFamily: 'var(--font-cjk)', fontSize: '14px', color: 'var(--text-muted-dark)' }}>{item.stepCn}</p>}
                 <p style={{ fontSize: '14px', lineHeight: 1.7, color: 'var(--platinum-60)' }}>{c.loop.descs[i]}</p>
               </li>
@@ -303,7 +303,7 @@ function TheLoop({ locale, c }) {
           </ol>
         </div>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-12">
-          <Link href={`/${locale}/methodology`} className="inline-flex items-center gap-2" style={{ fontSize: '15px', fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', color: '#b7b5fe', textDecoration: 'none', borderBottom: '2px solid rgba(183,181,254,0.5)', paddingBottom: '6px' }}>
+          <Link href={`/${locale}/methodology`} className="inline-flex items-center gap-2" style={{ fontSize: '15px', fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--text-accent-dark)', textDecoration: 'none', borderBottom: '2px solid rgba(183,181,254,0.5)', paddingBottom: '6px' }}>
             {c.loop.cta}
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
           </Link>
@@ -338,8 +338,8 @@ function WhoNavigatorsAre({ locale, c }) {
               {/* Caption strip — small violet dot + name · role, sub-caption on next line */}
               <div className="mt-4 flex flex-col items-center lg:items-start" style={{ maxWidth: '300px' }}>
                 <div className="inline-flex items-center gap-2">
-                  <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: '#5856cc' }} />
-                  <span style={{ fontSize: '13px', fontWeight: 600, color: '#0E0E12', letterSpacing: '0.01em' }}>
+                  <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'var(--color-lavender-deep)' }} />
+                  <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-body-dark)', letterSpacing: '0.01em' }}>
                     {c.navigators.videoCaption}
                   </span>
                 </div>
@@ -351,8 +351,8 @@ function WhoNavigatorsAre({ locale, c }) {
           </div>
           <div className="order-1 lg:order-2">
             <BilingualHeading en="Who Navigators Are" cn="关于导师团队" locale={locale} />
-            <div className="mt-8 space-y-5" style={{ fontSize: '16px', lineHeight: 1.85, color: '#2E3848' }}>
-              <p>{c.navigators.p1pre}<strong style={{ color: '#0E0E12' }}>{c.navigators.p1strong}</strong>{c.navigators.p1post}</p>
+            <div className="mt-8 space-y-5" style={{ fontSize: '16px', lineHeight: 1.85, color: 'var(--color-midnight)' }}>
+              <p>{c.navigators.p1pre}<strong style={{ color: 'var(--text-body-dark)' }}>{c.navigators.p1strong}</strong>{c.navigators.p1post}</p>
               <p>{c.navigators.p2}</p>
               <p>{c.navigators.p3}</p>
             </div>
@@ -365,7 +365,7 @@ function WhoNavigatorsAre({ locale, c }) {
               }))}
             />
             <div style={{ marginTop: '1.5rem' }}>
-              <Link href={`/${locale}/navigators`} style={{ fontSize: '14px', fontWeight: 600, color: '#5856cc', textDecoration: 'none' }}>{c.navigators.navigatorsLink}</Link>
+              <Link href={`/${locale}/navigators`} style={{ fontSize: '14px', fontWeight: 600, color: 'var(--text-accent)', textDecoration: 'none' }}>{c.navigators.navigatorsLink}</Link>
             </div>
           </div>
         </div>
@@ -378,23 +378,23 @@ function ByTheNumbers({ c, locale }) {
   if (!c.stats) return null
   const s = c.stats
   return (
-    <section className="section-light" aria-labelledby="bynumbers-heading" style={{ backgroundColor: '#F5F5FF' }}>
+    <section className="section-light" aria-labelledby="bynumbers-heading" style={{ backgroundColor: 'var(--color-whisper)' }}>
       <div className="container-section">
         <div className="mb-12 max-w-2xl">
           <Eyebrow mb="0.75rem">{s.eyebrow}</Eyebrow>
-          <h2 id="bynumbers-heading" className="text-3xl md:text-4xl font-bold tracking-tight mb-4" style={{ color: '#0E0E12', letterSpacing: '-0.025em' }}>{s.h2}</h2>
-          <p className="text-base leading-relaxed" style={{ color: '#3D4452' }}>{s.sub}</p>
+          <h2 id="bynumbers-heading" className="text-3xl md:text-4xl font-bold tracking-tight mb-4" style={{ color: 'var(--text-body-dark)', letterSpacing: '-0.025em' }}>{s.h2}</h2>
+          <p className="text-base leading-relaxed" style={{ color: 'var(--text-body)' }}>{s.sub}</p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {s.items.map((item, i) => (
             <div key={i} className="rounded-xl p-6"
-              style={{ backgroundColor: '#ffffff', border: '1px solid rgba(14,14,18,0.06)' }}>
-              <p className="text-3xl md:text-4xl font-bold tracking-tight" style={{ color: '#5856cc', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
+              style={{ backgroundColor: 'var(--surface-raised)', border: '1px solid rgba(14,14,18,0.06)' }}>
+              <p className="text-3xl md:text-4xl font-bold tracking-tight" style={{ color: 'var(--text-accent)', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
                 {/* D58 — content-flagged, not index-based, so the row can be
                     reordered without the circle drifting onto a different stat. */}
                 <span className={item.marked ? 'score-marked' : undefined}>{item.number}</span>
               </p>
-              <p className="mt-3 text-sm leading-relaxed" style={{ color: '#3D4452' }}>{item.label}</p>
+              <p className="mt-3 text-sm leading-relaxed" style={{ color: 'var(--text-body)' }}>{item.label}</p>
             </div>
           ))}
         </div>
@@ -412,13 +412,13 @@ function FamiliesWeServe({ c, locale }) {
         </div>
         <div className="grid lg:grid-cols-3 gap-6">
           {FAMILIES_BASE.map((family, i) => (
-            <article key={family.id} className="group relative rounded-3xl overflow-hidden" style={{ backgroundColor: '#212830', border: '1px solid rgba(255,255,255,0.05)' }} aria-label={`Family: ${family.title}`}>
+            <article key={family.id} className="group relative rounded-3xl overflow-hidden" style={{ backgroundColor: 'var(--color-deep-void)', border: '1px solid rgba(255,255,255,0.05)' }} aria-label={`Family: ${family.title}`}>
               <div className="overflow-hidden" style={{ height: '13rem' }} aria-hidden="true">
                 <div className="w-full h-full" style={{ background: family.imgBg }} />
               </div>
               <div className="p-8">
-                <p className="mb-3" style={{ fontSize: '13px', fontWeight: 500, fontStyle: 'italic', color: '#F5C842' }}>{c.families.items[i].quote}</p>
-                <h3 style={{ fontSize: '20px', fontWeight: 600, color: '#ffffff' }}>{family.title}</h3>
+                <p className="mb-3" style={{ fontSize: '13px', fontWeight: 500, fontStyle: 'italic', color: 'var(--color-gilt)' }}>{c.families.items[i].quote}</p>
+                <h3 style={{ fontSize: '20px', fontWeight: 600, color: 'var(--surface-raised)' }}>{family.title}</h3>
                 {locale === 'zh' && <p className="mb-4" style={{ fontFamily: 'var(--font-cjk)', fontSize: '13px', color: 'var(--text-muted-dark)' }}>{family.titleCn}</p>}
                 <p style={{ fontSize: '14px', lineHeight: 1.75, color: 'var(--platinum-60)' }}>{c.families.items[i].desc}</p>
               </div>
@@ -436,12 +436,12 @@ function ClosingStamp({ locale, c }) {
       <div aria-hidden="true" className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, #0E0E12 0%, #212830 50%, #0E0E12 100%)' }} />
       <div aria-hidden="true" className="absolute inset-0" style={{ background: 'radial-gradient(circle at 50% 50%, rgba(183,181,254,0.08) 0%, transparent 60%)' }} />
       <div className="relative z-10 text-center mx-auto" style={{ maxWidth: '56rem', padding: '10rem 1.5rem' }}>
-        <div className="flex items-center justify-center mx-auto mb-10" style={{ width: 64, height: 64, borderRadius: '50%', backgroundColor: 'rgba(183,181,254,0.1)', border: '1px solid rgba(183,181,254,0.2)', color: '#b7b5fe' }} aria-hidden="true">
+        <div className="flex items-center justify-center mx-auto mb-10" style={{ width: 64, height: 64, borderRadius: '50%', backgroundColor: 'rgba(183,181,254,0.1)', border: '1px solid rgba(183,181,254,0.2)', color: 'var(--text-accent-dark)' }} aria-hidden="true">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
           </svg>
         </div>
-        <h2 id="about-closing-heading" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 300, lineHeight: 1.15, letterSpacing: '-0.02em', color: '#ffffff', marginBottom: '0.5rem' }}>{c.closing.tagline1}</h2>
+        <h2 id="about-closing-heading" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 300, lineHeight: 1.15, letterSpacing: '-0.02em', color: 'var(--surface-raised)', marginBottom: '0.5rem' }}>{c.closing.tagline1}</h2>
         <h2 className="mb-6" aria-label={c.closing.tagline2} style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 700, lineHeight: 1.15, letterSpacing: '-0.02em', background: 'linear-gradient(135deg, #b7b5fe 0%, #F5C842 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{c.closing.tagline2}</h2>
         {locale === 'zh' && <p className="mb-6" style={{ fontFamily: 'var(--font-cjk)', fontSize: '22px', color: 'var(--text-muted-dark)' }}>语言的根，长在阅读里</p>}
         <p className="mx-auto mb-12" style={{ fontSize: '16px', lineHeight: 1.9, color: 'var(--platinum-60)', maxWidth: '32rem' }}>{c.closing.sub}</p>

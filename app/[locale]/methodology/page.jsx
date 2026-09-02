@@ -168,18 +168,18 @@ export default async function MethodologyPage({ params }) {
       */}
       <SectionWrapper white>
         <div className="py-12 md:py-14 max-w-3xl">
-          <div className="rounded-2xl p-6 md:p-8" style={{ backgroundColor: '#F5F5FF', borderLeft: '3px solid #b7b5fe' }}>
-            <p className="text-base md:text-lg leading-relaxed" style={{ color: '#2E3848' }}>
+          <div className="rounded-2xl p-6 md:p-8" style={{ backgroundColor: 'var(--color-whisper)', borderLeft: '3px solid #b7b5fe' }}>
+            <p className="text-base md:text-lg leading-relaxed" style={{ color: 'var(--color-midnight)' }}>
               {t.definition.body}
             </p>
           </div>
 
           <div className="mt-16 md:mt-20">
             <Eyebrow>{t.seeItLive.eyebrow}</Eyebrow>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5" style={{ color: '#0E0E12', letterSpacing: '-0.025em' }}>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5" style={{ color: 'var(--text-body-dark)', letterSpacing: '-0.025em' }}>
               {t.seeItLive.h2}
             </h2>
-            <p className="text-lg leading-relaxed mb-10" style={{ color: '#3D4452' }}>
+            <p className="text-lg leading-relaxed mb-10" style={{ color: 'var(--text-body)' }}>
               {t.seeItLive.body}
             </p>
             <StreamVideo
@@ -196,10 +196,10 @@ export default async function MethodologyPage({ params }) {
       <SectionWrapper white>
         <div className="py-20 md:py-24 max-w-3xl">
           <Eyebrow>{t.why.eyebrow}</Eyebrow>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6" style={{ color: '#0E0E12', letterSpacing: '-0.025em' }}>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6" style={{ color: 'var(--text-body-dark)', letterSpacing: '-0.025em' }}>
             {t.why.heading}
           </h2>
-          <p className="text-lg leading-relaxed" style={{ color: '#3D4452' }}>
+          <p className="text-lg leading-relaxed" style={{ color: 'var(--text-body)' }}>
             {t.why.body}
           </p>
         </div>
@@ -266,7 +266,7 @@ export default async function MethodologyPage({ params }) {
                   <div className="flex items-start gap-3">
                     <span
                       className="mt-1 shrink-0 w-1.5 h-1.5 rounded-full"
-                      style={{ backgroundColor: '#b7b5fe' }}
+                      style={{ backgroundColor: 'var(--color-lavender-signal)' }}
                       aria-hidden="true"
                     />
                     <p
@@ -300,7 +300,7 @@ export default async function MethodologyPage({ params }) {
                 className="rounded-2xl p-6 md:p-8"
                 style={{ backgroundColor: 'rgba(183,181,254,0.07)', border: '1px solid rgba(183,181,254,0.15)' }}
               >
-                <p className="text-lg font-bold mb-3" style={{ color: '#b7b5fe' }}>{s.label}</p>
+                <p className="text-lg font-bold mb-3" style={{ color: 'var(--text-accent-dark)' }}>{s.label}</p>
                 <p className="text-base leading-relaxed" style={{ color: 'var(--text-muted-dark)' }}>{s.body}</p>
               </div>
             ))}
@@ -359,10 +359,10 @@ export default async function MethodologyPage({ params }) {
 
           <div className="max-w-2xl mb-12">
             <Eyebrow>{t.trait.eyebrow}</Eyebrow>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5" style={{ color: '#0E0E12', letterSpacing: '-0.025em' }}>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5" style={{ color: 'var(--text-body-dark)', letterSpacing: '-0.025em' }}>
               {t.trait.heading}
             </h2>
-            <p className="text-lg leading-relaxed" style={{ color: '#3D4452' }}>
+            <p className="text-lg leading-relaxed" style={{ color: 'var(--text-body)' }}>
               {t.trait.body}
             </p>
           </div>
@@ -372,10 +372,10 @@ export default async function MethodologyPage({ params }) {
               <div
                 key={trait.id}
                 className="rounded-2xl p-5"
-                style={{ backgroundColor: '#ffffff', border: '1px solid rgba(0,0,0,0.07)', borderTop: '2.5px solid #b7b5fe', boxShadow: '0 1px 6px rgba(0,0,0,0.04)' }}
+                style={{ backgroundColor: 'var(--surface-raised)', border: '1px solid rgba(0,0,0,0.07)', borderTop: '2.5px solid #b7b5fe', boxShadow: '0 1px 6px rgba(0,0,0,0.04)' }}
               >
-                <p className="text-sm font-bold mb-2" style={{ color: '#0E0E12' }}>{trait.label}</p>
-                <p className="text-sm leading-relaxed" style={{ color: '#3D4452' }}>{trait.body}</p>
+                <p className="text-sm font-bold mb-2" style={{ color: 'var(--text-body-dark)' }}>{trait.label}</p>
+                <p className="text-sm leading-relaxed" style={{ color: 'var(--text-body)' }}>{trait.body}</p>
               </div>
             ))}
           </div>

@@ -426,7 +426,7 @@ export default function Navbar({ locale, copy }) {
         role="banner"
         className={`nav on-dark ${scrolled ? 'scrolled' : ''}`}
         style={{
-          backgroundColor: '#0E0E12',
+          backgroundColor: 'var(--color-void-black)',
           borderBottom:    '1px solid rgba(183,181,254,0.10)',
           overflow:        'visible',
         }}

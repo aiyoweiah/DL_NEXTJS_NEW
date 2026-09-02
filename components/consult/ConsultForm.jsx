@@ -347,21 +347,21 @@ function ContactCard({ icon, label, value, valueLabel, copyText, ctaIdle, ctaDon
   return (
     <div
       style={{
-        background:   '#ffffff',
+        background: 'var(--surface-raised)',
         borderRadius: '12px',
         padding:      '1.375rem 1.125rem',
         border:       emphasized ? '2px solid #5856cc' : '1px solid rgba(183,181,254,0.25)',
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
-        <span aria-hidden="true" style={{ fontSize: 16, color: '#5856cc' }}>{icon}</span>
-        <span style={{ fontSize: 11, fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#5856cc' }}>{label}</span>
+        <span aria-hidden="true" style={{ fontSize: 16, color: 'var(--text-accent)' }}>{icon}</span>
+        <span style={{ fontSize: 11, fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-accent)' }}>{label}</span>
       </div>
       {valueLabel && <p style={{ fontSize: 11, color: '#888880', margin: '0 0 4px' }}>{valueLabel}</p>}
       <p style={{
         fontSize:     15,
         fontWeight:   500,
-        color:        '#0E0E12',
+        color: 'var(--text-body-dark)',
         margin:       '0 0 16px',
         wordBreak:    'break-all',
         fontFamily:   mono ? 'ui-monospace, SFMono-Regular, Menlo, monospace' : 'inherit',
@@ -376,7 +376,7 @@ function ContactCard({ icon, label, value, valueLabel, copyText, ctaIdle, ctaDon
           padding:      '8px 14px',
           fontSize:     12,
           fontWeight:   500,
-          color:        '#5856cc',
+          color: 'var(--text-accent)',
           background:   'rgba(183,181,254,0.12)',
           border:       '1px solid rgba(183,181,254,0.35)',
           borderRadius: 6,
@@ -399,7 +399,7 @@ const S = {
     fontWeight: 600,
     letterSpacing: '0.12em',
     textTransform: 'uppercase',
-    color: '#5856cc',
+    color: 'var(--text-accent)',
     margin: '0 0 0.875rem',
   },
   h2: {
@@ -407,7 +407,7 @@ const S = {
     fontWeight:    700,
     lineHeight:    1.15,
     letterSpacing: '-0.025em',
-    color:         '#0E0E12',
+    color: 'var(--text-body-dark)',
     textWrap:      'balance',
     margin:        0,
   },
@@ -415,21 +415,21 @@ const S = {
     fontFamily: 'var(--font-cjk)',
     fontSize:   '15px',
     fontWeight: 500,
-    color:      '#5856cc',
+    color: 'var(--text-accent)',
     lineHeight: 1.5,
     margin:     '0.5rem 0 0',
   },
   intro: {
     fontSize:   '1rem',
     lineHeight: 1.75,
-    color:      '#3D4452',
+    color: 'var(--text-body)',
     maxWidth:   '30rem',
     margin:     '1.25rem 0 2.25rem',
   },
   body: {
     fontSize:   '1rem',
     lineHeight: 1.75,
-    color:      '#3D4452',
+    color: 'var(--text-body)',
     maxWidth:   '32rem',
     margin:     0,
   },
@@ -445,17 +445,17 @@ const S = {
     display:    'block',
     fontSize:   '0.8125rem',
     fontWeight: 500,
-    color:      '#3D4452',
+    color: 'var(--text-body)',
     marginBottom: '0.375rem',
   },
   input: {
     width:        '100%',
     padding:      '0.625rem 0.75rem',
     fontSize:     '0.875rem',
-    background:   '#ffffff',
+    background: 'var(--surface-raised)',
     border:       '1px solid rgba(183,181,254,0.35)',
     borderRadius: '8px',
-    color:        '#0E0E12',
+    color: 'var(--text-body-dark)',
     boxSizing:    'border-box',
   },
   grid2: {
@@ -472,7 +472,7 @@ const S = {
   toggleWrap: {
     display:      'inline-flex',
     padding:      '3px',
-    background:   '#ffffff',
+    background: 'var(--surface-raised)',
     border:       '1px solid rgba(183,181,254,0.35)',
     borderRadius: '999px',
   },
@@ -490,8 +490,8 @@ const S = {
     padding:       '14px 24px',
     fontSize:      '14px',
     fontWeight:    700,
-    color:         '#ffffff',
-    background:    '#5856cc',
+    color: 'var(--surface-raised)',
+    background: 'var(--color-lavender-deep)',
     border:        'none',
     borderRadius:  '8px',
     letterSpacing: '0.01em',

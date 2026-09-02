@@ -61,7 +61,7 @@ function NavigatorCard({ name, background, photo, photoAlt, light, className }) 
           ) : (
             <span
               className="text-sm font-semibold"
-              style={{ color: '#b7b5fe' }}
+              style={{ color: 'var(--text-accent-dark)' }}
               aria-hidden="true"
             >
               {initials}
@@ -78,7 +78,7 @@ function NavigatorCard({ name, background, photo, photoAlt, light, className }) 
           </p>
           <p
             className="text-xs mt-0.5 uppercase tracking-widest font-medium"
-            style={{ color: '#b7b5fe' }}
+            style={{ color: 'var(--text-accent-dark)' }}
           >
             Navigator
           </p>
@@ -143,7 +143,7 @@ function ResultCard({ lexileStart, lexileEnd, weeks, quote, light, className }) 
           className="mt-2 text-sm"
           style={{ color: light ? '#3D4452' : 'var(--text-muted-dark)' }}
         >
-          <span style={{ color: '#b7b5fe' }} className="font-semibold">
+          <span style={{ color: 'var(--text-accent-dark)' }} className="font-semibold">
             +{growth} Lexile points
           </span>
           {' '}in {weeks} weeks

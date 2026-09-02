@@ -46,19 +46,19 @@ function ArticleCard({ article, locale }) {
         <img src={article.imageUrl} alt={article.title}
           className="w-full h-full object-cover" style={{ display: 'block' }} />
         <div className="absolute bottom-3 left-3 px-2 py-1 rounded uppercase"
-          style={{ backgroundColor: 'var(--lavender-15)', color: '#b7b5fe', fontSize: '11px', fontWeight: 500, backdropFilter: 'blur(8px)' }}>
+          style={{ backgroundColor: 'var(--lavender-15)', color: 'var(--text-accent-dark)', fontSize: '11px', fontWeight: 500, backdropFilter: 'blur(8px)' }}>
           {article.category}
         </div>
       </div>
 
       <Link href={`/${locale}/blog/${article.slug ?? article.id}`} className="block p-6 hover:no-underline">
-        <h3 className="mb-2 line-clamp-2" style={{ color: '#0E0E12', fontSize: '18px', fontWeight: 600, lineHeight: 1.4 }}>
+        <h3 className="mb-2 line-clamp-2" style={{ color: 'var(--text-body-dark)', fontSize: '18px', fontWeight: 600, lineHeight: 1.4 }}>
           {article.title}
         </h3>
         <p className="mb-4 line-clamp-1" style={{ color: 'rgba(33,40,48,0.75)', fontSize: '14px', fontWeight: 400 }}>
           {article.excerpt}
         </p>
-        <div className="flex items-center gap-2" style={{ color: '#212830', fontSize: '12px', fontWeight: 500 }}>
+        <div className="flex items-center gap-2" style={{ color: 'var(--text-heading)', fontSize: '12px', fontWeight: 500 }}>
           <span>{article.author}</span>
           <span>&middot;</span>
           <span>{article.readTime}</span>
@@ -108,22 +108,22 @@ export default function BlogClient({ articles, categories, locale = 'en', ui }) 
         <form role="search" onSubmit={(e) => e.preventDefault()}>
           <label htmlFor="blog-search" className="sr-only">{t.searchPlaceholder}</label>
           <div className="relative">
-            <IconSearch style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#5856cc', pointerEvents: 'none' }} />
+            <IconSearch style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-accent)', pointerEvents: 'none' }} />
             <input
               id="blog-search" type="search" value={searchQuery}
               onChange={(e) => { setSearchQuery(e.target.value); setVisibleCount(6) }}
               placeholder={t.searchPlaceholder}
               className="w-full h-[52px] pl-12 pr-12 rounded-lg bg-white transition-all"
-              style={{ border: '1.5px solid rgba(183,181,254,0.4)', color: '#212830', fontSize: '15px', fontWeight: 400, outline: 'none', fontFamily: 'var(--font-latin)' }}
+              style={{ border: '1.5px solid rgba(183,181,254,0.4)', color: 'var(--text-heading)', fontSize: '15px', fontWeight: 400, outline: 'none', fontFamily: 'var(--font-latin)' }}
               onFocus={(e)  => { e.target.style.borderColor = '#b7b5fe' }}
               onBlur={(e)   => { e.target.style.borderColor = 'rgba(183,181,254,0.4)' }} />
-            <IconArrowRight style={{ position: 'absolute', right: '16px', top: '50%', transform: 'translateY(-50%)', color: '#5856cc', pointerEvents: 'none' }} />
+            <IconArrowRight style={{ position: 'absolute', right: '16px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-accent)', pointerEvents: 'none' }} />
           </div>
         </form>
       </div>
 
       {/* S3 Category filter */}
-      <section className="py-8 px-6" style={{ backgroundColor: '#F5F5FF' }}>
+      <section className="py-8 px-6" style={{ backgroundColor: 'var(--color-whisper)' }}>
         <div className="max-w-7xl mx-auto">
           <div className="flex justify-center gap-3 flex-wrap" role="group" aria-label={t.filterAriaLabel}>
             {categories.map((category) => {
@@ -148,7 +148,7 @@ export default function BlogClient({ articles, categories, locale = 'en', ui }) 
       </section>
 
       {/* S4 Article grid */}
-      <section className="px-6 pb-20" style={{ backgroundColor: '#F5F5FF' }}>
+      <section className="px-6 pb-20" style={{ backgroundColor: 'var(--color-whisper)' }}>
         <div className="max-w-7xl mx-auto">
           {visible.length === 0 && (
             <div className="text-center py-20">
@@ -169,7 +169,7 @@ export default function BlogClient({ articles, categories, locale = 'en', ui }) 
             <div className="text-center mt-12">
               <button onClick={() => setVisibleCount((n) => n + 6)}
                 className="px-8 py-3 rounded-lg font-medium transition-all"
-                style={{ fontFamily: 'var(--font-latin)', border: '2px solid #b7b5fe', color: '#212830', backgroundColor: 'transparent', fontSize: '15px', cursor: 'pointer' }}
+                style={{ fontFamily: 'var(--font-latin)', border: '2px solid #b7b5fe', color: 'var(--text-heading)', backgroundColor: 'transparent', fontSize: '15px', cursor: 'pointer' }}
                 onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'rgba(183,181,254,0.1)' }}
                 onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent' }}>
                 {t.loadMore}

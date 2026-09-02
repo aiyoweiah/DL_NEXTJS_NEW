@@ -26,7 +26,7 @@ export default function AgeBandChooser({ locale, copy, current }) {
   return (
     <section
       aria-labelledby="ageband-heading"
-      style={{ backgroundColor: '#F5F5FF', padding: 'var(--section-md) 0' }}
+      style={{ backgroundColor: 'var(--color-whisper)', padding: 'var(--section-md) 0' }}
     >
       <div className="container-section">
 
@@ -34,7 +34,7 @@ export default function AgeBandChooser({ locale, copy, current }) {
         <h2
           id="ageband-heading"
           className="text-2xl md:text-3xl font-bold tracking-tight mb-8"
-          style={{ color: '#0E0E12', letterSpacing: '-0.02em' }}
+          style={{ color: 'var(--text-body-dark)', letterSpacing: '-0.02em' }}
         >
           {heading}
         </h2>
@@ -47,7 +47,7 @@ export default function AgeBandChooser({ locale, copy, current }) {
                 key={b.href}
                 className="rounded-xl p-6 md:p-7 flex flex-col"
                 style={{
-                  backgroundColor: '#ffffff',
+                  backgroundColor: 'var(--surface-raised)',
                   border: isCurrent
                     ? '1.5px solid rgba(124,121,232,0.55)'
                     : '1px solid rgba(14,14,18,0.08)',
@@ -72,13 +72,13 @@ export default function AgeBandChooser({ locale, copy, current }) {
 
                 <h3
                   className="text-xl font-bold mb-2"
-                  style={{ color: '#0E0E12', letterSpacing: '-0.01em' }}
+                  style={{ color: 'var(--text-body-dark)', letterSpacing: '-0.01em' }}
                 >
                   {b.name}
                 </h3>
                 <p
                   className="text-sm leading-relaxed mb-6 grow"
-                  style={{ color: '#3D4452' }}
+                  style={{ color: 'var(--text-body)' }}
                 >
                   {b.blurb}
                 </p>

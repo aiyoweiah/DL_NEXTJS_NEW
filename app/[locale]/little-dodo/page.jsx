@@ -81,7 +81,7 @@ function Hero({ locale, c }) {
         flexDirection: 'column',
         position:      'relative',
         overflow:      'hidden',
-        backgroundColor: '#0E0E12',
+        backgroundColor: 'var(--color-void-black)',
       }}
     >
       {/* Background illustration — young dodo with a picture book at dawn, watercolor */}
@@ -151,7 +151,7 @@ function Hero({ locale, c }) {
 
           <h1
             id="ld-hero-heading"
-            style={{ fontSize: 'clamp(2.25rem, 5vw + 0.5rem, 4rem)', fontWeight: 700, lineHeight: 1.06, letterSpacing: '-0.03em', color: '#F0F0F0', marginBottom: '0.625rem', textWrap: 'balance' }}
+            style={{ fontSize: 'clamp(2.25rem, 5vw + 0.5rem, 4rem)', fontWeight: 700, lineHeight: 1.06, letterSpacing: '-0.03em', color: 'var(--text-inverse)', marginBottom: '0.625rem', textWrap: 'balance' }}
           >
             {c.hero.h1}
           </h1>
@@ -183,8 +183,8 @@ function Hero({ locale, c }) {
                 key={i}
                 style={{ padding: '1.25rem 0.5rem', borderLeft: i % 6 === 0 ? 'none' : '1px solid rgba(183,181,254,0.06)', textAlign: 'center' }}
               >
-                <div style={{ fontSize: '1.375rem', fontWeight: 700, color: '#b7b5fe', letterSpacing: '-0.02em' }}>{s.value}</div>
-                <div style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#F0F0F0', marginTop: '0.25rem' }}>{s.unit}</div>
+                <div style={{ fontSize: '1.375rem', fontWeight: 700, color: 'var(--text-accent-dark)', letterSpacing: '-0.02em' }}>{s.value}</div>
+                <div style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-inverse)', marginTop: '0.25rem' }}>{s.unit}</div>
                 <div style={{ fontSize: '11px', color: 'var(--platinum-60)', marginTop: '0.25rem', lineHeight: 1.4 }}>{s.desc}</div>
               </div>
             ))}
@@ -200,12 +200,12 @@ function Hero({ locale, c }) {
 // ─────────────────────────────────────────────────────────────
 function ProblemSection({ c }) {
   return (
-    <section aria-labelledby="ld-problem-heading" style={{ backgroundColor: '#ffffff', padding: 'var(--section-md) 0' }}>
+    <section aria-labelledby="ld-problem-heading" style={{ backgroundColor: 'var(--surface-raised)', padding: 'var(--section-md) 0' }}>
       <div className="container-section">
         <div style={{ maxWidth: '42rem' }}>
           <Eyebrow>{c.problem.eyebrow}</Eyebrow>
           <BilingualH2 id="ld-problem-heading" primary={c.problem.h2} secondary={c.problem.h2zh} />
-          <p style={{ fontSize: '1rem', lineHeight: 1.85, color: '#3D4452', marginTop: '1.125rem' }}>
+          <p style={{ fontSize: '1rem', lineHeight: 1.85, color: 'var(--text-body)', marginTop: '1.125rem' }}>
             {c.problem.body}
           </p>
         </div>
@@ -219,7 +219,7 @@ function ProblemSection({ c }) {
 // ─────────────────────────────────────────────────────────────
 function HowSection({ locale, c }) {
   return (
-    <section aria-labelledby="ld-how-heading" style={{ backgroundColor: '#F5F5FF', padding: 'var(--section-md) 0' }}>
+    <section aria-labelledby="ld-how-heading" style={{ backgroundColor: 'var(--color-whisper)', padding: 'var(--section-md) 0' }}>
       <div className="container-section">
         <Eyebrow>{c.how.eyebrow}</Eyebrow>
         <BilingualH2 id="ld-how-heading" primary={c.how.h2} secondary={c.how.h2zh} />
@@ -227,13 +227,13 @@ function HowSection({ locale, c }) {
           {c.how.steps.map((s) => (
             <Surface key={s.num} className="p-6">
               <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--label-color)', letterSpacing: '0.06em', marginBottom: '0.75rem' }}>{s.num}</div>
-              <h3 className="text-base font-bold mb-2" style={{ color: '#0E0E12' }}>{s.label}</h3>
-              <p className="text-sm leading-relaxed" style={{ color: '#3D4452' }}>
+              <h3 className="text-base font-bold mb-2" style={{ color: 'var(--text-body-dark)' }}>{s.label}</h3>
+              <p className="text-sm leading-relaxed" style={{ color: 'var(--text-body)' }}>
                 {s.desc}
                 {s.descLink && (
                   <Link
                     href={`/${locale}${s.descLink.href}`}
-                    style={{ color: '#5856cc', textDecoration: 'underline', textUnderlineOffset: '2px' }}
+                    style={{ color: 'var(--text-accent)', textDecoration: 'underline', textUnderlineOffset: '2px' }}
                   >
                     {s.descLink.text}
                   </Link>
@@ -253,7 +253,7 @@ function HowSection({ locale, c }) {
 // ─────────────────────────────────────────────────────────────
 function SharedSection({ c }) {
   return (
-    <section className="on-dark" aria-labelledby="ld-shared-heading" style={{ backgroundColor: '#212830', padding: 'var(--section-md) 0' }}>
+    <section className="on-dark" aria-labelledby="ld-shared-heading" style={{ backgroundColor: 'var(--color-deep-void)', padding: 'var(--section-md) 0' }}>
       <div className="container-section">
         <div style={{ maxWidth: '42rem' }}>
           <Eyebrow dark>{c.shared.eyebrow}</Eyebrow>
@@ -272,7 +272,7 @@ function SharedSection({ c }) {
 // ─────────────────────────────────────────────────────────────
 function FitSection({ c }) {
   return (
-    <section aria-labelledby="ld-fit-heading" style={{ backgroundColor: '#F5F5FF', padding: 'var(--section-md) 0' }}>
+    <section aria-labelledby="ld-fit-heading" style={{ backgroundColor: 'var(--color-whisper)', padding: 'var(--section-md) 0' }}>
       <div className="container-section">
         <div style={{ maxWidth: '42rem' }}>
           <Eyebrow>{c.fit.eyebrow}</Eyebrow>
@@ -281,7 +281,7 @@ function FitSection({ c }) {
             {c.fit.points.map((p, i) => (
               <li key={i} className="flex items-start gap-3">
                 <span className="mt-2 shrink-0 w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'var(--bullet-color)' }} aria-hidden="true" />
-                <span className="text-[0.9375rem] leading-relaxed" style={{ color: '#3D4452' }}>{p}</span>
+                <span className="text-[0.9375rem] leading-relaxed" style={{ color: 'var(--text-body)' }}>{p}</span>
               </li>
             ))}
           </ul>
@@ -296,12 +296,12 @@ function FitSection({ c }) {
 // ─────────────────────────────────────────────────────────────
 function CtaSection({ locale, c }) {
   return (
-    <section aria-labelledby="ld-cta-heading" style={{ backgroundColor: '#ffffff', padding: 'var(--section-md) 0' }}>
+    <section aria-labelledby="ld-cta-heading" style={{ backgroundColor: 'var(--surface-raised)', padding: 'var(--section-md) 0' }}>
       <div className="container-section">
         <div style={{ maxWidth: '40rem' }}>
           <Eyebrow>{c.cta.eyebrow}</Eyebrow>
           <BilingualH2 id="ld-cta-heading" primary={c.cta.h2} secondary={c.cta.h2zh} />
-          <p style={{ fontSize: '1rem', lineHeight: 1.82, color: '#3D4452', marginTop: '1.125rem', marginBottom: '1.875rem' }}>
+          <p style={{ fontSize: '1rem', lineHeight: 1.82, color: 'var(--text-body)', marginTop: '1.125rem', marginBottom: '1.875rem' }}>
             {c.cta.body}
           </p>
           <div className="flex flex-col sm:flex-row gap-3">

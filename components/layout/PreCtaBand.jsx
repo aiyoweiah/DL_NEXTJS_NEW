@@ -44,7 +44,7 @@ export default function PreCtaBand({ locale, copy }) {
   return (
     <div
       className="border-t border-b on-dark"
-      style={{ borderColor: 'rgba(183,181,254,0.1)', backgroundColor: '#212830' }}
+      style={{ borderColor: 'rgba(183,181,254,0.1)', backgroundColor: 'var(--color-deep-void)' }}
     >
       <div className="container-section py-14 md:py-16">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
@@ -53,7 +53,7 @@ export default function PreCtaBand({ locale, copy }) {
             <Eyebrow dark mb="0.75rem">{c.eyebrow}</Eyebrow>
             <h2
               className="text-2xl md:text-3xl font-bold leading-tight tracking-tight"
-              style={{ color: '#b7b5fe' }}
+              style={{ color: 'var(--text-accent-dark)' }}
             >
               {c.heading}
             </h2>

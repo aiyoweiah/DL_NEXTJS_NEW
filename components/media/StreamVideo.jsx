@@ -94,7 +94,7 @@ export default function StreamVideo({
           aspectRatio,
           width:           '100%',
           borderRadius:    rounded,
-          backgroundColor: '#212830',
+          backgroundColor: 'var(--color-deep-void)',
           border:          '1px solid rgba(183,181,254,0.10)',
           ...style,
         }}
@@ -112,7 +112,7 @@ export default function StreamVideo({
     width:           '100%',
     borderRadius:    rounded,
     overflow:        'hidden',
-    backgroundColor: '#0E0E12',
+    backgroundColor: 'var(--color-void-black)',
     border:          '1px solid rgba(183,181,254,0.10)',
     ...style,
   }

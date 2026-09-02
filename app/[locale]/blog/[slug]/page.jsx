@@ -107,7 +107,7 @@ export default async function BlogPostPage({ params }) {
           <Link
             href={`/${locale}/blog`}
             className="inline-block mb-8 text-sm font-medium"
-            style={{ color: '#5856cc' }}
+            style={{ color: 'var(--text-accent)' }}
           >
             {ui.backLabel}
           </Link>
@@ -118,7 +118,7 @@ export default async function BlogPostPage({ params }) {
               style={{
                 background: 'rgba(183,181,254,0.1)',
                 border:     '1px solid rgba(183,181,254,0.25)',
-                color:      '#5856cc',
+                color: 'var(--text-accent)',
               }}
             >
               {ui.fallbackNotice}
@@ -129,7 +129,7 @@ export default async function BlogPostPage({ params }) {
             <p className="tag-run" style={{ marginBottom: '1.5rem' }}>{fm.category}</p>
           )}
 
-          <h1 id="post-heading" className="mb-6" style={{ color: '#0E0E12' }}>
+          <h1 id="post-heading" className="mb-6" style={{ color: 'var(--text-body-dark)' }}>
             {fm.title}
           </h1>
 
@@ -141,8 +141,8 @@ export default async function BlogPostPage({ params }) {
               className="flex items-center justify-center rounded-full shrink-0"
               style={{
                 width: '36px', height: '36px',
-                backgroundColor: '#0E0E12',
-                color: '#b7b5fe', fontSize: '12px', fontWeight: 600,
+                backgroundColor: 'var(--color-void-black)',
+                color: 'var(--text-accent-dark)', fontSize: '12px', fontWeight: 600,
               }}
               aria-hidden="true"
             >
@@ -150,7 +150,7 @@ export default async function BlogPostPage({ params }) {
             </div>
 
             <div>
-              <span className="text-sm font-semibold" style={{ color: '#0E0E12' }}>
+              <span className="text-sm font-semibold" style={{ color: 'var(--text-body-dark)' }}>
                 {fm.author}
               </span>
               {fm.authorRole && (
@@ -171,7 +171,7 @@ export default async function BlogPostPage({ params }) {
       </SectionWrapper>
 
       {/* ── 2. Article Body ──────────────────────────────── */}
-      <section style={{ backgroundColor: '#ffffff' }} aria-labelledby="post-heading">
+      <section style={{ backgroundColor: 'var(--surface-raised)' }} aria-labelledby="post-heading">
         <div className="container-section" style={{ paddingTop: '3rem', paddingBottom: '4rem' }}>
           <article
             className="max-w-3xl prose-dodo"
@@ -196,7 +196,7 @@ export default async function BlogPostPage({ params }) {
               style={{
                 width: '56px', height: '56px',
                 backgroundColor: 'rgba(183,181,254,0.12)',
-                color: '#b7b5fe', fontSize: '16px', fontWeight: 600,
+                color: 'var(--text-accent-dark)', fontSize: '16px', fontWeight: 600,
                 border: '1.5px solid rgba(183,181,254,0.3)',
               }}
               aria-hidden="true"
@@ -204,7 +204,7 @@ export default async function BlogPostPage({ params }) {
               {initials}
             </div>
             <div>
-              <p className="font-semibold" style={{ color: '#0E0E12' }}>{fm.author}</p>
+              <p className="font-semibold" style={{ color: 'var(--text-body-dark)' }}>{fm.author}</p>
               {fm.authorRole && (
                 <p className="text-sm mt-0.5" style={{ color: 'var(--text-muted)' }}>
                   {fm.authorRole} · DODO Learning

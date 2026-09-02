@@ -130,7 +130,7 @@ export default function Footer({ locale, copy }) {
       <PreCtaBand locale={locale} copy={copy} />
 
       {/* ── 2. Main footer grid — light ────────────────────── */}
-      <div style={{ backgroundColor: '#F5F5FF' }}>
+      <div style={{ backgroundColor: 'var(--color-whisper)' }}>
         <div className="container-section pt-14 pb-10">
           {/*
             Grid jumps sm:2 → md:4. Previously sm:2 → lg:4 left an awkward
@@ -160,7 +160,7 @@ export default function Footer({ locale, copy }) {
 
               <p
                 className="text-sm leading-relaxed mb-6 max-w-[26ch]"
-                style={{ color: '#3D4452' }}
+                style={{ color: 'var(--text-body)' }}
               >
                 {copy.brand.body}
               </p>
@@ -190,7 +190,7 @@ export default function Footer({ locale, copy }) {
                 >
                   <p
                     className="text-sm font-semibold mb-1 inline-flex items-baseline gap-1.5 transition-colors duration-150 group-hover:text-[color:var(--link-hover-color)]"
-                    style={{ color: '#0E0E12' }}
+                    style={{ color: 'var(--text-body-dark)' }}
                   >
                     {copy.sibling.name}
                     <span
@@ -267,7 +267,7 @@ export default function Footer({ locale, copy }) {
       {/* ── 3. Trust strip — light ─────────────────────────── */}
       <div
         style={{
-          backgroundColor: '#F5F5FF',
+          backgroundColor: 'var(--color-whisper)',
           borderTop: '1px solid rgba(14,14,18,0.08)',
         }}
       >
@@ -289,7 +289,7 @@ export default function Footer({ locale, copy }) {
                   </p>
                   <p
                     className="text-xs leading-relaxed"
-                    style={{ color: '#3D4452' }}
+                    style={{ color: 'var(--text-body)' }}
                   >
                     {signal.description}
                   </p>
@@ -303,7 +303,7 @@ export default function Footer({ locale, copy }) {
       {/* ── 4. Legal strip — light ─────────────────────────── */}
       <div
         style={{
-          backgroundColor: '#F5F5FF',
+          backgroundColor: 'var(--color-whisper)',
           borderTop: '1px solid rgba(14,14,18,0.06)',
         }}
       >

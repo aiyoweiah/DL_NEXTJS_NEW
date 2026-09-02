@@ -177,7 +177,7 @@ export default async function ResultsPage({ params }) {
         <div className="py-16 md:py-20 max-w-2xl">
           <h2
             className="text-2xl md:text-3xl font-bold tracking-tight mb-5"
-            style={{ color: '#0E0E12' }}
+            style={{ color: 'var(--text-body-dark)' }}
           >
             {t.intro.heading}
           </h2>
@@ -191,8 +191,8 @@ export default async function ResultsPage({ params }) {
       {t.anchor && (
         <SectionWrapper dark>
           <div className="py-16 md:py-20 max-w-3xl">
-            <p className="eyebrow mb-4 label-quote" style={{ color: '#b7b5fe' }}>{t.anchor.eyebrow}</p>
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-5" style={{ color: '#F0F0F0' }}>
+            <p className="eyebrow mb-4 label-quote" style={{ color: 'var(--text-accent-dark)' }}>{t.anchor.eyebrow}</p>
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-5" style={{ color: 'var(--text-inverse)' }}>
               {t.anchor.heading}
             </h2>
             <p className="text-lg leading-relaxed mb-8" style={{ color: 'var(--platinum-70)' }}>
@@ -201,7 +201,7 @@ export default async function ResultsPage({ params }) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               {t.anchor.stats.map((stat, i) => (
                 <div key={i} className="p-6" style={{ background: 'var(--lavender-08)', borderLeft: '3px solid #b7b5fe' }}>
-                  <p className="text-5xl font-bold tracking-tight" style={{ color: '#b7b5fe', letterSpacing: '-0.03em' }}>
+                  <p className="text-5xl font-bold tracking-tight" style={{ color: 'var(--text-accent-dark)', letterSpacing: '-0.03em' }}>
                     {stat.number}
                     <span className="text-base font-medium ml-2" style={{ color: 'var(--text-muted-dark)' }}>{stat.unit}</span>
                   </p>
@@ -251,7 +251,7 @@ export default async function ResultsPage({ params }) {
                     {result.quoteSource && (
                       <p
                         className="text-xs font-medium uppercase tracking-widest"
-                        style={{ color: '#5856cc' }}
+                        style={{ color: 'var(--text-accent)' }}
                       >
                         {result.quoteSource}
                       </p>
@@ -290,7 +290,7 @@ export default async function ResultsPage({ params }) {
                   <div className="flex items-center justify-between mb-2">
                     <span
                       className="text-sm font-medium"
-                      style={{ color: '#F0F0F0' }}
+                      style={{ color: 'var(--text-inverse)' }}
                     >
                       {trait.label}
                     </span>
@@ -300,7 +300,7 @@ export default async function ResultsPage({ params }) {
                       </span>
                       <span className="sr-only"> improving to </span>
                       <span aria-hidden="true" style={{ color: 'var(--text-muted-dark)' }}> → </span>
-                      <span style={{ color: '#b7b5fe' }}>
+                      <span style={{ color: 'var(--text-accent-dark)' }}>
                         {trait.exitAvg.toFixed(1)}
                       </span>
                       <span style={{ color: 'var(--text-muted-dark)' }}> / 6</span>
@@ -325,7 +325,7 @@ export default async function ResultsPage({ params }) {
                       style={{
                         left:            `${entryPct}%`,
                         width:           `${exitPct - entryPct}%`,
-                        backgroundColor: '#b7b5fe',
+                        backgroundColor: 'var(--color-lavender-signal)',
                       }}
                     />
                   </div>
@@ -345,13 +345,13 @@ export default async function ResultsPage({ params }) {
             <div>
               <p
                 className="eyebrow mb-4 label-quote"
-                style={{ color: '#5856cc' }}
+                style={{ color: 'var(--text-accent)' }}
               >
                 {t.methodology.eyebrow}
               </p>
               <h2
                 className="text-3xl md:text-4xl font-bold tracking-tight mb-5"
-                style={{ color: '#0E0E12' }}
+                style={{ color: 'var(--text-body-dark)' }}
               >
                 {t.methodology.heading}
               </h2>
@@ -382,7 +382,7 @@ export default async function ResultsPage({ params }) {
                   </span>
                   <span
                     className="text-lg font-bold tracking-tight"
-                    style={{ color: '#5856cc' }}
+                    style={{ color: 'var(--text-accent)' }}
                   >
                     {step}
                   </span>

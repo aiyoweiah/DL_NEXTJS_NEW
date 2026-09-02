@@ -15,7 +15,7 @@ const AgreementTool = dynamic(
     loading: () => (
       <div style={{
         minHeight: '100dvh',
-        backgroundColor: '#0E0E12',
+        backgroundColor: 'var(--color-void-black)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',

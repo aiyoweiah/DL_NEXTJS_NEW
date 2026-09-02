@@ -105,21 +105,21 @@ function Hero({ locale, c }: { locale: string; c: any }) {
           <div className="flex items-center gap-3 mb-8">
             <Eyebrow as="span" mb="0" aria-label="Program audience">{c.hero.eyebrow}</Eyebrow>
             {c.hero.eyebrow2 && (
-              <span className="hidden sm:flex items-center gap-1.5 text-xs font-medium" style={{ color: '#5856cc' }}>
-                <span className="inline-block w-1.5 h-1.5 rounded-full" style={{ backgroundColor: '#F5C842' }} aria-hidden="true" />
+              <span className="hidden sm:flex items-center gap-1.5 text-xs font-medium" style={{ color: 'var(--text-accent)' }}>
+                <span className="inline-block w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'var(--color-gilt)' }} aria-hidden="true" />
                 {c.hero.eyebrow2}
               </span>
             )}
           </div>
 
-          <h1 id="hero-heading" className="mb-6" style={{ color: '#212830', fontWeight: 700 }}>
+          <h1 id="hero-heading" className="mb-6" style={{ color: 'var(--text-heading)', fontWeight: 700 }}>
             {c.hero.h1[0]}<br />{c.hero.h1[1]}
             {c.hero.h1Chinese && (
-              <><br className="hidden sm:block" /><span style={{ color: '#5856cc' }}>{c.hero.h1Chinese}</span></>
+              <><br className="hidden sm:block" /><span style={{ color: 'var(--text-accent)' }}>{c.hero.h1Chinese}</span></>
             )}
           </h1>
 
-          <p className="text-base md:text-lg leading-relaxed mb-8" style={{ color: '#5856cc', maxWidth: '42rem' }}>{c.hero.consultHook}</p>
+          <p className="text-base md:text-lg leading-relaxed mb-8" style={{ color: 'var(--text-accent)', maxWidth: '42rem' }}>{c.hero.consultHook}</p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
             {/* cta1 = Watch a Demo Class (soft close); cta2 = Book Your Consultation (firm).
@@ -133,7 +133,7 @@ function Hero({ locale, c }: { locale: string; c: any }) {
             </DoCta>
           </div>
 
-          <p className="text-xs md:text-sm leading-relaxed" style={{ color: '#3D4452', maxWidth: '42rem' }}>{c.hero.trustLine}</p>
+          <p className="text-xs md:text-sm leading-relaxed" style={{ color: 'var(--text-body)', maxWidth: '42rem' }}>{c.hero.trustLine}</p>
         </div>
       </div>
     </section>
@@ -151,7 +151,7 @@ function ProofStrip({ c }: { c: any }) {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {c.proof.map((item: any) => (
             <article key={item.id} className="text-center">
-              <p className="text-4xl md:text-5xl font-bold mb-3" style={{ color: '#b7b5fe' }}>
+              <p className="text-4xl md:text-5xl font-bold mb-3" style={{ color: 'var(--text-accent-dark)' }}>
                 {item.number}
               </p>
               <p className="text-xs md:text-sm font-semibold uppercase tracking-wider mb-2" style={{ color: 'var(--text-muted-dark)' }}>
@@ -178,12 +178,12 @@ function PhotoIntro({ locale, c }: { locale: string; c: any }) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Text column */}
           <article className="max-w-xl">
-            <p className="eyebrow mb-4 label-quote" style={{ color: '#5856cc' }}>{c.photoIntro.eyebrow}</p>
-            <h2 id="photo-intro-heading" className="mb-6" style={{ color: '#212830' }}>{c.photoIntro.heading}</h2>
+            <p className="eyebrow mb-4 label-quote" style={{ color: 'var(--text-accent)' }}>{c.photoIntro.eyebrow}</p>
+            <h2 id="photo-intro-heading" className="mb-6" style={{ color: 'var(--text-heading)' }}>{c.photoIntro.heading}</h2>
 
-            <p className="text-base md:text-lg leading-relaxed mb-5" style={{ color: '#3D4452' }}>{c.photoIntro.body0}</p>
-            <p className="text-base md:text-lg leading-relaxed mb-5" style={{ color: '#3D4452' }}>{c.photoIntro.body1}</p>
-            <p className="text-base md:text-lg leading-relaxed mb-8" style={{ color: '#3D4452' }}>{c.photoIntro.body2}</p>
+            <p className="text-base md:text-lg leading-relaxed mb-5" style={{ color: 'var(--text-body)' }}>{c.photoIntro.body0}</p>
+            <p className="text-base md:text-lg leading-relaxed mb-5" style={{ color: 'var(--text-body)' }}>{c.photoIntro.body1}</p>
+            <p className="text-base md:text-lg leading-relaxed mb-8" style={{ color: 'var(--text-body)' }}>{c.photoIntro.body2}</p>
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href={`/${locale}/navigators`} className="btn btn-do">
@@ -233,7 +233,7 @@ function LoopSection({ locale, c }: { locale: string; c: any }) {
                     <span className="loop-arrow text-lg hidden sm:block lg:hidden" aria-hidden="true">&rarr;</span>
                   )}
                 </div>
-                <h3 className="text-lg font-bold" style={{ color: '#b7b5fe', letterSpacing: '-0.01em' }}>{step.label}</h3>
+                <h3 className="text-lg font-bold" style={{ color: 'var(--text-accent-dark)', letterSpacing: '-0.01em' }}>{step.label}</h3>
                 <p className="text-sm leading-relaxed flex-1" style={{ color: 'var(--text-muted-dark)' }}>{step.description}</p>
               </div>
             </li>
@@ -264,15 +264,15 @@ function ConfidenceSection({ locale, c }: { locale: string; c: any }) {
         <div className="max-w-2xl mb-14">
           <p className="eyebrow mb-4 label-quote">{c.confidence.eyebrow}</p>
           <h2 id="confidence-heading">{c.confidence.heading}</h2>
-          <p className="mt-4 text-base md:text-lg leading-relaxed" style={{ color: '#3D4452' }}>{c.confidence.body}</p>
+          <p className="mt-4 text-base md:text-lg leading-relaxed" style={{ color: 'var(--text-body)' }}>{c.confidence.body}</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {c.confidence.pillars.map((pillar: any) => (
             <div key={pillar.id} className="card p-8 flex flex-col gap-4 accent-top">
               <p className="eyebrow">{pillar.eyebrow}</p>
-              <h3 className="text-xl font-bold leading-snug" style={{ color: '#212830' }}>{pillar.heading}</h3>
-              <p className="text-sm leading-relaxed flex-1" style={{ color: '#3D4452' }}>{pillar.body}</p>
+              <h3 className="text-xl font-bold leading-snug" style={{ color: 'var(--text-heading)' }}>{pillar.heading}</h3>
+              <p className="text-sm leading-relaxed flex-1" style={{ color: 'var(--text-body)' }}>{pillar.body}</p>
               <Link
                 href={`/${locale}${pillar.linkHref}`}
                 className="text-sm font-semibold text-[#5856cc] hover:text-[#3d3baa] transition-colors duration-150 focus-visible:outline-none focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-[#b7b5fe]"
@@ -316,7 +316,7 @@ function ParentTrustSection({ locale, c }: { locale: string; c: any }) {
               aria-label={`${result.student}, ${result.detail}`}
             >
               <div>
-                <p className="text-sm font-semibold" style={{ color: '#b7b5fe' }}>{result.student}</p>
+                <p className="text-sm font-semibold" style={{ color: 'var(--text-accent-dark)' }}>{result.student}</p>
                 <p className="text-xs mt-0.5" style={{ color: 'var(--text-muted-dark)' }}>{result.detail} &nbsp;&middot;&nbsp; {result.weeks} {c.trust.weeksLabel}</p>
               </div>
               <LexileBar start={result.start} end={result.end} weeks={result.weeks} />
@@ -340,7 +340,7 @@ function ParentTrustSection({ locale, c }: { locale: string; c: any }) {
 // ═══════════════════════════════════════════════════════════════
 function CodingBand({ c }: { c: any }) {
   return (
-    <section className="section-light" aria-labelledby="coding-band-heading" style={{ backgroundColor: '#F5F5FF' }}>
+    <section className="section-light" aria-labelledby="coding-band-heading" style={{ backgroundColor: 'var(--color-whisper)' }}>
       <div className="container-section">
         <div style={{ maxWidth: '44rem' }}>
           <p
@@ -350,7 +350,7 @@ function CodingBand({ c }: { c: any }) {
               fontWeight:    600,
               letterSpacing: '0.12em',
               textTransform: 'uppercase',
-              color:         '#5856cc',
+              color: 'var(--text-accent)',
             }}
           >
             {c.eyebrow}
@@ -383,10 +383,10 @@ function CodingBand({ c }: { c: any }) {
             {c.sub}
           </p>
 
-          <p style={{ fontSize: '1rem', lineHeight: 1.82, color: '#0E0E12', marginBottom: '1rem', fontWeight: 500 }}>
+          <p style={{ fontSize: '1rem', lineHeight: 1.82, color: 'var(--text-body-dark)', marginBottom: '1rem', fontWeight: 500 }}>
             {c.lead}
           </p>
-          <p style={{ fontSize: '0.9375rem', lineHeight: 1.75, color: '#3D4452', marginBottom: '2rem' }}>
+          <p style={{ fontSize: '0.9375rem', lineHeight: 1.75, color: 'var(--text-body)', marginBottom: '2rem' }}>
             {c.body}
           </p>
 
@@ -402,7 +402,7 @@ function CodingBand({ c }: { c: any }) {
           </a>
 
           <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', letterSpacing: '0.04em' }}>
-            <span style={{ color: '#0E0E12', fontWeight: 600 }}>{c.preview.machineVerbs}</span>
+            <span style={{ color: 'var(--text-body-dark)', fontWeight: 600 }}>{c.preview.machineVerbs}</span>
             <span aria-hidden="true" style={{ margin: '0 0.75em', color: 'rgba(31,78,140,0.4)' }}>·</span>
             <span style={{ color: '#1F4E8C', fontWeight: 600 }}>{c.preview.criticalThinking}</span>
           </p>

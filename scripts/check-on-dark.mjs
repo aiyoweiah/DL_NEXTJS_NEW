@@ -58,7 +58,18 @@ const OUT = path.join(process.cwd(), 'out')
 
 // Grounds the system paints by hand. A dark ground arriving through a CLASS
 // (.section-dark and friends) is not a trap — the class IS the hook.
-const DARK_GROUNDS = new Set(['#212830', '#0e0e12', '#2e3848', '#1a1a22', '#1c2330'])
+//
+// ⚠️ Token spellings are listed alongside the hex ON PURPOSE. This guard reads
+// the inline style as authored, and an inline `var(--color-void-black)` does NOT
+// resolve to its hex there. So the moment anyone tokenises a background — which
+// is exactly what the Wave 1 migration does — a hex-only list would stop
+// matching and this guard would go quietly green while the trap came back.
+// That is the failure mode this whole file exists to prevent, so: both forms.
+const DARK_GROUNDS = new Set([
+  '#212830', '#0e0e12', '#2e3848', '#1a1a22', '#1c2330',
+  'var(--color-deep-void)', 'var(--color-void-black)', 'var(--color-midnight)',
+  'var(--surface-dark)', 'var(--surface-darker)', 'var(--surface-mid)',
+])
 
 // Any one of these on an ancestor supplies the dark-surface label colours.
 const HOOKS = ['on-dark', 'section-dark', 'section-darker', 'section-hero-short']

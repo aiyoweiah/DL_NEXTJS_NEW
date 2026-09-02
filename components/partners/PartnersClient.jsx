@@ -64,14 +64,14 @@ const COPY = {
           title:       'College Readiness Preparation',
           body:        'The students your agencies work with face a specific challenge: they may be academically capable, but their writing hasn\u2019t yet reached the register that competitive college admissions requires.\n\nCollege Readiness Preparation is a focused 16-week program for students in Grades 9\u201312. Working with a dedicated Navigator, students develop the analytical reading and writing capacity that selective admissions actually tests \u2014 not through essay coaching or template writing, but through the deep intellectual work that makes a student\u2019s thinking distinctive and their voice authentic.\n\nBy the end of the program, students can read complex analytical texts with precision, construct evidence-based arguments with clarity, and write across the registers college coursework demands \u2014 from personal narrative to academic prose. Progress is documented. Lexile levels track reading growth. The 6+1 Trait rubric tracks writing development across every dimension. You can show families exactly what changed.',
           suitability: 'Suitable for: Grade 9\u201312 students preparing for North American or international college applications. Particularly effective for students targeting schools with writing-intensive applications or IB/AP coursework requirements.',
-          accent:      '#b7b5fe',
+          accent: 'var(--color-lavender-signal)',
         },
         {
           grade:       'Grade 10\u201312',
           title:       'Professional Writing Development',
           body:        'Academic writing at the college level is a different discipline \u2014 not harder versions of high school essays, but a fundamentally different mode of thinking on paper.\n\nProfessional Writing Development is designed for students in Grades 10\u201312 preparing for the writing demands that determine outcomes: IB Extended Essays, college application personal statements, university entrance writing assessments, and the academic prose required from day one of post-secondary study.\n\nThe program builds command over extended argumentation \u2014 the ability to manage a complex claim across multiple pages, to engage with source material analytically rather than decoratively, and to write with the register and precision that admissions committees and university professors recognize immediately. Working with a dedicated Navigator, students move through sustained engagement with serious literary and analytical texts, with every session following the Read \u2192 Think \u2192 Speak \u2192 Write sequence. This is the program for students who are close \u2014 who have the ideas, the intelligence, the ambition \u2014 but whose writing has not yet caught up with their thinking.',
           suitability: 'Suitable for: Grade 10\u201312 students with IB, AP, or pre-university writing demands. Particularly effective for students whose application profile or academic program requires writing that demonstrates original, well-developed thinking.',
-          accent:      '#F5C842',
+          accent: 'var(--color-gilt)',
         },
         {
           grade:       'All grades',
@@ -114,13 +114,13 @@ const COPY = {
           label:    'One-on-One Guidance',
           headline: 'A Navigator who is actively in the lecture hall.',
           body:     'Every DODO Learning student works with a dedicated Navigator \u2014 one person, for the full program. What distinguishes our Navigators from the tutoring market is that they are working educators: active faculty with current experience in post-secondary academic writing, literary analysis, and analytical composition.\n\nThey are not teaching from memory. They know what universities and selective institutions are demanding of students right now \u2014 because they are in those lecture halls. For the students your agency works with, that currency matters.',
-          color:    '#b7b5fe',
+          color: 'var(--text-accent-dark)',
         },
         {
           label:    'Gifted Program Navigation',
           headline: 'Built for the standard selective programs actually use.',
           body:     'DODO Learning\u2019s curriculum is grounded in the Michael Clay Thompson Language Arts framework \u2014 one of the most widely used ELA curricula across North America\u2019s gifted and honors programs. Students who complete a DODO cycle arrive at university entrance assessments, IB coursework, and AP seminars having already worked at that register.\n\nThis is not enrichment. It is preparation at the exact intellectual standard selective institutions are using to evaluate your clients\u2019 students.',
-          color:    '#F5C842',
+          color: 'var(--color-gilt)',
         },
         {
           label:    'Measurable Skill Improvement',
@@ -132,7 +132,7 @@ const COPY = {
           label:    'Harvard\u2019s Visible Thinking',
           headline: 'Thinking made visible before writing begins.',
           body:     'Every DODO session is structured around Harvard Project Zero\u2019s Visible Thinking routines \u2014 research-based protocols developed at the Harvard Graduate School of Education and used in university-level academic programs worldwide.\n\nStudents build evidence chains, map inferences, take opposing perspectives, and defend positions in structured oral discussion \u2014 before a single word of their written response is drafted. The writing that results is not a summary. It is a demonstrated academic argument, developed to the standard post-secondary coursework demands.',
-          color:    '#b7b5fe',
+          color: 'var(--text-accent-dark)',
         },
       ],
     },
@@ -213,14 +213,14 @@ const COPY = {
           title:       'College Readiness Preparation',
           body:        '您的机构所服务的学生面临一个特定的难题：他们学业上或许很有能力，但写作水准尚未达到顶尖大学录取所要求的学术层次。\n\nCollege Readiness Preparation 是一个为期16周的集中课程，面向9–12年级学生。在专属Navigator的指导下，学生将逐步发展出精英院校招生官真正考察的分析性读写能力——这不是通过申请文书的套路训练或模板化写作，而是通过深度的思维训练，使学生的思考具有独到见解，表达真实而有个人色彩。\n\n课程结束时，学生能够精准阅读复杂的分析性文本，清晰构建基于证据的论点，并驾驭大学课程所要求的各种写作类型——从个人叙事到学术论文。学习进展有据可查：Lexile水平追踪阅读能力的成长，6+1 Trait评分体系记录写作能力的各维度提升。您可以向家庭清晰展示孩子的具体变化。',
           suitability: '适合人群：准备申请北美或国际大学的9–12年级学生。对于目标院校申请材料中写作要求较高、或涉及IB/AP课程的学生，效果尤其显著。',
-          accent:      '#b7b5fe',
+          accent: 'var(--color-lavender-signal)',
         },
         {
           grade:       '10–12年级',
           title:       'Professional Writing Development',
           body:        '大学阶段的学术写作是一种不同的技能——它不是高中作文的升级版，而是一种根本不同的纸上思维方式。\n\nProfessional Writing Development 专为10–12年级学生设计，帮助他们迎战决定录取结果的写作任务：IB Extended Essay、大学申请主文书、大学入学写作评估，以及进入大学第一天就需要的学术论文能力。\n\n本课程培养学生掌握长篇论述能力——能够跨多页篇幅发展一个复杂的论点，分析性地运用资料而非仅作装饰性引用，并以招生委员会和大学教授一眼就能识别的学术层次和精准度进行写作。在专属Navigator的带领下，学生持续浸入严肃的文学和分析性文本，每节课都遵循 Read → Think → Speak → Write 的顺序。这套课程是为那些“只差一步”的学生准备的：他们有想法、有才智、有雄心，只是写作尚未追上他们的思考。',
           suitability: '适合人群：有IB、AP或大学预科阶段写作任务的10–12年级学生。对于申请材料或学术项目要求体现具有独到见解且论述完整的思考的学生，效果尤其显著。',
-          accent:      '#F5C842',
+          accent: 'var(--color-gilt)',
         },
         {
           grade:       '\u5404\u5e74\u7ea7',
@@ -263,13 +263,13 @@ const COPY = {
           label:    'One-on-One Guidance',
           headline: 'Navigator 就在课堂一线。',
           body:     '每位 DODO Learning 的学生都拥有一位专属的 Navigator——全程一对一，始终是同一个人。我们的Navigator与市面上一般的英语课外教师的根本区别在于，他们是真正的在职教育工作者：活跃于一线的高校教师，具备当前大学及以上阶段学术写作、文学分析和分析性写作的实战经验。\n\n他们不是凭记忆教学。他们清楚当下大学和精英院校对学生要求的是什么——因为他们就在那些课堂里。对于您机构所服务的学生而言，这份实时、真切的现实感，至关重要。',
-          color:    '#b7b5fe',
+          color: 'var(--text-accent-dark)',
         },
         {
           label:    'Gifted Program Navigation',
           headline: '匹配优才项目的真实标准。',
           body:     'DODO Learning 的课程基于 Michael Clay Thompson Language Arts 框架——这是北美英才及荣誉课程中使用最广泛的英语语言艺术课程之一。完成 DODO 课程周期的学生，在参加大学入学测评、IB课程和AP研讨班之前，就已经达到了相应的学术写作层次。\n\n这不是兴趣拓展。这是直接对标精英院校用于评估您客户学生的智力标准，所做的前置准备。',
-          color:    '#F5C842',
+          color: 'var(--color-gilt)',
         },
         {
           label:    'Measurable Skill Improvement',
@@ -281,7 +281,7 @@ const COPY = {
           label:    'Harvard\u2019s Visible Thinking',
           headline: 'Thinking made visible before writing begins.',
           body:     '\u6bcf\u8282DODO\u8bfe\u7a0b\u5747\u56f4\u7ed5Harvard Project Zero\u7684Visible Thinking\u534f\u5f0f\u5c55\u5f00\u2014\u2014\u7531\u54c8\u4f5b\u6559\u80b2\u7814\u7a76\u751f\u9662\u7814\u53d1\u7684\u5faa\u8bc1\u601d\u7ef4\u534f\u8bae\u3002\u5b66\u751f\u5728\u5199\u4f5c\u5f00\u59cb\u524d\u5c31\u5b8c\u6210\u8bba\u8bc1\u94fe\u6784\u5efa\u548c\u5f00\u653e\u6027\u8bba\u8ff0\u8bad\u7ec3\u3002',
-          color:    '#b7b5fe',
+          color: 'var(--text-accent-dark)',
         },
       ],
     },
@@ -342,7 +342,7 @@ function GateView({ g, locale, input, setInput, onSubmit, onKeyDown, error, shak
       flexDirection:   'column',
       alignItems:      'center',
       justifyContent:  'center',
-      backgroundColor: '#0E0E12',
+      backgroundColor: 'var(--color-void-black)',
       padding:         '2rem',
       fontFamily:      font(locale),
     }}>
@@ -384,7 +384,7 @@ function GateView({ g, locale, input, setInput, onSubmit, onKeyDown, error, shak
           boxShadow:       '0 24px 64px rgba(0,0,0,0.5)',
         }}
       >
-        <div style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#b7b5fe', marginBottom: '12px', textAlign: 'center' }}>
+        <div style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-accent-dark)', marginBottom: '12px', textAlign: 'center' }}>
           {g.label}
         </div>
         <p style={{ fontSize: '15px', fontWeight: 400, color: 'var(--platinum-60)', lineHeight: 1.6, textAlign: 'center', marginBottom: '32px', whiteSpace: 'pre-line' }}>
@@ -409,7 +409,7 @@ function GateView({ g, locale, input, setInput, onSubmit, onKeyDown, error, shak
             padding:         '14px 16px',
             fontSize:        '15px',
             fontWeight:      400,
-            color:           '#F0F0F0',
+            color: 'var(--text-inverse)',
             fontFamily:      font(locale),
             letterSpacing:   '0.08em',
             marginBottom:    error ? '10px' : '20px',
@@ -428,8 +428,8 @@ function GateView({ g, locale, input, setInput, onSubmit, onKeyDown, error, shak
           style={{
             display:         'block',
             width:           '100%',
-            backgroundColor: '#b7b5fe',
-            color:           '#0E0E12',
+            backgroundColor: 'var(--color-lavender-signal)',
+            color: 'var(--text-body-dark)',
             fontSize:        '15px',
             fontWeight:      600,
             fontFamily:      font(locale),
@@ -543,7 +543,7 @@ function PartnersContent({ c, locale }) {
         justifyContent:  'flex-end',
         position:        'relative',
         overflow:        'hidden',
-        backgroundColor: '#0E0E12',
+        backgroundColor: 'var(--color-void-black)',
         paddingTop:      'calc(var(--nav-height) + 4rem)',
         paddingBottom:   '5rem',
       }}>
@@ -557,15 +557,15 @@ function PartnersContent({ c, locale }) {
         <div aria-hidden="true" className="hero-scrim" />
         <div aria-hidden="true" className="hero-vignette" />
         <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 55% 50% at 15% 62%, rgba(183,181,254,0.10) 0%, transparent 65%)' }} />
-        <div aria-hidden="true" style={{ position: 'absolute', bottom: '-40px', right: '-40px', fontSize: '320px', fontWeight: 700, color: '#b7b5fe', opacity: 0.028, lineHeight: 1, letterSpacing: '-0.04em', userSelect: 'none', pointerEvents: 'none', fontFamily: 'var(--font-latin)' }}>
+        <div aria-hidden="true" style={{ position: 'absolute', bottom: '-40px', right: '-40px', fontSize: '320px', fontWeight: 700, color: 'var(--text-accent-dark)', opacity: 0.028, lineHeight: 1, letterSpacing: '-0.04em', userSelect: 'none', pointerEvents: 'none', fontFamily: 'var(--font-latin)' }}>
           PARTNER
         </div>
 
         <div className="px-6 relative z-10" style={{ maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
           <Eyebrow dark mb="2rem">{c.hero.chip}</Eyebrow>
 
-          <h1 style={{ fontSize: 'clamp(36px, 5vw, 64px)', fontWeight: 700, color: '#F0F0F0', lineHeight: 1.15, maxWidth: '820px', marginBottom: '28px', fontFamily: 'var(--font-latin)' }}>
-            {c.hero.h1a}<span style={{ color: '#b7b5fe' }}>{c.hero.h1b}</span>{c.hero.h1c}
+          <h1 style={{ fontSize: 'clamp(36px, 5vw, 64px)', fontWeight: 700, color: 'var(--text-inverse)', lineHeight: 1.15, maxWidth: '820px', marginBottom: '28px', fontFamily: 'var(--font-latin)' }}>
+            {c.hero.h1a}<span style={{ color: 'var(--text-accent-dark)' }}>{c.hero.h1b}</span>{c.hero.h1c}
           </h1>
 
           <p style={{ fontSize: 'clamp(16px, 2vw, 18px)', fontWeight: 400, color: 'var(--platinum-60)', lineHeight: 1.7, maxWidth: '640px', marginBottom: '48px', whiteSpace: 'pre-line' }}>
@@ -575,7 +575,7 @@ function PartnersContent({ c, locale }) {
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '40px' }}>
             {c.hero.stats.map(({ num, label }) => (
               <div key={label}>
-                <div style={{ fontSize: 'clamp(26px, 3vw, 36px)', fontWeight: 700, color: '#b7b5fe', lineHeight: 1, fontFamily: 'var(--font-latin)' }}>{num}</div>
+                <div style={{ fontSize: 'clamp(26px, 3vw, 36px)', fontWeight: 700, color: 'var(--text-accent-dark)', lineHeight: 1, fontFamily: 'var(--font-latin)' }}>{num}</div>
                 <div style={{ fontSize: '13px', fontWeight: 400, color: 'var(--platinum-60)', marginTop: '5px' }}>{label}</div>
               </div>
             ))}
@@ -584,10 +584,10 @@ function PartnersContent({ c, locale }) {
       </section>
 
       {/* ── S2 PROGRAMS ───────────────────────────────────── */}
-      <section className="px-6 py-24" style={{ backgroundColor: '#212830' }}>
+      <section className="px-6 py-24" style={{ backgroundColor: 'var(--color-deep-void)' }}>
         <div className="container-section">
           <Eyebrow dark center locale={locale}>{c.s2.eyebrow}</Eyebrow>
-          <h2 style={{ fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 700, color: '#F0F0F0', lineHeight: 1.25, maxWidth: '760px', margin: '0 auto 16px', textAlign: 'center', fontFamily: 'var(--font-latin)' }}>
+          <h2 style={{ fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 700, color: 'var(--text-inverse)', lineHeight: 1.25, maxWidth: '760px', margin: '0 auto 16px', textAlign: 'center', fontFamily: 'var(--font-latin)' }}>
             {c.s2.h2}
           </h2>
           <p style={{ fontSize: '16px', fontWeight: 400, color: 'var(--platinum-60)', lineHeight: 1.65, maxWidth: '600px', margin: '0 auto 56px', textAlign: 'center' }}>
@@ -596,10 +596,10 @@ function PartnersContent({ c, locale }) {
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', maxWidth: '900px', margin: '0 auto' }}>
             {c.s2.programs.map(({ grade, title, body, suitability, accent }) => (
-              <div key={title} style={{ backgroundColor: '#2E3848', borderRadius: '16px', overflow: 'hidden', borderLeft: `4px solid ${accent}` }}>
+              <div key={title} style={{ backgroundColor: 'var(--color-midnight)', borderRadius: '16px', overflow: 'hidden', borderLeft: `4px solid ${accent}` }}>
                 <div style={{ padding: '36px 40px' }}>
                   <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px', marginBottom: '20px' }}>
-                    <h3 style={{ fontSize: 'clamp(20px, 2.5vw, 26px)', fontWeight: 700, color: '#F0F0F0', lineHeight: 1.2, fontFamily: 'var(--font-latin)', margin: 0 }}>
+                    <h3 style={{ fontSize: 'clamp(20px, 2.5vw, 26px)', fontWeight: 700, color: 'var(--text-inverse)', lineHeight: 1.2, fontFamily: 'var(--font-latin)', margin: 0 }}>
                       {title}
                     </h3>
                     <span style={{ fontSize: '12px', fontWeight: 600, color: accent, backgroundColor: `${accent}18`, border: `1px solid ${accent}40`, borderRadius: '9999px', padding: '4px 14px', whiteSpace: 'nowrap', fontFamily: 'var(--font-latin)' }}>
@@ -624,26 +624,26 @@ function PartnersContent({ c, locale }) {
       </section>
 
       {/* ── S3 WHO FITS ───────────────────────────────────── */}
-      <section className="px-6 py-24" style={{ backgroundColor: '#F5F5FF' }}>
+      <section className="px-6 py-24" style={{ backgroundColor: 'var(--color-whisper)' }}>
         <div className="container-section">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
             <div>
               <Eyebrow locale={locale}>{c.s3.eyebrow}</Eyebrow>
-              <h2 style={{ fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 700, color: '#0E0E12', lineHeight: 1.25, marginBottom: '24px', fontFamily: 'var(--font-latin)' }}>
-                {c.s3.h2a}<br /><span style={{ color: '#5856cc' }}>{c.s3.h2b}</span>
+              <h2 style={{ fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 700, color: 'var(--text-body-dark)', lineHeight: 1.25, marginBottom: '24px', fontFamily: 'var(--font-latin)' }}>
+                {c.s3.h2a}<br /><span style={{ color: 'var(--text-accent)' }}>{c.s3.h2b}</span>
               </h2>
-              <p style={{ fontSize: '16px', fontWeight: 400, color: '#3D4452', lineHeight: 1.65, marginBottom: '20px' }}>{c.s3.p1}</p>
-              <p style={{ fontSize: '16px', fontWeight: 400, color: '#3D4452', lineHeight: 1.65 }}>{c.s3.p2}</p>
+              <p style={{ fontSize: '16px', fontWeight: 400, color: 'var(--text-body)', lineHeight: 1.65, marginBottom: '20px' }}>{c.s3.p1}</p>
+              <p style={{ fontSize: '16px', fontWeight: 400, color: 'var(--text-body)', lineHeight: 1.65 }}>{c.s3.p2}</p>
             </div>
 
-            <div style={{ backgroundColor: '#ffffff', borderRadius: '16px', border: '1px solid rgba(14,14,18,0.1)', overflow: 'hidden' }}>
+            <div style={{ backgroundColor: 'var(--surface-raised)', borderRadius: '16px', border: '1px solid rgba(14,14,18,0.1)', overflow: 'hidden' }}>
               <div style={{ padding: '28px 32px', borderBottom: '1px solid rgba(14,14,18,0.08)' }}>
                 <div style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#7EC8A0', marginBottom: '16px' }}>{c.s3.goodLabel}</div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                   {c.s3.goodItems.map((item) => (
                     <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
                       <span style={{ color: '#7EC8A0', fontWeight: 700, marginTop: '2px', flexShrink: 0 }}>✓</span>
-                      <span style={{ fontSize: '15px', fontWeight: 400, color: '#212830', lineHeight: 1.5 }}>{item}</span>
+                      <span style={{ fontSize: '15px', fontWeight: 400, color: 'var(--text-heading)', lineHeight: 1.5 }}>{item}</span>
                     </div>
                   ))}
                 </div>
@@ -665,10 +665,10 @@ function PartnersContent({ c, locale }) {
       </section>
 
       {/* ── S4 METHODOLOGY ────────────────────────────────── */}
-      <section className="px-6 py-24" style={{ backgroundColor: '#0E0E12' }}>
+      <section className="px-6 py-24" style={{ backgroundColor: 'var(--color-void-black)' }}>
         <div className="container-section">
           <Eyebrow dark center locale={locale}>{c.s4.eyebrow}</Eyebrow>
-          <h2 style={{ fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 700, color: '#F0F0F0', lineHeight: 1.25, maxWidth: '720px', margin: '0 auto 16px', textAlign: 'center', fontFamily: 'var(--font-latin)' }}>
+          <h2 style={{ fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 700, color: 'var(--text-inverse)', lineHeight: 1.25, maxWidth: '720px', margin: '0 auto 16px', textAlign: 'center', fontFamily: 'var(--font-latin)' }}>
             {c.s4.h2}
           </h2>
           <p style={{ fontSize: '16px', fontWeight: 400, color: 'var(--platinum-60)', lineHeight: 1.65, maxWidth: '560px', margin: '0 auto 56px', textAlign: 'center' }}>
@@ -681,7 +681,7 @@ function PartnersContent({ c, locale }) {
                 <div style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color, opacity: 0.85, marginBottom: '12px', fontFamily: 'var(--font-latin)' }}>
                   {label}
                 </div>
-                <div style={{ fontSize: 'clamp(18px, 2vw, 22px)', fontWeight: 700, color: '#F0F0F0', lineHeight: 1.3, marginBottom: '20px', fontFamily: 'var(--font-latin)' }}>
+                <div style={{ fontSize: 'clamp(18px, 2vw, 22px)', fontWeight: 700, color: 'var(--text-inverse)', lineHeight: 1.3, marginBottom: '20px', fontFamily: 'var(--font-latin)' }}>
                   {headline}
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -698,20 +698,20 @@ function PartnersContent({ c, locale }) {
       </section>
 
       {/* ── S5 WHAT PARTNERS GET ──────────────────────────── */}
-      <section className="px-6 py-24" style={{ backgroundColor: '#212830' }}>
+      <section className="px-6 py-24" style={{ backgroundColor: 'var(--color-deep-void)' }}>
         <div className="container-section">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div>
               <Eyebrow dark locale={locale}>{c.s5.eyebrow}</Eyebrow>
-              <h2 style={{ fontSize: 'clamp(28px, 4vw, 40px)', fontWeight: 700, color: '#F0F0F0', lineHeight: 1.25, marginBottom: '28px', fontFamily: 'var(--font-latin)' }}>
+              <h2 style={{ fontSize: 'clamp(28px, 4vw, 40px)', fontWeight: 700, color: 'var(--text-inverse)', lineHeight: 1.25, marginBottom: '28px', fontFamily: 'var(--font-latin)' }}>
                 {c.s5.h2}
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 {c.s5.points.map(({ label, body }) => (
                   <div key={label} style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
-                    <div style={{ width: '8px', height: '8px', borderRadius: '9999px', backgroundColor: '#b7b5fe', marginTop: '8px', flexShrink: 0 }} />
+                    <div style={{ width: '8px', height: '8px', borderRadius: '9999px', backgroundColor: 'var(--color-lavender-signal)', marginTop: '8px', flexShrink: 0 }} />
                     <div>
-                      <div style={{ fontSize: '16px', fontWeight: 600, color: '#F0F0F0', marginBottom: '4px' }}>{label}</div>
+                      <div style={{ fontSize: '16px', fontWeight: 600, color: 'var(--text-inverse)', marginBottom: '4px' }}>{label}</div>
                       <p style={{ fontSize: '14px', fontWeight: 400, color: 'var(--platinum-60)', lineHeight: 1.65, margin: 0 }}>{body}</p>
                     </div>
                   </div>
@@ -719,7 +719,7 @@ function PartnersContent({ c, locale }) {
               </div>
             </div>
 
-            <div style={{ backgroundColor: '#2E3848', borderRadius: '20px', padding: '40px 36px', border: '1px solid rgba(183,181,254,0.12)' }}>
+            <div style={{ backgroundColor: 'var(--color-midnight)', borderRadius: '20px', padding: '40px 36px', border: '1px solid rgba(183,181,254,0.12)' }}>
               <div style={{ fontSize: '14px', fontWeight: 500, color: 'var(--platinum-60)', marginBottom: '20px', letterSpacing: '0.05em' }}>
                 {c.s5.toolkitLabel}
               </div>
@@ -737,11 +737,11 @@ function PartnersContent({ c, locale }) {
       </section>
 
       {/* ── S6 PARTNER INQUIRY ────────────────────────────── */}
-      <section className="px-6 py-32" style={{ backgroundColor: '#0E0E12' }}>
+      <section className="px-6 py-32" style={{ backgroundColor: 'var(--color-void-black)' }}>
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
           <Eyebrow dark mb="2rem">{c.s6.chip}</Eyebrow>
 
-          <h2 style={{ fontSize: 'clamp(30px, 5vw, 52px)', fontWeight: 700, color: '#F0F0F0', lineHeight: 1.2, marginBottom: '20px', fontFamily: 'var(--font-latin)' }}>
+          <h2 style={{ fontSize: 'clamp(30px, 5vw, 52px)', fontWeight: 700, color: 'var(--text-inverse)', lineHeight: 1.2, marginBottom: '20px', fontFamily: 'var(--font-latin)' }}>
             {c.s6.h2}
           </h2>
           <p style={{ fontSize: '18px', fontWeight: 400, color: 'var(--platinum-60)', lineHeight: 1.7, marginBottom: '52px', whiteSpace: 'pre-line' }}>
@@ -791,7 +791,7 @@ export default function PartnersClient({ locale }) {
 
   const handleKeyDown = (e) => { if (e.key === 'Enter') handleSubmit() }
 
-  if (!mounted) return <div style={{ minHeight: '100dvh', backgroundColor: '#0E0E12' }} />
+  if (!mounted) return <div style={{ minHeight: '100dvh', backgroundColor: 'var(--color-void-black)' }} />
 
   if (!unlocked) {
     return (

@@ -212,7 +212,7 @@ export default async function BlogPage({ params }) {
     <div className="w-full overflow-hidden" style={{ fontFamily: 'var(--font-latin)' }}>
 
       {/* ══ S1 HERO ══════════════════════════════════════════ */}
-      <section className="relative overflow-hidden" style={{ backgroundColor: '#F5F5FF' }}>
+      <section className="relative overflow-hidden" style={{ backgroundColor: 'var(--color-whisper)' }}>
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true"
           style={{ backgroundImage: 'radial-gradient(circle, #b7b5fe 1px, transparent 1px)', backgroundSize: '32px 32px', opacity: 0.08 }} />
 
@@ -220,14 +220,14 @@ export default async function BlogPage({ params }) {
           <Eyebrow mb="1.5rem">{ui.eyebrow}</Eyebrow>
 
           <h1 className="mb-6 max-w-[720px] mx-auto"
-            style={{ color: '#0E0E12', fontSize: 'clamp(36px, 5vw, 60px)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-0.03em' }}>
+            style={{ color: 'var(--text-body-dark)', fontSize: 'clamp(36px, 5vw, 60px)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-0.03em' }}>
             {ui.h1a}
-            {ui.h1highlight ? <span style={{ color: '#5856cc' }}>{ui.h1highlight}</span> : null}
+            {ui.h1highlight ? <span style={{ color: 'var(--text-accent)' }}>{ui.h1highlight}</span> : null}
             {ui.h1b}
           </h1>
 
           <p className="mb-8 max-w-[540px] mx-auto"
-            style={{ color: '#212830', fontSize: '18px', fontWeight: 400, lineHeight: 1.6 }}>
+            style={{ color: 'var(--text-heading)', fontSize: '18px', fontWeight: 400, lineHeight: 1.6 }}>
             {ui.subhead}
           </p>
 
@@ -236,7 +236,7 @@ export default async function BlogPage({ params }) {
       </section>
 
       {/* ══ S2 FEATURED ARTICLE ══════════════════════════════ */}
-      <section className="py-16 px-6" style={{ backgroundColor: '#F5F5FF' }}>
+      <section className="py-16 px-6" style={{ backgroundColor: 'var(--color-whisper)' }}>
         <div className="max-w-7xl mx-auto">
           <div className="bg-white rounded-xl overflow-hidden flex flex-col md:flex-row"
             style={{ borderLeft: '4px solid #b7b5fe', boxShadow: '0 4px 24px rgba(183,181,254,0.15)' }}>
@@ -249,32 +249,32 @@ export default async function BlogPage({ params }) {
 
             <div className="md:w-[55%] flex flex-col justify-center" style={{ padding: '40px' }}>
               <div className="inline-block rounded w-fit mb-4"
-                style={{ backgroundColor: 'var(--lavender-15)', color: '#5856cc', fontSize: '11px', fontWeight: 500, textTransform: 'uppercase', padding: '4px 12px', letterSpacing: '0.06em' }}>
+                style={{ backgroundColor: 'var(--lavender-15)', color: 'var(--text-accent)', fontSize: '11px', fontWeight: 500, textTransform: 'uppercase', padding: '4px 12px', letterSpacing: '0.06em' }}>
                 {ui.featuredLabel}
               </div>
 
               <h2 className="mb-4 max-w-[480px]"
-                style={{ color: '#0E0E12', fontSize: '30px', fontWeight: 700, lineHeight: 1.3, letterSpacing: '-0.02em' }}>
+                style={{ color: 'var(--text-body-dark)', fontSize: '30px', fontWeight: 700, lineHeight: 1.3, letterSpacing: '-0.02em' }}>
                 {featuredArticle.title}
               </h2>
 
-              <p className="mb-4" style={{ color: '#212830', fontSize: '15px', fontWeight: 400, lineHeight: 1.6 }}>
+              <p className="mb-4" style={{ color: 'var(--text-heading)', fontSize: '15px', fontWeight: 400, lineHeight: 1.6 }}>
                 {featuredArticle.excerpt}
               </p>
 
-              <div className="flex items-center gap-2 mb-6" style={{ color: '#212830', fontSize: '13px', fontWeight: 500 }}>
+              <div className="flex items-center gap-2 mb-6" style={{ color: 'var(--text-heading)', fontSize: '13px', fontWeight: 500 }}>
                 <span>{featuredArticle.author}</span><span>\u00b7</span>
                 <span style={{ opacity: 0.7 }}>{featuredArticle.role}</span><span>\u00b7</span>
                 <span style={{ opacity: 0.7 }}>{featuredArticle.readTime}</span>
               </div>
 
-              <div className="mb-6" style={{ color: '#212830', opacity: 0.5, fontSize: '12px' }}>
+              <div className="mb-6" style={{ color: 'var(--text-heading)', opacity: 0.5, fontSize: '12px' }}>
                 {featuredArticle.date}
               </div>
 
               <Link href={`/${locale}/blog/${featuredArticle.slug}`}
                 className="inline-block rounded-lg transition-all hover:opacity-90 w-fit"
-                style={{ backgroundColor: '#b7b5fe', color: '#0E0E12', fontSize: '15px', fontWeight: 600, padding: '12px 24px', textDecoration: 'none' }}>
+                style={{ backgroundColor: 'var(--color-lavender-signal)', color: 'var(--text-body-dark)', fontSize: '15px', fontWeight: 600, padding: '12px 24px', textDecoration: 'none' }}>
                 {ui.readArticle}
               </Link>
             </div>
@@ -285,10 +285,10 @@ export default async function BlogPage({ params }) {
       {/* S3 + S4 rendered inside BlogClient above */}
 
       {/* ══ S5 GEO ANCHOR STRIP ══════════════════════════════ */}
-      <section className="py-16 px-6 on-dark" style={{ backgroundColor: '#212830' }}>
+      <section className="py-16 px-6 on-dark" style={{ backgroundColor: 'var(--color-deep-void)' }}>
         <div className="max-w-7xl mx-auto">
           <div className="uppercase text-center mb-10"
-            style={{ color: '#b7b5fe', fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em' }}>
+            style={{ color: 'var(--text-accent-dark)', fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em' }}>
             {ui.goDeeperEyebrow}
           </div>
 
@@ -301,8 +301,8 @@ export default async function BlogPage({ params }) {
                     {route}
                   </div>
                   <div className="flex items-start justify-between gap-4 mb-3">
-                    <h3 style={{ color: '#F0F0F0', fontSize: '18px', fontWeight: 600, lineHeight: 1.3 }}>{title}</h3>
-                    <IconArrowRight className="flex-shrink-0 transition-transform group-hover:translate-x-1" style={{ color: '#b7b5fe', marginTop: '2px' }} />
+                    <h3 style={{ color: 'var(--text-inverse)', fontSize: '18px', fontWeight: 600, lineHeight: 1.3 }}>{title}</h3>
+                    <IconArrowRight className="flex-shrink-0 transition-transform group-hover:translate-x-1" style={{ color: 'var(--text-accent-dark)', marginTop: '2px' }} />
                   </div>
                   <p style={{ color: 'rgba(240,240,240,0.65)', fontSize: '14px', fontWeight: 400, lineHeight: 1.5 }}>{rationale}</p>
                 </div>
@@ -313,16 +313,16 @@ export default async function BlogPage({ params }) {
       </section>
 
       {/* ══ S6 NAVIGATOR PICKS ═══════════════════════════════ */}
-      <section className="py-16 px-6" style={{ backgroundColor: '#F5F5FF' }}>
+      <section className="py-16 px-6" style={{ backgroundColor: 'var(--color-whisper)' }}>
         <div className="max-w-7xl mx-auto">
           <Eyebrow mb="2.0rem">{ui.navigatorPicksEyebrow}</Eyebrow>
 
           <div className="flex items-center gap-4 mb-8">
             <div className="flex items-center justify-center rounded-full flex-shrink-0"
-              style={{ width: '48px', height: '48px', backgroundColor: '#0E0E12', color: '#b7b5fe', fontSize: '16px', fontWeight: 600, fontFamily: 'var(--font-latin)' }}
+              style={{ width: '48px', height: '48px', backgroundColor: 'var(--color-void-black)', color: 'var(--text-accent-dark)', fontSize: '16px', fontWeight: 600, fontFamily: 'var(--font-latin)' }}
               aria-hidden="true">SC</div>
             <div>
-              <div style={{ color: '#0E0E12', fontSize: '15px', fontWeight: 600 }}>{ui.navigatorName}</div>
+              <div style={{ color: 'var(--text-body-dark)', fontSize: '15px', fontWeight: 600 }}>{ui.navigatorName}</div>
               <div style={{ color: 'rgba(33,40,48,0.7)', fontSize: '13px', fontWeight: 400 }}>{ui.navigatorRole}</div>
             </div>
           </div>
@@ -335,14 +335,14 @@ export default async function BlogPage({ params }) {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={article.imageUrl} alt={article.title} className="w-full h-full object-cover" style={{ display: 'block' }} />
                   <div className="absolute bottom-3 left-3 px-2 py-1 rounded uppercase"
-                    style={{ backgroundColor: 'var(--lavender-15)', color: '#b7b5fe', fontSize: '11px', fontWeight: 500, backdropFilter: 'blur(8px)' }}>
+                    style={{ backgroundColor: 'var(--lavender-15)', color: 'var(--text-accent-dark)', fontSize: '11px', fontWeight: 500, backdropFilter: 'blur(8px)' }}>
                     {article.category}
                   </div>
                 </div>
                 <Link href={`/${locale}/blog/${article.slug}`} className="block p-6 hover:no-underline">
-                  <h3 className="mb-2 line-clamp-2" style={{ color: '#0E0E12', fontSize: '18px', fontWeight: 600, lineHeight: 1.4 }}>{article.title}</h3>
+                  <h3 className="mb-2 line-clamp-2" style={{ color: 'var(--text-body-dark)', fontSize: '18px', fontWeight: 600, lineHeight: 1.4 }}>{article.title}</h3>
                   <p className="mb-4 line-clamp-1" style={{ color: 'rgba(33,40,48,0.75)', fontSize: '14px', fontWeight: 400 }}>{article.excerpt}</p>
-                  <div className="flex items-center gap-2" style={{ color: '#212830', fontSize: '12px', fontWeight: 500 }}>
+                  <div className="flex items-center gap-2" style={{ color: 'var(--text-heading)', fontSize: '12px', fontWeight: 500 }}>
                     <span>{article.author}</span><span>\u00b7</span>
                     <span>{article.readTime}</span><span>\u00b7</span>
                     <span>{article.date}</span>
@@ -355,25 +355,25 @@ export default async function BlogPage({ params }) {
       </section>
 
       {/* ══ S7 NEWSLETTER SIGNUP ═════════════════════════════ */}
-      <section className="py-20 px-6" style={{ backgroundColor: '#ffffff' }}>
+      <section className="py-20 px-6" style={{ backgroundColor: 'var(--surface-raised)' }}>
         <div className="max-w-[480px] mx-auto text-center">
           <Eyebrow mb="1.5rem">{ui.newsletterEyebrow}</Eyebrow>
-          <h2 className="mb-4" style={{ color: '#0E0E12', fontSize: '26px', fontWeight: 600, lineHeight: 1.3, letterSpacing: '-0.02em' }}>
+          <h2 className="mb-4" style={{ color: 'var(--text-body-dark)', fontSize: '26px', fontWeight: 600, lineHeight: 1.3, letterSpacing: '-0.02em' }}>
             {ui.newsletterHeading}
           </h2>
-          <p className="mb-8" style={{ color: '#212830', fontSize: '15px', fontWeight: 400, lineHeight: 1.6 }}>
+          <p className="mb-8" style={{ color: 'var(--text-heading)', fontSize: '15px', fontWeight: 400, lineHeight: 1.6 }}>
             {ui.newsletterSub}
           </p>
           <form className="max-w-[400px] mx-auto" action="/api/newsletter" method="POST">
-            <label htmlFor="newsletter-email" className="block text-left mb-2" style={{ color: '#212830', fontSize: '13px', fontWeight: 400 }}>
+            <label htmlFor="newsletter-email" className="block text-left mb-2" style={{ color: 'var(--text-heading)', fontSize: '13px', fontWeight: 400 }}>
               {ui.emailLabel}
             </label>
             <input id="newsletter-email" name="email" type="email" placeholder={ui.emailPlaceholder}
               autoComplete="email" required
               className="w-full h-12 px-4 rounded-lg mb-3 transition-all"
-              style={{ fontFamily: 'var(--font-latin)', backgroundColor: '#F5F5FF', border: '1.5px solid rgba(183,181,254,0.4)', color: '#212830', fontSize: '15px', fontWeight: 400, outline: 'none', display: 'block', boxSizing: 'border-box' }} />
+              style={{ fontFamily: 'var(--font-latin)', backgroundColor: 'var(--color-whisper)', border: '1.5px solid rgba(183,181,254,0.4)', color: 'var(--text-heading)', fontSize: '15px', fontWeight: 400, outline: 'none', display: 'block', boxSizing: 'border-box' }} />
             <button type="submit" className="w-full px-6 py-3 rounded-lg font-semibold transition-all hover:opacity-90"
-              style={{ fontFamily: 'var(--font-latin)', backgroundColor: '#b7b5fe', color: '#0E0E12', fontSize: '15px', fontWeight: 600, border: 'none', cursor: 'pointer' }}>
+              style={{ fontFamily: 'var(--font-latin)', backgroundColor: 'var(--color-lavender-signal)', color: 'var(--text-body-dark)', fontSize: '15px', fontWeight: 600, border: 'none', cursor: 'pointer' }}>
               {ui.subscribeBtn}
             </button>
             <p className="mt-3" style={{ color: 'rgba(33,40,48,0.45)', fontSize: '12px', fontWeight: 400 }}>
@@ -384,17 +384,17 @@ export default async function BlogPage({ params }) {
       </section>
 
       {/* ══ S8 CLOSING CTA ═══════════════════════════════════ */}
-      <section className="py-20 px-6 on-dark" style={{ backgroundColor: '#212830' }}>
+      <section className="py-20 px-6 on-dark" style={{ backgroundColor: 'var(--color-deep-void)' }}>
         <div className="max-w-[600px] mx-auto text-center">
           <h2 className="mb-8"
-            style={{ color: '#b7b5fe', fontSize: 'clamp(24px, 3vw, 28px)', fontWeight: 700, lineHeight: 1.4, letterSpacing: '-0.02em' }}>
+            style={{ color: 'var(--text-accent-dark)', fontSize: 'clamp(24px, 3vw, 28px)', fontWeight: 700, lineHeight: 1.4, letterSpacing: '-0.02em' }}>
             {ui.ctaHeading}
           </h2>
           <Link href={`/${locale}/consult`}
             className="btn btn-do btn-do-primary mb-4">
             {ui.ctaButton}
           </Link>
-          <p style={{ color: '#b7b5fe', fontSize: '13px', fontWeight: 400, marginTop: '16px' }}>
+          <p style={{ color: 'var(--text-accent-dark)', fontSize: '13px', fontWeight: 400, marginTop: '16px' }}>
             {ui.ctaSub}
           </p>
         </div>

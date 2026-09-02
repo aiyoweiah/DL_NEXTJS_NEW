@@ -17,14 +17,14 @@ const CORRECT_PIN = '6474691126'
 const STORAGE_KEY = 'dodo_ops_unlocked'
 
 const B = {
-  voidBlack:  '#0E0E12',
-  deepVoid:   '#212830',
-  midnight:   '#2E3848',
-  lavender:   '#B7B5FE',
-  gilt:       '#F5C842',
-  platinum:   '#F0F0F0',
+  voidBlack: 'var(--color-void-black)',
+  deepVoid: 'var(--color-deep-void)',
+  midnight: 'var(--color-midnight)',
+  lavender: 'var(--color-lavender-signal)',
+  gilt: 'var(--color-gilt)',
+  platinum: 'var(--color-platinum)',
   muted:      '#5E6879',
-  border:     '#2E3848',
+  border: 'var(--color-midnight)',
 }
 
 export default function OpsGate({ children }) {

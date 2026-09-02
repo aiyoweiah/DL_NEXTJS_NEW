@@ -91,27 +91,27 @@ import { LOGO_B64 } from '@/components/ops/opsAssets'
 
 // ─── BRAND ─────────────────────────────────────────────────────────────
 const B = {
-  cream:     '#F5F5FF',
-  white:     '#FFFFFF',
-  ink:       '#212830',
-  voidBlack: '#0E0E12',
+  cream: 'var(--color-whisper)',
+  white: 'var(--surface-raised)',
+  ink: 'var(--color-deep-void)',
+  voidBlack: 'var(--color-void-black)',
   muted:     '#5E6879',
   border:    '#DCDCF5',
   borderInk: 'rgba(46,56,72,0.55)',
-  platinum:  '#F0F0F0',
-  gilt:      '#F5C842',
+  platinum: 'var(--color-platinum)',
+  gilt: 'var(--color-gilt)',
   giltSoft:  '#FBF1D2',
   headerBar: '#ECECF3',
-  lavender:  '#B7B5FE',
+  lavender: 'var(--color-lavender-signal)',
 }
 
 const D = {
-  card:   '#FFFFFF',
+  card: 'var(--surface-raised)',
   border: '#DCDCF5',
-  text:   '#212830',
+  text: 'var(--color-deep-void)',
   muted:  '#5E6879',
-  accent: '#F5C842',
-  bgPage: '#F5F5FF',
+  accent: 'var(--color-gilt)',
+  bgPage: 'var(--color-whisper)',
 }
 
 const F        = 'var(--font-latin), var(--font-cjk), sans-serif'

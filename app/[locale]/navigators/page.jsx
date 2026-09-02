@@ -119,7 +119,7 @@ export default async function NavigatorsPage({ params }) {
         <div
           aria-hidden="true"
           className="absolute bottom-0 right-0 select-none pointer-events-none"
-          style={{ fontSize: '280px', fontWeight: 700, color: '#b7b5fe', opacity: 0.04, lineHeight: 1, transform: 'translateX(15%)' }}
+          style={{ fontSize: '280px', fontWeight: 700, color: 'var(--text-accent-dark)', opacity: 0.04, lineHeight: 1, transform: 'translateX(15%)' }}
         >
           NAVIGATOR
         </div>
@@ -142,9 +142,9 @@ export default async function NavigatorsPage({ params }) {
             <h1
               id="navigators-hero-heading"
               className="mb-8"
-              style={{ fontSize: 'clamp(38px, 5vw, 68px)', fontWeight: 700, color: '#F0F0F0', lineHeight: 1.2 }}
+              style={{ fontSize: 'clamp(38px, 5vw, 68px)', fontWeight: 700, color: 'var(--text-inverse)', lineHeight: 1.2 }}
             >
-              {c.hero.h1a}<span style={{ color: '#b7b5fe' }}>{c.hero.h1b}</span>{c.hero.h1c}<span style={{ color: '#b7b5fe' }}>{c.hero.h1d}</span>{c.hero.h1e}
+              {c.hero.h1a}<span style={{ color: 'var(--text-accent-dark)' }}>{c.hero.h1b}</span>{c.hero.h1c}<span style={{ color: 'var(--text-accent-dark)' }}>{c.hero.h1d}</span>{c.hero.h1e}
             </h1>
             <p style={{ fontSize: 'clamp(16px, 2vw, 20px)', fontWeight: 400, color: 'var(--platinum-60)', maxWidth: '580px', lineHeight: 1.6 }}>
               {c.hero.sub}
@@ -156,16 +156,16 @@ export default async function NavigatorsPage({ params }) {
       {/* ── S2 WHAT A NAVIGATOR IS NOT ───────────────────── */}
       <SectionWrapper darker>
         <Eyebrow dark center>{c.s2.eyebrow}</Eyebrow>
-        <h2 className="text-center mb-16" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 600, color: '#F0F0F0', lineHeight: 1.3 }}>
+        <h2 className="text-center mb-16" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 600, color: 'var(--text-inverse)', lineHeight: 1.3 }}>
           {c.s2.h2}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0">
           {c.s2.cols.map(({ strike, title, body }, i) => (
             <div key={i} className={i === 0 ? 'md:pr-12 md:border-r' : i === 1 ? 'md:px-12 md:border-r' : 'md:pl-12'}
               style={{ borderColor: 'rgba(183,181,254,0.2)' }}>
-              <div className="mb-3 line-through" style={{ fontSize: '13px', fontWeight: 500, color: '#F0F0F0', opacity: 0.5 }}>{strike}</div>
-              <div className="mb-4" style={{ fontSize: '20px', fontWeight: 700, color: '#b7b5fe' }}>{title}</div>
-              <p style={{ fontSize: '15px', fontWeight: 400, color: '#F0F0F0', opacity: 0.7, lineHeight: 1.6 }}>{body}</p>
+              <div className="mb-3 line-through" style={{ fontSize: '13px', fontWeight: 500, color: 'var(--text-inverse)', opacity: 0.5 }}>{strike}</div>
+              <div className="mb-4" style={{ fontSize: '20px', fontWeight: 700, color: 'var(--text-accent-dark)' }}>{title}</div>
+              <p style={{ fontSize: '15px', fontWeight: 400, color: 'var(--text-inverse)', opacity: 0.7, lineHeight: 1.6 }}>{body}</p>
             </div>
           ))}
         </div>
@@ -174,17 +174,17 @@ export default async function NavigatorsPage({ params }) {
       {/* ── S3 WHAT A NAVIGATOR DOES ─────────────────────── */}
       <SectionWrapper dark>
         <Eyebrow dark center>{c.s3.eyebrow}</Eyebrow>
-        <h2 className="text-center mb-16" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 600, color: '#F0F0F0', lineHeight: 1.3 }}>
+        <h2 className="text-center mb-16" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 600, color: 'var(--text-inverse)', lineHeight: 1.3 }}>
           {c.s3.h2}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
           {c.s3.steps.map(({ num, phase, headline, sub }) => (
             <div key={num}>
-              <div className="mb-2" style={{ fontSize: '14px', fontWeight: 300, color: '#b7b5fe', opacity: 0.5 }}>{num}</div>
+              <div className="mb-2" style={{ fontSize: '14px', fontWeight: 300, color: 'var(--text-accent-dark)', opacity: 0.5 }}>{num}</div>
               <div className="mb-6" style={{ borderTop: '3px solid #b7b5fe', width: '100%' }} />
-              <div className="mb-4" style={{ fontSize: '22px', fontWeight: 700, color: '#b7b5fe' }}>{phase}</div>
-              <p className="mb-3" style={{ fontSize: '16px', fontWeight: 600, color: '#F0F0F0', lineHeight: 1.5 }}>{headline}</p>
-              <p style={{ fontSize: '14px', fontWeight: 400, color: '#F0F0F0', opacity: 0.65, lineHeight: 1.5 }}>{sub}</p>
+              <div className="mb-4" style={{ fontSize: '22px', fontWeight: 700, color: 'var(--text-accent-dark)' }}>{phase}</div>
+              <p className="mb-3" style={{ fontSize: '16px', fontWeight: 600, color: 'var(--text-inverse)', lineHeight: 1.5 }}>{headline}</p>
+              <p style={{ fontSize: '14px', fontWeight: 400, color: 'var(--text-inverse)', opacity: 0.65, lineHeight: 1.5 }}>{sub}</p>
             </div>
           ))}
         </div>
@@ -200,7 +200,7 @@ export default async function NavigatorsPage({ params }) {
       <SectionWrapper darker ariaLabelledBy="navigators-s3half-heading">
         <div className="max-w-2xl mb-10">
           <Eyebrow dark>{c.s3half.eyebrow}</Eyebrow>
-          <h2 id="navigators-s3half-heading" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 600, color: '#F0F0F0', lineHeight: 1.3, marginBottom: '1rem' }}>
+          <h2 id="navigators-s3half-heading" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 600, color: 'var(--text-inverse)', lineHeight: 1.3, marginBottom: '1rem' }}>
             {c.s3half.h2}
           </h2>
           <p style={{ fontSize: '16px', lineHeight: 1.7, color: 'var(--platinum-60)' }}>
@@ -223,17 +223,17 @@ export default async function NavigatorsPage({ params }) {
           <div className="order-2 md:order-1">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="https://images.unsplash.com/photo-1673515335586-f9f662c01482?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080&q=80"
-              alt="Navigator and student in a live online session" className="w-full h-auto rounded-lg" style={{ display: 'block' }} />
+              alt="Navigator and student in a live online session" width={1080} height={720} className="w-full h-auto rounded-lg" style={{ display: 'block' }} />
           </div>
           <div className="order-1 md:order-2">
             <Eyebrow>{c.s4.eyebrow}</Eyebrow>
-            <h2 className="mb-8" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 700, color: '#0E0E12', lineHeight: 1.3, maxWidth: '480px' }}>
+            <h2 className="mb-8" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 700, color: 'var(--text-body-dark)', lineHeight: 1.3, maxWidth: '480px' }}>
               {c.s4.h2}
             </h2>
             <div className="space-y-5">
               {c.s4.points.map(({ label, body }) => (
-                <p key={label} style={{ fontSize: '16px', fontWeight: 400, color: '#212830', lineHeight: 1.6 }}>
-                  <strong style={{ fontWeight: 600, color: '#0E0E12' }}>{label}:</strong>{' '}{body}
+                <p key={label} style={{ fontSize: '16px', fontWeight: 400, color: 'var(--text-heading)', lineHeight: 1.6 }}>
+                  <strong style={{ fontWeight: 600, color: 'var(--text-body-dark)' }}>{label}:</strong>{' '}{body}
                 </p>
               ))}
             </div>
@@ -260,19 +260,19 @@ export default async function NavigatorsPage({ params }) {
           </div>
           <div>
             <Eyebrow>{c.s4half.eyebrow}</Eyebrow>
-            <h2 id="navigators-s4half-heading" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 700, color: '#0E0E12', lineHeight: 1.3, marginBottom: '1rem' }}>
+            <h2 id="navigators-s4half-heading" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 700, color: 'var(--text-body-dark)', lineHeight: 1.3, marginBottom: '1rem' }}>
               {c.s4half.h2}
             </h2>
-            <p style={{ fontSize: '16px', lineHeight: 1.7, color: '#3D4452', marginBottom: '1.75rem' }}>
+            <p style={{ fontSize: '16px', lineHeight: 1.7, color: 'var(--text-body)', marginBottom: '1.75rem' }}>
               {c.s4half.bio}
             </p>
             <dl className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {c.s4half.stats.map((stat) => (
-                <div key={stat.label} className="rounded-lg p-4" style={{ backgroundColor: '#ffffff', border: '1px solid rgba(14,14,18,0.07)' }}>
-                  <dt style={{ fontSize: '11px', fontWeight: 600, color: '#5856cc', letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: '6px' }}>
+                <div key={stat.label} className="rounded-lg p-4" style={{ backgroundColor: 'var(--surface-raised)', border: '1px solid rgba(14,14,18,0.07)' }}>
+                  <dt style={{ fontSize: '11px', fontWeight: 600, color: 'var(--text-accent)', letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: '6px' }}>
                     {stat.label}
                   </dt>
-                  <dd style={{ fontSize: '15px', fontWeight: 700, color: '#0E0E12' }}>
+                  <dd style={{ fontSize: '15px', fontWeight: 700, color: 'var(--text-body-dark)' }}>
                     {stat.value}
                   </dd>
                 </div>
@@ -285,21 +285,21 @@ export default async function NavigatorsPage({ params }) {
       {/* ── S5 NAVIGATOR PROFILES ────────────────────────── */}
       <SectionWrapper darker>
         <Eyebrow dark center>{c.s5.eyebrow}</Eyebrow>
-        <h2 className="text-center mb-16" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 600, color: '#F0F0F0', lineHeight: 1.3 }}>
+        <h2 className="text-center mb-16" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 600, color: 'var(--text-inverse)', lineHeight: 1.3 }}>
           {c.s5.h2}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {NAVIGATORS.map((nav) => {
             const loc = nav[locale] ?? nav.en
             return (
-              <div key={nav.name} className="rounded-lg" style={{ backgroundColor: '#2E3848', borderTop: '3px solid #b7b5fe', padding: '32px' }}>
+              <div key={nav.name} className="rounded-lg" style={{ backgroundColor: 'var(--color-midnight)', borderTop: '3px solid #b7b5fe', padding: '32px' }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={nav.photo} alt={nav.alt} className="rounded-lg object-cover mb-6" style={{ width: '96px', height: '96px', display: 'block' }} />
-                <div className="mb-2" style={{ fontSize: '18px', fontWeight: 600, color: '#F0F0F0' }}>{nav.name}</div>
-                <p className="mb-4" style={{ fontSize: '14px', fontWeight: 400, color: '#F0F0F0', opacity: 0.7, lineHeight: 1.5 }}>{loc.bio}</p>
-                <p className="mb-4" style={{ fontSize: '14px', fontWeight: 400, fontStyle: 'italic', color: '#b7b5fe', lineHeight: 1.5 }}><q>{loc.quote}</q></p>
+                <div className="mb-2" style={{ fontSize: '18px', fontWeight: 600, color: 'var(--text-inverse)' }}>{nav.name}</div>
+                <p className="mb-4" style={{ fontSize: '14px', fontWeight: 400, color: 'var(--text-inverse)', opacity: 0.7, lineHeight: 1.5 }}>{loc.bio}</p>
+                <p className="mb-4" style={{ fontSize: '14px', fontWeight: 400, fontStyle: 'italic', color: 'var(--text-accent-dark)', lineHeight: 1.5 }}><q>{loc.quote}</q></p>
                 <TagRun items={nav.badges} dark mb="1rem" aria-label="Credentials" />
-                <p style={{ fontSize: '13px', fontWeight: 500, color: '#F0F0F0', lineHeight: 1.5 }}>{nav.result}<br />{nav.lexile}</p>
+                <p style={{ fontSize: '13px', fontWeight: 500, color: 'var(--text-inverse)', lineHeight: 1.5 }}>{nav.result}<br />{nav.lexile}</p>
               </div>
             )
           })}
@@ -310,13 +310,13 @@ export default async function NavigatorsPage({ params }) {
       <SectionWrapper>
         <div className="max-w-5xl mx-auto">
           <Eyebrow center>{c.s6.eyebrow}</Eyebrow>
-          <h2 className="text-center mb-12" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 700, color: '#0E0E12', lineHeight: 1.3 }}>{c.s6.h2}</h2>
-          <div className="rounded-lg" style={{ backgroundColor: '#ffffff', border: '1px solid rgba(14,14,18,0.1)', padding: '40px' }}>
+          <h2 className="text-center mb-12" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 700, color: 'var(--text-body-dark)', lineHeight: 1.3 }}>{c.s6.h2}</h2>
+          <div className="rounded-lg" style={{ backgroundColor: 'var(--surface-raised)', border: '1px solid rgba(14,14,18,0.1)', padding: '40px' }}>
             <div className="space-y-6">
               {c.s6.timeline.map(({ label, body }) => (
                 <div key={label}>
-                  <div className="mb-2" style={{ fontSize: '14px', fontWeight: 600, color: '#5856cc', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{label}</div>
-                  <p style={{ fontSize: '16px', fontWeight: 400, color: '#212830', lineHeight: 1.6 }}>{body}</p>
+                  <div className="mb-2" style={{ fontSize: '14px', fontWeight: 600, color: 'var(--text-accent)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{label}</div>
+                  <p style={{ fontSize: '16px', fontWeight: 400, color: 'var(--text-heading)', lineHeight: 1.6 }}>{body}</p>
                 </div>
               ))}
             </div>
@@ -327,13 +327,13 @@ export default async function NavigatorsPage({ params }) {
       {/* ── S7 WHAT FAMILIES SAY ─────────────────────────── */}
       <SectionWrapper dark>
         <Eyebrow dark center>{c.s7.eyebrow}</Eyebrow>
-        <h2 className="text-center mb-16" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 600, color: '#F0F0F0', lineHeight: 1.3 }}>{c.s7.h2}</h2>
+        <h2 className="text-center mb-16" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 600, color: 'var(--text-inverse)', lineHeight: 1.3 }}>{c.s7.h2}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {c.s7.testimonials.map(({ quote, city, detail }) => (
-            <div key={city + detail} className="rounded-lg" style={{ backgroundColor: '#2E3848', padding: '32px' }}>
-              <p className="mb-6" style={{ fontSize: '16px', fontWeight: 400, color: '#F0F0F0', lineHeight: 1.7, fontStyle: 'italic' }}><q>{quote}</q></p>
-              <div style={{ fontSize: '14px', fontWeight: 600, color: '#b7b5fe' }}>{city}</div>
-              <div style={{ fontSize: '13px', fontWeight: 400, color: '#F0F0F0', opacity: 0.6 }}>{detail}</div>
+            <div key={city + detail} className="rounded-lg" style={{ backgroundColor: 'var(--color-midnight)', padding: '32px' }}>
+              <p className="mb-6" style={{ fontSize: '16px', fontWeight: 400, color: 'var(--text-inverse)', lineHeight: 1.7, fontStyle: 'italic' }}><q>{quote}</q></p>
+              <div style={{ fontSize: '14px', fontWeight: 600, color: 'var(--text-accent-dark)' }}>{city}</div>
+              <div style={{ fontSize: '13px', fontWeight: 400, color: 'var(--text-inverse)', opacity: 0.6 }}>{detail}</div>
             </div>
           ))}
         </div>
@@ -342,14 +342,14 @@ export default async function NavigatorsPage({ params }) {
       {/* ── S8 CLOSING CTA ───────────────────────────────── */}
       <SectionWrapper darker>
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="mb-6" style={{ fontSize: 'clamp(32px, 5vw, 52px)', fontWeight: 700, color: '#F0F0F0', lineHeight: 1.2 }}>
-            {c.s8.h2a}<span style={{ color: '#b7b5fe' }}>{c.s8.h2b}</span>{c.s8.h2c}<span style={{ color: '#b7b5fe' }}>{c.s8.h2d}</span>{c.s8.h2e}
+          <h2 className="mb-6" style={{ fontSize: 'clamp(32px, 5vw, 52px)', fontWeight: 700, color: 'var(--text-inverse)', lineHeight: 1.2 }}>
+            {c.s8.h2a}<span style={{ color: 'var(--text-accent-dark)' }}>{c.s8.h2b}</span>{c.s8.h2c}<span style={{ color: 'var(--text-accent-dark)' }}>{c.s8.h2d}</span>{c.s8.h2e}
           </h2>
-          <p className="mb-10 mx-auto" style={{ fontSize: '18px', fontWeight: 400, color: '#F0F0F0', opacity: 0.75, lineHeight: 1.6, maxWidth: '600px' }}>{c.s8.sub}</p>
+          <p className="mb-10 mx-auto" style={{ fontSize: '18px', fontWeight: 400, color: 'var(--text-inverse)', opacity: 0.75, lineHeight: 1.6, maxWidth: '600px' }}>{c.s8.sub}</p>
           <Link href={`/${locale}/consult`} className="btn btn-do btn-do-primary">
             {c.s8.cta}
           </Link>
-          <p className="mt-6" style={{ fontSize: '14px', fontWeight: 400, color: '#F0F0F0', opacity: 0.5 }}>{c.s8.note}</p>
+          <p className="mt-6" style={{ fontSize: '14px', fontWeight: 400, color: 'var(--text-inverse)', opacity: 0.5 }}>{c.s8.note}</p>
         </div>
       </SectionWrapper>
 

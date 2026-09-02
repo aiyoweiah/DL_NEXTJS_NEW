@@ -60,8 +60,24 @@ const UPDATE = process.argv.includes('--update')
 
 // ── Source pass ──────────────────────────────────────────────────────
 
+// ⚠️ Token spellings sit beside the hex ON PURPOSE (D86).
+//
+// This regex used to list hex only. The D86 tokenisation rewrote
+// `backgroundColor: '#2E3848'` to `backgroundColor: 'var(--color-midnight)'`
+// across the codebase and this guard promptly reported **24 panels → 5** — not
+// because 19 panels were migrated, but because it could no longer see them.
+//
+// A ratchet that goes green when you rename a value is worse than no ratchet:
+// it reports progress for a spelling change. Caught only because the drop was
+// implausibly large. Any future colour spelling has to be added here too.
 const PANEL = new RegExp(
-  "style=\\{\\{[^}]*backgroundColor:\\s*'(?:#ffffff|#fff|rgba\\(183,181,254[^']*|#2E3848|#1C2330|#212830)'" +
+  "style=\\{\\{[^}]*backgroundColor:\\s*'(?:" +
+    // literals
+    "#ffffff|#fff|rgba\\(183,181,254[^']*|#2E3848|#1C2330|#212830" +
+    // the same colours as tokens
+    "|var\\(--surface-raised\\)|var\\(--color-midnight\\)|var\\(--surface-mid\\)" +
+    "|var\\(--color-deep-void\\)|var\\(--surface-dark\\)" +
+  ")'" +
   "[^}]*border:\\s*'1px solid[^}]*\\}\\}",
   'g',
 )

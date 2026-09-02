@@ -33,13 +33,13 @@ function renderMarkdownLite(text, locale) {
       const raw = m[2]
       const href = raw.startsWith('/') ? `/${locale}${raw}` : raw
       parts.push(
-        <Link key={`l${i++}`} href={href} style={{ color: '#b7b5fe', fontWeight: 500 }}>
+        <Link key={`l${i++}`} href={href} style={{ color: 'var(--text-accent-dark)', fontWeight: 500 }}>
           {m[1]}
         </Link>
       )
     } else if (m[3] != null) {
       parts.push(
-        <strong key={`b${i++}`} style={{ fontWeight: 600, color: '#F0F0F0' }}>
+        <strong key={`b${i++}`} style={{ fontWeight: 600, color: 'var(--text-inverse)' }}>
           {m[3]}
         </strong>
       )
@@ -143,7 +143,7 @@ function CategoryBar({ active, onSelect, categories }) {
     window.scrollTo({ top, behavior: 'smooth' })
   }
   return (
-    <div style={{ backgroundColor: '#0E0E12', borderBottom: '1px solid rgba(183,181,254,0.10)',
+    <div style={{ backgroundColor: 'var(--color-void-black)', borderBottom: '1px solid rgba(183,181,254,0.10)',
       position: 'sticky', top: '64px', zIndex: 50, overflowX: 'auto' }}>
       <div className="max-w-7xl mx-auto" style={{ display: 'flex', gap: '4px', padding: '10px 24px' }}>
         {categories.map(({ label, anchor }) => {
@@ -175,7 +175,7 @@ function SearchResults({ results, query, ui, locale }) {
   if (results.length === 0) {
     return (
       <div className="max-w-[800px] mx-auto px-6 py-20 text-center"
-        style={{ backgroundColor: '#F5F5FF', minHeight: '400px' }}>
+        style={{ backgroundColor: 'var(--color-whisper)', minHeight: '400px' }}>
         <p style={{ fontFamily: 'var(--font-latin)', fontSize: '16px', color: 'rgba(14,14,18,0.45)' }}>
           {ui.noResults(query)}
         </p>
@@ -183,10 +183,10 @@ function SearchResults({ results, query, ui, locale }) {
     )
   }
   return (
-    <div style={{ backgroundColor: '#F5F5FF' }}>
+    <div style={{ backgroundColor: 'var(--color-whisper)' }}>
       <div className="max-w-[800px] mx-auto px-6 py-12">
         <p style={{ fontFamily: 'var(--font-latin)', fontSize: '13px', fontWeight: 500,
-          color: '#5856cc', marginBottom: '24px', letterSpacing: '0.05em' }}>
+          color: 'var(--text-accent)', marginBottom: '24px', letterSpacing: '0.05em' }}>
           {ui.searchCount(results.length, query)}
         </p>
         {results.map((item, i) => (
@@ -237,12 +237,12 @@ export default function FAQClient({ locale = 'en' }) {
     <div className="w-full overflow-hidden" style={{ fontFamily: 'var(--font-latin)' }}>
 
       {/* ── HERO + SEARCH ──────────────────────────────────── */}
-      <section style={{ backgroundColor: '#212830' }}>
+      <section style={{ backgroundColor: 'var(--color-deep-void)' }}>
         <div className="max-w-[680px] mx-auto text-center px-6"
           style={{ paddingTop: 'calc(var(--nav-height) + 2rem)', paddingBottom: '64px' }}>
           <Eyebrow dark mb="1.5rem">{ui.eyebrow}</Eyebrow>
           <h1 style={{ fontFamily: 'var(--font-latin)', fontSize: 'clamp(32px, 5vw, 52px)',
-            fontWeight: 700, color: '#F0F0F0', lineHeight: 1.2, letterSpacing: '-0.03em', marginBottom: '16px' }}>
+            fontWeight: 700, color: 'var(--text-inverse)', lineHeight: 1.2, letterSpacing: '-0.03em', marginBottom: '16px' }}>
             {ui.h1}
           </h1>
           <p className="max-w-[520px] mx-auto" style={{ fontFamily: 'var(--font-latin)', fontSize: '16px',
@@ -253,18 +253,18 @@ export default function FAQClient({ locale = 'en' }) {
             <label htmlFor="faq-search" className="sr-only">{ui.placeholder}</label>
             <div className="relative">
               <IconSearch style={{ position: 'absolute', left: '16px', top: '50%',
-                transform: 'translateY(-50%)', color: '#b7b5fe', pointerEvents: 'none' }} />
+                transform: 'translateY(-50%)', color: 'var(--text-accent-dark)', pointerEvents: 'none' }} />
               <input id="faq-search" type="search" value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={ui.placeholder}
                 className="w-full h-[52px] pl-12 pr-12 rounded-lg transition-colors"
                 style={{ fontFamily: 'var(--font-latin)', fontSize: '16px', fontWeight: 400,
-                  backgroundColor: '#2E3848', border: '1.5px solid rgba(183,181,254,0.30)',
-                  color: '#F0F0F0', outline: 'none' }}
+                  backgroundColor: 'var(--color-midnight)', border: '1.5px solid rgba(183,181,254,0.30)',
+                  color: 'var(--text-inverse)', outline: 'none' }}
                 onFocus={(e) => { e.target.style.borderColor = '#b7b5fe' }}
                 onBlur={(e)  => { e.target.style.borderColor = 'rgba(183,181,254,0.30)' }} />
               <IconArrowRight style={{ position: 'absolute', right: '16px', top: '50%',
-                transform: 'translateY(-50%)', color: '#b7b5fe', pointerEvents: 'none' }} />
+                transform: 'translateY(-50%)', color: 'var(--text-accent-dark)', pointerEvents: 'none' }} />
             </div>
           </form>
         </div>
@@ -295,15 +295,15 @@ export default function FAQClient({ locale = 'en' }) {
       )}
 
       {/* ── STILL HAVE A QUESTION ─────────────────────────── */}
-      <section className="px-6" style={{ backgroundColor: '#F5F5FF', paddingTop: '80px', paddingBottom: '80px' }}>
+      <section className="px-6" style={{ backgroundColor: 'var(--color-whisper)', paddingTop: '80px', paddingBottom: '80px' }}>
         <div className="max-w-[560px] mx-auto text-center">
           <Eyebrow>{ui.stillEyebrow}</Eyebrow>
           <h2 style={{ fontFamily: 'var(--font-latin)', fontSize: '32px', fontWeight: 700,
-            color: '#0E0E12', letterSpacing: '-0.02em', marginBottom: '16px' }}>
+            color: 'var(--text-body-dark)', letterSpacing: '-0.02em', marginBottom: '16px' }}>
             {ui.stillH2}
           </h2>
           <p className="max-w-[480px] mx-auto" style={{ fontFamily: 'var(--font-latin)', fontSize: '17px',
-            fontWeight: 400, color: '#212830', lineHeight: 1.6, marginBottom: '28px' }}>
+            fontWeight: 400, color: 'var(--text-heading)', lineHeight: 1.6, marginBottom: '28px' }}>
             {ui.stillSub}
           </p>
           <Link href={`/${locale}/consult`} className="btn btn-do btn-do-primary">
@@ -311,7 +311,7 @@ export default function FAQClient({ locale = 'en' }) {
           </Link>
           <div style={{ marginTop: '14px' }}>
             <a href="mailto:hello@dodolearning.com"
-              style={{ fontFamily: 'var(--font-latin)', fontSize: '14px', fontWeight: 400, color: '#5856cc' }}>
+              style={{ fontFamily: 'var(--font-latin)', fontSize: '14px', fontWeight: 400, color: 'var(--text-accent)' }}>
               {ui.emailLink}
             </a>
           </div>
@@ -319,10 +319,10 @@ export default function FAQClient({ locale = 'en' }) {
       </section>
 
       {/* ── CLOSING CTA ───────────────────────────────────── */}
-      <section className="px-6 on-dark" style={{ backgroundColor: '#212830', paddingTop: '96px', paddingBottom: '96px' }}>
+      <section className="px-6 on-dark" style={{ backgroundColor: 'var(--color-deep-void)', paddingTop: '96px', paddingBottom: '96px' }}>
         <div className="max-w-[600px] mx-auto text-center">
           <h2 className="max-w-[580px] mx-auto" style={{ fontFamily: 'var(--font-latin)', fontSize: '32px',
-            fontWeight: 700, color: '#b7b5fe', lineHeight: 1.3, letterSpacing: '-0.02em', marginBottom: '16px' }}>
+            fontWeight: 700, color: 'var(--text-accent-dark)', lineHeight: 1.3, letterSpacing: '-0.02em', marginBottom: '16px' }}>
             {ui.closingH2}
           </h2>
           <p className="max-w-[480px] mx-auto" style={{ fontFamily: 'var(--font-latin)', fontSize: '16px',
@@ -333,7 +333,7 @@ export default function FAQClient({ locale = 'en' }) {
             {ui.ctaButton}
           </Link>
           <p style={{ fontFamily: 'var(--font-latin)', fontSize: '13px', fontWeight: 400,
-            color: '#b7b5fe', marginTop: '14px' }}>
+            color: 'var(--text-accent-dark)', marginTop: '14px' }}>
             {ui.closingMicro}
           </p>
         </div>

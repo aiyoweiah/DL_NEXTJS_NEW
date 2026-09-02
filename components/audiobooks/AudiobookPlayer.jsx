@@ -304,7 +304,7 @@ export default function AudiobookPlayer({ slug, title, chapters }) {
                     fontSize: '0.8125rem',
                     borderRadius: 'var(--radius-pill)',
                     border: '1.5px solid rgba(183,181,254,0.5)',
-                    color: '#5856cc',
+                    color: 'var(--text-accent)',
                     textDecoration: 'none',
                     display: 'inline-flex',
                     alignItems: 'center',

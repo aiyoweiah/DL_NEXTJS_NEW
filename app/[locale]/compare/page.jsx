@@ -27,10 +27,10 @@ export async function generateMetadata({ params }) {
 
 function StudentVoiceCard({ quote, grade, city, weeksInProgram, hangarDetail }) {
   return (
-    <div className="rounded-2xl" style={{ backgroundColor: '#2E3848', border: '1px solid rgba(183,181,254,0.10)', padding: '32px' }}>
+    <div className="rounded-2xl" style={{ backgroundColor: 'var(--color-midnight)', border: '1px solid rgba(183,181,254,0.10)', padding: '32px' }}>
       <div aria-hidden="true" className="quote-glyph" style={{ width: '44px', height: '28px', marginBottom: '12px' }} />
-      <p style={{ fontFamily: 'var(--font-latin)', fontWeight: 300, fontSize: '16px', fontStyle: 'italic', color: '#F0F0F0', lineHeight: 1.7, marginBottom: '24px' }}>{quote}</p>
-      <div className="flex items-center gap-2" style={{ fontFamily: 'var(--font-latin)', fontSize: '13px', fontWeight: 600, color: '#b7b5fe', marginBottom: '8px' }}>
+      <p style={{ fontFamily: 'var(--font-latin)', fontWeight: 300, fontSize: '16px', fontStyle: 'italic', color: 'var(--text-inverse)', lineHeight: 1.7, marginBottom: '24px' }}>{quote}</p>
+      <div className="flex items-center gap-2" style={{ fontFamily: 'var(--font-latin)', fontSize: '13px', fontWeight: 600, color: 'var(--text-accent-dark)', marginBottom: '8px' }}>
         <span>{grade}</span><span style={{ opacity: 0.4 }}>·</span><span>{city}</span><span style={{ opacity: 0.4 }}>·</span>
         <span style={{ fontWeight: 400, color: 'var(--platinum-60)' }}>{weeksInProgram}</span>
       </div>
@@ -82,7 +82,7 @@ function LoopDiagram({ locale = 'en' }) {
 //
 // The real fix is to delete this and use `SectionWrapper`. That is a larger
 // change than a broken CTA should have to wait for — see D85.
-const BG = { dark: '#212830', 'void-black': '#0E0E12', whisper: '#F5F5FF' }
+const BG = { dark: 'var(--color-deep-void)', 'void-black': '#0E0E12', whisper: 'var(--color-whisper)' }
 function Section({ bg = 'dark', className = '', children, id }) {
   const dark = bg !== 'whisper'
   return (
@@ -117,7 +117,7 @@ export default async function ComparePage({ params }) {
       */}
       <section
         className="relative flex items-center on-dark"
-        style={{ backgroundColor: '#212830', minHeight: '100dvh', paddingTop: 'calc(var(--nav-height) + 3.5rem)', paddingBottom: '5rem' }}
+        style={{ backgroundColor: 'var(--color-deep-void)', minHeight: '100dvh', paddingTop: 'calc(var(--nav-height) + 3.5rem)', paddingBottom: '5rem' }}
       >
         <div className="absolute inset-0 overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -138,8 +138,8 @@ export default async function ComparePage({ params }) {
         <div className="container-section relative z-10">
           <div style={{ maxWidth: '700px' }}>
             <Eyebrow dark>{c.s1.eyebrow}</Eyebrow>
-            <h1 className="mb-6" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: 'clamp(38px, 5vw, 68px)', lineHeight: 1.2, color: '#F0F0F0', letterSpacing: '-0.03em', textWrap: 'balance' }}>
-              {c.s1.h1a}<span style={{ color: '#b7b5fe' }}>{c.s1.h1b}</span>{c.s1.h1c}
+            <h1 className="mb-6" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: 'clamp(38px, 5vw, 68px)', lineHeight: 1.2, color: 'var(--text-inverse)', letterSpacing: '-0.03em', textWrap: 'balance' }}>
+              {c.s1.h1a}<span style={{ color: 'var(--text-accent-dark)' }}>{c.s1.h1b}</span>{c.s1.h1c}
             </h1>
             <p style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '18px', lineHeight: 1.6, color: 'var(--platinum-60)', maxWidth: '520px' }}>
               {c.s1.sub}
@@ -149,10 +149,10 @@ export default async function ComparePage({ params }) {
       </section>
 
       {/* ── S2 THE REFRAME ───────────────────────────────── */}
-      <section className="px-6 py-24 md:py-32 on-dark" style={{ backgroundColor: '#0E0E12' }}>
+      <section className="px-6 py-24 md:py-32 on-dark" style={{ backgroundColor: 'var(--color-void-black)' }}>
         <div className="max-w-7xl mx-auto">
-          <p className="text-center max-w-[860px] mx-auto" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: 'clamp(26px, 4vw, 48px)', color: '#F0F0F0', lineHeight: 1.3, letterSpacing: '-0.025em' }}>
-            {c.s2.pull}<span style={{ color: '#b7b5fe' }}>{c.s2.pullSpan}</span>{c.s2.pullEnd}
+          <p className="text-center max-w-[860px] mx-auto" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: 'clamp(26px, 4vw, 48px)', color: 'var(--text-inverse)', lineHeight: 1.3, letterSpacing: '-0.025em' }}>
+            {c.s2.pull}<span style={{ color: 'var(--text-accent-dark)' }}>{c.s2.pullSpan}</span>{c.s2.pullEnd}
           </p>
         </div>
       </section>
@@ -161,13 +161,13 @@ export default async function ComparePage({ params }) {
       <Section bg="dark">
         <div className="text-center mb-16">
           <Eyebrow dark center>{c.s3.eyebrow}</Eyebrow>
-          <h2 className="max-w-3xl mx-auto" style={{ fontFamily: 'var(--font-latin)', fontWeight: 600, fontSize: 'clamp(28px, 3vw, 42px)', color: '#F0F0F0', lineHeight: 1.3, letterSpacing: '-0.02em' }}>{c.s3.h2}</h2>
+          <h2 className="max-w-3xl mx-auto" style={{ fontFamily: 'var(--font-latin)', fontWeight: 600, fontSize: 'clamp(28px, 3vw, 42px)', color: 'var(--text-inverse)', lineHeight: 1.3, letterSpacing: '-0.02em' }}>{c.s3.h2}</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0">
           {c.s3.cols.map(({ question, title, body }, i) => (
             <div key={title} className="px-0 md:px-8" style={i > 0 ? { borderLeft: '1px solid rgba(183,181,254,0.2)' } : undefined}>
               <div className="mb-4" style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '13px', fontStyle: 'italic', color: 'var(--platinum-60)' }}>{question}</div>
-              <h3 className="mb-3" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: '22px', color: '#b7b5fe' }}>{title}</h3>
+              <h3 className="mb-3" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: '22px', color: 'var(--text-accent-dark)' }}>{title}</h3>
               <p style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '15px', color: 'var(--platinum-70)', lineHeight: 1.6 }}>{body}</p>
             </div>
           ))}
@@ -178,32 +178,32 @@ export default async function ComparePage({ params }) {
       <Section bg="whisper">
         <div className="text-center mb-8">
           <Eyebrow center>{c.s4.eyebrow}</Eyebrow>
-          <h2 className="max-w-3xl mx-auto mb-4" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: 'clamp(28px, 3vw, 42px)', color: '#0E0E12', lineHeight: 1.3, letterSpacing: '-0.02em' }}>{c.s4.h2}</h2>
+          <h2 className="max-w-3xl mx-auto mb-4" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: 'clamp(28px, 3vw, 42px)', color: 'var(--text-body-dark)', lineHeight: 1.3, letterSpacing: '-0.02em' }}>{c.s4.h2}</h2>
         </div>
         <LoopDiagram locale={locale} />
         <div className="text-center mt-8">
-          <p className="max-w-[640px] mx-auto" style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '16px', color: '#212830', lineHeight: 1.7 }}>{c.s4.caption}</p>
+          <p className="max-w-[640px] mx-auto" style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '16px', color: 'var(--text-heading)', lineHeight: 1.7 }}>{c.s4.caption}</p>
           <div style={{ marginTop: '1.25rem' }}>
-            <Link href={`/${locale}/methodology`} style={{ fontFamily: 'var(--font-latin)', fontWeight: 600, fontSize: '14px', color: '#5856cc', textDecoration: 'none' }}>{c.s4.methodologyLink}</Link>
+            <Link href={`/${locale}/methodology`} style={{ fontFamily: 'var(--font-latin)', fontWeight: 600, fontSize: '14px', color: 'var(--text-accent)', textDecoration: 'none' }}>{c.s4.methodologyLink}</Link>
           </div>
         </div>
       </Section>
 
       {/* ── S5 FOUNDER VIDEO ──────────────────────────────── */}
-      <section className="px-6 py-24 md:py-32 on-dark" style={{ backgroundColor: '#0E0E12' }}>
+      <section className="px-6 py-24 md:py-32 on-dark" style={{ backgroundColor: 'var(--color-void-black)' }}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <Eyebrow dark center>{c.s5.eyebrow}</Eyebrow>
-            <h2 className="max-w-[640px] mx-auto mb-4" style={{ fontFamily: 'var(--font-latin)', fontWeight: 600, fontSize: 'clamp(22px, 3vw, 34px)', color: '#F0F0F0', lineHeight: 1.3, letterSpacing: '-0.02em' }}>{c.s5.h2}</h2>
+            <h2 className="max-w-[640px] mx-auto mb-4" style={{ fontFamily: 'var(--font-latin)', fontWeight: 600, fontSize: 'clamp(22px, 3vw, 34px)', color: 'var(--text-inverse)', lineHeight: 1.3, letterSpacing: '-0.02em' }}>{c.s5.h2}</h2>
             <p className="max-w-[500px] mx-auto" style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '15px', color: 'var(--platinum-60)', lineHeight: 1.6 }}>{c.s5.sub}</p>
           </div>
-          <figure className="max-w-[800px] mx-auto rounded-2xl overflow-hidden" style={{ aspectRatio: '16 / 9', backgroundColor: '#2E3848', border: '1px solid rgba(183,181,254,0.12)', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <figure className="max-w-[800px] mx-auto rounded-2xl overflow-hidden" style={{ aspectRatio: '16 / 9', backgroundColor: 'var(--color-midnight)', border: '1px solid rgba(183,181,254,0.12)', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <div className="flex flex-col items-center gap-4" style={{ pointerEvents: 'none' }}>
               <div className="flex items-center justify-center rounded-full" style={{ width: '72px', height: '72px', backgroundColor: 'var(--lavender-15)', border: '1.5px solid rgba(183,181,254,0.3)' }}>
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="#b7b5fe" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3" /></svg>
               </div>
               <div style={{ textAlign: 'center' }}>
-                <p style={{ fontFamily: 'var(--font-latin)', fontWeight: 600, fontSize: '15px', color: '#F0F0F0', marginBottom: '4px' }}>{c.s5.founderName}</p>
+                <p style={{ fontFamily: 'var(--font-latin)', fontWeight: 600, fontSize: '15px', color: 'var(--text-inverse)', marginBottom: '4px' }}>{c.s5.founderName}</p>
               </div>
             </div>
           </figure>
@@ -215,20 +215,20 @@ export default async function ComparePage({ params }) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="https://images.unsplash.com/photo-1688646545293-2755ea04cd8e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080&q=80" alt="Navigator providing calibrated, longitudinal feedback on a student draft" className="rounded-lg w-full" style={{ display: 'block' }} />
+            <img src="https://images.unsplash.com/photo-1688646545293-2755ea04cd8e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080&q=80" alt="Navigator providing calibrated, longitudinal feedback on a student draft" width={1080} height={1620} className="rounded-lg w-full h-auto" style={{ display: 'block' }} />
           </div>
           <div className="order-1 md:order-2">
             <Eyebrow>{c.s6.eyebrow}</Eyebrow>
-            <h2 className="mb-8 max-w-[480px]" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: 'clamp(28px, 3vw, 38px)', color: '#0E0E12', lineHeight: 1.3, letterSpacing: '-0.02em' }}>{c.s6.h2}</h2>
+            <h2 className="mb-8 max-w-[480px]" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: 'clamp(28px, 3vw, 38px)', color: 'var(--text-body-dark)', lineHeight: 1.3, letterSpacing: '-0.02em' }}>{c.s6.h2}</h2>
             <div className="space-y-5">
               {c.s6.points.map(({ label, body }) => (
-                <p key={label} style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '16px', color: '#212830', lineHeight: 1.6 }}>
-                  <strong style={{ fontWeight: 600, color: '#0E0E12' }}>{label}:</strong>{' '}{body}
+                <p key={label} style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '16px', color: 'var(--text-heading)', lineHeight: 1.6 }}>
+                  <strong style={{ fontWeight: 600, color: 'var(--text-body-dark)' }}>{label}:</strong>{' '}{body}
                 </p>
               ))}
             </div>
             <div style={{ marginTop: '1.5rem' }}>
-              <Link href={`/${locale}/navigators`} style={{ fontFamily: 'var(--font-latin)', fontWeight: 600, fontSize: '14px', color: '#5856cc', textDecoration: 'none' }}>{c.s6.navigatorsLink}</Link>
+              <Link href={`/${locale}/navigators`} style={{ fontFamily: 'var(--font-latin)', fontWeight: 600, fontSize: '14px', color: 'var(--text-accent)', textDecoration: 'none' }}>{c.s6.navigatorsLink}</Link>
             </div>
           </div>
         </div>
@@ -238,13 +238,13 @@ export default async function ComparePage({ params }) {
       <Section bg="dark">
         <div className="text-center mb-16">
           <Eyebrow dark center>{c.s7.eyebrow}</Eyebrow>
-          <h2 className="max-w-3xl mx-auto" style={{ fontFamily: 'var(--font-latin)', fontWeight: 600, fontSize: 'clamp(28px, 3vw, 42px)', color: '#F0F0F0', lineHeight: 1.3, letterSpacing: '-0.02em' }}>{c.s7.h2}</h2>
+          <h2 className="max-w-3xl mx-auto" style={{ fontFamily: 'var(--font-latin)', fontWeight: 600, fontSize: 'clamp(28px, 3vw, 42px)', color: 'var(--text-inverse)', lineHeight: 1.3, letterSpacing: '-0.02em' }}>{c.s7.h2}</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0">
           {c.s7.cols.map(({ num, title, body }, i) => (
             <div key={num} className="px-0 md:px-8" style={i > 0 ? { borderLeft: '1px solid rgba(183,181,254,0.2)' } : undefined}>
               <div aria-hidden="true" className="mb-3" style={{ fontFamily: 'var(--font-latin)', fontWeight: 300, fontSize: '11px', color: 'var(--text-muted-dark)' }}>{num}</div>
-              <h3 className="mb-3" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: '20px', color: '#b7b5fe' }}>{title}</h3>
+              <h3 className="mb-3" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: '20px', color: 'var(--text-accent-dark)' }}>{title}</h3>
               <p style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '15px', color: 'var(--platinum-70)', lineHeight: 1.6 }}>{body}</p>
             </div>
           ))}
@@ -252,11 +252,11 @@ export default async function ComparePage({ params }) {
       </Section>
 
       {/* ── S8 STUDENT VOICE ──────────────────────────────── */}
-      <section className="px-6 py-24 md:py-32 on-dark" style={{ backgroundColor: '#0E0E12' }}>
+      <section className="px-6 py-24 md:py-32 on-dark" style={{ backgroundColor: 'var(--color-void-black)' }}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <Eyebrow dark center>{c.s8.eyebrow}</Eyebrow>
-            <h2 style={{ fontFamily: 'var(--font-latin)', fontWeight: 600, fontSize: 'clamp(28px, 3vw, 42px)', color: '#F0F0F0', lineHeight: 1.3, letterSpacing: '-0.02em' }}>{c.s8.h2}</h2>
+            <h2 style={{ fontFamily: 'var(--font-latin)', fontWeight: 600, fontSize: 'clamp(28px, 3vw, 42px)', color: 'var(--text-inverse)', lineHeight: 1.3, letterSpacing: '-0.02em' }}>{c.s8.h2}</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {c.s8.voices.map((v) => (
@@ -269,13 +269,13 @@ export default async function ComparePage({ params }) {
       {/* ── S9 CLOSING CTA ────────────────────────────────── */}
       <Section bg="dark">
         <div className="text-center max-w-2xl mx-auto">
-          <h2 className="mb-5" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: 'clamp(28px, 3vw, 42px)', color: '#b7b5fe', lineHeight: 1.3, letterSpacing: '-0.02em' }}>{c.s9.h2}</h2>
+          <h2 className="mb-5" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: 'clamp(28px, 3vw, 42px)', color: 'var(--text-accent-dark)', lineHeight: 1.3, letterSpacing: '-0.02em' }}>{c.s9.h2}</h2>
           <p className="max-w-[520px] mx-auto mb-8" style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '16px', color: 'rgba(240,240,240,0.75)', lineHeight: 1.6 }}>{c.s9.sub}</p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-3">
             <Link href={`/${locale}/consult`} className="btn btn-do btn-do-primary w-full md:w-auto justify-center" style={{ minWidth: '280px' }}>{c.s9.ctaPrimary}</Link>
-            <Link href={`/${locale}/program`} className="w-full md:w-auto rounded-lg transition-all hover:border-white" style={{ fontFamily: 'var(--font-latin)', fontWeight: 500, fontSize: '16px', backgroundColor: 'transparent', color: '#F0F0F0', border: '1.5px solid rgba(240,240,240,0.50)', padding: '14px 32px', textDecoration: 'none', display: 'inline-block', textAlign: 'center', minWidth: '280px' }}>{c.s9.ctaSecondary}</Link>
+            <Link href={`/${locale}/program`} className="w-full md:w-auto rounded-lg transition-all hover:border-white" style={{ fontFamily: 'var(--font-latin)', fontWeight: 500, fontSize: '16px', backgroundColor: 'transparent', color: 'var(--text-inverse)', border: '1.5px solid rgba(240,240,240,0.50)', padding: '14px 32px', textDecoration: 'none', display: 'inline-block', textAlign: 'center', minWidth: '280px' }}>{c.s9.ctaSecondary}</Link>
           </div>
-          <p className="mt-4" style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '13px', color: '#b7b5fe' }}>{c.s9.note}</p>
+          <p className="mt-4" style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '13px', color: 'var(--text-accent-dark)' }}>{c.s9.note}</p>
         </div>
       </Section>
 

@@ -190,13 +190,13 @@ export default async function TermsPage({ params }) {
   return (
     <article className="container-section py-16 md:py-20">
       <header className="mb-10 max-w-2xl">
-        <h1 className="text-3xl md:text-4xl font-bold tracking-tight" style={{ color: '#212830' }}>
+        <h1 className="text-3xl md:text-4xl font-bold tracking-tight" style={{ color: 'var(--text-heading)' }}>
           {c.title}
         </h1>
         <p className="mt-3 text-sm" style={{ color: 'var(--text-muted)' }}>
           {c.updated}
         </p>
-        <p className="mt-6 text-base leading-relaxed" style={{ color: '#3D4452' }}>
+        <p className="mt-6 text-base leading-relaxed" style={{ color: 'var(--text-body)' }}>
           {c.intro}
         </p>
       </header>
@@ -204,12 +204,12 @@ export default async function TermsPage({ params }) {
       <div className="max-w-2xl space-y-10">
         {c.sections.map((s, i) => (
           <section key={i}>
-            <h2 className="text-xl font-semibold mb-3" style={{ color: '#212830' }}>
+            <h2 className="text-xl font-semibold mb-3" style={{ color: 'var(--text-heading)' }}>
               {s.h}
             </h2>
             <div className="space-y-3">
               {s.p.map((para, j) => (
-                <p key={j} className="text-base leading-relaxed" style={{ color: '#3D4452' }}>
+                <p key={j} className="text-base leading-relaxed" style={{ color: 'var(--text-body)' }}>
                   {para}
                 </p>
               ))}

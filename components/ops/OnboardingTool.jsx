@@ -23,17 +23,17 @@ import html2canvas from 'html2canvas';
 import { LOGO_B64, SIGNATURE_B64, CLASSIN_LOGO_B64 } from '@/components/ops/opsAssets';
 
 const B = {
-  cream:      '#F5F5FF',
+  cream: 'var(--color-whisper)',
   green:      '#7EC8A0',
   greenDark:  '#5aaa82',
   greenLight: '#e0f5ec',
-  brown:      '#B7B5FE',
+  brown: 'var(--color-lavender-signal)',
   brownDark:  '#9490fe',
   brownLight: '#ededff',
-  ink:        '#0E0E12',
+  ink: 'var(--color-void-black)',
   muted:      '#5E6879',
   border:     'rgba(46,56,72,0.18)',
-  white:      '#FFFFFF',
+  white: 'var(--surface-raised)',
 };
 
 const D = {

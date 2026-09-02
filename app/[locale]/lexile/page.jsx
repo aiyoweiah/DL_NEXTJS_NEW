@@ -166,10 +166,10 @@ export default async function LexilePage({ params }) {
       <SectionWrapper white>
         <div className="py-20 md:py-24 max-w-3xl">
           <Eyebrow>{t.what.eyebrow}</Eyebrow>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6" style={{ color: '#0E0E12', letterSpacing: '-0.025em' }}>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6" style={{ color: 'var(--text-body-dark)', letterSpacing: '-0.025em' }}>
             {t.what.heading}
           </h2>
-          <p className="text-lg leading-relaxed" style={{ color: '#3D4452' }}>
+          <p className="text-lg leading-relaxed" style={{ color: 'var(--text-body)' }}>
             {t.what.body}
           </p>
         </div>
@@ -206,9 +206,9 @@ export default async function LexilePage({ params }) {
               <tbody>
                 {t.grades.rows.map((row, i) => (
                   <tr key={i}>
-                    <td className="pr-6 py-3 font-semibold" style={{ color: '#F0F0F0' }}>{row.grade}</td>
+                    <td className="pr-6 py-3 font-semibold" style={{ color: 'var(--text-inverse)' }}>{row.grade}</td>
                     <td className="pr-6 py-3 tabular-nums" style={{ color: 'var(--text-muted-dark)' }}>{row.range}</td>
-                    <td className="py-3 tabular-nums font-semibold" style={{ color: '#b7b5fe' }}>{row.midpoint}</td>
+                    <td className="py-3 tabular-nums font-semibold" style={{ color: 'var(--text-accent-dark)' }}>{row.midpoint}</td>
                   </tr>
                 ))}
               </tbody>
@@ -221,10 +221,10 @@ export default async function LexilePage({ params }) {
       <SectionWrapper>
         <div className="py-20 md:py-24 max-w-3xl">
           <Eyebrow>{t.bilingual.eyebrow}</Eyebrow>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6" style={{ color: '#0E0E12', letterSpacing: '-0.025em' }}>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6" style={{ color: 'var(--text-body-dark)', letterSpacing: '-0.025em' }}>
             {t.bilingual.heading}
           </h2>
-          <p className="text-lg leading-relaxed" style={{ color: '#3D4452' }}>
+          <p className="text-lg leading-relaxed" style={{ color: 'var(--text-body)' }}>
             {t.bilingual.body}
           </p>
         </div>
@@ -250,12 +250,12 @@ export default async function LexilePage({ params }) {
                 <div className="flex items-center gap-3 mb-4">
                   <span
                     className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shrink-0"
-                    style={{ backgroundColor: '#b7b5fe', color: '#0E0E12' }}
+                    style={{ backgroundColor: 'var(--color-lavender-signal)', color: 'var(--text-body-dark)' }}
                     aria-hidden="true"
                   >
                     {i + 1}
                   </span>
-                  <p className="text-sm font-semibold" style={{ color: '#b7b5fe' }}>{point.label}</p>
+                  <p className="text-sm font-semibold" style={{ color: 'var(--text-accent-dark)' }}>{point.label}</p>
                 </div>
                 <p className="text-sm leading-relaxed" style={{ color: 'var(--text-muted-dark)' }}>{point.body}</p>
               </div>

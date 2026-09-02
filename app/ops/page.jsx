@@ -16,16 +16,16 @@ export const metadata = {
 }
 
 const B = {
-  voidBlack: '#0E0E12',
-  deepVoid:  '#212830',
-  midnight:  '#2E3848',
-  lavender:  '#B7B5FE',
-  gilt:      '#F5C842',
+  voidBlack: 'var(--color-void-black)',
+  deepVoid: 'var(--color-deep-void)',
+  midnight: 'var(--color-midnight)',
+  lavender: 'var(--color-lavender-signal)',
+  gilt: 'var(--color-gilt)',
   softGreen: '#7EC8A0',
-  platinum:  '#F0F0F0',
+  platinum: 'var(--color-platinum)',
   muted:     '#5E6879',
-  border:    '#2E3848',
-  whisper:   '#F5F5FF',
+  border: 'var(--color-midnight)',
+  whisper: 'var(--color-whisper)',
 }
 
 const TOOLS = [

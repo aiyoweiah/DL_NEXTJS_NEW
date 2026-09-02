@@ -133,7 +133,7 @@ function Hero({ locale, c }) {
           <Eyebrow dark sentence mb="1.75rem">{c.hero.chip}</Eyebrow>
           <h1
             id="demos-hero-heading"
-            style={{ fontSize: 'clamp(2.25rem, 5vw + 0.5rem, 4rem)', fontWeight: 700, lineHeight: 1.06, letterSpacing: '-0.03em', color: '#F0F0F0', marginBottom: '0.625rem', textWrap: 'balance' }}
+            style={{ fontSize: 'clamp(2.25rem, 5vw + 0.5rem, 4rem)', fontWeight: 700, lineHeight: 1.06, letterSpacing: '-0.03em', color: 'var(--text-inverse)', marginBottom: '0.625rem', textWrap: 'balance' }}
           >
             {c.hero.h1}
           </h1>
@@ -152,7 +152,7 @@ function Hero({ locale, c }) {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)' }} className="sm:grid-cols-6">
             {c.hero.stats.map((stat, i) => (
               <div key={i} style={{ textAlign: 'center', padding: '1.125rem 0.375rem', borderRight: i !== 2 && i !== 5 ? '1px solid rgba(183,181,254,0.07)' : 'none', borderBottom: i < 3 ? '1px solid rgba(183,181,254,0.07)' : 'none' }}>
-                <p style={{ fontSize: 'clamp(1.375rem, 2.5vw, 2rem)', fontWeight: 700, letterSpacing: '-0.03em', lineHeight: 1, color: '#b7b5fe' }}>{stat.value}</p>
+                <p style={{ fontSize: 'clamp(1.375rem, 2.5vw, 2rem)', fontWeight: 700, letterSpacing: '-0.03em', lineHeight: 1, color: 'var(--text-accent-dark)' }}>{stat.value}</p>
                 <p style={{ fontSize: '0.6875rem', fontWeight: 700, color: 'rgba(240,240,240,0.75)', marginTop: '3px', lineHeight: 1.2 }}>{stat.unit}</p>
                 <p style={{ fontSize: '0.625rem', color: 'var(--text-muted-dark)', marginTop: '2px', lineHeight: 1.3 }}>{stat.desc}</p>
               </div>
@@ -182,22 +182,22 @@ function VideoGallery({ locale, c }) {
     return (
       <article
         aria-label={`${card.label} — ${card.labelZh}`}
-        style={{ backgroundColor: '#ffffff', border: '1px solid rgba(14,14,18,0.08)', borderRadius: '0.875rem', overflow: 'hidden', boxShadow: '0 1px 3px rgba(0,0,0,0.05)', display: 'flex', flexDirection: 'column' }}
+        style={{ backgroundColor: 'var(--surface-raised)', border: '1px solid rgba(14,14,18,0.08)', borderRadius: '0.875rem', overflow: 'hidden', boxShadow: '0 1px 3px rgba(0,0,0,0.05)', display: 'flex', flexDirection: 'column' }}
       >
         {player}
         <div style={{ padding: '0.625rem 0.75rem 0.875rem' }}>
           <div style={{ display: 'flex', gap: '0.3rem', flexWrap: 'wrap', marginBottom: '0.5rem' }}>
             <TagRun items={[card.tag1, card.tag2, card.tag3]} />
           </div>
-          <p style={{ fontSize: '0.875rem', fontWeight: 700, color: '#0E0E12', lineHeight: 1.3, marginBottom: '1px' }}>{card.label}</p>
-          <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '10px', color: '#5856cc', lineHeight: 1.3 }}>{card.labelZh}</p>
+          <p style={{ fontSize: '0.875rem', fontWeight: 700, color: 'var(--text-body-dark)', lineHeight: 1.3, marginBottom: '1px' }}>{card.label}</p>
+          <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '10px', color: 'var(--text-accent)', lineHeight: 1.3 }}>{card.labelZh}</p>
         </div>
       </article>
     )
   }
 
   return (
-    <section id="demo-videos" aria-labelledby="video-gallery-heading" style={{ backgroundColor: '#ffffff', padding: 'var(--section-md) 0' }}>
+    <section id="demo-videos" aria-labelledby="video-gallery-heading" style={{ backgroundColor: 'var(--surface-raised)', padding: 'var(--section-md) 0' }}>
       <div className="container-section">
         <div style={{ marginBottom: '2.5rem' }}>
           <Eyebrow>{c.videos.eyebrow}</Eyebrow>
@@ -205,7 +205,7 @@ function VideoGallery({ locale, c }) {
         </div>
         <div style={{ marginBottom: '2.5rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-            <p style={{ fontSize: '0.6875rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#5856cc' }}>{c.videos.row1Label}</p>
+            <p style={{ fontSize: '0.6875rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-accent)' }}>{c.videos.row1Label}</p>
             <div style={{ flex: 1, height: '1px', backgroundColor: 'rgba(14,14,18,0.07)' }} aria-hidden="true" />
           </div>
           <div style={{ display: 'grid', gap: '1rem' }} className="md:grid-cols-3">
@@ -214,7 +214,7 @@ function VideoGallery({ locale, c }) {
         </div>
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-            <p style={{ fontSize: '0.6875rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#5856cc' }}>{c.videos.row2Label}</p>
+            <p style={{ fontSize: '0.6875rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-accent)' }}>{c.videos.row2Label}</p>
             <div style={{ flex: 1, height: '1px', backgroundColor: 'rgba(14,14,18,0.07)' }} aria-hidden="true" />
           </div>
           <div style={{ display: 'grid', gap: '1rem' }} className="md:grid-cols-3">
@@ -241,9 +241,9 @@ function InsideSession({ locale, c }) {
       <div className="container-section relative z-10" style={{ padding: 'var(--section-md) 1.25rem' }}>
         <div style={{ maxWidth: '40rem' }}>
           <div className="inline-flex items-center gap-2.5 mb-7">
-            <span aria-hidden="true" style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: '#b7b5fe', color: '#0E0E12', fontSize: '10px', fontWeight: 800, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>NV</span>
+            <span aria-hidden="true" style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: 'var(--color-lavender-signal)', color: 'var(--text-body-dark)', fontSize: '10px', fontWeight: 800, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>NV</span>
             <div>
-              <p style={{ fontSize: '11px', fontWeight: 700, color: '#F0F0F0', lineHeight: 1.2 }}>{c.session.navigatorName}</p>
+              <p style={{ fontSize: '11px', fontWeight: 700, color: 'var(--text-inverse)', lineHeight: 1.2 }}>{c.session.navigatorName}</p>
               <p style={{ fontSize: '10px', color: 'var(--text-muted-dark)', lineHeight: 1.2 }}>{c.session.sessionPhase}</p>
             </div>
           </div>
@@ -267,7 +267,7 @@ function InsideSession({ locale, c }) {
 
 function AfterDemo({ locale, c }) {
   return (
-    <section className="on-dark" aria-labelledby="after-heading" style={{ backgroundColor: '#212830', padding: 'var(--section-md) 0' }}>
+    <section className="on-dark" aria-labelledby="after-heading" style={{ backgroundColor: 'var(--color-deep-void)', padding: 'var(--section-md) 0' }}>
       <div className="container-section">
         <div style={{ maxWidth: '40rem' }}>
           <Eyebrow dark>{c.after.eyebrow}</Eyebrow>
@@ -291,7 +291,7 @@ function LexileScaleViz({ start, end }) {
   return (
     <div style={{ position: 'relative', height: '300px', width: '160px', flexShrink: 0 }} role="img" aria-label={`Lexile scale. Highlighted: ${start}L to ${end}L`}>
       <div aria-hidden="true" style={{ position: 'absolute', left: '16px', top: 0, bottom: 0, width: '3px', backgroundColor: 'rgba(183,181,254,0.1)', borderRadius: '9999px' }} />
-      <div aria-hidden="true" style={{ position: 'absolute', left: '16px', top: `${hlTop}%`, height: `${hlH}%`, width: '3px', backgroundColor: '#b7b5fe', borderRadius: '9999px', boxShadow: '0 0 12px rgba(183,181,254,0.5)' }} />
+      <div aria-hidden="true" style={{ position: 'absolute', left: '16px', top: `${hlTop}%`, height: `${hlH}%`, width: '3px', backgroundColor: 'var(--color-lavender-signal)', borderRadius: '9999px', boxShadow: '0 0 12px rgba(183,181,254,0.5)' }} />
       {LEXILE_SCALE.map((row) => {
         const yPct = topPct(row.level), inRange = row.level >= start && row.level <= end
         return (
@@ -310,7 +310,7 @@ function LexileScaleViz({ start, end }) {
 
 function ResultsSection({ locale, c }) {
   return (
-    <section className="on-dark" aria-labelledby="results-heading" style={{ backgroundColor: '#0E0E12', padding: 'var(--section-md) 0' }}>
+    <section className="on-dark" aria-labelledby="results-heading" style={{ backgroundColor: 'var(--color-void-black)', padding: 'var(--section-md) 0' }}>
       <div className="container-section">
         <div style={{ marginBottom: '3.5rem' }}>
           <Eyebrow dark>{c.growth.eyebrow}</Eyebrow>
@@ -318,7 +318,7 @@ function ResultsSection({ locale, c }) {
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '3.5rem' }} className="lg:grid-cols-2">
           <div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: 700, color: '#b7b5fe', marginBottom: '0.375rem', letterSpacing: '-0.01em' }}>{c.growth.lexile.h3}</h3>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: 700, color: 'var(--text-accent-dark)', marginBottom: '0.375rem', letterSpacing: '-0.01em' }}>{c.growth.lexile.h3}</h3>
             <p style={{ fontSize: '0.875rem', lineHeight: 1.72, color: 'var(--platinum-60)', marginBottom: '1.75rem' }}>{c.growth.lexile.sub}</p>
             <div className="flex flex-col sm:flex-row gap-6 items-start">
               <LexileScaleViz start={c.growth.lexile.start} end={c.growth.lexile.end} />
@@ -326,11 +326,11 @@ function ResultsSection({ locale, c }) {
             </div>
           </div>
           <div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: 700, color: '#b7b5fe', marginBottom: '0.375rem', letterSpacing: '-0.01em' }}>{c.growth.trait.h3}</h3>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: 700, color: 'var(--text-accent-dark)', marginBottom: '0.375rem', letterSpacing: '-0.01em' }}>{c.growth.trait.h3}</h3>
             <p style={{ fontSize: '0.875rem', lineHeight: 1.72, color: 'var(--platinum-60)', marginBottom: '1.25rem' }}>{c.growth.trait.sub}</p>
             <div className="flex items-center gap-4" style={{ marginBottom: '0.75rem' }} aria-hidden="true">
               <div className="flex items-center gap-1.5"><div style={{ width: '10px', height: '10px', borderRadius: '2px', backgroundColor: 'rgba(183,181,254,0.18)' }} /><span style={{ fontSize: '10px', fontWeight: 600, color: 'var(--text-muted-dark)' }}>{c.growth.trait.startLabel}</span></div>
-              <div className="flex items-center gap-1.5"><div style={{ width: '10px', height: '10px', borderRadius: '2px', backgroundColor: '#b7b5fe' }} /><span style={{ fontSize: '10px', fontWeight: 600, color: 'var(--text-muted-dark)' }}>{c.growth.trait.endLabel}</span></div>
+              <div className="flex items-center gap-1.5"><div style={{ width: '10px', height: '10px', borderRadius: '2px', backgroundColor: 'var(--color-lavender-signal)' }} /><span style={{ fontSize: '10px', fontWeight: 600, color: 'var(--text-muted-dark)' }}>{c.growth.trait.endLabel}</span></div>
               <span style={{ fontSize: '10px', color: 'rgba(183,181,254,0.22)', marginLeft: 'auto' }}>{c.growth.trait.scaleLabel}</span>
             </div>
             <div>
@@ -339,12 +339,12 @@ function ResultsSection({ locale, c }) {
                 const sPct = (trait.start / 6) * 100, gainPct = ((trait.end - trait.start) / 6) * 100
                 return (
                   <div key={trait.id} style={{ display: 'grid', gridTemplateColumns: '110px 1fr 52px', gap: '0.75rem', alignItems: 'center', padding: '0.5rem 0', borderBottom: '1px solid rgba(183,181,254,0.05)' }}>
-                    <p style={{ fontSize: '0.8125rem', fontWeight: 600, color: '#F0F0F0', lineHeight: 1.2 }}>{label}</p>
+                    <p style={{ fontSize: '0.8125rem', fontWeight: 600, color: 'var(--text-inverse)', lineHeight: 1.2 }}>{label}</p>
                     <div style={{ position: 'relative', height: '7px', backgroundColor: 'rgba(183,181,254,0.07)', borderRadius: '9999px', overflow: 'hidden' }} aria-label={`${label}: ${trait.start} to ${trait.end}`}>
                       <div aria-hidden="true" style={{ position: 'absolute', left: 0, top: 0, height: '100%', width: `${sPct}%`, backgroundColor: 'var(--lavender-15)', borderRadius: '9999px' }} />
-                      <div aria-hidden="true" style={{ position: 'absolute', left: `${sPct}%`, top: 0, height: '100%', width: `${gainPct}%`, backgroundColor: '#b7b5fe', borderRadius: '9999px' }} />
+                      <div aria-hidden="true" style={{ position: 'absolute', left: `${sPct}%`, top: 0, height: '100%', width: `${gainPct}%`, backgroundColor: 'var(--color-lavender-signal)', borderRadius: '9999px' }} />
                     </div>
-                    <p style={{ fontSize: '0.75rem', color: 'var(--text-muted-dark)', textAlign: 'right', whiteSpace: 'nowrap' }}>{trait.start}→<span style={{ color: '#b7b5fe', fontWeight: 700 }}>{trait.end}</span></p>
+                    <p style={{ fontSize: '0.75rem', color: 'var(--text-muted-dark)', textAlign: 'right', whiteSpace: 'nowrap' }}>{trait.start}→<span style={{ color: 'var(--text-accent-dark)', fontWeight: 700 }}>{trait.end}</span></p>
                   </div>
                 )
               })}

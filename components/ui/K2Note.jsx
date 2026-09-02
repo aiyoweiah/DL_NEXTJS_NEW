@@ -33,7 +33,7 @@ export default function K2Note({ locale, copy }) {
           href={`/${locale}${copy.href}`}
           className="group block rounded-lg transition-colors duration-150"
           style={{
-            color:         '#3D4452',
+            color: 'var(--text-body)',
             textDecoration: 'none',
           }}
         >
@@ -49,7 +49,7 @@ export default function K2Note({ locale, copy }) {
             </p>
             <span
               className="shrink-0 text-sm font-semibold whitespace-nowrap inline-flex items-center gap-1 transition-colors duration-150 group-hover:text-[#3d3baa]"
-              style={{ color: '#5856cc' }}
+              style={{ color: 'var(--text-accent)' }}
             >
               {copy.linkLabel}
               <span
