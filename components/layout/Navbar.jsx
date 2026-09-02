@@ -493,6 +493,18 @@ export default function Navbar({ locale, copy }) {
       )}
 
       {/* ── Mobile drawer ─────────────────────────────────── */}
+      {/*
+        `inert={!mobileOpen}`, NOT the `? '' : undefined` idiom (D80).
+
+        That idiom was correct for React <18.3, which had no knowledge of
+        `inert` and passed the empty string straight through as a bare
+        attribute. React now knows `inert` is a boolean and reads "" as
+        FALSE — so it emitted nothing at all, and the guard was silently
+        absent on all 114 routes: the closed drawer was `aria-hidden` with
+        17 focusable links still in the tab order. Focusable content hidden
+        from assistive tech is a WCAG failure, not a lint warning, and React
+        had been saying so in the console the entire time.
+      */}
       <div
         id="mobile-nav-drawer"
         ref={drawerRef}
@@ -508,7 +520,7 @@ export default function Navbar({ locale, copy }) {
         `}
         style={{ top: 'var(--nav-height)' }}
         aria-hidden={!mobileOpen}
-        inert={!mobileOpen ? '' : undefined}
+        inert={!mobileOpen}
       >
         <div className="container-section py-6">
 
