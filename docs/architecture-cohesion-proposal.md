@@ -313,3 +313,40 @@ Numbers produced that way are directionally useful and **not certifiable**. The
 "105 sub-AA nodes" figure in `completion-plan.md` carries that caveat for this
 reason. If you need a real count, sample painted pixels; if you need a guard, ask a
 structural question instead.
+
+---
+
+## 8. A guard may not match on values (D87)
+
+The rule this document was missing, learned when a rename made a ratchet report
+progress.
+
+**Match on STRUCTURE — which properties are set, what shape the DOM is. Never on
+the VALUES those properties hold.** A value list is a second copy of the design
+system maintained by hand, and it goes stale silently.
+
+The proof was already inside `check-surfaces`. Its two passes disagreed under the
+D86 tokenisation:
+
+| pass | asks | result when `#2E3848` became `var(--color-midnight)` |
+|---|---|---|
+| build | *does this element set a background AND a border?* | **737 — unmoved** |
+| source | *is the background one of these six hexes?* | **24 → 5** |
+
+Same guard, same codebase, same day. The structural half could not be fooled; the
+value-matching half went blind and would have banked the loss as a migration.
+
+Fixing it also showed the list had **never been right**: measured structurally there
+are **41** hand-rolled panels, not 24. Seventeen had never matched, so the ratchet
+had been guarding a number that was too low since D60.
+
+### And: refuse to bank an implausible drop
+
+Blindness and success look identical from the outside — the count falls either way.
+What separates them is that **`--update` is where the lie becomes permanent**, so
+that is where the question belongs. Both ratchets now refuse a drop of more than 30%
+(and at least 8 items) without `--force`, printing what happened last time.
+
+This is not a limit on real work. It is a prompt to say which kind of drop it was,
+at the only moment when anyone still knows.
+

@@ -1,16 +1,23 @@
 {
-  "total": 24,
+  "total": 41,
   "counts": {
     "app/[locale]/about/page.jsx": 4,
-    "app/[locale]/compare/page.jsx": 2,
+    "app/[locale]/blog/page.jsx": 1,
+    "app/[locale]/blog/[slug]/page.jsx": 1,
+    "app/[locale]/compare/page.jsx": 4,
     "app/[locale]/consult/page.jsx": 1,
     "app/[locale]/demos/page.jsx": 1,
     "app/[locale]/lexile/page.jsx": 1,
     "app/[locale]/methodology/page.jsx": 3,
     "app/[locale]/navigators/page.jsx": 2,
-    "components/UnderConstruction.jsx": 6,
-    "components/assessment/AssessmentClient.jsx": 1,
-    "components/media/StreamVideo.jsx": 1,
-    "components/partners/PartnersClient.jsx": 2
+    "app/[locale]/program/page.jsx": 3,
+    "components/assessment/AssessmentClient.jsx": 3,
+    "components/blog/BlogClient.jsx": 1,
+    "components/demos/YoutubeEmbed.jsx": 1,
+    "components/faq/FAQClient.jsx": 1,
+    "components/layout/Navbar.jsx": 1,
+    "components/media/StreamVideo.jsx": 2,
+    "components/partners/PartnersClient.jsx": 4,
+    "components/UnderConstruction.jsx": 7
   }
 }

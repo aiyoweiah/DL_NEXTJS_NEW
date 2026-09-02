@@ -117,8 +117,32 @@ function walkFiles(dir, out = []) {
 const readBaseline = (file) =>
   existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : null
 
+/**
+ * The moment a ratchet lies is the moment you BANK the lie (D87).
+ *
+ * A detector that stops matching is indistinguishable from a successful
+ * migration: the count falls, `--update` records it, and the smaller number
+ * becomes the new truth. `check-surfaces` dropped 24 → 5 that way when D86
+ * renamed a colour, and it was caught only because 79% was too big to believe.
+ *
+ * A large drop now has to be stated rather than assumed.
+ */
+const FORCE = process.argv.includes('--force')
+function implausibleDrop(prev, next, label) {
+  if (prev === null || prev === undefined || FORCE) return false
+  if (next >= prev * 0.7 || prev - next < 8) return false
+  console.error(
+    `\n✖ inline style (${label}): refusing to bank ${prev} → ${next} without --force.\n\n` +
+      `  A ${Math.round((1 - next / prev) * 100)}% drop looks the same whether you migrated the code or\n` +
+      `  broke the detector. D86 was the second kind. Confirm this script still sees\n` +
+      `  what it used to, then re-run with --force and say which it was in the commit.\n`
+  )
+  return true
+}
+
 /** Compare current counts against a baseline; report only INCREASES. */
 function ratchet({ counts, total, baseline, keyName, file, label, fixHint }) {
+  if (UPDATE && baseline && implausibleDrop(baseline.total, total, label)) return 1
   if (UPDATE || !baseline) {
     const sorted = Object.fromEntries(Object.entries(counts).sort(([a], [b]) => a.localeCompare(b)))
     writeFileSync(file, JSON.stringify({ total, [keyName]: sorted }, null, 2) + '\n')
