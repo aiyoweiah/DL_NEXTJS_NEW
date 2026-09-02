@@ -133,7 +133,7 @@ are bugs.
 > `/credentials` call sites. Two framework namespaces are exempt — `--tw-*` and
 > `--next-*` are declared by Tailwind and Next themselves, and we do not author them.
 
-### 3 · Ratchet inline styles — next, and now the highest-leverage item left
+### 3 · Ratchet inline styles — BUILT (D78)
 
 Extend the `surface-baseline.json` pattern to a second baseline counting inline
 `style={{…}}` blocks that set colour or typography. Ratchet downward; fail on increase.
@@ -141,6 +141,28 @@ Extend the `surface-baseline.json` pattern to a second baseline counting inline
 This attacks root cause A directly and is the only proposal here that reduces the
 *supply* of future bugs rather than detecting them after the fact. Expect it to start
 around 300 and come down slowly.
+
+> **Built 2026-09-01** as `scripts/check-inline-style.mjs`, two passes on the
+> established contract: source on `prebuild` (per file, the number a migration moves),
+> build on `postbuild` (per route, what actually rendered). Baselines in
+> `scripts/inline-style-baseline.json` and `…-build-baseline.json`.
+>
+> **The estimate above was 3× low. Source is 957, not ~300**; the build pass is 8,753.
+> Worth knowing before anyone plans a migration against the old figure — and worth
+> noting that the guess was in prose and the number was not measured until now, which
+> is the same shape as everything else in §1.
+>
+> Scope is colour and typography only. Layout written inline is deliberately not
+> counted: the system does not define layout centrally, so an inline value there
+> bypasses nothing. It overlaps `check-surfaces` on purpose — that guard asks "is this
+> a hand-rolled panel", this one asks "is a colour or a typeface set by hand".
+>
+> `style={{…}}` blocks are **brace-matched, not regexed**. D71's miss was a regex that
+> assumed structure it had not checked.
+>
+> Regression-tested in both directions on both passes: adding one inline colour fails
+> and names the file (source) or route (build); removing one passes and says how much
+> is bankable. All four exits verified.
 
 ### 4 · Make completeness claims executable
 
@@ -205,9 +227,23 @@ Every one of these produced a wrong number during this run.
 token guard (§3.2).**~~ **Done 2026-08-30 (D73).** They closed the two root causes, and
 the build-output pass found a real escapee the same day.
 
-**The one thing now is §3.3 — ratchet inline styles.** It is the only proposal here that
-reduces the *supply* of future bugs rather than detecting them afterwards, and every
-defect in §1 lived in an inline style.
+~~**The one thing now is §3.3 — ratchet inline styles.**~~ **Done 2026-09-01 (D78).**
+957 in source, 8,753 in the build, both ratcheted on the build. §3.5's conformance
+report shipped alongside it (D77's measurement came from it).
+
+**Every numbered proposal in §3 is now built.** What is left is not architecture, it is
+the work the architecture now makes safe: bringing 957 down. The baseline is the map —
+`scripts/inline-style-baseline.json` names the count per file, so the highest-value
+migrations are visible without a survey. `/about` at 58 and `/blog` at 36 lead it.
+
+⚠️ **One thing the run that built §3.3 and §3.5 proved again, about this document
+itself.** §3.3 predicted "around 300"; the real number is 957. That guess sat here for
+two days reading like a measurement. `npm run conformance` also shipped with two wrong
+groupings of its own on day one — a `state` family that was 98% navbar chrome, and a
+"drift" warning that flagged a deliberate surface-aware colour pair. Both were found by
+reading its output instead of trusting it, and both are fixed. A tool that measures is
+better than prose that asserts, but it is not automatically right — the first run of a
+new detector is data about the detector.
 
 And, still: before writing "X is gone" anywhere in the guide, run the check that proves
 it. Status for every decision now lives in [`decision-index.md`](decision-index.md),

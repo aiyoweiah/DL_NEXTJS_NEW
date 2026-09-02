@@ -1,14 +1,14 @@
-# Decision index — D1 … D77
+# Decision index — D1 … D78
 
-**Created:** 2026-08-30 · **Covers:** every numbered decision in both logs · **last updated 2026-09-01 (D77)**
+**Created:** 2026-08-30 · **Covers:** every numbered decision in both logs · **last updated 2026-09-01 (D78)**
 **Source of truth for STATUS.** The two logs remain the source of truth for *content*.
 
-There are 77 decisions across two append-only logs that share one number sequence:
+There are 78 decisions across two append-only logs that share one number sequence:
 
 | Log | Holds |
 |---|---|
 | [`docs/content-style-decisions.md`](content-style-decisions.md) | D1–D50 — voice, vocabulary, positioning, copy |
-| [`.interface-design/system.md`](../.interface-design/system.md) | D33–D77 — chrome, type, colour, controls, guards |
+| [`.interface-design/system.md`](../.interface-design/system.md) | D33–D78 — chrome, type, colour, controls, guards |
 
 Decisions with both a content and a visual consequence appear in both. Neither log
 records status: to answer *"is D26 still true?"* you previously had to read every later
@@ -111,6 +111,7 @@ Everything here applies to new work.
 | D75 | `.badge` retired at the definition — component, 5 imports, 8 rule blocks | Live · tail of D70/D71 | — |
 | D76 | Gilt leads the conversion section; the D52 reservation retired; gold is never text | Live · supersedes **D52**, amends **D68** | `check-gilt-escrow` |
 | D77 | D57 finished — the eyebrows declared in `content/`, invisible to D71 | Live · corrects **D71** triage | `npm run conformance` |
+| D78 | The inline-style ratchet — colour/type set by hand, counted and ratcheted down | Live | `check-inline-style` |
 
 ### Type & payload
 
