@@ -1,14 +1,14 @@
-# Decision index — D1 … D80
+# Decision index — D1 … D81
 
-**Created:** 2026-08-30 · **Covers:** every numbered decision in both logs · **last updated 2026-09-01 (D80)**
+**Created:** 2026-08-30 · **Covers:** every numbered decision in both logs · **last updated 2026-09-01 (D81)**
 **Source of truth for STATUS.** The two logs remain the source of truth for *content*.
 
-There are 80 decisions across two append-only logs that share one number sequence:
+There are 81 decisions across two append-only logs that share one number sequence:
 
 | Log | Holds |
 |---|---|
 | [`docs/content-style-decisions.md`](content-style-decisions.md) | D1–D50 — voice, vocabulary, positioning, copy |
-| [`.interface-design/system.md`](../.interface-design/system.md) | D33–D80 — chrome, type, colour, controls, guards |
+| [`.interface-design/system.md`](../.interface-design/system.md) | D33–D81 — chrome, type, colour, controls, guards |
 
 Decisions with both a content and a visual consequence appear in both. Neither log
 records status: to answer *"is D26 still true?"* you previously had to read every later
@@ -114,6 +114,7 @@ Everything here applies to new work.
 | D78 | The inline-style ratchet — colour/type set by hand, counted and ratcheted down | Live | `check-inline-style` |
 | D79 | Skip link off gilt · tagline exempted from caps · `btn-do-charter` folded into `primary` | Live · closes D76 open items | `check-gilt-escrow` |
 | D80 | The mobile drawer was never actually inert — `inert=""` read as false | Live | — ⚠️ no guard reads console warnings |
+| D81 | Hero scrims extracted — `.hero-scrim` · `.hero-vignette` · `.band-scrim` | Live · step C of the C→A opacity ruling | `check-inline-style` |
 
 ### Type & payload
 

@@ -554,8 +554,8 @@ function PartnersContent({ c, locale }) {
           aria-hidden="true"
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 55%', display: 'block' }}
         />
-        <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(108deg, rgba(14,14,18,0.97) 0%, rgba(14,14,18,0.93) 32%, rgba(14,14,18,0.70) 58%, rgba(14,14,18,0.30) 100%)' }} />
-        <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(14,14,18,0.90) 0%, transparent 32%)' }} />
+        <div aria-hidden="true" className="hero-scrim" />
+        <div aria-hidden="true" className="hero-vignette" />
         <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 55% 50% at 15% 62%, rgba(183,181,254,0.10) 0%, transparent 65%)' }} />
         <div aria-hidden="true" style={{ position: 'absolute', bottom: '-40px', right: '-40px', fontSize: '320px', fontWeight: 700, color: '#b7b5fe', opacity: 0.028, lineHeight: 1, letterSpacing: '-0.04em', userSelect: 'none', pointerEvents: 'none', fontFamily: 'var(--font-latin)' }}>
           PARTNER

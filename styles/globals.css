@@ -1123,6 +1123,66 @@
     color: var(--color-lavender-signal);
   }
 
+  /* ── Hero scrims (D81) ───────────────────────────────────────
+     The dark wash that makes hero text legible over a photograph.
+
+     This was 24 inline `linear-gradient` declarations before D81, and it
+     read like an opacity problem: `rgba(14,14,18,α)` at 22 distinct alpha
+     steps, .28 through .98. It is not. It is TWO COMPOSITIONS used as a
+     pair on nine heroes, plus a mid-page variant used three times — and
+     three hand-tuned near-copies that had drifted from the canonical
+     values with nothing on the page to say which was right.
+
+     Extracting them first was deliberate: defining an alpha scale while
+     these were still inline would have enshrined .97 and .98 as palette
+     steps when they are gradient stops in one composed effect.
+
+     Each class carries its own positioning, so the call site is just
+     `<div aria-hidden="true" className="hero-scrim" />` and no inline
+     style survives. Always aria-hidden — they are pure decoration and
+     must not reach the accessibility tree.
+
+     ⚠️ The per-page RADIAL accent that usually sits alongside these
+     (teal on /compare, lavender on /partners, amber on /results) is
+     deliberately NOT here. It is tuned per photograph and is the one part
+     of the treatment that legitimately differs per page. */
+  .hero-scrim,
+  .hero-vignette,
+  .band-scrim {
+    position: absolute;
+    inset: 0;
+  }
+
+  /* Primary directional wash. Dense at the text edge, clearing to nearly
+     transparent at the far side so the photograph still reads. */
+  .hero-scrim {
+    background: linear-gradient(
+      108deg,
+      rgba(14, 14, 18, 0.98) 0%,
+      rgba(14, 14, 18, 0.97) 35%,
+      rgba(14, 14, 18, 0.80) 58%,
+      rgba(14, 14, 18, 0.28) 100%
+    );
+  }
+
+  /* Bottom vignette. Pairs with .hero-scrim on every hero that uses it —
+     the two are one treatment and were always adjacent in the markup. */
+  .hero-vignette {
+    background: linear-gradient(to top, rgba(14, 14, 18, 0.88) 0%, transparent 28%);
+  }
+
+  /* The mid-page band variant — shallower angle, three stops, no vignette.
+     Used on /consult, /demos and /program below the fold. A genuinely
+     different composition, not drift, so it keeps its own name. */
+  .band-scrim {
+    background: linear-gradient(
+      105deg,
+      rgba(14, 14, 18, 0.97) 0%,
+      rgba(14, 14, 18, 0.90) 45%,
+      rgba(14, 14, 18, 0.55) 100%
+    );
+  }
+
   /* ── Proof strip ── */
   .proof-strip {
     background-color: var(--color-deep-void);

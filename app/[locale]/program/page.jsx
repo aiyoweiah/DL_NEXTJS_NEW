@@ -149,24 +149,10 @@ function Hero({ locale, c }) {
       />
 
       {/* Primary directional overlay — left text zone heavily darkened, right opens to show ship */}
-      <div
-        aria-hidden="true"
-        style={{
-          position:   'absolute',
-          inset:      0,
-          background: 'linear-gradient(108deg, rgba(14,14,18,0.98) 0%, rgba(14,14,18,0.97) 35%, rgba(14,14,18,0.80) 58%, rgba(14,14,18,0.28) 100%)',
-        }}
-      />
+      <div aria-hidden="true" className="hero-scrim" />
 
       {/* Bottom vignette — anchors stat rail transition */}
-      <div
-        aria-hidden="true"
-        style={{
-          position:   'absolute',
-          inset:      0,
-          background: 'linear-gradient(to top, rgba(14,14,18,0.88) 0%, transparent 28%)',
-        }}
-      />
+      <div aria-hidden="true" className="hero-vignette" />
 
       {/* Teal accent radial — echoes illustration's harbour tones */}
       <div
@@ -601,7 +587,7 @@ function SessionSection({ locale, c }) {
     <section aria-labelledby="session-heading" style={{ position: 'relative', overflow: 'hidden', minHeight: '500px' }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={SESSION_IMG} alt="" aria-hidden="true" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-      <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(105deg, rgba(14,14,18,0.97) 0%, rgba(14,14,18,0.90) 45%, rgba(14,14,18,0.55) 100%)' }} />
+      <div aria-hidden="true" className="band-scrim" />
 
       <div className="container-section relative z-10" style={{ padding: 'var(--section-md) 1.25rem' }}>
         <div style={{ maxWidth: '40rem' }}>

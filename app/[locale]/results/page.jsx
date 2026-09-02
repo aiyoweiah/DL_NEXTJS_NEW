@@ -96,24 +96,10 @@ export default async function ResultsPage({ params }) {
         />
 
         {/* Primary directional overlay */}
-        <div
-          aria-hidden="true"
-          style={{
-            position:   'absolute',
-            inset:      0,
-            background: 'linear-gradient(108deg, rgba(14,14,18,0.98) 0%, rgba(14,14,18,0.97) 35%, rgba(14,14,18,0.80) 58%, rgba(14,14,18,0.28) 100%)',
-          }}
-        />
+        <div aria-hidden="true" className="hero-scrim" />
 
         {/* Bottom vignette */}
-        <div
-          aria-hidden="true"
-          style={{
-            position:   'absolute',
-            inset:      0,
-            background: 'linear-gradient(to top, rgba(14,14,18,0.88) 0%, transparent 28%)',
-          }}
-        />
+        <div aria-hidden="true" className="hero-vignette" />
 
         {/* Warm amber radial accent — echoes the doorstep lamp glow */}
         <div

@@ -79,24 +79,10 @@ function Hero({ locale, c }) {
       />
 
       {/* Primary directional overlay */}
-      <div
-        aria-hidden="true"
-        style={{
-          position:   'absolute',
-          inset:      0,
-          background: 'linear-gradient(108deg, rgba(14,14,18,0.98) 0%, rgba(14,14,18,0.97) 35%, rgba(14,14,18,0.80) 58%, rgba(14,14,18,0.28) 100%)',
-        }}
-      />
+      <div aria-hidden="true" className="hero-scrim" />
 
       {/* Bottom vignette */}
-      <div
-        aria-hidden="true"
-        style={{
-          position:   'absolute',
-          inset:      0,
-          background: 'linear-gradient(to top, rgba(14,14,18,0.88) 0%, transparent 28%)',
-        }}
-      />
+      <div aria-hidden="true" className="hero-vignette" />
 
       {/* Warm amber radial — echoes the harbour sunset */}
       <div
@@ -199,7 +185,7 @@ function RealCall({ locale, c }) {
     <section className="on-dark" aria-labelledby="call-heading" style={{ position: 'relative', overflow: 'hidden', minHeight: '480px' }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={CALL_IMG} alt="" aria-hidden="true" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-      <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(105deg, rgba(14,14,18,0.97) 0%, rgba(14,14,18,0.90) 45%, rgba(14,14,18,0.55) 100%)' }} />
+      <div aria-hidden="true" className="band-scrim" />
       <div className="container-section relative z-10" style={{ padding: 'var(--section-md) 1.25rem' }}>
         <div style={{ maxWidth: '40rem' }}>
           <div className="inline-flex items-center gap-2.5 mb-7">
