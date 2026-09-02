@@ -3,7 +3,7 @@
 **Authored:** 2026-05-17 (end of session)
 **Last updated:** 2026-09-01 — **The cohesion architecture is finished (D73–D78, guide v6.32).** Every numbered proposal in [`architecture-cohesion-proposal.md`](architecture-cohesion-proposal.md) §3 is built. Eleven guards now run on a build.
 
-**Start here, in this order:** [`decision-index.md`](decision-index.md) for what is still true (D1–D78, with the guard enforcing each), then [`architecture-cohesion-proposal.md`](architecture-cohesion-proposal.md) before touching anything, then this file.
+**Start here, in this order:** [`completion-plan.md`](completion-plan.md) for what to do next and in what order, [`decision-index.md`](decision-index.md) for what is still true (D1–D78, with the guard enforcing each), then [`architecture-cohesion-proposal.md`](architecture-cohesion-proposal.md) before touching anything, then this file.
 
 What landed on 2026-09-01:
 
