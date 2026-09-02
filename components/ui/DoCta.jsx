@@ -14,7 +14,7 @@
 // Hierarchy (option B — no fills anywhere). Weight and label colour carry it:
 //   (default)  secondary — regular weight, accent label
 //   primary    bold, ink label
-//   charter    bold, gilt label — Charter Enrolment only
+//   (charter   removed by D79 — it painted identically to primary)
 //
 // Marks are decorative and invisible to assistive tech by construction:
 // CSS pseudo-elements are not in the accessibility tree, so the label is
@@ -25,17 +25,17 @@
 //
 // Props:
 //   as       element or component — default 'a' (pass Link for routing)
-//   tone     'secondary' | 'primary' | 'charter' — default 'secondary'
+//   tone     'secondary' | 'primary' — default 'secondary'
 //   className, children, ...rest
 
 const TONE = {
   secondary: '',
   primary:   'btn-do-primary',
-  charter:   'btn-do-charter',
+
 }
 
 /**
- * @param {{ as?: any, tone?: 'secondary'|'primary'|'charter', className?: string, children?: any } & Record<string, any>} props
+ * @param {{ as?: any, tone?: 'secondary'|'primary', className?: string, children?: any } & Record<string, any>} props
  */
 export default function DoCta({
   as: Tag = 'a',

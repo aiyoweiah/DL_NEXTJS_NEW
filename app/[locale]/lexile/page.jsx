@@ -315,7 +315,7 @@ export default async function LexilePage({ params }) {
             {t.cta.body}
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button as={Link} variant="charter" href={`/${locale}/consult`}>
+            <Button as={Link} variant="primary" href={`/${locale}/consult`}>
               {t.cta.ctaPrimary}
             </Button>
             <Button as={Link} variant="ghost" href={`/${locale}/methodology`}>

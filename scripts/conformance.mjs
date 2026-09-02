@@ -167,7 +167,7 @@ for (const f of files) {
     if (!(el.tag === 'a' || el.tag === 'button')) return
     const cls = classList(el)
     if (cls.includes('btn-do-fork')) return
-    if (!cls.includes('btn-do-primary') && !cls.includes('btn-do-charter')) return
+    if (!cls.includes('btn-do-primary')) return   // btn-do-charter folded in by D79
     const s = closest(el, (n) => SEC.has(n.tag)) || root
     bySec.set(s, (bySec.get(s) || 0) + 1)
   })

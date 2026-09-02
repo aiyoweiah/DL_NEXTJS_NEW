@@ -144,7 +144,7 @@ function Hero({ locale, c }) {
         }}
       >
         <div style={{ maxWidth: '46rem' }}>
-          <Eyebrow dark mb="1.75rem">{c.hero.chip}</Eyebrow>
+          <Eyebrow dark sentence mb="1.75rem">{c.hero.chip}</Eyebrow>
           <h1
             id="demos-hero-heading"
             style={{ fontSize: 'clamp(2.25rem, 5vw + 0.5rem, 4rem)', fontWeight: 700, lineHeight: 1.06, letterSpacing: '-0.03em', color: '#F0F0F0', marginBottom: '0.625rem', textWrap: 'balance' }}

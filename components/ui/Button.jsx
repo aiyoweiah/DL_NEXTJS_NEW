@@ -5,7 +5,7 @@
 //   solid    — general CTAs on LIGHT surfaces. Uses .btn-solid (deep lavender).
 //              Filled buttons are surface-specific: lavender/gilt fills are
 //              1.75:1 and 1.47:1 against Whisper, so the pill has no edge.
-//   charter  — enrollment/conversion only. Uses .btn-charter (Gilt #F5C842).
+//   fork     — two co-equal controls in one section (D76). Adds .btn-do-fork.
 //              Never label with discount language — see §8 of handoff.
 //   ghost    — secondary/outline CTA. Uses .btn-ghost.
 //
@@ -13,7 +13,7 @@
 // for anchor/Link usage (e.g. when href is needed).
 //
 // Props:
-//   variant   'primary' | 'solid' | 'charter' | 'ghost' | 'outline'  — default: 'primary'
+//   variant   'primary' | 'solid' | 'fork' | 'ghost' | 'outline'  — default: 'primary'
 //             Secondaries are surface-specific: ghost on DARK, outline on LIGHT.
 //             btn-ghost is #b7b5fe — 1.75:1 on Whisper, unusable on light.
 //   as        element or component              — default: 'button'
@@ -27,20 +27,24 @@ const VARIANT_CLASSES = {
     primary: 'btn btn-do btn-do-primary',
     solid:   'btn btn-do btn-do-primary',
 
-    // ⚠️ This comment used to read "RESERVED … Unused today because the site
-    // has no enrolment CTA yet". That was false, and it was one of FIVE places
-    // asserting it. `/lexile`, `/methodology` and `/results` have passed
-    // variant="charter" since 2026-03-19 — six rendered controls, EN + ZH.
-    // For five months before D68 the label was #C49400: 2.56:1 on Whisper,
-    // failing AA text and the 3:1 non-text floor, live on three conversion
-    // pages. It was invisible to every sweep because a variant MAP is not
-    // markup, and every sweep read markup.
+    // ⚠️ `charter` WAS a variant here and is gone (D79). Do not add it back
+    // without reading why it went.
     //
-    // Today `charter` is a synonym for `primary` — same gilt swash, same label
-    // colour. It is kept as a distinct name only so the three call sites keep
-    // working; if no true enrolment CTA ever needs its own treatment, fold it
-    // into `primary` and delete the class.
-    charter: 'btn btn-do btn-do-charter',
+    // It was described as reserved-and-unused in FIVE separate places while
+    // `/lexile`, `/methodology` and `/results` had been passing it since
+    // 2026-03-19 — six rendered controls, EN + ZH. For five months before D68
+    // its label was #C49400: 2.56:1 on Whisper, failing AA text AND the 3:1
+    // non-text floor, live on three conversion pages. Every sweep missed it
+    // because a variant map is not markup, and every sweep read markup.
+    //
+    // D76 then gave the gilt swash to every section lead, which made `charter`
+    // and `primary` paint identically. D79 folded it in: the three call sites
+    // now say `primary`, which is what they always meant — all three point at
+    // /consult, a consultation, so the class reserved for "Charter Enrolment"
+    // was never once used for enrolment.
+    //
+    // If a real enrolment CTA ever needs its own treatment, give it a name
+    // that describes what it does and a guard that proves it is used.
 
     // A section whose two controls are co-equal is a FORK, not a close, so it
     // has no lead and takes no gold (D76). Pair with `primary`.

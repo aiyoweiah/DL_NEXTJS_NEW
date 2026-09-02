@@ -72,7 +72,12 @@ const CONTROL = /<(Link|a|button)\b((?:[^<>]|\{[^{}]*\}|\{\{[^{}]*\}\})*?)>/gs
 // The classes that carry the sanctioned gilt swash (D76). A control wearing
 // one of these is a LEAD, and is checked for the one-per-section rule rather
 // than treated as an escape.
-const LEAD_CLASSES = ['btn-do-primary', 'btn-do-charter']
+// `btn-do-charter` was the second entry here and is gone (D79). It painted
+// identically to primary after D76, and all three of its call sites pointed at
+// /consult — so the class reserved for "Charter Enrolment" was never once used
+// for enrolment. Folded in rather than kept: a reserved name nobody can see in
+// use is exactly what went unnoticed for five months.
+const LEAD_CLASSES = ['btn-do-primary']
 
 // The opt-out. A section where two controls are genuinely co-equal — an
 // age-band fork, not a conversion close — has no lead, so it takes no gilt.
@@ -82,27 +87,15 @@ const FORK_CLASS = 'btn-do-fork'
 // An entry takes `file` (source pass) or `class` (build pass), and MUST carry
 // a reason AND the condition that retires it. An allowlist without those is
 // just a slower way of losing the rule.
-const ALLOWED = [
-  {
-    class: 'skip-link',
-    // Found by the build pass on its first run (D73). Invisible to the source
-    // pass by construction: the JSX says only `className="skip-link"` and the
-    // gilt lives in globals.css.
-    //
-    // Survives D76 unchanged. D76 is about which CONVERSION control leads; the
-    // skip link is a WCAG 2.4.1 bypass affordance that renders only on keyboard
-    // focus, so it spends the signal in front of approximately no prospective
-    // parent, and gilt on Void Black is 12.13:1 — a real argument for a focus
-    // target that has to be unmissable.
-    //
-    // RETIRES WHEN: the owner rules on it. Either (a) confirm the exception and
-    // record it in D76 as a stated carve-out for a11y affordances, at which
-    // point this entry cites that instead of arguing the case, or (b) restyle
-    // the skip link — --color-lavender-signal is the natural alternative, as it
-    // was for the D68 chips — and delete this entry.
-    reason: 'WCAG bypass link, focus-only, not a conversion control — pending owner ruling',
-  },
-]
+// EMPTY, and that is the point. It held one entry — `.skip-link`, found by the
+// build pass on its first run (D73) painting gilt on all 114 routes. The owner
+// ruled on 2026-09-01 (D79): restyle rather than carve out. Both colours clear
+// AAA on Void Black, so the accessibility argument never required gold.
+//
+// It was empty once before, after D68, and D73 refilled it within a day. If a
+// third entry ever lands here, the honest reading is that the rule has an
+// exception class nobody has named yet — not that this one is special.
+const ALLOWED = []
 
 function walk(dir, out = []) {
   if (!fs.existsSync(dir)) return out

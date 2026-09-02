@@ -193,7 +193,7 @@ function Hero({ locale, c }) {
         <div style={{ maxWidth: '46rem' }}>
           {/* Tagline chip + Little DODO age-band chip */}
           <div className="flex flex-wrap items-center gap-2 mb-7">
-            <Eyebrow dark mb={0}>{c.hero.chip}</Eyebrow>
+            <Eyebrow dark sentence mb={0}>{c.hero.chip}</Eyebrow>
             {c.hero.kidsChip && (
               <Link
                 href={`/${locale}/little-dodo`}

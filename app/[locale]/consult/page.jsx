@@ -121,7 +121,7 @@ function Hero({ locale, c }) {
         }}
       >
         <div style={{ maxWidth: '46rem' }}>
-          <Eyebrow dark mb="1.75rem">{c.hero.chip}</Eyebrow>
+          <Eyebrow dark sentence mb="1.75rem">{c.hero.chip}</Eyebrow>
 
           <h1
             id="consult-hero-heading"

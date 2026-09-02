@@ -36,6 +36,12 @@ export default function Eyebrow({
   children,
   dark      = false,
   center    = false,
+  // The D36 tagline only (D79). `.eyebrow` uppercases; the tagline is locked
+  // in sentence case with a terminal full stop, which uppercase destroys.
+  // Do NOT reach for this to make an ordinary label look softer — the label
+  // style is caps by design, and a second casing in general use would put the
+  // system back where D57 found it.
+  sentence  = false,
   mb        = '1rem',
   className = '',
   style     = undefined,
@@ -47,7 +53,7 @@ export default function Eyebrow({
 }) {
   return (
     <Tag
-      className={`eyebrow label-quote ${className}`.trim()}
+      className={`eyebrow label-quote${sentence ? ' sentence-case' : ''} ${className}`.trim()}
       style={{
         color:          dark   ? 'var(--color-lavender-signal)' : undefined,
         justifyContent: center ? 'center' : undefined,

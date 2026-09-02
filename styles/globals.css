@@ -452,7 +452,13 @@
     top: -100%;
     left: 1rem;
     z-index: 999;
-    background: var(--color-gilt);
+    /* Lavender-signal, not gilt (D79). The skip link was the last gilt control
+       on the site and the last entry in check-gilt-escrow's allowlist. Both
+       clear AAA on Void Black — gilt 12.13:1, lavender 10.14:1 — so the
+       accessibility case never depended on gold, and keeping it there would
+       have put an asterisk on "gilt means one thing" for a control almost
+       nobody sees. Same destination D68 sent the hero chips to. */
+    background: var(--color-lavender-signal);
     color: var(--color-void-black);
     font-weight: 700;
     font-size: 0.875rem;
@@ -723,7 +729,6 @@
      OPTION B — no fills anywhere. Weight and colour carry the hierarchy:
        .btn-do              secondary — regular weight, accent label
        .btn-do-primary      primary   — bold, ink label
-       .btn-do-charter      enrolment — bold, gilt label
      Gilt moved from a fill to the label so the Charter signal survives
      option B's removal of every filled pill.
 
@@ -777,7 +782,6 @@
      five months while five separate comments called it unused. Gold rides
      UNDER the label now, where it is decorative and cannot fail. */
   .btn-do-primary { font-weight: 700; color: var(--text-body-dark); }
-  .btn-do-charter { font-weight: 700; color: var(--text-body-dark); }
 
   /* ── The highlighter swash (D55 · v6.11, widened by D56 · v6.12) ──
      A marker stroke behind the LOWER PORTION OF THE LABEL ONLY — not a
@@ -794,7 +798,6 @@
        .btn-do          pale  #b7b5fe @26%  — label 4.67:1 light / 5.86:1 dark
        .btn-do-fork     deep  #7c79e8 @30%  — label 9.97:1 light / 11.27:1 dark
        .btn-do-primary  gilt  #F5C842 @30%  — the LEAD of its section (D76)
-       .btn-do-charter  gilt  #F5C842 @30%  — same, via the primary rule
 
      ⛔ The secondary may NOT take the deep ink. Its label is lavender
      #5856cc at only 5.36:1 bare, so a deep-lavender wash drops it to
@@ -850,8 +853,7 @@
 
   /* The LEAD presses harder, and in gold (D76). Same hand, different ink.
      Equal specificity to the rule above, so this must stay BELOW it. */
-  .btn-do-primary,
-  .btn-do-charter {
+  .btn-do-primary {
     background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 14' preserveAspectRatio='none'><path fill='%23F5C842' fill-opacity='.30' fill-rule='evenodd' d='M1.6 6.4 C 2.2 4.1, 4 3.1, 7 2.9 C 30 2.2, 62 1.9, 96 2 C 120 2.05, 142 2.3, 151 2.6 C 155.6 2.75, 158.8 4.2, 158.9 6.6 C 159 9.2, 157 11.1, 153 11.6 C 138 12.5, 104 12.9, 74 12.8 C 48 12.7, 22 12.5, 9 12.1 C 4.4 11.95, 1.1 10.3, 1.6 6.4 Z M22 5.4 C 56 4.6, 100 4.5, 138 5 C 100 5.9, 56 6, 22 5.4 Z'/></svg>");
   }
 
@@ -886,13 +888,6 @@
   .section-darker .btn-do-primary,
   .section-hero-short .btn-do-primary,
   .on-dark .btn-do-primary { color: var(--text-inverse); }
-
-  /* Charter follows the primary onto dark ground. It used to take
-     `--text-gilt-dark` here — a gilt LABEL, retired by D76. */
-  .section-dark .btn-do-charter,
-  .section-darker .btn-do-charter,
-  .section-hero-short .btn-do-charter,
-  .on-dark .btn-do-charter { color: var(--text-inverse); }
 
   .section-dark .btn-do:hover,
   .section-darker .btn-do:hover,
@@ -1336,6 +1331,29 @@
   :lang(zh) .eyebrow,
   .eyebrow:lang(zh) {
     letter-spacing: 0.06em;
+  }
+
+  /* ── The tagline exemption (D79) ──────────────────────────────
+     D36 locked the tagline as an exact string in sentence case with a
+     terminal full stop: "Think once, in two languages." `.eyebrow`
+     uppercases, so every surface rendering it as a label was shouting a
+     sentence and eating its punctuation — the full stop is what uppercase
+     damages most, because "THINK ONCE, IN TWO LANGUAGES." stops reading as
+     a sentence at all.
+
+     Scoped to the tagline rather than dropping `text-transform` from
+     `.eyebrow` sitewide: that would move 390 elements and re-open the
+     tracking question, since 0.12em is tuned for caps. Five sites carry it —
+     the /program, /consult and /demos hero chips through `Eyebrow sentence`,
+     plus the navbar mobile menu and the footer, which are hand-rolled and
+     simply drop their `uppercase` class.
+
+     ZH is unaffected either way: `text-transform` does nothing to CJK, so
+     语言的根，长在阅读里 has always rendered as written. That asymmetry is
+     itself the argument that the casing was presentational, not canonical. */
+  .eyebrow.sentence-case {
+    text-transform: none;
+    letter-spacing: 0.02em;
   }
 
   /* ── The taxonomy run (D70) ──────────────────────────────────

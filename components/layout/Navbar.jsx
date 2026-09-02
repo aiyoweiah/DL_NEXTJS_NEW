@@ -558,7 +558,7 @@ export default function Navbar({ locale, copy }) {
           </div>
 
           <p
-            className="mt-6 text-xs font-medium tracking-widest uppercase text-center"
+            className="mt-6 text-xs font-medium tracking-wide text-center"
             style={{ color: 'rgba(183,181,254,0.4)' }}
           >
             {copy.tagline}

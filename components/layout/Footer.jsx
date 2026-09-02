@@ -166,7 +166,7 @@ export default function Footer({ locale, copy }) {
               </p>
 
               <p
-                className="text-xs font-semibold uppercase tracking-widest mb-5"
+                className="text-xs font-semibold tracking-wide mb-5"
                 style={{ color: 'var(--label-color)' }}
               >
                 {copy.brand.tagline}

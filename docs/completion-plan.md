@@ -15,8 +15,8 @@ Numbers come from `npm run conformance` and the baselines; re-run before quoting
 ## The dependency graph, in one place
 
 ```
-WAVE 0  four decisions ───────────────┬──> unblocks 1 (partly), 2, 5
-        (you · ~30 min, no code)      │
+WAVE 0  four decisions ✅ CLOSED ─────┬──> unblocked 1, 2, 5
+        (D79, 2026-09-01)             │
                                       │
 WAVE 1  inline-style migration ───────┴──> unblocks WAVE 3
         957 → target (incremental)
@@ -32,15 +32,14 @@ WAVE 6  admin unblocks    (you only · gates every Tier-2 SEO item)
 WAVE 7  operational loose ends
 ```
 
-**If you do one thing:** Wave 0. Four one-line answers that unblock three other waves.
-**If you do two:** start Wave 1 at `/about`.
+**Wave 0 is closed.** The next move is **Wave 1, starting at `/about` (58)**.
 **Highest business value, independent of all of it:** Wave 5.
 
 ---
 
-## Wave 0 · Decisions — no code, unblocks the rest
+## Wave 0 · Decisions — ✅ CLOSED 2026-09-01 (D79)
 
-Each is a single call. None needs research; the analysis is already written up.
+All four were called on 2026-09-01. 0.1 → restyle · 0.2 → exempt the tagline only · 0.3 → fold charter in · 0.4 → delete. Shipped as D79 and the /compare placeholder removal. The gilt allowlist is now empty. Kept below for provenance.
 
 | # | Decision | Options | Owner |
 |---|---|---|---|

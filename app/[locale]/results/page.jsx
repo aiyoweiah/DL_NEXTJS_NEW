@@ -437,7 +437,7 @@ export default async function ResultsPage({ params }) {
             {t.foundingFamily.body}
           </p>
 
-          <Button as={Link} variant="charter" href={`/${locale}/consult`}>
+          <Button as={Link} variant="primary" href={`/${locale}/consult`}>
             {t.foundingFamily.cta}
           </Button>
 

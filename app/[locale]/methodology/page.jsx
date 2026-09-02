@@ -420,7 +420,7 @@ export default async function MethodologyPage({ params }) {
             {t.cta.body}
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button as={Link} variant="charter" href={`/${locale}/consult`}>
+            <Button as={Link} variant="primary" href={`/${locale}/consult`}>
               {t.cta.ctaPrimary}
             </Button>
             <DoCta as={Link} href={`/${locale}/program`}>
