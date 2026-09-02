@@ -91,6 +91,47 @@
      conversion pages, in both locales, for about five months. D68 read as a
      pre-emptive fix and was actually an unwitting repair. */
 
+  /* ── The alpha scales (D82) ──────────────────────────────────
+     Three colours were being used at 51 distinct alpha values. Nobody
+     chose 51. These are the collapsed steps, and they are deliberately
+     THREE SCALES, not one ramp applied three times — the families do
+     different jobs, so a shared ramp would have handed platinum steps
+     that fail contrast.
+
+     ⚠️ A scale may legitimately carry a step with no current call site;
+     a gap in a ramp is worse than an unused rung. That is the one place
+     this system tolerates "defined but unused" — unlike a one-off class
+     such as `.btn-do-charter`, which claimed to be reserved and was not.
+
+     PLATINUM — body text on dark grounds. All 89 uses are `color:`.
+     The floor is real: measured over Void Black, Deep Void and Midnight,
+     AA (4.5:1) holds on EVERY dark ground only from .60. Nothing below
+     that is a step; it is a defect. Do not add one. */
+  --platinum-60:  rgba(240,240,240,0.60);   /* 6.49 / 5.67 / 4.86 — AA everywhere */
+  --platinum-70:  rgba(240,240,240,0.70);   /* 8.51 / 7.16 / 6.00 */
+  --platinum-80:  rgba(240,240,240,0.80);   /* 10.91 / 8.88 / 7.29 — AAA everywhere */
+  --platinum-90:  rgba(240,240,240,0.90);   /* 13.71 / 10.98 / 8.97 */
+
+  /* LAVENDER — decoration: borders, glows, rules, faint grounds. No
+     contrast floor applies, so this rounds freely.
+     ⚠️ 66 uses are currently `color:` and 59 of those fail AA. Lavender
+     as TEXT on dark should use `--text-accent-dark` (the solid signal,
+     10.14:1), not a step from this scale. These steps are not for text. */
+  --lavender-08:  rgba(183,181,254,0.08);
+  --lavender-15:  rgba(183,181,254,0.15);
+  --lavender-25:  rgba(183,181,254,0.25);
+  --lavender-40:  rgba(183,181,254,0.40);
+  --lavender-60:  rgba(183,181,254,0.60);
+  --lavender-80:  rgba(183,181,254,0.80);
+
+  /* INK — void black as a tint on LIGHT grounds: hairline borders,
+     dividers, faint fills. What survived D81, which took the whole high
+     end away with the hero scrims. */
+  --ink-08:       rgba(14,14,18,0.08);
+  --ink-15:       rgba(14,14,18,0.15);
+  --ink-30:       rgba(14,14,18,0.30);
+  --ink-45:       rgba(14,14,18,0.45);
+
   /* ── Border tokens ── */
   --border-light:          rgba(14,14,18,0.1);
   --border-medium:         rgba(14,14,18,0.18);

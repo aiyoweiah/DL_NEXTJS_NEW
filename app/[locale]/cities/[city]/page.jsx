@@ -178,7 +178,7 @@ export default async function CityPage({ params }) {
           <div className="max-w-2xl mb-14">
             <p className="eyebrow mb-4 label-quote">{ui.loopEyebrow}</p>
             <h2 className="mb-5">{ui.loopHeading}</h2>
-            <p className="text-lg leading-relaxed" style={{ color: '#94A3B8' }}>
+            <p className="text-lg leading-relaxed" style={{ color: 'var(--text-muted-dark)' }}>
               {ui.loopBody}
             </p>
           </div>
@@ -209,7 +209,7 @@ export default async function CityPage({ params }) {
                 >
                   {step.label}
                 </p>
-                <p className="text-sm leading-relaxed" style={{ color: '#94A3B8' }}>
+                <p className="text-sm leading-relaxed" style={{ color: 'var(--text-muted-dark)' }}>
                   {step.body}
                 </p>
               </div>
@@ -273,7 +273,7 @@ export default async function CityPage({ params }) {
               {ui.charterEyebrow}
             </p>
             <h2 className="mb-5">{ui.charterHeading}</h2>
-            <p className="text-lg leading-relaxed mb-4" style={{ color: '#94A3B8' }}>
+            <p className="text-lg leading-relaxed mb-4" style={{ color: 'var(--text-muted-dark)' }}>
               {ui.charterBody}
             </p>
             <p className="text-sm" style={{ color: 'rgba(183,181,254,0.45)' }}>

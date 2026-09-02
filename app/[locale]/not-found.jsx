@@ -53,7 +53,7 @@ export default function LocaleNotFound() {
           {c.heading}
         </h1>
 
-        <p className="text-base leading-relaxed mb-10" style={{ color: '#94A3B8' }}>
+        <p className="text-base leading-relaxed mb-10" style={{ color: 'var(--text-muted-dark)' }}>
           {c.body}
         </p>
 

@@ -149,7 +149,7 @@ export default async function ComparePage({ params }) {
             <div key={title} className="px-0 md:px-8" style={i > 0 ? { borderLeft: '1px solid rgba(183,181,254,0.2)' } : undefined}>
               <div className="mb-4" style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '13px', fontStyle: 'italic', color: 'rgba(240,240,240,0.45)' }}>{question}</div>
               <h3 className="mb-3" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: '22px', color: '#b7b5fe' }}>{title}</h3>
-              <p style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '15px', color: 'rgba(240,240,240,0.70)', lineHeight: 1.6 }}>{body}</p>
+              <p style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '15px', color: 'var(--platinum-70)', lineHeight: 1.6 }}>{body}</p>
             </div>
           ))}
         </div>
@@ -176,11 +176,11 @@ export default async function ComparePage({ params }) {
           <div className="text-center mb-12">
             <Eyebrow dark center>{c.s5.eyebrow}</Eyebrow>
             <h2 className="max-w-[640px] mx-auto mb-4" style={{ fontFamily: 'var(--font-latin)', fontWeight: 600, fontSize: 'clamp(22px, 3vw, 34px)', color: '#F0F0F0', lineHeight: 1.3, letterSpacing: '-0.02em' }}>{c.s5.h2}</h2>
-            <p className="max-w-[500px] mx-auto" style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '15px', color: 'rgba(240,240,240,0.60)', lineHeight: 1.6 }}>{c.s5.sub}</p>
+            <p className="max-w-[500px] mx-auto" style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '15px', color: 'var(--platinum-60)', lineHeight: 1.6 }}>{c.s5.sub}</p>
           </div>
           <figure className="max-w-[800px] mx-auto rounded-2xl overflow-hidden" style={{ aspectRatio: '16 / 9', backgroundColor: '#2E3848', border: '1px solid rgba(183,181,254,0.12)', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <div className="flex flex-col items-center gap-4" style={{ pointerEvents: 'none' }}>
-              <div className="flex items-center justify-center rounded-full" style={{ width: '72px', height: '72px', backgroundColor: 'rgba(183,181,254,0.15)', border: '1.5px solid rgba(183,181,254,0.3)' }}>
+              <div className="flex items-center justify-center rounded-full" style={{ width: '72px', height: '72px', backgroundColor: 'var(--lavender-15)', border: '1.5px solid rgba(183,181,254,0.3)' }}>
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="#b7b5fe" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3" /></svg>
               </div>
               <div style={{ textAlign: 'center' }}>
@@ -226,7 +226,7 @@ export default async function ComparePage({ params }) {
             <div key={num} className="px-0 md:px-8" style={i > 0 ? { borderLeft: '1px solid rgba(183,181,254,0.2)' } : undefined}>
               <div className="mb-3" style={{ fontFamily: 'var(--font-latin)', fontWeight: 300, fontSize: '11px', color: 'rgba(183,181,254,0.40)' }}>{num}</div>
               <h3 className="mb-3" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: '20px', color: '#b7b5fe' }}>{title}</h3>
-              <p style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '15px', color: 'rgba(240,240,240,0.70)', lineHeight: 1.6 }}>{body}</p>
+              <p style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '15px', color: 'var(--platinum-70)', lineHeight: 1.6 }}>{body}</p>
             </div>
           ))}
         </div>

@@ -163,7 +163,7 @@ function AccordionItem({ question, answer, open, onToggle, id }) {
       <div id={`ap-${id}`} role="region" aria-labelledby={`ab-${id}`}
         style={{ overflow: 'hidden', maxHeight: open ? '600px' : '0px', transition: 'max-height 260ms cubic-bezier(0.4,0,0.2,1)' }}>
         <div style={{ fontFamily: 'var(--font-latin)', fontSize: '14px', fontWeight: 400,
-          color: 'rgba(240,240,240,0.80)', lineHeight: 1.7, padding: '0 24px 20px' }}>
+          color: 'var(--platinum-80)', lineHeight: 1.7, padding: '0 24px 20px' }}>
           {answer}
         </div>
       </div>
@@ -270,7 +270,7 @@ export default function AssessmentClient({ locale = 'en' }) {
               <span style={{ color: '#b7b5fe' }}>We show you the numbers at the end.</span>
             </h1>
             <p style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '17px',
-              color: 'rgba(240,240,240,0.70)', maxWidth: '560px', lineHeight: 1.6, marginBottom: '0' }}>
+              color: 'var(--platinum-70)', maxWidth: '560px', lineHeight: 1.6, marginBottom: '0' }}>
               Two frameworks. One Lexile baseline. Seven writing traits. Measured at entry, week 8, and exit. Every time.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 mt-8">
@@ -317,7 +317,7 @@ export default function AssessmentClient({ locale = 'en' }) {
                 <div style={{ fontFamily: 'var(--font-latin)', fontSize: '11px', fontWeight: 300,
                   color: 'rgba(183,181,254,0.40)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '12px' }}>{number}</div>
                 <h3 style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: '21px', color: '#b7b5fe', marginBottom: '12px' }}>{heading}</h3>
-                <p style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '15px', color: 'rgba(240,240,240,0.70)', lineHeight: 1.6 }}>{text}</p>
+                <p style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '15px', color: 'var(--platinum-70)', lineHeight: 1.6 }}>{text}</p>
               </div>
             ))}
           </div>
@@ -373,7 +373,7 @@ export default function AssessmentClient({ locale = 'en' }) {
                 'If a course correction is needed, the Navigator adjusts — the Lexile level of the texts, the specific traits being targeted in Write, the emphasis in Speak. The student rarely notices. The difference in the exit assessment does.',
                 "The parent receives a midpoint progress note — not a full report, but a specific paragraph from the Navigator naming where the student is at week 8 and what the second half of the program is targeting.",
               ].map((text, i) => (
-                <p key={i} style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '16px', color: 'rgba(240,240,240,0.80)', lineHeight: 1.7 }}>{text}</p>
+                <p key={i} style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '16px', color: 'var(--platinum-80)', lineHeight: 1.7 }}>{text}</p>
               ))}
             </div>
             <blockquote className="mt-8 pl-5" style={{ borderLeft: '3px solid #b7b5fe' }}>
@@ -587,7 +587,7 @@ export default function AssessmentClient({ locale = 'en' }) {
             <h2 className="mb-4 max-w-[560px] mx-auto" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: '32px', color: '#b7b5fe', letterSpacing: '-0.02em', lineHeight: 1.3 }}>
               The first number is free.
             </h2>
-            <p className="mb-8 max-w-[500px] mx-auto" style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '16px', color: 'rgba(240,240,240,0.70)', lineHeight: 1.6 }}>
+            <p className="mb-8 max-w-[500px] mx-auto" style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '16px', color: 'var(--platinum-70)', lineHeight: 1.6 }}>
               The entrance assessment is included in every enrollment. Book a diagnostic call — and we will tell you what your child&rsquo;s first number is likely to look like before you commit to anything.
             </p>
             <div className="flex flex-col items-center gap-3 max-w-md mx-auto">

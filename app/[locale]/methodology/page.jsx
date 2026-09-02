@@ -248,7 +248,7 @@ export default async function MethodologyPage({ params }) {
 
                 <p
                   className="text-base leading-relaxed"
-                  style={{ color: stepBg[index] ? '#94A3B8' : '#3D4452' }}
+                  style={{ color: stepBg[index] ? 'var(--text-muted-dark)' : '#3D4452' }}
                 >
                   {step.body}
                 </p>
@@ -301,7 +301,7 @@ export default async function MethodologyPage({ params }) {
                 style={{ backgroundColor: 'rgba(183,181,254,0.07)', border: '1px solid rgba(183,181,254,0.15)' }}
               >
                 <p className="text-lg font-bold mb-3" style={{ color: '#b7b5fe' }}>{s.label}</p>
-                <p className="text-base leading-relaxed" style={{ color: '#94A3B8' }}>{s.body}</p>
+                <p className="text-base leading-relaxed" style={{ color: 'var(--text-muted-dark)' }}>{s.body}</p>
               </div>
             ))}
           </div>
@@ -317,7 +317,7 @@ export default async function MethodologyPage({ params }) {
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5 text-gradient">
               {t.lexile.heading}
             </h2>
-            <p className="text-lg leading-relaxed" style={{ color: '#94A3B8' }}>
+            <p className="text-lg leading-relaxed" style={{ color: 'var(--text-muted-dark)' }}>
               {t.lexile.body}
             </p>
           </div>
@@ -390,7 +390,7 @@ export default async function MethodologyPage({ params }) {
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5 text-gradient">
             {t.geo.heading}
           </h2>
-          <p className="text-lg leading-relaxed" style={{ color: '#94A3B8' }}>
+          <p className="text-lg leading-relaxed" style={{ color: 'var(--text-muted-dark)' }}>
             {t.geo.body}
           </p>
         </div>
@@ -402,7 +402,7 @@ export default async function MethodologyPage({ params }) {
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5 text-gradient">
             {t.cta.heading}
           </h2>
-          <p className="text-lg leading-relaxed mb-8" style={{ color: '#94A3B8' }}>
+          <p className="text-lg leading-relaxed mb-8" style={{ color: 'var(--text-muted-dark)' }}>
             {t.cta.body}
           </p>
           <div className="flex flex-col sm:flex-row gap-4">

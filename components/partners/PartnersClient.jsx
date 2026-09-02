@@ -387,7 +387,7 @@ function GateView({ g, locale, input, setInput, onSubmit, onKeyDown, error, shak
         <div style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#b7b5fe', marginBottom: '12px', textAlign: 'center' }}>
           {g.label}
         </div>
-        <p style={{ fontSize: '15px', fontWeight: 400, color: 'rgba(240,240,240,0.6)', lineHeight: 1.6, textAlign: 'center', marginBottom: '32px', whiteSpace: 'pre-line' }}>
+        <p style={{ fontSize: '15px', fontWeight: 400, color: 'var(--platinum-60)', lineHeight: 1.6, textAlign: 'center', marginBottom: '32px', whiteSpace: 'pre-line' }}>
           {g.body}
         </p>
         <input
@@ -608,7 +608,7 @@ function PartnersContent({ c, locale }) {
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginBottom: '24px' }}>
                     {body.split('\n\n').map((para, i) => (
-                      <p key={i} style={{ fontSize: '15px', fontWeight: 400, color: 'rgba(240,240,240,0.7)', lineHeight: 1.7, margin: 0, fontFamily: f }}>
+                      <p key={i} style={{ fontSize: '15px', fontWeight: 400, color: 'var(--platinum-70)', lineHeight: 1.7, margin: 0, fontFamily: f }}>
                         {para}
                       </p>
                     ))}
@@ -686,7 +686,7 @@ function PartnersContent({ c, locale }) {
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                   {body.split('\n\n').map((para, i) => (
-                    <p key={i} style={{ fontSize: '14px', fontWeight: 400, color: 'rgba(240,240,240,0.6)', lineHeight: 1.7, margin: 0, fontFamily: f }}>
+                    <p key={i} style={{ fontSize: '14px', fontWeight: 400, color: 'var(--platinum-60)', lineHeight: 1.7, margin: 0, fontFamily: f }}>
                       {para}
                     </p>
                   ))}
@@ -712,7 +712,7 @@ function PartnersContent({ c, locale }) {
                     <div style={{ width: '8px', height: '8px', borderRadius: '9999px', backgroundColor: '#b7b5fe', marginTop: '8px', flexShrink: 0 }} />
                     <div>
                       <div style={{ fontSize: '16px', fontWeight: 600, color: '#F0F0F0', marginBottom: '4px' }}>{label}</div>
-                      <p style={{ fontSize: '14px', fontWeight: 400, color: 'rgba(240,240,240,0.6)', lineHeight: 1.65, margin: 0 }}>{body}</p>
+                      <p style={{ fontSize: '14px', fontWeight: 400, color: 'var(--platinum-60)', lineHeight: 1.65, margin: 0 }}>{body}</p>
                     </div>
                   </div>
                 ))}

@@ -195,12 +195,12 @@ export default async function ResultsPage({ params }) {
             <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-5" style={{ color: '#F0F0F0' }}>
               {t.anchor.heading}
             </h2>
-            <p className="text-lg leading-relaxed mb-8" style={{ color: 'rgba(240,240,240,0.7)' }}>
+            <p className="text-lg leading-relaxed mb-8" style={{ color: 'var(--platinum-70)' }}>
               {t.anchor.body}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               {t.anchor.stats.map((stat, i) => (
-                <div key={i} className="p-6" style={{ background: 'rgba(183,181,254,0.08)', borderLeft: '3px solid #b7b5fe' }}>
+                <div key={i} className="p-6" style={{ background: 'var(--lavender-08)', borderLeft: '3px solid #b7b5fe' }}>
                   <p className="text-5xl font-bold tracking-tight" style={{ color: '#b7b5fe', letterSpacing: '-0.03em' }}>
                     {stat.number}
                     <span className="text-base font-medium ml-2" style={{ color: 'rgba(183,181,254,0.7)' }}>{stat.unit}</span>
@@ -273,7 +273,7 @@ export default async function ResultsPage({ params }) {
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5 text-gradient">
               {t.writing.heading}
             </h2>
-            <p className="text-lg leading-relaxed" style={{ color: '#94A3B8' }}>
+            <p className="text-lg leading-relaxed" style={{ color: 'var(--text-muted-dark)' }}>
               {t.writing.body}
             </p>
           </div>
@@ -294,7 +294,7 @@ export default async function ResultsPage({ params }) {
                     >
                       {trait.label}
                     </span>
-                    <span className="text-xs tabular-nums" style={{ color: '#94A3B8' }}>
+                    <span className="text-xs tabular-nums" style={{ color: 'var(--text-muted-dark)' }}>
                       <span style={{ color: 'rgba(183,181,254,0.5)' }}>
                         {trait.entryAvg.toFixed(1)}
                       </span>
@@ -302,13 +302,13 @@ export default async function ResultsPage({ params }) {
                       <span style={{ color: '#b7b5fe' }}>
                         {trait.exitAvg.toFixed(1)}
                       </span>
-                      <span style={{ color: '#94A3B8' }}> / 6</span>
+                      <span style={{ color: 'var(--text-muted-dark)' }}> / 6</span>
                     </span>
                   </div>
 
                   <div
                     className="relative h-2 rounded-full overflow-hidden"
-                    style={{ backgroundColor: 'rgba(183,181,254,0.08)' }}
+                    style={{ backgroundColor: 'var(--lavender-08)' }}
                     role="img"
                     aria-label={`${trait.label}: entry ${trait.entryAvg}, exit ${trait.exitAvg} out of 6`}
                   >
@@ -418,7 +418,7 @@ export default async function ResultsPage({ params }) {
 
           <p
             className="text-lg leading-relaxed mb-8"
-            style={{ color: '#94A3B8' }}
+            style={{ color: 'var(--text-muted-dark)' }}
           >
             {t.foundingFamily.body}
           </p>

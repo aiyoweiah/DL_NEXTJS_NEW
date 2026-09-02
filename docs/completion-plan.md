@@ -112,44 +112,43 @@ assumed. Across `app/` + `components/`:
 So the order per file is **tokenise, then extract** — and step 1 is blocked for ~40% of
 the literals, because they have no token to move to.
 
-### The decision this surfaces: does the system define an opacity scale?
+### The opacity scale — RULED 2026-09-01 (D82)
 
-The 397 unmatched literals are not random. They are **alpha variants of three colours
-the system already defines**, plus one genuine stray:
+Three scales, not one ramp: `--platinum-60/70/80/90` (text, floor at .60), `--lavender-08/15/25/40/60/80` (decoration), `--ink-08/15/30/45` (light-ground tints). 14 tokens. `#94A3B8` folded into `--text-muted-dark`. Scrims came out first as D81, which is why void black needed only four steps.
 
-| Family | Steps in use |
-|---|---|
-| `rgba(183,181,254,α)` — lavender-signal | .1 · .15 · .4 · .5 · .7 (+ more) |
-| `rgba(14,14,18,α)` — void black | .28 · .80 · .88 · .97 · .98 (hero overlays) |
-| `rgba(240,240,240,α)` — platinum | .5 · .52 · .6 |
-| **`#94a3b8`** — **31 uses, no token at all** | a fifth grey; `--text-muted-dark` is `#9AA3B2` |
+### ⚠️ The sub-floor text defect — measured properly 2026-09-01 (open, item 3)
 
-`#94a3b8` at 31 uses is much bigger than the two instances Wave 2 recorded from
-`LexileBar` — it has real spread and should be settled first, on its own.
+Reported first as "19–44 platinum nodes". **That was wrong twice over**, and both
+errors are worth recording because they are the shapes this repo keeps repeating.
 
-For the rest, three options, and this is an owner call:
+1. **An unanchored skip pattern.** My ad-hoc measurement scripts used
+   `/(node_modules|.next|out|ops)/` without path-segment anchors. `components/layout/`
+   contains the substring "out", so **every ad-hoc scan silently excluded Navbar,
+   Footer, PreCtaBand, SkipLink and LocaleSwitcher.** The shipped guards were never
+   affected — they anchor the pattern — but every number I derived by hand was low.
+2. **Assuming a family's job.** Platinum was checked and found to be text. Lavender was
+   *assumed* to be decoration and was not checked. **66 of its uses are `color:`, and
+   59 fail AA.** Lavender as text only clears AA at α .80 on Void Black.
 
-- **(a) Define an alpha scale** — e.g. `--lavender-10/15/40/50/70`, or a generic
-  `color-mix()` helper. Unblocks step 1 for everything and makes the whole migration
-  mechanical. Cost: ~12–15 new tokens, and a ruling on which steps are canonical (the
-  .5/.52 and .97/.98 pairs are almost certainly accidental, not designed).
-- **(b) Tokenise only the exact-match 574, extract those to classes, and leave the alpha
-  variants inline** with a documented carve-out. Smaller, honest, but leaves 40% of the
-  ratchet permanently stuck.
-- **(c) Treat the hero-overlay gradients as a separate case.** The `rgba(14,14,18,α)`
-  family is almost entirely multi-stop `linear-gradient` overlays on page heroes — a
-  composed effect, not a palette value. Arguably those should never be tokens and should
-  move to a `.hero-scrim` class wholesale instead.
+**Measured on the rendered DOM instead** — every public page, contrast computed against
+each element's real resolved background, `aria-hidden` subtrees excluded (113 of them,
+correctly exempt), anything over a photograph excluded per §4:
 
-**Recommendation: (c) then (a).** Pull the hero scrims out first — they are the largest
-single cluster and they are one repeated composition, so one class removes many blocks
-at once. Then decide the alpha scale for what is left, with the accidental near-duplicate
-steps collapsed rather than enshrined.
+| | |
+|---|---:|
+| **failing text nodes** | **105** |
+| public pages affected | **10 of 12** |
+| worst | `/consult` step numerals, **1.11:1** at 32px (needs 3:1) |
+| next | `/results` "→" arrows, **1.96:1** at 12px (needs 4.5:1) |
 
-**Definition of "done enough" to unblock Wave 3:** not zero. Far enough that the
-remaining per-file counts describe *deliberate* one-offs rather than accumulated drift —
-call it under 400, or when `/about`, `/blog`, `/program` and `/compare` are all in single
-digits.
+Per page: /program 20 · /demos 16 · /consult 15 · /results 15 · /compare 10 · /about 9 ·
+/little-dodo 7 · / 6 · /lexile 6 · /methodology 1.
+
+**Still deliberately separate from the token work.** Raising these changes how the pages
+look — captions, metadata and step numerals currently recede and would come forward. It
+is a visual decision with an accessibility answer already attached, and it should be seen
+rather than absorbed into a refactor. Next step is a before/after review of the worst
+offenders, not a bulk edit.
 
 ---
 

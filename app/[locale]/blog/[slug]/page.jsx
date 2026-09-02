@@ -226,7 +226,7 @@ export default async function BlogPostPage({ params }) {
               {ui.charterEyebrow}
             </p>
             <h2 className="mb-5">{ui.charterHeading}</h2>
-            <p className="text-lg leading-relaxed" style={{ color: '#94A3B8' }}>
+            <p className="text-lg leading-relaxed" style={{ color: 'var(--text-muted-dark)' }}>
               {ui.charterBody}
             </p>
           </div>

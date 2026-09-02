@@ -38,7 +38,7 @@ export default function LexileBar({
     const growthPct = endPct - startPct
     const growth    = end - start
   
-    const labelColor    = light ? '#3D4452'  : '#94A3B8'
+    const labelColor    = light ? '#3D4452'  : 'var(--text-muted-dark)'
     const numberColor   = light ? '#0E0E12'  : '#F0F0F0'
     const trackColor    = light ? 'rgba(14,14,18,0.08)' : 'rgba(183,181,254,0.12)'
     // Lavender Signal is 1.90:1 on white — dark-surface only. On light the accent

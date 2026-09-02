@@ -112,7 +112,7 @@ const STEPS = [
         </p>
         <p
           className="text-sm leading-relaxed"
-          style={{ color: light ? '#3D4452' : '#94A3B8' }}
+          style={{ color: light ? '#3D4452' : 'var(--text-muted-dark)' }}
         >
           {description}
         </p>

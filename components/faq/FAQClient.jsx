@@ -246,7 +246,7 @@ export default function FAQClient({ locale = 'en' }) {
             {ui.h1}
           </h1>
           <p className="max-w-[520px] mx-auto" style={{ fontFamily: 'var(--font-latin)', fontSize: '16px',
-            fontWeight: 400, color: 'rgba(240,240,240,0.60)', lineHeight: 1.6, marginBottom: '20px' }}>
+            fontWeight: 400, color: 'var(--platinum-60)', lineHeight: 1.6, marginBottom: '20px' }}>
             {ui.subhead}
           </p>
           <form role="search" className="max-w-[560px] mx-auto mt-5" onSubmit={(e) => e.preventDefault()}>
@@ -326,7 +326,7 @@ export default function FAQClient({ locale = 'en' }) {
             {ui.closingH2}
           </h2>
           <p className="max-w-[480px] mx-auto" style={{ fontFamily: 'var(--font-latin)', fontSize: '16px',
-            fontWeight: 400, color: 'rgba(240,240,240,0.70)', lineHeight: 1.6, marginBottom: '32px' }}>
+            fontWeight: 400, color: 'var(--platinum-70)', lineHeight: 1.6, marginBottom: '32px' }}>
             {ui.closingSub}
           </p>
           <Link href={`/${locale}/consult`} className="btn btn-do btn-do-primary">

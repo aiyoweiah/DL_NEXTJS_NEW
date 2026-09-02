@@ -183,7 +183,7 @@ export default async function LexilePage({ params }) {
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5 text-gradient">
               {t.grades.heading}
             </h2>
-            <p className="text-base leading-relaxed" style={{ color: '#94A3B8' }}>
+            <p className="text-base leading-relaxed" style={{ color: 'var(--text-muted-dark)' }}>
               {t.grades.note}
             </p>
           </div>
@@ -207,7 +207,7 @@ export default async function LexilePage({ params }) {
                 {t.grades.rows.map((row, i) => (
                   <tr key={i}>
                     <td className="pr-6 py-3 font-semibold" style={{ color: '#F0F0F0' }}>{row.grade}</td>
-                    <td className="pr-6 py-3 tabular-nums" style={{ color: '#94A3B8' }}>{row.range}</td>
+                    <td className="pr-6 py-3 tabular-nums" style={{ color: 'var(--text-muted-dark)' }}>{row.range}</td>
                     <td className="py-3 tabular-nums font-semibold" style={{ color: '#b7b5fe' }}>{row.midpoint}</td>
                   </tr>
                 ))}
@@ -238,7 +238,7 @@ export default async function LexilePage({ params }) {
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5 text-gradient">
               {t.dodo.heading}
             </h2>
-            <p className="text-lg leading-relaxed" style={{ color: '#94A3B8' }}>
+            <p className="text-lg leading-relaxed" style={{ color: 'var(--text-muted-dark)' }}>
               {t.dodo.body}
             </p>
           </div>
@@ -257,7 +257,7 @@ export default async function LexilePage({ params }) {
                   </span>
                   <p className="text-sm font-semibold" style={{ color: '#b7b5fe' }}>{point.label}</p>
                 </div>
-                <p className="text-sm leading-relaxed" style={{ color: '#94A3B8' }}>{point.body}</p>
+                <p className="text-sm leading-relaxed" style={{ color: 'var(--text-muted-dark)' }}>{point.body}</p>
               </div>
             ))}
           </div>
@@ -272,7 +272,7 @@ export default async function LexilePage({ params }) {
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5 text-gradient">
               {t.examples.heading}
             </h2>
-            <p className="text-base leading-relaxed" style={{ color: '#94A3B8' }}>
+            <p className="text-base leading-relaxed" style={{ color: 'var(--text-muted-dark)' }}>
               {t.examples.note}
             </p>
           </div>
@@ -297,7 +297,7 @@ export default async function LexilePage({ params }) {
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5 text-gradient">
             {t.cta.heading}
           </h2>
-          <p className="text-lg leading-relaxed mb-8" style={{ color: '#94A3B8' }}>
+          <p className="text-lg leading-relaxed mb-8" style={{ color: 'var(--text-muted-dark)' }}>
             {t.cta.body}
           </p>
           <div className="flex flex-col sm:flex-row gap-4">

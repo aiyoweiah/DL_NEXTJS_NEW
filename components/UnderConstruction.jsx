@@ -72,7 +72,7 @@ export default function UnderConstruction({ locale = 'en' }) {
         {/* Background blobs */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
           <div style={{ position: 'absolute', top: '15%', left: '10%', width: 288, height: 288, borderRadius: '50%', backgroundColor: 'rgba(183,181,254,0.1)', filter: 'blur(48px)', animation: 'pulseBlob 3s ease-in-out infinite' }} />
-          <div style={{ position: 'absolute', bottom: '20%', right: '8%', width: 384, height: 384, borderRadius: '50%', backgroundColor: 'rgba(183,181,254,0.08)', filter: 'blur(48px)', animation: 'pulseBlob 3s ease-in-out infinite', animationDelay: '1.5s' }} />
+          <div style={{ position: 'absolute', bottom: '20%', right: '8%', width: 384, height: 384, borderRadius: '50%', backgroundColor: 'var(--lavender-08)', filter: 'blur(48px)', animation: 'pulseBlob 3s ease-in-out infinite', animationDelay: '1.5s' }} />
           <div style={{ position: 'absolute', top: '60%', left: '50%', width: 192, height: 192, borderRadius: '50%', backgroundColor: 'rgba(245,200,66,0.08)', filter: 'blur(48px)', animation: 'pulseBlob 3s ease-in-out infinite', animationDelay: '0.75s' }} />
         </div>
 

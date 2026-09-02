@@ -89,7 +89,7 @@ function NavigatorCard({ name, background, photo, photoAlt, light, className }) 
       {background && (
         <p
           className="text-sm leading-relaxed"
-          style={{ color: light ? '#3D4452' : '#94A3B8' }}
+          style={{ color: light ? '#3D4452' : 'var(--text-muted-dark)' }}
         >
           {background}
         </p>
@@ -141,7 +141,7 @@ function ResultCard({ lexileStart, lexileEnd, weeks, quote, light, className }) 
 
         <p
           className="mt-2 text-sm"
-          style={{ color: light ? '#3D4452' : '#94A3B8' }}
+          style={{ color: light ? '#3D4452' : 'var(--text-muted-dark)' }}
         >
           <span style={{ color: '#b7b5fe' }} className="font-semibold">
             +{growth} Lexile points
@@ -155,7 +155,7 @@ function ResultCard({ lexileStart, lexileEnd, weeks, quote, light, className }) 
         <blockquote
           className="text-sm leading-relaxed italic border-l-2 pl-4"
           style={{
-            color:       light ? '#3D4452' : '#94A3B8',
+            color:       light ? '#3D4452' : 'var(--text-muted-dark)',
             borderColor: 'rgba(183,181,254,0.3)',
           }}
         >

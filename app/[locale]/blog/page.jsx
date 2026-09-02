@@ -249,7 +249,7 @@ export default async function BlogPage({ params }) {
 
             <div className="md:w-[55%] flex flex-col justify-center" style={{ padding: '40px' }}>
               <div className="inline-block rounded w-fit mb-4"
-                style={{ backgroundColor: 'rgba(183,181,254,0.15)', color: '#5856cc', fontSize: '11px', fontWeight: 500, textTransform: 'uppercase', padding: '4px 12px', letterSpacing: '0.06em' }}>
+                style={{ backgroundColor: 'var(--lavender-15)', color: '#5856cc', fontSize: '11px', fontWeight: 500, textTransform: 'uppercase', padding: '4px 12px', letterSpacing: '0.06em' }}>
                 {ui.featuredLabel}
               </div>
 
@@ -335,7 +335,7 @@ export default async function BlogPage({ params }) {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={article.imageUrl} alt={article.title} className="w-full h-full object-cover" style={{ display: 'block' }} />
                   <div className="absolute bottom-3 left-3 px-2 py-1 rounded uppercase"
-                    style={{ backgroundColor: 'rgba(183,181,254,0.15)', color: '#b7b5fe', fontSize: '11px', fontWeight: 500, backdropFilter: 'blur(8px)' }}>
+                    style={{ backgroundColor: 'var(--lavender-15)', color: '#b7b5fe', fontSize: '11px', fontWeight: 500, backdropFilter: 'blur(8px)' }}>
                     {article.category}
                   </div>
                 </div>

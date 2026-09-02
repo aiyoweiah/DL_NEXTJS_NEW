@@ -203,7 +203,7 @@ export default async function NavigatorsPage({ params }) {
           <h2 id="navigators-s3half-heading" style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 600, color: '#F0F0F0', lineHeight: 1.3, marginBottom: '1rem' }}>
             {c.s3half.h2}
           </h2>
-          <p style={{ fontSize: '16px', lineHeight: 1.7, color: 'rgba(240,240,240,0.6)' }}>
+          <p style={{ fontSize: '16px', lineHeight: 1.7, color: 'var(--platinum-60)' }}>
             {c.s3half.body}
           </p>
         </div>

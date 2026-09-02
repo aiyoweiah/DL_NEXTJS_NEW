@@ -258,7 +258,7 @@ function SharedSection({ c }) {
         <div style={{ maxWidth: '42rem' }}>
           <Eyebrow dark>{c.shared.eyebrow}</Eyebrow>
           <BilingualH2 id="ld-shared-heading" primary={c.shared.h2} secondary={c.shared.h2zh} light />
-          <p style={{ fontSize: '1rem', lineHeight: 1.85, color: 'rgba(240,240,240,0.6)', marginTop: '1.125rem' }}>
+          <p style={{ fontSize: '1rem', lineHeight: 1.85, color: 'var(--platinum-60)', marginTop: '1.125rem' }}>
             {c.shared.body}
           </p>
         </div>

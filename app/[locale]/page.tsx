@@ -154,10 +154,10 @@ function ProofStrip({ c }: { c: any }) {
               <p className="text-4xl md:text-5xl font-bold mb-3" style={{ color: '#b7b5fe' }}>
                 {item.number}
               </p>
-              <p className="text-xs md:text-sm font-semibold uppercase tracking-wider mb-2" style={{ color: '#94A3B8' }}>
+              <p className="text-xs md:text-sm font-semibold uppercase tracking-wider mb-2" style={{ color: 'var(--text-muted-dark)' }}>
                 {item.unit}
               </p>
-              <p className="text-sm leading-relaxed" style={{ color: '#94A3B8' }}>
+              <p className="text-sm leading-relaxed" style={{ color: 'var(--text-muted-dark)' }}>
                 {item.label}
               </p>
             </article>
@@ -220,7 +220,7 @@ function LoopSection({ locale, c }: { locale: string; c: any }) {
         <div className="max-w-2xl mb-14 md:mb-16">
           <p className="eyebrow mb-4 label-quote" style={{ color: 'rgba(183,181,254,0.6)' }}>{c.loop.eyebrow}</p>
           <h2 id="loop-heading">{c.loop.heading}</h2>
-          <p className="mt-4 text-base md:text-lg leading-relaxed" style={{ color: '#94A3B8' }}>{c.loop.body}</p>
+          <p className="mt-4 text-base md:text-lg leading-relaxed" style={{ color: 'var(--text-muted-dark)' }}>{c.loop.body}</p>
         </div>
 
         <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" aria-label="The Loop — DODO Learning methodology">
@@ -234,7 +234,7 @@ function LoopSection({ locale, c }: { locale: string; c: any }) {
                   )}
                 </div>
                 <h3 className="text-lg font-bold" style={{ color: '#b7b5fe', letterSpacing: '-0.01em' }}>{step.label}</h3>
-                <p className="text-sm leading-relaxed flex-1" style={{ color: '#94A3B8' }}>{step.description}</p>
+                <p className="text-sm leading-relaxed flex-1" style={{ color: 'var(--text-muted-dark)' }}>{step.description}</p>
               </div>
             </li>
           ))}
@@ -317,12 +317,12 @@ function ParentTrustSection({ locale, c }: { locale: string; c: any }) {
             >
               <div>
                 <p className="text-sm font-semibold" style={{ color: '#b7b5fe' }}>{result.student}</p>
-                <p className="text-xs mt-0.5" style={{ color: '#94A3B8' }}>{result.detail} &nbsp;&middot;&nbsp; {result.weeks} {c.trust.weeksLabel}</p>
+                <p className="text-xs mt-0.5" style={{ color: 'var(--text-muted-dark)' }}>{result.detail} &nbsp;&middot;&nbsp; {result.weeks} {c.trust.weeksLabel}</p>
               </div>
               <LexileBar start={result.start} end={result.end} weeks={result.weeks} />
               <span className="tag-run self-start" style={{ color: 'var(--color-lavender-signal)' }}>6+1 {result.trait}</span>
               <blockquote className="mt-auto">
-                <p className="text-sm leading-relaxed italic" style={{ color: '#94A3B8' }}><q>{result.quote}</q></p>
+                <p className="text-sm leading-relaxed italic" style={{ color: 'var(--text-muted-dark)' }}><q>{result.quote}</q></p>
                 <footer className="mt-3 text-xs font-medium" style={{ color: 'rgba(183,181,254,0.5)' }}>&mdash; {result.source}</footer>
               </blockquote>
             </article>

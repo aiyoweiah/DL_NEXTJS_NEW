@@ -478,7 +478,7 @@ function ArchitectureSection({ locale, c }) {
         <div style={{ marginBottom: '2rem' }}>
           <Eyebrow dark>{a.eyebrow}</Eyebrow>
           <BilingualH2 id="architecture-heading" primary={a.h2} secondary={a.h2zh} light />
-          <p style={{ marginTop: '1.25rem', fontSize: '1rem', lineHeight: 1.82, color: 'rgba(240,240,240,0.6)', maxWidth: '48rem' }}>
+          <p style={{ marginTop: '1.25rem', fontSize: '1rem', lineHeight: 1.82, color: 'var(--platinum-60)', maxWidth: '48rem' }}>
             {a.body}
           </p>
         </div>
@@ -619,15 +619,15 @@ function SessionSection({ locale, c }) {
           />
 
           <div style={{ marginTop: '1.75rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <p style={{ fontSize: '0.9375rem', lineHeight: 1.82, color: 'rgba(240,240,240,0.6)' }}>
+            <p style={{ fontSize: '0.9375rem', lineHeight: 1.82, color: 'var(--platinum-60)' }}>
               {c.session.p1}{' '}
-              <em style={{ fontStyle: 'italic', color: 'rgba(183,181,254,0.8)' }}>{c.session.q1}</em>
+              <em style={{ fontStyle: 'italic', color: 'var(--lavender-80)' }}>{c.session.q1}</em>
             </p>
-            <p style={{ fontSize: '0.9375rem', lineHeight: 1.82, color: 'rgba(240,240,240,0.6)' }}>{c.session.p2}</p>
-            <p style={{ fontSize: '0.9375rem', lineHeight: 1.82, color: 'rgba(240,240,240,0.6)' }}>{c.session.p3}</p>
-            <p style={{ fontSize: '0.9375rem', lineHeight: 1.82, color: 'rgba(240,240,240,0.6)' }}>
+            <p style={{ fontSize: '0.9375rem', lineHeight: 1.82, color: 'var(--platinum-60)' }}>{c.session.p2}</p>
+            <p style={{ fontSize: '0.9375rem', lineHeight: 1.82, color: 'var(--platinum-60)' }}>{c.session.p3}</p>
+            <p style={{ fontSize: '0.9375rem', lineHeight: 1.82, color: 'var(--platinum-60)' }}>
               {c.session.p4}{' '}
-              <em style={{ fontStyle: 'italic', color: 'rgba(183,181,254,0.8)' }}>{c.session.q4}</em>
+              <em style={{ fontStyle: 'italic', color: 'var(--lavender-80)' }}>{c.session.q4}</em>
             </p>
           </div>
 
@@ -732,7 +732,7 @@ function GrowthSection({ locale, c }) {
                   >
                     <p style={{ fontSize: '0.8125rem', fontWeight: 600, color: '#F0F0F0', lineHeight: 1.2 }}>{label}</p>
                     <div style={{ position: 'relative', height: '7px', backgroundColor: 'rgba(183,181,254,0.07)', borderRadius: '9999px', overflow: 'hidden' }} aria-label={`${label}: ${trait.start} to ${trait.end} out of ${maxScale}`}>
-                      <div aria-hidden="true" style={{ position: 'absolute', left: 0, top: 0, height: '100%', width: `${sPct}%`, backgroundColor: 'rgba(183,181,254,0.15)', borderRadius: '9999px' }} />
+                      <div aria-hidden="true" style={{ position: 'absolute', left: 0, top: 0, height: '100%', width: `${sPct}%`, backgroundColor: 'var(--lavender-15)', borderRadius: '9999px' }} />
                       <div aria-hidden="true" style={{ position: 'absolute', left: `${sPct}%`, top: 0, height: '100%', width: `${gainPct}%`, backgroundColor: '#b7b5fe', borderRadius: '9999px' }} />
                     </div>
                     <p style={{ fontSize: '0.75rem', color: 'rgba(183,181,254,0.5)', textAlign: 'right', whiteSpace: 'nowrap' }}>

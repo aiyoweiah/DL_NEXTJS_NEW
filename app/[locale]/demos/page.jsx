@@ -250,10 +250,10 @@ function InsideSession({ locale, c }) {
           <Eyebrow dark>{c.session.eyebrow}</Eyebrow>
           <BilingualH2 id="session-heading" primary={c.session.h2} secondary={c.session.h2zh} light />
           <div style={{ marginTop: '1.75rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <p style={{ fontSize: '0.9375rem', lineHeight: 1.82, color: 'rgba(240,240,240,0.6)' }}>{c.session.p1}{' '}<em style={{ fontStyle: 'italic', color: 'rgba(183,181,254,0.8)' }}>{c.session.q1}</em></p>
-            <p style={{ fontSize: '0.9375rem', lineHeight: 1.82, color: 'rgba(240,240,240,0.6)' }}>{c.session.p2}</p>
-            <p style={{ fontSize: '0.9375rem', lineHeight: 1.82, color: 'rgba(240,240,240,0.6)' }}>{c.session.p3}</p>
-            <p style={{ fontSize: '0.9375rem', lineHeight: 1.82, color: 'rgba(240,240,240,0.6)' }}>{c.session.p4}{' '}<em style={{ fontStyle: 'italic', color: 'rgba(183,181,254,0.8)' }}>{c.session.q4}</em></p>
+            <p style={{ fontSize: '0.9375rem', lineHeight: 1.82, color: 'var(--platinum-60)' }}>{c.session.p1}{' '}<em style={{ fontStyle: 'italic', color: 'var(--lavender-80)' }}>{c.session.q1}</em></p>
+            <p style={{ fontSize: '0.9375rem', lineHeight: 1.82, color: 'var(--platinum-60)' }}>{c.session.p2}</p>
+            <p style={{ fontSize: '0.9375rem', lineHeight: 1.82, color: 'var(--platinum-60)' }}>{c.session.p3}</p>
+            <p style={{ fontSize: '0.9375rem', lineHeight: 1.82, color: 'var(--platinum-60)' }}>{c.session.p4}{' '}<em style={{ fontStyle: 'italic', color: 'var(--lavender-80)' }}>{c.session.q4}</em></p>
           </div>
         </div>
       </div>
@@ -341,7 +341,7 @@ function ResultsSection({ locale, c }) {
                   <div key={trait.id} style={{ display: 'grid', gridTemplateColumns: '110px 1fr 52px', gap: '0.75rem', alignItems: 'center', padding: '0.5rem 0', borderBottom: '1px solid rgba(183,181,254,0.05)' }}>
                     <p style={{ fontSize: '0.8125rem', fontWeight: 600, color: '#F0F0F0', lineHeight: 1.2 }}>{label}</p>
                     <div style={{ position: 'relative', height: '7px', backgroundColor: 'rgba(183,181,254,0.07)', borderRadius: '9999px', overflow: 'hidden' }} aria-label={`${label}: ${trait.start} to ${trait.end}`}>
-                      <div aria-hidden="true" style={{ position: 'absolute', left: 0, top: 0, height: '100%', width: `${sPct}%`, backgroundColor: 'rgba(183,181,254,0.15)', borderRadius: '9999px' }} />
+                      <div aria-hidden="true" style={{ position: 'absolute', left: 0, top: 0, height: '100%', width: `${sPct}%`, backgroundColor: 'var(--lavender-15)', borderRadius: '9999px' }} />
                       <div aria-hidden="true" style={{ position: 'absolute', left: `${sPct}%`, top: 0, height: '100%', width: `${gainPct}%`, backgroundColor: '#b7b5fe', borderRadius: '9999px' }} />
                     </div>
                     <p style={{ fontSize: '0.75rem', color: 'rgba(183,181,254,0.5)', textAlign: 'right', whiteSpace: 'nowrap' }}>{trait.start}→<span style={{ color: '#b7b5fe', fontWeight: 700 }}>{trait.end}</span></p>

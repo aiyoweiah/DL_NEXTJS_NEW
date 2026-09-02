@@ -198,10 +198,10 @@ function RealCall({ locale, c }) {
           <Eyebrow dark>{c.call.eyebrow}</Eyebrow>
           <BilingualH2 id="call-heading" primary={c.call.h2} secondary={c.call.h2zh} light />
           <div style={{ marginTop: '1.75rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <p style={{ fontSize: '0.9375rem', lineHeight: 1.82, color: 'rgba(240,240,240,0.6)' }}>{c.call.p1}{' '}<em style={{ fontStyle: 'italic', color: 'rgba(183,181,254,0.8)' }}>{c.call.q1}</em></p>
-            <p style={{ fontSize: '0.9375rem', lineHeight: 1.82, color: 'rgba(240,240,240,0.6)' }}>{c.call.p2}</p>
-            <p style={{ fontSize: '0.9375rem', lineHeight: 1.82, color: 'rgba(240,240,240,0.6)' }}>{c.call.p3}</p>
-            <p style={{ fontSize: '0.9375rem', lineHeight: 1.82, color: 'rgba(240,240,240,0.6)' }}>{c.call.p4}{' '}<em style={{ fontStyle: 'italic', color: 'rgba(183,181,254,0.8)' }}>{c.call.q4}</em></p>
+            <p style={{ fontSize: '0.9375rem', lineHeight: 1.82, color: 'var(--platinum-60)' }}>{c.call.p1}{' '}<em style={{ fontStyle: 'italic', color: 'var(--lavender-80)' }}>{c.call.q1}</em></p>
+            <p style={{ fontSize: '0.9375rem', lineHeight: 1.82, color: 'var(--platinum-60)' }}>{c.call.p2}</p>
+            <p style={{ fontSize: '0.9375rem', lineHeight: 1.82, color: 'var(--platinum-60)' }}>{c.call.p3}</p>
+            <p style={{ fontSize: '0.9375rem', lineHeight: 1.82, color: 'var(--platinum-60)' }}>{c.call.p4}{' '}<em style={{ fontStyle: 'italic', color: 'var(--lavender-80)' }}>{c.call.q4}</em></p>
           </div>
         </div>
       </div>
@@ -227,7 +227,7 @@ function TrustSection({ locale, c }) {
             {c.trust.points.map((point, i) => (
               <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
                 <span aria-hidden="true" style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#b7b5fe', flexShrink: 0, marginTop: '0.45rem' }} />
-                <span style={{ fontSize: '0.9375rem', lineHeight: 1.7, color: 'rgba(240,240,240,0.6)' }}>{point}</span>
+                <span style={{ fontSize: '0.9375rem', lineHeight: 1.7, color: 'var(--platinum-60)' }}>{point}</span>
               </li>
             ))}
           </ul>
