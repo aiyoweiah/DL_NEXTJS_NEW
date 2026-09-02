@@ -32,7 +32,7 @@ WAVE 6  admin unblocks    (you only · gates every Tier-2 SEO item)
 WAVE 7  operational loose ends
 ```
 
-**Wave 0 is closed.** The next move is **Wave 1, starting at `/about` (58)**.
+**Wave 0 is closed.** Wave 1 was opened on 2026-09-01 and immediately surfaced a decision — see the measured note under it. **The next call is the opacity scale (and `#94A3B8`), not more migration.**
 **Highest business value, independent of all of it:** Wave 5.
 
 ---
@@ -87,6 +87,65 @@ patterns go to a component (the D57/D60 argument — a class does not stop a ten
 component does). If a value has no token and should, add one; `check-tokens` will then
 protect it.
 
+### ⚠️ Measured 2026-09-01, before starting: this is two jobs, not one
+
+Opening `/about` surfaced that the migration is not the mechanical swap this section
+assumed. Across `app/` + `components/`:
+
+| | |
+|---|---:|
+| inline blocks setting colour/type | 865 |
+| …type-only, no colour literal | 96 |
+| colour literals **equal to an existing token value** | **574** |
+| colour literals with **no token at all** | **397** (348 of them `rgba()`) |
+
+**Two separate goods are tangled here, and only one of them moves the ratchet:**
+
+1. **Tokenise** the literal (`#b7b5fe` → `var(--color-lavender-signal)`). Improves
+   rename-safety and brings the value under `check-tokens`. **Does not move the
+   ratchet** — the block still sets `color`.
+2. **Extract to a class.** Moves the ratchet and makes the value visible to class-based
+   sweeps. But doing this *before* step 1 just relocates a literal from `style={{}}` to
+   `text-[#hex]` — which games the ratchet without improving anything. That is the
+   failure mode the ratchet's own error message warns about, in reverse.
+
+So the order per file is **tokenise, then extract** — and step 1 is blocked for ~40% of
+the literals, because they have no token to move to.
+
+### The decision this surfaces: does the system define an opacity scale?
+
+The 397 unmatched literals are not random. They are **alpha variants of three colours
+the system already defines**, plus one genuine stray:
+
+| Family | Steps in use |
+|---|---|
+| `rgba(183,181,254,α)` — lavender-signal | .1 · .15 · .4 · .5 · .7 (+ more) |
+| `rgba(14,14,18,α)` — void black | .28 · .80 · .88 · .97 · .98 (hero overlays) |
+| `rgba(240,240,240,α)` — platinum | .5 · .52 · .6 |
+| **`#94a3b8`** — **31 uses, no token at all** | a fifth grey; `--text-muted-dark` is `#9AA3B2` |
+
+`#94a3b8` at 31 uses is much bigger than the two instances Wave 2 recorded from
+`LexileBar` — it has real spread and should be settled first, on its own.
+
+For the rest, three options, and this is an owner call:
+
+- **(a) Define an alpha scale** — e.g. `--lavender-10/15/40/50/70`, or a generic
+  `color-mix()` helper. Unblocks step 1 for everything and makes the whole migration
+  mechanical. Cost: ~12–15 new tokens, and a ruling on which steps are canonical (the
+  .5/.52 and .97/.98 pairs are almost certainly accidental, not designed).
+- **(b) Tokenise only the exact-match 574, extract those to classes, and leave the alpha
+  variants inline** with a documented carve-out. Smaller, honest, but leaves 40% of the
+  ratchet permanently stuck.
+- **(c) Treat the hero-overlay gradients as a separate case.** The `rgba(14,14,18,α)`
+  family is almost entirely multi-stop `linear-gradient` overlays on page heroes — a
+  composed effect, not a palette value. Arguably those should never be tokens and should
+  move to a `.hero-scrim` class wholesale instead.
+
+**Recommendation: (c) then (a).** Pull the hero scrims out first — they are the largest
+single cluster and they are one repeated composition, so one class removes many blocks
+at once. Then decide the alpha scale for what is left, with the accidental near-duplicate
+steps collapsed rather than enshrined.
+
 **Definition of "done enough" to unblock Wave 3:** not zero. Far enough that the
 remaining per-file counts describe *deliberate* one-offs rather than accumulated drift —
 call it under 400, or when `/about`, `/blog`, `/program` and `/compare` are all in single
@@ -98,7 +157,7 @@ digits.
 
 | Item | Size | Note |
 |---|---|---|
-| **`LexileBar`'s `#94A3B8`** | tiny | Not a system token; `--text-muted-dark` is `#9AA3B2`. A fifth grey. `LexileBar.jsx:41` is `light ? '#3D4452' : '#94A3B8'` — a legitimate surface-aware pair written in raw hex. Point both at tokens. |
+| **`#94A3B8` — a fifth grey** | small | ⚠️ **Measured 2026-09-01: 31 uses sitewide, not the 2 this row assumed.** Not a system token — `--text-muted-dark` is `#9AA3B2`. `LexileBar.jsx:41` is `light ? '#3D4452' : '#94A3B8'`, a legitimate surface-aware pair written in raw hex, but the value has spread far beyond it. Settle this one **before** Wave 1's alpha-scale decision: it is the largest single untokenised literal and it is not an alpha variant, so it resolves without needing a scale. |
 | **15 images without `width`/`height`** | small | CLS. Needs real intrinsic dimensions; guessing distorts them. |
 | **24 hand-rolled panels** | medium | Ratcheted by `check-surfaces`. Migrate opportunistically — several sit in the same files as Wave 1's targets. |
 
