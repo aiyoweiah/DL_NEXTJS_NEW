@@ -1,5 +1,5 @@
 {
-  "total": 8753,
+  "total": 8751,
   "routes": {
     "/_not-found": 3,
     "/404": 3,
@@ -46,7 +46,7 @@
     "/en/cities/san-jose": 64,
     "/en/cities/toronto": 64,
     "/en/cities/vancouver": 64,
-    "/en/compare": 114,
+    "/en/compare": 113,
     "/en/consult": 149,
     "/en/credentials": 79,
     "/en/demos": 214,
@@ -103,7 +103,7 @@
     "/zh/cities/san-jose": 64,
     "/zh/cities/toronto": 64,
     "/zh/cities/vancouver": 64,
-    "/zh/compare": 114,
+    "/zh/compare": 113,
     "/zh/consult": 149,
     "/zh/credentials": 79,
     "/zh/demos": 214,

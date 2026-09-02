@@ -771,7 +771,7 @@ export const compare = {
       caption: 'Read → Think → Speak → Write. Every session follows this exact sequence. Every stage is assessed. The Loop is not a teaching method\u00a0— it is a compounding system. A student who runs The Loop with a Navigator across 16 weeks does not simply improve their English. Over time, they simply get better at working through anything complex.',
       methodologyLink: 'Read the full methodology →',
     },
-    s5: { eyebrow: 'From the Founder', h2: 'Why we built DODO Learning\u00a0— and what we decided we would never become.', sub: 'Unscripted. Eight minutes. The decision in full.', founderName: 'Janet — Founder & Lead Navigator', founderNote: 'Video embed — replace with production URL' },
+    s5: { eyebrow: 'From the Founder', h2: 'Why we built DODO Learning\u00a0— and what we decided we would never become.', sub: 'Unscripted. Eight minutes. The decision in full.', founderName: 'Janet — Founder & Lead Navigator' },
     s6: {
       eyebrow: 'The Navigator Difference', h2: 'A Navigator is not a tutor. Here is exactly what that means.',
       points: [

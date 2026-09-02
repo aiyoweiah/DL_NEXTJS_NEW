@@ -1,5 +1,5 @@
 {
-  "total": 957,
+  "total": 956,
   "counts": {
     "app/[locale]/about/page.jsx": 58,
     "app/[locale]/audiobooks/[slug]/page.jsx": 7,
@@ -7,7 +7,7 @@
     "app/[locale]/blog/[slug]/page.jsx": 13,
     "app/[locale]/blog/page.jsx": 36,
     "app/[locale]/cities/[city]/page.jsx": 14,
-    "app/[locale]/compare/page.jsx": 45,
+    "app/[locale]/compare/page.jsx": 44,
     "app/[locale]/consult/page.jsx": 36,
     "app/[locale]/credentials/page.jsx": 17,
     "app/[locale]/demos/page.jsx": 56,

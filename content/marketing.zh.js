@@ -754,7 +754,7 @@ export const compare = {
       caption: '阅读 → 思考 → 表达 → 写作。每节课都遵循这个精确的顺序。每个阶段都被评估。The Loop（学习循环）不是一种教学方法 ——它是一个累积系统。一个与导师（Navigator）一起运行The Loop（学习循环）16周的学生，不仅仅是提高了英语水平。久而久之，他们只是更善于应对任何复杂的东西。',
       methodologyLink: '阅读完整方法论 →',
     },
-    s5: { eyebrow: '创始人寄语', h2: '我们为什么创建DODO Learning ——以及我们决定永远不会成为什么。', sub: '无脚本。八分钟。完整的决策过程。', founderName: 'Janet——创始人兼首席导师（Navigator）', founderNote: '视频嵌入 — 替换为生产环境URL' },
+    s5: { eyebrow: '创始人寄语', h2: '我们为什么创建DODO Learning ——以及我们决定永远不会成为什么。', sub: '无脚本。八分钟。完整的决策过程。', founderName: 'Janet——创始人兼首席导师（Navigator）' },
     s6: {
       eyebrow: '导师（Navigator）差异', h2: '导师（Navigator）不是家教。以下是这具体意味着什么。',
       points: [
