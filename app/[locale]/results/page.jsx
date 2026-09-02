@@ -298,7 +298,8 @@ export default async function ResultsPage({ params }) {
                       <span style={{ color: 'rgba(183,181,254,0.5)' }}>
                         {trait.entryAvg.toFixed(1)}
                       </span>
-                      <span style={{ color: 'rgba(183,181,254,0.3)' }}> → </span>
+                      <span className="sr-only"> improving to </span>
+                      <span aria-hidden="true" style={{ color: 'rgba(183,181,254,0.3)' }}> → </span>
                       <span style={{ color: '#b7b5fe' }}>
                         {trait.exitAvg.toFixed(1)}
                       </span>

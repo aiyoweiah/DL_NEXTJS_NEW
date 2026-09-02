@@ -160,7 +160,7 @@ function WhatHappens({ locale, c }) {
             <div key={step.num} style={{ padding: '1.75rem 1.5rem', borderRight: i < 3 ? '1px solid rgba(14,14,18,0.07)' : 'none', borderTop: '3px solid transparent', position: 'relative' }}>
               <div aria-hidden="true" style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', backgroundColor: i === 0 ? '#b7b5fe' : 'rgba(183,181,254,0.15)' }} />
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
-                <span style={{ fontSize: 'clamp(2rem, 3vw, 2.75rem)', fontWeight: 800, letterSpacing: '-0.04em', color: 'rgba(183,181,254,0.18)', lineHeight: 1 }}>{step.num}</span>
+                <span aria-hidden="true" style={{ fontSize: 'clamp(2rem, 3vw, 2.75rem)', fontWeight: 800, letterSpacing: '-0.04em', color: 'rgba(183,181,254,0.18)', lineHeight: 1 }}>{step.num}</span>
                 <span style={{ fontSize: '12px', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-accent)' }}>{step.time}</span>
               </div>
               <p style={{ fontSize: '1.0625rem', fontWeight: 700, color: '#0E0E12', lineHeight: 1.25, marginBottom: '2px' }}>{step.label}</p>
