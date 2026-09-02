@@ -207,17 +207,36 @@ Every one of these produced a wrong number during this run.
 
 ## 5. Known-open work
 
+**Numbers here are measured by `npm run conformance`, not estimated.** Re-run it before
+quoting any of them; that is the whole point of it existing. Last measured 2026-09-01.
+
+### Open — work
+
 | Item | Size | Notes |
 |---|---|---|
-| **`/credentials` token aliases (D72)** | small | ⚠️ **Best-guess mappings, unreviewed.** Six aliases in `globals.css` keep the page working. Correct them against the live site, then migrate the ~12 call sites onto canonical tokens and delete the alias block. |
-| **The type floor** | large | 558 sub-12px nodes. `/demos` and `/program` carry ~22%. This run removed eight of the worst (one was **8px**), and `.tag-run` sets its own 12px floor. Still a design pass. |
-| **35 hand-rolled uppercase labels** | medium | Triaged in D71 — not eyebrows, so no quote. But each is private type. Needs a decision on whether the system should define `stat-label`, `field-label`, `column-header`. |
+| **Bring 957 down** | large, incremental | The §3.3 baseline is the map: `scripts/inline-style-baseline.json` gives the count per file. `/about` **58**, `/blog` **36**, `/program` and `/compare` next. Migrate a file, re-run with `--update`, commit the smaller baseline. This is now the main line of work. |
+| **The type floor** | large | **469** sub-12px nodes — 9px×32, 10px×310, 11px×127. ⚠️ Not comparable to the 558 this table used to quote: that was a different method. Conformance counts inline `font-size` and `text-[Npx]` classes, so it is a **lower bound** and misses class-driven sizes. Still a design pass, not a mechanical fix. |
+| **Hand-rolled uppercase labels** | medium | Was "35". Measured: **1,346 rendered instances, 140 distinct strings, 61 declaration sites across 25 files.** They do at least seven jobs — see the `conformance` families. The `section-label` residue (83 strings) is itself a mixed bucket and needs triage before any class decision. **Blocked behind the 957 migration by choice**, so the decision is made against a real per-site inventory rather than a regex taxonomy. |
 | **24 hand-rolled panels** | medium | Ratcheted by `check-surfaces.mjs`. |
 | **15 images without dimensions** | small | CLS. Needs real intrinsic sizes; guessing distorts them. |
-| **`.badge` / `.badge-gilt` / `.text-gilt`** | small | **Confirmed unused 2026-08-30, with more attached than this row said:** `components/ui/Badge.jsx` has **zero `<Badge` call sites** — D70 removed the render sites and left the component, plus dead imports in `blog/[slug]`, `cities/[city]`, `lexile`, `methodology`, `results`. Delete the component, the 5 imports and ~8 CSS rule blocks, or keep `badge-gilt` for the Charter CTA that does not exist yet. |
-| **`.skip-link` gilt ruling** | small | Found by the D73 build pass; allowlisted pending a call. Either record a stated a11y carve-out in D52, or restyle to `--color-lavender-signal` as the D68 chips were. |
-| **next/font cyrillic-ext italic** | tiny | 10.7 KB, a next/font 16.x bug, tolerated with a reason in `check-font-preload.mjs`. Recheck on the next Next upgrade. |
-| **WenKai payload** | medium | D62 costs 726 KB against Noto's 437 KB because WenKai ships static weights, not a variable axis. Revisit if a variable release appears. |
+
+### Open — decisions someone has to make
+
+| Item | Notes |
+|---|---|
+| **`.skip-link` gilt ruling** | Found by the D73 build pass, allowlisted pending a call, and **D76 did not settle it** — D76 is about which conversion control leads; the skip link is a WCAG 2.4.1 bypass affordance. Either record a stated a11y carve-out in D76, or restyle to `--color-lavender-signal` as the D68 chips were. |
+| **`.eyebrow` uppercases the locked tagline** | `.eyebrow` sets `text-transform: uppercase`, so D36's *"Think once, in two languages."* renders as **"THINK ONCE, IN TWO LANGUAGES."** on 116 routes. D36 locked sentence case with a terminal full stop. A D36-vs-D57 conflict in the canonical component, not a hand-rolled defect. Belongs to whoever owns the tagline. |
+| **`.btn-do-charter` is now a synonym for `.btn-do-primary`** | Since D76 it carries the same swash and the same label colour. Fold it into `primary` and delete the class, or keep the name reserved for a real enrolment CTA that may want its own treatment. |
+| **`LexileBar`'s dark label is `#94A3B8`** | Not a system token — `--text-muted-dark` is `#9AA3B2`. A fifth grey, near but not equal to the one the system names. Small and concrete; independent of everything else here. |
+
+### Closed since this document was written
+
+| Item | Closed by |
+|---|---|
+| `/credentials` token aliases (D72) | **D72 closed 2026-09-01.** Verified on the live render — all six aliases resolved to exactly their canonical counterparts — then 19 call sites migrated and the alias block deleted. |
+| `.badge` / `.badge-gilt` / `.text-gilt` | **D75.** Component, 5 dead imports and 8 CSS rule blocks deleted. Its own tail — a `.section-dark .text-gilt` override — survived and was removed by D76. |
+| next/font cyrillic-ext italic | Still tolerated (10.7 KB, next/font 16.x bug, reason in `check-font-preload.mjs`). Recheck on the next Next upgrade. |
+| WenKai payload | Still 726 KB against Noto's 437 KB — static weights, no variable axis. Revisit if a variable release appears. Not a defect; a stated price. |
 
 ---
 

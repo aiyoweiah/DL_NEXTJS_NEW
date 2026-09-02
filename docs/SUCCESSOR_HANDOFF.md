@@ -1,7 +1,24 @@
 # DODO Learning — Successor Handoff
 
 **Authored:** 2026-05-17 (end of session)
-**Last updated:** 2026-08-30 — **CJK subsetting pipeline shipped (D63, guide v6.17).** A Chinese page's font payload drops from 1,089.7 KB to 436.5 KB, measured cold; font bytes in the export drop from 4,820 KB to 735 KB and `@font-face` declarations from 373 to 75. Five frequency-tiered chunks generated from a pinned, SHA-256-verified variable font, guarded on both `prebuild` and `postbuild`. Four corrections to the original spec — including that **the English page never had a CJK problem** and that the real character set is 1,574, not 1,021 — are written up at the top of this file. A dead `<link rel=preload>` that 404'd on every ZH page is fixed. **D62 (WenKai) still deliberately unbuilt**; it is now a flag on the generator.
+**Last updated:** 2026-09-01 — **The cohesion architecture is finished (D73–D78, guide v6.32).** Every numbered proposal in [`architecture-cohesion-proposal.md`](architecture-cohesion-proposal.md) §3 is built. Eleven guards now run on a build.
+
+**Start here, in this order:** [`decision-index.md`](decision-index.md) for what is still true (D1–D78, with the guard enforcing each), then [`architecture-cohesion-proposal.md`](architecture-cohesion-proposal.md) before touching anything, then this file.
+
+What landed on 2026-09-01:
+
+- **D72 closed** — `/credentials`'s six best-guess token aliases verified against the live render (all six resolved to exactly their canonical counterparts), 19 call sites migrated, alias block deleted.
+- **D73** — `check-surfaces` and `check-gilt-escrow` moved onto the built output; new `check-tokens` fails the build on any bare `var(--x)` with no definition. Found `.skip-link` painting gilt on all 114 routes on its first run.
+- **D74** — the ⛔ on gauges scoped to the curriculum ladder; outcome bars (`LexileBar`, `/results` traits) sanctioned. Closed D44's open visual brief.
+- **D75** — `.badge` retired at the definition: component, 5 dead imports, 8 CSS rule blocks.
+- **D76** — **the gilt reservation is retired.** Gilt is positional now: it marks the single lead of a conversion `<section>`. Gold is never text (`--text-gilt-light`/`-dark` deleted); the swash carries it, where it is decorative and cannot fail contrast. New `.btn-do-fork` for co-equal choices. ⚠️ **`.btn-do-charter` was called unused in five separate places while shipping a 2.56:1 label on three conversion pages for five months** — see D76.
+- **D77** — D57 finished. Nine more eyebrows were declared as `eyebrow:` in `content/` and hand-wrapped by page code, invisible to D71's source-shape triage.
+- **D78** — the inline-style ratchet (§3.3). **957 in source, 8,753 in the build**, both ratcheted. The proposal had guessed "around 300".
+- **`npm run conformance`** (§3.5) — measured state instead of asserted state. Not wired into the build by design; it reports, it does not fail.
+
+**The main line of work now is bringing 957 down.** `scripts/inline-style-baseline.json` is the map: `/about` 58, `/blog` 36.
+
+**Previously (2026-08-30):** — **CJK subsetting pipeline shipped (D63, guide v6.17).** A Chinese page's font payload drops from 1,089.7 KB to 436.5 KB, measured cold; font bytes in the export drop from 4,820 KB to 735 KB and `@font-face` declarations from 373 to 75. Five frequency-tiered chunks generated from a pinned, SHA-256-verified variable font, guarded on both `prebuild` and `postbuild`. Four corrections to the original spec — including that **the English page never had a CJK problem** and that the real character set is 1,574, not 1,021 — are written up at the top of this file. A dead `<link rel=preload>` that 404'd on every ZH page is fixed. **D62 (WenKai) still deliberately unbuilt**; it is now a flag on the generator.
 
 **Previously (2026-06-28):** — **Consult form rework shipped (Cal.com retired).** /consult Section 5 swapped from a Cal.com `week_view` embed to a custom on-brand inquiry form (`components/consult/ConsultForm.jsx` — single-column, 5 sections, bilingual, locale-aware preferred-contact default). In-place success-state UI presents two contact paths (email card + WeChat card, copy-to-clipboard each). New Cloudflare Pages Function at `functions/api/consult-inquiry.js` handles POST: writes a record to the `Consultation & Lead` Lark Base (`NU1ibehBKanCRksN2rQjpLZ4pkd` / `tblXJZXEN9FDlRV2`), posts a 📥 interactive card to the Lead Pulse chat (same `LARK_TRIAGE_CHAT_ID` Claude_Lark uses), and fires two emails via Resend from `janet@dodolearning.com` (handwritten-style parent ack + team digest). Helpers in `functions/_lib/{lark,email}.js`. Bilingual copy added under `consult.form` in `content/marketing.{en,zh}.js`. Lark Base schema extended via the existing Claude_Lark Python client: new single-select columns `Preferred Contact` (Email/WeChat) and `Locale` (EN/ZH); `Grade Level` extended with Pre-K, Kindergarten, Not sure. 10 env vars set on CF Pages `dl-nextjs-new` production (Lark App ID/Secret shared with Claude_Lark — rotation breaks both). One gotcha: CF Pages' esbuild was applying the project root `tsconfig.json` (`target: es5`) to function code; fixed by `functions/tsconfig.json` override (`target: es2022`). `ConsultCalEmbed.jsx` left in tree — partners flow still uses it. Cal.com account ready to cancel once you've seen a real submission end-to-end. **WeChat ID is still a placeholder** (`WECHAT_HANDLE=pending` on CF; `__PLACEHOLDER__` in copy); swap both when you have the real handle. See "2026-06-28 · Consult form rework" below.
 
@@ -16,21 +33,37 @@ This doc is **your entry point if you're picking up this work cold.** Read this 
 4. `translation/BRAND_CONTENT_GUIDE.md` — the locked brand truth for content surfaces.
 
 
-## START HERE — architecture cohesion proposal (2026-08-30)
+## START HERE — architecture cohesion proposal
 
 **[`docs/architecture-cohesion-proposal.md`](architecture-cohesion-proposal.md)** — the
-retrospective for D63–D72. Read it before starting another sweep of anything.
+retrospective for D63–D72, extended through D78. Read it before starting another sweep
+of anything.
 
 It documents a pattern that produced nine defects in a row: **every escapee was
-hand-rolled inline, and every sweep matched one spelling of one shape.** Three times
-this guide recorded a completeness claim that was false when written. The proposal's
-first two items — move the remaining guards onto the built output, and add a token
-guard — close the two root causes and are about a day's work.
+hand-rolled inline, and every sweep matched one spelling of one shape.** ~~Three times~~
+**Five times** this guide recorded a completeness claim that was false when written.
+The fifth is the worst of them: `.btn-do-charter` was described as having zero call
+sites **in five separate places** while rendering on `/lexile`, `/methodology` and
+`/results` with a 2.56:1 label — failing AA text *and* the 3:1 non-text floor — for five
+months. Its call sites were a **variant map**, and every sweep read markup.
 
-It also lists five measurement traps, each of which produced a wrong number during that
-run, including a contrast probe that reports false failures on photographic heroes and
-an immutable preview URL that caused two false "not updated" reports (one of which was
-hiding a real bug).
+~~The proposal's first two items … are about a day's work.~~ **All of §3 is now built**
+(D73, D78, and `npm run conformance` for §3.5). The document is now a record of *why*
+the guards exist plus the remaining work list in §5 — which is measured, not estimated.
+
+It also lists five measurement traps in §4, each of which produced a wrong number in
+practice: a contrast probe that reports false failures on photographic heroes, an
+immutable preview URL that caused two false "not updated" reports (one of which was
+hiding a real bug), and a browser-pane screenshot that desyncs from scroll and returns a
+blank frame — all three of which recurred on 2026-09-01 and were correctly identified
+from that list.
+
+**One more, learned building the tools themselves:** a detector's first run is data
+about the detector. `conformance` shipped with two wrong groupings — a `state` family
+that was 98% navbar chrome, and a "drift" warning that flagged `LexileBar`'s deliberate
+surface-aware colour pair. Both were caught by reading its output rather than trusting
+it. It is also not wired into the build, so nothing catches it when it breaks; it has
+been committed syntactically broken once already.
 
 ---
 

@@ -305,6 +305,31 @@ These block downstream work. Updated 2026-05-17.
 
 ## Session Log
 
+### 2026-09-01 — Design-system architecture: the cohesion proposal finished (D72 closed, D73–D78)
+
+**Context:** Started as a repo sync and a request to list open decisions. Became the completion of every numbered proposal in `docs/architecture-cohesion-proposal.md` §3, plus the retirement of the gilt reservation. No SEO/GEO work; this session is design-system infrastructure and is logged here only because the operating rule says every session gets an entry.
+
+**Shipped (pushed to `main`, 8 commits, live on www.dodolearning.com):**
+
+- **D72 closed** — `/credentials`'s six best-guess token aliases verified against the *live render* first (all six resolved to exactly their canonical counterparts; the source link measures 5.36:1 on Whisper), then 19 call sites migrated onto canonical tokens and the alias block deleted.
+- **D73** — `check-surfaces` + `check-gilt-escrow` moved onto the built output; new `check-tokens` fails the build on any bare `var(--x)` with no definition. Found `.skip-link` painting gilt on all 114 routes on its first run.
+- **D74** — the ⛔ on gauges scoped to the curriculum ladder; `LexileBar` and the `/results` trait bars sanctioned as outcome proof. Closed D44's open visual brief. No code changed.
+- **D75** — `.badge` retired at the definition: component, 5 dead imports, 8 CSS rule blocks.
+- **D76** — **the gilt reservation (D52) is retired.** Gilt is positional now: it marks the single lead of a conversion `<section>`. Gold is never text. New `.btn-do-fork` for co-equal choices (the age-band chooser). `check-gilt-escrow` inverted and regression-tested both ways.
+- **D77** — D57 finished; nine more eyebrows lived in `content/`, invisible to D71's source-shape triage.
+- **D78** — the inline-style ratchet (§3.3). 957 source / 8,753 build, both ratcheted on the build.
+- **`npm run conformance`** (§3.5) — measured state instead of asserted state.
+
+**Found, not fixed — needs a decision or a copy call:**
+
+- ⚠️ **An internal placeholder is live on a conversion page.** `founderNote` renders *"Video embed — replace with production URL"* on `/en/compare` and the translated *"视频嵌入 — 替换为生产环境URL"* on `/zh/compare`, as a visible `<p>`. The ZH was translated rather than caught, so it passed the DeepSeek round-trip in **both** directions. Copy decision → apply gate. `content/marketing.en.js:774`, `zh.js:757`.
+- **`.btn-do-charter` shipped a failing label for five months.** Called unused in five separate places while rendering on `/lexile`, `/methodology`, `/results` at 2.56:1 — failing AA text and the 3:1 non-text floor. Fixed by D76; recorded because the *claim pattern* is the point.
+- `.skip-link` gilt ruling still open; `.eyebrow` uppercases D36's locked tagline on 116 routes; `LexileBar`'s dark label `#94A3B8` is off-palette.
+
+**Bearing on SEO/GEO work:** none of the Open Decisions below moved. The `/faq` rewrite, D37 five-strands, D38 research block and D41 objection rows are all still owed, and remain the highest-value content work.
+
+**For next session:** the main line is bringing 957 down — `scripts/inline-style-baseline.json` is the map (`/about` 58, `/blog` 36). The label-class decision is deliberately blocked behind it.
+
 ### 2026-08-26 — Ship: /credentials + MCT pillar blog post (Tier-2 #2 + #3)
 
 **Context:** Directly downstream of the 2026-08-25 two-channel pivot. `/credentials` and the MCT pillar blog post were the two "no user input needed" Tier-2 items called out as next-session candidates. Also landed in this session: reconciliation with the D36–D42 brand-guide refresh that shipped from the parallel session earlier today (commit `352cc53`) — the D37 five-strands-under-LCS and D38 research-base citations were both natural inputs into what shipped here.
