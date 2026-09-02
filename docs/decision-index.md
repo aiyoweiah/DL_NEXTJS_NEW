@@ -1,14 +1,14 @@
-# Decision index — D1 … D84
+# Decision index — D1 … D85
 
-**Created:** 2026-08-30 · **Covers:** every numbered decision in both logs · **last updated 2026-09-01 (D84)**
+**Created:** 2026-08-30 · **Covers:** every numbered decision in both logs · **last updated 2026-09-01 (D85)**
 **Source of truth for STATUS.** The two logs remain the source of truth for *content*.
 
-There are 84 decisions across two append-only logs that share one number sequence:
+There are 85 decisions across two append-only logs that share one number sequence:
 
 | Log | Holds |
 |---|---|
 | [`docs/content-style-decisions.md`](content-style-decisions.md) | D1–D50 — voice, vocabulary, positioning, copy |
-| [`.interface-design/system.md`](../.interface-design/system.md) | D33–D84 — chrome, type, colour, controls, guards |
+| [`.interface-design/system.md`](../.interface-design/system.md) | D33–D85 — chrome, type, colour, controls, guards |
 
 Decisions with both a content and a visual consequence appear in both. Neither log
 records status: to answer *"is D26 still true?"* you previously had to read every later
@@ -118,6 +118,7 @@ Everything here applies to new work.
 | D82 | Three alpha scales (14 tokens); `#94A3B8` folded into `--text-muted-dark` | Live · step A of the C→A ruling | `check-tokens` |
 | D83 | The decorative fifteen — `aria-hidden` + one `sr-only`; 105 → 90 sub-AA nodes | Live · item 3 group 1 | — ⚠️ no guard reads contrast |
 | D84 | Supporting text off alpha (102 decls); `/compare` CTA at 1.29:1 found, not fixed | Live · item 3 group 2 | — ⚠️ no guard reads contrast |
+| D85 | The `on-dark` trap guarded; pixel contrast auditor deliberately not built | Live · closes the D53/D65 warning | `check-on-dark` |
 
 ### Type & payload
 

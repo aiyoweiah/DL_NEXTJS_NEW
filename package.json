@@ -9,12 +9,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postbuild": "node scripts/check-cjk-coverage.mjs --build && node scripts/check-font-preload.mjs && node scripts/check-surfaces.mjs --build && node scripts/check-gilt-escrow.mjs --build && node scripts/check-tokens.mjs --build && node scripts/check-inline-style.mjs --build",
+    "postbuild": "node scripts/check-cjk-coverage.mjs --build && node scripts/check-font-preload.mjs && node scripts/check-surfaces.mjs --build && node scripts/check-gilt-escrow.mjs --build && node scripts/check-tokens.mjs --build && node scripts/check-inline-style.mjs --build && node scripts/check-on-dark.mjs --build",
     "fonts:cjk": "node scripts/build-cjk-subset.mjs",
     "fonts:report": "node scripts/build-cjk-subset.mjs --report",
     "check:tokens": "node scripts/check-tokens.mjs",
     "conformance": "node scripts/conformance.mjs",
-    "check:inline": "node scripts/check-inline-style.mjs"
+    "check:inline": "node scripts/check-inline-style.mjs",
+    "check:ondark": "node scripts/check-on-dark.mjs --build"
   },
   "dependencies": {
     "@types/node": "20.6.2",

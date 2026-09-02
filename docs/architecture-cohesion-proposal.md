@@ -240,6 +240,9 @@ quoting any of them; that is the whole point of it existing. Last measured 2026-
 
 ---
 
+
+---
+
 ## 6. If you only do one thing
 
 ~~**Convert the two source-scanning guards to parse the built output (§3.1), and add the
@@ -268,3 +271,45 @@ And, still: before writing "X is gone" anywhere in the guide, run the check that
 it. Status for every decision now lives in [`decision-index.md`](decision-index.md),
 which records the enforcing guard per decision — or leaves the column empty, which is
 itself the warning.
+
+
+---
+
+## 7. Contrast is two problems — and only one of them is guardable (D85)
+
+Added 2026-09-01, after a conversion CTA shipped at **1.29:1** and a hand-built
+contrast probe gave three different answers about it.
+
+**Structural failures.** A control on a ground whose `on-dark` hook is missing. Its
+label keeps the light-ground colour and lands near-black on near-black. This is
+decidable from the DOM alone — a class check plus an ancestor check — and
+`check-on-dark.mjs` does it in ~40 lines with the existing parser, no dependency,
+zero false positives. **This is the class that ships broken conversion controls:**
+D53 warned about it, D65 found six instances of its sibling, and D85 found it live on
+`/compare`. It is now guarded.
+
+**Value failures.** A colour simply too faint for its ground. This needs the
+*composited* pixel, which needs a real browser in the build — and §3.1 already ruled
+that out: *the build must not acquire an install step.* A Playwright-based contrast
+guard would break a constraint this document set for good reasons.
+
+**So the pixel auditor is not being built, and that is a decision rather than an
+omission.** Value-level contrast is a design review. Saying so is better than
+carrying a guard that does not exist in anyone's head.
+
+### The instrument warning — a sixth measurement trap for §4
+
+A probe that walks ancestors for an opaque `backgroundColor` to compute real
+contrast **is not reliable on this site**:
+
+- It cannot see a ground painted by an overlay or pseudo-element, so it reported
+  false failures on `/program` and `/demos` — elements *with* `.on-dark` ancestry
+  resolving against Whisper.
+- It gave **opposite verdicts for the same control** depending on whether it ran
+  against a detached DOM or the live page, because cascade-dependent rules like
+  `.on-dark .btn-do` do not resolve identically in an injected copy.
+
+Numbers produced that way are directionally useful and **not certifiable**. The
+"105 sub-AA nodes" figure in `completion-plan.md` carries that caveat for this
+reason. If you need a real count, sample painted pixels; if you need a guard, ask a
+structural question instead.

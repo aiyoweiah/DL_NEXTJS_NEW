@@ -68,10 +68,29 @@ function LoopDiagram({ locale = 'en' }) {
   )
 }
 
+// ⚠️ A LOCAL Section that paints its own ground (D85).
+//
+// This duplicates `SectionWrapper`, and the duplication cost something: it
+// painted a dark background inline and never added the `on-dark` hook, so the
+// s9 `.btn-do-primary` shipped a --text-body-dark label on #212830 — near-black
+// on near-black, 1.29:1, on a conversion CTA, in both locales. The system's own
+// fix message had warned about exactly this since D53.
+//
+// `on-dark` is now derived from `bg` rather than left to each call site, so a
+// dark ground cannot be painted here without the hook coming with it.
+// `check-on-dark.mjs` enforces it across the built output.
+//
+// The real fix is to delete this and use `SectionWrapper`. That is a larger
+// change than a broken CTA should have to wait for — see D85.
 const BG = { dark: '#212830', 'void-black': '#0E0E12', whisper: '#F5F5FF' }
 function Section({ bg = 'dark', className = '', children, id }) {
+  const dark = bg !== 'whisper'
   return (
-    <section id={id} className={`px-6 py-24 md:py-32 ${className}`} style={{ backgroundColor: BG[bg] }}>
+    <section
+      id={id}
+      className={`px-6 py-24 md:py-32 ${dark ? 'on-dark ' : ''}${className}`}
+      style={{ backgroundColor: BG[bg] }}
+    >
       <div className="max-w-7xl mx-auto">{children}</div>
     </section>
   )
