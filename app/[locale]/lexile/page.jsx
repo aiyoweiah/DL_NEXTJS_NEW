@@ -154,7 +154,7 @@ export default async function LexilePage({ params }) {
             </h1>
             <p
               className="text-lg md:text-xl leading-relaxed max-w-2xl"
-              style={{ color: 'rgba(240,240,240,0.52)' }}
+              style={{ color: 'var(--platinum-60)' }}
             >
               {t.hero.subheading}
             </p>
@@ -196,7 +196,7 @@ export default async function LexilePage({ params }) {
                     'Lexile',
                     locale === 'zh' ? '中位数' : 'Midpoint'].map((h) => (
                     <th key={h} className="text-left pb-3 pr-6"
-                      style={{ color: 'rgba(183,181,254,0.5)', fontWeight: 500, fontSize: '11px',
+                      style={{ color: 'var(--text-muted-dark)', fontWeight: 500, fontSize: '11px',
                         letterSpacing: '0.1em', textTransform: 'uppercase' }}>
                       {h}
                     </th>
@@ -281,7 +281,7 @@ export default async function LexilePage({ params }) {
             {t.examples.bars.map((bar, i) => (
               <div key={i}>
                 <p className="text-xs font-medium uppercase tracking-[0.1em] mb-4"
-                  style={{ color: 'rgba(183,181,254,0.5)' }}>
+                  style={{ color: 'var(--text-muted-dark)' }}>
                   {bar.label}
                 </p>
                 <LexileBar start={bar.start} end={bar.end} weeks={bar.weeks} />

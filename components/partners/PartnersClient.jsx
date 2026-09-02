@@ -444,9 +444,9 @@ function GateView({ g, locale, input, setInput, onSubmit, onKeyDown, error, shak
         </button>
       </div>
 
-      <p style={{ marginTop: '32px', fontSize: '13px', fontWeight: 400, color: 'rgba(240,240,240,0.25)', textAlign: 'center', lineHeight: 1.5 }}>
+      <p style={{ marginTop: '32px', fontSize: '13px', fontWeight: 400, color: 'var(--platinum-60)', textAlign: 'center', lineHeight: 1.5 }}>
         {g.footer}
-        <a href="mailto:janet@dodolearning.com" style={{ color: 'rgba(183,181,254,0.6)', textDecoration: 'none' }}>
+        <a href="mailto:janet@dodolearning.com" style={{ color: 'var(--text-muted-dark)', textDecoration: 'none' }}>
           janet@dodolearning.com
         </a>
       </p>
@@ -568,7 +568,7 @@ function PartnersContent({ c, locale }) {
             {c.hero.h1a}<span style={{ color: '#b7b5fe' }}>{c.hero.h1b}</span>{c.hero.h1c}
           </h1>
 
-          <p style={{ fontSize: 'clamp(16px, 2vw, 18px)', fontWeight: 400, color: 'rgba(240,240,240,0.55)', lineHeight: 1.7, maxWidth: '640px', marginBottom: '48px', whiteSpace: 'pre-line' }}>
+          <p style={{ fontSize: 'clamp(16px, 2vw, 18px)', fontWeight: 400, color: 'var(--platinum-60)', lineHeight: 1.7, maxWidth: '640px', marginBottom: '48px', whiteSpace: 'pre-line' }}>
             {c.hero.sub}
           </p>
 
@@ -576,7 +576,7 @@ function PartnersContent({ c, locale }) {
             {c.hero.stats.map(({ num, label }) => (
               <div key={label}>
                 <div style={{ fontSize: 'clamp(26px, 3vw, 36px)', fontWeight: 700, color: '#b7b5fe', lineHeight: 1, fontFamily: 'var(--font-latin)' }}>{num}</div>
-                <div style={{ fontSize: '13px', fontWeight: 400, color: 'rgba(240,240,240,0.45)', marginTop: '5px' }}>{label}</div>
+                <div style={{ fontSize: '13px', fontWeight: 400, color: 'var(--platinum-60)', marginTop: '5px' }}>{label}</div>
               </div>
             ))}
           </div>
@@ -590,7 +590,7 @@ function PartnersContent({ c, locale }) {
           <h2 style={{ fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 700, color: '#F0F0F0', lineHeight: 1.25, maxWidth: '760px', margin: '0 auto 16px', textAlign: 'center', fontFamily: 'var(--font-latin)' }}>
             {c.s2.h2}
           </h2>
-          <p style={{ fontSize: '16px', fontWeight: 400, color: 'rgba(240,240,240,0.5)', lineHeight: 1.65, maxWidth: '600px', margin: '0 auto 56px', textAlign: 'center' }}>
+          <p style={{ fontSize: '16px', fontWeight: 400, color: 'var(--platinum-60)', lineHeight: 1.65, maxWidth: '600px', margin: '0 auto 56px', textAlign: 'center' }}>
             {c.s2.sub}
           </p>
 
@@ -671,7 +671,7 @@ function PartnersContent({ c, locale }) {
           <h2 style={{ fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 700, color: '#F0F0F0', lineHeight: 1.25, maxWidth: '720px', margin: '0 auto 16px', textAlign: 'center', fontFamily: 'var(--font-latin)' }}>
             {c.s4.h2}
           </h2>
-          <p style={{ fontSize: '16px', fontWeight: 400, color: 'rgba(240,240,240,0.5)', lineHeight: 1.65, maxWidth: '560px', margin: '0 auto 56px', textAlign: 'center' }}>
+          <p style={{ fontSize: '16px', fontWeight: 400, color: 'var(--platinum-60)', lineHeight: 1.65, maxWidth: '560px', margin: '0 auto 56px', textAlign: 'center' }}>
             {c.s4.sub}
           </p>
 
@@ -720,16 +720,16 @@ function PartnersContent({ c, locale }) {
             </div>
 
             <div style={{ backgroundColor: '#2E3848', borderRadius: '20px', padding: '40px 36px', border: '1px solid rgba(183,181,254,0.12)' }}>
-              <div style={{ fontSize: '14px', fontWeight: 500, color: 'rgba(240,240,240,0.4)', marginBottom: '20px', letterSpacing: '0.05em' }}>
+              <div style={{ fontSize: '14px', fontWeight: 500, color: 'var(--platinum-60)', marginBottom: '20px', letterSpacing: '0.05em' }}>
                 {c.s5.toolkitLabel}
               </div>
               <div style={{ display: 'flex', flexWrap: 'wrap', marginBottom: '32px' }}>
                 <TagRun items={c.s5.pills} dark />
               </div>
               <div style={{ borderTop: '1px solid rgba(183,181,254,0.12)', paddingTop: '28px' }}>
-                <div style={{ fontSize: '13px', fontWeight: 400, color: 'rgba(240,240,240,0.4)', marginBottom: '4px' }}>{c.s5.citiesLabel}</div>
+                <div style={{ fontSize: '13px', fontWeight: 400, color: 'var(--platinum-60)', marginBottom: '4px' }}>{c.s5.citiesLabel}</div>
                 <div style={{ fontSize: '15px', fontWeight: 500, color: 'rgba(240,240,240,0.75)', lineHeight: 1.6 }}>{c.s5.cities}</div>
-                <div style={{ fontSize: '13px', fontWeight: 400, color: 'rgba(240,240,240,0.35)', marginTop: '4px' }}>{c.s5.citiesSub}</div>
+                <div style={{ fontSize: '13px', fontWeight: 400, color: 'var(--platinum-60)', marginTop: '4px' }}>{c.s5.citiesSub}</div>
               </div>
             </div>
           </div>
@@ -744,13 +744,13 @@ function PartnersContent({ c, locale }) {
           <h2 style={{ fontSize: 'clamp(30px, 5vw, 52px)', fontWeight: 700, color: '#F0F0F0', lineHeight: 1.2, marginBottom: '20px', fontFamily: 'var(--font-latin)' }}>
             {c.s6.h2}
           </h2>
-          <p style={{ fontSize: '18px', fontWeight: 400, color: 'rgba(240,240,240,0.55)', lineHeight: 1.7, marginBottom: '52px', whiteSpace: 'pre-line' }}>
+          <p style={{ fontSize: '18px', fontWeight: 400, color: 'var(--platinum-60)', lineHeight: 1.7, marginBottom: '52px', whiteSpace: 'pre-line' }}>
             {c.s6.sub}
           </p>
 
           <PartnerCalEmbed />
 
-          <p style={{ fontSize: '13px', fontWeight: 400, color: 'rgba(240,240,240,0.2)', marginTop: '32px', textAlign: 'center' }}>
+          <p style={{ fontSize: '13px', fontWeight: 400, color: 'var(--platinum-60)', marginTop: '32px', textAlign: 'center' }}>
             {c.s6.tagline}
           </p>
         </div>

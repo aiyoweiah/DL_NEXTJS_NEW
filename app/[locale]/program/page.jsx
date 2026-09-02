@@ -218,7 +218,7 @@ function Hero({ locale, c }) {
                 fontFamily:   'var(--font-cjk)',
                 fontSize:     '17px',
                 fontWeight:   500,
-                color:        'rgba(183,181,254,0.40)',
+                color: 'var(--text-muted-dark)',
                 marginBottom: '1.25rem',
                 lineHeight:   1.5,
               }}
@@ -227,7 +227,7 @@ function Hero({ locale, c }) {
             </p>
           )}
 
-          <p style={{ fontSize: '1rem', lineHeight: 1.85, color: 'rgba(240,240,240,0.52)', maxWidth: '36rem', marginBottom: '2.25rem' }}>
+          <p style={{ fontSize: '1rem', lineHeight: 1.85, color: 'var(--platinum-60)', maxWidth: '36rem', marginBottom: '2.25rem' }}>
             {c.hero.sub}
           </p>
 
@@ -270,7 +270,7 @@ function Hero({ locale, c }) {
                   <p style={{ fontSize: '0.6875rem', fontWeight: 700, color: 'rgba(240,240,240,0.75)', marginTop: '3px', lineHeight: 1.2 }}>
                     {stat.unit}
                   </p>
-                  <p style={{ fontSize: '0.625rem', color: 'rgba(183,181,254,0.35)', marginTop: '2px', lineHeight: 1.3 }}>
+                  <p style={{ fontSize: '0.625rem', color: 'var(--text-muted-dark)', marginTop: '2px', lineHeight: 1.3 }}>
                     {stat.desc}
                   </p>
                 </div>
@@ -492,9 +492,9 @@ function ArchitectureSection({ locale, c }) {
                 <div>
                   <p style={{ fontSize: '1rem', fontWeight: 700, color: '#F0F0F0', lineHeight: 1.2 }}>{strand.name}</p>
                   {locale === 'zh' ? (
-                    <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '11px', color: 'rgba(183,181,254,0.7)', lineHeight: 1.3 }}>{strand.nameZh}</p>
+                    <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '11px', color: 'var(--text-muted-dark)', lineHeight: 1.3 }}>{strand.nameZh}</p>
                   ) : (
-                    <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '11px', color: 'rgba(183,181,254,0.5)', lineHeight: 1.3 }}>{strand.nameZh}</p>
+                    <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '11px', color: 'var(--text-muted-dark)', lineHeight: 1.3 }}>{strand.nameZh}</p>
                   )}
                 </div>
               </div>
@@ -502,7 +502,7 @@ function ArchitectureSection({ locale, c }) {
             </Surface>
           ))}
         </div>
-        <p style={{ fontSize: '0.8125rem', lineHeight: 1.7, color: 'rgba(240,240,240,0.45)', maxWidth: '52rem' }}>
+        <p style={{ fontSize: '0.8125rem', lineHeight: 1.7, color: 'var(--platinum-60)', maxWidth: '52rem' }}>
           {a.levelsNote}
         </p>
       </div>
@@ -606,7 +606,7 @@ function SessionSection({ locale, c }) {
             </span>
             <div>
               <p style={{ fontSize: '11px', fontWeight: 700, color: '#F0F0F0', lineHeight: 1.2 }}>{c.session.navigatorName}</p>
-              <p style={{ fontSize: '10px', color: 'rgba(183,181,254,0.55)', lineHeight: 1.2 }}>{c.session.sessionPhase}</p>
+              <p style={{ fontSize: '10px', color: 'var(--text-muted-dark)', lineHeight: 1.2 }}>{c.session.sessionPhase}</p>
             </div>
           </div>
 
@@ -694,26 +694,26 @@ function GrowthSection({ locale, c }) {
           {/* Lexile */}
           <div>
             <h3 style={{ fontSize: '1.125rem', fontWeight: 700, color: '#b7b5fe', marginBottom: '0.375rem', letterSpacing: '-0.01em' }}>{c.growth.lexile.h3}</h3>
-            <p style={{ fontSize: '0.875rem', lineHeight: 1.72, color: 'rgba(240,240,240,0.45)', marginBottom: '1.75rem' }}>{c.growth.lexile.sub}</p>
+            <p style={{ fontSize: '0.875rem', lineHeight: 1.72, color: 'var(--platinum-60)', marginBottom: '1.75rem' }}>{c.growth.lexile.sub}</p>
             <div className="flex flex-col sm:flex-row gap-6 items-start">
               <LexileScaleViz start={c.growth.lexile.start} end={c.growth.lexile.end} />
-              <p style={{ fontSize: '0.875rem', lineHeight: 1.82, color: 'rgba(240,240,240,0.5)', flex: 1, paddingTop: '0.5rem' }} dangerouslySetInnerHTML={{ __html: c.growth.lexile.note }} />
+              <p style={{ fontSize: '0.875rem', lineHeight: 1.82, color: 'var(--platinum-60)', flex: 1, paddingTop: '0.5rem' }} dangerouslySetInnerHTML={{ __html: c.growth.lexile.note }} />
             </div>
           </div>
 
           {/* 6+1 Trait */}
           <div>
             <h3 style={{ fontSize: '1.125rem', fontWeight: 700, color: '#b7b5fe', marginBottom: '0.375rem', letterSpacing: '-0.01em' }}>{c.growth.trait.h3}</h3>
-            <p style={{ fontSize: '0.875rem', lineHeight: 1.72, color: 'rgba(240,240,240,0.45)', marginBottom: '1.25rem' }}>{c.growth.trait.sub}</p>
+            <p style={{ fontSize: '0.875rem', lineHeight: 1.72, color: 'var(--platinum-60)', marginBottom: '1.25rem' }}>{c.growth.trait.sub}</p>
 
             <div className="flex items-center gap-4" style={{ marginBottom: '0.75rem' }} aria-hidden="true">
               <div className="flex items-center gap-1.5">
                 <div style={{ width: '10px', height: '10px', borderRadius: '2px', backgroundColor: 'rgba(183,181,254,0.18)' }} />
-                <span style={{ fontSize: '10px', fontWeight: 600, color: 'rgba(183,181,254,0.4)' }}>{c.growth.trait.startLabel}</span>
+                <span style={{ fontSize: '10px', fontWeight: 600, color: 'var(--text-muted-dark)' }}>{c.growth.trait.startLabel}</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <div style={{ width: '10px', height: '10px', borderRadius: '2px', backgroundColor: '#b7b5fe' }} />
-                <span style={{ fontSize: '10px', fontWeight: 600, color: 'rgba(183,181,254,0.7)' }}>{c.growth.trait.endLabel}</span>
+                <span style={{ fontSize: '10px', fontWeight: 600, color: 'var(--text-muted-dark)' }}>{c.growth.trait.endLabel}</span>
               </div>
               <span style={{ fontSize: '10px', color: 'rgba(183,181,254,0.22)', marginLeft: 'auto' }}>{c.growth.trait.scaleLabel}</span>
             </div>
@@ -735,7 +735,7 @@ function GrowthSection({ locale, c }) {
                       <div aria-hidden="true" style={{ position: 'absolute', left: 0, top: 0, height: '100%', width: `${sPct}%`, backgroundColor: 'var(--lavender-15)', borderRadius: '9999px' }} />
                       <div aria-hidden="true" style={{ position: 'absolute', left: `${sPct}%`, top: 0, height: '100%', width: `${gainPct}%`, backgroundColor: '#b7b5fe', borderRadius: '9999px' }} />
                     </div>
-                    <p style={{ fontSize: '0.75rem', color: 'rgba(183,181,254,0.5)', textAlign: 'right', whiteSpace: 'nowrap' }}>
+                    <p style={{ fontSize: '0.75rem', color: 'var(--text-muted-dark)', textAlign: 'right', whiteSpace: 'nowrap' }}>
                       {trait.start}→<span style={{ color: '#b7b5fe', fontWeight: 700 }}>{trait.end}</span>
                     </p>
                   </div>
@@ -743,7 +743,7 @@ function GrowthSection({ locale, c }) {
               })}
             </div>
 
-            <p style={{ fontSize: '0.8125rem', lineHeight: 1.72, color: 'rgba(240,240,240,0.35)', marginTop: '1rem' }}>{c.growth.trait.note}</p>
+            <p style={{ fontSize: '0.8125rem', lineHeight: 1.72, color: 'var(--platinum-60)', marginTop: '1rem' }}>{c.growth.trait.note}</p>
           </div>
 
         </div>

@@ -157,12 +157,12 @@ function Hero({ locale, c }) {
           </h1>
 
           {c.hero.h1zh && (
-            <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '17px', fontWeight: 500, color: 'rgba(183,181,254,0.40)', marginBottom: '1.25rem', lineHeight: 1.5 }}>
+            <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '17px', fontWeight: 500, color: 'var(--text-muted-dark)', marginBottom: '1.25rem', lineHeight: 1.5 }}>
               {c.hero.h1zh}
             </p>
           )}
 
-          <p style={{ fontSize: '1rem', lineHeight: 1.85, color: 'rgba(240,240,240,0.52)', maxWidth: '36rem', marginBottom: '2.25rem' }}>
+          <p style={{ fontSize: '1rem', lineHeight: 1.85, color: 'var(--platinum-60)', maxWidth: '36rem', marginBottom: '2.25rem' }}>
             {c.hero.sub}
           </p>
 
@@ -185,7 +185,7 @@ function Hero({ locale, c }) {
               >
                 <div style={{ fontSize: '1.375rem', fontWeight: 700, color: '#b7b5fe', letterSpacing: '-0.02em' }}>{s.value}</div>
                 <div style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#F0F0F0', marginTop: '0.25rem' }}>{s.unit}</div>
-                <div style={{ fontSize: '11px', color: 'rgba(240,240,240,0.4)', marginTop: '0.25rem', lineHeight: 1.4 }}>{s.desc}</div>
+                <div style={{ fontSize: '11px', color: 'var(--platinum-60)', marginTop: '0.25rem', lineHeight: 1.4 }}>{s.desc}</div>
               </div>
             ))}
           </div>

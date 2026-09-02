@@ -218,7 +218,7 @@ function LoopSection({ locale, c }: { locale: string; c: any }) {
     <section className="section-dark" aria-labelledby="loop-heading">
       <div className="container-section">
         <div className="max-w-2xl mb-14 md:mb-16">
-          <p className="eyebrow mb-4 label-quote" style={{ color: 'rgba(183,181,254,0.6)' }}>{c.loop.eyebrow}</p>
+          <p className="eyebrow mb-4 label-quote" style={{ color: 'var(--text-muted-dark)' }}>{c.loop.eyebrow}</p>
           <h2 id="loop-heading">{c.loop.heading}</h2>
           <p className="mt-4 text-base md:text-lg leading-relaxed" style={{ color: 'var(--text-muted-dark)' }}>{c.loop.body}</p>
         </div>
@@ -296,7 +296,7 @@ function ParentTrustSection({ locale, c }: { locale: string; c: any }) {
       <div className="container-section">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
           <div className="max-w-xl">
-            <p className="eyebrow mb-4 label-quote" style={{ color: 'rgba(183,181,254,0.6)' }}>{c.trust.eyebrow}</p>
+            <p className="eyebrow mb-4 label-quote" style={{ color: 'var(--text-muted-dark)' }}>{c.trust.eyebrow}</p>
             <h2 id="results-heading">{c.trust.heading1}<br />{c.trust.heading2}</h2>
           </div>
           <Link
@@ -323,7 +323,7 @@ function ParentTrustSection({ locale, c }: { locale: string; c: any }) {
               <span className="tag-run self-start" style={{ color: 'var(--color-lavender-signal)' }}>6+1 {result.trait}</span>
               <blockquote className="mt-auto">
                 <p className="text-sm leading-relaxed italic" style={{ color: 'var(--text-muted-dark)' }}><q>{result.quote}</q></p>
-                <footer className="mt-3 text-xs font-medium" style={{ color: 'rgba(183,181,254,0.5)' }}>&mdash; {result.source}</footer>
+                <footer className="mt-3 text-xs font-medium" style={{ color: 'var(--text-muted-dark)' }}>&mdash; {result.source}</footer>
               </blockquote>
             </article>
           ))}

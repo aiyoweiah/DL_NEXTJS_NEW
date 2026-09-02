@@ -45,7 +45,7 @@ export default function LocaleNotFound() {
     <div className="section-darker min-h-screen flex items-center justify-center">
       <div className="container-section text-center py-32 max-w-lg mx-auto">
 
-        <p className="eyebrow mb-6" style={{ color: 'rgba(183,181,254,0.5)' }}>
+        <p className="eyebrow mb-6" style={{ color: 'var(--text-muted-dark)' }}>
           404
         </p>
 

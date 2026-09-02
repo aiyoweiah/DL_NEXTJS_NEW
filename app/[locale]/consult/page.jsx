@@ -115,8 +115,8 @@ function Hero({ locale, c }) {
           >
             {c.hero.h1}
           </h1>
-          <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '17px', fontWeight: 500, color: 'rgba(183,181,254,0.40)', marginBottom: '1.25rem', lineHeight: 1.5 }}>{c.hero.h1zh}</p>
-          <p style={{ fontSize: '1rem', lineHeight: 1.85, color: 'rgba(240,240,240,0.52)', maxWidth: '36rem', marginBottom: '2.25rem' }}>{c.hero.sub}</p>
+          <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '17px', fontWeight: 500, color: 'var(--text-muted-dark)', marginBottom: '1.25rem', lineHeight: 1.5 }}>{c.hero.h1zh}</p>
+          <p style={{ fontSize: '1rem', lineHeight: 1.85, color: 'var(--platinum-60)', maxWidth: '36rem', marginBottom: '2.25rem' }}>{c.hero.sub}</p>
 
           <div className="flex flex-col sm:flex-row gap-3">
             <a href="#consult-form" className="btn btn-do btn-do-primary" style={{ fontWeight: 700 }}>{c.hero.cta1}</a>
@@ -133,7 +133,7 @@ function Hero({ locale, c }) {
               <div key={i} style={{ textAlign: 'center', padding: '1.125rem 0.375rem', borderRight: i !== 2 && i !== 5 ? '1px solid rgba(183,181,254,0.07)' : 'none', borderBottom: i < 3 ? '1px solid rgba(183,181,254,0.07)' : 'none' }}>
                 <p style={{ fontSize: 'clamp(1.375rem, 2.5vw, 2rem)', fontWeight: 700, letterSpacing: '-0.03em', lineHeight: 1, color: '#b7b5fe' }}>{stat.value}</p>
                 <p style={{ fontSize: '0.6875rem', fontWeight: 700, color: 'rgba(240,240,240,0.75)', marginTop: '3px', lineHeight: 1.2 }}>{stat.unit}</p>
-                <p style={{ fontSize: '0.625rem', color: 'rgba(183,181,254,0.35)', marginTop: '2px', lineHeight: 1.3 }}>{stat.desc}</p>
+                <p style={{ fontSize: '0.625rem', color: 'var(--text-muted-dark)', marginTop: '2px', lineHeight: 1.3 }}>{stat.desc}</p>
               </div>
             ))}
           </div>
@@ -192,7 +192,7 @@ function RealCall({ locale, c }) {
             <span aria-hidden="true" style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: '#b7b5fe', color: '#0E0E12', fontSize: '10px', fontWeight: 800, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>NV</span>
             <div>
               <p style={{ fontSize: '11px', fontWeight: 700, color: '#F0F0F0', lineHeight: 1.2 }}>{c.call.navigatorName}</p>
-              <p style={{ fontSize: '10px', color: 'rgba(183,181,254,0.55)', lineHeight: 1.2 }}>{c.call.sessionPhase}</p>
+              <p style={{ fontSize: '10px', color: 'var(--text-muted-dark)', lineHeight: 1.2 }}>{c.call.sessionPhase}</p>
             </div>
           </div>
           <Eyebrow dark>{c.call.eyebrow}</Eyebrow>
@@ -221,7 +221,7 @@ function TrustSection({ locale, c }) {
           <div>
             <Eyebrow dark>{c.trust.eyebrow}</Eyebrow>
             <BilingualH2 id="trust-heading" primary={c.trust.h2} secondary={c.trust.h2zh} light />
-            <p style={{ fontSize: '1rem', lineHeight: 1.82, color: 'rgba(240,240,240,0.55)', marginTop: '1.125rem' }}>{c.trust.body}</p>
+            <p style={{ fontSize: '1rem', lineHeight: 1.82, color: 'var(--platinum-60)', marginTop: '1.125rem' }}>{c.trust.body}</p>
           </div>
           <ul style={{ display: 'flex', flexDirection: 'column', gap: '1rem', paddingTop: '0.25rem' }} aria-label="Trust points">
             {c.trust.points.map((point, i) => (

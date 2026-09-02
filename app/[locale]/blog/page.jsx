@@ -297,7 +297,7 @@ export default async function BlogPage({ params }) {
               <Link key={route} href={`/${locale}${route}`}
                 className="group block transition-colors p-6 md:p-8" style={{ textDecoration: 'none' }}>
                 <div className="group-hover:bg-[#2E3848] rounded-lg transition-colors p-0">
-                  <div style={{ textTransform: 'uppercase', fontSize: '11px', fontWeight: 300, color: 'rgba(240,240,240,0.5)', marginBottom: '12px', fontFamily: 'var(--font-latin)' }}>
+                  <div style={{ textTransform: 'uppercase', fontSize: '11px', fontWeight: 300, color: 'var(--platinum-60)', marginBottom: '12px', fontFamily: 'var(--font-latin)' }}>
                     {route}
                   </div>
                   <div className="flex items-start justify-between gap-4 mb-3">

@@ -112,7 +112,7 @@ function ResultCard({ lexileStart, lexileEnd, weeks, quote, light, className }) 
       <div>
         <p
           className="text-xs font-semibold uppercase tracking-widest mb-3"
-          style={{ color: 'rgba(183,181,254,0.5)' }}
+          style={{ color: 'var(--text-muted-dark)' }}
         >
           Lexile Growth
         </p>
@@ -126,7 +126,7 @@ function ResultCard({ lexileStart, lexileEnd, weeks, quote, light, className }) 
           </span>
           <span
             className="text-lg font-light"
-            style={{ color: 'rgba(183,181,254,0.4)' }}
+            style={{ color: 'var(--text-muted-dark)' }}
             aria-hidden="true"
           >
             →

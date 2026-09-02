@@ -137,8 +137,8 @@ function Hero({ locale, c }) {
           >
             {c.hero.h1}
           </h1>
-          <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '17px', fontWeight: 500, color: 'rgba(183,181,254,0.40)', marginBottom: '1.25rem', lineHeight: 1.5 }}>{c.hero.h1zh}</p>
-          <p style={{ fontSize: '1rem', lineHeight: 1.85, color: 'rgba(240,240,240,0.52)', maxWidth: '36rem', marginBottom: '2.25rem' }}>{c.hero.sub}</p>
+          <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '17px', fontWeight: 500, color: 'var(--text-muted-dark)', marginBottom: '1.25rem', lineHeight: 1.5 }}>{c.hero.h1zh}</p>
+          <p style={{ fontSize: '1rem', lineHeight: 1.85, color: 'var(--platinum-60)', maxWidth: '36rem', marginBottom: '2.25rem' }}>{c.hero.sub}</p>
           <div className="flex flex-col sm:flex-row gap-3">
             <a href="#demo-videos" className="btn btn-do btn-do-primary" style={{ fontWeight: 700 }}>{c.hero.cta1}</a>
             <DoCta as={Link} href={`/${locale}/consult`}>{c.hero.cta2}</DoCta>
@@ -154,7 +154,7 @@ function Hero({ locale, c }) {
               <div key={i} style={{ textAlign: 'center', padding: '1.125rem 0.375rem', borderRight: i !== 2 && i !== 5 ? '1px solid rgba(183,181,254,0.07)' : 'none', borderBottom: i < 3 ? '1px solid rgba(183,181,254,0.07)' : 'none' }}>
                 <p style={{ fontSize: 'clamp(1.375rem, 2.5vw, 2rem)', fontWeight: 700, letterSpacing: '-0.03em', lineHeight: 1, color: '#b7b5fe' }}>{stat.value}</p>
                 <p style={{ fontSize: '0.6875rem', fontWeight: 700, color: 'rgba(240,240,240,0.75)', marginTop: '3px', lineHeight: 1.2 }}>{stat.unit}</p>
-                <p style={{ fontSize: '0.625rem', color: 'rgba(183,181,254,0.35)', marginTop: '2px', lineHeight: 1.3 }}>{stat.desc}</p>
+                <p style={{ fontSize: '0.625rem', color: 'var(--text-muted-dark)', marginTop: '2px', lineHeight: 1.3 }}>{stat.desc}</p>
               </div>
             ))}
           </div>
@@ -244,7 +244,7 @@ function InsideSession({ locale, c }) {
             <span aria-hidden="true" style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: '#b7b5fe', color: '#0E0E12', fontSize: '10px', fontWeight: 800, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>NV</span>
             <div>
               <p style={{ fontSize: '11px', fontWeight: 700, color: '#F0F0F0', lineHeight: 1.2 }}>{c.session.navigatorName}</p>
-              <p style={{ fontSize: '10px', color: 'rgba(183,181,254,0.55)', lineHeight: 1.2 }}>{c.session.sessionPhase}</p>
+              <p style={{ fontSize: '10px', color: 'var(--text-muted-dark)', lineHeight: 1.2 }}>{c.session.sessionPhase}</p>
             </div>
           </div>
           <Eyebrow dark>{c.session.eyebrow}</Eyebrow>
@@ -272,7 +272,7 @@ function AfterDemo({ locale, c }) {
         <div style={{ maxWidth: '40rem' }}>
           <Eyebrow dark>{c.after.eyebrow}</Eyebrow>
           <BilingualH2 id="after-heading" primary={c.after.h2} secondary={c.after.h2zh} light />
-          <p style={{ fontSize: '1rem', lineHeight: 1.82, color: 'rgba(240,240,240,0.55)', marginTop: '1.125rem', marginBottom: '1.875rem' }}>{c.after.body}</p>
+          <p style={{ fontSize: '1rem', lineHeight: 1.82, color: 'var(--platinum-60)', marginTop: '1.125rem', marginBottom: '1.875rem' }}>{c.after.body}</p>
           <Link href={`/${locale}/consult`} className="btn btn-do btn-do-primary">{c.after.cta}</Link>
         </div>
       </div>
@@ -319,18 +319,18 @@ function ResultsSection({ locale, c }) {
         <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '3.5rem' }} className="lg:grid-cols-2">
           <div>
             <h3 style={{ fontSize: '1.125rem', fontWeight: 700, color: '#b7b5fe', marginBottom: '0.375rem', letterSpacing: '-0.01em' }}>{c.growth.lexile.h3}</h3>
-            <p style={{ fontSize: '0.875rem', lineHeight: 1.72, color: 'rgba(240,240,240,0.45)', marginBottom: '1.75rem' }}>{c.growth.lexile.sub}</p>
+            <p style={{ fontSize: '0.875rem', lineHeight: 1.72, color: 'var(--platinum-60)', marginBottom: '1.75rem' }}>{c.growth.lexile.sub}</p>
             <div className="flex flex-col sm:flex-row gap-6 items-start">
               <LexileScaleViz start={c.growth.lexile.start} end={c.growth.lexile.end} />
-              <p style={{ fontSize: '0.875rem', lineHeight: 1.82, color: 'rgba(240,240,240,0.5)', flex: 1, paddingTop: '0.5rem' }} dangerouslySetInnerHTML={{ __html: c.growth.lexile.note }} />
+              <p style={{ fontSize: '0.875rem', lineHeight: 1.82, color: 'var(--platinum-60)', flex: 1, paddingTop: '0.5rem' }} dangerouslySetInnerHTML={{ __html: c.growth.lexile.note }} />
             </div>
           </div>
           <div>
             <h3 style={{ fontSize: '1.125rem', fontWeight: 700, color: '#b7b5fe', marginBottom: '0.375rem', letterSpacing: '-0.01em' }}>{c.growth.trait.h3}</h3>
-            <p style={{ fontSize: '0.875rem', lineHeight: 1.72, color: 'rgba(240,240,240,0.45)', marginBottom: '1.25rem' }}>{c.growth.trait.sub}</p>
+            <p style={{ fontSize: '0.875rem', lineHeight: 1.72, color: 'var(--platinum-60)', marginBottom: '1.25rem' }}>{c.growth.trait.sub}</p>
             <div className="flex items-center gap-4" style={{ marginBottom: '0.75rem' }} aria-hidden="true">
-              <div className="flex items-center gap-1.5"><div style={{ width: '10px', height: '10px', borderRadius: '2px', backgroundColor: 'rgba(183,181,254,0.18)' }} /><span style={{ fontSize: '10px', fontWeight: 600, color: 'rgba(183,181,254,0.4)' }}>{c.growth.trait.startLabel}</span></div>
-              <div className="flex items-center gap-1.5"><div style={{ width: '10px', height: '10px', borderRadius: '2px', backgroundColor: '#b7b5fe' }} /><span style={{ fontSize: '10px', fontWeight: 600, color: 'rgba(183,181,254,0.7)' }}>{c.growth.trait.endLabel}</span></div>
+              <div className="flex items-center gap-1.5"><div style={{ width: '10px', height: '10px', borderRadius: '2px', backgroundColor: 'rgba(183,181,254,0.18)' }} /><span style={{ fontSize: '10px', fontWeight: 600, color: 'var(--text-muted-dark)' }}>{c.growth.trait.startLabel}</span></div>
+              <div className="flex items-center gap-1.5"><div style={{ width: '10px', height: '10px', borderRadius: '2px', backgroundColor: '#b7b5fe' }} /><span style={{ fontSize: '10px', fontWeight: 600, color: 'var(--text-muted-dark)' }}>{c.growth.trait.endLabel}</span></div>
               <span style={{ fontSize: '10px', color: 'rgba(183,181,254,0.22)', marginLeft: 'auto' }}>{c.growth.trait.scaleLabel}</span>
             </div>
             <div>
@@ -344,12 +344,12 @@ function ResultsSection({ locale, c }) {
                       <div aria-hidden="true" style={{ position: 'absolute', left: 0, top: 0, height: '100%', width: `${sPct}%`, backgroundColor: 'var(--lavender-15)', borderRadius: '9999px' }} />
                       <div aria-hidden="true" style={{ position: 'absolute', left: `${sPct}%`, top: 0, height: '100%', width: `${gainPct}%`, backgroundColor: '#b7b5fe', borderRadius: '9999px' }} />
                     </div>
-                    <p style={{ fontSize: '0.75rem', color: 'rgba(183,181,254,0.5)', textAlign: 'right', whiteSpace: 'nowrap' }}>{trait.start}→<span style={{ color: '#b7b5fe', fontWeight: 700 }}>{trait.end}</span></p>
+                    <p style={{ fontSize: '0.75rem', color: 'var(--text-muted-dark)', textAlign: 'right', whiteSpace: 'nowrap' }}>{trait.start}→<span style={{ color: '#b7b5fe', fontWeight: 700 }}>{trait.end}</span></p>
                   </div>
                 )
               })}
             </div>
-            <p style={{ fontSize: '0.8125rem', lineHeight: 1.72, color: 'rgba(240,240,240,0.35)', marginTop: '1rem' }}>{c.growth.trait.note}</p>
+            <p style={{ fontSize: '0.8125rem', lineHeight: 1.72, color: 'var(--platinum-60)', marginTop: '1rem' }}>{c.growth.trait.note}</p>
           </div>
         </div>
       </div>

@@ -191,7 +191,7 @@ function SearchResults({ results, query, ui, locale }) {
         </p>
         {results.map((item, i) => (
           <div key={i}>
-            <div style={{ marginBottom: '4px', fontSize: '11px', color: 'rgba(183,181,254,0.5)',
+            <div style={{ marginBottom: '4px', fontSize: '11px', color: 'var(--text-muted-dark)',
               fontFamily: 'var(--font-latin)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
               {item._category}
             </div>

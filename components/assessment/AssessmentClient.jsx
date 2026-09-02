@@ -51,13 +51,13 @@ function AssessmentReport({ lexileBefore, lexileAfter, traits }) {
     <div className="rounded-2xl overflow-hidden" style={{ backgroundColor: '#ffffff', border: '1px solid rgba(0,0,0,0.07)', boxShadow: '0 4px 24px rgba(0,0,0,0.07)' }}>
       {/* Header */}
       <div style={{ backgroundColor: '#212830', padding: '20px 24px', borderBottom: '1px solid rgba(183,181,254,0.15)' }}>
-        <div style={{ fontFamily: 'var(--font-latin)', fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(183,181,254,0.6)', marginBottom: '12px' }}>Exit Assessment Report</div>
+        <div style={{ fontFamily: 'var(--font-latin)', fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted-dark)', marginBottom: '12px' }}>Exit Assessment Report</div>
         <div className="flex items-end gap-3">
           <div>
-            <span style={{ fontFamily: 'var(--font-latin)', fontSize: '11px', color: 'rgba(240,240,240,0.4)', display: 'block', marginBottom: '2px' }}>Entry</span>
-            <span style={{ fontFamily: 'var(--font-latin)', fontSize: '28px', fontWeight: 700, color: 'rgba(240,240,240,0.35)', letterSpacing: '-0.03em' }}>{lexileBefore}L</span>
+            <span style={{ fontFamily: 'var(--font-latin)', fontSize: '11px', color: 'var(--platinum-60)', display: 'block', marginBottom: '2px' }}>Entry</span>
+            <span style={{ fontFamily: 'var(--font-latin)', fontSize: '28px', fontWeight: 700, color: 'var(--platinum-60)', letterSpacing: '-0.03em' }}>{lexileBefore}L</span>
           </div>
-          <div style={{ fontSize: '18px', color: 'rgba(183,181,254,0.35)', paddingBottom: '4px' }}>→</div>
+          <div style={{ fontSize: '18px', color: 'var(--text-muted-dark)', paddingBottom: '4px' }}>→</div>
           <div>
             <span style={{ fontFamily: 'var(--font-latin)', fontSize: '11px', color: '#b7b5fe', opacity: 0.7, display: 'block', marginBottom: '2px' }}>Exit</span>
             <span style={{ fontFamily: 'var(--font-latin)', fontSize: '28px', fontWeight: 700, color: '#b7b5fe', letterSpacing: '-0.03em' }}>{lexileAfter}L</span>
@@ -285,7 +285,7 @@ export default function AssessmentClient({ locale = 'en' }) {
                     color: '#b7b5fe', backgroundColor: 'transparent', border: '1.5px solid rgba(183,181,254,0.40)', cursor: 'pointer' }}
                   onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(183,181,254,0.80)'; e.currentTarget.style.backgroundColor = 'rgba(183,181,254,0.12)' }}
                   onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(183,181,254,0.40)'; e.currentTarget.style.backgroundColor = 'transparent' }}>
-                  {pill.label} <span style={{ color: 'rgba(183,181,254,0.60)', fontSize: '11px' }}>↓</span>
+                  {pill.label} <span style={{ color: 'var(--text-muted-dark)', fontSize: '11px' }}>↓</span>
                 </button>
               ))}
             </div>
@@ -315,7 +315,7 @@ export default function AssessmentClient({ locale = 'en' }) {
               <div key={number} className="px-0 md:px-8"
                 style={i > 0 ? { borderLeft: '1px solid rgba(183,181,254,0.2)' } : undefined}>
                 <div style={{ fontFamily: 'var(--font-latin)', fontSize: '11px', fontWeight: 300,
-                  color: 'rgba(183,181,254,0.40)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '12px' }}>{number}</div>
+                  color: 'var(--text-muted-dark)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '12px' }}>{number}</div>
                 <h3 style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: '21px', color: '#b7b5fe', marginBottom: '12px' }}>{heading}</h3>
                 <p style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '15px', color: 'var(--platinum-70)', lineHeight: 1.6 }}>{text}</p>
               </div>
@@ -345,7 +345,7 @@ export default function AssessmentClient({ locale = 'en' }) {
               <div key={item.step} className="bg-white rounded-lg p-6 relative z-10"
                 style={{ borderTop: '3px solid #b7b5fe', boxShadow: '0 2px 12px rgba(0,0,0,0.05)' }}>
                 <div style={{ fontFamily: 'var(--font-latin)', fontSize: '11px', fontWeight: 300,
-                  color: 'rgba(183,181,254,0.50)', textTransform: 'uppercase', marginBottom: '12px' }}>{item.step}</div>
+                  color: 'var(--text-muted-dark)', textTransform: 'uppercase', marginBottom: '12px' }}>{item.step}</div>
                 <h3 className="mb-3" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: '18px', color: '#0E0E12' }}>{item.name}</h3>
                 <p className="mb-3" style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '14px', color: '#212830', lineHeight: 1.6 }}>{item.happens}</p>
                 <p className="mb-4" style={{ fontFamily: 'var(--font-latin)', fontWeight: 500, fontSize: '13px', color: 'rgba(33,40,48,0.65)' }}>{item.admin}</p>

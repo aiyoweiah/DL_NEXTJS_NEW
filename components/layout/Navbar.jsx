@@ -291,11 +291,11 @@ export default function Navbar({ locale, copy }) {
                         {sub.label}
                       </span>
                       {sub.external && (
-                        <span aria-hidden="true" style={{ fontSize: '0.75rem', color: 'rgba(183,181,254,0.55)' }}>↗</span>
+                        <span aria-hidden="true" style={{ fontSize: '0.75rem', color: 'var(--text-muted-dark)' }}>↗</span>
                       )}
                     </div>
                     {sub.sub && (
-                      <div style={{ fontSize: '0.6875rem', fontWeight: 500, color: 'rgba(240,240,240,0.45)', marginTop: '2px', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+                      <div style={{ fontSize: '0.6875rem', fontWeight: 500, color: 'var(--platinum-60)', marginTop: '2px', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
                         {sub.sub}
                       </div>
                     )}
@@ -348,7 +348,7 @@ export default function Navbar({ locale, copy }) {
     <div>
       <p
         className="pt-5 pb-2 text-[0.7rem] font-semibold uppercase tracking-widest"
-        style={{ color: 'rgba(183,181,254,0.55)' }}
+        style={{ color: 'var(--text-muted-dark)' }}
       >
         {item.label}
       </p>
@@ -362,12 +362,12 @@ export default function Navbar({ locale, copy }) {
             <span style={{ fontSize: '1rem', fontWeight: 600, color: isCurrent ? '#b7b5fe' : '#F0F0F0' }}>
               {sub.label}
               {sub.sub && (
-                <span style={{ fontSize: '0.6875rem', color: 'rgba(240,240,240,0.45)', marginLeft: '0.5rem', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+                <span style={{ fontSize: '0.6875rem', color: 'var(--platinum-60)', marginLeft: '0.5rem', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
                   · {sub.sub}
                 </span>
               )}
             </span>
-            {sub.external && <span aria-hidden="true" style={{ color: 'rgba(183,181,254,0.55)' }}>↗</span>}
+            {sub.external && <span aria-hidden="true" style={{ color: 'var(--text-muted-dark)' }}>↗</span>}
           </div>
         )
         return sub.external ? (
@@ -571,7 +571,7 @@ export default function Navbar({ locale, copy }) {
 
           <p
             className="mt-6 text-xs font-medium tracking-wide text-center"
-            style={{ color: 'rgba(183,181,254,0.4)' }}
+            style={{ color: 'var(--text-muted-dark)' }}
           >
             {copy.tagline}
           </p>

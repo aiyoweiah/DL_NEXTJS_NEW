@@ -133,7 +133,7 @@ export default async function ResultsPage({ params }) {
             </h1>
             <p
               className="text-lg md:text-xl leading-relaxed max-w-2xl"
-              style={{ color: 'rgba(240,240,240,0.52)' }}
+              style={{ color: 'var(--platinum-60)' }}
             >
               {t.hero.subheading}
             </p>
@@ -160,7 +160,7 @@ export default async function ResultsPage({ params }) {
                   </span>
                   <span
                     className="ml-1 text-xl font-medium"
-                    style={{ color: 'rgba(183,181,254,0.7)' }}
+                    style={{ color: 'var(--text-muted-dark)' }}
                   >
                     {stat.unit}
                   </span>
@@ -203,7 +203,7 @@ export default async function ResultsPage({ params }) {
                 <div key={i} className="p-6" style={{ background: 'var(--lavender-08)', borderLeft: '3px solid #b7b5fe' }}>
                   <p className="text-5xl font-bold tracking-tight" style={{ color: '#b7b5fe', letterSpacing: '-0.03em' }}>
                     {stat.number}
-                    <span className="text-base font-medium ml-2" style={{ color: 'rgba(183,181,254,0.7)' }}>{stat.unit}</span>
+                    <span className="text-base font-medium ml-2" style={{ color: 'var(--text-muted-dark)' }}>{stat.unit}</span>
                   </p>
                   <p className="text-sm font-semibold uppercase tracking-wider mt-2" style={{ color: 'rgba(240,240,240,0.85)', letterSpacing: '0.08em' }}>
                     {stat.label}
@@ -211,7 +211,7 @@ export default async function ResultsPage({ params }) {
                 </div>
               ))}
             </div>
-            <p className="text-sm leading-relaxed" style={{ color: 'rgba(240,240,240,0.5)' }}>
+            <p className="text-sm leading-relaxed" style={{ color: 'var(--platinum-60)' }}>
               {t.anchor.note}
             </p>
           </div>
@@ -295,11 +295,11 @@ export default async function ResultsPage({ params }) {
                       {trait.label}
                     </span>
                     <span className="text-xs tabular-nums" style={{ color: 'var(--text-muted-dark)' }}>
-                      <span style={{ color: 'rgba(183,181,254,0.5)' }}>
+                      <span style={{ color: 'var(--text-muted-dark)' }}>
                         {trait.entryAvg.toFixed(1)}
                       </span>
                       <span className="sr-only"> improving to </span>
-                      <span aria-hidden="true" style={{ color: 'rgba(183,181,254,0.3)' }}> → </span>
+                      <span aria-hidden="true" style={{ color: 'var(--text-muted-dark)' }}> → </span>
                       <span style={{ color: '#b7b5fe' }}>
                         {trait.exitAvg.toFixed(1)}
                       </span>

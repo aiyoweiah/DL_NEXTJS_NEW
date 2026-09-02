@@ -438,7 +438,7 @@ const S = {
     fontWeight:    700,
     letterSpacing: '0.12em',
     textTransform: 'uppercase',
-    color:         'rgba(88,86,204,0.6)',
+    color: 'var(--text-accent)',
     margin:        '0 0 0.875rem',
   },
   label: {

@@ -146,7 +146,7 @@ export default async function NavigatorsPage({ params }) {
             >
               {c.hero.h1a}<span style={{ color: '#b7b5fe' }}>{c.hero.h1b}</span>{c.hero.h1c}<span style={{ color: '#b7b5fe' }}>{c.hero.h1d}</span>{c.hero.h1e}
             </h1>
-            <p style={{ fontSize: 'clamp(16px, 2vw, 20px)', fontWeight: 400, color: 'rgba(240,240,240,0.52)', maxWidth: '580px', lineHeight: 1.6 }}>
+            <p style={{ fontSize: 'clamp(16px, 2vw, 20px)', fontWeight: 400, color: 'var(--platinum-60)', maxWidth: '580px', lineHeight: 1.6 }}>
               {c.hero.sub}
             </p>
           </div>

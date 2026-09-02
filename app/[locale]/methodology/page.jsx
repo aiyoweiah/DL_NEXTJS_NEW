@@ -150,7 +150,7 @@ export default async function MethodologyPage({ params }) {
             </h1>
             <p
               className="text-lg md:text-xl leading-relaxed max-w-2xl"
-              style={{ color: 'rgba(240,240,240,0.52)' }}
+              style={{ color: 'var(--platinum-60)' }}
             >
               {t.hero.subheading}
             </p>
@@ -333,7 +333,7 @@ export default async function MethodologyPage({ params }) {
                 <p className="proof-stat-number mb-1">
                   {stat.number}
                   {' '}
-                  <span className="text-base font-medium" style={{ color: 'rgba(183,181,254,0.7)' }}>
+                  <span className="text-base font-medium" style={{ color: 'var(--text-muted-dark)' }}>
                     {stat.unit}
                   </span>
                 </p>
@@ -344,7 +344,7 @@ export default async function MethodologyPage({ params }) {
 
           {/* Example Lexile bar */}
           <div className="max-w-lg">
-            <p className="text-xs font-semibold uppercase tracking-[0.15em] mb-5" style={{ color: 'rgba(183,181,254,0.5)' }}>
+            <p className="text-xs font-semibold uppercase tracking-[0.15em] mb-5" style={{ color: 'var(--text-muted-dark)' }}>
               Typical result — two 16-week cycles
             </p>
             <LexileBar start={620} end={820} weeks={32} />

@@ -131,7 +131,7 @@ export default async function CityPage({ params }) {
           {ui.bandsCallout && (
             <p
               className="mt-6 text-sm"
-              style={{ color: 'rgba(240,240,240,0.55)', maxWidth: '36rem' }}
+              style={{ color: 'var(--platinum-60)', maxWidth: '36rem' }}
             >
               {ui.bandsCallout}
             </p>
@@ -149,7 +149,7 @@ export default async function CityPage({ params }) {
                 <p className="proof-stat-number" aria-label={`${stat.number} ${stat.unit}`}>
                   {stat.number}
                   {stat.unit && (
-                    <span className="ml-1.5 text-xl font-medium" style={{ color: 'rgba(183,181,254,0.7)' }}>
+                    <span className="ml-1.5 text-xl font-medium" style={{ color: 'var(--text-muted-dark)' }}>
                       {stat.unit}
                     </span>
                   )}
@@ -269,14 +269,14 @@ export default async function CityPage({ params }) {
           style={{ paddingTop: 'var(--section-md)', paddingBottom: 'var(--section-md)' }}
         >
           <div className="max-w-xl">
-            <p className="eyebrow mb-4 label-quote" style={{ color: 'rgba(183,181,254,0.6)' }}>
+            <p className="eyebrow mb-4 label-quote" style={{ color: 'var(--text-muted-dark)' }}>
               {ui.charterEyebrow}
             </p>
             <h2 className="mb-5">{ui.charterHeading}</h2>
             <p className="text-lg leading-relaxed mb-4" style={{ color: 'var(--text-muted-dark)' }}>
               {ui.charterBody}
             </p>
-            <p className="text-sm" style={{ color: 'rgba(183,181,254,0.45)' }}>
+            <p className="text-sm" style={{ color: 'var(--text-muted-dark)' }}>
               {ui.charterNote}
             </p>
           </div>

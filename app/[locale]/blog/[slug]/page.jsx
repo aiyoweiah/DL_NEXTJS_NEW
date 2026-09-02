@@ -222,7 +222,7 @@ export default async function BlogPostPage({ params }) {
           style={{ paddingTop: 'var(--section-md)', paddingBottom: 'var(--section-md)' }}
         >
           <div className="max-w-xl">
-            <p className="eyebrow mb-4 label-quote" style={{ color: 'rgba(183,181,254,0.6)' }}>
+            <p className="eyebrow mb-4 label-quote" style={{ color: 'var(--text-muted-dark)' }}>
               {ui.charterEyebrow}
             </p>
             <h2 className="mb-5">{ui.charterHeading}</h2>
