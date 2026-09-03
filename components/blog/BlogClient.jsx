@@ -123,7 +123,7 @@ export default function BlogClient({ articles, categories, locale = 'en', ui }) 
       </div>
 
       {/* S3 Category filter */}
-      <section className="py-8 px-6" style={{ backgroundColor: 'var(--color-whisper)' }}>
+      <section className="py-8 px-6 bg-[color:var(--color-whisper)]">
         <div className="max-w-7xl mx-auto">
           <div className="flex justify-center gap-3 flex-wrap" role="group" aria-label={t.filterAriaLabel}>
             {categories.map((category) => {
@@ -148,7 +148,7 @@ export default function BlogClient({ articles, categories, locale = 'en', ui }) 
       </section>
 
       {/* S4 Article grid */}
-      <section className="px-6 pb-20" style={{ backgroundColor: 'var(--color-whisper)' }}>
+      <section className="px-6 pb-20 bg-[color:var(--color-whisper)]">
         <div className="max-w-7xl mx-auto">
           {visible.length === 0 && (
             <div className="text-center py-20">

@@ -212,7 +212,7 @@ export default async function BlogPage({ params }) {
     <div className="w-full overflow-hidden" style={{ fontFamily: 'var(--font-latin)' }}>
 
       {/* ══ S1 HERO ══════════════════════════════════════════ */}
-      <section className="relative overflow-hidden" style={{ backgroundColor: 'var(--color-whisper)' }}>
+      <section className="relative overflow-hidden bg-[color:var(--color-whisper)]">
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true"
           style={{ backgroundImage: 'radial-gradient(circle, #b7b5fe 1px, transparent 1px)', backgroundSize: '32px 32px', opacity: 0.08 }} />
 
@@ -222,7 +222,7 @@ export default async function BlogPage({ params }) {
           <h1 className="mb-6 max-w-[720px] mx-auto"
             style={{ color: 'var(--text-body-dark)', fontSize: 'clamp(36px, 5vw, 60px)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-0.03em' }}>
             {ui.h1a}
-            {ui.h1highlight ? <span style={{ color: 'var(--text-accent)' }}>{ui.h1highlight}</span> : null}
+            {ui.h1highlight ? <span className="text-[color:var(--text-accent)]">{ui.h1highlight}</span> : null}
             {ui.h1b}
           </h1>
 
@@ -236,7 +236,7 @@ export default async function BlogPage({ params }) {
       </section>
 
       {/* ══ S2 FEATURED ARTICLE ══════════════════════════════ */}
-      <section className="py-16 px-6" style={{ backgroundColor: 'var(--color-whisper)' }}>
+      <section className="py-16 px-6 bg-[color:var(--color-whisper)]">
         <div className="max-w-7xl mx-auto">
           <div className="bg-white rounded-xl overflow-hidden flex flex-col md:flex-row"
             style={{ borderLeft: '4px solid #b7b5fe', boxShadow: '0 4px 24px rgba(183,181,254,0.15)' }}>
@@ -285,7 +285,7 @@ export default async function BlogPage({ params }) {
       {/* S3 + S4 rendered inside BlogClient above */}
 
       {/* ══ S5 GEO ANCHOR STRIP ══════════════════════════════ */}
-      <section className="py-16 px-6 on-dark" style={{ backgroundColor: 'var(--color-deep-void)' }}>
+      <section className="py-16 px-6 on-dark bg-[color:var(--color-deep-void)]">
         <div className="max-w-7xl mx-auto">
           <div className="uppercase text-center mb-10"
             style={{ color: 'var(--text-accent-dark)', fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em' }}>
@@ -313,7 +313,7 @@ export default async function BlogPage({ params }) {
       </section>
 
       {/* ══ S6 NAVIGATOR PICKS ═══════════════════════════════ */}
-      <section className="py-16 px-6" style={{ backgroundColor: 'var(--color-whisper)' }}>
+      <section className="py-16 px-6 bg-[color:var(--color-whisper)]">
         <div className="max-w-7xl mx-auto">
           <Eyebrow mb="2.0rem">{ui.navigatorPicksEyebrow}</Eyebrow>
 
@@ -355,7 +355,7 @@ export default async function BlogPage({ params }) {
       </section>
 
       {/* ══ S7 NEWSLETTER SIGNUP ═════════════════════════════ */}
-      <section className="py-20 px-6" style={{ backgroundColor: 'var(--surface-raised)' }}>
+      <section className="py-20 px-6 bg-[color:var(--surface-raised)]">
         <div className="max-w-[480px] mx-auto text-center">
           <Eyebrow mb="1.5rem">{ui.newsletterEyebrow}</Eyebrow>
           <h2 className="mb-4" style={{ color: 'var(--text-body-dark)', fontSize: '26px', fontWeight: 600, lineHeight: 1.3, letterSpacing: '-0.02em' }}>
@@ -384,7 +384,7 @@ export default async function BlogPage({ params }) {
       </section>
 
       {/* ══ S8 CLOSING CTA ═══════════════════════════════════ */}
-      <section className="py-20 px-6 on-dark" style={{ backgroundColor: 'var(--color-deep-void)' }}>
+      <section className="py-20 px-6 on-dark bg-[color:var(--color-deep-void)]">
         <div className="max-w-[600px] mx-auto text-center">
           <h2 className="mb-8"
             style={{ color: 'var(--text-accent-dark)', fontSize: 'clamp(24px, 3vw, 28px)', fontWeight: 700, lineHeight: 1.4, letterSpacing: '-0.02em' }}>

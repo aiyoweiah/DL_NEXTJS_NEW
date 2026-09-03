@@ -144,7 +144,7 @@ export default async function NavigatorsPage({ params }) {
               className="mb-8"
               style={{ fontSize: 'clamp(38px, 5vw, 68px)', fontWeight: 700, color: 'var(--text-inverse)', lineHeight: 1.2 }}
             >
-              {c.hero.h1a}<span style={{ color: 'var(--text-accent-dark)' }}>{c.hero.h1b}</span>{c.hero.h1c}<span style={{ color: 'var(--text-accent-dark)' }}>{c.hero.h1d}</span>{c.hero.h1e}
+              {c.hero.h1a}<span className="text-[color:var(--text-accent-dark)]">{c.hero.h1b}</span>{c.hero.h1c}<span className="text-[color:var(--text-accent-dark)]">{c.hero.h1d}</span>{c.hero.h1e}
             </h1>
             <p style={{ fontSize: 'clamp(16px, 2vw, 20px)', fontWeight: 400, color: 'var(--platinum-60)', maxWidth: '580px', lineHeight: 1.6 }}>
               {c.hero.sub}
@@ -343,7 +343,7 @@ export default async function NavigatorsPage({ params }) {
       <SectionWrapper darker>
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="mb-6" style={{ fontSize: 'clamp(32px, 5vw, 52px)', fontWeight: 700, color: 'var(--text-inverse)', lineHeight: 1.2 }}>
-            {c.s8.h2a}<span style={{ color: 'var(--text-accent-dark)' }}>{c.s8.h2b}</span>{c.s8.h2c}<span style={{ color: 'var(--text-accent-dark)' }}>{c.s8.h2d}</span>{c.s8.h2e}
+            {c.s8.h2a}<span className="text-[color:var(--text-accent-dark)]">{c.s8.h2b}</span>{c.s8.h2c}<span className="text-[color:var(--text-accent-dark)]">{c.s8.h2d}</span>{c.s8.h2e}
           </h2>
           <p className="mb-10 mx-auto" style={{ fontSize: '18px', fontWeight: 400, color: 'var(--text-inverse)', opacity: 0.75, lineHeight: 1.6, maxWidth: '600px' }}>{c.s8.sub}</p>
           <Link href={`/${locale}/consult`} className="btn btn-do btn-do-primary">

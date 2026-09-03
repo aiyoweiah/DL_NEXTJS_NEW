@@ -227,8 +227,8 @@ function HowSection({ locale, c }) {
           {c.how.steps.map((s) => (
             <Surface key={s.num} className="p-6">
               <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--label-color)', letterSpacing: '0.06em', marginBottom: '0.75rem' }}>{s.num}</div>
-              <h3 className="text-base font-bold mb-2" style={{ color: 'var(--text-body-dark)' }}>{s.label}</h3>
-              <p className="text-sm leading-relaxed" style={{ color: 'var(--text-body)' }}>
+              <h3 className="text-base font-bold mb-2 text-[color:var(--text-body-dark)]">{s.label}</h3>
+              <p className="text-sm leading-relaxed text-[color:var(--text-body)]">
                 {s.desc}
                 {s.descLink && (
                   <Link
@@ -280,8 +280,8 @@ function FitSection({ c }) {
           <ul className="mt-6 space-y-3">
             {c.fit.points.map((p, i) => (
               <li key={i} className="flex items-start gap-3">
-                <span className="mt-2 shrink-0 w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'var(--bullet-color)' }} aria-hidden="true" />
-                <span className="text-[0.9375rem] leading-relaxed" style={{ color: 'var(--text-body)' }}>{p}</span>
+                <span className="mt-2 shrink-0 w-1.5 h-1.5 rounded-full bg-[color:var(--bullet-color)]" aria-hidden="true" />
+                <span className="text-[0.9375rem] leading-relaxed text-[color:var(--text-body)]">{p}</span>
               </li>
             ))}
           </ul>

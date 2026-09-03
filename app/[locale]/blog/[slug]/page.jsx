@@ -106,8 +106,7 @@ export default async function BlogPostPage({ params }) {
 
           <Link
             href={`/${locale}/blog`}
-            className="inline-block mb-8 text-sm font-medium"
-            style={{ color: 'var(--text-accent)' }}
+            className="inline-block mb-8 text-sm font-medium text-[color:var(--text-accent)]"
           >
             {ui.backLabel}
           </Link>
@@ -129,7 +128,7 @@ export default async function BlogPostPage({ params }) {
             <p className="tag-run" style={{ marginBottom: '1.5rem' }}>{fm.category}</p>
           )}
 
-          <h1 id="post-heading" className="mb-6" style={{ color: 'var(--text-body-dark)' }}>
+          <h1 id="post-heading" className="mb-6 text-[color:var(--text-body-dark)]">
             {fm.title}
           </h1>
 
@@ -150,17 +149,17 @@ export default async function BlogPostPage({ params }) {
             </div>
 
             <div>
-              <span className="text-sm font-semibold" style={{ color: 'var(--text-body-dark)' }}>
+              <span className="text-sm font-semibold text-[color:var(--text-body-dark)]">
                 {fm.author}
               </span>
               {fm.authorRole && (
-                <span className="ml-2 text-sm" style={{ color: 'var(--text-muted)' }}>
+                <span className="ml-2 text-sm text-[color:var(--text-muted)]">
                   · {fm.authorRole}
                 </span>
               )}
             </div>
 
-            <div className="flex items-center gap-3 text-sm ml-auto" style={{ color: 'var(--text-muted)' }}>
+            <div className="flex items-center gap-3 text-sm ml-auto text-[color:var(--text-muted)]">
               {fm.readTime && <span>{fm.readTime}</span>}
               {dateDisplay && fm.readTime && <span aria-hidden="true">·</span>}
               {dateDisplay && <time dateTime={fm.publishedAt}>{dateDisplay}</time>}
@@ -171,7 +170,7 @@ export default async function BlogPostPage({ params }) {
       </SectionWrapper>
 
       {/* ── 2. Article Body ──────────────────────────────── */}
-      <section style={{ backgroundColor: 'var(--surface-raised)' }} aria-labelledby="post-heading">
+      <section className="bg-[color:var(--surface-raised)]" aria-labelledby="post-heading">
         <div className="container-section" style={{ paddingTop: '3rem', paddingBottom: '4rem' }}>
           <article
             className="max-w-3xl prose-dodo"
@@ -204,9 +203,9 @@ export default async function BlogPostPage({ params }) {
               {initials}
             </div>
             <div>
-              <p className="font-semibold" style={{ color: 'var(--text-body-dark)' }}>{fm.author}</p>
+              <p className="font-semibold text-[color:var(--text-body-dark)]">{fm.author}</p>
               {fm.authorRole && (
-                <p className="text-sm mt-0.5" style={{ color: 'var(--text-muted)' }}>
+                <p className="text-sm mt-0.5 text-[color:var(--text-muted)]">
                   {fm.authorRole} · DODO Learning
                 </p>
               )}
@@ -222,11 +221,11 @@ export default async function BlogPostPage({ params }) {
           style={{ paddingTop: 'var(--section-md)', paddingBottom: 'var(--section-md)' }}
         >
           <div className="max-w-xl">
-            <p className="eyebrow mb-4 label-quote" style={{ color: 'var(--text-muted-dark)' }}>
+            <p className="eyebrow mb-4 label-quote text-[color:var(--text-muted-dark)]">
               {ui.charterEyebrow}
             </p>
             <h2 className="mb-5">{ui.charterHeading}</h2>
-            <p className="text-lg leading-relaxed" style={{ color: 'var(--text-muted-dark)' }}>
+            <p className="text-lg leading-relaxed text-[color:var(--text-muted-dark)]">
               {ui.charterBody}
             </p>
           </div>

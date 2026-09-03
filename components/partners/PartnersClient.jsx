@@ -565,7 +565,7 @@ function PartnersContent({ c, locale }) {
           <Eyebrow dark mb="2rem">{c.hero.chip}</Eyebrow>
 
           <h1 style={{ fontSize: 'clamp(36px, 5vw, 64px)', fontWeight: 700, color: 'var(--text-inverse)', lineHeight: 1.15, maxWidth: '820px', marginBottom: '28px', fontFamily: 'var(--font-latin)' }}>
-            {c.hero.h1a}<span style={{ color: 'var(--text-accent-dark)' }}>{c.hero.h1b}</span>{c.hero.h1c}
+            {c.hero.h1a}<span className="text-[color:var(--text-accent-dark)]">{c.hero.h1b}</span>{c.hero.h1c}
           </h1>
 
           <p style={{ fontSize: 'clamp(16px, 2vw, 18px)', fontWeight: 400, color: 'var(--platinum-60)', lineHeight: 1.7, maxWidth: '640px', marginBottom: '48px', whiteSpace: 'pre-line' }}>
@@ -584,7 +584,7 @@ function PartnersContent({ c, locale }) {
       </section>
 
       {/* ── S2 PROGRAMS ───────────────────────────────────── */}
-      <section className="px-6 py-24" style={{ backgroundColor: 'var(--color-deep-void)' }}>
+      <section className="px-6 py-24 bg-[color:var(--color-deep-void)]">
         <div className="container-section">
           <Eyebrow dark center locale={locale}>{c.s2.eyebrow}</Eyebrow>
           <h2 style={{ fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 700, color: 'var(--text-inverse)', lineHeight: 1.25, maxWidth: '760px', margin: '0 auto 16px', textAlign: 'center', fontFamily: 'var(--font-latin)' }}>
@@ -624,13 +624,13 @@ function PartnersContent({ c, locale }) {
       </section>
 
       {/* ── S3 WHO FITS ───────────────────────────────────── */}
-      <section className="px-6 py-24" style={{ backgroundColor: 'var(--color-whisper)' }}>
+      <section className="px-6 py-24 bg-[color:var(--color-whisper)]">
         <div className="container-section">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
             <div>
               <Eyebrow locale={locale}>{c.s3.eyebrow}</Eyebrow>
               <h2 style={{ fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 700, color: 'var(--text-body-dark)', lineHeight: 1.25, marginBottom: '24px', fontFamily: 'var(--font-latin)' }}>
-                {c.s3.h2a}<br /><span style={{ color: 'var(--text-accent)' }}>{c.s3.h2b}</span>
+                {c.s3.h2a}<br /><span className="text-[color:var(--text-accent)]">{c.s3.h2b}</span>
               </h2>
               <p style={{ fontSize: '16px', fontWeight: 400, color: 'var(--text-body)', lineHeight: 1.65, marginBottom: '20px' }}>{c.s3.p1}</p>
               <p style={{ fontSize: '16px', fontWeight: 400, color: 'var(--text-body)', lineHeight: 1.65 }}>{c.s3.p2}</p>
@@ -665,7 +665,7 @@ function PartnersContent({ c, locale }) {
       </section>
 
       {/* ── S4 METHODOLOGY ────────────────────────────────── */}
-      <section className="px-6 py-24" style={{ backgroundColor: 'var(--color-void-black)' }}>
+      <section className="px-6 py-24 bg-[color:var(--color-void-black)]">
         <div className="container-section">
           <Eyebrow dark center locale={locale}>{c.s4.eyebrow}</Eyebrow>
           <h2 style={{ fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 700, color: 'var(--text-inverse)', lineHeight: 1.25, maxWidth: '720px', margin: '0 auto 16px', textAlign: 'center', fontFamily: 'var(--font-latin)' }}>
@@ -698,7 +698,7 @@ function PartnersContent({ c, locale }) {
       </section>
 
       {/* ── S5 WHAT PARTNERS GET ──────────────────────────── */}
-      <section className="px-6 py-24" style={{ backgroundColor: 'var(--color-deep-void)' }}>
+      <section className="px-6 py-24 bg-[color:var(--color-deep-void)]">
         <div className="container-section">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div>
@@ -737,7 +737,7 @@ function PartnersContent({ c, locale }) {
       </section>
 
       {/* ── S6 PARTNER INQUIRY ────────────────────────────── */}
-      <section className="px-6 py-32" style={{ backgroundColor: 'var(--color-void-black)' }}>
+      <section className="px-6 py-32 bg-[color:var(--color-void-black)]">
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
           <Eyebrow dark mb="2rem">{c.s6.chip}</Eyebrow>
 

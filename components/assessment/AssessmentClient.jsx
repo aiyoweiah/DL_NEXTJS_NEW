@@ -89,7 +89,7 @@ function AssessmentReport({ lexileBefore, lexileAfter, traits }) {
               <div style={{ width: '48px', textAlign: 'right', fontSize: '12px', fontWeight: 600, fontFamily: 'var(--font-latin)', flexShrink: 0 }}>
                 <span style={{ color: 'rgba(14,14,18,0.35)' }}>{t.entry}</span>
                 <span style={{ color: 'rgba(14,14,18,0.2)', margin: '0 3px' }}>→</span>
-                <span style={{ color: 'var(--text-accent-dark)' }}>{t.exit}</span>
+                <span className="text-[color:var(--text-accent-dark)]">{t.exit}</span>
               </div>
             </div>
           ))}
@@ -256,7 +256,7 @@ export default function AssessmentClient({ locale = 'en' }) {
     <div className="w-full overflow-hidden" style={{ fontFamily: 'var(--font-latin)' }}>
 
       {/* S1 HERO */}
-      <section className="relative overflow-hidden px-6 py-24 md:py-32" style={{ backgroundColor: 'var(--color-deep-void)' }}>
+      <section className="relative overflow-hidden px-6 py-24 md:py-32 bg-[color:var(--color-deep-void)]">
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true" style={{
           backgroundImage: 'radial-gradient(circle,#b7b5fe 1px,transparent 1px)',
           backgroundSize: '24px 24px', backgroundPosition: '0 66%', opacity: 0.05 }} />
@@ -267,7 +267,7 @@ export default function AssessmentClient({ locale = 'en' }) {
               fontSize: 'clamp(36px,5vw,64px)', color: 'var(--text-inverse)', maxWidth: '740px',
               letterSpacing: '-0.03em', lineHeight: 1.15 }}>
               We measure before we begin. We measure when it matters.{' '}
-              <span style={{ color: 'var(--text-accent-dark)' }}>We show you the numbers at the end.</span>
+              <span className="text-[color:var(--text-accent-dark)]">We show you the numbers at the end.</span>
             </h1>
             <p style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '17px',
               color: 'var(--platinum-70)', maxWidth: '560px', lineHeight: 1.6, marginBottom: '0' }}>
@@ -294,7 +294,7 @@ export default function AssessmentClient({ locale = 'en' }) {
       </section>
 
       {/* S2 WHY MEASUREMENT MATTERS */}
-      <section className="px-6 py-24 md:py-28" style={{ backgroundColor: 'var(--color-void-black)' }}>
+      <section className="px-6 py-24 md:py-28 bg-[color:var(--color-void-black)]">
         <div className="container-section">
           <div className="text-center mb-12">
             <Eyebrow dark>The Philosophy</Eyebrow>
@@ -325,7 +325,7 @@ export default function AssessmentClient({ locale = 'en' }) {
       </section>
 
       {/* S3 ENTRANCE ASSESSMENT */}
-      <section id="entrance" className="px-6 py-24 md:py-28" style={{ backgroundColor: 'var(--color-whisper)' }}>
+      <section id="entrance" className="px-6 py-24 md:py-28 bg-[color:var(--color-whisper)]">
         <div className="container-section">
           <div className="max-w-3xl mb-12">
             <Eyebrow dark>Entrance Assessment</Eyebrow>
@@ -359,7 +359,7 @@ export default function AssessmentClient({ locale = 'en' }) {
       </section>
 
       {/* S4 MIDPOINT CHECK */}
-      <section className="px-6 py-24 md:py-28" style={{ backgroundColor: 'var(--color-deep-void)' }}>
+      <section className="px-6 py-24 md:py-28 bg-[color:var(--color-deep-void)]">
         <div className="container-section">
           <div className="max-w-3xl mx-auto">
             <Eyebrow dark>Week 8</Eyebrow>
@@ -387,7 +387,7 @@ export default function AssessmentClient({ locale = 'en' }) {
       </section>
 
       {/* S5 EXIT ASSESSMENT */}
-      <section id="results-anchor" className="px-6 py-24 md:py-28" style={{ backgroundColor: 'var(--color-whisper)' }}>
+      <section id="results-anchor" className="px-6 py-24 md:py-28 bg-[color:var(--color-whisper)]">
         <div className="container-section">
           <div className="mb-12">
             <Eyebrow dark>Exit Assessment + Results</Eyebrow>
@@ -424,7 +424,7 @@ export default function AssessmentClient({ locale = 'en' }) {
       </section>
 
       {/* S6 WHAT IS A LEXILE LEVEL */}
-      <section id="lexile" className="px-6 py-24 md:py-28" style={{ backgroundColor: 'var(--color-void-black)' }}>
+      <section id="lexile" className="px-6 py-24 md:py-28 bg-[color:var(--color-void-black)]">
         <div className="container-section">
           <div className="max-w-4xl mx-auto">
             <Eyebrow dark>Lexile Explained</Eyebrow>
@@ -466,7 +466,7 @@ export default function AssessmentClient({ locale = 'en' }) {
       </section>
 
       {/* S7 6+1 TRAITS */}
-      <section id="six-plus-one" className="px-6 py-24 md:py-28" style={{ backgroundColor: 'var(--color-whisper)' }}>
+      <section id="six-plus-one" className="px-6 py-24 md:py-28 bg-[color:var(--color-whisper)]">
         <div className="container-section">
           <div className="max-w-4xl mx-auto">
             <Eyebrow dark>6+1 Traits Explained</Eyebrow>
@@ -518,7 +518,7 @@ export default function AssessmentClient({ locale = 'en' }) {
                     <div style={{ width: '56px', textAlign: 'right', fontSize: '12px', fontWeight: 600, fontFamily: 'var(--font-latin)', flexShrink: 0 }}>
                       <span style={{ color: 'rgba(14,14,18,0.35)' }}>{t.entry}</span>
                       <span style={{ color: 'rgba(14,14,18,0.2)', margin: '0 3px' }}>→</span>
-                      <span style={{ color: 'var(--text-accent-dark)' }}>{t.exit}</span>
+                      <span className="text-[color:var(--text-accent-dark)]">{t.exit}</span>
                     </div>
                   </div>
                 ))}
@@ -533,7 +533,7 @@ export default function AssessmentClient({ locale = 'en' }) {
       </section>
 
       {/* S8 FAQ ACCORDION */}
-      <section className="px-6 py-24 md:py-28" style={{ backgroundColor: 'var(--color-deep-void)' }}>
+      <section className="px-6 py-24 md:py-28 bg-[color:var(--color-deep-void)]">
         <div className="container-section">
           <div className="max-w-3xl mx-auto">
             <Eyebrow dark>Questions</Eyebrow>
@@ -551,7 +551,7 @@ export default function AssessmentClient({ locale = 'en' }) {
       </section>
 
       {/* S9 ASSESSMENT INSIDE THE LOOP */}
-      <section className="px-6 py-24 md:py-28" style={{ backgroundColor: 'var(--color-whisper)' }}>
+      <section className="px-6 py-24 md:py-28 bg-[color:var(--color-whisper)]">
         <div className="container-section">
           <div className="max-w-5xl mx-auto">
             <Eyebrow dark>Assessment + The Loop</Eyebrow>
@@ -581,7 +581,7 @@ export default function AssessmentClient({ locale = 'en' }) {
       </section>
 
       {/* S10 CLOSING CTA */}
-      <section className="px-6 py-24 md:py-32 text-center on-dark" style={{ backgroundColor: 'var(--color-void-black)' }}>
+      <section className="px-6 py-24 md:py-32 text-center on-dark bg-[color:var(--color-void-black)]">
         <div className="container-section">
           <div className="max-w-2xl mx-auto">
             <h2 className="mb-4 max-w-[560px] mx-auto" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: '32px', color: 'var(--text-accent-dark)', letterSpacing: '-0.02em', lineHeight: 1.3 }}>

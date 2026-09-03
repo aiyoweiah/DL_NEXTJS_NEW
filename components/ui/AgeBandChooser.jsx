@@ -62,8 +62,7 @@ export default function AgeBandChooser({ locale, copy, current }) {
                   </span>
                   {isCurrent && (
                     <span
-                      className="text-[10px] font-semibold uppercase tracking-wider"
-                      style={{ color: 'var(--text-muted)' }}
+                      className="text-[10px] font-semibold uppercase tracking-wider text-[color:var(--text-muted)]"
                     >
                       · {copy.here}
                     </span>
@@ -77,16 +76,14 @@ export default function AgeBandChooser({ locale, copy, current }) {
                   {b.name}
                 </h3>
                 <p
-                  className="text-sm leading-relaxed mb-6 grow"
-                  style={{ color: 'var(--text-body)' }}
+                  className="text-sm leading-relaxed mb-6 grow text-[color:var(--text-body)]"
                 >
                   {b.blurb}
                 </p>
 
                 {isCurrent ? (
                   <span
-                    className="text-sm font-semibold"
-                    style={{ color: 'var(--text-muted)' }}
+                    className="text-sm font-semibold text-[color:var(--text-muted)]"
                     aria-hidden="true"
                   >
                     {copy.here}

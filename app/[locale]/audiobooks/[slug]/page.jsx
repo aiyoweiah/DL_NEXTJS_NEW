@@ -138,19 +138,19 @@ export default async function AudiobookDetailPage({ params }) {
               >
                 {fm.author && (
                   <>
-                    <dt style={{ color: 'var(--text-muted)' }}>{ui.by}</dt>
+                    <dt className="text-[color:var(--text-muted)]">{ui.by}</dt>
                     <dd style={{ margin: 0 }}>{fm.author}</dd>
                   </>
                 )}
                 {fm.narrator && (
                   <>
-                    <dt style={{ color: 'var(--text-muted)' }}>{ui.narratedBy}</dt>
+                    <dt className="text-[color:var(--text-muted)]">{ui.narratedBy}</dt>
                     <dd style={{ margin: 0 }}>{fm.narrator}</dd>
                   </>
                 )}
                 {fm.durationSec > 0 && (
                   <>
-                    <dt style={{ color: 'var(--text-muted)' }}>{ui.runtime}</dt>
+                    <dt className="text-[color:var(--text-muted)]">{ui.runtime}</dt>
                     <dd style={{ margin: 0 }}>{humanDuration(fm.durationSec)}</dd>
                   </>
                 )}

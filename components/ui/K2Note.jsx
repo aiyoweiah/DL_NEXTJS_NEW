@@ -48,8 +48,7 @@ export default function K2Note({ locale, copy }) {
               {copy.text}
             </p>
             <span
-              className="shrink-0 text-sm font-semibold whitespace-nowrap inline-flex items-center gap-1 transition-colors duration-150 group-hover:text-[#3d3baa]"
-              style={{ color: 'var(--text-accent)' }}
+              className="shrink-0 text-sm font-semibold whitespace-nowrap inline-flex items-center gap-1 transition-colors duration-150 group-hover:text-[#3d3baa] text-[color:var(--text-accent)]"
             >
               {copy.linkLabel}
               <span

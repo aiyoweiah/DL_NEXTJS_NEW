@@ -110,7 +110,7 @@ function ResearchBlock({ r }) {
         {r.citations.map((c, i) => (
           <li key={i} style={{ fontSize: '15px', lineHeight: 1.65, color: 'var(--text-body)', marginBottom: '1rem' }}>
             <strong>{c.authors}</strong> <em>{c.title}</em> {c.publication}
-            {c.note && <><br /><span style={{ color: 'var(--text-muted)' }}>{c.note}</span></>}
+            {c.note && <><br /><span className="text-[color:var(--text-muted)]">{c.note}</span></>}
           </li>
         ))}
       </ol>

@@ -132,8 +132,7 @@ export default async function ResultsPage({ params }) {
               {t.hero.heading}
             </h1>
             <p
-              className="text-lg md:text-xl leading-relaxed max-w-2xl"
-              style={{ color: 'var(--platinum-60)' }}
+              className="text-lg md:text-xl leading-relaxed max-w-2xl text-[color:var(--platinum-60)]"
             >
               {t.hero.subheading}
             </p>
@@ -159,8 +158,7 @@ export default async function ResultsPage({ params }) {
                     {stat.number}
                   </span>
                   <span
-                    className="ml-1 text-xl font-medium"
-                    style={{ color: 'var(--text-muted-dark)' }}
+                    className="ml-1 text-xl font-medium text-[color:var(--text-muted-dark)]"
                   >
                     {stat.unit}
                   </span>
@@ -176,8 +174,7 @@ export default async function ResultsPage({ params }) {
       <SectionWrapper white>
         <div className="py-16 md:py-20 max-w-2xl">
           <h2
-            className="text-2xl md:text-3xl font-bold tracking-tight mb-5"
-            style={{ color: 'var(--text-body-dark)' }}
+            className="text-2xl md:text-3xl font-bold tracking-tight mb-5 text-[color:var(--text-body-dark)]"
           >
             {t.intro.heading}
           </h2>
@@ -191,11 +188,11 @@ export default async function ResultsPage({ params }) {
       {t.anchor && (
         <SectionWrapper dark>
           <div className="py-16 md:py-20 max-w-3xl">
-            <p className="eyebrow mb-4 label-quote" style={{ color: 'var(--text-accent-dark)' }}>{t.anchor.eyebrow}</p>
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-5" style={{ color: 'var(--text-inverse)' }}>
+            <p className="eyebrow mb-4 label-quote text-[color:var(--text-accent-dark)]">{t.anchor.eyebrow}</p>
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-5 text-[color:var(--text-inverse)]">
               {t.anchor.heading}
             </h2>
-            <p className="text-lg leading-relaxed mb-8" style={{ color: 'var(--platinum-70)' }}>
+            <p className="text-lg leading-relaxed mb-8 text-[color:var(--platinum-70)]">
               {t.anchor.body}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
@@ -203,7 +200,7 @@ export default async function ResultsPage({ params }) {
                 <div key={i} className="p-6" style={{ background: 'var(--lavender-08)', borderLeft: '3px solid #b7b5fe' }}>
                   <p className="text-5xl font-bold tracking-tight" style={{ color: 'var(--text-accent-dark)', letterSpacing: '-0.03em' }}>
                     {stat.number}
-                    <span className="text-base font-medium ml-2" style={{ color: 'var(--text-muted-dark)' }}>{stat.unit}</span>
+                    <span className="text-base font-medium ml-2 text-[color:var(--text-muted-dark)]">{stat.unit}</span>
                   </p>
                   <p className="text-sm font-semibold uppercase tracking-wider mt-2" style={{ color: 'rgba(240,240,240,0.85)', letterSpacing: '0.08em' }}>
                     {stat.label}
@@ -211,7 +208,7 @@ export default async function ResultsPage({ params }) {
                 </div>
               ))}
             </div>
-            <p className="text-sm leading-relaxed" style={{ color: 'var(--platinum-60)' }}>
+            <p className="text-sm leading-relaxed text-[color:var(--platinum-60)]">
               {t.anchor.note}
             </p>
           </div>
@@ -250,8 +247,7 @@ export default async function ResultsPage({ params }) {
                     </blockquote>
                     {result.quoteSource && (
                       <p
-                        className="text-xs font-medium uppercase tracking-widest"
-                        style={{ color: 'var(--text-accent)' }}
+                        className="text-xs font-medium uppercase tracking-widest text-[color:var(--text-accent)]"
                       >
                         {result.quoteSource}
                       </p>
@@ -273,7 +269,7 @@ export default async function ResultsPage({ params }) {
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5 text-gradient">
               {t.writing.heading}
             </h2>
-            <p className="text-lg leading-relaxed" style={{ color: 'var(--text-muted-dark)' }}>
+            <p className="text-lg leading-relaxed text-[color:var(--text-muted-dark)]">
               {t.writing.body}
             </p>
           </div>
@@ -289,27 +285,25 @@ export default async function ResultsPage({ params }) {
                 <div key={trait.id}>
                   <div className="flex items-center justify-between mb-2">
                     <span
-                      className="text-sm font-medium"
-                      style={{ color: 'var(--text-inverse)' }}
+                      className="text-sm font-medium text-[color:var(--text-inverse)]"
                     >
                       {trait.label}
                     </span>
-                    <span className="text-xs tabular-nums" style={{ color: 'var(--text-muted-dark)' }}>
-                      <span style={{ color: 'var(--text-muted-dark)' }}>
+                    <span className="text-xs tabular-nums text-[color:var(--text-muted-dark)]">
+                      <span className="text-[color:var(--text-muted-dark)]">
                         {trait.entryAvg.toFixed(1)}
                       </span>
                       <span className="sr-only"> improving to </span>
-                      <span aria-hidden="true" style={{ color: 'var(--text-muted-dark)' }}> → </span>
-                      <span style={{ color: 'var(--text-accent-dark)' }}>
+                      <span aria-hidden="true" className="text-[color:var(--text-muted-dark)]"> → </span>
+                      <span className="text-[color:var(--text-accent-dark)]">
                         {trait.exitAvg.toFixed(1)}
                       </span>
-                      <span style={{ color: 'var(--text-muted-dark)' }}> / 6</span>
+                      <span className="text-[color:var(--text-muted-dark)]"> / 6</span>
                     </span>
                   </div>
 
                   <div
-                    className="relative h-2 rounded-full overflow-hidden"
-                    style={{ backgroundColor: 'var(--lavender-08)' }}
+                    className="relative h-2 rounded-full overflow-hidden bg-[color:var(--lavender-08)]"
                     role="img"
                     aria-label={`${trait.label}: entry ${trait.entryAvg}, exit ${trait.exitAvg} out of 6`}
                   >
@@ -344,14 +338,12 @@ export default async function ResultsPage({ params }) {
 
             <div>
               <p
-                className="eyebrow mb-4 label-quote"
-                style={{ color: 'var(--text-accent)' }}
+                className="eyebrow mb-4 label-quote text-[color:var(--text-accent)]"
               >
                 {t.methodology.eyebrow}
               </p>
               <h2
-                className="text-3xl md:text-4xl font-bold tracking-tight mb-5"
-                style={{ color: 'var(--text-body-dark)' }}
+                className="text-3xl md:text-4xl font-bold tracking-tight mb-5 text-[color:var(--text-body-dark)]"
               >
                 {t.methodology.heading}
               </h2>
@@ -381,8 +373,7 @@ export default async function ResultsPage({ params }) {
                     0{i + 1}
                   </span>
                   <span
-                    className="text-lg font-bold tracking-tight"
-                    style={{ color: 'var(--text-accent)' }}
+                    className="text-lg font-bold tracking-tight text-[color:var(--text-accent)]"
                   >
                     {step}
                   </span>
@@ -418,8 +409,7 @@ export default async function ResultsPage({ params }) {
           </h2>
 
           <p
-            className="text-lg leading-relaxed mb-8"
-            style={{ color: 'var(--text-muted-dark)' }}
+            className="text-lg leading-relaxed mb-8 text-[color:var(--text-muted-dark)]"
           >
             {t.foundingFamily.body}
           </p>

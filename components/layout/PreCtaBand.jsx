@@ -52,8 +52,7 @@ export default function PreCtaBand({ locale, copy }) {
           <div className="max-w-xl">
             <Eyebrow dark mb="0.75rem">{c.eyebrow}</Eyebrow>
             <h2
-              className="text-2xl md:text-3xl font-bold leading-tight tracking-tight"
-              style={{ color: 'var(--text-accent-dark)' }}
+              className="text-2xl md:text-3xl font-bold leading-tight tracking-tight text-[color:var(--text-accent-dark)]"
             >
               {c.heading}
             </h2>

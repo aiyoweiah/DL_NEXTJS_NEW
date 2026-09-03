@@ -347,8 +347,7 @@ export default function Navbar({ locale, copy }) {
   const MobileDropdownGroup = ({ item }) => (
     <div>
       <p
-        className="pt-5 pb-2 text-[0.7rem] font-semibold uppercase tracking-widest"
-        style={{ color: 'var(--text-muted-dark)' }}
+        className="pt-5 pb-2 text-[0.7rem] font-semibold uppercase tracking-widest text-[color:var(--text-muted-dark)]"
       >
         {item.label}
       </p>
@@ -367,7 +366,7 @@ export default function Navbar({ locale, copy }) {
                 </span>
               )}
             </span>
-            {sub.external && <span aria-hidden="true" style={{ color: 'var(--text-muted-dark)' }}>↗</span>}
+            {sub.external && <span aria-hidden="true" className="text-[color:var(--text-muted-dark)]">↗</span>}
           </div>
         )
         return sub.external ? (
@@ -570,8 +569,7 @@ export default function Navbar({ locale, copy }) {
           </div>
 
           <p
-            className="mt-6 text-xs font-medium tracking-wide text-center"
-            style={{ color: 'var(--text-muted-dark)' }}
+            className="mt-6 text-xs font-medium tracking-wide text-center text-[color:var(--text-muted-dark)]"
           >
             {copy.tagline}
           </p>

@@ -139,7 +139,7 @@ export default async function ComparePage({ params }) {
           <div style={{ maxWidth: '700px' }}>
             <Eyebrow dark>{c.s1.eyebrow}</Eyebrow>
             <h1 className="mb-6" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: 'clamp(38px, 5vw, 68px)', lineHeight: 1.2, color: 'var(--text-inverse)', letterSpacing: '-0.03em', textWrap: 'balance' }}>
-              {c.s1.h1a}<span style={{ color: 'var(--text-accent-dark)' }}>{c.s1.h1b}</span>{c.s1.h1c}
+              {c.s1.h1a}<span className="text-[color:var(--text-accent-dark)]">{c.s1.h1b}</span>{c.s1.h1c}
             </h1>
             <p style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '18px', lineHeight: 1.6, color: 'var(--platinum-60)', maxWidth: '520px' }}>
               {c.s1.sub}
@@ -149,10 +149,10 @@ export default async function ComparePage({ params }) {
       </section>
 
       {/* ── S2 THE REFRAME ───────────────────────────────── */}
-      <section className="px-6 py-24 md:py-32 on-dark" style={{ backgroundColor: 'var(--color-void-black)' }}>
+      <section className="px-6 py-24 md:py-32 on-dark bg-[color:var(--color-void-black)]">
         <div className="max-w-7xl mx-auto">
           <p className="text-center max-w-[860px] mx-auto" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: 'clamp(26px, 4vw, 48px)', color: 'var(--text-inverse)', lineHeight: 1.3, letterSpacing: '-0.025em' }}>
-            {c.s2.pull}<span style={{ color: 'var(--text-accent-dark)' }}>{c.s2.pullSpan}</span>{c.s2.pullEnd}
+            {c.s2.pull}<span className="text-[color:var(--text-accent-dark)]">{c.s2.pullSpan}</span>{c.s2.pullEnd}
           </p>
         </div>
       </section>
@@ -190,7 +190,7 @@ export default async function ComparePage({ params }) {
       </Section>
 
       {/* ── S5 FOUNDER VIDEO ──────────────────────────────── */}
-      <section className="px-6 py-24 md:py-32 on-dark" style={{ backgroundColor: 'var(--color-void-black)' }}>
+      <section className="px-6 py-24 md:py-32 on-dark bg-[color:var(--color-void-black)]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <Eyebrow dark center>{c.s5.eyebrow}</Eyebrow>
@@ -252,7 +252,7 @@ export default async function ComparePage({ params }) {
       </Section>
 
       {/* ── S8 STUDENT VOICE ──────────────────────────────── */}
-      <section className="px-6 py-24 md:py-32 on-dark" style={{ backgroundColor: 'var(--color-void-black)' }}>
+      <section className="px-6 py-24 md:py-32 on-dark bg-[color:var(--color-void-black)]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <Eyebrow dark center>{c.s8.eyebrow}</Eyebrow>

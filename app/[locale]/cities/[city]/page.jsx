@@ -149,7 +149,7 @@ export default async function CityPage({ params }) {
                 <p className="proof-stat-number" aria-label={`${stat.number} ${stat.unit}`}>
                   {stat.number}
                   {stat.unit && (
-                    <span className="ml-1.5 text-xl font-medium" style={{ color: 'var(--text-muted-dark)' }}>
+                    <span className="ml-1.5 text-xl font-medium text-[color:var(--text-muted-dark)]">
                       {stat.unit}
                     </span>
                   )}
@@ -165,7 +165,7 @@ export default async function CityPage({ params }) {
       <SectionWrapper white>
         <div className="py-16 md:py-20 max-w-3xl">
           <p className="eyebrow mb-4 label-quote">{ui.contextEyebrow} — {cityName}</p>
-          <p className="text-lg leading-relaxed" style={{ color: 'var(--text-body)' }}>
+          <p className="text-lg leading-relaxed text-[color:var(--text-body)]">
             {copy.context}
           </p>
         </div>
@@ -178,7 +178,7 @@ export default async function CityPage({ params }) {
           <div className="max-w-2xl mb-14">
             <p className="eyebrow mb-4 label-quote">{ui.loopEyebrow}</p>
             <h2 className="mb-5">{ui.loopHeading}</h2>
-            <p className="text-lg leading-relaxed" style={{ color: 'var(--text-muted-dark)' }}>
+            <p className="text-lg leading-relaxed text-[color:var(--text-muted-dark)]">
               {ui.loopBody}
             </p>
           </div>
@@ -204,12 +204,11 @@ export default async function CityPage({ params }) {
                   {step.number}
                 </div>
                 <p
-                  className="font-semibold text-sm uppercase tracking-widest"
-                  style={{ color: 'var(--text-accent-dark)' }}
+                  className="font-semibold text-sm uppercase tracking-widest text-[color:var(--text-accent-dark)]"
                 >
                   {step.label}
                 </p>
-                <p className="text-sm leading-relaxed" style={{ color: 'var(--text-muted-dark)' }}>
+                <p className="text-sm leading-relaxed text-[color:var(--text-muted-dark)]">
                   {step.body}
                 </p>
               </div>
@@ -218,8 +217,7 @@ export default async function CityPage({ params }) {
 
           <Link
             href={`/${locale}/methodology`}
-            className="text-sm font-semibold"
-            style={{ color: 'var(--text-accent-dark)' }}
+            className="text-sm font-semibold text-[color:var(--text-accent-dark)]"
           >
             {ui.loopCta}
           </Link>
@@ -244,15 +242,14 @@ export default async function CityPage({ params }) {
                 className="card card-light accent-top p-7 flex flex-col gap-3"
               >
                 <p
-                  className="text-xs font-semibold uppercase tracking-widest"
-                  style={{ color: 'var(--text-accent)' }}
+                  className="text-xs font-semibold uppercase tracking-widest text-[color:var(--text-accent)]"
                 >
                   {phase.week}
                 </p>
-                <h3 className="text-lg font-semibold" style={{ color: 'var(--text-body-dark)' }}>
+                <h3 className="text-lg font-semibold text-[color:var(--text-body-dark)]">
                   {phase.label}
                 </h3>
-                <p className="text-sm leading-relaxed" style={{ color: 'var(--text-body)' }}>
+                <p className="text-sm leading-relaxed text-[color:var(--text-body)]">
                   {phase.body}
                 </p>
               </div>
@@ -269,14 +266,14 @@ export default async function CityPage({ params }) {
           style={{ paddingTop: 'var(--section-md)', paddingBottom: 'var(--section-md)' }}
         >
           <div className="max-w-xl">
-            <p className="eyebrow mb-4 label-quote" style={{ color: 'var(--text-muted-dark)' }}>
+            <p className="eyebrow mb-4 label-quote text-[color:var(--text-muted-dark)]">
               {ui.charterEyebrow}
             </p>
             <h2 className="mb-5">{ui.charterHeading}</h2>
-            <p className="text-lg leading-relaxed mb-4" style={{ color: 'var(--text-muted-dark)' }}>
+            <p className="text-lg leading-relaxed mb-4 text-[color:var(--text-muted-dark)]">
               {ui.charterBody}
             </p>
-            <p className="text-sm" style={{ color: 'var(--text-muted-dark)' }}>
+            <p className="text-sm text-[color:var(--text-muted-dark)]">
               {ui.charterNote}
             </p>
           </div>

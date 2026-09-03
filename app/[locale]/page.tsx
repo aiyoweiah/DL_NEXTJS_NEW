@@ -105,8 +105,8 @@ function Hero({ locale, c }: { locale: string; c: any }) {
           <div className="flex items-center gap-3 mb-8">
             <Eyebrow as="span" mb="0" aria-label="Program audience">{c.hero.eyebrow}</Eyebrow>
             {c.hero.eyebrow2 && (
-              <span className="hidden sm:flex items-center gap-1.5 text-xs font-medium" style={{ color: 'var(--text-accent)' }}>
-                <span className="inline-block w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'var(--color-gilt)' }} aria-hidden="true" />
+              <span className="hidden sm:flex items-center gap-1.5 text-xs font-medium text-[color:var(--text-accent)]">
+                <span className="inline-block w-1.5 h-1.5 rounded-full bg-[color:var(--color-gilt)]" aria-hidden="true" />
                 {c.hero.eyebrow2}
               </span>
             )}
@@ -115,7 +115,7 @@ function Hero({ locale, c }: { locale: string; c: any }) {
           <h1 id="hero-heading" className="mb-6" style={{ color: 'var(--text-heading)', fontWeight: 700 }}>
             {c.hero.h1[0]}<br />{c.hero.h1[1]}
             {c.hero.h1Chinese && (
-              <><br className="hidden sm:block" /><span style={{ color: 'var(--text-accent)' }}>{c.hero.h1Chinese}</span></>
+              <><br className="hidden sm:block" /><span className="text-[color:var(--text-accent)]">{c.hero.h1Chinese}</span></>
             )}
           </h1>
 
@@ -151,13 +151,13 @@ function ProofStrip({ c }: { c: any }) {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {c.proof.map((item: any) => (
             <article key={item.id} className="text-center">
-              <p className="text-4xl md:text-5xl font-bold mb-3" style={{ color: 'var(--text-accent-dark)' }}>
+              <p className="text-4xl md:text-5xl font-bold mb-3 text-[color:var(--text-accent-dark)]">
                 {item.number}
               </p>
-              <p className="text-xs md:text-sm font-semibold uppercase tracking-wider mb-2" style={{ color: 'var(--text-muted-dark)' }}>
+              <p className="text-xs md:text-sm font-semibold uppercase tracking-wider mb-2 text-[color:var(--text-muted-dark)]">
                 {item.unit}
               </p>
-              <p className="text-sm leading-relaxed" style={{ color: 'var(--text-muted-dark)' }}>
+              <p className="text-sm leading-relaxed text-[color:var(--text-muted-dark)]">
                 {item.label}
               </p>
             </article>
@@ -178,12 +178,12 @@ function PhotoIntro({ locale, c }: { locale: string; c: any }) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Text column */}
           <article className="max-w-xl">
-            <p className="eyebrow mb-4 label-quote" style={{ color: 'var(--text-accent)' }}>{c.photoIntro.eyebrow}</p>
-            <h2 id="photo-intro-heading" className="mb-6" style={{ color: 'var(--text-heading)' }}>{c.photoIntro.heading}</h2>
+            <p className="eyebrow mb-4 label-quote text-[color:var(--text-accent)]">{c.photoIntro.eyebrow}</p>
+            <h2 id="photo-intro-heading" className="mb-6 text-[color:var(--text-heading)]">{c.photoIntro.heading}</h2>
 
-            <p className="text-base md:text-lg leading-relaxed mb-5" style={{ color: 'var(--text-body)' }}>{c.photoIntro.body0}</p>
-            <p className="text-base md:text-lg leading-relaxed mb-5" style={{ color: 'var(--text-body)' }}>{c.photoIntro.body1}</p>
-            <p className="text-base md:text-lg leading-relaxed mb-8" style={{ color: 'var(--text-body)' }}>{c.photoIntro.body2}</p>
+            <p className="text-base md:text-lg leading-relaxed mb-5 text-[color:var(--text-body)]">{c.photoIntro.body0}</p>
+            <p className="text-base md:text-lg leading-relaxed mb-5 text-[color:var(--text-body)]">{c.photoIntro.body1}</p>
+            <p className="text-base md:text-lg leading-relaxed mb-8 text-[color:var(--text-body)]">{c.photoIntro.body2}</p>
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href={`/${locale}/navigators`} className="btn btn-do">
@@ -218,9 +218,9 @@ function LoopSection({ locale, c }: { locale: string; c: any }) {
     <section className="section-dark" aria-labelledby="loop-heading">
       <div className="container-section">
         <div className="max-w-2xl mb-14 md:mb-16">
-          <p className="eyebrow mb-4 label-quote" style={{ color: 'var(--text-muted-dark)' }}>{c.loop.eyebrow}</p>
+          <p className="eyebrow mb-4 label-quote text-[color:var(--text-muted-dark)]">{c.loop.eyebrow}</p>
           <h2 id="loop-heading">{c.loop.heading}</h2>
-          <p className="mt-4 text-base md:text-lg leading-relaxed" style={{ color: 'var(--text-muted-dark)' }}>{c.loop.body}</p>
+          <p className="mt-4 text-base md:text-lg leading-relaxed text-[color:var(--text-muted-dark)]">{c.loop.body}</p>
         </div>
 
         <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" aria-label="The Loop — DODO Learning methodology">
@@ -234,7 +234,7 @@ function LoopSection({ locale, c }: { locale: string; c: any }) {
                   )}
                 </div>
                 <h3 className="text-lg font-bold" style={{ color: 'var(--text-accent-dark)', letterSpacing: '-0.01em' }}>{step.label}</h3>
-                <p className="text-sm leading-relaxed flex-1" style={{ color: 'var(--text-muted-dark)' }}>{step.description}</p>
+                <p className="text-sm leading-relaxed flex-1 text-[color:var(--text-muted-dark)]">{step.description}</p>
               </div>
             </li>
           ))}
@@ -264,15 +264,15 @@ function ConfidenceSection({ locale, c }: { locale: string; c: any }) {
         <div className="max-w-2xl mb-14">
           <p className="eyebrow mb-4 label-quote">{c.confidence.eyebrow}</p>
           <h2 id="confidence-heading">{c.confidence.heading}</h2>
-          <p className="mt-4 text-base md:text-lg leading-relaxed" style={{ color: 'var(--text-body)' }}>{c.confidence.body}</p>
+          <p className="mt-4 text-base md:text-lg leading-relaxed text-[color:var(--text-body)]">{c.confidence.body}</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {c.confidence.pillars.map((pillar: any) => (
             <div key={pillar.id} className="card p-8 flex flex-col gap-4 accent-top">
               <p className="eyebrow">{pillar.eyebrow}</p>
-              <h3 className="text-xl font-bold leading-snug" style={{ color: 'var(--text-heading)' }}>{pillar.heading}</h3>
-              <p className="text-sm leading-relaxed flex-1" style={{ color: 'var(--text-body)' }}>{pillar.body}</p>
+              <h3 className="text-xl font-bold leading-snug text-[color:var(--text-heading)]">{pillar.heading}</h3>
+              <p className="text-sm leading-relaxed flex-1 text-[color:var(--text-body)]">{pillar.body}</p>
               <Link
                 href={`/${locale}${pillar.linkHref}`}
                 className="text-sm font-semibold text-[#5856cc] hover:text-[#3d3baa] transition-colors duration-150 focus-visible:outline-none focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-[#b7b5fe]"
@@ -296,7 +296,7 @@ function ParentTrustSection({ locale, c }: { locale: string; c: any }) {
       <div className="container-section">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
           <div className="max-w-xl">
-            <p className="eyebrow mb-4 label-quote" style={{ color: 'var(--text-muted-dark)' }}>{c.trust.eyebrow}</p>
+            <p className="eyebrow mb-4 label-quote text-[color:var(--text-muted-dark)]">{c.trust.eyebrow}</p>
             <h2 id="results-heading">{c.trust.heading1}<br />{c.trust.heading2}</h2>
           </div>
           <Link
@@ -316,14 +316,14 @@ function ParentTrustSection({ locale, c }: { locale: string; c: any }) {
               aria-label={`${result.student}, ${result.detail}`}
             >
               <div>
-                <p className="text-sm font-semibold" style={{ color: 'var(--text-accent-dark)' }}>{result.student}</p>
-                <p className="text-xs mt-0.5" style={{ color: 'var(--text-muted-dark)' }}>{result.detail} &nbsp;&middot;&nbsp; {result.weeks} {c.trust.weeksLabel}</p>
+                <p className="text-sm font-semibold text-[color:var(--text-accent-dark)]">{result.student}</p>
+                <p className="text-xs mt-0.5 text-[color:var(--text-muted-dark)]">{result.detail} &nbsp;&middot;&nbsp; {result.weeks} {c.trust.weeksLabel}</p>
               </div>
               <LexileBar start={result.start} end={result.end} weeks={result.weeks} />
-              <span className="tag-run self-start" style={{ color: 'var(--color-lavender-signal)' }}>6+1 {result.trait}</span>
+              <span className="tag-run self-start text-[color:var(--color-lavender-signal)]">6+1 {result.trait}</span>
               <blockquote className="mt-auto">
-                <p className="text-sm leading-relaxed italic" style={{ color: 'var(--text-muted-dark)' }}><q>{result.quote}</q></p>
-                <footer className="mt-3 text-xs font-medium" style={{ color: 'var(--text-muted-dark)' }}>&mdash; {result.source}</footer>
+                <p className="text-sm leading-relaxed italic text-[color:var(--text-muted-dark)]"><q>{result.quote}</q></p>
+                <footer className="mt-3 text-xs font-medium text-[color:var(--text-muted-dark)]">&mdash; {result.source}</footer>
               </blockquote>
             </article>
           ))}
@@ -340,7 +340,7 @@ function ParentTrustSection({ locale, c }: { locale: string; c: any }) {
 // ═══════════════════════════════════════════════════════════════
 function CodingBand({ c }: { c: any }) {
   return (
-    <section className="section-light" aria-labelledby="coding-band-heading" style={{ backgroundColor: 'var(--color-whisper)' }}>
+    <section className="section-light bg-[color:var(--color-whisper)]" aria-labelledby="coding-band-heading">
       <div className="container-section">
         <div style={{ maxWidth: '44rem' }}>
           <p

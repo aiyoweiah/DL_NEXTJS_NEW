@@ -60,8 +60,7 @@ function NavigatorCard({ name, background, photo, photoAlt, light, className }) 
             />
           ) : (
             <span
-              className="text-sm font-semibold"
-              style={{ color: 'var(--text-accent-dark)' }}
+              className="text-sm font-semibold text-[color:var(--text-accent-dark)]"
               aria-hidden="true"
             >
               {initials}
@@ -77,8 +76,7 @@ function NavigatorCard({ name, background, photo, photoAlt, light, className }) 
             {name}
           </p>
           <p
-            className="text-xs mt-0.5 uppercase tracking-widest font-medium"
-            style={{ color: 'var(--text-accent-dark)' }}
+            className="text-xs mt-0.5 uppercase tracking-widest font-medium text-[color:var(--text-accent-dark)]"
           >
             Navigator
           </p>
@@ -111,8 +109,7 @@ function ResultCard({ lexileStart, lexileEnd, weeks, quote, light, className }) 
       {/* Lexile numbers — always specific, never vague (§8) */}
       <div>
         <p
-          className="text-xs font-semibold uppercase tracking-widest mb-3"
-          style={{ color: 'var(--text-muted-dark)' }}
+          className="text-xs font-semibold uppercase tracking-widest mb-3 text-[color:var(--text-muted-dark)]"
         >
           Lexile Growth
         </p>
@@ -125,8 +122,7 @@ function ResultCard({ lexileStart, lexileEnd, weeks, quote, light, className }) 
             {lexileStart}
           </span>
           <span
-            className="text-lg font-light"
-            style={{ color: 'var(--text-muted-dark)' }}
+            className="text-lg font-light text-[color:var(--text-muted-dark)]"
             aria-hidden="true"
           >
             →
@@ -143,7 +139,7 @@ function ResultCard({ lexileStart, lexileEnd, weeks, quote, light, className }) 
           className="mt-2 text-sm"
           style={{ color: light ? '#3D4452' : 'var(--text-muted-dark)' }}
         >
-          <span style={{ color: 'var(--text-accent-dark)' }} className="font-semibold">
+          <span className="font-semibold text-[color:var(--text-accent-dark)]">
             +{growth} Lexile points
           </span>
           {' '}in {weeks} weeks

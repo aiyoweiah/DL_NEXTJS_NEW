@@ -43,7 +43,7 @@ export default function NotFound() {
     <div className="section-darker min-h-screen flex items-center justify-center">
       <div className="container-section text-center py-32 max-w-lg mx-auto">
 
-        <p className="eyebrow mb-6" style={{ color: 'var(--text-muted-dark)' }}>
+        <p className="eyebrow mb-6 text-[color:var(--text-muted-dark)]">
           404
         </p>
 
@@ -51,7 +51,7 @@ export default function NotFound() {
           {c.heading}
         </h1>
 
-        <p className="text-base leading-relaxed mb-10" style={{ color: 'var(--text-muted-dark)' }}>
+        <p className="text-base leading-relaxed mb-10 text-[color:var(--text-muted-dark)]">
           {c.body}
         </p>
 

@@ -149,8 +149,7 @@ export default async function MethodologyPage({ params }) {
               {t.hero.heading}
             </h1>
             <p
-              className="text-lg md:text-xl leading-relaxed max-w-2xl"
-              style={{ color: 'var(--platinum-60)' }}
+              className="text-lg md:text-xl leading-relaxed max-w-2xl text-[color:var(--platinum-60)]"
             >
               {t.hero.subheading}
             </p>
@@ -169,7 +168,7 @@ export default async function MethodologyPage({ params }) {
       <SectionWrapper white>
         <div className="py-12 md:py-14 max-w-3xl">
           <div className="rounded-2xl p-6 md:p-8" style={{ backgroundColor: 'var(--color-whisper)', borderLeft: '3px solid #b7b5fe' }}>
-            <p className="text-base md:text-lg leading-relaxed" style={{ color: 'var(--color-midnight)' }}>
+            <p className="text-base md:text-lg leading-relaxed text-[color:var(--color-midnight)]">
               {t.definition.body}
             </p>
           </div>
@@ -179,7 +178,7 @@ export default async function MethodologyPage({ params }) {
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5" style={{ color: 'var(--text-body-dark)', letterSpacing: '-0.025em' }}>
               {t.seeItLive.h2}
             </h2>
-            <p className="text-lg leading-relaxed mb-10" style={{ color: 'var(--text-body)' }}>
+            <p className="text-lg leading-relaxed mb-10 text-[color:var(--text-body)]">
               {t.seeItLive.body}
             </p>
             <StreamVideo
@@ -199,7 +198,7 @@ export default async function MethodologyPage({ params }) {
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6" style={{ color: 'var(--text-body-dark)', letterSpacing: '-0.025em' }}>
             {t.why.heading}
           </h2>
-          <p className="text-lg leading-relaxed" style={{ color: 'var(--text-body)' }}>
+          <p className="text-lg leading-relaxed text-[color:var(--text-body)]">
             {t.why.body}
           </p>
         </div>
@@ -265,8 +264,7 @@ export default async function MethodologyPage({ params }) {
                 >
                   <div className="flex items-start gap-3">
                     <span
-                      className="mt-1 shrink-0 w-1.5 h-1.5 rounded-full"
-                      style={{ backgroundColor: 'var(--color-lavender-signal)' }}
+                      className="mt-1 shrink-0 w-1.5 h-1.5 rounded-full bg-[color:var(--color-lavender-signal)]"
                       aria-hidden="true"
                     />
                     <p
@@ -300,8 +298,8 @@ export default async function MethodologyPage({ params }) {
                 className="rounded-2xl p-6 md:p-8"
                 style={{ backgroundColor: 'rgba(183,181,254,0.07)', border: '1px solid rgba(183,181,254,0.15)' }}
               >
-                <p className="text-lg font-bold mb-3" style={{ color: 'var(--text-accent-dark)' }}>{s.label}</p>
-                <p className="text-base leading-relaxed" style={{ color: 'var(--text-muted-dark)' }}>{s.body}</p>
+                <p className="text-lg font-bold mb-3 text-[color:var(--text-accent-dark)]">{s.label}</p>
+                <p className="text-base leading-relaxed text-[color:var(--text-muted-dark)]">{s.body}</p>
               </div>
             ))}
           </div>
@@ -317,7 +315,7 @@ export default async function MethodologyPage({ params }) {
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5 text-gradient">
               {t.lexile.heading}
             </h2>
-            <p className="text-lg leading-relaxed" style={{ color: 'var(--text-muted-dark)' }}>
+            <p className="text-lg leading-relaxed text-[color:var(--text-muted-dark)]">
               {t.lexile.body}
             </p>
           </div>
@@ -333,7 +331,7 @@ export default async function MethodologyPage({ params }) {
                 <p className="proof-stat-number mb-1">
                   {stat.number}
                   {' '}
-                  <span className="text-base font-medium" style={{ color: 'var(--text-muted-dark)' }}>
+                  <span className="text-base font-medium text-[color:var(--text-muted-dark)]">
                     {stat.unit}
                   </span>
                 </p>
@@ -344,7 +342,7 @@ export default async function MethodologyPage({ params }) {
 
           {/* Example Lexile bar */}
           <div className="max-w-lg">
-            <p className="text-xs font-semibold uppercase tracking-[0.15em] mb-5" style={{ color: 'var(--text-muted-dark)' }}>
+            <p className="text-xs font-semibold uppercase tracking-[0.15em] mb-5 text-[color:var(--text-muted-dark)]">
               Typical result — two 16-week cycles
             </p>
             <LexileBar start={620} end={820} weeks={32} />
@@ -362,7 +360,7 @@ export default async function MethodologyPage({ params }) {
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5" style={{ color: 'var(--text-body-dark)', letterSpacing: '-0.025em' }}>
               {t.trait.heading}
             </h2>
-            <p className="text-lg leading-relaxed" style={{ color: 'var(--text-body)' }}>
+            <p className="text-lg leading-relaxed text-[color:var(--text-body)]">
               {t.trait.body}
             </p>
           </div>
@@ -374,8 +372,8 @@ export default async function MethodologyPage({ params }) {
                 className="rounded-2xl p-5"
                 style={{ backgroundColor: 'var(--surface-raised)', border: '1px solid rgba(0,0,0,0.07)', borderTop: '2.5px solid #b7b5fe', boxShadow: '0 1px 6px rgba(0,0,0,0.04)' }}
               >
-                <p className="text-sm font-bold mb-2" style={{ color: 'var(--text-body-dark)' }}>{trait.label}</p>
-                <p className="text-sm leading-relaxed" style={{ color: 'var(--text-body)' }}>{trait.body}</p>
+                <p className="text-sm font-bold mb-2 text-[color:var(--text-body-dark)]">{trait.label}</p>
+                <p className="text-sm leading-relaxed text-[color:var(--text-body)]">{trait.body}</p>
               </div>
             ))}
           </div>
@@ -390,7 +388,7 @@ export default async function MethodologyPage({ params }) {
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5 text-gradient">
             {t.geo.heading}
           </h2>
-          <p className="text-lg leading-relaxed" style={{ color: 'var(--text-muted-dark)' }}>
+          <p className="text-lg leading-relaxed text-[color:var(--text-muted-dark)]">
             {t.geo.body}
           </p>
         </div>
@@ -402,7 +400,7 @@ export default async function MethodologyPage({ params }) {
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5 text-gradient">
             {t.cta.heading}
           </h2>
-          <p className="text-lg leading-relaxed mb-8" style={{ color: 'var(--text-muted-dark)' }}>
+          <p className="text-lg leading-relaxed mb-8 text-[color:var(--text-muted-dark)]">
             {t.cta.body}
           </p>
           <div className="flex flex-col sm:flex-row gap-4">

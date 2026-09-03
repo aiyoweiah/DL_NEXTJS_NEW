@@ -50,8 +50,7 @@ function FooterLink({ href, label, soon, comingSoonLabel, external }) {
     return (
       <li>
         <span
-          className="text-sm inline-flex items-center gap-2"
-          style={{ color: 'var(--text-muted)' }}
+          className="text-sm inline-flex items-center gap-2 text-[color:var(--text-muted)]"
         >
           {label}
           <span
@@ -109,8 +108,7 @@ function FooterLink({ href, label, soon, comingSoonLabel, external }) {
 function ColHeading({ children }) {
   return (
     <h3
-      className="text-xs font-semibold uppercase tracking-widest mb-5"
-      style={{ color: 'var(--label-color)' }}
+      className="text-xs font-semibold uppercase tracking-widest mb-5 text-[color:var(--label-color)]"
     >
       {children}
     </h3>
@@ -130,7 +128,7 @@ export default function Footer({ locale, copy }) {
       <PreCtaBand locale={locale} copy={copy} />
 
       {/* ── 2. Main footer grid — light ────────────────────── */}
-      <div style={{ backgroundColor: 'var(--color-whisper)' }}>
+      <div className="bg-[color:var(--color-whisper)]">
         <div className="container-section pt-14 pb-10">
           {/*
             Grid jumps sm:2 → md:4. Previously sm:2 → lg:4 left an awkward
@@ -159,15 +157,13 @@ export default function Footer({ locale, copy }) {
               </Link>
 
               <p
-                className="text-sm leading-relaxed mb-6 max-w-[26ch]"
-                style={{ color: 'var(--text-body)' }}
+                className="text-sm leading-relaxed mb-6 max-w-[26ch] text-[color:var(--text-body)]"
               >
                 {copy.brand.body}
               </p>
 
               <p
-                className="text-xs font-semibold tracking-wide mb-5"
-                style={{ color: 'var(--label-color)' }}
+                className="text-xs font-semibold tracking-wide mb-5 text-[color:var(--label-color)]"
               >
                 {copy.brand.tagline}
               </p>
@@ -189,8 +185,7 @@ export default function Footer({ locale, copy }) {
                   className="group block"
                 >
                   <p
-                    className="text-sm font-semibold mb-1 inline-flex items-baseline gap-1.5 transition-colors duration-150 group-hover:text-[color:var(--link-hover-color)]"
-                    style={{ color: 'var(--text-body-dark)' }}
+                    className="text-sm font-semibold mb-1 inline-flex items-baseline gap-1.5 transition-colors duration-150 group-hover:text-[color:var(--link-hover-color)] text-[color:var(--text-body-dark)]"
                   >
                     {copy.sibling.name}
                     <span
@@ -201,8 +196,7 @@ export default function Footer({ locale, copy }) {
                     </span>
                   </p>
                   <p
-                    className="text-xs leading-relaxed"
-                    style={{ color: 'var(--text-muted)' }}
+                    className="text-xs leading-relaxed text-[color:var(--text-muted)]"
                   >
                     {copy.sibling.blurb}
                   </p>
@@ -276,20 +270,17 @@ export default function Footer({ locale, copy }) {
             {copy.trust.map((signal) => (
               <div key={signal.id} className="flex items-start gap-3">
                 <span
-                  className="mt-1.5 shrink-0 w-1.5 h-1.5 rounded-full"
-                  style={{ backgroundColor: 'var(--bullet-color)' }}
+                  className="mt-1.5 shrink-0 w-1.5 h-1.5 rounded-full bg-[color:var(--bullet-color)]"
                   aria-hidden="true"
                 />
                 <div>
                   <p
-                    className="text-xs font-semibold mb-0.5"
-                    style={{ color: 'var(--label-color)' }}
+                    className="text-xs font-semibold mb-0.5 text-[color:var(--label-color)]"
                   >
                     {signal.label}
                   </p>
                   <p
-                    className="text-xs leading-relaxed"
-                    style={{ color: 'var(--text-body)' }}
+                    className="text-xs leading-relaxed text-[color:var(--text-body)]"
                   >
                     {signal.description}
                   </p>
@@ -310,7 +301,7 @@ export default function Footer({ locale, copy }) {
         <div className="container-section py-5">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
 
-            <p className="text-xs" style={{ color: 'var(--text-muted)' }}>
+            <p className="text-xs text-[color:var(--text-muted)]">
               &copy; {currentYear} {copy.legal.copyright}
             </p>
 

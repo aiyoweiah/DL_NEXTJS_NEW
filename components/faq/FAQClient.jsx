@@ -183,7 +183,7 @@ function SearchResults({ results, query, ui, locale }) {
     )
   }
   return (
-    <div style={{ backgroundColor: 'var(--color-whisper)' }}>
+    <div className="bg-[color:var(--color-whisper)]">
       <div className="max-w-[800px] mx-auto px-6 py-12">
         <p style={{ fontFamily: 'var(--font-latin)', fontSize: '13px', fontWeight: 500,
           color: 'var(--text-accent)', marginBottom: '24px', letterSpacing: '0.05em' }}>
@@ -237,7 +237,7 @@ export default function FAQClient({ locale = 'en' }) {
     <div className="w-full overflow-hidden" style={{ fontFamily: 'var(--font-latin)' }}>
 
       {/* ── HERO + SEARCH ──────────────────────────────────── */}
-      <section style={{ backgroundColor: 'var(--color-deep-void)' }}>
+      <section className="bg-[color:var(--color-deep-void)]">
         <div className="max-w-[680px] mx-auto text-center px-6"
           style={{ paddingTop: 'calc(var(--nav-height) + 2rem)', paddingBottom: '64px' }}>
           <Eyebrow dark mb="1.5rem">{ui.eyebrow}</Eyebrow>

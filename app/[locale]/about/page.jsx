@@ -225,7 +225,7 @@ function TheNameSection({ c, locale }) {
           <div>
             <BilingualHeading en="The Name" cn="名字的故事" light locale={locale} />
             <div className="mt-10 space-y-5" style={{ fontSize: '17px', lineHeight: 1.9, color: 'rgba(240,240,240,0.92)' }}>
-              <p>{c.name.p1}<strong style={{ color: 'var(--text-inverse)' }}>{c.name.p1strong}</strong></p>
+              <p>{c.name.p1}<strong className="text-[color:var(--text-inverse)]">{c.name.p1strong}</strong></p>
               <p>{c.name.p2}</p>
               <p>{c.name.p3}</p>
             </div>
@@ -338,7 +338,7 @@ function WhoNavigatorsAre({ locale, c }) {
               {/* Caption strip — small violet dot + name · role, sub-caption on next line */}
               <div className="mt-4 flex flex-col items-center lg:items-start" style={{ maxWidth: '300px' }}>
                 <div className="inline-flex items-center gap-2">
-                  <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'var(--color-lavender-deep)' }} />
+                  <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full bg-[color:var(--color-lavender-deep)]" />
                   <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-body-dark)', letterSpacing: '0.01em' }}>
                     {c.navigators.videoCaption}
                   </span>
@@ -352,7 +352,7 @@ function WhoNavigatorsAre({ locale, c }) {
           <div className="order-1 lg:order-2">
             <BilingualHeading en="Who Navigators Are" cn="关于导师团队" locale={locale} />
             <div className="mt-8 space-y-5" style={{ fontSize: '16px', lineHeight: 1.85, color: 'var(--color-midnight)' }}>
-              <p>{c.navigators.p1pre}<strong style={{ color: 'var(--text-body-dark)' }}>{c.navigators.p1strong}</strong>{c.navigators.p1post}</p>
+              <p>{c.navigators.p1pre}<strong className="text-[color:var(--text-body-dark)]">{c.navigators.p1strong}</strong>{c.navigators.p1post}</p>
               <p>{c.navigators.p2}</p>
               <p>{c.navigators.p3}</p>
             </div>
@@ -378,12 +378,12 @@ function ByTheNumbers({ c, locale }) {
   if (!c.stats) return null
   const s = c.stats
   return (
-    <section className="section-light" aria-labelledby="bynumbers-heading" style={{ backgroundColor: 'var(--color-whisper)' }}>
+    <section className="section-light bg-[color:var(--color-whisper)]" aria-labelledby="bynumbers-heading">
       <div className="container-section">
         <div className="mb-12 max-w-2xl">
           <Eyebrow mb="0.75rem">{s.eyebrow}</Eyebrow>
           <h2 id="bynumbers-heading" className="text-3xl md:text-4xl font-bold tracking-tight mb-4" style={{ color: 'var(--text-body-dark)', letterSpacing: '-0.025em' }}>{s.h2}</h2>
-          <p className="text-base leading-relaxed" style={{ color: 'var(--text-body)' }}>{s.sub}</p>
+          <p className="text-base leading-relaxed text-[color:var(--text-body)]">{s.sub}</p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {s.items.map((item, i) => (
@@ -394,7 +394,7 @@ function ByTheNumbers({ c, locale }) {
                     reordered without the circle drifting onto a different stat. */}
                 <span className={item.marked ? 'score-marked' : undefined}>{item.number}</span>
               </p>
-              <p className="mt-3 text-sm leading-relaxed" style={{ color: 'var(--text-body)' }}>{item.label}</p>
+              <p className="mt-3 text-sm leading-relaxed text-[color:var(--text-body)]">{item.label}</p>
             </div>
           ))}
         </div>
