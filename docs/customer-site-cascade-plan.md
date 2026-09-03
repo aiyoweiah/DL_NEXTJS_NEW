@@ -88,10 +88,10 @@
 - [x] Unit 0 · Foundations — **done 2026-08-27 (D45)**; tagline purged from all live code (13 occ. across 8 files), lint corrected + D40 guard added
 - [x] 1 · Home — **done 2026-08-27 (D46 content + D48 re-voice)**; hero/meta/brand/photoIntro/confidence/loop reworked EN+ZH, 2 unverified stats softened, results pronouns fixed, re-voiced to §08 (soft/deep), build clean
 - [x] 2 · About — **done 2026-08-27 (D49)**; meta/hero/beliefs/families/closing reworked EN+ZH to v5.1 + §08 voice; bilingual pillar-3 retired → human/AI moat; **hardcoded retired tagline in about/page.jsx** fixed → locale-aware closing tagline; build clean
-- [x] 3 · Methodology — **done (D50)**; hero reversal, bilingual tail, geo/lexile tells fixed EN+ZH. 🟡 owed: §07a research block (D38), five-strands (D37) — see admin-review doc
-- [x] 4 · Program — **done (D50)**; **9→7 levels (D37)**, worldwide dropped (D40), combinations de-fragmented EN+ZH. 🟡 five-strands
-- [x] 5 · Compare — **partial (D50)**; D40 + worst overclaims fixed. 🔴 deeper voice pass + 🟡 D41 rows owed (admin-review doc)
-- [x] 6 · FAQ — **done 2026-09-01 (D91)**; Loop corrected to per-session (admin ruling), five combinations, seven levels, bilingual category re-voiced to "cognitive depth protects both languages" (admin ruling), D38 evidence base + D41 AI rebuttal shipped. 🟡 **ZH handoff pending** — `translation/pending-en.json`, 31 strings; ZH still states two enrollment options (a pricing fact, not voice)
+- [x] 3 · Methodology — **done (D50)**; hero reversal, bilingual tail, geo/lexile tells fixed EN+ZH. **closed 2026-09-02 (D92)** — §07a research block + five strands both shipped EN+ZH
+- [x] 4 · Program — **done (D50)**; **9→7 levels (D37)**, worldwide dropped (D40), combinations de-fragmented EN+ZH. **five strands closed 2026-09-02 (D92)**
+- [x] 5 · Compare — **partial (D50)**; D40 + worst overclaims fixed. **closed 2026-09-02 (D92)** — D41 rows shipped (3→5) and the voice pass done: 10 §10 reversals → 1 deliberate, §06 Loop-as-named-system breach fixed
+- [x] 6 · FAQ — **done 2026-09-01 (D91)**; Loop corrected to per-session (admin ruling), five combinations, seven levels, bilingual category re-voiced to "cognitive depth protects both languages" (admin ruling), D38 evidence base + D41 AI rebuttal shipped. **ZH shipped 2026-09-02** (`799629f`) — the two-enrollment-options contradiction is gone
 - [x] 7 · Lexile — **reviewed (D50)**; no hard conflicts, on-voice, optional polish only
 - [x] 8 · Results — **reviewed (D50)**; no hard conflicts, on-voice
 - [x] 9 · Navigators — **reviewed (D50)**; no hard conflicts, already human-moat/on-strategy

@@ -470,3 +470,50 @@ Applied at guide level to `BRAND_CONTENT_GUIDE.md` + `.zh.md` (§00 five-second,
 - **Where it lives now:** `content/faq.js` sections.en + the EN/ZH jump-nav labels.
 - **ZH is deliberately behind.** `translation/pending-en.json` holds the 31 changed strings for the DeepSeek handoff per §15. ⚠️ Until that lands, the ZH FAQ still says 两种报名选项 — a **pricing fact** that disagrees with EN, not a voice difference. Priority item in the handoff.
 - **Trigger:** Wave 5, the only unit of the v5 cascade never done.
+
+### D92 · Wave 5 remainder — and two rulings the work forced (2026-09-02)
+
+- **Decision:** the last five Wave 5 items shipped EN (`fde04cf`) then ZH (`2bccb55`).
+  D37 five strands on `/methodology` + `/program`, D38 §07a research block, D41's two
+  `/compare` rows, D14's Type A/B caption, and the `/compare` voice pass. The v5 cascade
+  is now **18/18**.
+- **D14 was a live contradiction, not an owed chore.** The caption emptied out of
+  `program.loop.typeAB` on 2026-05-21 "moved to /methodology" mostly did move — but the
+  sentence *"Type assignment is driven by the student's current Lexile data, not a fixed
+  rotation"* did not, and the heading it landed under read *"Every cycle **alternates**
+  two kinds of session."* The page asserted the thing the retired sentence ruled out, for
+  three months. Heading → "runs"; sentence restored as `sessionTypes.note`.
+- **RULING · `/compare`'s problem was a rhythm, not its claims.** The `not X — but Y`
+  reversal §10 names as strip-on-sight ran **ten times** — every `s3`, `s6` and `s7`
+  title, plus `s4.caption` and `s6.h2` — with fragment-stacking in four more places.
+  Nine became statements. **One survives, deliberately**, in `s3.cols[0]`: the page's
+  opening claim, where the contrast *is* the argument and the body immediately earns it.
+  Stripping all ten would flatten what a comparison page is for. The tell is the
+  unvaried formula, not the device.
+- **§06 breach fixed on a conversion page.** `/compare` used "The Loop" as the named
+  system in a section header — forbidden on brand surfaces since the 2026-05-21 override
+  — and "LCS" appeared **zero** times. Now inverted.
+- **RULING · the ZH name for LCS.** §09's 2026-06-01 admin set makes **语言循环体系**
+  canonical and supersedes **both** `LCS 教学体系` and `LCS 教学理念`. Neither reference
+  file had followed: `DEEPSEEK_BRIEF.md` still said 教学体系 and the generated
+  `pending-en.json` reminder said 教学理念 — either would have steered all 52 keys of the
+  batch to a retired term. Both corrected in `c77c8d1` before the handoff went out.
+  ⚠️ **Six instances remain in `content/marketing.zh.js`** (教学理念 ×2, 教学系统 ×2,
+  教学体系 ×1, `LCS 系统` ×1). Not swept, because §09 is finer than a find-replace:
+  语言循环体系 is the canonical **ZH section header**, body copy uses **"The LCS"**.
+  Which of the six are headers is an open call.
+- **The ZH return needed two owned terms fixed.** `脉络` ×10 — invented; the guide's ZH
+  for a content strand is **板块** (15 uses in the ZH guide, `脉络` zero). And
+  `LCS 教学体系` ×2, the very term corrected upstream hours earlier. Also `普通教师` →
+  `家教` (EN says *tutor*; "ordinary teacher" is a different and more arrogant claim, and
+  shipped ZH uses 家教 ×9).
+- **Wave 3 was NOT forced, against the plan's prediction.** The completion plan expected
+  D37 to produce a hand-rolled fifth label and said to sequence 3 before 5. It did not:
+  on `/methodology` the nested strands are a term plus a definition, so a real `<dl>`;
+  on `/program` they are bare taxonomy values, which is what `TagRun` (D70) already
+  exists for. Nothing private was invented. Wave 3 drops from blocker to tidy-up.
+- **Where it lives:** `content/marketing.{en,zh}.js` — `methodology.strands`,
+  `methodology.research`, `methodology.sessionTypes.note`, `program.architecture`,
+  `compare.s3–s7`; `app/[locale]/{methodology,program}/page.jsx`; `.font-cjk` added to
+  the utilities layer in `styles/globals.css`.
+- **Trigger:** Wave 5, the remainder after D91.

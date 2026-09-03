@@ -124,7 +124,8 @@ Everything here applies to new work.
 | D88 | Extraction attempted and reverted — inline styles are load-bearing for specificity | Live · **blocks Wave 1 step 2** | `check-inline-style` |
 | D89 | Section colour rules wrapped in `:where()` — defaults, not overrides | Live · **unblocks Wave 1 step 2** | — visual diff, 315 elements |
 | D90 | Wave 1 step 2 landed — 187 blocks extracted, ratchet 933 → 746 | Live · unblocked by **D89** | `check-inline-style` |
-| D91 | `/faq` reworked to v5 — Loop as per-session, five combinations, seven levels; D38 + D41 shipped | Live · EN only, **ZH handoff pending** | `dodo-content-writer` lint |
+| D91 | `/faq` reworked to v5 — Loop as per-session, five combinations, seven levels; D38 + D41 shipped | Live · EN + ZH (ZH `799629f`) | `dodo-content-writer` lint |
+| D92 | Wave 5 remainder — D37/D38/D41/D14 shipped, `/compare` voice pass (10 reversals → 1), §06 breach fixed, ZH LCS canon corrected | Live · EN `fde04cf` + ZH `2bccb55` · v5 cascade 18/18 | `check-cjk-coverage` · lint |
 
 ### Type & payload
 
@@ -176,11 +177,9 @@ open one.
 
 | D | What is open | Owner |
 |---|---|---|
-| D14 | Type A/B caption still owed to `/methodology` | content |
 | D13 | `/faq` pricing figures never re-verified against the current combinations | admin |
-| D41 | `/compare` AI-tutor + gifted-books rows, `/faq` objection entries | content |
-| D38 | §07a research block not on `/methodology` | content |
-| D37 | Five strands surfaced on neither `/methodology` nor `/program` | content |
+| D92 | Six superseded LCS spellings left in `marketing.zh.js` body prose — §09 says 语言循环体系 is the ZH **section header** and `The LCS` the body form; which of the six are headers is the call | content |
+| — | `/compare` founder `<figure>` renders a play button with `pointerEvents:none` — looks clickable, does nothing, on a conversion page | admin (needs the real embed URL) |
 
 ### Resolved conflicts
 
