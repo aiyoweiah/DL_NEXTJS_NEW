@@ -517,3 +517,23 @@ Applied at guide level to `BRAND_CONTENT_GUIDE.md` + `.zh.md` (§00 five-second,
   `compare.s3–s7`; `app/[locale]/{methodology,program}/page.jsx`; `.font-cjk` added to
   the utilities layer in `styles/globals.css`.
 - **Trigger:** Wave 5, the remainder after D91.
+
+### D93 · MCT may be named four times on `/methodology` — stated exception (2026-09-02)
+
+- **The conflict.** §07 lists `/methodology` as a permitted surface for four MCT
+  phrasings and licenses each one used there. §06 says MCT is named **once**, as the
+  lineage of the L/C content. Both rules are current; they disagree about this page.
+- **Decision (admin, 2026-09-02): the §07 reading wins on `/methodology`, as a stated
+  exception.** The four live namings stand — `definition.body` ("the MCT gifted-ELA
+  tradition"), step 01 ("the MCT Language Arts tradition"), step 04 ("the MCT Language
+  Arts progression"), and `geo.body` (the four-framework list).
+- **Why it holds.** §06's "named once" rule exists to stop MCT reading as the *source of
+  each line* — the product-resale framing §07 forbids. On `/methodology` each naming does
+  a different job: lineage, reading provenance, the writing arc, and a GEO framework
+  list. None of them says "we teach MCT."
+- **Scope — this is not a licence elsewhere.** The exception is for `/methodology` only,
+  because it is the one page whose job is to explain the method in full. §06's single
+  naming still governs `/program`, `/compare`, `/about`, `/faq` and every machine
+  surface. A fifth naming on `/methodology` is not covered either — D92's new `strands`
+  and `research` sections were deliberately written without one.
+- **Trigger:** flagged during D92's page pass; the two rules could not both be followed.

@@ -126,6 +126,7 @@ Everything here applies to new work.
 | D90 | Wave 1 step 2 landed — 187 blocks extracted, ratchet 933 → 746 | Live · unblocked by **D89** | `check-inline-style` |
 | D91 | `/faq` reworked to v5 — Loop as per-session, five combinations, seven levels; D38 + D41 shipped | Live · EN + ZH (ZH `799629f`) | `dodo-content-writer` lint |
 | D92 | Wave 5 remainder — D37/D38/D41/D14 shipped, `/compare` voice pass (10 reversals → 1), §06 breach fixed, ZH LCS canon corrected | Live · EN `fde04cf` + ZH `2bccb55` · v5 cascade 18/18 | `check-cjk-coverage` · lint |
+| D93 | MCT may be named 4x on `/methodology` — stated §06/§07 exception, that page only | Live · no code change | — ⚠️ unguarded, by nature |
 
 ### Type & payload
 
