@@ -31,6 +31,7 @@ import { buildMetadata }                           from '@/lib/metadata'
 import { courseSchema }                            from '@/lib/schema'
 
 import SectionWrapper from '@/components/ui/SectionWrapper'
+import Surface from '@/components/ui/Surface'
 import K2Note         from '@/components/ui/K2Note'
 import Button         from '@/components/ui/Button'
 import LexileBar      from '@/components/ui/LexileBar'
@@ -191,6 +192,74 @@ export default async function MethodologyPage({ params }) {
         </div>
       </SectionWrapper>
 
+      {/* ── 1d. The five strands (D37) ────────────────────── */}
+      {/*
+        Placed after the definition and before the four Loop steps: the
+        strands say WHAT is taught, the Loop says HOW a session runs, so the
+        page has to name the material before it explains the sequence.
+
+        Dark, deliberately. The definition/clip wrapper above and "Why a Loop"
+        below are both white, so this also breaks an existing same-surface
+        adjacency rather than adding one (see the spacing protocol note above).
+
+        The nested strands are a term plus its definition, so they are a real
+        <dl>. That is why this section needs no new label class — the Wave 3
+        label-vocabulary risk the completion plan flagged for D37 does not
+        materialise here. /program renders the same five as a TagRun (D70),
+        where they are bare taxonomy values with no body.
+      */}
+      {t.strands && (
+      <SectionWrapper dark>
+        <div className="py-20 md:py-24">
+          <div className="max-w-2xl mb-12">
+            <p className="eyebrow mb-4 label-quote">{t.strands.eyebrow}</p>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5 text-gradient">
+              {t.strands.heading}
+            </h2>
+            <p className="text-lg leading-relaxed text-[color:var(--text-muted-dark)]">
+              {t.strands.body}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {t.strands.branches.map((b) => (
+              <Surface key={b.letter} as="article" variant="tinted" className="p-6 md:p-7">
+                <div className="flex items-baseline gap-3 mb-3">
+                  <span
+                    aria-hidden="true"
+                    className="text-4xl font-extrabold leading-none tracking-tighter text-[color:var(--text-accent-dark)]"
+                  >
+                    {b.letter}
+                  </span>
+                  <div>
+                    <p className="text-base font-bold leading-tight text-[color:var(--text-inverse)]">{b.name}</p>
+                    <p className="text-xs leading-tight font-cjk text-[color:var(--text-muted-dark)]">{b.nameZh}</p>
+                  </div>
+                </div>
+
+                <p className="text-sm leading-relaxed mb-4 text-[color:var(--text-muted-dark)]">{b.body}</p>
+
+                {b.nested.length > 0 && (
+                  <dl className="border-t pt-4 border-t-[color:var(--border-dark)]">
+                    {b.nested.map((n) => (
+                      <div key={n.name} className="mb-3 last:mb-0">
+                        <dt className="text-sm font-bold text-[color:var(--text-accent-dark)]">{n.name}</dt>
+                        <dd className="text-sm leading-relaxed text-[color:var(--text-muted-dark)]">{n.body}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                )}
+              </Surface>
+            ))}
+          </div>
+
+          <p className="mt-8 text-base leading-relaxed max-w-2xl text-[color:var(--platinum-60)]">
+            {t.strands.note}
+          </p>
+        </div>
+      </SectionWrapper>
+      )}
+
       {/* ── 2. Why a Loop ─────────────────────────────────── */}
       <SectionWrapper white>
         <div className="py-20 md:py-24 max-w-3xl">
@@ -303,6 +372,12 @@ export default async function MethodologyPage({ params }) {
               </div>
             ))}
           </div>
+          {/* D14: which type a week gets is Lexile-driven, not a rotation. */}
+          {t.sessionTypes.note && (
+            <p className="mt-8 text-base leading-relaxed max-w-2xl text-[color:var(--platinum-60)]">
+              {t.sessionTypes.note}
+            </p>
+          )}
         </div>
       </SectionWrapper>
 
@@ -380,6 +455,43 @@ export default async function MethodologyPage({ params }) {
 
         </div>
       </SectionWrapper>
+
+      {/* ── 5b. Research base (D38 · guide §07a) ──────────── */}
+      {/*
+        Sits directly above the GEO block on purpose: geo names the four
+        frameworks, this is the evidence under one of them, and the schema
+        citation nodes want the two adjacent.
+
+        `darker` keeps the surface run legal — trait above is the default
+        surface and geo below is dark.
+      */}
+      {t.research && (
+      <SectionWrapper darker>
+        <div className="py-20 md:py-24 max-w-3xl">
+          <p className="eyebrow mb-4 label-quote">{t.research.eyebrow}</p>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5 text-gradient">
+            {t.research.heading}
+          </h2>
+          <p className="text-lg leading-relaxed mb-10 text-[color:var(--text-muted-dark)]">
+            {t.research.body}
+          </p>
+
+          <p className="eyebrow mb-4 text-[color:var(--text-accent-dark)]">{t.research.findingsLabel}</p>
+          <ul className="list-none p-0 m-0">
+            {t.research.findings.map((f) => (
+              <li key={f.source} className="mb-6 last:mb-0 pl-4 border-l border-l-[color:var(--border-dark)]">
+                <p className="text-base leading-relaxed mb-1 text-[color:var(--text-muted-dark)]">{f.claim}</p>
+                <cite className="text-xs not-italic text-[color:var(--platinum-60)]">{f.source}</cite>
+              </li>
+            ))}
+          </ul>
+
+          <p className="mt-10 text-base leading-relaxed text-[color:var(--platinum-60)]">
+            {t.research.note}
+          </p>
+        </div>
+      </SectionWrapper>
+      )}
 
       {/* ── 6. GEO signal ─────────────────────────────────── */}
       <SectionWrapper dark>

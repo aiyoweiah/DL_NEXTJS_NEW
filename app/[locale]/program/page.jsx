@@ -33,6 +33,7 @@ import { program as copyZh, ageBands as bandsZh } from '@/content/marketing.zh'
 import DoCta         from '@/components/ui/DoCta'
 import Eyebrow from '@/components/ui/Eyebrow'
 import Surface from '@/components/ui/Surface'
+import TagRun from '@/components/ui/TagRun'
 
 // ─────────────────────────────────────────────────────────────
 // STATIC STRUCTURAL DATA (no locale variants)
@@ -499,6 +500,18 @@ function ArchitectureSection({ locale, c }) {
                 </div>
               </div>
               <p style={{ fontSize: '0.875rem', lineHeight: 1.75, color: 'rgba(240,240,240,0.65)' }}>{strand.body}</p>
+              {/* D37: the five content strands nest under the three branches.
+                  These are taxonomy VALUES, so they belong in a TagRun (D70)
+                  rather than a fifth private label. S carries no nested strand
+                  by design — it gets the note instead. */}
+              {strand.nested?.length > 0 && (
+                <TagRun items={strand.nested} dark className="mt-3" aria-label={`${strand.name} strands`} />
+              )}
+              {strand.nestedNote && (
+                <p className="mt-3 text-[0.8125rem] leading-relaxed text-[color:var(--platinum-60)]">
+                  {strand.nestedNote}
+                </p>
+              )}
             </Surface>
           ))}
         </div>

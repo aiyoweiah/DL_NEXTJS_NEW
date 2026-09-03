@@ -428,14 +428,18 @@ export const program = {
     h2zh:    null,
     body:
       'The LCS System — Literacy · Composition · Speaking — is the curriculum architecture. ' +
+      'Five content strands nest under those three branches. ' +
       'Within it, every session runs The Loop, guided by your child’s Navigator. ' +
       'Across each 16-week cycle, sessions accumulate into LCS strand progress. ' +
       'Across multiple cycles, students advance through the seven ELA levels (Levels 1–7), with Level 7 reaching college-tier academic English. ' +
       'Each level takes two to three cycles. Each cycle is 16 weeks.',
     strands: [
-      { letter: 'L', name: 'Literacy',    nameZh: '文学精读',         body: 'Deep engagement with literary classics. Vocabulary accumulation, literary sensibility, the student’s own intellectual treasury. The root of all language output.' },
-      { letter: 'C', name: 'Composition', nameZh: '系统写作训练', body: 'Systematic writing training: transforming reading depth and thinking into structured, persuasive, precise writing. From sentences to academic essays.' },
-      { letter: 'S', name: 'Speaking',    nameZh: '表达',                  body: 'High-quality 1-on-1 discussion with the Navigator. Students clarify perspective, organise thinking, produce clear and logically rigorous spoken output.' },
+      { letter: 'L', name: 'Literacy',    nameZh: '文学精读',         nested: ['Literature', 'Vocabulary', 'Poetics'],
+        body: 'Deep engagement with literary classics. Vocabulary accumulation, literary sensibility, the student’s own intellectual treasury. The root of all language output.' },
+      { letter: 'C', name: 'Composition', nameZh: '系统写作训练', nested: ['Grammar', 'Writing'],
+        body: 'Systematic writing training: transforming reading depth and thinking into structured, persuasive, precise writing. From sentences to academic essays.' },
+      { letter: 'S', name: 'Speaking',    nameZh: '表达',                  nested: [], nestedNote: 'DODO’s own strand — no nested strand, because no book supplies it.',
+        body: 'High-quality 1-on-1 discussion with the Navigator. Students clarify perspective, organise thinking, produce clear and logically rigorous spoken output.' },
     ],
     levelsNote:
       'Calibrated against US SAT, SSAT, IB Extended Essay, Cambridge KET & PET, and North American private-school + gifted-school standards. Level 7 = college-tier academic English capability.',
@@ -759,35 +763,37 @@ export const compare = {
     s2: { pull: 'Most programs teach your child to answer the question correctly.\u00a0', pullSpan: 'DODO Learning builds English Thinkers who ask a better one.', pullEnd: '' },
     s3: {
       eyebrow: 'The Category Difference',
-      h2: 'Three comparisons that clarify what DODO Learning actually is.',
+      h2: 'Five comparisons that clarify what DODO Learning actually is.',
       cols: [
-        { question: 'vs. Tutoring centres & ESL programs', title: 'Cognitive development\u00a0— not language practice', body: 'Tutoring centres fix homework. ESL programs build conversational fluency. DODO Learning develops the reasoning architecture that makes your child capable of reading dense analytical prose, arguing a position with textual evidence, and writing with precision. Different category. Different outcome.' },
-        { question: 'vs. Grade-level school support', title: 'Mastery standard\u00a0— not grade compliance', body: 'School English is calibrated to the average. DODO Learning’s program is grounded in the principles of the MCT Language Arts framework\u00a0— one of the most rigorous classical ELA programs in North America, built for students capable of genuine mastery. Your child is measured against their own Lexile ceiling, not a classroom mean.' },
-        { question: 'vs. Test-prep companies', title: 'A 16-week arc\u00a0— not a score for next month', body: 'Test-prep optimises for a single exam window. The ELA Program builds the cognitive capacity that produces strong results as a natural byproduct\u00a0— because a student who can read complexity, synthesise evidence, and write with intention will perform on any assessment they face.' },
+        { question: 'vs. Tutoring centres & ESL programs', title: 'Cognitive development\u00a0— not language practice', body: 'Tutoring centres fix homework. ESL programs build conversational fluency. DODO Learning develops the reasoning architecture that makes your child capable of reading dense analytical prose, arguing a position with textual evidence, and writing with precision. It is a different category of work, and it produces a different kind of student.' },
+        { question: 'vs. Grade-level school support', title: 'Measured against their own ceiling', body: 'School English is calibrated to the average. DODO Learning’s program is grounded in the principles of the MCT Language Arts framework\u00a0— one of the most rigorous classical ELA programs in North America, built for students capable of genuine mastery. Your child is measured against their own Lexile ceiling, not a classroom mean.' },
+        { question: 'vs. Test-prep companies', title: 'A sixteen-week arc', body: 'Test-prep optimises for a single exam window. The ELA Program builds the cognitive capacity that produces strong results as a natural byproduct\u00a0— because a student who can read complexity, synthesise evidence, and write with intention will perform on any assessment they face.' },
+        { question: 'vs. AI tutors and homework apps', title: 'The judgment behind the question', body: 'AI is a tool your child will use for the rest of their life, and using it well is a skill worth having. What it cannot do is build the judgment underneath. It will answer whatever it is asked. A Navigator teaches your child which question is worth asking, then presses on the point they have not made yet — and the reading and the reasoning stay your child’s own work.' },
+        { question: 'vs. buying the curriculum yourself', title: 'A live reader in the room', body: 'The classical ELA materials are real books, and a determined family can buy them. What arrives is the reading and the writing. What cannot arrive is the third strand — someone who hears how your child reasons, asks the harder question at the moment it would land, and coaches the spoken defence of an idea. That part has no page.' },
       ],
     },
     s4: {
-      eyebrow: 'The Methodology', h2: 'What separates DODO Learning is not the curriculum. It’s The Loop.',
-      caption: 'Read → Think → Speak → Write. Every session follows this exact sequence. Every stage is assessed. The Loop is not a teaching method\u00a0— it is a compounding system. A student who runs The Loop with a Navigator across 16 weeks does not simply improve their English. Over time, they simply get better at working through anything complex.',
+      eyebrow: 'The Methodology', h2: 'What separates DODO Learning is the LCS System.',
+      caption: 'Inside every session the same sequence runs: Read → Think → Speak → Write. Each stage is assessed, and each one feeds the next. Over sixteen weeks a child working this way with a Navigator does not only read better. They get better at working through anything difficult, which is the part that keeps paying.',
       methodologyLink: 'Read the full methodology →',
     },
-    s5: { eyebrow: 'From the Founder', h2: 'Why we built DODO Learning\u00a0— and what we decided we would never become.', sub: 'Unscripted. Eight minutes. The decision in full.', founderName: 'Janet — Founder & Lead Navigator' },
+    s5: { eyebrow: 'From the Founder', h2: 'Why we built DODO Learning\u00a0— and what we decided we would never become.', sub: 'Eight unscripted minutes on why we started, and what we decided we would never do.', founderName: 'Janet — Founder & Lead Navigator' },
     s6: {
-      eyebrow: 'The Navigator Difference', h2: 'A Navigator is not a tutor. Here is exactly what that means.',
+      eyebrow: 'The Navigator Difference', h2: 'What a Navigator does that a tutor cannot.',
       points: [
         { label: 'Longitudinal knowledge', body: 'A session-by-session tutor meets your child fresh each time. A Navigator carries the full arc\u00a0— your child’s Lexile baseline, their 6+1 Trait profile from week one, the specific sentence from three sessions ago that still needs to move. Every Navigator holds a graduate degree from a world top-50 university (Oxford, U of T, Queen’s, LSE and others) with a specialist background in literature or composition. That context compounds. The insight it produces cannot be replicated in a one-off session.' },
-        { label: 'A better question\u00a0— not a faster answer', body: 'The Navigator’s first move after your child responds is always a follow-up question drawn from Harvard Project Zero’s Visible Thinking routines\u00a0— never an evaluation. This is the difference between growing a thinker and training a responder — one builds capacity, the other a habit of waiting to be told.' },
-        { label: 'Calibrated feedback\u00a0— not general praise', body: 'Every Navigator response references a specific 6+1 Trait, a specific score, and a specific next move. Not “good job”\u00a0— “your Ideas trait moved from a 2 to a 3 because of this sentence. A 4 requires this.” Your child always knows exactly where they are and what a higher score requires of them.' },
-        { label: 'One Navigator. The full 16-week arc.', body: 'Your child’s Navigator is with them from initial Lexile assessment to final 6+1 Trait evaluation. One relationship. One standard. One set of eyes on every draft, every oral defence, every argument. The relationship itself is part of the program.' },
+        { label: 'A better question', body: 'The Navigator’s first move after your child responds is always a follow-up question drawn from Harvard Project Zero’s Visible Thinking routines\u00a0— never an evaluation. This is the difference between growing a thinker and training a responder — one builds capacity, the other a habit of waiting to be told.' },
+        { label: 'Feedback with a number attached', body: 'Every Navigator response references a specific 6+1 Trait, a specific score, and a specific next move. Not “good job”\u00a0— “your Ideas trait moved from a 2 to a 3 because of this sentence. A 4 requires this.” Your child always knows exactly where they are and what a higher score requires of them.' },
+        { label: 'One Navigator. The full 16-week arc.', body: 'Your child’s Navigator is with them from initial Lexile assessment to final 6+1 Trait evaluation. One relationship, one standard, and the same set of eyes on every draft and every oral defence your child gives. The relationship itself is part of the program.' },
       ],
       navigatorsLink: 'Meet the Navigators →',
     },
     s7: {
       eyebrow: 'What Progress Looks Like Here', h2: 'Measurable, specific, and felt\u00a0— versus everywhere else.',
       cols: [
-        { num: '01', title: 'Lexile\u00a0— not letter grades', body: 'Lexile 620 to Lexile 790 in 16 weeks is a verifiable fact. A letter grade is a school’s assessment of compliance against a class average. DODO Learning measures reading complexity\u00a0— the actual cognitive demand of the texts your child can independently handle\u00a0— at entry, at the midpoint, and at completion.' },
-        { num: '02', title: '6+1 Traits\u00a0— not impressions', body: 'Writing is scored across seven specific traits: Ideas, Organization, Voice, Word Choice, Sentence Fluency, Conventions, Presentation. Your child knows which trait moved, by how much, and exactly what a higher score requires. Progress is never vague here.' },
-        { num: '03', title: 'A committed arc\u00a0— not rolling enrolment', body: 'The ELA Program has a beginning, a measurable midpoint, and a confirmed result. Not a monthly subscription. Not open enrolment. A structure\u00a0— because compounding only works when the work is continuous and the Navigator’s knowledge accumulates.' },
+        { num: '01', title: 'A Lexile number', body: 'Lexile 620 to Lexile 790 in 16 weeks is a verifiable fact. A letter grade is a school’s assessment of compliance against a class average. DODO Learning measures reading complexity\u00a0— the actual cognitive demand of the texts your child can independently handle\u00a0— at entry, at the midpoint, and at completion.' },
+        { num: '02', title: 'Seven traits, scored', body: 'Writing is scored across seven specific traits: Ideas, Organization, Voice, Word Choice, Sentence Fluency, Conventions, Presentation. Your child knows which trait moved, by how much, and exactly what a higher score requires. Progress is never vague here.' },
+        { num: '03', title: 'A cycle with a beginning and an end', body: 'The ELA Program has a beginning, a measurable midpoint, and a confirmed result. It is not a monthly subscription you drift in and out of, because the compounding only happens when the work is continuous and the Navigator’s knowledge of your child keeps accumulating.' },
       ],
     },
     s8: {
@@ -834,6 +840,52 @@ export const methodology = {
   definition: {
     body:
       'The LCS System is DODO Learning’s methodology for English language arts: Literacy, Composition, and Speaking, run every session as The Loop — Read → Think → Speak → Write. It is grounded in the MCT gifted-ELA tradition and Harvard Project Zero’s Visible Thinking routines, and measured with Lexile reading levels and the 6+1 Trait writing framework. Students typically gain one grade level of reading across two 16-week cycles.',
+  },
+
+  // D37 · the five content strands, nested under the three LCS branches.
+  // Placed before seeItLive and the four Loop steps on purpose: the strands
+  // say what is taught, the Loop says how a session runs. Per §06 the strands
+  // are described in DODO's own words, never as a resold booklist, and MCT is
+  // not named again here — it is already the lineage credit in definition.body.
+  strands: {
+    eyebrow: 'Inside the System',
+    heading: 'Three branches, five strands, one reading child.',
+    body:
+      'LCS is the shape of a whole language education, not a list of subjects. Literacy is where language goes in. ' +
+      'Composition is where it comes back out, in an order that holds. Speaking is the part a book cannot do for you. ' +
+      'Five content strands sit under those branches, and more than one of them is running in any given session even ' +
+      'when only one has your child’s attention.',
+    branches: [
+      {
+        letter: 'L',
+        name:   'Literacy',
+        nameZh: '文学精读',
+        body:   'The reading treasury — where language goes in, and the root of everything a child later writes or says.',
+        nested: [
+          { name: 'Literature', body: 'Whole, unabridged classics, read for craft. Not excerpts and not retellings — the sentences the writer actually wrote, at the length they wrote them.' },
+          { name: 'Vocabulary', body: 'The Latin and Greek roots beneath English. Structure rather than memorization, so a word your child has never met becomes one they can take apart.' },
+          { name: 'Poetics',    body: 'The ear for how good writing is built — rhythm, image, the choice a writer made and the one they turned down.' },
+        ],
+      },
+      {
+        letter: 'C',
+        name:   'Composition',
+        nameZh: '系统写作训练',
+        body:   'The construction engine — where language comes out, and where thinking has to survive being written down.',
+        nested: [
+          { name: 'Grammar', body: 'The architecture of the sentence, taught first and taught quickly, then used rather than recited.' },
+          { name: 'Writing', body: 'Sentence to paragraph to essay to academic composition, each step assessed before the next one is asked for.' },
+        ],
+      },
+      {
+        letter: 'S',
+        name:   'Speaking',
+        nameZh: '表达',
+        body:   'DODO’s own strand, and the reason there is a Navigator in the room at all. Oral defence, Socratic dialogue, taking the side you disagree with. It has no nested strand because nothing in a curriculum of books supplies it.',
+        nested: [],
+      },
+    ],
+    note: 'Read → Think → Speak → Write is how one session runs. The strands are what the sessions are made of.',
   },
 
   seeItLive: {
@@ -917,7 +969,7 @@ export const methodology = {
 
   sessionTypes: {
     eyebrow: 'Two Session Types',
-    heading: 'Every cycle alternates two kinds of session.',
+    heading: 'Every cycle runs two kinds of session.',
     types: [
       {
         id:    'a',
@@ -932,6 +984,12 @@ export const methodology = {
           'The student thinks, discusses, and drafts. The Navigator opens with a Visible Thinking routine, asks a sharper question before any evaluation, and assesses the writing against the 6+1 Trait rubric.',
       },
     ],
+    // D14 (2026-09-02): restored from the caption retired out of
+    // program.loop.typeAB on 2026-05-21. Everything else in that caption
+    // made the move; this sentence did not, and the heading it landed
+    // under asserted the fixed rotation it rules out.
+    note:
+      'Which kind your child gets in a given week follows their current Lexile data, not a fixed rotation. If the reading needs another week, it gets another week.',
   },
 
   lexile: {
@@ -982,6 +1040,52 @@ export const methodology = {
       { id: 'conventions',  label: 'Conventions',      body: 'Grammar, spelling, punctuation. The standard technical expectations of academic writing.' },
       { id: 'presentation', label: 'Presentation',     body: 'The visual layout and form. How the writing looks on the page.' },
     ],
+  },
+
+  // D38 · §07a research base. Deployed here, on llms-full.txt and in the
+  // schema citation nodes.
+  //
+  // THE HARD RULE: §07a says this evidence is strongest in ELL / struggling-
+  // reader / dyslexia populations and must NEVER be deployed that way. DODO's
+  // frame is acceleration into mastery. That is also why Goodwin & Ahn (2010)
+  // carries author + year only here — its journal is Annals of Dyslexia, and
+  // the title alone would import the register the rule forbids. The full
+  // citation string belongs in llms-full.txt and the schema node, where no
+  // parent reads it as a category signal.
+  //
+  // Four of §07a's five licensed claims are in findings[]. The fifth — the
+  // 60%/90% root share — is in body rather than the list, because five stacked
+  // claims is the tricolon rhythm §10 strips on sight.
+  research: {
+    eyebrow: 'Why This Works',
+    heading: 'The part of this you can go and check.',
+    body:
+      'English is built out of Latin and Greek — about sixty percent of it, and over ninety percent of the language ' +
+      'of science. We teach the roots beneath the words, so a term your child has never seen becomes one they can ' +
+      'take apart and solve. It happens to be one of the most-researched strategies in education, which means you ' +
+      'do not have to take our word for any of it.',
+    findings: [
+      {
+        claim:  'In a study of 493 middle-school students, root-based vocabulary teaching outperformed memorization — for gifted and typically-developing students alike.',
+        source: 'Gallagher, S. A. (2017), Roeper Review 39(2)',
+      },
+      {
+        claim:  'Across dozens of controlled studies, teaching the structure of words produces measurable gains in vocabulary, decoding and spelling.',
+        source: 'Goodwin & Ahn (2010, 2013); Bowers, Kirby & Deacon (2010)',
+      },
+      {
+        claim:  'The gains are largest when word structure is woven into real reading rather than drilled on its own — which is why it lives inside the literature here, not beside it.',
+        source: 'Bowers, Kirby & Deacon (2010), Review of Educational Research 80',
+      },
+      {
+        claim:  'Children grow most on rich, challenging text rather than simplified readers. That is why we read real, unabridged classics, set a step above the comfortable level on purpose.',
+        source: 'Shanahan; Keys to Literacy — challenging-text research',
+      },
+    ],
+    findingsLabel: 'The studies',
+    note:
+      'Roots are the reason the vocabulary transfers. A child who knows spect reads their way into inspect, ' +
+      'circumspect, spectrum and spectacle without being taught a single one of them.',
   },
 
   geo: {

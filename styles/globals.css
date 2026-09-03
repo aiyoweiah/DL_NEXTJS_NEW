@@ -1359,6 +1359,16 @@
 /* ── 6. UTILITY LAYER ─────────────────────────────────────── */
 @layer utilities {
 
+  /* The CJK face was reached for exclusively as an inline
+     `style={{ fontFamily: 'var(--font-cjk)' }}` — 20+ hand-rolled copies of
+     one token lookup, invisible to a class sweep and to any future font
+     swap (D62 makes that swap a live possibility). Same shape as the nine
+     private Eyebrow copies (D57). This is the home for it; existing inline
+     copies migrate opportunistically per the Wave 1 rule, not in a campaign. */
+  .font-cjk {
+    font-family: var(--font-cjk);
+  }
+
   .text-gradient {
     background: linear-gradient(135deg, var(--color-lavender-signal) 0%, #e8e7ff 60%, #ffffff 100%);
     -webkit-background-clip: text;

@@ -1,63 +1,69 @@
 {
-  "_brief": "DODO /faq — v5 cascade unit 6. EN locked 2026-09-01. Translate to ZH per DEEPSEEK_BRIEF.md + dodo-glossary.json. Return the SAME KEYS, same shape, ZH values only. Do not translate: 'LCS', 'Lexile', 'Navigator', '6+1 Trait', 'Summit', 'Core', 'Flex 1/2/3', 'ChatGPT', level codes L1-L7, author names and years in citations.",
+  "_brief": "DODO Wave 5 remainder — /methodology (D37 five strands, D38 research base, D14 session-type note), /program (D37), /compare (D41 two new rows + the §10 voice pass). EN locked 2026-09-02. Translate to ZH per DEEPSEEK_BRIEF.md + dodo-glossary.json. Return the SAME KEYS, same shape, ZH values only. Do not translate: LCS, Lexile, Navigator, 6+1 Trait, Summit, Core, Flex 1/2/3, MCT, level codes L1-L7, and the author names, journal names and years in citations (Gallagher, Goodwin, Ahn, Bowers, Kirby, Deacon, Shanahan, Roeper Review, Review of Educational Research, Keys to Literacy).",
   "_glossary_reminders": {
     "Navigator": "导师（Navigator） — never 领航员",
     "Lexile": "Lexile（蓝思）",
     "LCS System": "LCS 教学理念",
     "The Loop (per-session phrase only)": "阅读 → 思考 → 表达 → 写作",
     "Little DODO": "都学启蒙",
+    "L · Literacy": "文学精读",
+    "C · Composition": "系统写作训练",
+    "S · Speaking": "表达",
     "cycle": "周期 (16 weeks)"
   },
-  "_forbidden_zh": "See BRAND_CONTENT_GUIDE.md §10 (the anti-dictionary) for the ZH strip-on-sight list, plus the combat-metaphor and reassurance-tail lints in the dodo-content-writer skill. Deliberately not inlined here: the banned terms are banned precisely because they never appear in shipped copy, so their characters are not in the CJK font subset and pasting them into a repo file trips check-cjk-coverage. The guard is right; the list belongs in the guide.",
-
-  "nav.the-loop.label": "The LCS System",
-  "sections.the-loop.label": "The LCS System",
-  "sections.the-loop.heading": "How a session is built, and why the order holds.",
-
-  "lcs.q1.question": "What is the LCS System?",
-  "lcs.q1.answer": "The LCS System is DODO's curriculum framework — Literacy, Composition, Speaking. Literacy is the reading treasury, where language goes in: whole unabridged classics, the Latin and Greek roots beneath English, and an ear for how good writing is built. Composition is the construction engine: grammar first and fast, then sentence to paragraph to essay. Speaking is our own strand, and the one a book cannot deliver — oral defence, Socratic dialogue, taking the other side. Inside every session those three run as one sequence: Read → Think → Speak → Write.",
-
-  "lcs.q2.question": "Why Read → Think → Speak → Write in that order?",
-  "lcs.q2.answer": "Because that is the order the thinking wants to go in. Reading puts something worth arguing about in front of your child. Thinking gives them a position on it. Speaking makes them defend that position out loud, where the gaps show. Writing is where it settles into something they own. Run it backwards and you get fluent sentences with nothing underneath.",
-
-  "lcs.q3.question": "How is a single session structured?",
-  "lcs.q3.answer": "One session runs the full sequence, not one quarter of it. A literacy session is 25 minutes; a writing session is 50. Your child reads, is asked what they make of it, says it aloud to a Navigator who presses on the part they haven't thought through, and then writes. The next session does the same thing with harder material.",
-
-  "lcs.q4.question": "Does the sequence change as your child improves?",
-  "lcs.q4.answer": "The sequence stays. The material moves. That is what the seven ELA levels are for — L1 begins at Grade 3 and L7 is college-tier academic English, with each level running two to three 16-week cycles. A child at L1 and a child at L5 have the same session shape and completely different books.",
-
-  "lcs.q5.question": "How is this different from what my child's school already does?",
-  "lcs.q5.answer": "Most classrooms teach reading and writing as separate subjects, a term apart. Here they are one motion, three times a week, with one Navigator who has read everything your child has written. School measures whether the work was done. We measure the Lexile at Week 0, 8 and 16, and the 6+1 Trait scores alongside it.",
-
-  "lcs.q6.question": "Where will my child start?",
-  "lcs.q6.answer": "At the level the diagnostic puts them, not at the level their grade implies. The 20-minute consultation measures where their reading actually sits, and that decides which of the seven levels they enter. Every session runs the full Read → Think → Speak → Write sequence from the first week, whatever the level.",
-
-  "program.sessions.question": "How many sessions are there and how long is each one?",
-  "program.sessions.answer": "Five combinations, all 16 weeks per cycle. **Summit** is three literature sessions plus one writing session each week. **Core** — the most common — is two literature plus one writing. **Flex 1** is two or more literature sessions; **Flex 2** is two writing sessions; **Flex 3** is one or more GPA sessions per week and pairs with any of the others. Literature sessions run 25 minutes, writing sessions 50, on a fixed weekly schedule.",
-
-  "program.grades.question": "What grade levels does DODO serve?",
-  "program.grades.answer": "The ELA Program begins at Grade 3 and runs across seven levels to college-tier academic English — each level two to three 16-week cycles. Little DODO is a separate programme for ages 5 to 8, with its own early-childhood educators. Placement comes from the diagnostic, not from your child's school year.",
-
-  "program.ai.question": "Why not just use ChatGPT?",
-  "program.ai.answer": "AI is a tool your child will use for the rest of their life, and using it well is a skill in itself. What it cannot do is build the judgment behind the question. It will answer whatever you ask; a Navigator teaches your child which question is worth asking — how to read a difficult text closely, hold a position under challenge, and write something that earns its conclusion. In a session your child does the reading and the reasoning; the Navigator presses on the point they haven't made yet.",
-
-  "results.evidence.question": "Is DODO's approach evidence-based?",
-  "results.evidence.answer": "Yes, and the strongest evidence sits under the vocabulary work. Teaching the Latin and Greek roots beneath English is one of the most-researched strategies in education. About 60% of English comes from those roots — over 90% of the words in science — so a term your child has never seen becomes one they can take apart and solve. In a study of 493 middle-school students, root-based teaching outperformed memorization for gifted and typically-developing students alike (Gallagher, 2017, Roeper Review). Across dozens of controlled studies, teaching word structure produces measurable gains in vocabulary, decoding and spelling (Goodwin & Ahn, 2010, 2013; Bowers, Kirby & Deacon, 2010). One more finding shapes how we choose texts: children grow most on rich, challenging material rather than simplified readers, which is why we read real, unabridged classics set a step above the comfortable level.",
-
-  "bilingual.q2.question": "My child speaks English easily. Isn't that enough?",
-  "bilingual.q2.answer": "Speaking easily and reading a difficult text closely are different capacities. A child can hold a conversation without effort and still lose the thread of a chapter, or write a paragraph that lists rather than argues. The conversation is surface. What we build sits under it.",
-
-  "bilingual.q4.question": "How does DODO approach the Chinese–English language relationship?",
-  "bilingual.q4.answer": "As one system, not two competing ones. We build depth in English — close reading, argument, structured writing — and that depth is portable. A child who can take a position and defend it in English does not lose that ability when they switch languages. Cognitive depth protects both.",
-
-  "bilingual.q5.question": "At what age is this development most effective?",
-  "bilingual.q5.answer": "The ELA Program starts at Grade 3, when academic reading begins to ask more than decoding. Little DODO covers ages 5 to 8 before that. There is no closing door: L7 is college-tier work, and students move up the ladder for as long as it keeps stretching them.",
-
-  "bilingual.q6.question": "Does building English depth take something away from Chinese?",
-  "bilingual.q6.answer": "No. The work is structural, and structure travels. A child who learns to hold a position under questioning, or to build an argument that earns its conclusion, keeps that capacity whichever language they are working in. We do not teach Chinese, and we do not ask families to set it aside.",
-
-  "_also_stale_in_zh": {
-    "note": "NOT in this file, but the ZH FAQ still contradicts the EN on a pricing fact and should be corrected in the same pass.",
-    "zh.program.sessions": "Currently reads 两种报名选项 (two enrollment options) with 完整课程 / 文学基础课程. EN is now the five combinations — see program.sessions above. This is a product fact, not a voice difference."
-  }
+  "_register_note": "Two register rules bind this batch. (1) The research keys: guide §07a says this evidence is strongest in ELL / struggling-reader / dyslexia populations and must NEVER be framed that way — DODO accelerates into mastery, it does not remediate. No 补习 / 赶上 / 干预 / 辅导 register anywhere in methodology.research.*. (2) The /compare keys exist specifically to REMOVE the 'not X — but Y' reversal and fragment-stacking rhythm that §10 strips on sight. Do not reintroduce it in ZH: translate the statement, not a contrast.",
+  "_shape_note": "methodology.strands.L/C/S.nested.N.name are the five content strand names (Literature, Vocabulary, Poetics, Grammar, Writing). Per guide §06 they are described in DODO's own words and never as a resold booklist. S has no nested strand by design — it carries program.architecture.S.nestedNote instead.",
+  "_forbidden_zh": "See BRAND_CONTENT_GUIDE.md §10 for the ZH strip-on-sight list, plus the combat-metaphor and reassurance-tail lints in the dodo-content-writer skill. Deliberately not inlined here: the banned terms never appear in shipped copy, so their characters are not in the CJK font subset and pasting them into a repo file trips check-cjk-coverage.",
+  "methodology.strands.eyebrow": "Inside the System",
+  "methodology.strands.heading": "Three branches, five strands, one reading child.",
+  "methodology.strands.body": "LCS is the shape of a whole language education, not a list of subjects. Literacy is where language goes in. Composition is where it comes back out, in an order that holds. Speaking is the part a book cannot do for you. Five content strands sit under those branches, and more than one of them is running in any given session even when only one has your child’s attention.",
+  "methodology.strands.L.body": "The reading treasury — where language goes in, and the root of everything a child later writes or says.",
+  "methodology.strands.L.nested.0.name": "Literature",
+  "methodology.strands.L.nested.0.body": "Whole, unabridged classics, read for craft. Not excerpts and not retellings — the sentences the writer actually wrote, at the length they wrote them.",
+  "methodology.strands.L.nested.1.name": "Vocabulary",
+  "methodology.strands.L.nested.1.body": "The Latin and Greek roots beneath English. Structure rather than memorization, so a word your child has never met becomes one they can take apart.",
+  "methodology.strands.L.nested.2.name": "Poetics",
+  "methodology.strands.L.nested.2.body": "The ear for how good writing is built — rhythm, image, the choice a writer made and the one they turned down.",
+  "methodology.strands.C.body": "The construction engine — where language comes out, and where thinking has to survive being written down.",
+  "methodology.strands.C.nested.0.name": "Grammar",
+  "methodology.strands.C.nested.0.body": "The architecture of the sentence, taught first and taught quickly, then used rather than recited.",
+  "methodology.strands.C.nested.1.name": "Writing",
+  "methodology.strands.C.nested.1.body": "Sentence to paragraph to essay to academic composition, each step assessed before the next one is asked for.",
+  "methodology.strands.S.body": "DODO’s own strand, and the reason there is a Navigator in the room at all. Oral defence, Socratic dialogue, taking the side you disagree with. It has no nested strand because nothing in a curriculum of books supplies it.",
+  "methodology.strands.note": "Read → Think → Speak → Write is how one session runs. The strands are what the sessions are made of.",
+  "methodology.research.eyebrow": "Why This Works",
+  "methodology.research.heading": "The part of this you can go and check.",
+  "methodology.research.body": "English is built out of Latin and Greek — about sixty percent of it, and over ninety percent of the language of science. We teach the roots beneath the words, so a term your child has never seen becomes one they can take apart and solve. It happens to be one of the most-researched strategies in education, which means you do not have to take our word for any of it.",
+  "methodology.research.findingsLabel": "The studies",
+  "methodology.research.findings.0.claim": "In a study of 493 middle-school students, root-based vocabulary teaching outperformed memorization — for gifted and typically-developing students alike.",
+  "methodology.research.findings.1.claim": "Across dozens of controlled studies, teaching the structure of words produces measurable gains in vocabulary, decoding and spelling.",
+  "methodology.research.findings.2.claim": "The gains are largest when word structure is woven into real reading rather than drilled on its own — which is why it lives inside the literature here, not beside it.",
+  "methodology.research.findings.3.claim": "Children grow most on rich, challenging text rather than simplified readers. That is why we read real, unabridged classics, set a step above the comfortable level on purpose.",
+  "methodology.research.note": "Roots are the reason the vocabulary transfers. A child who knows spect reads their way into inspect, circumspect, spectrum and spectacle without being taught a single one of them.",
+  "methodology.sessionTypes.heading": "Every cycle runs two kinds of session.",
+  "methodology.sessionTypes.note": "Which kind your child gets in a given week follows their current Lexile data, not a fixed rotation. If the reading needs another week, it gets another week.",
+  "program.architecture.body": "The LCS System — Literacy · Composition · Speaking — is the curriculum architecture. Five content strands nest under those three branches. Within it, every session runs The Loop, guided by your child’s Navigator. Across each 16-week cycle, sessions accumulate into LCS strand progress. Across multiple cycles, students advance through the seven ELA levels (Levels 1–7), with Level 7 reaching college-tier academic English. Each level takes two to three cycles. Each cycle is 16 weeks.",
+  "program.architecture.S.nestedNote": "DODO’s own strand — no nested strand, because no book supplies it.",
+  "compare.s3.h2": "Five comparisons that clarify what DODO Learning actually is.",
+  "compare.s3.cols.0.title": "Cognitive development — not language practice",
+  "compare.s3.cols.0.body": "Tutoring centres fix homework. ESL programs build conversational fluency. DODO Learning develops the reasoning architecture that makes your child capable of reading dense analytical prose, arguing a position with textual evidence, and writing with precision. It is a different category of work, and it produces a different kind of student.",
+  "compare.s3.cols.1.title": "Measured against their own ceiling",
+  "compare.s3.cols.2.title": "A sixteen-week arc",
+  "compare.s3.cols.3.question": "vs. AI tutors and homework apps",
+  "compare.s3.cols.3.title": "The judgment behind the question",
+  "compare.s3.cols.3.body": "AI is a tool your child will use for the rest of their life, and using it well is a skill worth having. What it cannot do is build the judgment underneath. It will answer whatever it is asked. A Navigator teaches your child which question is worth asking, then presses on the point they have not made yet — and the reading and the reasoning stay your child’s own work.",
+  "compare.s3.cols.4.question": "vs. buying the curriculum yourself",
+  "compare.s3.cols.4.title": "A live reader in the room",
+  "compare.s3.cols.4.body": "The classical ELA materials are real books, and a determined family can buy them. What arrives is the reading and the writing. What cannot arrive is the third strand — someone who hears how your child reasons, asks the harder question at the moment it would land, and coaches the spoken defence of an idea. That part has no page.",
+  "compare.s4.h2": "What separates DODO Learning is the LCS System.",
+  "compare.s4.caption": "Inside every session the same sequence runs: Read → Think → Speak → Write. Each stage is assessed, and each one feeds the next. Over sixteen weeks a child working this way with a Navigator does not only read better. They get better at working through anything difficult, which is the part that keeps paying.",
+  "compare.s5.sub": "Eight unscripted minutes on why we started, and what we decided we would never do.",
+  "compare.s6.h2": "What a Navigator does that a tutor cannot.",
+  "compare.s6.points.1.label": "A better question",
+  "compare.s6.points.2.label": "Feedback with a number attached",
+  "compare.s6.points.3.body": "Your child’s Navigator is with them from initial Lexile assessment to final 6+1 Trait evaluation. One relationship, one standard, and the same set of eyes on every draft and every oral defence your child gives. The relationship itself is part of the program.",
+  "compare.s7.cols.0.title": "A Lexile number",
+  "compare.s7.cols.1.title": "Seven traits, scored",
+  "compare.s7.cols.2.title": "A cycle with a beginning and an end",
+  "compare.s7.cols.2.body": "The ELA Program has a beginning, a measurable midpoint, and a confirmed result. It is not a monthly subscription you drift in and out of, because the compounding only happens when the work is continuous and the Navigator’s knowledge of your child keeps accumulating."
 }
