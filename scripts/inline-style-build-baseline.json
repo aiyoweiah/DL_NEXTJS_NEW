@@ -1,5 +1,5 @@
 {
-  "total": 4529,
+  "total": 4540,
   "routes": {
     "/_not-found": 1,
     "/404": 1,
@@ -107,7 +107,7 @@
     "/zh/consult": 124,
     "/zh/credentials": 51,
     "/zh/demos": 188,
-    "/zh/faq": 231,
+    "/zh/faq": 242,
     "/zh/lexile": 55,
     "/zh/little-dodo": 64,
     "/zh/methodology": 74,
