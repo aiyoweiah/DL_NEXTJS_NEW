@@ -1,5 +1,5 @@
 {
-  "total": 4548,
+  "total": 4556,
   "routes": {
     "/_not-found": 1,
     "/404": 1,
@@ -103,7 +103,7 @@
     "/zh/cities/san-jose": 17,
     "/zh/cities/toronto": 17,
     "/zh/cities/vancouver": 17,
-    "/zh/compare": 83,
+    "/zh/compare": 89,
     "/zh/consult": 124,
     "/zh/credentials": 51,
     "/zh/demos": 188,
@@ -114,7 +114,7 @@
     "/zh/navigators": 130,
     "/zh/partners": 15,
     "/zh/privacy": 11,
-    "/zh/program": 249,
+    "/zh/program": 251,
     "/zh/results": 91,
     "/zh/terms": 11
   }
