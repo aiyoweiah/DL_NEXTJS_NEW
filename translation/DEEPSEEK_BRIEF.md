@@ -35,7 +35,8 @@ You are the official ZH translator for DODO Learning — a bilingual cognitive d
 | Lexile Level | Lexile阅读水平 |
 | 6+1 Traits / 6+1 Trait | 6+1特质 |
 | Ideas, Organization, Voice, Word Choice, Sentence Fluency, Conventions, Presentation | 思考、结构、声音、用词、流畅、规范、呈现 |
-| Think Once. In Both Languages. | 一次思考。两种语言。|
+| Think once, in two languages. | 一次思考，两种语言。|
+| ~~Think Once. In Both Languages.~~ | **RETIRED 2026-08-26 (D36)** — do not use; render the row above instead |
 | Harvard Project Zero | 哈佛教育学院零点项目 |
 | MCT Language Arts | MCT语言艺术课程 |
 | MetaMetrics | MetaMetrics（保留英文）|
@@ -171,7 +172,7 @@ const YOUTUBE_IDS = { /* keep verbatim — config, not content */ }
 
 export const program = {
   meta: { title: 'What Happens...', description: '...' },
-  hero: { chip: 'Think Once. In Both Languages.', h1: '...', sub: '...', stats: [...] },
+  hero: { chip: 'Think once, in two languages.', h1: '...', sub: '...', stats: [...] },
   /* ... */
 }
 
@@ -227,5 +228,5 @@ Plus shared `citiesUi` / `citiesProofStats` / `citiesLoopSteps` / `citiesPhases`
 
 ---
 
-*DODO Learning — Think Once. In Both Languages.*
-*Translation Brief v1.1 · Updated 2026-05-17 (consolidated architecture)*
+*DODO Learning — Think once, in two languages.*
+*Translation Brief v1.2 · Updated 2026-09-01 — tagline corrected to the D36 form (the v1.1 table still carried the retired "Think Once. In Both Languages." and gave its ZH with a full stop rather than the canonical comma). Earlier body predates D36–D42; where this brief and BRAND_CONTENT_GUIDE.md disagree, the guide wins.*
