@@ -3,13 +3,13 @@
   "_glossary_reminders": {
     "Navigator": "导师（Navigator） — never 领航员",
     "Lexile": "Lexile（蓝思）",
-    "LCS System": "LCS 教学理念",
-    "The Loop (per-session phrase only)": "阅读 → 思考 → 表达 → 写作",
+    "LCS System": "语言循环体系 — guide §09 2026-06-01 admin set. Supersedes BOTH \"LCS 教学理念\" and \"LCS 教学体系\"; do not use either, and do not copy the older form from existing ZH pages (it is still present there and is being corrected separately).",
     "Little DODO": "都学启蒙",
     "L · Literacy": "文学精读",
     "C · Composition": "系统写作训练",
     "S · Speaking": "表达",
-    "cycle": "周期 (16 weeks)"
+    "cycle": "周期 (16 weeks)",
+    "The Loop": "Per-session phrase ONLY: 阅读 → 思考 → 表达 → 写作. Never a named system in a heading (guide §06, 2026-05-21 override) — the named system is 语言循环体系. Do not render it as \"学习循环\"."
   },
   "_register_note": "Two register rules bind this batch. (1) The research keys: guide §07a says this evidence is strongest in ELL / struggling-reader / dyslexia populations and must NEVER be framed that way — DODO accelerates into mastery, it does not remediate. No 补习 / 赶上 / 干预 / 辅导 register anywhere in methodology.research.*. (2) The /compare keys exist specifically to REMOVE the 'not X — but Y' reversal and fragment-stacking rhythm that §10 strips on sight. Do not reintroduce it in ZH: translate the statement, not a contrast.",
   "_shape_note": "methodology.strands.L/C/S.nested.N.name are the five content strand names (Literature, Vocabulary, Poetics, Grammar, Writing). Per guide §06 they are described in DODO's own words and never as a resold booklist. S has no nested strand by design — it carries program.architecture.S.nestedNote instead.",

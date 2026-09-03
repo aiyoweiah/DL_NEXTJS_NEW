@@ -1,5 +1,5 @@
 # DODO Learning — DeepSeek Translation Brief
-**Version:** 1.0 · April 2026
+**Version:** 1.3 · 2026-09-02
 **Attach this file at the start of every translation session.**
 
 ---
@@ -26,7 +26,7 @@ You are the official ZH translator for DODO Learning — a bilingual cognitive d
 | English | Chinese |
 |---------|---------|
 | Navigators / Navigator | 导师（Navigator） |
-| The Loop | The Loop（学习循环） |
+| The Loop | 阅读 → 思考 → 表达 → 写作 — the per-session phrase, body copy only. **Never** a named system in a heading (§06, 2026-05-21 override); the named system is 语言循环体系. The old form "The Loop（学习循环）" is retired. |
 | Read → Think → Speak → Write | 阅读 → 思考 → 表达 → 写作 |
 | The 16-Week Program | 16周课程 |
 | Founding Family Program | 创始家庭计划 |
@@ -56,7 +56,7 @@ You are the official ZH translator for DODO Learning — a bilingual cognitive d
 
 | English | Chinese |
 |---------|---------|
-| LCS / LCS Teaching System | LCS 教学体系 |
+| LCS / LCS Teaching System | 语言循环体系 *(2026-06-01 admin set — supersedes BOTH "LCS 教学体系" and "LCS 教学理念")* |
 | Literacy *(in LCS context)* | 文学精读 |
 | Composition *(in LCS context)* | 系统写作训练 |
 | Speaking *(in LCS context)* | 表达 |
@@ -229,4 +229,4 @@ Plus shared `citiesUi` / `citiesProofStats` / `citiesLoopSteps` / `citiesPhases`
 ---
 
 *DODO Learning — Think once, in two languages.*
-*Translation Brief v1.2 · Updated 2026-09-01 — tagline corrected to the D36 form (the v1.1 table still carried the retired "Think Once. In Both Languages." and gave its ZH with a full stop rather than the canonical comma). Earlier body predates D36–D42; where this brief and BRAND_CONTENT_GUIDE.md disagree, the guide wins.*
+*Translation Brief v1.3 · Updated 2026-09-02 — LCS row corrected to 语言循环体系 (the v1.2 table still carried the superseded 教学体系) and The Loop row rewritten to the per-session phrase per the §06 override. v1.2 (2026-09-01) — tagline corrected to the D36 form (the v1.1 table still carried the retired "Think Once. In Both Languages." and gave its ZH with a full stop rather than the canonical comma). Earlier body predates D36–D42; where this brief and BRAND_CONTENT_GUIDE.md disagree, the guide wins.*
