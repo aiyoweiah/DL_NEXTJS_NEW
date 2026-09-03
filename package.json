@@ -15,7 +15,8 @@
     "check:tokens": "node scripts/check-tokens.mjs",
     "conformance": "node scripts/conformance.mjs",
     "check:inline": "node scripts/check-inline-style.mjs",
-    "check:ondark": "node scripts/check-on-dark.mjs --build"
+    "check:ondark": "node scripts/check-on-dark.mjs --build",
+    "type-floor": "node scripts/type-floor.mjs"
   },
   "dependencies": {
     "@types/node": "20.6.2",
