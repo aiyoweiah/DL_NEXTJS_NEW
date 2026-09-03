@@ -19,7 +19,7 @@ WAVE 0  four decisions        ✅ CLOSED   (D79)
 WAVE 1  inline-style          ✅ COMPLETE 957 → 746  (D86 · D89 · D90)
 WAVE 2  small concrete fixes  ✅ COMPLETE (D82 grey · D86 images · D87 panels)
 
-WAVE 5  content cascade ──── D37 five strands ───> WAVE 3  label vocabulary
+WAVE 5  content cascade ──── D37 landed WITHOUT it ──X WAVE 3  label vocabulary
         independent · highest business value              (now unblocked)
 
 WAVE 4  type floor        independent · large · needs a real measurement first
@@ -27,9 +27,13 @@ WAVE 6  admin unblocks    you only · gates every Tier-2 SEO item
 WAVE 7  operational loose ends
 ```
 
-**Waves 0, 1 and 2 are closed.** The next move is **Wave 5 — the content cascade**: highest
-business value, entirely independent of the design-system work, and the only unit of the
-v5 cascade never done (`/faq`) sits in it.
+**Waves 0, 1, 2 and 5 are closed.** Wave 5 shipped EN on 2026-09-02; its ZH round is
+the one open thread (52 keys in `translation/pending-en.json`).
+
+The next move is **Wave 6 — the admin unblocks**, which gate every Tier-2 SEO item and
+are the only work here nobody but you can do. Wave 3 (label vocabulary) dropped in
+urgency: D37 landed without needing it, so it is now a tidy-up rather than a blocker.
+Wave 4 still needs task 4.0 — measure the type floor properly — before any design work.
 
 ---
 
@@ -234,19 +238,30 @@ layouts. `/demos` and `/program` historically carried ~22%.
 
 ---
 
-## Wave 5 · Content cascade — independent, highest business value
+## Wave 5 · Content cascade — ✅ CLOSED 2026-09-02
 
-Nothing here is blocked by any design work. This is the backlog with the clearest link
-to conversion and to the GEO strategy in [`workflow.md`](workflow.md).
+All six items shipped. `/faq` closed as D91 (EN `873ea93`, ZH `799629f`); the
+remaining five closed in `fde04cf` (EN). Kept below for provenance.
+
+**ZH for the remainder is outstanding** — 52 keys in `translation/pending-en.json`,
+awaiting the DeepSeek round. `/methodology`s two new sections are gated on the
+locale having the copy, so `/zh/methodology` renders without them until it lands.
 
 | Item | Note |
 |---|---|
-| **`/faq` rewrite** | The only unit of the v5 cascade never done (15 of 18 complete). Needs the D38 evidence-base entry and the D41 AI rebuttal, EN + ZH. |
-| **D38 §07a research block → `/methodology`** | Owed since D50. 40–80-word GEO-ready block + the 5 permitted claims. |
-| **D37 five strands → `/methodology` + `/program`** | Surfaced on neither. ⚠️ Feeds Wave 3 — see above. |
-| **D41 rows → `/compare`** | AI-tutor + gifted-ELA-books rows; seed the AI rebuttal referencing §01b. |
-| **D14 Type A/B caption → `/methodology`** | Cleared from `/program` (`loop.typeAB: ''`), never rehomed. |
-| **`/compare` deeper voice pass** | Marked 🔴 in the cascade plan; D50 fixed only D40 and the worst overclaims. |
+| ✅ **`/faq` rewrite** | The only unit of the v5 cascade never done (15 of 18 complete). Needs the D38 evidence-base entry and the D41 AI rebuttal, EN + ZH. |
+| ✅ **D38 §07a research block → `/methodology`** | Shipped `fde04cf`. 71-word block + 4 cited findings above `geo`. Goodwin & Ahn (2010) carries author+year only — its journal is *Annals of Dyslexia* and §07a forbids the remediation register. |
+| ✅ **D37 five strands → `/methodology` + `/program`** | Shipped `fde04cf`. **The Wave 3 risk did not materialise** — nested strands are a term+definition, so a real `<dl>`; `/program` uses `TagRun` (D70). No private label invented. |
+| ✅ **D41 rows → `/compare`** | Shipped `fde04cf`. 3 → 5 rows. AI row is the compressed reference; §01b stays canonical. |
+| ✅ **D14 Type A/B caption → `/methodology`** | Shipped `fde04cf`. Was **a live contradiction**, not a rehoming chore: the lost sentence denied a fixed rotation and the heading it moved under asserted one. |
+| ✅ **`/compare` deeper voice pass** | Shipped `fde04cf`. The page ran the §10 "not X — but Y" reversal **ten times**; nine became statements. Also fixed a §06 breach: "The Loop" was the named system in a section header, "LCS" appeared 0×. |
+
+**Still open on these surfaces:** the site nav labels `/methodology` "The Loop" /
+"The Loop 闭环" — the same §06 breach fixed on `/compare`, but chrome-level across
+116 routes. MCT is named 4× on `/methodology` (§07 permits each phrasing, §06 says
+name it once — the rules disagree about that page). `compare.s8.voices` carries two
+attributed testimonials with specific Lexile deltas and cities, same provenance
+shape as the Wave 7 items. All three need a call.
 
 **Method is set** (cascade plan, user-set 2026-08-27): one surface at a time — scan,
 rework fully, verify, log — and **propose copy in chat first; live files only on an
