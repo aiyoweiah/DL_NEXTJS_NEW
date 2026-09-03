@@ -263,23 +263,44 @@
      padding — for sections that paint their own ground (image, gradient, custom
      hero). /results, /methodology and /lexile hand-roll dark heroes and were
      opting out of the whole dark-surface system; they now carry .on-dark. */
-  .section-dark h1,
-  .section-dark h2,
-  .section-dark h3,
-  .section-dark h4,
-  .section-darker h1,
-  .section-darker h2,
-  .section-darker h3,
-  .section-hero-short h1,
-  .section-hero-short h2,
-  .section-hero-short h3,
-  .on-dark h1,
-  .on-dark h2,
-  .on-dark h3,
-  .on-dark h4,
-  .section-mid h1,
-  .section-mid h2,
-  .section-mid h3 {
+  /* ── Why :where() on the hook (D89) ──────────────────────────
+     These rules flip heading and body colour on dark grounds, and they
+     should — nobody wants to remember it per element. But written as
+     `.section-dark p` they are (0,1,1), which outranks any utility or
+     component class. That makes them OVERRIDES when they were only ever
+     meant to be DEFAULTS.
+
+     While every colour was inline it did not show: an inline style beats
+     any rule. The moment D88 moved 187 colours into classes, these rules
+     started winning and eight elements on /results rendered the wrong
+     colour — a heading flipped platinum → lavender.
+
+     This is the same bug v6.5 already found and fixed FOR LINKS ONLY. Its
+     comment, forty lines down, states the rule outright: "a section-scoped
+     descendant selector must never set a component's colour." Headings and
+     paragraphs never got the fix. This is that fix, finished.
+
+     `:where()` contributes zero specificity, so the selector falls to
+     (0,0,1) — the element alone. Behaviour is identical for anything that
+     sets no colour of its own; anything that DOES set one now wins.
+     Verified in an isolated browser test before landing. */
+  :where(.section-dark) h1,
+  :where(.section-dark) h2,
+  :where(.section-dark) h3,
+  :where(.section-dark) h4,
+  :where(.section-darker) h1,
+  :where(.section-darker) h2,
+  :where(.section-darker) h3,
+  :where(.section-hero-short) h1,
+  :where(.section-hero-short) h2,
+  :where(.section-hero-short) h3,
+  :where(.on-dark) h1,
+  :where(.on-dark) h2,
+  :where(.on-dark) h3,
+  :where(.on-dark) h4,
+  :where(.section-mid) h1,
+  :where(.section-mid) h2,
+  :where(.section-mid) h3 {
     color: var(--color-lavender-signal);
   }
 
@@ -297,11 +318,11 @@
     line-height: 1.75;
   }
 
-  .section-dark p,
-  .section-darker p,
-  .section-hero-short p,
-  .on-dark p,
-  .section-mid p {
+  :where(.section-dark) p,
+  :where(.section-darker) p,
+  :where(.section-hero-short) p,
+  :where(.on-dark) p,
+  :where(.section-mid) p {
     color: var(--color-platinum);
   }
 
