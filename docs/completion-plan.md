@@ -15,25 +15,21 @@ Numbers come from `npm run conformance` and the baselines; re-run before quoting
 ## The dependency graph, in one place
 
 ```
-WAVE 0  four decisions ✅ CLOSED ─────┬──> unblocked 1, 2, 5
-        (D79, 2026-09-01)             │
-                                      │
-WAVE 1  inline-style migration ───────┴──> unblocks WAVE 3
-        957 → target (incremental)
-                                           WAVE 3 label vocabulary
-WAVE 2  small concrete fixes               (deliberately blocked)
-        (independent, any time)                    ▲
-                                                   │
-WAVE 5  content cascade ──── D37 five strands ─────┘
-        (independent of all design work)     feeds the `framework` family
+WAVE 0  four decisions        ✅ CLOSED   (D79)
+WAVE 1  inline-style          ✅ COMPLETE 957 → 746  (D86 · D89 · D90)
+WAVE 2  small concrete fixes  ✅ COMPLETE (D82 grey · D86 images · D87 panels)
 
-WAVE 4  type floor        (independent · large · needs a real measurement first)
-WAVE 6  admin unblocks    (you only · gates every Tier-2 SEO item)
+WAVE 5  content cascade ──── D37 five strands ───> WAVE 3  label vocabulary
+        independent · highest business value              (now unblocked)
+
+WAVE 4  type floor        independent · large · needs a real measurement first
+WAVE 6  admin unblocks    you only · gates every Tier-2 SEO item
 WAVE 7  operational loose ends
 ```
 
-**Wave 0 is closed.** Wave 1 was opened on 2026-09-01 and immediately surfaced a decision — see the measured note under it. **The next call is the opacity scale (and `#94A3B8`), not more migration.**
-**Highest business value, independent of all of it:** Wave 5.
+**Waves 0, 1 and 2 are closed.** The next move is **Wave 5 — the content cascade**: highest
+business value, entirely independent of the design-system work, and the only unit of the
+v5 cascade never done (`/faq`) sits in it.
 
 ---
 
@@ -53,19 +49,15 @@ defect on a conversion page. 0.2 is the only one that might touch Wave 3.
 
 ---
 
-## Wave 1 · Bring 957 down — the main line
+## Wave 1 · ✅ COMPLETE — 957 → 746
 
 **Why this first among the code work:** every defect in the D63–D72 run lived in an
 inline style. This is the only work that reduces the *supply* of future bugs. And it is
 now safe: the ratchet fails the build if a migration accidentally adds one.
 
-**The map is `scripts/inline-style-baseline.json`** — count per file, no survey needed.
+**The map is `scripts/inline-style-baseline.json`** — count per file. Kept for the
+opportunistic passes described below, not for a campaign.
 
-| Order | File | Count | Note |
-|---|---|---:|---|
-| 1 | `app/[locale]/about/page.jsx` | 58 | Largest single file. Also carries 4 of the 24 hand-rolled panels — kill two ratchets at once. |
-| 2 | `app/[locale]/blog/page.jsx` | 36 | |
-| 3 | next by baseline | — | Re-read the baseline; it changes as you go. |
 
 **The loop, per file:**
 
@@ -88,40 +80,38 @@ component does). If a value has no token and should, add one; `check-tokens` wil
 protect it.
 
 
-### ⛔ Step 2 (extraction) is BLOCKED — attempted 2026-09-01, reverted (D88)
 
-Do not retry this as a mechanical pass. It was tried, it worked on every metric,
-and it broke the page.
+### ✅ Wave 1 is DONE — and 746 is the finish line, not a shortfall
 
-187 single-property colour blocks were extracted to Tailwind arbitrary utilities.
-Source **933 → 746**, build **8,709 → 4,518**, inline-style payload **731 KB → 585
-KB** — every number the ratchet exists to move. **And 8 elements on `/results`
-alone rendered the wrong colour**, including a heading that flipped from platinum
-to lavender.
+Step 1 (D86, 537 literals tokenised) and step 2 (D90, 187 blocks extracted, after
+D89 unblocked it). Ratchet at **746 source / 4,518 build**, inline-style payload
+**731 KB → 585 KB**.
 
-**Why: `.section-dark p`, `.on-dark h2` and their siblings colour their
-descendants.** A utility class loses to them. An inline style cannot. Those rules
-were written on the assumption that inline wins — so **inline colour on this site
-is specificity, not laziness**, and extracting it silently hands the element to the
-cascade.
+**The remaining ~746 is deliberate. Do not run a campaign against it.**
 
-**Before step 2 can resume, one of these has to happen:**
+D78's premise was that inline styles are invisible to sweeps *and* to token
+renames. That is no longer true: after D86 the values are tokens, `check-tokens`
+covers them **inside inline styles**, and D89 removed the cascade quirk that made
+them load-bearing. What extraction still buys is payload and class-sweep
+visibility — real, but much smaller than the original case.
 
-| | route | cost |
-|---|---|---|
-| **(a)** | `!important` utilities (`!text-[color:var(--x)]`) | preserves behaviour, encodes the bug in every call site |
-| **(b)** | Refactor the `.section-*` descendant colour rules so they stop blanket-colouring | **the real fix**, and a design-system job in its own right |
-| **(c)** | Accept a lower ceiling and stop driving the ratchet down by extraction | free, and more honest than it sounds — see below |
+And most of what is left should stay:
 
-**(c) deserves a fair hearing.** The ratchet's premise (D78) was that inline styles
-are invisible to sweeps and to token renames. After D86 that is only half true: the
-values *are* tokens now and `check-tokens` already covers them, including inside
-inline styles. What extraction still buys is payload and class-sweep visibility —
-and **55% of blocks are one-offs** (700 of 1,272 shapes used exactly once), where a
-bespoke class is relocation rather than improvement.
+| | |
+|---|---:|
+| shapes used exactly **once** | **700 blocks (55%)** |
+| shapes used 2+ | 157 shapes, 572 blocks |
 
-So the honest target is not zero. It is: extract what genuinely repeats, once (b)
-makes that safe, and leave the rest inline on purpose.
+A bespoke class for a one-off shape is relocation with added indirection. It moves
+information out of the element that uses it and into a stylesheet nobody else
+reads, and it makes the markup harder to follow for no reuse.
+
+**The standing position:** the ratchet's job is to stop growth, not reach zero. It
+holds the line at 746. Take the repeated shapes **opportunistically** — when a file
+is already open for other work, extract what genuinely repeats in it and bank the
+drop. Do not open files just to lower the number.
+
+
 
 ### ⚠️ Measured 2026-09-01, before starting: this is two jobs, not one
 
