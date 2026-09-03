@@ -1,14 +1,14 @@
-# Decision index — D1 … D87
+# Decision index — D1 … D88
 
-**Created:** 2026-08-30 · **Covers:** every numbered decision in both logs · **last updated 2026-09-01 (D87)**
+**Created:** 2026-08-30 · **Covers:** every numbered decision in both logs · **last updated 2026-09-01 (D88)**
 **Source of truth for STATUS.** The two logs remain the source of truth for *content*.
 
-There are 87 decisions across two append-only logs that share one number sequence:
+There are 88 decisions across two append-only logs that share one number sequence:
 
 | Log | Holds |
 |---|---|
 | [`docs/content-style-decisions.md`](content-style-decisions.md) | D1–D50 — voice, vocabulary, positioning, copy |
-| [`.interface-design/system.md`](../.interface-design/system.md) | D33–D87 — chrome, type, colour, controls, guards |
+| [`.interface-design/system.md`](../.interface-design/system.md) | D33–D88 — chrome, type, colour, controls, guards |
 
 Decisions with both a content and a visual consequence appear in both. Neither log
 records status: to answer *"is D26 still true?"* you previously had to read every later
@@ -121,6 +121,7 @@ Everything here applies to new work.
 | D85 | The `on-dark` trap guarded; pixel contrast auditor deliberately not built | Live · closes the D53/D65 warning | `check-on-dark` |
 | D86 | 537 colour literals tokenised; `check-surfaces` + `check-on-dark` taught the token spellings | Live · Wave 1 step 1 | `check-tokens` |
 | D87 | Structural matching over value lists; ratchets refuse to bank an implausible drop | Live · permanent fix for D86 | `check-surfaces` · `check-inline-style` |
+| D88 | Extraction attempted and reverted — inline styles are load-bearing for specificity | Live · **blocks Wave 1 step 2** | `check-inline-style` |
 
 ### Type & payload
 

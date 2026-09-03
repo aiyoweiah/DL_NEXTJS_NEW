@@ -87,6 +87,42 @@ patterns go to a component (the D57/D60 argument — a class does not stop a ten
 component does). If a value has no token and should, add one; `check-tokens` will then
 protect it.
 
+
+### ⛔ Step 2 (extraction) is BLOCKED — attempted 2026-09-01, reverted (D88)
+
+Do not retry this as a mechanical pass. It was tried, it worked on every metric,
+and it broke the page.
+
+187 single-property colour blocks were extracted to Tailwind arbitrary utilities.
+Source **933 → 746**, build **8,709 → 4,518**, inline-style payload **731 KB → 585
+KB** — every number the ratchet exists to move. **And 8 elements on `/results`
+alone rendered the wrong colour**, including a heading that flipped from platinum
+to lavender.
+
+**Why: `.section-dark p`, `.on-dark h2` and their siblings colour their
+descendants.** A utility class loses to them. An inline style cannot. Those rules
+were written on the assumption that inline wins — so **inline colour on this site
+is specificity, not laziness**, and extracting it silently hands the element to the
+cascade.
+
+**Before step 2 can resume, one of these has to happen:**
+
+| | route | cost |
+|---|---|---|
+| **(a)** | `!important` utilities (`!text-[color:var(--x)]`) | preserves behaviour, encodes the bug in every call site |
+| **(b)** | Refactor the `.section-*` descendant colour rules so they stop blanket-colouring | **the real fix**, and a design-system job in its own right |
+| **(c)** | Accept a lower ceiling and stop driving the ratchet down by extraction | free, and more honest than it sounds — see below |
+
+**(c) deserves a fair hearing.** The ratchet's premise (D78) was that inline styles
+are invisible to sweeps and to token renames. After D86 that is only half true: the
+values *are* tokens now and `check-tokens` already covers them, including inside
+inline styles. What extraction still buys is payload and class-sweep visibility —
+and **55% of blocks are one-offs** (700 of 1,272 shapes used exactly once), where a
+bespoke class is relocation rather than improvement.
+
+So the honest target is not zero. It is: extract what genuinely repeats, once (b)
+makes that safe, and leave the rest inline on purpose.
+
 ### ⚠️ Measured 2026-09-01, before starting: this is two jobs, not one
 
 Opening `/about` surfaced that the migration is not the mechanical swap this section
