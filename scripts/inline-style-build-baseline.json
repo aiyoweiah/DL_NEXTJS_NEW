@@ -1,5 +1,5 @@
 {
-  "total": 4518,
+  "total": 4529,
   "routes": {
     "/_not-found": 1,
     "/404": 1,
@@ -50,7 +50,7 @@
     "/en/consult": 124,
     "/en/credentials": 51,
     "/en/demos": 188,
-    "/en/faq": 231,
+    "/en/faq": 242,
     "/en/lexile": 55,
     "/en/little-dodo": 65,
     "/en/methodology": 70,

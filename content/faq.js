@@ -63,7 +63,7 @@ export const faq = {
   categories: {
     en: [
       { label: 'The Program',   anchor: 'program'      },
-      { label: 'The Loop',      anchor: 'the-loop'     },
+      { label: 'The LCS System', anchor: 'the-loop'     },
       { label: 'Navigators',    anchor: 'navigators'   },
       { label: 'Results',       anchor: 'results'      },
       { label: 'Enrollment',    anchor: 'enrollment'   },
@@ -73,7 +73,7 @@ export const faq = {
     ],
     zh: [
       { label: '课程介绍',        anchor: 'program'      },
-      { label: 'The Loop 教学系统', anchor: 'the-loop'     },
+      { label: 'LCS 教学理念',      anchor: 'the-loop'     },
       { label: '导师团队',        anchor: 'navigators'   },
       { label: '学习成果',        anchor: 'results'      },
       { label: '报名与费用',      anchor: 'enrollment'   },
@@ -92,24 +92,25 @@ export const faq = {
         variant: 'light', bg: '#F5F5FF',
         items: [
           { question: 'What exactly happens in the 16-week program?', answer: 'The program runs through The Loop — Read → Think → Speak → Write — across 16 structured weeks. Each session involves live instruction with a Navigator, structured practice between sessions, and progress tracking using Lexile and 6+1 Trait frameworks. Your child moves through grade-level content, not simplified material.' },
-          { question: 'How many sessions are there and how long is each one?', answer: 'Two enrollment options, both running for 16 weeks. The Full Program includes three live sessions each week with your child’s Navigator — two 25-minute literacy sessions plus one 50-minute writing session. The Literacy Foundation includes two 25-minute literacy sessions each week. Sessions run on a fixed weekly schedule determined by cohort start date.' },
-          { question: 'What grade levels does DODO serve?', answer: 'Grades 3 through 8. The program is designed for students reading between Lexile 400L and 1000L — the critical range where bilingual thinking either consolidates or fragments.' },
+          { question: 'How many sessions are there and how long is each one?', answer: 'Five combinations, all 16 weeks per cycle. **Summit** is three literature sessions plus one writing session each week. **Core** — the most common — is two literature plus one writing. **Flex 1** is two or more literature sessions; **Flex 2** is two writing sessions; **Flex 3** is one or more GPA sessions per week and pairs with any of the others. Literature sessions run 25 minutes, writing sessions 50, on a fixed weekly schedule.' },
+          { question: 'What grade levels does DODO serve?', answer: 'The ELA Program begins at Grade 3 and runs across seven levels to college-tier academic English — each level two to three 16-week cycles. Little DODO is a separate programme for ages 5 to 8, with its own early-childhood educators. Placement comes from the diagnostic, not from your child’s school year.' },
           { question: 'Is this a group program or one-on-one?', answer: 'One-on-one. Every child works with a dedicated Navigator for the full 16 weeks. Live sessions are always 1:1.' },
           { question: 'What happens if my child misses a session?', answer: 'Sessions are recorded and accessible within 24 hours. Your child’s Navigator will adjust the following session to address any gaps. Two consecutive missed sessions trigger a parent check-in to assess whether the cohort timing is correct.' },
           { question: 'How is DODO different from an after-school English class?', answer: 'DODO builds English Thinkers at mastery level—children with the cognitive capacity to reason academically in English at the highest level — the ability to read complex texts, argue a position with evidence, and write with precision. An after-school class builds conversational skills. The Loop trains reading comprehension, analytical thinking, oral argument construction, and structured writing. These are not language skills. They are cognitive architecture.' },
+          { question: 'Why not just use ChatGPT?', answer: 'AI is a tool your child will use for the rest of their life, and using it well is a skill in itself. What it cannot do is build the judgment behind the question. It will answer whatever you ask; a Navigator teaches your child which question is worth asking — how to read a difficult text closely, hold a position under challenge, and write something that earns its conclusion. In a session your child does the reading and the reasoning; the Navigator presses on the point they haven’t made yet.' },
         ],
       },
       {
-        id: 'the-loop', label: 'The Loop',
-        heading: 'How the methodology works — and why the order is not negotiable.',
+        id: 'the-loop', label: 'The LCS System',
+        heading: 'How a session is built, and why the order holds.',
         variant: 'dark', bg: '#212830',
         items: [
-          { question: 'What is The Loop?', answer: 'The Loop is DODO’s four-phase methodology: Read → Think → Speak → Write. Grounded in the MCT Language Arts tradition and Harvard Project Zero’s Visible Thinking routines, it mirrors how high-level thinkers process academic content — not how language learners translate vocabulary. The sequence is fixed because each phase builds the cognitive scaffolding the next phase requires.' },
-          { question: 'Why Read → Think → Speak → Write in that order?', answer: 'Because that is the order in which academic cognition develops. Reading builds input capacity. Thinking builds conceptual frameworks. Speaking externalizes those frameworks. Writing consolidates them into durable mental structures. Reversing the order produces fluency without comprehension — your child sounds confident but cannot reason independently.' },
-          { question: 'How long does a student spend on each phase of The Loop?', answer: 'Each phase runs for 4 weeks. Read: weeks 1–4. Think: weeks 5–8. Speak: weeks 9–12. Write: weeks 13–16. Every student moves through the full sequence regardless of initial ability level. The content difficulty adjusts — the methodology does not.' },
-          { question: 'Does The Loop change as the student improves?', answer: 'The structure never changes. The content complexity increases. A student reading at Lexile 600L in week 1 will still follow Read → Think → Speak → Write. But the texts, prompts, and writing assignments will increase in Lexile range and analytical demand as their baseline rises.' },
-          { question: 'How is The Loop different from what my child’s school already does?', answer: 'Most school curricula assume monolingual cognition. They teach reading and writing as separate skills. The Loop treats them as interdependent cognitive phases within a single system. Your child’s school may teach comprehension strategies. The Loop builds the thinking structure that makes those strategies automatic.' },
-          { question: 'Can my child join mid-Loop or must they start at Read?', answer: 'Every student begins at Read. The entrance assessment determines content difficulty — not phase placement. A high-performing student will read more challenging texts in weeks 1–4, but they still enter at Read. The Loop is a sequence, not a ladder.' },
+          { question: 'What is the LCS System?', answer: 'The LCS System is DODO’s curriculum framework — Literacy, Composition, Speaking. Literacy is the reading treasury, where language goes in: whole unabridged classics, the Latin and Greek roots beneath English, and an ear for how good writing is built. Composition is the construction engine: grammar first and fast, then sentence to paragraph to essay. Speaking is our own strand, and the one a book cannot deliver — oral defence, Socratic dialogue, taking the other side. Inside every session those three run as one sequence: Read → Think → Speak → Write.' },
+          { question: 'Why Read → Think → Speak → Write in that order?', answer: 'Because that is the order the thinking wants to go in. Reading puts something worth arguing about in front of your child. Thinking gives them a position on it. Speaking makes them defend that position out loud, where the gaps show. Writing is where it settles into something they own. Run it backwards and you get fluent sentences with nothing underneath.' },
+          { question: 'How is a single session structured?', answer: 'One session runs the full sequence, not one quarter of it. A literacy session is 25 minutes; a writing session is 50. Your child reads, is asked what they make of it, says it aloud to a Navigator who presses on the part they haven’t thought through, and then writes. The next session does the same thing with harder material.' },
+          { question: 'Does the sequence change as your child improves?', answer: 'The sequence stays. The material moves. That is what the seven ELA levels are for — L1 begins at Grade 3 and L7 is college-tier academic English, with each level running two to three 16-week cycles. A child at L1 and a child at L5 have the same session shape and completely different books.' },
+          { question: 'How is this different from what my child’s school already does?', answer: 'Most classrooms teach reading and writing as separate subjects, a term apart. Here they are one motion, three times a week, with one Navigator who has read everything your child has written. School measures whether the work was done. We measure the Lexile at Week 0, 8 and 16, and the 6+1 Trait scores alongside it.' },
+          { question: 'Where will my child start?', answer: 'At the level the diagnostic puts them, not at the level their grade implies. The 20-minute consultation measures where their reading actually sits, and that decides which of the seven levels they enter. Every session runs the full Read → Think → Speak → Write sequence from the first week, whatever the level.' },
         ],
       },
       {
@@ -145,6 +146,7 @@ export const faq = {
           { question: 'What if my child doesn’t show measurable growth?', answer: 'If your child shows less than 50L growth by week 8, we initiate a diagnostic review. This involves a parent call, Navigator observation, and content difficulty audit. If the issue is engagement, we adjust. If the issue is developmental readiness, we defer enrollment to a later cohort and refund the remaining balance.' },
           { question: 'How does DODO’s measurement compare to what my child’s school reports?', answer: 'School grades measure compliance and effort. Lexile scores measure comprehension capacity. Your child may receive an A in English class while reading below grade level. DODO reports what your child can do — not how hard they tried.' },
           { question: 'Can I see the assessment results during the program — not just at the end?', answer: 'Yes. You receive a progress report after weeks 4, 8, 12, and 16. Each report includes Lexile trajectory, 6+1 Trait scores, and Navigator observations from the previous four weeks. You will never be surprised by the final assessment — you will have watched your child’s growth unfold across four data points.' },
+          { question: 'Is DODO’s approach evidence-based?', answer: 'Yes, and the strongest evidence sits under the vocabulary work. Teaching the Latin and Greek roots beneath English is one of the most-researched strategies in education. About 60% of English comes from those roots — over 90% of the words in science — so a term your child has never seen becomes one they can take apart and solve. In a study of 493 middle-school students, root-based teaching outperformed memorization for gifted and typically-developing students alike (Gallagher, 2017, Roeper Review). Across dozens of controlled studies, teaching word structure produces measurable gains in vocabulary, decoding and spelling (Goodwin & Ahn, 2010, 2013; Bowers, Kirby & Deacon, 2010). One more finding shapes how we choose texts: children grow most on rich, challenging material rather than simplified readers, which is why we read real, unabridged classics set a step above the comfortable level.' },
         ],
       },
       {
@@ -173,11 +175,11 @@ export const faq = {
         variant: 'light', bg: '#F5F5FF',
         items: [
           { question: 'Does speaking Chinese at home hurt my child’s English development?', answer: 'No. Research shows that maintaining first-language proficiency strengthens second-language acquisition. The issue is not Chinese at home — it is fragmented cognitive development. If your child is learning English conversationally while thinking academically in Chinese, they develop two incomplete systems. DODO builds cognitive depth in English — and that depth protects both languages.' },
-          { question: 'What is the difference between bilingual fluency and bilingual thinking?', answer: 'Bilingual fluency is the ability to speak two languages. Bilingual thinking is the ability to reason, analyze, and problem-solve in both languages. Your child may speak English fluently and still struggle with reading comprehension, essay construction, or abstract reasoning. Fluency is surface-level. Thinking is structural.' },
+          { question: 'My child speaks English easily. Isn’t that enough?', answer: 'Speaking easily and reading a difficult text closely are different capacities. A child can hold a conversation without effort and still lose the thread of a chapter, or write a paragraph that lists rather than argues. The conversation is surface. What we build sits under it.' },
           { question: 'My child speaks English fluently — why do they still struggle academically?', answer: 'Because conversational fluency and academic cognition are not the same skill. Your child may navigate social situations in English while still processing complex texts, logical arguments, and written analysis in Chinese. DODO trains the cognitive architecture required for academic English — not the vocabulary required for casual conversation.' },
-          { question: 'How does DODO approach the Chinese-English language relationship?', answer: 'DODO treats Chinese and English as interdependent cognitive systems — not competing languages. The Loop does not replace Chinese thinking with English thinking. It builds a cognitive framework where your child reasons academically in English at mastery level. That cognitive depth transfers back to Chinese. Thinking structure is portable.' },
-          { question: 'At what age is this development most effective?', answer: 'Grades 3 through 8 — ages 8 to 14. This is the critical window when academic cognition consolidates. Before age 8, children are still developing basic literacy. After age 14, cognitive patterns are largely fixed. The Loop works because it acts during the exact developmental window when this cognitive architecture is still forming.' },
-          { question: 'What does research say about bilingual academic performance?', answer: 'Students who develop academic proficiency in both languages outperform monolingual peers on measures of executive function, cognitive flexibility, and problem-solving. The advantage is not the bilingualism itself — it is the cognitive complexity required to manage two language systems simultaneously. DODO builds that complexity intentionally.' },
+          { question: 'How does DODO approach the Chinese–English language relationship?', answer: 'As one system, not two competing ones. We build depth in English — close reading, argument, structured writing — and that depth is portable. A child who can take a position and defend it in English does not lose that ability when they switch languages. Cognitive depth protects both.' },
+          { question: 'At what age is this development most effective?', answer: 'The ELA Program starts at Grade 3, when academic reading begins to ask more than decoding. Little DODO covers ages 5 to 8 before that. There is no closing door: L7 is college-tier work, and students move up the ladder for as long as it keeps stretching them.' },
+          { question: 'Does building English depth take something away from Chinese?', answer: 'No. The work is structural, and structure travels. A child who learns to hold a position under questioning, or to build an argument that earns its conclusion, keeps that capacity whichever language they are working in. We do not teach Chinese, and we do not ask families to set it aside.' },
           { question: 'Will DODO help my child maintain their Chinese while improving their English?', answer: 'DODO does not teach Chinese. But by building English mastery at the cognitive level, it strengthens your child’s ability to operate in both languages. A student who can analyze a text, construct an argument, and write a structured essay in English can transfer those cognitive skills back to Chinese. The thinking structure is portable.' },
         ],
       },
@@ -225,7 +227,7 @@ export const faq = {
         ],
       },
       {
-        id: 'the-loop', label: 'The Loop 教学系统',
+        id: 'the-loop', label: 'LCS 教学理念',
         heading: '教学方法如何运作——以及顺序不可更改的原因。',
         variant: 'dark', bg: '#212830',
         items: [

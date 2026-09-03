@@ -1,13 +1,13 @@
-# Decision index — D1 … D90
+# Decision index — D1 … D91
 
-**Created:** 2026-08-30 · **Covers:** every numbered decision in both logs · **last updated 2026-09-01 (D90)**
+**Created:** 2026-08-30 · **Covers:** every numbered decision in both logs · **last updated 2026-09-01 (D91)**
 **Source of truth for STATUS.** The two logs remain the source of truth for *content*.
 
-There are 90 decisions across two append-only logs that share one number sequence:
+There are 91 decisions across two append-only logs that share one number sequence:
 
 | Log | Holds |
 |---|---|
-| [`docs/content-style-decisions.md`](content-style-decisions.md) | D1–D50 — voice, vocabulary, positioning, copy |
+| [`docs/content-style-decisions.md`](content-style-decisions.md) | D1–D50, D91 — voice, vocabulary, positioning, copy |
 | [`.interface-design/system.md`](../.interface-design/system.md) | D33–D90 — chrome, type, colour, controls, guards |
 
 Decisions with both a content and a visual consequence appear in both. Neither log
@@ -124,6 +124,7 @@ Everything here applies to new work.
 | D88 | Extraction attempted and reverted — inline styles are load-bearing for specificity | Live · **blocks Wave 1 step 2** | `check-inline-style` |
 | D89 | Section colour rules wrapped in `:where()` — defaults, not overrides | Live · **unblocks Wave 1 step 2** | — visual diff, 315 elements |
 | D90 | Wave 1 step 2 landed — 187 blocks extracted, ratchet 933 → 746 | Live · unblocked by **D89** | `check-inline-style` |
+| D91 | `/faq` reworked to v5 — Loop as per-session, five combinations, seven levels; D38 + D41 shipped | Live · EN only, **ZH handoff pending** | `dodo-content-writer` lint |
 
 ### Type & payload
 

@@ -91,7 +91,7 @@
 - [x] 3 · Methodology — **done (D50)**; hero reversal, bilingual tail, geo/lexile tells fixed EN+ZH. 🟡 owed: §07a research block (D38), five-strands (D37) — see admin-review doc
 - [x] 4 · Program — **done (D50)**; **9→7 levels (D37)**, worldwide dropped (D40), combinations de-fragmented EN+ZH. 🟡 five-strands
 - [x] 5 · Compare — **partial (D50)**; D40 + worst overclaims fixed. 🔴 deeper voice pass + 🟡 D41 rows owed (admin-review doc)
-- [ ] 6 · FAQ — 🟡 not rewritten; bilingual-dev category + missing D38/D41 entries flagged for admin
+- [x] 6 · FAQ — **done 2026-09-01 (D91)**; Loop corrected to per-session (admin ruling), five combinations, seven levels, bilingual category re-voiced to "cognitive depth protects both languages" (admin ruling), D38 evidence base + D41 AI rebuttal shipped. 🟡 **ZH handoff pending** — `translation/pending-en.json`, 31 strings; ZH still states two enrollment options (a pricing fact, not voice)
 - [x] 7 · Lexile — **reviewed (D50)**; no hard conflicts, on-voice, optional polish only
 - [x] 8 · Results — **reviewed (D50)**; no hard conflicts, on-voice
 - [x] 9 · Navigators — **reviewed (D50)**; no hard conflicts, already human-moat/on-strategy

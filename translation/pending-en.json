@@ -1,0 +1,63 @@
+{
+  "_brief": "DODO /faq — v5 cascade unit 6. EN locked 2026-09-01. Translate to ZH per DEEPSEEK_BRIEF.md + dodo-glossary.json. Return the SAME KEYS, same shape, ZH values only. Do not translate: 'LCS', 'Lexile', 'Navigator', '6+1 Trait', 'Summit', 'Core', 'Flex 1/2/3', 'ChatGPT', level codes L1-L7, author names and years in citations.",
+  "_glossary_reminders": {
+    "Navigator": "导师（Navigator） — never 领航员",
+    "Lexile": "Lexile（蓝思）",
+    "LCS System": "LCS 教学理念",
+    "The Loop (per-session phrase only)": "阅读 → 思考 → 表达 → 写作",
+    "Little DODO": "都学启蒙",
+    "cycle": "周期 (16 weeks)"
+  },
+  "_forbidden_zh": "See BRAND_CONTENT_GUIDE.md §10 (the anti-dictionary) for the ZH strip-on-sight list, plus the combat-metaphor and reassurance-tail lints in the dodo-content-writer skill. Deliberately not inlined here: the banned terms are banned precisely because they never appear in shipped copy, so their characters are not in the CJK font subset and pasting them into a repo file trips check-cjk-coverage. The guard is right; the list belongs in the guide.",
+
+  "nav.the-loop.label": "The LCS System",
+  "sections.the-loop.label": "The LCS System",
+  "sections.the-loop.heading": "How a session is built, and why the order holds.",
+
+  "lcs.q1.question": "What is the LCS System?",
+  "lcs.q1.answer": "The LCS System is DODO's curriculum framework — Literacy, Composition, Speaking. Literacy is the reading treasury, where language goes in: whole unabridged classics, the Latin and Greek roots beneath English, and an ear for how good writing is built. Composition is the construction engine: grammar first and fast, then sentence to paragraph to essay. Speaking is our own strand, and the one a book cannot deliver — oral defence, Socratic dialogue, taking the other side. Inside every session those three run as one sequence: Read → Think → Speak → Write.",
+
+  "lcs.q2.question": "Why Read → Think → Speak → Write in that order?",
+  "lcs.q2.answer": "Because that is the order the thinking wants to go in. Reading puts something worth arguing about in front of your child. Thinking gives them a position on it. Speaking makes them defend that position out loud, where the gaps show. Writing is where it settles into something they own. Run it backwards and you get fluent sentences with nothing underneath.",
+
+  "lcs.q3.question": "How is a single session structured?",
+  "lcs.q3.answer": "One session runs the full sequence, not one quarter of it. A literacy session is 25 minutes; a writing session is 50. Your child reads, is asked what they make of it, says it aloud to a Navigator who presses on the part they haven't thought through, and then writes. The next session does the same thing with harder material.",
+
+  "lcs.q4.question": "Does the sequence change as your child improves?",
+  "lcs.q4.answer": "The sequence stays. The material moves. That is what the seven ELA levels are for — L1 begins at Grade 3 and L7 is college-tier academic English, with each level running two to three 16-week cycles. A child at L1 and a child at L5 have the same session shape and completely different books.",
+
+  "lcs.q5.question": "How is this different from what my child's school already does?",
+  "lcs.q5.answer": "Most classrooms teach reading and writing as separate subjects, a term apart. Here they are one motion, three times a week, with one Navigator who has read everything your child has written. School measures whether the work was done. We measure the Lexile at Week 0, 8 and 16, and the 6+1 Trait scores alongside it.",
+
+  "lcs.q6.question": "Where will my child start?",
+  "lcs.q6.answer": "At the level the diagnostic puts them, not at the level their grade implies. The 20-minute consultation measures where their reading actually sits, and that decides which of the seven levels they enter. Every session runs the full Read → Think → Speak → Write sequence from the first week, whatever the level.",
+
+  "program.sessions.question": "How many sessions are there and how long is each one?",
+  "program.sessions.answer": "Five combinations, all 16 weeks per cycle. **Summit** is three literature sessions plus one writing session each week. **Core** — the most common — is two literature plus one writing. **Flex 1** is two or more literature sessions; **Flex 2** is two writing sessions; **Flex 3** is one or more GPA sessions per week and pairs with any of the others. Literature sessions run 25 minutes, writing sessions 50, on a fixed weekly schedule.",
+
+  "program.grades.question": "What grade levels does DODO serve?",
+  "program.grades.answer": "The ELA Program begins at Grade 3 and runs across seven levels to college-tier academic English — each level two to three 16-week cycles. Little DODO is a separate programme for ages 5 to 8, with its own early-childhood educators. Placement comes from the diagnostic, not from your child's school year.",
+
+  "program.ai.question": "Why not just use ChatGPT?",
+  "program.ai.answer": "AI is a tool your child will use for the rest of their life, and using it well is a skill in itself. What it cannot do is build the judgment behind the question. It will answer whatever you ask; a Navigator teaches your child which question is worth asking — how to read a difficult text closely, hold a position under challenge, and write something that earns its conclusion. In a session your child does the reading and the reasoning; the Navigator presses on the point they haven't made yet.",
+
+  "results.evidence.question": "Is DODO's approach evidence-based?",
+  "results.evidence.answer": "Yes, and the strongest evidence sits under the vocabulary work. Teaching the Latin and Greek roots beneath English is one of the most-researched strategies in education. About 60% of English comes from those roots — over 90% of the words in science — so a term your child has never seen becomes one they can take apart and solve. In a study of 493 middle-school students, root-based teaching outperformed memorization for gifted and typically-developing students alike (Gallagher, 2017, Roeper Review). Across dozens of controlled studies, teaching word structure produces measurable gains in vocabulary, decoding and spelling (Goodwin & Ahn, 2010, 2013; Bowers, Kirby & Deacon, 2010). One more finding shapes how we choose texts: children grow most on rich, challenging material rather than simplified readers, which is why we read real, unabridged classics set a step above the comfortable level.",
+
+  "bilingual.q2.question": "My child speaks English easily. Isn't that enough?",
+  "bilingual.q2.answer": "Speaking easily and reading a difficult text closely are different capacities. A child can hold a conversation without effort and still lose the thread of a chapter, or write a paragraph that lists rather than argues. The conversation is surface. What we build sits under it.",
+
+  "bilingual.q4.question": "How does DODO approach the Chinese–English language relationship?",
+  "bilingual.q4.answer": "As one system, not two competing ones. We build depth in English — close reading, argument, structured writing — and that depth is portable. A child who can take a position and defend it in English does not lose that ability when they switch languages. Cognitive depth protects both.",
+
+  "bilingual.q5.question": "At what age is this development most effective?",
+  "bilingual.q5.answer": "The ELA Program starts at Grade 3, when academic reading begins to ask more than decoding. Little DODO covers ages 5 to 8 before that. There is no closing door: L7 is college-tier work, and students move up the ladder for as long as it keeps stretching them.",
+
+  "bilingual.q6.question": "Does building English depth take something away from Chinese?",
+  "bilingual.q6.answer": "No. The work is structural, and structure travels. A child who learns to hold a position under questioning, or to build an argument that earns its conclusion, keeps that capacity whichever language they are working in. We do not teach Chinese, and we do not ask families to set it aside.",
+
+  "_also_stale_in_zh": {
+    "note": "NOT in this file, but the ZH FAQ still contradicts the EN on a pricing fact and should be corrected in the same pass.",
+    "zh.program.sessions": "Currently reads 两种报名选项 (two enrollment options) with 完整课程 / 文学基础课程. EN is now the five combinations — see program.sessions above. This is a product fact, not a voice difference."
+  }
+}

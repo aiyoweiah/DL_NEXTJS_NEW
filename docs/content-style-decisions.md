@@ -453,3 +453,20 @@ Applied at guide level to `BRAND_CONTENT_GUIDE.md` + `.zh.md` (§00 five-second,
 - **Verify-only pages** (Consult/Assessment/Demos/Audiobooks/Privacy/Terms/Partners/Little DODO/Credentials) — swept, no hard conflicts.
 - **Verified:** full `npm run build` REAL_EXIT=0, all routes prerendered.
 - **Owed (admin decisions, not done):** §07a research block on /methodology; five-strands surfacing (Methodology+Program); D41 comparison rows + FAQ entries; FAQ "Bilingual Development" category reframe; Compare deep voice pass. All in the admin-review doc.
+
+### D91 · /faq reworked to v5 — the last unit of the cascade (2026-09-01)
+
+- **Decision:** `/faq` EN brought onto Brand Guide v5. Seventeen edits across four sections, plus the two owed entries. **The Loop is the per-session sequence** (admin ruling 2026-09-01) — the FAQ had described it as a four-phase progression across the 16 weeks ("Read: weeks 1–4… Think: weeks 5–8"), which is a different product from the one §05/§06 describe. Six answers rebuilt on the corrected model.
+- **What was stale, and how it read:**
+  - The FAQ **contradicted itself on price**: the Program section said "Two enrollment options — Full Program / Literacy Foundation" while the Enrollment section below it listed the current five combinations.
+  - "Grades 3 through 8" capped a **seven-level ladder** four levels early (D37: L1 at Grade 3+, L7 college-tier, Little DODO separate at ages 5–8).
+  - **"The Loop" was a section header** in EN and ZH, and in the jump-nav — against the 2026-05-21 override that LCS is the named system and The Loop is body-copy only. The nav labels were a second copy of the same string and were missed on the first pass.
+  - Bilingualism led in three answers, including "the critical range where bilingual thinking either consolidates or fragments."
+  - "After age 14, cognitive patterns are largely fixed" — unsourced, and it contradicted a ladder ending at college tier. Removed.
+  - An uncited executive-function claim about bilingual performance. Replaced by the D38 entry, which cites real studies.
+- **Bilingual Development kept, re-voiced** (admin ruling): the category answers a real parental worry and §10 forbids dismissing it. Now framed as **"cognitive depth protects both languages"** — the heading already said this; the answers underneath had drifted.
+- **D38 shipped** — "Is DODO's approach evidence-based?" into Results + Measurement, using four of §07a's five licensed claims with citations, in the acceleration frame (no gap/remediation register).
+- **D41 shipped** — "Why not just use ChatGPT?" into The Program, referencing §01b rather than restating it, and closing on the Speaking strand.
+- **Where it lives now:** `content/faq.js` sections.en + the EN/ZH jump-nav labels.
+- **ZH is deliberately behind.** `translation/pending-en.json` holds the 31 changed strings for the DeepSeek handoff per §15. ⚠️ Until that lands, the ZH FAQ still says 两种报名选项 — a **pricing fact** that disagrees with EN, not a voice difference. Priority item in the handoff.
+- **Trigger:** Wave 5, the only unit of the v5 cascade never done.
