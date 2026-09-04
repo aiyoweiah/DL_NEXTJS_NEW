@@ -31,6 +31,7 @@
 import Link           from 'next/link'
 import LocaleSwitcher from '@/components/layout/LocaleSwitcher'
 import PreCtaBand     from '@/components/layout/PreCtaBand'
+import Label from '@/components/ui/Label'
 
 // ── Helpers ───────────────────────────────────────────────────
 
@@ -53,15 +54,7 @@ function FooterLink({ href, label, soon, comingSoonLabel, external }) {
           className="text-sm inline-flex items-center gap-2 text-[color:var(--text-muted)]"
         >
           {label}
-          <span
-            className="text-[10px] uppercase tracking-wider font-semibold px-1.5 py-0.5 rounded"
-            style={{
-              color: 'var(--label-color)',
-              backgroundColor: 'rgba(124,121,232,0.10)',
-            }}
-          >
-            {comingSoonLabel}
-          </span>
+          <Label variant="pill" as="span">{comingSoonLabel}</Label>
         </span>
       </li>
     )
@@ -107,11 +100,9 @@ function FooterLink({ href, label, soon, comingSoonLabel, external }) {
 
 function ColHeading({ children }) {
   return (
-    <h3
-      className="text-xs font-semibold uppercase tracking-widest mb-5 text-[color:var(--label-color)]"
-    >
+    <Label variant="column" as="h3" className="mb-5">
       {children}
-    </h3>
+    </Label>
   )
 }
 
@@ -174,12 +165,7 @@ export default function Footer({ locale, copy }) {
                 name + arrow on its own line, blurb as muted subtitle below.
               */}
               <div className="pt-4 mt-1 border-t border-[rgba(124,121,232,0.15)]">
-                <p
-                  className="text-[10px] font-semibold uppercase tracking-wider mb-2.5"
-                  style={{ color: 'var(--label-color)', letterSpacing: '0.12em' }}
-                >
-                  {copy.sibling.label}
-                </p>
+                <Label variant="column" className="mb-2.5">{copy.sibling.label}</Label>
                 <a
                   href={copy.sibling.href}
                   className="group block"

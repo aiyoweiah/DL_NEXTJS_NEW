@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "check:surfaces": "node scripts/check-surfaces.mjs",
-    "prebuild": "node scripts/check-surfaces.mjs && node scripts/check-cjk-coverage.mjs && node scripts/check-gilt-escrow.mjs && node scripts/check-tokens.mjs && node scripts/check-inline-style.mjs",
+    "prebuild": "node scripts/check-surfaces.mjs && node scripts/check-cjk-coverage.mjs && node scripts/check-gilt-escrow.mjs && node scripts/check-tokens.mjs && node scripts/check-inline-style.mjs && node scripts/check-label-variant.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -16,7 +16,8 @@
     "conformance": "node scripts/conformance.mjs",
     "check:inline": "node scripts/check-inline-style.mjs",
     "check:ondark": "node scripts/check-on-dark.mjs --build",
-    "type-floor": "node scripts/type-floor.mjs"
+    "type-floor": "node scripts/type-floor.mjs",
+    "check:label": "node scripts/check-label-variant.mjs"
   },
   "dependencies": {
     "@types/node": "20.6.2",

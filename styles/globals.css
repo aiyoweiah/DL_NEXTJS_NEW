@@ -119,6 +119,23 @@
      10.14:1), not a step from this scale. These steps are not for text. */
   --lavender-08:  rgba(183,181,254,0.08);
   --lavender-15:  rgba(183,181,254,0.15);
+  /* The scale above is the LIGHT lavender (#b7b5fe) — legible as a tint on
+     dark grounds, all but invisible on Whisper. A tint on a LIGHT ground has
+     to come from the deep lavender (#7c79e8), which had no token at all.
+
+     ⚠️ THIS IS ONE STEP OF A SCALE THAT DOES NOT EXIST YET, and that is a
+     known debt, not an oversight. The deep lavender is currently written at
+     EIGHT free-rounded alphas across Footer / AgeBandChooser / K2Note and one
+     rule below — 0.06 · 0.08 · 0.10 · 0.15 · 0.3 · 0.45 · 0.55 · 0.7 — which
+     is the same free-rounding D82 tokenised the light scale to stop. Only
+     0.10 is named here, because D94 needed exactly it for `.label-pill`; it
+     consolidates THREE sites (Footer:60, AgeBandChooser:59, and the rule
+     below), not the whole spread.
+
+     Owed: round the eight onto a real deep scale (08/15/25/40/60, mirroring
+     the light one) as its own pass. Doing it inside a component change would
+     move live pixels in three files without its own verification. */
+  --lavender-deep-10: rgba(124,121,232,0.10);
   --lavender-25:  rgba(183,181,254,0.25);
   --lavender-40:  rgba(183,181,254,0.40);
   --lavender-60:  rgba(183,181,254,0.60);
@@ -1501,6 +1518,73 @@
 
      0.75rem is a deliberate floor. These ran 10–13px as capsules; several
      were below the 12px type floor that is still an open pass. */
+  /* ── Label (D94) ──────────────────────────────────────────────────
+     The chrome label vocabulary. `Eyebrow` (D57) owns the SECTION label;
+     this owns the smaller furniture that heads a column of links, hangs a
+     descriptor off a nav item, or marks a status.
+
+     Both files it serves — Footer.jsx and Navbar.jsx — imported neither
+     Eyebrow nor TagRun, so all 798 of their label instances were private.
+     Two spellings of one job had already appeared: a column header set at
+     0.75rem in the footer and at 0.7rem in the navbar.
+
+     Colour comes from --label-color / --label-color-dark, which already
+     existed and are commented ".eyebrow on light / on dark" — this adopts
+     that vocabulary rather than starting a second one. */
+  .label {
+    display: inline-block;
+    margin: 0;
+  }
+
+  .label-column {
+    font-size: 0.75rem;          /* 12px — the floor, and now the one size */
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--label-color);
+  }
+  .label-column.is-dark { color: var(--label-color-dark); }
+
+  /* 11px, and NOT a drift — see D94. This descriptor hangs off a 14px nav
+     item title and has to read as subordinate to it; at 12px the 14:11
+     ratio closes to 14:12 and the hierarchy flattens. Logged as a stated
+     exception to the 12px floor so `type-floor` reports it as a decision
+     rather than as residue. The floor is this project's own rule, not a
+     WCAG one — WCAG sets no minimum font size — and contrast passes here
+     either way (--platinum-60 is AA on every ground it is used on). */
+  .label-qualifier {
+    font-size: 0.6875rem;        /* 11px */
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    /* Uppercase. The proposal's table had this wrong — it read Navbar:298 as
+       sentence case. Both qualifier sites (298 desktop, 362 mobile) set
+       textTransform: 'uppercase' inline, and conformance only ever collected
+       them BECAUSE they are uppercase: its label pass requires it. All 228
+       instances are caps today. */
+    text-transform: uppercase;
+    color: var(--text-accent);
+  }
+  .label-qualifier.is-dark { color: var(--platinum-60); }
+
+  .label-pill {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--label-color);
+    background-color: var(--lavender-deep-10);
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+  }
+  .label-pill.is-dark {
+    color: var(--label-color-dark);
+    background-color: var(--lavender-15);
+  }
+
+  /* ZH sets wider than Latin at these sizes; mirrors `.eyebrow:lang(zh)`. */
+  .label-column:lang(zh),
+  .label-pill:lang(zh) { letter-spacing: 0.05em; }
+
   .tag-run {
     display: flex;
     flex-wrap: wrap;

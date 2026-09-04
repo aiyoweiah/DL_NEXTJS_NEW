@@ -34,6 +34,7 @@ import Link                                          from 'next/link'
 import { usePathname }                               from 'next/navigation'
 import LocaleSwitcher                                from '@/components/layout/LocaleSwitcher'
 import { useFocusTrap }                              from '@/lib/a11y'
+import Label from '@/components/ui/Label'
 
 // ── Lock glyph (for gated nav items) ──────────────────────────
 function LockIcon() {
@@ -295,9 +296,9 @@ export default function Navbar({ locale, copy }) {
                       )}
                     </div>
                     {sub.sub && (
-                      <div style={{ fontSize: '0.6875rem', fontWeight: 500, color: 'var(--platinum-60)', marginTop: '2px', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+                      <Label variant="qualifier" dark as="div" className="mt-0.5">
                         {sub.sub}
-                      </div>
+                      </Label>
                     )}
                   </>
                 )
@@ -346,11 +347,9 @@ export default function Navbar({ locale, copy }) {
   // drawer is already a vertical list; an extra disclosure layer adds friction).
   const MobileDropdownGroup = ({ item }) => (
     <div>
-      <p
-        className="pt-5 pb-2 text-[0.7rem] font-semibold uppercase tracking-widest text-[color:var(--text-muted-dark)]"
-      >
+      <Label variant="column" dark className="pt-5 pb-2">
         {item.label}
-      </p>
+      </Label>
       {item.items.map((sub) => {
         const isCurrent = !sub.external && isActive(sub.href)
         const resolvedHref = sub.external
@@ -361,9 +360,9 @@ export default function Navbar({ locale, copy }) {
             <span style={{ fontSize: '1rem', fontWeight: 600, color: isCurrent ? '#b7b5fe' : '#F0F0F0' }}>
               {sub.label}
               {sub.sub && (
-                <span style={{ fontSize: '0.6875rem', color: 'var(--platinum-60)', marginLeft: '0.5rem', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+                <Label variant="qualifier" dark as="span" className="ml-2">
                   · {sub.sub}
-                </span>
+                </Label>
               )}
             </span>
             {sub.external && <span aria-hidden="true" className="text-[color:var(--text-muted-dark)]">↗</span>}

@@ -1,5 +1,5 @@
 {
-  "total": 746,
+  "total": 742,
   "counts": {
     "app/[locale]/about/page.jsx": 52,
     "app/[locale]/audiobooks/[slug]/page.jsx": 4,
@@ -28,8 +28,8 @@
     "components/consult/ConsultForm.jsx": 12,
     "components/demos/YoutubeEmbed.jsx": 5,
     "components/faq/FAQClient.jsx": 26,
-    "components/layout/Footer.jsx": 4,
-    "components/layout/Navbar.jsx": 7,
+    "components/layout/Footer.jsx": 2,
+    "components/layout/Navbar.jsx": 5,
     "components/layout/PreCtaBand.jsx": 2,
     "components/media/StreamVideo.jsx": 5,
     "components/partners/PartnersClient.jsx": 54,

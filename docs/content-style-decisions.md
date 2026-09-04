@@ -537,3 +537,53 @@ Applied at guide level to `BRAND_CONTENT_GUIDE.md` + `.zh.md` (§00 five-second,
   surface. A fifth naming on `/methodology` is not covered either — D92's new `strands`
   and `research` sections were deliberately written without one.
 - **Trigger:** flagged during D92's page pass; the two rules could not both be followed.
+
+### D94 · `Label` — the chrome label component, and one logged 11px exception (2026-09-02)
+
+- **Decision:** `components/ui/Label.jsx`, three variants — `column` · `qualifier`
+  · `pill` — plus a `dark` prop. Applied to the six label sites in `Footer.jsx` and
+  `Navbar.jsx`. Guarded by `scripts/check-label-variant.mjs` on prebuild (guard #15).
+- **Why those two files.** They carried **798 hand-rolled uppercase label instances**,
+  65% of every such instance on the site, and **neither imported `Eyebrow` or `TagRun`**.
+  Every label in the site's chrome was private. The drift had already started and
+  `conformance` had caught it: "Programs" / "课程" headed a column at 0.75rem in the
+  footer and 0.7rem in the navbar. One job, two sizes, two files.
+- **Result:** hand-rolled labels **1,230 → 432**. Type floor **1,013 → 671**.
+- **The 11px in `qualifier` is a stated exception, not residue.** Five of the six
+  sub-floor sites moved to 12px; the nav descriptor stayed at 11px because it hangs off
+  a 14px item title and must read as subordinate — at 12px the 14:11 ratio closes to
+  14:12 and the hierarchy flattens. The 12px floor is this project's own rule, not a
+  WCAG one (WCAG sets no minimum font size), and contrast passes either way. The 342
+  remaining instances now report under a **`css class`** origin, so reversing this
+  ruling later is one line in `globals.css`, not 342 edits.
+- **RULING · scope stays narrow.** Three of the nine label-shaped sites in those files
+  were deliberately excluded: the footer brand tagline (D36's locked tagline — D79
+  already built its home in `.eyebrow.sentence-case`), the footer "signal label" (body
+  emphasis wearing the word label), and the navbar item titles (14/16px link text). A
+  component that absorbs everything label-shaped becomes the next catch-all, which is
+  how `section-label` came to hold 79 strings across four jobs.
+- **RULING · the variant check is dev-only, and a guard does the real work.** An
+  unconditional render throw was the first draft. `Footer.jsx` is a server component, so
+  a bad variant there fails the build — correct. `Navbar.jsx` is `'use client'`, and a
+  variant reachable only after hydration would build clean and then blank the site's
+  primary navigation. The throw is excellent where it fires at build and dangerous where
+  it does not, so it is compiled out of production and `check-label-variant` reads source
+  instead — every call site, whether or not a render path reaches it. Deliberately
+  stricter than `Surface`, which silently falls back to a default.
+- **⚠️ THE TRAP THIS HIT, AND WHY IT MATTERS.** The first version built the class as
+  `` `label label-${variant}` ``. Tailwind purges a custom `@layer utilities` rule whose
+  class name never appears verbatim in source, so `.label-column`, `.label-qualifier` and
+  `.label-pill` were **stripped from the emitted CSS** — while `.label` and
+  `.label-column.is-dark` survived, the first because "label" is literal in the file and
+  the second because "is-dark" is. Every label shipped unstyled.
+  **Nothing failed.** The build passed, all 15 guards passed, and `type-floor` reported a
+  *better* number — 329 instead of 671 — because the 11px rule it was counting no longer
+  existed. The measurement improved precisely because the styling broke. Caught only
+  because 329 was A's predicted figure and this was B. Class names are now full literals
+  in a `VARIANT_CLASS` map, which the guard also parses.
+- **`--lavender-deep-10` added** (D82's scale is the light lavender only; a tint on a
+  light ground needs the deep one, which had no token). It names **one step of a scale
+  that does not exist** — the deep lavender runs at eight free-rounded alphas across
+  three components — and that debt is recorded in the token's own comment rather than
+  quietly taken on here.
+- **Trigger:** Wave 3, sequenced after D92 showed Wave 3 was not a blocker.
