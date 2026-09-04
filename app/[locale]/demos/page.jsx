@@ -26,6 +26,7 @@ import { demos as copyZh }              from '@/content/marketing.zh'
 import DoCta         from '@/components/ui/DoCta'
 import Eyebrow from '@/components/ui/Eyebrow'
 import TagRun from '@/components/ui/TagRun'
+import Label from '@/components/ui/Label'
 
 const LEXILE_SCALE = [
   { level: 1200, grade: 'Grade 12+' },
@@ -205,7 +206,7 @@ function VideoGallery({ locale, c }) {
         </div>
         <div style={{ marginBottom: '2.5rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-            <p style={{ fontSize: '0.6875rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-accent)' }}>{c.videos.row1Label}</p>
+            <Label variant="column">{c.videos.row1Label}</Label>
             <div style={{ flex: 1, height: '1px', backgroundColor: 'rgba(14,14,18,0.07)' }} aria-hidden="true" />
           </div>
           <div style={{ display: 'grid', gap: '1rem' }} className="md:grid-cols-3">
@@ -214,7 +215,7 @@ function VideoGallery({ locale, c }) {
         </div>
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-            <p style={{ fontSize: '0.6875rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-accent)' }}>{c.videos.row2Label}</p>
+            <Label variant="column">{c.videos.row2Label}</Label>
             <div style={{ flex: 1, height: '1px', backgroundColor: 'rgba(14,14,18,0.07)' }} aria-hidden="true" />
           </div>
           <div style={{ display: 'grid', gap: '1rem' }} className="md:grid-cols-3">

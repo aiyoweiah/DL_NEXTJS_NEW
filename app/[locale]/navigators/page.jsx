@@ -21,6 +21,7 @@ import SectionWrapper              from '@/components/ui/SectionWrapper'
 import K2Note                       from '@/components/ui/K2Note'
 import Eyebrow from '@/components/ui/Eyebrow'
 import TagRun from '@/components/ui/TagRun'
+import Label from '@/components/ui/Label'
 
 export async function generateMetadata({ params }) {
   const { locale } = await params
@@ -269,9 +270,9 @@ export default async function NavigatorsPage({ params }) {
             <dl className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {c.s4half.stats.map((stat) => (
                 <div key={stat.label} className="rounded-lg p-4" style={{ backgroundColor: 'var(--surface-raised)', border: '1px solid rgba(14,14,18,0.07)' }}>
-                  <dt style={{ fontSize: '11px', fontWeight: 600, color: 'var(--text-accent)', letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: '6px' }}>
+                  <Label variant="column" as="dt" className="mb-1.5">
                     {stat.label}
-                  </dt>
+                  </Label>
                   <dd style={{ fontSize: '15px', fontWeight: 700, color: 'var(--text-body-dark)' }}>
                     {stat.value}
                   </dd>

@@ -34,6 +34,7 @@ import DoCta         from '@/components/ui/DoCta'
 import Eyebrow from '@/components/ui/Eyebrow'
 import Surface from '@/components/ui/Surface'
 import TagRun from '@/components/ui/TagRun'
+import Label from '@/components/ui/Label'
 
 // ─────────────────────────────────────────────────────────────
 // STATIC STRUCTURAL DATA (no locale variants)
@@ -450,9 +451,9 @@ function JourneySection({ locale, c }) {
 
           {/* LexileBar cell */}
           <div style={{ backgroundColor: '#f0efff', padding: '1rem 1.25rem 1.125rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '0.75rem' }}>
-            <p style={{ fontSize: '9px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-accent)' }}>
+            <Label variant="column">
               {locale === 'zh' ? 'Lexile \u6210\u957f' : 'Lexile Growth'}
-            </p>
+            </Label>
             <LexileBar start={620} end={820} weeks={16} light />
             <p style={{ fontSize: '0.75rem', lineHeight: 1.5, color: 'var(--text-accent)', opacity: 0.6 }}>
               {locale === 'zh' ? '\u5178\u578b16\u5468\u6210\u679c\uff1a620L \u2192 820L' : 'Typical 16-week result: 620L \u2192 820L'}
