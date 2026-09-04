@@ -138,7 +138,7 @@ export const footer = {
     { href: '/program',     label: 'ELA Program (Grade 3+)' },
     { href: '/little-dodo', label: 'Little DODO (5–8)'   },
     { href: 'https://coding.dodolearning.com', label: 'DODO Coding (Grade 3+)', external: true },
-    { href: '/methodology', label: 'The Loop'            },
+    { href: '/methodology', label: 'DODO Method'         },
     { href: '/navigators',  label: 'Navigators'          },
     { href: '/results',     label: 'Results'             },
     { href: '/lexile',      label: 'Lexile Levels'       },

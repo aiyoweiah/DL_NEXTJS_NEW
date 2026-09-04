@@ -524,9 +524,16 @@ Applied at guide level to `BRAND_CONTENT_GUIDE.md` + `.zh.md` (§00 five-second,
   phrasings and licenses each one used there. §06 says MCT is named **once**, as the
   lineage of the L/C content. Both rules are current; they disagree about this page.
 - **Decision (admin, 2026-09-02): the §07 reading wins on `/methodology`, as a stated
-  exception.** The four live namings stand — `definition.body` ("the MCT gifted-ELA
-  tradition"), step 01 ("the MCT Language Arts tradition"), step 04 ("the MCT Language
-  Arts progression"), and `geo.body` (the four-framework list).
+  exception.**
+- **⚠️ CORRECTION (2026-09-02, same day): the count in the original entry was wrong.**
+  It said four namings and listed four. A full walk of the object finds **seven**:
+  `meta.description`, `hero.subheading`, `definition.body`, `steps.0.body`,
+  `steps.3.body`, `sessionTypes.types.0.body` and `geo.body`. The earlier figure came
+  from a grep over selected keys rather than the whole surface. The ruling is unchanged
+  — the exception was approved on the principle, and all seven do distinct jobs (meta,
+  hero descriptor, lineage, reading provenance, the writing arc, the Type A anchor text,
+  and the GEO framework list) — but a decision log that states a wrong number is the
+  thing this repo keeps having to fix, so the number is corrected here rather than left.
 - **Why it holds.** §06's "named once" rule exists to stop MCT reading as the *source of
   each line* — the product-resale framing §07 forbids. On `/methodology` each naming does
   a different job: lineage, reading provenance, the writing arc, and a GEO framework

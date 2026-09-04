@@ -120,7 +120,7 @@ export const footer = {
     { href: '/program',     label: 'ELA 课程（3 年级+）' },
     { href: '/little-dodo', label: '都学启蒙 (5–8)' },
     { href: 'https://coding.dodolearning.com', label: 'DODO 机器语言（3 年级+）', external: true },
-    { href: '/methodology', label: 'The Loop 闭环' },
+    { href: '/methodology', label: 'DODO 教学系统' },
     { href: '/navigators',  label: '导师团队'      },
     { href: '/results',     label: '学习成果'      },
     { href: '/lexile',      label: 'Lexile 等级'   },
@@ -217,7 +217,7 @@ export const home = {
 
   loop: {
     eyebrow: '教学方法',
-    heading: 'LCS 教学理念',
+    heading: '语言循环体系',
     body:
       '这就是每节课的样子——阅读 → 思考 → 表达 → 写作。顺序保持不变，一周又一周，孩子才好安顿下来。',
     cta: '阅读完整教学方法 →',
@@ -351,7 +351,7 @@ export const program = {
     h1:         'ELA 课程里发生了什么？',
     h1zh:       '',
     sub:
-      '特约导师，线上一对一——地理不再是障碍。阅读与写作以 MCT gifted-ELA 传统为根基，经 LCS 教学体系展开：Reading、Thinking、Speaking、Writing。进步以 Lexile 数据和 6+1 Trait 评估体系衡量。',
+      '特约导师，线上一对一——地理不再是障碍。阅读与写作以 MCT gifted-ELA 传统为根基，经 The LCS 展开：Reading、Thinking、Speaking、Writing。进步以 Lexile 数据和 6+1 Trait 评估体系衡量。',
     cta1: '了解详情',
     cta2: '预约咨询',
     stats: [
@@ -422,7 +422,7 @@ export const program = {
 
   combinations: {
     eyebrow: '选择您的组合',
-    h2:      '五种课程组合——同一个 The Loop（学习循环），强度不同。',
+    h2:      '五种课程组合——同一个 The Loop，强度不同。',
     h2zh:    null,
     body:
       '每一种组合都运行完整的16周周期，每节课都运行The Loop（学习循环），每个学生都与一位专属导师（Navigator）一起学习。不同组合在于每周课时数和侧重点——选择符合您孩子当前需求的模式。',
@@ -1633,7 +1633,7 @@ export const credentials = {
         '学生设计。',
       dodoRole:
         'DODO Learning 建立在 MCT 语言艺术框架的原则与教学理念之上。' +
-        'MCT 传统承载着 DODO LCS 教学系统中 Literacy（文学精读）与 ' +
+        'MCT 传统承载着 DODO The LCS 中 Literacy（文学精读）与 ' +
         'Composition（系统写作）两条支柱的内容 —— 未删节的经典文学' +
         '（Mud Trilogy、爱丽丝梦游仙境、马克·吐温、爱伦·坡）、拉丁与' +
         '希腊词根（Building Language、Caesar’s English）、写作弧线' +
@@ -1748,7 +1748,7 @@ export const founder = {
       '两门语言学下来的，是阅读——第一年读英语经典（《爱丽丝梦游仙境》、马克·吐温、爱伦·坡），' +
       '再读加缪、左拉的法语原著。她在那段时间通过了托福与 TCF 法语考试，2019 年毕业于' +
       '康考迪亚大学约翰·莫尔森商学院（John Molson School of Business），获商学学士学位。',
-    'DODO Learning 今天教的每一件事——为什么要读经典而不是分级简写本，为什么 LCS 教学系统' +
+    'DODO Learning 今天教的每一件事——为什么要读经典而不是分级简写本，为什么 The LCS' +
       '坚持"理解先于流利"，为什么我们从来不把英语当成一门"科目"来教——都源自她自己走过、' +
       '验证过的那条路。2021 年，她创办了 DODO，让后面的孩子不必再一个人重走一遍。至今已' +
       '陪伴超过 300 名学生。两个孩子出生后，她开设了 Little DODO，把这套方法延伸到蓝思测量' +
