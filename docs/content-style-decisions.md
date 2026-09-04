@@ -594,3 +594,35 @@ Applied at guide level to `BRAND_CONTENT_GUIDE.md` + `.zh.md` (§00 five-second,
   three components — and that debt is recorded in the token's own comment rather than
   quietly taken on here.
 - **Trigger:** Wave 3, sequenced after D92 showed Wave 3 was not a blocker.
+
+### D96 · Both design debts from D94/D95 paid (2026-09-02)
+
+- **Deep-lavender scale.** `--lavender-deep-10` named one step of a scale that did not
+  exist; the hue was written at **eight free-rounded alphas** across Footer /
+  AgeBandChooser / K2Note and two `globals.css` rules — the same free-rounding D82
+  tokenised the light scale to stop. Now **five steps mirroring the light scale**
+  (`08/15/25/40/60`), so there is one alpha vocabulary for lavender whichever hue a
+  ground calls for. All nine use sites migrated; **zero raw `rgba(124,121,232,…)`
+  remain** outside the definitions.
+  - What moved, all decoration (D82: no contrast floor applies here): `0.06 → 08` and
+    `0.10 → 08` are imperceptible; `0.3 → 25`, `0.45 → 40`, `0.55 → 60` are slight;
+    `0.7 → 60` on the footer button hover border is the largest at ~14% relative. Kept
+    because the rest/hover pair still steps `25 → 60`, so the interaction reads as
+    clearly as it did at `0.3 → 0.7`. Adding a 70 step to serve one hover state would
+    be the free-rounding problem in miniature.
+  - Verified in the browser, not just at build: all five tokens resolve, the pill ground
+    renders at 0.08, the footer divider at 0.15, its button border at 0.25, the K2Note
+    left rule at 0.40.
+- **Dead utility classes — 13 deleted, 1 restored.** `elevated`, the eight `delay-*`,
+  `divider-center`, `accent-top-gilt`, `hairline`, `layout-sidebar`: declared,
+  referenced nowhere, correctly purged, and misrepresenting the system to anyone
+  reading `globals.css`. Git keeps them.
+- **⚠️ `.check-list` was NOT dead and I nearly removed it.** It carries an explicit
+  note — *"DEFINED BUT UNUSED — reach for this when a list that deserves it actually
+  exists"* — so it is a **drawn device reserved by design** (the D58 family), not
+  neglect. My deletion took its parent rule and orphaned `> li` and `> li::before`.
+  Restored. The lesson is narrow and worth keeping: **"referenced nowhere" and "dead"
+  are not the same claim**, and the difference was written down in the file. A sweep
+  driven by a usage count would have removed it silently; reading the comment above
+  each candidate is what caught it.
+- **Trigger:** the two debts recorded in D94 and the 2026-09-02 loop report.

@@ -164,7 +164,7 @@ export default function Footer({ locale, copy }) {
                 Env-gate removed 2026-06-11; stacked layout per visual review:
                 name + arrow on its own line, blurb as muted subtitle below.
               */}
-              <div className="pt-4 mt-1 border-t border-[rgba(124,121,232,0.15)]">
+              <div className="pt-4 mt-1 border-t border-[color:var(--lavender-deep-15)]">
                 <Label variant="column" className="mb-2.5">{copy.sibling.label}</Label>
                 <a
                   href={copy.sibling.href}
@@ -302,7 +302,7 @@ export default function Footer({ locale, copy }) {
                 </Link>
               ))}
 
-              <div className="[&_button]:text-[color:var(--label-color)] [&_button]:border-[rgba(124,121,232,0.3)] [&_button]:hover:border-[rgba(124,121,232,0.7)] [&_button]:hover:bg-[rgba(124,121,232,0.08)] [&_button]:focus-visible:ring-offset-[#F5F5FF]">
+              <div className="[&_button]:text-[color:var(--label-color)] [&_button]:border-[color:var(--lavender-deep-25)] [&_button]:hover:border-[color:var(--lavender-deep-60)] [&_button]:hover:bg-[var(--lavender-deep-08)] [&_button]:focus-visible:ring-offset-[#F5F5FF]">
                 <LocaleSwitcher locale={locale} />
               </div>
             </div>

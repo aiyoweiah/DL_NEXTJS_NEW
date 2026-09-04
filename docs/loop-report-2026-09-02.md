@@ -1,6 +1,8 @@
 # Loop report — 2026-09-02
 
-Five commits, `df606d0` → `cffd6d2`. All 16 guards green. Everything pushed.
+Seven commits, `df606d0` → `HEAD`. All 16 guards green. Everything pushed.
+
+**Both recorded debts were paid the same day (D96) — see the Open section.**
 
 ---
 
@@ -40,9 +42,10 @@ like a safety net and cannot fire.
 reach the browser*, as a ratchet. It may grow freely; a class leaving it fails
 the build. Baseline 40, including `label-column` / `label-qualifier` /
 `label-pill`, so D94's exact bug now trips it. Negative-tested: injecting a
-class that no longer ships exits 1 and names it. The 14 declared-but-never-
-referenced classes are **reported, not failed** — those are correctly purged,
-and failing on them would punish the tool for being right.
+class that no longer ships exits 1 and names it. Declared-but-never-referenced classes are **reported, not failed** — those are
+correctly purged, and failing on them would punish the tool for being right.
+(13 of the 14 were then deleted in D96; the 14th, `.check-list`, turned out to
+be reserved by design.)
 
 ## Step 2 · Wave 4 — the economics, confirmed
 
@@ -133,17 +136,17 @@ surfaced while listing them: **no currency is named anywhere** despite serving
 CAD and USD cities, and **Flex 3 is called "GPA tutoring" / "GPA 辅导课"**,
 which works against the price anchor per §10.
 
-**Debts, recorded not hidden:**
+**Debts — BOTH PAID (D96, same day):**
 
-- **Deep-lavender scale.** `--lavender-deep-10` names one step of a scale that
-  does not exist — the deep lavender runs at eight free-rounded alphas across
-  three components. Rounding them onto a real scale moves live pixels in three
-  files and needs its own verification pass.
-- **14 dead utility classes** (26% of the custom utilities): the eight
-  `delay-*`, plus `elevated`, `divider-center`, `accent-top-gilt`,
-  `check-list`, `hairline`, `layout-sidebar`. Declared, referenced nowhere,
-  correctly purged. Deleting them is safe but is a judgment about whether the
-  `delay-*` set is reserved for future animation work.
+- **Deep-lavender scale — DONE.** Five steps mirroring the light scale (08/15/25/40/60),
+  all nine sites migrated, **zero raw `rgba(124,121,232,…)` left** outside the
+  definitions. Verified in the browser. Largest move was the footer hover border
+  0.7 → 0.60 (~14%), kept because the rest/hover pair still steps 25 → 60.
+- **Dead utility classes — DONE, 13 deleted and 1 restored.** `.check-list` turned out
+  NOT to be dead: it carries an explicit note reserving it as a drawn device. My sweep
+  took its parent rule and orphaned its children. Restored. **"Referenced nowhere" and
+  "dead" are different claims, and the difference was written in the file** — a
+  usage-count sweep would have removed it silently.
 
 **Deferred by you and untouched:** `/compare` founder video, `compare.s8`
 testimonials, Ms. Kimberly's bio, Wave 6 admin, Wave 7.
@@ -156,6 +159,9 @@ Three times today a **measurement was wrong in a way that flattered the work**:
 `type-floor` reported 329 instead of 671 because the styles it counted had been
 purged; the first purge guard passed because its failure condition was
 unreachable; and D93 recorded four MCT namings where there are seven.
+
+A **fourth** followed in D96: a usage-count sweep called `.check-list` dead when
+the file said in words that it is reserved.
 
 None was caught by a guard. Each was caught by a number not matching a number
 it should have matched. That is the argument for keeping the ratchets honest

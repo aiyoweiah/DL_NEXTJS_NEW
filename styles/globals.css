@@ -119,23 +119,33 @@
      10.14:1), not a step from this scale. These steps are not for text. */
   --lavender-08:  rgba(183,181,254,0.08);
   --lavender-15:  rgba(183,181,254,0.15);
-  /* The scale above is the LIGHT lavender (#b7b5fe) — legible as a tint on
-     dark grounds, all but invisible on Whisper. A tint on a LIGHT ground has
-     to come from the deep lavender (#7c79e8), which had no token at all.
+  /* DEEP LAVENDER (#7c79e8) — the same decoration job on LIGHT grounds. The
+     scale above is the light lavender: legible as a tint on dark grounds and
+     all but invisible on Whisper, so a light-ground tint has to come from here.
 
-     ⚠️ THIS IS ONE STEP OF A SCALE THAT DOES NOT EXIST YET, and that is a
-     known debt, not an oversight. The deep lavender is currently written at
-     EIGHT free-rounded alphas across Footer / AgeBandChooser / K2Note and one
-     rule below — 0.06 · 0.08 · 0.10 · 0.15 · 0.3 · 0.45 · 0.55 · 0.7 — which
-     is the same free-rounding D82 tokenised the light scale to stop. Only
-     0.10 is named here, because D94 needed exactly it for `.label-pill`; it
-     consolidates THREE sites (Footer:60, AgeBandChooser:59, and the rule
-     below), not the whole spread.
+     Same five steps as the light scale, deliberately. Before D96 this hue was
+     written at EIGHT free-rounded alphas across Footer / AgeBandChooser /
+     K2Note and two rules below — 0.06 · 0.08 · 0.10 · 0.15 · 0.3 · 0.45 ·
+     0.55 · 0.7 — which is exactly the free-rounding D82 tokenised the light
+     scale to stop. Mirroring the steps rather than inventing new ones means
+     ONE alpha vocabulary for lavender, whichever hue a ground calls for.
 
-     Owed: round the eight onto a real deep scale (08/15/25/40/60, mirroring
-     the light one) as its own pass. Doing it inside a component change would
-     move live pixels in three files without its own verification. */
-  --lavender-deep-10: rgba(124,121,232,0.10);
+     What the rounding moved (all decoration, no contrast floor applies):
+       0.06 → 08   K2Note hover tint          imperceptible
+       0.10 → 08   three faint grounds        imperceptible
+       0.3  → 25   footer button border       slight
+       0.45 → 40   K2Note left rule           slight
+       0.55 → 60   AgeBandChooser selected    slight
+       0.7  → 60   footer button hover border the largest move, ~14% relative.
+                   Kept because the rest/hover pair still steps 25 → 60, so the
+                   interaction reads as clearly as it did at 0.3 → 0.7. Adding a
+                   70 step to serve one hover state would be the free-rounding
+                   problem in miniature. */
+  --lavender-deep-08: rgba(124,121,232,0.08);
+  --lavender-deep-15: rgba(124,121,232,0.15);
+  --lavender-deep-25: rgba(124,121,232,0.25);
+  --lavender-deep-40: rgba(124,121,232,0.40);
+  --lavender-deep-60: rgba(124,121,232,0.60);
   --lavender-25:  rgba(183,181,254,0.25);
   --lavender-40:  rgba(183,181,254,0.40);
   --lavender-60:  rgba(183,181,254,0.60);
@@ -847,7 +857,7 @@
   }
 
   .btn-do:hover {
-    background-color: rgba(124,121,232,0.10);
+    background-color: var(--lavender-deep-08);
     text-decoration: none;
   }
   .btn-do:hover::before,
@@ -1052,9 +1062,6 @@
   }
 
   /* ── Badge ── */
-
-
-
 
 
   /* ── Card ── */
@@ -1397,25 +1404,12 @@
   /* `.text-gilt`'s dark-ground override lived here. D75 deleted the class and
      left this behind — the same tail D75 was itself written about. Removed. */
 
-  .elevated {
-    background: #ffffff;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.05);
-    border-radius: var(--radius-xl);
-  }
 
   .tinted {
     background-color: #EAEAF8;
     border-radius: var(--radius-xl);
   }
 
-  .delay-100 { animation-delay: 100ms; }
-  .delay-200 { animation-delay: 200ms; }
-  .delay-300 { animation-delay: 300ms; }
-  .delay-400 { animation-delay: 400ms; }
-  .delay-500 { animation-delay: 500ms; }
-  .delay-600 { animation-delay: 600ms; }
-  .delay-700 { animation-delay: 700ms; }
-  .delay-800 { animation-delay: 800ms; }
 
   .container-section {
     width: 100%;
@@ -1572,7 +1566,7 @@
     letter-spacing: 0.05em;
     text-transform: uppercase;
     color: var(--label-color);
-    background-color: var(--lavender-deep-10);
+    background-color: var(--lavender-deep-08);
     padding: 0.125rem 0.375rem;
     border-radius: 0.25rem;
   }
@@ -1779,10 +1773,6 @@
     background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 7' preserveAspectRatio='none'><path fill='%23b7b5fe' fill-opacity='.9' d='M1.5 3.6 C 18 1.9, 44 1.2, 68 1.5 C 92 1.8, 110 2.6, 118.5 3.4 C 110 5.4, 92 6.1, 68 5.9 C 44 5.7, 18 5.4, 1.5 3.6 Z'/></svg>");
   }
 
-  .divider-center {
-    margin-left: auto;
-    margin-right: auto;
-  }
 
   /* A painted top edge instead of a ruled one. border-top is replaced by
      equivalent padding so card height does not shift. */
@@ -1799,9 +1789,6 @@
     background-size: 100% 6px;
   }
 
-  .accent-top-gilt {
-    border-top: 3px solid var(--color-gilt);
-  }
 
   /* ── The pull-quote glyph (D58) ────────────────────────────
      For a DECORATIVE standalone quote mark only — the oversized one that
@@ -1872,6 +1859,7 @@
      site has no customer-facing feature list today (every ✓ in the repo
      is an /ops/ status message). Do not go hunting for lists to convert;
      reach for this when a list that deserves it actually exists. */
+
   .check-list {
     list-style: none;
     padding-left: 0;
@@ -1895,16 +1883,6 @@
     background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%237c79e8' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'><path d='M3.5 11 C 5.5 12.5, 7 14.5, 8 17 C 10.5 11, 14 5.5, 18 2'/></svg>") no-repeat center/contain;
   }
 
-  .hairline {
-    border-top: 1px solid var(--border-light);
-    margin: 2rem 0;
-  }
-
-  .layout-sidebar {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
 
   @media (min-width: 1024px) {
     .layout-sidebar {

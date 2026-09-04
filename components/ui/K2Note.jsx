@@ -38,10 +38,10 @@ export default function K2Note({ locale, copy }) {
           }}
         >
           <div
-            className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 rounded-lg transition-all duration-150 group-hover:bg-[rgba(124,121,232,0.06)]"
+            className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 rounded-lg transition-all duration-150 group-hover:bg-[var(--lavender-deep-08)]"
             style={{
               padding:    '0.625rem 0.875rem 0.625rem 1rem',
-              borderLeft: '2px solid rgba(124,121,232,0.45)',
+              borderLeft: '2px solid var(--lavender-deep-40)',
             }}
           >
             <p style={{ fontSize: '0.9375rem', lineHeight: 1.55, maxWidth: '56rem' }}>

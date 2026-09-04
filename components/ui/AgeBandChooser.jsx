@@ -49,14 +49,14 @@ export default function AgeBandChooser({ locale, copy, current }) {
                 style={{
                   backgroundColor: 'var(--surface-raised)',
                   border: isCurrent
-                    ? '1.5px solid rgba(124,121,232,0.55)'
+                    ? '1.5px solid var(--lavender-deep-60)'
                     : '1px solid rgba(14,14,18,0.08)',
                 }}
               >
                 <div className="flex items-center gap-2 mb-3">
                   <span
                     className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded"
-                    style={{ color: 'var(--label-color)', backgroundColor: 'rgba(124,121,232,0.10)' }}
+                    style={{ color: 'var(--label-color)', backgroundColor: 'var(--lavender-deep-08)' }}
                   >
                     {b.tag}
                   </span>

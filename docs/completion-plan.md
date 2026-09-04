@@ -27,13 +27,17 @@ WAVE 6  admin unblocks    you only · gates every Tier-2 SEO item
 WAVE 7  operational loose ends
 ```
 
-**Waves 0, 1, 2 and 5 are closed.** Wave 5 shipped EN on 2026-09-02; its ZH round is
-the one open thread (52 keys in `translation/pending-en.json`).
+**Waves 0, 1, 2, 3 and 5 are closed**, and Wave 4's blocking measurement (task 4.0) is
+done. Wave 5 shipped EN + ZH on 2026-09-02.
 
-The next move is **Wave 6 — the admin unblocks**, which gate every Tier-2 SEO item and
-are the only work here nobody but you can do. Wave 3 (label vocabulary) dropped in
-urgency: D37 landed without needing it, so it is now a tidy-up rather than a blocker.
-Wave 4 still needs task 4.0 — measure the type floor properly — before any design work.
+**The next move is Wave 6 — the admin unblocks.** They gate every Tier-2 SEO item, they
+are the only work here nobody but the owner can do, and with the design system settled
+they are now the critical path rather than a parallel track.
+
+After that, in order of value: the **machine surfaces** (`llms-full.txt` and especially
+`llms-full.zh.txt`, last touched 2026-08-24 — before the entire v5 cascade — and missing
+the §07a research base and the five strands entirely), then **Wave 4's design pass**,
+then Wave 7.
 
 ---
 
@@ -192,10 +196,20 @@ offenders, not a bulk edit.
 
 ---
 
-## Wave 3 · The label vocabulary — deliberately blocked on Wave 1
+## Wave 3 · The label vocabulary — ✅ SETTLED 2026-09-02 (D94)
 
-**Measured now:** 1,346 hand-rolled uppercase instances · 140 distinct strings · **61
-declaration sites across 25 files** · against 390 canonical `.eyebrow`.
+**Outcome: `Label` shipped (D94) — 1,230 hand-rolled instances → 420.** Three variants
+(`column` · `qualifier` · `pill`) on the six chrome sites in `Footer.jsx` + `Navbar.jsx`,
+plus four more elsewhere. Guarded by `check-label-variant` (#15).
+
+**The residue needs NO further component work — that is the triage result.** The plan
+expected "at least four jobs" in `section-label`; there are **seven**, and most are not
+labels: age-band cross-links are *links*, testimonial attributions are *attributions*,
+route-path hints are decoration, and the blog taxonomy the plan hoped would go to
+`TagRun` is filter **buttons** plus single card labels — not middot runs, so D70 is the
+wrong home. `framework` (160, the Loop step names) has zero drift and is brand canon:
+leave it. What remains is correctly hand-rolled one-offs, and a component that absorbed
+them would become the next `section-label`.
 
 **Why blocked, on purpose:** the decision needs a real per-site inventory, and the
 current grouping is a regex taxonomy in `conformance.mjs` that has already been wrong
@@ -223,18 +237,25 @@ is a home for it by then. Sequence 5 → 3 if D37 moves first.
 
 ---
 
-## Wave 4 · The type floor — large, independent, needs a real measurement first
+## Wave 4 · The type floor — measured (task 4.0 done); the rest is a real design pass
 
-`conformance` reports **469** sub-12px nodes (9px×32, 10px×310, 11px×127).
+**Task 4.0 is DONE** — `npm run type-floor` (`--sites`, `--json`). The real figure was
+**1,013, not 469**: `conformance` matches `/([d.]+)px/` and this codebase writes type in
+**rem**, so 430 inline `0.6875rem`/`0.625rem` sites plus 114 `text-[0.7rem]` were
+structurally invisible to it. Ground-truthed before quoting.
 
-⚠️ **That is a lower bound and is not comparable to the 558 previously quoted.**
-Conformance counts inline `font-size` and `text-[Npx]` classes only; it cannot see
-class-driven sizes. **Task 4.0 is therefore to measure it properly** — extend the
-detector to resolve emitted CSS the way `check-tokens --build` does — before any design
-work. Doing the pass against a number that is wrong by an unknown margin repeats §1.
+**Now 659**, after D94 took 684 chrome sites and D94b took twelve more.
 
-Then: a design pass, not a mechanical fix. It changes page rhythm and risks tight
-layouts. `/demos` and `/program` historically carried ~22%.
+**The remaining 659 will not yield to extraction, and that is settled.** 342 are the
+`qualifier` 11px exception — logged, one line in `globals.css` to reverse, not work. The
+other 317 are page-specific: `/program`'s 49 sub-floor sites are 49 **distinct
+elements on one page**, not one element seen 49 times, so each fix buys ~2 instances
+(EN + ZH) rather than 114. A sitewide scan found 16 declarations that are both sub-floor
+*and* label-shaped; four were clean fits and were migrated, and the other twelve carry an
+opacity, a different colour token, or their own background.
+
+So this is exactly what this section always said: **a design pass, not a mechanical
+fix.** `/demos` and `/program` still carry the most.
 
 ---
 

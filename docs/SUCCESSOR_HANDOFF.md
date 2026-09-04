@@ -1,9 +1,30 @@
 # DODO Learning — Successor Handoff
 
 **Authored:** 2026-05-17 (end of session)
-**Last updated:** 2026-09-01 — **The cohesion architecture is finished (D73–D78, guide v6.32).** Every numbered proposal in [`architecture-cohesion-proposal.md`](architecture-cohesion-proposal.md) §3 is built. Eleven guards now run on a build.
+**Last updated:** 2026-09-02 — **The v5 content cascade is 18/18 and the label vocabulary is settled (D91–D96).** Every numbered proposal in [`architecture-cohesion-proposal.md`](architecture-cohesion-proposal.md) §3 is built. Eleven guards now run on a build.
 
 **Start here, in this order:** [`completion-plan.md`](completion-plan.md) for what to do next and in what order, [`decision-index.md`](decision-index.md) for what is still true (D1–D78, with the guard enforcing each), then [`architecture-cohesion-proposal.md`](architecture-cohesion-proposal.md) before touching anything, then this file.
+
+What landed on 2026-09-02:
+
+- **The v5 content cascade is COMPLETE — 18/18.** `/faq` (D91) then the Wave 5 remainder (D92): D37's five strands on `/methodology` + `/program`, D38's §07a research base, D41's two `/compare` rows, D14's Type A/B caption, and the `/compare` voice pass that had been 🔴 since D50. EN + ZH.
+- **D14 was a live contradiction, not an owed chore** — the heading it moved under asserted a fixed rotation that the lost sentence explicitly denied. Three months live.
+- **D93** — MCT may be named more than once on `/methodology`, as a stated §06/§07 exception, that page only. *(Its original count of "four" was wrong; a full walk finds seven. Amended the same day — the ruling stands, the number did not.)*
+- **D94 — `Label` shipped.** Three variants (`column` · `qualifier` · `pill`) on the chrome. Hand-rolled labels **1,230 → 420**; type floor **1,013 → 659**. Wave 3 is settled, and its residue needs no further component work — the triage found seven jobs, most of which are not labels.
+- **D95 — guard #16**, `check-utility-emitted`: a utility class that reaches the browser may not silently stop reaching it.
+- **D96** — deep lavender tokenised to five steps across nine sites (zero raw `rgba(124,121,232,…)` left); 13 dead utility classes deleted.
+
+**Three things to carry, all of them about measurement:**
+
+1. **A number that improves can be a symptom.** D94's first build purged its own CSS. Every label shipped unstyled — and the build passed, all fifteen guards passed, and `type-floor` reported a **better** figure, because the rule it had been counting no longer existed. It was caught only because the number happened to match a *different option's* prediction. Write the predicted figure down before measuring.
+2. **A guard can be unfireable.** The first `check-utility-emitted` failed on "referenced in JSX but missing from CSS". That is unreachable: Tailwind scans the same files such a check reads. It could not even be negative-tested — the comment explaining the purge bug contained the class name and kept the rule alive. Ask what would make a new guard fail, and prove it does.
+3. **"Referenced nowhere" is not "dead."** `.check-list` was nearly deleted in D96's sweep. It carries a note saying it is reserved by design. Read the comment above each candidate; a usage count alone would have removed it silently.
+
+**`npm run type-floor`** is the Wave 4 instrument (task 4.0, done). `conformance`'s 469 was wrong by more than half: it matches only `px`, and this codebase writes type in **rem**.
+
+**Still open and owner-only:** Wave 6's admin unblocks (they gate every Tier-2 SEO item and are now the critical path); `/faq` pricing verification, where no currency is named anywhere and Flex 3's "GPA tutoring / GPA 辅导课" framing fights the price anchor; and one header-vs-body ruling that covers `zh:279`, `zh:346` and 23 remaining `学习循环` uses.
+
+---
 
 What landed on 2026-09-01:
 

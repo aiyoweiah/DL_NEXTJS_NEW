@@ -128,6 +128,8 @@ Everything here applies to new work.
 | D92 | Wave 5 remainder — D37/D38/D41/D14 shipped, `/compare` voice pass (10 reversals → 1), §06 breach fixed, ZH LCS canon corrected | Live · EN `fde04cf` + ZH `2bccb55` · v5 cascade 18/18 | `check-cjk-coverage` · lint |
 | D93 | MCT may be named 4x on `/methodology` — stated §06/§07 exception, that page only | Live · no code change | — ⚠️ unguarded, by nature |
 | D94 | `Label` component — 3 variants; labels 1230→432, type floor 1013→671; 11px `qualifier` a logged exception | Live | `check-label-variant` (#15) |
+| D95 | Utility classes reaching the browser are a ratchet — a rule may not silently stop shipping | Live | `check-utility-emitted` (#16) |
+| D96 | Deep-lavender scale (5 steps, 9 sites); 13 dead utility classes deleted, `.check-list` restored as reserved-by-design | Live | `check-tokens` · `check-utility-emitted` |
 
 ### Type & payload
 
@@ -179,8 +181,8 @@ open one.
 
 | D | What is open | Owner |
 |---|---|---|
-| D13 | `/faq` pricing figures never re-verified against the current combinations | admin |
-| D92 | Six superseded LCS spellings left in `marketing.zh.js` body prose — §09 says 语言循环体系 is the ZH **section header** and `The LCS` the body form; which of the six are headers is the call | content |
+| D13 | `/faq` pricing figures never re-verified against the current combinations. Internally consistent (weekly x16 ≈ lump sum on all five tiers); **no currency is named anywhere** despite serving CAD + USD cities; **Flex 3 is called "GPA tutoring" / "GPA 辅导课"**, which §10 bars as remedial framing and which works against the price anchor | admin |
+| D92 | **Header vs body: one ruling covers three.** `zh:279` (a link label) and `zh:346` (a meta description) still use a superseded LCS form, and **23 body uses of `学习循环`** remain — all barred for new translation, all unruled for existing body copy. §09 draws the line at header vs body; neither of the two is clearly either | content |
 | — | `/compare` founder `<figure>` renders a play button with `pointerEvents:none` — looks clickable, does nothing, on a conversion page | admin (needs the real embed URL) |
 
 ### Resolved conflicts
