@@ -69,6 +69,9 @@
   --gilt-mark:             #AD8100;
   --color-void-black:      #0E0E12;
   --color-whisper:         #F5F5FF;
+  /* Warm K-2 surface — §06b within-system differentiation, admin-ruled
+     2026-09-05 (visual review V15). Little DODO surfaces only. */
+  --color-hearth:          #FBF3EA;
   --color-platinum:        #F0F0F0;
   --color-midnight:        #2E3848;
 

@@ -184,8 +184,8 @@ function Hero({ locale, c }) {
                 style={{ padding: '1.25rem 0.5rem', borderLeft: i % 6 === 0 ? 'none' : '1px solid rgba(183,181,254,0.06)', textAlign: 'center' }}
               >
                 <div style={{ fontSize: '1.375rem', fontWeight: 700, color: 'var(--text-accent-dark)', letterSpacing: '-0.02em' }}>{s.value}</div>
-                <div style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-inverse)', marginTop: '0.25rem' }}>{s.unit}</div>
-                <div style={{ fontSize: '11px', color: 'var(--platinum-60)', marginTop: '0.25rem', lineHeight: 1.4 }}>{s.desc}</div>
+                <div style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-inverse)', marginTop: '0.25rem' }}>{s.unit}</div>
+                <div style={{ fontSize: '12px', color: 'var(--platinum-60)', marginTop: '0.25rem', lineHeight: 1.4 }}>{s.desc}</div>
               </div>
             ))}
           </div>
@@ -219,7 +219,7 @@ function ProblemSection({ c }) {
 // ─────────────────────────────────────────────────────────────
 function HowSection({ locale, c }) {
   return (
-    <section aria-labelledby="ld-how-heading" style={{ backgroundColor: 'var(--color-whisper)', padding: 'var(--section-md) 0' }}>
+    <section aria-labelledby="ld-how-heading" style={{ backgroundColor: 'var(--color-hearth)', padding: 'var(--section-md) 0' }}>
       <div className="container-section">
         <Eyebrow>{c.how.eyebrow}</Eyebrow>
         <BilingualH2 id="ld-how-heading" primary={c.how.h2} secondary={c.how.h2zh} />

@@ -249,7 +249,7 @@ export default async function BlogPage({ params }) {
 
             <div className="md:w-[55%] flex flex-col justify-center" style={{ padding: '40px' }}>
               <div className="inline-block rounded w-fit mb-4"
-                style={{ backgroundColor: 'var(--lavender-15)', color: 'var(--text-accent)', fontSize: '11px', fontWeight: 500, textTransform: 'uppercase', padding: '4px 12px', letterSpacing: '0.06em' }}>
+                style={{ backgroundColor: 'var(--lavender-15)', color: 'var(--text-accent)', fontSize: '12px', fontWeight: 500, textTransform: 'uppercase', padding: '4px 12px', letterSpacing: '0.06em' }}>
                 {ui.featuredLabel}
               </div>
 
@@ -297,7 +297,7 @@ export default async function BlogPage({ params }) {
               <Link key={route} href={`/${locale}${route}`}
                 className="group block transition-colors p-6 md:p-8" style={{ textDecoration: 'none' }}>
                 <div className="group-hover:bg-[#2E3848] rounded-lg transition-colors p-0">
-                  <div style={{ textTransform: 'uppercase', fontSize: '11px', fontWeight: 300, color: 'var(--platinum-60)', marginBottom: '12px', fontFamily: 'var(--font-latin)' }}>
+                  <div style={{ textTransform: 'uppercase', fontSize: '12px', fontWeight: 300, color: 'var(--platinum-60)', marginBottom: '12px', fontFamily: 'var(--font-latin)' }}>
                     {route}
                   </div>
                   <div className="flex items-start justify-between gap-4 mb-3">
@@ -335,7 +335,7 @@ export default async function BlogPage({ params }) {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={article.imageUrl} alt={article.title} className="w-full h-full object-cover" style={{ display: 'block' }} />
                   <div className="absolute bottom-3 left-3 px-2 py-1 rounded uppercase"
-                    style={{ backgroundColor: 'var(--lavender-15)', color: 'var(--text-accent-dark)', fontSize: '11px', fontWeight: 500, backdropFilter: 'blur(8px)' }}>
+                    style={{ backgroundColor: 'var(--lavender-15)', color: 'var(--text-accent-dark)', fontSize: '12px', fontWeight: 500, backdropFilter: 'blur(8px)' }}>
                     {article.category}
                   </div>
                 </div>

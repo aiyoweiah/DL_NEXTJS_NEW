@@ -201,7 +201,7 @@ export default function StreamVideo({
             bottom:        '0.75rem',
             left:          '0.875rem',
             right:         '0.875rem',
-            fontSize:      '11px',
+            fontSize:      '12px',
             fontWeight:    600,
             color:         'rgba(240,240,240,0.85)',
             letterSpacing: '0.01em',

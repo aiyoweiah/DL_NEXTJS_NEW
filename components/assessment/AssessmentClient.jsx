@@ -33,12 +33,12 @@ function LexileBar({ beforeScore, afterScore, dark = false }) {
         <div>
           <span style={{ fontFamily: 'var(--font-latin)', fontSize: '22px', fontWeight: 700, letterSpacing: '-0.02em',
             color: dark ? 'rgba(240,240,240,0.45)' : 'rgba(14,14,18,0.3)' }}>{beforeScore}L</span>
-          <span style={{ display: 'block', fontFamily: 'var(--font-latin)', fontSize: '11px', fontWeight: 400, marginTop: '2px',
+          <span style={{ display: 'block', fontFamily: 'var(--font-latin)', fontSize: '12px', fontWeight: 400, marginTop: '2px',
             color: dark ? 'rgba(240,240,240,0.35)' : 'rgba(14,14,18,0.3)' }}>Entry</span>
         </div>
         <div style={{ textAlign: 'right' }}>
           <span style={{ fontFamily: 'var(--font-latin)', fontSize: '22px', fontWeight: 700, letterSpacing: '-0.02em', color: 'var(--text-accent-dark)' }}>{afterScore}L</span>
-          <span style={{ display: 'block', fontFamily: 'var(--font-latin)', fontSize: '11px', fontWeight: 400, marginTop: '2px', color: 'var(--text-accent-dark)', opacity: 0.65 }}>Exit</span>
+          <span style={{ display: 'block', fontFamily: 'var(--font-latin)', fontSize: '12px', fontWeight: 400, marginTop: '2px', color: 'var(--text-accent-dark)', opacity: 0.65 }}>Exit</span>
         </div>
       </div>
     </div>
@@ -51,28 +51,28 @@ function AssessmentReport({ lexileBefore, lexileAfter, traits }) {
     <div className="rounded-2xl overflow-hidden" style={{ backgroundColor: 'var(--surface-raised)', border: '1px solid rgba(0,0,0,0.07)', boxShadow: '0 4px 24px rgba(0,0,0,0.07)' }}>
       {/* Header */}
       <div style={{ backgroundColor: 'var(--color-deep-void)', padding: '20px 24px', borderBottom: '1px solid rgba(183,181,254,0.15)' }}>
-        <div style={{ fontFamily: 'var(--font-latin)', fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted-dark)', marginBottom: '12px' }}>Exit Assessment Report</div>
+        <div style={{ fontFamily: 'var(--font-latin)', fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted-dark)', marginBottom: '12px' }}>Exit Assessment Report</div>
         <div className="flex items-end gap-3">
           <div>
-            <span style={{ fontFamily: 'var(--font-latin)', fontSize: '11px', color: 'var(--platinum-60)', display: 'block', marginBottom: '2px' }}>Entry</span>
+            <span style={{ fontFamily: 'var(--font-latin)', fontSize: '12px', color: 'var(--platinum-60)', display: 'block', marginBottom: '2px' }}>Entry</span>
             <span style={{ fontFamily: 'var(--font-latin)', fontSize: '28px', fontWeight: 700, color: 'var(--platinum-60)', letterSpacing: '-0.03em' }}>{lexileBefore}L</span>
           </div>
           <div style={{ fontSize: '18px', color: 'var(--text-muted-dark)', paddingBottom: '4px' }}>→</div>
           <div>
-            <span style={{ fontFamily: 'var(--font-latin)', fontSize: '11px', color: 'var(--text-accent-dark)', opacity: 0.7, display: 'block', marginBottom: '2px' }}>Exit</span>
+            <span style={{ fontFamily: 'var(--font-latin)', fontSize: '12px', color: 'var(--text-accent-dark)', opacity: 0.7, display: 'block', marginBottom: '2px' }}>Exit</span>
             <span style={{ fontFamily: 'var(--font-latin)', fontSize: '28px', fontWeight: 700, color: 'var(--text-accent-dark)', letterSpacing: '-0.03em' }}>{lexileAfter}L</span>
           </div>
           <div style={{ marginLeft: 'auto', textAlign: 'right', paddingBottom: '4px' }}>
             <span style={{ fontFamily: 'var(--font-latin)', fontSize: '13px', fontWeight: 700, color: 'var(--color-gilt)', letterSpacing: '-0.01em' }}>+{lexileAfter - lexileBefore}L</span>
-            <span style={{ display: 'block', fontFamily: 'var(--font-latin)', fontSize: '10px', color: 'rgba(245,200,66,0.55)' }}>~1 grade level</span>
+            <span style={{ display: 'block', fontFamily: 'var(--font-latin)', fontSize: '12px', color: 'rgba(245,200,66,0.55)' }}>~1 grade level</span>
           </div>
         </div>
       </div>
       {/* Trait bars */}
       <div style={{ padding: '20px 24px' }}>
         <div className="flex justify-between mb-4">
-          <span style={{ fontFamily: 'var(--font-latin)', fontSize: '11px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(14,14,18,0.35)' }}>Entry</span>
-          <span style={{ fontFamily: 'var(--font-latin)', fontSize: '11px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-accent-dark)' }}>Exit</span>
+          <span style={{ fontFamily: 'var(--font-latin)', fontSize: '12px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(14,14,18,0.35)' }}>Entry</span>
+          <span style={{ fontFamily: 'var(--font-latin)', fontSize: '12px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-accent-dark)' }}>Exit</span>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
           {traits.map((t) => (
@@ -97,13 +97,13 @@ function AssessmentReport({ lexileBefore, lexileAfter, traits }) {
         <div className="flex items-center gap-4 mt-4 pt-4" style={{ borderTop: '1px solid rgba(0,0,0,0.06)' }}>
           <div className="flex items-center gap-2">
             <div style={{ width: '16px', height: '6px', borderRadius: '3px', backgroundColor: 'rgba(183,181,254,0.30)' }} />
-            <span style={{ fontFamily: 'var(--font-latin)', fontSize: '11px', color: 'rgba(14,14,18,0.4)' }}>Entry</span>
+            <span style={{ fontFamily: 'var(--font-latin)', fontSize: '12px', color: 'rgba(14,14,18,0.4)' }}>Entry</span>
           </div>
           <div className="flex items-center gap-2">
             <div style={{ width: '16px', height: '6px', borderRadius: '3px', backgroundColor: 'var(--color-lavender-signal)' }} />
-            <span style={{ fontFamily: 'var(--font-latin)', fontSize: '11px', color: 'rgba(14,14,18,0.4)' }}>Exit · 16 weeks</span>
+            <span style={{ fontFamily: 'var(--font-latin)', fontSize: '12px', color: 'rgba(14,14,18,0.4)' }}>Exit · 16 weeks</span>
           </div>
-          <span style={{ fontFamily: 'var(--font-latin)', fontSize: '11px', color: 'rgba(14,14,18,0.3)', marginLeft: 'auto' }}>Scale 1–6</span>
+          <span style={{ fontFamily: 'var(--font-latin)', fontSize: '12px', color: 'rgba(14,14,18,0.3)', marginLeft: 'auto' }}>Scale 1–6</span>
         </div>
       </div>
     </div>
@@ -285,7 +285,7 @@ export default function AssessmentClient({ locale = 'en' }) {
                     color: 'var(--text-accent-dark)', backgroundColor: 'transparent', border: '1.5px solid rgba(183,181,254,0.40)', cursor: 'pointer' }}
                   onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(183,181,254,0.80)'; e.currentTarget.style.backgroundColor = 'rgba(183,181,254,0.12)' }}
                   onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(183,181,254,0.40)'; e.currentTarget.style.backgroundColor = 'transparent' }}>
-                  {pill.label} <span style={{ color: 'var(--text-muted-dark)', fontSize: '11px' }}>↓</span>
+                  {pill.label} <span style={{ color: 'var(--text-muted-dark)', fontSize: '12px' }}>↓</span>
                 </button>
               ))}
             </div>
@@ -314,7 +314,7 @@ export default function AssessmentClient({ locale = 'en' }) {
             ].map(({ number, heading, text }, i) => (
               <div key={number} className="px-0 md:px-8"
                 style={i > 0 ? { borderLeft: '1px solid rgba(183,181,254,0.2)' } : undefined}>
-                <div style={{ fontFamily: 'var(--font-latin)', fontSize: '11px', fontWeight: 300,
+                <div style={{ fontFamily: 'var(--font-latin)', fontSize: '12px', fontWeight: 300,
                   color: 'var(--text-muted-dark)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '12px' }}>{number}</div>
                 <h3 style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: '21px', color: 'var(--text-accent-dark)', marginBottom: '12px' }}>{heading}</h3>
                 <p style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '15px', color: 'var(--platinum-70)', lineHeight: 1.6 }}>{text}</p>
@@ -344,7 +344,7 @@ export default function AssessmentClient({ locale = 'en' }) {
             {ENTRANCE_STEPS.map((item) => (
               <div key={item.step} className="bg-white rounded-lg p-6 relative z-10"
                 style={{ borderTop: '3px solid #b7b5fe', boxShadow: '0 2px 12px rgba(0,0,0,0.05)' }}>
-                <div style={{ fontFamily: 'var(--font-latin)', fontSize: '11px', fontWeight: 300,
+                <div style={{ fontFamily: 'var(--font-latin)', fontSize: '12px', fontWeight: 300,
                   color: 'var(--text-muted-dark)', textTransform: 'uppercase', marginBottom: '12px' }}>{item.step}</div>
                 <h3 className="mb-3" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: '18px', color: 'var(--text-body-dark)' }}>{item.name}</h3>
                 <p className="mb-3" style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '14px', color: 'var(--text-heading)', lineHeight: 1.6 }}>{item.happens}</p>

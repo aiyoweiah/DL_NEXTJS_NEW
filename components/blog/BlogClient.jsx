@@ -46,7 +46,7 @@ function ArticleCard({ article, locale }) {
         <img src={article.imageUrl} alt={article.title}
           className="w-full h-full object-cover" style={{ display: 'block' }} />
         <div className="absolute bottom-3 left-3 px-2 py-1 rounded uppercase"
-          style={{ backgroundColor: 'var(--lavender-15)', color: 'var(--text-accent-dark)', fontSize: '11px', fontWeight: 500, backdropFilter: 'blur(8px)' }}>
+          style={{ backgroundColor: 'var(--lavender-15)', color: 'var(--text-accent-dark)', fontSize: '12px', fontWeight: 500, backdropFilter: 'blur(8px)' }}>
           {article.category}
         </div>
       </div>

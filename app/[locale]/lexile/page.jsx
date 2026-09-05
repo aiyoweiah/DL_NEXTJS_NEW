@@ -195,7 +195,7 @@ export default async function LexilePage({ params }) {
                     'Lexile',
                     locale === 'zh' ? '中位数' : 'Midpoint'].map((h) => (
                     <th key={h} className="text-left pb-3 pr-6"
-                      style={{ color: 'var(--text-muted-dark)', fontWeight: 500, fontSize: '11px',
+                      style={{ color: 'var(--text-muted-dark)', fontWeight: 500, fontSize: '12px',
                         letterSpacing: '0.1em', textTransform: 'uppercase' }}>
                       {h}
                     </th>

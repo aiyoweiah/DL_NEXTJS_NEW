@@ -434,7 +434,7 @@ const S = {
     margin:     0,
   },
   sectionLabel: {
-    fontSize:      '0.625rem',
+    fontSize:      '0.75rem',
     fontWeight:    700,
     letterSpacing: '0.12em',
     textTransform: 'uppercase',

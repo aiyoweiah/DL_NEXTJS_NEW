@@ -201,7 +201,7 @@ function PhotoIntro({ locale, c }: { locale: string; c: any }) {
           {/* Image column */}
           <div className="relative" style={{ aspectRatio: '4/3' }}>
             <img
-              src="/homepage-mom-daughter-thinking.jpeg"
+              src="/homepage-mom-daughter-thinking.webp"
               alt={c.photoIntro.imgAlt}
               className="w-full h-full object-cover rounded-lg"
             />
@@ -345,7 +345,7 @@ function CodingBand({ c }: { c: any }) {
   return (
     <section className="section-light bg-[color:var(--color-whisper)]" aria-labelledby="coding-band-heading">
       <div className="container-section">
-        <div style={{ maxWidth: '44rem' }}>
+        <div style={{ maxWidth: '44rem', marginInline: 'auto' }}>
           <p
             className="eyebrow mb-3 label-quote"
             style={{

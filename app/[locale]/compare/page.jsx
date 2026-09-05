@@ -247,7 +247,7 @@ export default async function ComparePage({ params }) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0">
           {c.s7.cols.map(({ num, title, body }, i) => (
             <div key={num} className="px-0 md:px-8" style={i > 0 ? { borderLeft: '1px solid rgba(183,181,254,0.2)' } : undefined}>
-              <div aria-hidden="true" className="mb-3" style={{ fontFamily: 'var(--font-latin)', fontWeight: 300, fontSize: '11px', color: 'var(--text-muted-dark)' }}>{num}</div>
+              <div aria-hidden="true" className="mb-3" style={{ fontFamily: 'var(--font-latin)', fontWeight: 300, fontSize: '12px', color: 'var(--text-muted-dark)' }}>{num}</div>
               <h3 className="mb-3" style={{ fontFamily: 'var(--font-latin)', fontWeight: 700, fontSize: '20px', color: 'var(--text-accent-dark)' }}>{title}</h3>
               <p style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '15px', color: 'var(--platinum-70)', lineHeight: 1.6 }}>{body}</p>
             </div>

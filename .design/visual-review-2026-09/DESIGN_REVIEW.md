@@ -66,6 +66,8 @@ The defects cluster in four places: **one silent brand regression** (ZH typeface
 
 One ruling on C1–C4 (which growth claim is true?) unlocks a single apply-gated cascade; they should not be fixed piecemeal.
 
+**Wave-4 status (2026-09-05 admin ruling, via before/after previews):** items #7 (all four sections — /consult trust was a live bug: inline `gridTemplateColumns` overrode `lg:grid-cols-2`), #12 (full 12px floor incl. three 9px labels the review missed; D94 qualifier exempt), #16/#17 — **shipped**. #14 brush accent — **ruled SKIP**: it would be a second drawn device in a section whose eyebrow already carries the quote; the one-device budget holds. #15 — **ruled APPLY**: `--color-hearth` minted (§06b), /little-dodo how-section. #13 resolved: Lighthouse desktop 98 on /consult (LCP 1.1s · TBT 0 · CLS 0) — the review-time freezes were instrumentation, not the site; one fix taken: mom-daughter hero JPEG → WebP (729→82 KB). Still open: #10/#11 imagery + footage (assets).
+
 **Register status (2026-09-05 admin rulings):** C1–C4 **resolved by D99** — canon re-ruled to per-cycle, so these spots now conform and the two-cycle statements became the outliers (cascade drafted in `content-review/03-growth-canon-cascade-D99.md`, apply-gated). C5 naming + C6 (诊断) + C7 (timeline re-cut 35–45/45–50) + C8 (Full Loop relabel) **applied**. C9 verified non-defect in source (`{number} {unit}` renders with a space). C1–C4's companion finding: the same claim also lived at `en:198`, `en:1182`, `en:1530`, `zh:180`, `zh:259` — all conform under D99.
 
 ---

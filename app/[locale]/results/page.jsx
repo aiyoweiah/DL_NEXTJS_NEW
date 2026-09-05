@@ -262,9 +262,9 @@ export default async function ResultsPage({ params }) {
 
       {/* ── 5. Writing traits ────────────────────────────── */}
       <SectionWrapper dark>
-        <div className="py-20 md:py-24">
+        <div className="py-20 md:py-24 lg:grid lg:grid-cols-2 lg:gap-16 lg:items-start">
 
-          <div className="max-w-2xl mb-12">
+          <div className="max-w-2xl mb-12 lg:mb-0">
             <p className="eyebrow mb-4 label-quote">{t.writing.eyebrow}</p>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5 text-gradient">
               {t.writing.heading}

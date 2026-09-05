@@ -132,8 +132,8 @@ function Hero({ locale, c }) {
             {c.hero.stats.map((stat, i) => (
               <div key={i} style={{ textAlign: 'center', padding: '1.125rem 0.375rem', borderRight: i !== 2 && i !== 5 ? '1px solid rgba(183,181,254,0.07)' : 'none', borderBottom: i < 3 ? '1px solid rgba(183,181,254,0.07)' : 'none' }}>
                 <p style={{ fontSize: 'clamp(1.375rem, 2.5vw, 2rem)', fontWeight: 700, letterSpacing: '-0.03em', lineHeight: 1, color: 'var(--text-accent-dark)' }}>{stat.value}</p>
-                <p style={{ fontSize: '0.6875rem', fontWeight: 700, color: 'rgba(240,240,240,0.75)', marginTop: '3px', lineHeight: 1.2 }}>{stat.unit}</p>
-                <p style={{ fontSize: '0.625rem', color: 'var(--text-muted-dark)', marginTop: '2px', lineHeight: 1.3 }}>{stat.desc}</p>
+                <p style={{ fontSize: '0.75rem', fontWeight: 700, color: 'rgba(240,240,240,0.75)', marginTop: '3px', lineHeight: 1.2 }}>{stat.unit}</p>
+                <p style={{ fontSize: '0.75rem', color: 'var(--text-muted-dark)', marginTop: '2px', lineHeight: 1.3 }}>{stat.desc}</p>
               </div>
             ))}
           </div>
@@ -164,7 +164,7 @@ function WhatHappens({ locale, c }) {
                 <span style={{ fontSize: '12px', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-accent)' }}>{step.time}</span>
               </div>
               <p style={{ fontSize: '1.0625rem', fontWeight: 700, color: 'var(--text-body-dark)', lineHeight: 1.25, marginBottom: '2px' }}>{step.label}</p>
-              <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '11px', color: 'var(--text-accent)', lineHeight: 1.3, marginBottom: '0.875rem' }}>{step.labelZh}</p>
+              <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '12px', color: 'var(--text-accent)', lineHeight: 1.3, marginBottom: '0.875rem' }}>{step.labelZh}</p>
               <p style={{ fontSize: '0.8125rem', lineHeight: 1.75, color: 'var(--text-body)' }}>{step.desc}</p>
             </div>
           ))}
@@ -189,10 +189,10 @@ function RealCall({ locale, c }) {
       <div className="container-section relative z-10" style={{ padding: 'var(--section-md) 1.25rem' }}>
         <div style={{ maxWidth: '40rem' }}>
           <div className="inline-flex items-center gap-2.5 mb-7">
-            <span aria-hidden="true" style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: 'var(--color-lavender-signal)', color: 'var(--text-body-dark)', fontSize: '10px', fontWeight: 800, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>NV</span>
+            <span aria-hidden="true" style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: 'var(--color-lavender-signal)', color: 'var(--text-body-dark)', fontSize: '12px', fontWeight: 800, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>NV</span>
             <div>
-              <p style={{ fontSize: '11px', fontWeight: 700, color: 'var(--text-inverse)', lineHeight: 1.2 }}>{c.call.navigatorName}</p>
-              <p style={{ fontSize: '10px', color: 'var(--text-muted-dark)', lineHeight: 1.2 }}>{c.call.sessionPhase}</p>
+              <p style={{ fontSize: '12px', fontWeight: 700, color: 'var(--text-inverse)', lineHeight: 1.2 }}>{c.call.navigatorName}</p>
+              <p style={{ fontSize: '12px', color: 'var(--text-muted-dark)', lineHeight: 1.2 }}>{c.call.sessionPhase}</p>
             </div>
           </div>
           <Eyebrow dark>{c.call.eyebrow}</Eyebrow>
@@ -217,7 +217,7 @@ function TrustSection({ locale, c }) {
   return (
     <section className="on-dark" aria-labelledby="trust-heading" style={{ backgroundColor: 'var(--color-deep-void)', padding: 'var(--section-md) 0' }}>
       <div className="container-section">
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '3rem' }} className="lg:grid-cols-2">
+        <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: '3rem' }}>
           <div>
             <Eyebrow dark>{c.trust.eyebrow}</Eyebrow>
             <BilingualH2 id="trust-heading" primary={c.trust.h2} secondary={c.trust.h2zh} light />

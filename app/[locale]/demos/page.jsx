@@ -154,8 +154,8 @@ function Hero({ locale, c }) {
             {c.hero.stats.map((stat, i) => (
               <div key={i} style={{ textAlign: 'center', padding: '1.125rem 0.375rem', borderRight: i !== 2 && i !== 5 ? '1px solid rgba(183,181,254,0.07)' : 'none', borderBottom: i < 3 ? '1px solid rgba(183,181,254,0.07)' : 'none' }}>
                 <p style={{ fontSize: 'clamp(1.375rem, 2.5vw, 2rem)', fontWeight: 700, letterSpacing: '-0.03em', lineHeight: 1, color: 'var(--text-accent-dark)' }}>{stat.value}</p>
-                <p style={{ fontSize: '0.6875rem', fontWeight: 700, color: 'rgba(240,240,240,0.75)', marginTop: '3px', lineHeight: 1.2 }}>{stat.unit}</p>
-                <p style={{ fontSize: '0.625rem', color: 'var(--text-muted-dark)', marginTop: '2px', lineHeight: 1.3 }}>{stat.desc}</p>
+                <p style={{ fontSize: '0.75rem', fontWeight: 700, color: 'rgba(240,240,240,0.75)', marginTop: '3px', lineHeight: 1.2 }}>{stat.unit}</p>
+                <p style={{ fontSize: '0.75rem', color: 'var(--text-muted-dark)', marginTop: '2px', lineHeight: 1.3 }}>{stat.desc}</p>
               </div>
             ))}
           </div>
@@ -191,7 +191,7 @@ function VideoGallery({ locale, c }) {
             <TagRun items={[card.tag1, card.tag2, card.tag3]} />
           </div>
           <p style={{ fontSize: '0.875rem', fontWeight: 700, color: 'var(--text-body-dark)', lineHeight: 1.3, marginBottom: '1px' }}>{card.label}</p>
-          <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '10px', color: 'var(--text-accent)', lineHeight: 1.3 }}>{card.labelZh}</p>
+          <p style={{ fontFamily: 'var(--font-cjk)', fontSize: '12px', color: 'var(--text-accent)', lineHeight: 1.3 }}>{card.labelZh}</p>
         </div>
       </article>
     )
@@ -242,10 +242,10 @@ function InsideSession({ locale, c }) {
       <div className="container-section relative z-10" style={{ padding: 'var(--section-md) 1.25rem' }}>
         <div style={{ maxWidth: '40rem' }}>
           <div className="inline-flex items-center gap-2.5 mb-7">
-            <span aria-hidden="true" style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: 'var(--color-lavender-signal)', color: 'var(--text-body-dark)', fontSize: '10px', fontWeight: 800, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>NV</span>
+            <span aria-hidden="true" style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: 'var(--color-lavender-signal)', color: 'var(--text-body-dark)', fontSize: '12px', fontWeight: 800, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>NV</span>
             <div>
-              <p style={{ fontSize: '11px', fontWeight: 700, color: 'var(--text-inverse)', lineHeight: 1.2 }}>{c.session.navigatorName}</p>
-              <p style={{ fontSize: '10px', color: 'var(--text-muted-dark)', lineHeight: 1.2 }}>{c.session.sessionPhase}</p>
+              <p style={{ fontSize: '12px', fontWeight: 700, color: 'var(--text-inverse)', lineHeight: 1.2 }}>{c.session.navigatorName}</p>
+              <p style={{ fontSize: '12px', color: 'var(--text-muted-dark)', lineHeight: 1.2 }}>{c.session.sessionPhase}</p>
             </div>
           </div>
           <Eyebrow dark>{c.session.eyebrow}</Eyebrow>
@@ -299,8 +299,8 @@ function LexileScaleViz({ start, end }) {
           <div key={row.level} aria-hidden="true" style={{ position: 'absolute', top: `${yPct}%`, left: 0, transform: 'translateY(-50%)', display: 'flex', alignItems: 'center', gap: '8px' }}>
             <div style={{ width: '7px', height: '7px', borderRadius: '50%', backgroundColor: inRange ? '#b7b5fe' : 'rgba(183,181,254,0.18)', marginLeft: '13px', flexShrink: 0, boxShadow: inRange ? '0 0 6px rgba(183,181,254,0.4)' : 'none' }} />
             <div>
-              <span style={{ fontSize: '10px', fontWeight: inRange ? 700 : 500, color: inRange ? '#b7b5fe' : 'rgba(183,181,254,0.28)', display: 'block', lineHeight: 1.2 }}>{row.level}L</span>
-              <span style={{ fontSize: '9px', color: inRange ? 'rgba(183,181,254,0.65)' : 'rgba(183,181,254,0.2)', lineHeight: 1.2 }}>{row.grade}</span>
+              <span style={{ fontSize: '12px', fontWeight: inRange ? 700 : 500, color: inRange ? '#b7b5fe' : 'rgba(183,181,254,0.28)', display: 'block', lineHeight: 1.2 }}>{row.level}L</span>
+              <span style={{ fontSize: '12px', color: inRange ? 'rgba(183,181,254,0.65)' : 'rgba(183,181,254,0.2)', lineHeight: 1.2 }}>{row.grade}</span>
             </div>
           </div>
         )
@@ -330,9 +330,9 @@ function ResultsSection({ locale, c }) {
             <h3 style={{ fontSize: '1.125rem', fontWeight: 700, color: 'var(--text-accent-dark)', marginBottom: '0.375rem', letterSpacing: '-0.01em' }}>{c.growth.trait.h3}</h3>
             <p style={{ fontSize: '0.875rem', lineHeight: 1.72, color: 'var(--platinum-60)', marginBottom: '1.25rem' }}>{c.growth.trait.sub}</p>
             <div className="flex items-center gap-4" style={{ marginBottom: '0.75rem' }} aria-hidden="true">
-              <div className="flex items-center gap-1.5"><div style={{ width: '10px', height: '10px', borderRadius: '2px', backgroundColor: 'rgba(183,181,254,0.18)' }} /><span style={{ fontSize: '10px', fontWeight: 600, color: 'var(--text-muted-dark)' }}>{c.growth.trait.startLabel}</span></div>
-              <div className="flex items-center gap-1.5"><div style={{ width: '10px', height: '10px', borderRadius: '2px', backgroundColor: 'var(--color-lavender-signal)' }} /><span style={{ fontSize: '10px', fontWeight: 600, color: 'var(--text-muted-dark)' }}>{c.growth.trait.endLabel}</span></div>
-              <span style={{ fontSize: '10px', color: 'rgba(183,181,254,0.22)', marginLeft: 'auto' }}>{c.growth.trait.scaleLabel}</span>
+              <div className="flex items-center gap-1.5"><div style={{ width: '10px', height: '10px', borderRadius: '2px', backgroundColor: 'rgba(183,181,254,0.18)' }} /><span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--text-muted-dark)' }}>{c.growth.trait.startLabel}</span></div>
+              <div className="flex items-center gap-1.5"><div style={{ width: '10px', height: '10px', borderRadius: '2px', backgroundColor: 'var(--color-lavender-signal)' }} /><span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--text-muted-dark)' }}>{c.growth.trait.endLabel}</span></div>
+              <span style={{ fontSize: '12px', color: 'rgba(183,181,254,0.22)', marginLeft: 'auto' }}>{c.growth.trait.scaleLabel}</span>
             </div>
             <div>
               {TRAITS.map((trait) => {

@@ -55,14 +55,14 @@ export default function AgeBandChooser({ locale, copy, current }) {
               >
                 <div className="flex items-center gap-2 mb-3">
                   <span
-                    className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded"
+                    className="text-xs font-semibold uppercase tracking-wider px-2 py-0.5 rounded"
                     style={{ color: 'var(--label-color)', backgroundColor: 'var(--lavender-deep-08)' }}
                   >
                     {b.tag}
                   </span>
                   {isCurrent && (
                     <span
-                      className="text-[10px] font-semibold uppercase tracking-wider text-[color:var(--text-muted)]"
+                      className="text-xs font-semibold uppercase tracking-wider text-[color:var(--text-muted)]"
                     >
                       · {copy.here}
                     </span>

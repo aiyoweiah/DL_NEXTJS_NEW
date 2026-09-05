@@ -384,7 +384,7 @@ function GateView({ g, locale, input, setInput, onSubmit, onKeyDown, error, shak
           boxShadow:       '0 24px 64px rgba(0,0,0,0.5)',
         }}
       >
-        <div style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-accent-dark)', marginBottom: '12px', textAlign: 'center' }}>
+        <div style={{ fontSize: '12px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-accent-dark)', marginBottom: '12px', textAlign: 'center' }}>
           {g.label}
         </div>
         <p style={{ fontSize: '15px', fontWeight: 400, color: 'var(--platinum-60)', lineHeight: 1.6, textAlign: 'center', marginBottom: '32px', whiteSpace: 'pre-line' }}>
@@ -638,7 +638,7 @@ function PartnersContent({ c, locale }) {
 
             <div style={{ backgroundColor: 'var(--surface-raised)', borderRadius: '16px', border: '1px solid rgba(14,14,18,0.1)', overflow: 'hidden' }}>
               <div style={{ padding: '28px 32px', borderBottom: '1px solid rgba(14,14,18,0.08)' }}>
-                <div style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#7EC8A0', marginBottom: '16px' }}>{c.s3.goodLabel}</div>
+                <div style={{ fontSize: '12px', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#7EC8A0', marginBottom: '16px' }}>{c.s3.goodLabel}</div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                   {c.s3.goodItems.map((item) => (
                     <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
@@ -649,7 +649,7 @@ function PartnersContent({ c, locale }) {
                 </div>
               </div>
               <div style={{ padding: '28px 32px', backgroundColor: '#FAFAFA' }}>
-                <div style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(14,14,18,0.4)', marginBottom: '16px' }}>{c.s3.notLabel}</div>
+                <div style={{ fontSize: '12px', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(14,14,18,0.4)', marginBottom: '16px' }}>{c.s3.notLabel}</div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                   {c.s3.notItems.map((item) => (
                     <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
@@ -678,7 +678,7 @@ function PartnersContent({ c, locale }) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {c.s4.cards.map(({ label, headline, body, color }) => (
               <div key={label} style={{ backgroundColor: '#1A1C24', borderRadius: '16px', padding: '36px', border: '1px solid rgba(255,255,255,0.07)', borderTop: `3px solid ${color}` }}>
-                <div style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color, opacity: 0.85, marginBottom: '12px', fontFamily: 'var(--font-latin)' }}>
+                <div style={{ fontSize: '12px', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color, opacity: 0.85, marginBottom: '12px', fontFamily: 'var(--font-latin)' }}>
                   {label}
                 </div>
                 <div style={{ fontSize: 'clamp(18px, 2vw, 22px)', fontWeight: 700, color: 'var(--text-inverse)', lineHeight: 1.3, marginBottom: '20px', fontFamily: 'var(--font-latin)' }}>

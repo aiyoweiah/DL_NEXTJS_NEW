@@ -262,7 +262,7 @@ export default async function MethodologyPage({ params }) {
 
       {/* ── 2. Why a Loop ─────────────────────────────────── */}
       <SectionWrapper white>
-        <div className="py-20 md:py-24 max-w-3xl">
+        <div className="py-20 md:py-24 max-w-3xl mx-auto">
           <Eyebrow>{t.why.eyebrow}</Eyebrow>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6" style={{ color: 'var(--text-body-dark)', letterSpacing: '-0.025em' }}>
             {t.why.heading}
@@ -470,7 +470,7 @@ export default async function MethodologyPage({ params }) {
       */}
       {t.research && (
       <SectionWrapper darker>
-        <div className="py-20 md:py-24 max-w-3xl">
+        <div className="py-20 md:py-24 max-w-3xl mx-auto">
           <p className="eyebrow mb-4 label-quote">{t.research.eyebrow}</p>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5 text-gradient">
             {t.research.heading}
@@ -498,7 +498,7 @@ export default async function MethodologyPage({ params }) {
 
       {/* ── 6. GEO signal ─────────────────────────────────── */}
       <SectionWrapper dark>
-        <div className="py-20 md:py-24 max-w-3xl">
+        <div className="py-20 md:py-24 max-w-3xl mx-auto">
           <p className="eyebrow mb-4 label-quote">{t.geo.eyebrow}</p>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5 text-gradient">
             {t.geo.heading}
