@@ -3,11 +3,11 @@
   "chunks": [
     {
       "name": "chrome",
-      "file": "/fonts/cjk/noto-sans-sc.chrome.f9a9cc2b.woff2"
+      "file": "/fonts/cjk/lxgw-wenkai-gb.chrome.w400.3aee209f.woff2"
     },
     {
       "name": "t1",
-      "file": "/fonts/cjk/noto-sans-sc.t1.7880f439.woff2"
+      "file": "/fonts/cjk/lxgw-wenkai-gb.t1.w400.c12424f2.woff2"
     }
   ]
 }

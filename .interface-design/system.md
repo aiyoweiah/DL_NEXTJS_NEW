@@ -251,17 +251,16 @@ count**, D96).
   font family literally in code — use `var(--font-latin)` / the cascade (nine
   hard-coded stacks were the D59 bug). If a display face is ever piloted again: with
   a written expiry, and preferably covering both scripts.
-- **ZH body currently ships Noto Sans SC — ⚠️ diverged from D62.** D62 ruled ZH onto
-  LXGW WenKai GB and it was built (`fe4d5e4`), but a routine regeneration in `799629f`
-  ran `npm run fonts:cjk` without `--source=lxgw-wenkai-gb` and silently reverted the
-  chunks to the generator's Noto default (verified in repo + production 2026-09-03;
-  ruling pending — redeploy WenKai or re-rule to Noto). **Until the generator's source
-  is made sticky, never run `fonts:cjk` without checking the manifest's current
-  source first.** The subset pipeline itself (D63) is unchanged: committed chunks in
-  `public/fonts/cjk/`, guarded on **both** `prebuild` and `postbuild`
-  (`check-cjk-coverage` — the postbuild pass sees client-only and dependency glyphs;
-  it checks *coverage only* and cannot see which typeface feeds it). **The Latin face
-  leads the CJK stack (D67)** so Latin inside ZH copy stays Source Sans 3.
+- **ZH body ships LXGW WenKai GB (D62 — Live).** Built `fe4d5e4`, silently reverted
+  to Noto by a default-source regeneration (`799629f`), **re-shipped 2026-09-05 by
+  admin ruling** through D97's explicit `--source=lxgw-wenkai-gb` flag. Two static
+  faces: Regular = 400, Medium declared `500 700` — WenKai has no true bold; never
+  synthesize one. The generator's source is **sticky (D97)**: a plain `fonts:cjk`
+  keeps the manifest's face, and `check-cjk-coverage` prints the shipping source on
+  every run and fails half-regenerated states, on **both** `prebuild` and `postbuild`
+  (the postbuild pass sees client-only and dependency glyphs). The subset pipeline
+  itself (D63) is unchanged: committed chunks in `public/fonts/cjk/`. **The Latin
+  face leads the CJK stack (D67)** so Latin inside ZH copy stays Source Sans 3.
 - **Latin preload is `subsets: ['latin']` only (D64)**, ratcheted by
   `check-font-preload` (a tolerated next/font cyrillic-ext-italic quirk is documented
   in the guard).
