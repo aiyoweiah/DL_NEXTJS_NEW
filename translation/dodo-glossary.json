@@ -4,9 +4,10 @@
   "owned_terms": {
     "Navigators": "导师（Navigator）",
     "Navigator": "导师（Navigator）",
-    "The Loop": "The Loop（学习循环）",
+    "The Loop": "The Loop【保留英文，不加注——旧式「The Loop（学习循环）」已于 D92（2026-09-02）停用；存量正文待裁定】",
     "Read → Think → Speak → Write": "阅读 → 思考 → 表达 → 写作",
-    "The 16-Week Program": "16周课程",
+    "ELA Program": "ELA 课程",
+    "The 16-Week Program": "16周课程【历史名——课程正式名已于 2026-06-10 更为 ELA Program / ELA 课程；新文案不以此为课程名，「周期」仍指 16 周单元】",
     "Founding Family Program": "创始家庭计划",
     "English Thinker": "英语思维者",
     "Lexile": "Lexile（蓝思）",
@@ -122,6 +123,7 @@
     "Montreal": "蒙特利尔",
     "Richmond BC": "列治文（不列颠哥伦比亚省）",
     "San Francisco Bay Area": "旧金山湾区",
+    "Denver": "丹佛",
     "Shanghai": "上海"
   }
 }

@@ -17,7 +17,8 @@ the project memory file `project_audiobooks.md` (architecture overview).
 > I want to publish a new audiobook on dodolearning.com/audiobooks.
 >
 > **My workflow** generates the script + MP3 in
-> `C:\Users\hsink\Documents\DODO_Audiobook Workflow\DODO_Audiobook_Workflow\output\stage3_final\`.
+> `F:\PC-Documents\DODO_Audiobook Workflow\DODO_Audiobook_Workflow\output\stage3_final\`
+> ⚠️ *(2026-09-03: path prefix corrected from the ghost `C:\Users\...\Documents`, but **neither location currently exists on disk** — locate the audiobook workflow folder before relying on this step, and update this line with the real path.)*
 > The repo for the website is at
 > `F:\PC-Documents\DODO_web\DL_NEXTJS_NEW\` — main branch.
 >

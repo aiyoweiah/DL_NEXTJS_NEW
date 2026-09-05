@@ -1,12 +1,23 @@
-# DODO Learning · Brand + Content Guide v5
+# DODO Learning · Brand + Content Guide v6
 
-**DODO Learning / 都学书院** · Operator guide for website, social, and content production · v5.1 · 2026-08-27
-Distilled from Master Brand Guide v3.1 (Apr 2026) + DLCW curriculum sources; consolidated through decision **D47**. Canonical operator copy (EN); ZH mirror at `BRAND_CONTENT_GUIDE.zh.md`.
+**DODO Learning / 都学书院** · Operator guide for website, social, and content production · v6.0 · 2026-09-03
+Distilled from Master Brand Guide v3.1 (Apr 2026) + DLCW curriculum sources; consolidated through decision **D96**. Canonical operator copy (EN); ZH mirror at `BRAND_CONTENT_GUIDE.zh.md`.
 **Every section answers _"what do I do on a content surface?"_**
 
-> **v5 consolidation (2026-08-26):** Brings the guide current through the full decisions log (D1–D42). New since v4.1: tagline → **"Think once, in two languages."** (D36); LCS umbrella with the five MCT strands nested + ELA = 7 levels, Poodle retired (D37, §06); **§07a Research Base** (D38); ZH mirror + **§17** branded vocabulary (D39); positioning by **demographic + desire** — local explicit, international implicit (D40, §04); **§01b** positioning statement / objections / AI rebuttal / anti-persona (D41); **§04a** Marketing Direction & Directives (D42). Founder is **Janet — first name only, everywhere** (upstream D35). **v5.1 (2026-08-27):** §08 Voice rewritten to the **"soft in tone, deep in knowledge"** persona + an anti-greasy / anti-AI-cadence standard, with a §10 tone-tells band (D47). Customer-surface cascade in progress (D45 tagline swap live; D46 Home reworked — to be re-voiced under D47); tracked in `docs/customer-site-cascade-plan.md`.
+> **v6 consolidation (2026-09-03):** brings the guide current through **D96** and the
+> June program-family work it had missed. The program's name is the **ELA Program**
+> (renamed from "16-Week Program", 2026-06-10; "cycle" stays the 16-week unit — §06/§09);
+> §06's superseded "9 levels / Full–Starter" framing removed from the locked-decision
+> block; **§06b Program Family** added (ELA · Little DODO · DODO Coding); D93's MCT
+> exception recorded; llms surfaces now EN **and ZH** (§13/§15); §15's file map matched
+> to the real exports; Cal.com references removed; ghost `C:\Users\...\Documents` paths
+> corrected to `F:\PC-Documents\`. Two genuine rule conflicts are **explicitly open**
+> rather than silently contradictory — Flex 3's name (§06 ⚠️) and the XHS assessment
+> CTA (§13 ⚠️) — both await an admin ruling.
 
-> **Active decisions log:** Date-stamped overrides since 2026-05-16 are in `docs/content-style-decisions.md` (append-only history). The locked sections below already carry every stabilized decision; the log is the provenance trail. Read both before major content work.
+> **v5 consolidation (2026-08-26):** Brings the guide current through the full decisions log (D1–D42). New since v4.1: tagline → **"Think once, in two languages."** (D36); LCS umbrella with the five MCT strands nested + ELA = 7 levels, Poodle retired (D37, §06); **§07a Research Base** (D38); ZH mirror + **§17** branded vocabulary (D39); positioning by **demographic + desire** — local explicit, international implicit (D40, §04); **§01b** positioning statement / objections / AI rebuttal / anti-persona (D41); **§04a** Marketing Direction & Directives (D42). Founder is **Janet — first name only, everywhere** (upstream D35). **v5.1 (2026-08-27):** §08 Voice rewritten to the **"soft in tone, deep in knowledge"** persona + an anti-greasy / anti-AI-cadence standard, with a §10 tone-tells band (D47). Customer-surface cascade then in progress — **since completed, 18/18, on 2026-09-02 (D91/D92)**; record in `docs/customer-site-cascade-plan.md`.
+
+> **Decisions:** status for every D lives in `docs/decision-index.md` — **check it before assuming anything here is still current.** History: `docs/content-style-decisions.md` (D1–D50, D91–D96 — closed) and `docs/decision-log.md` (D97+, the single log going forward). The locked sections below carry every stabilized decision; the logs are the provenance trail.
 
 ---
 
@@ -46,7 +57,7 @@ DODO Learning is a live, online, one-on-one English language arts program that b
 > *"We build English Thinkers at mastery level."*
 
 **The promise (deploy on every conversion-page hero):**
-One grade level of reading growth in sixteen weeks. Specific Lexile delta. Specific 6+1 Trait movement. The numbers are visible after every cycle.
+One grade level of reading growth over two sixteen-week cycles (§11 canon). Specific Lexile delta. Specific 6+1 Trait movement. The numbers are visible after every cycle — Week 0 · 8 · 16. *(v6 correction: this block used to say "in sixteen weeks" — double the canonical rate. §11 is the only source for rate claims.)*
 
 **Competitive differentiation lines** *(ready-to-drop on /compare, sales calls, FAQ):*
 
@@ -148,8 +159,8 @@ The guide is primarily a copy-production manual — but content without directio
 
 ## 05 · The Loop — Read → Think → Speak → Write
 
-**Always this exact phrase. Always this exact order. Always called The Loop.**
-*(Note: The Loop is the per-session methodology. **LCS** — Literacy · Composition · Speaking — is the underlying teaching system that organizes the curriculum across cycles. Different scope, same family. See §06.)*
+**Always this exact phrase. Always this exact order. In body copy it is always called The Loop — never as a named system in headers or pillar headings (§06 override; the named system is the LCS System).**
+*(The Loop is the per-session methodology. **LCS** — Literacy · Composition · Speaking — is the underlying teaching system that organizes the curriculum across cycles. Different scope, same family. See §06.)*
 
 | Phase | What happens | Curriculum anchors |
 |---|---|---|
@@ -167,10 +178,10 @@ The guide is primarily a copy-production manual — but content without directio
 
 ## 06 · Product Architecture
 
-> **Locked decision (2026-05-16):** Full MCT-aligned architecture (LCS system + 9 levels + 5 combinations) is the user-facing product taxonomy. The legacy single-tier "16-Week Program — Full / Starter" framing is retired from headline copy but anchors pricing.
-> **Open pricing decision:** Map legacy $2,250 (Full) and $1,185 (Starter) anchors to **Core** and **Flex 1** respectively, or restructure entirely. **TBD before /program rewrite.**
+> **Locked architecture (2026-05-16, levels corrected by D37 2026-08-26):** the user-facing product taxonomy is the **LCS System + the seven-level ELA ladder + 5 programme combinations**. The program's name is the **ELA Program** (renamed from "16-Week Program" 2026-06-10 — see §09); "cycle" remains the 16-week unit. *(A 2026-05-16 version of this block said "9 levels" and "Full / Starter" — both retired; kept only in the logs.)*
+> **Pricing:** restructured 2026-05-17 to the 5 combinations (figures in `docs/workflow.md` Open Decisions row 2); surfaced on **/faq only**, hidden on /program (D13). ⚠️ The /faq figures await verification, and **no currency is named anywhere** despite CAD + USD cities — Wave 6 item 17.
 >
-> **Loop vs LCS naming convention (2026-05-21 admin override):** On brand surfaces, **LCS is the named methodology system** ("The LCS System" / "LCS 教学理念"). **The Loop is the per-session phrase** — `Read → Think → Speak → Write` — used inside body copy to describe the per-session sequence. Do NOT use "The Loop" as the named system in section headers, pillar headings, or methodology names on brand-facing pages. Internal Navigator materials may continue to use "The Loop" as the methodology name.
+> **Loop vs LCS naming convention (2026-05-21 admin override):** On brand surfaces, **LCS is the named methodology system** ("The LCS System" / "语言循环体系" — the ZH form set 2026-06-01; the older "LCS 教学理念/教学体系" spellings are superseded, §09). **The Loop is the per-session phrase** — `Read → Think → Speak → Write` — used inside body copy to describe the per-session sequence. Do NOT use "The Loop" as the named system in section headers, pillar headings, or methodology names on brand-facing pages. Internal Navigator materials may continue to use "The Loop" as the methodology name.
 
 ### The LCS System — the live delivery architecture (Five Strands nested · 2026-08-26)
 DODO's named curriculum framework. **The LCS System** (语言循环体系) is the umbrella methodology that organizes every cycle; the **five content strands of a complete language education nest under the fitting branch.**
@@ -181,7 +192,7 @@ DODO's named curriculum framework. **The LCS System** (语言循环体系) is th
 | **C · Composition** — 系统写作训练 | The construction engine — where language comes out. | **Grammar** (the architecture of the sentence, taught first and fast, then applied) · **Writing** (sentence → paragraph → essay → academic composition) |
 | **S · Speaking** — 表达 | **DODO's own strand — the live differentiator.** | Oral defence · Socratic dialogue · perspective-taking. **No equivalent in a curriculum of books** — this is what a live Navigator adds. |
 
-**Rules:** LCS stays the named umbrella ("The LCS System" / "语言循环体系"); the five strands are described in **DODO's own words**, never as a resold booklist. **The Loop** (Read → Think → Speak → Write) remains the per-session phrase inside body copy. MCT is named **once**, as the lineage of the L/C content — never as the source of each line, never "we teach MCT." Bridges (use sparingly, only where a section needs them): Poetics also feeds Composition (writing beautifully); Grammar also serves Literacy (four-level analysis of a classic's sentences).
+**Rules:** LCS stays the named umbrella ("The LCS System" / "语言循环体系"); the five strands are described in **DODO's own words**, never as a resold booklist. **The Loop** (Read → Think → Speak → Write) remains the per-session phrase inside body copy. MCT is named **once**, as the lineage of the L/C content — never as the source of each line, never "we teach MCT." *(Stated exception — D93: on `/methodology` only, MCT may be named more than once; each §07-permitted phrasing does a distinct job there. Seven namings as of 2026-09-02. Every other surface holds the name-it-once rule.)* Bridges (use sparingly, only where a section needs them): Poetics also feeds Composition (writing beautifully); Grammar also serves Literacy (four-level analysis of a classic's sentences).
 
 ### The ELA Level Ladder — seven levels (2026-08-26)
 
@@ -201,9 +212,29 @@ DODO ELA is a **seven-level** ladder grounded in the gifted-ELA tradition. Each 
 | **Core** — 稳健航行 | 2× Literature + 1× Writing / week | Most popular; long-term development |
 | **Flex 1** — 文学阅读自由航行 | ≥ 2× Literature / week | Building the reading foundation first |
 | **Flex 2** — 大师写作自由航行 | 2× Writing / week | Writing specialisation |
-| **Flex 3** — GPA管理自由航行 | ≥ 1× GPA tutoring / week | School academic management; pairs with any of the above |
+| **Flex 3** — GPA管理自由航行 | ≥ 1× school-support session / week | School academic management; pairs with any of the above |
+
+> ⚠️ **OPEN RULING — Flex 3's descriptor.** This combination has been described as
+> "GPA tutoring" / "GPA 辅导课" (still live on `/faq`), which **§10 strips on sight**
+> as remedial framing and which works against the price anchor (see D13, open).
+> Do **not** propagate "tutoring" phrasing to any new surface; the row above uses a
+> neutral placeholder until the admin rules on the combination's real name.
 
 **Calibrated against:** US SAT · SSAT · IB Extended Essay & Internal Assessments · Cambridge KET & PET · North American private school and gifted-school standards.
+
+### 06b · The Program Family *(added v6, 2026-09-03 — recording what shipped in June)*
+
+DODO Learning is one brand carrying three offerings. Naming and cross-reference rules:
+
+| Offering | Is | Naming rules |
+|---|---|---|
+| **ELA Program** (Grade 3+) | The seven-level, LCS-taught English language arts program — everything in this guide's §05–§07 | Always "ELA Program" as the name; "cycle" for the 16-week unit; never "16-Week Program" as a name on new surfaces (§09) |
+| **Little DODO / 都学启蒙** (Ages 5–8) | A **separate program, independent of the MCT tradition** — dedicated early-childhood educators specializing in phonetics, fluency and pronunciation; decoding-led foundational reading, book by book; the love of reading as the goal; 高频低压 cadence | Keep out of ELA's methodology narrative; no Lexile-heavy framing; no specific book-count claims (varies by phase); "two specialist teams under one Navigator philosophy" — never "the same team." EN chip: "Where language takes root." Positioning detail: `docs/little-dodo-plan.md` |
+| **DODO Coding** (sibling site) | A separate vertical under the master brand — machine literacy, "a language art for the AI age"; lives at `coding.dodolearning.com` | **One-way cross-sell only:** the ELA site carries the footer link + one home-page band (`codingBand`); ELA pages never call out to coding content beyond that. Full identity is staged in `.design/dodo-coding-launch/` — consult it before writing any coding copy; its brand-guide additions land here when the web launch is applied |
+
+The home page presents ELA + Little DODO as **two paths** (the age-band chooser — a
+fork, co-equal by design); DODO Coding gets its own band lower on the page, never a
+third card. Cross-band chips are wayfinding, not conversion.
 
 ---
 
@@ -213,7 +244,7 @@ DODO ELA is a **seven-level** ladder grounded in the gifted-ELA tradition. Each 
 |---|---|---|---|---|
 | **MCT** (Michael Clay Thompson Language Arts) | Classical ELA tradition we are aligned with — etymology-based vocab, classical literature, mastery-over-calendar | *"grounded in the principles and philosophy of the MCT Language Arts framework"* · *"designed in the tradition of MCT"* · *"the MCT gifted-ELA tradition"* · *"the advanced literature framework"* / *"the advanced literature and writing framework"* (home hero soft-descriptor only — 2026-05-21 admin override) · *"the MCT writing arc: Grammar → sentence → paragraph → essay → academic composition"* (permitted when describing what students DO in the Write step — 2026-05-21) | "We teach MCT" · "Our MCT course" · any product-resale framing | /about · /methodology · /program · FAQ |
 | **Harvard Project Zero** (Visible Thinking) | Thinking Routines from HGSE — embedded in every Think phase | Nameable in captions / consultation as credential · *"Harvard's thinking science"* (home hero soft-descriptor only — 2026-05-21 admin override) | Naming specific routine titles in image copy or hero | /methodology · /navigators · /about · FAQ |
-| **Lexile** (MetaMetrics) | The North American reading-measurement standard. Cite specific numbers — "620 to 820 in 16 weeks" | Always with a number | Vague "Lexile growth" without data | /program · /methodology · /lexile · /results · FAQ · llms.txt |
+| **Lexile** (MetaMetrics) | The North American reading-measurement standard. Cite specific *measured* numbers — a real start → end pair with its cadence (Week 0 · 8 · 16). Sitewide **rate** claims come only from §11's canon: one grade level over two cycles *(v6: the old "620 to 820 in 16 weeks" example modelled double the canonical rate — retired)* | Always with a number | Vague "Lexile growth" without data · invented rate examples | /program · /methodology · /lexile · /results · FAQ · llms.txt |
 | **6+1 Trait** (Education Northwest) | Writing rubric used in BC / Ontario / US Common Core classrooms | "Ideas, Organization, Voice, Word Choice, Sentence Fluency, Conventions, Presentation" | Reducing to "writing skills" · framing as DODO curriculum | /methodology · /results · FAQ · llms.txt |
 
 > **Internal-only — never parent-facing:** *CT Dispositions / VT* (the Navigator-side taxonomy of thinking modes that selects which Project Zero routine to deploy). Lives in Navigator training docs.
@@ -298,7 +329,7 @@ DODO ELA is a **seven-level** ladder grounded in the gifted-ELA tradition. Each 
 | Website body copy | Warm-confident · third-person address ("your child") · at least one real number where it earns trust — not one in every line |
 | ClassIn (in-session) | Guided present-tense ("Today we go into Read…") · names the student's current Lexile · forward-facing close |
 | Xiaohongshu / WeChat post body | 老母亲 parent-friend ZH · 我们家孩子 acceptable · specific moments, real numbers, one idea per sentence |
-| Xiaohongshu / WeChat caption / hashtag | Outcome + framework name ("16周，阅读水平提升一个年级 #Lexile") · CES-optimised (earn a comment, not a like) |
+| Xiaohongshu / WeChat caption / hashtag | Outcome + framework name ("两个周期，阅读水平提升一个年级 #Lexile" — rate per §11 canon) · CES-optimised (earn a comment, not a like) |
 | Email / consultation follow-up | First-person plural · specific to this child's diagnostic · framework name + number per paragraph |
 
 **Old framing → New framing (retire all left-column phrases):**
@@ -344,15 +375,18 @@ These terms are DODO's. Use consistently across every channel.
 | **Navigators** | Longitudinal guides who know a child's voice, pace, gaps. First move after a student answers = a better question, never evaluation. | Teachers · tutors · instructors · 老师 · 辅导老师 · 领航员 *(领航员 is a forbidden literal Navigator translation — always 导师（Navigator）; 2026-06-01)* |
 | **The Loop** | The per-session phrase: Read → Think → Speak → Write — this phrase, this order, every session. Lives inside body copy. | "Our method" · re-ordered variants · using "The Loop" as a section header or named system on brand surfaces (use LCS for that — see §06 override 2026-05-21) |
 | **LCS System** | The named methodology surface on dodolearning.com and brand surfaces. Literacy → Composition → Speaking. The curriculum framework that organizes The Loop across cycles. Always titled **"The LCS System"** (EN) / **"语言循环体系"** (ZH section header — 2026-06-01 admin set; supersedes "LCS 教学理念" / "LCS 教学体系") / **"The LCS"** (in body). | "Our framework" used loosely · confused with The Loop · "The Loop" used as a named system |
-| **9 Levels · Starter / Poodle / Levels 1–7** | The curriculum progression. *(Structure detail in §06.)* | "Beginner / intermediate / advanced" generic labels |
+| **The ELA Level Ladder — seven levels** | The curriculum progression: L1 Island → L7 Lens III; each level = 2–3 cycles. *(Structure detail in §06. Replaces the retired "9 Levels · Starter / Poodle" taxonomy — D37.)* | "9 levels" · "Poodle" · "Starter" · "beginner / intermediate / advanced" generic labels |
 | **Literacy · Level 1** *(strand-scoped program label)* | The L-strand program at Level 1 — used as the canonical program identity on `navigators.dodolearning.com` and in any L-strand-only artefact. Shorthand: **L·L1**. Phases labelled **L·L1·P1 / L·L1·P2 / L·L1·P3**. *(See §06 for the Phase ↔ Cycle note: Navigator surfaces use "Phase"; brand surfaces use "Cycle". Same 16-week unit.)* | "Mud Trilogy program" · "Mud Trilogy Phase 1" — book series is the reading material, not the program identity |
 | **Summit · Core · Flex 1 / 2 / 3** | The five programme combinations. | "Plans" · "packages" · "tiers" |
 | **English Thinker** | The identity being built. (Evolved from *Bilingual Thinker* — that term is retired.) | Bilingual Thinker · 双语学习者 |
-| **Lexile Level** | Cited with a specific number. "620 to 790 in 16 weeks" is a fact. | Vague growth claims |
+| **Lexile Level** | Cited with a specific *measured* number — a real start → end pair and its cadence. Rate claims only per §11 canon (one grade level over two cycles). | Vague growth claims · invented per-cycle rate examples |
 | **6+1 Traits** | Ideas · Organization · Voice · Word Choice · Sentence Fluency · Conventions · Presentation | Reducing to "writing skills" |
 | **MCT** | See §07. Always with distancing language. | "We teach MCT" |
 | **Harvard Project Zero** | See §07. Nameable; routine titles not in hero copy. | Naming routines in hero copy |
-| **The 16-Week Program** | One cycle. A commitment with entrance · midpoint · exit assessments. | "Our course" · "subscription" |
+| **ELA Program** | The program's name (Grade 3+), renamed from "16-Week Program" 2026-06-10. Nav, footer, CTAs and body copy all use it. | "16-Week Program" as the program's *name* on new surfaces · "Our course" · "subscription" |
+| **Cycle** | The 16-week unit — one measured arc with entrance · midpoint · exit assessments (Week 0 · 8 · 16). "16-week cycle" is fine as a duration; brand surfaces say Cycle, Navigator surfaces say Phase (§06 note). | "semester" · "term" · mixing Cycle/Phase within one surface |
+| **Little DODO / 都学启蒙** | The separate early-starter program, ages 5–8 (EN "Ages 5–8" / ZH "5–8 岁"). See §06b for its naming rules. | Folding it into ELA's methodology narrative · "K-2 version of the ELA Program" |
+| **DODO Coding** | The sibling machine-literacy vertical, `coding.dodolearning.com`. One-way cross-sell only (§06b). | Cross-callouts from ELA pages beyond the footer link + home band |
 | **Founding Family Program** | Recognition of early commitment. | Discount · promotion · limited-time · Charter Enrollment |
 | **Think once, in two languages.** | Final tagline *(updated 2026-08-26 — sentence case, "two languages"; brand **signature**, not the positioning line)*. | Think Twice (typo) · Think Once. In Both Languages. (retired) |
 | **DODO Learning / 都学书院** | Full name first mention. | Lowercase "dodo" · "DODO Academy" |
@@ -419,18 +453,20 @@ Quick anchors when rewriting each surface. Specifics on tone, must-include eleme
 
 | Page | Conversion goal | Must include | Hero cap | Tone weight |
 |---|---|---|---|---|
-| `/` (home) | Move to /consult or /program | Tagline · one Lexile number · "English Thinker" frame · **LCS named in methodology section header** · one specific book title in Read step · one MCT-framework reference · "Enjoy the arts of language" humanistic frame in trust section | H1 ≤ 12 words (EN) / H1 = brand sub-tagline (ZH) · sub ≤ 28 | Future-focused 50% · Confident 30% · Warm 20% |
+| `/` (home) | Move to /consult or /program | Tagline · one Lexile number · "English Thinker" frame · **LCS named in methodology section header** · one specific book title in Read step · one MCT-framework reference · "Enjoy the arts of language" humanistic frame in trust section | H1 ≤ 12 words (EN); ZH H1 per the D48 rework *(the old "ZH H1 = brand sub-tagline" rule is D3, superseded)* · sub ≤ 28 | Future-focused 50% · Confident 30% · Warm 20% |
 | `/program` | Move to /consult | **LCS as named methodology header** · Loop as per-session phrase in body · cycle vs level explained · assessment cadence (Week 0 · Week 8 · Week 16) · combination chooser (Summit/Core/Flex) · **observer-POV session narrative from a real curriculum lesson** (see §12a) · pricing facts via FAQ link (combination cards hidden as of 2026-05-21 Q7) | H1 ≤ 12 · sub ≤ 30 | Precise 40% · Confident 40% · Warm 20% |
 | `/methodology` | Build credibility, send to /program | MCT + Project Zero + Lexile + 6+1 named once · Loop in 4 phases · GEO-ready 40–80-word definitions at top | H1 ≤ 14 · sub ≤ 30 | Confident 50% · Precise 50% |
 | `/results` | Lower buying anxiety | Real Lexile deltas · anonymised case studies · 6+1 Trait scores · methodology link · anchor case study | H1 ≤ 10 · sub ≤ 24 | Precise 60% · Warm 40% |
 | `/consult` | Form submission | "Diagnostic, not sales" · 20 min · 4 phases of the call · "honest fit assessment" | H1 ≤ 12 · sub ≤ 28 | Warm 50% · Confident 30% · Precise 20% |
 | `/lexile` | GEO + parent education | Scale 0–2000L · grade benchmark table · bilingual-learner context · DODO cadence | H1 ≤ 14 · sub ≤ 32 | Precise 70% · Confident 30% |
 | `/compare` | Defend category | Tutoring · Kumon · after-school · apps · school — each with strength + limit + DODO line from §01 | H1 ≤ 12 · sub ≤ 28 | Confident 60% · Precise 40% |
-| `/about` | Trust · founder credibility | "Do + Do" naming · 3 brand truths · Navigator philosophy · founder identity *(pending)* | H1 ≤ 14 · sub ≤ 32 | Warm 50% · Future-focused 30% · Confident 20% |
-| `/navigators` | Trust · expertise | Top-50 university credential · 6+1 Trait + Lexile certification · "guide not tutor" · sample Navigator bios *(pending)* | H1 ≤ 12 · sub ≤ 28 | Confident 50% · Warm 50% |
-| `/faq` | Self-service answers + GEO | 50 Q&As, each readable in isolation (council requirement) · pricing facts · LCS/Levels/Combinations explained at the top | — | Precise 50% · Warm 30% · Confident 20% |
+| `/about` | Trust · founder credibility | "Do + Do" naming · 3 brand truths · Navigator philosophy · founder identity (Janet — §11; shipped D35/D49) | H1 ≤ 14 · sub ≤ 32 | Warm 50% · Future-focused 30% · Confident 20% |
+| `/navigators` | Trust · expertise | Top-50 university credential · 6+1 Trait + Lexile certification · "guide not tutor" · Navigator spotlights (Kimberly live; bio verification open — Wave 7) | H1 ≤ 12 · sub ≤ 28 | Confident 50% · Warm 50% |
+| `/faq` | Self-service answers + GEO | Q&As each readable in isolation · pricing facts (the only public pricing surface — D13) · LCS/Levels/Combinations explained at the top · D38 evidence entry + D41 AI rebuttal (shipped D91) | — | Precise 50% · Warm 30% · Confident 20% |
+| `/little-dodo` | Fit-check for ages 5–8 → /consult | Separate-program framing per §06b · phonetics/fluency/pronunciation substance · "Where language takes root." chip · Grade 3+ cross-chip to ELA (wayfinding) · no Lexile-heavy framing | H1 ≤ 12 · sub ≤ 28 | Warm 60% · Confident 25% · Precise 15% |
+| `/credentials` | Authority · citation surface | §07a citation register — footnote style, checkable, restrained; every research reference routes here | H1 ≤ 14 · sub ≤ 30 | Precise 70% · Confident 30% |
 | `/cities/[city]` | Verification post-referral | Local context · cohort cadence · Loop summary · local outcome anchor | H1 ≤ 14 · sub ≤ 30 | Warm 50% · Precise 30% · Confident 20% |
-| `/enroll` *(pending)* | Conversion | Pricing matrix (Summit/Core/Flex) · Founding Family Program · diagnostic-first language | H1 ≤ 10 · sub ≤ 24 | Confident 60% · Precise 40% |
+| `/enroll` *(not built — and not planned: pricing lives on `/faq` per D13; enrollment goes through the consult flow)* | — | *(row kept only so nobody re-invents the page without noticing this note)* | — | — |
 | `llms.txt` / `llms-full.txt` | Be cited by LLMs | Tagline · what we are · what we are not · The Loop · LCS as named system · frameworks · "one grade level over two 16-week cycles" canon · MCT credit · MCT writing arc · §07a research base · **aspiration-defined audience (local + international, per §04)** | — | Precise 100% |
 
 ---
@@ -441,7 +477,7 @@ Reusable convention for any "what does a real session look like?" surface. First
 
 **What it is:** A documentary-style scene from an actual DLCW curriculum lesson, written in third-person observer POV. The reader is watching the lesson unfold, not being marketed to.
 
-**Source of truth:** `C:\Users\hsink\Documents\DLCW\projects\<unit>\outputs\phase<N>\lesson_<NN>` — pull real lesson facts (book, chapter, page range, Visible Thinking routine, vocabulary unit, workshop pivot, write-back assignment). **Never invent curriculum content.**
+**Source of truth:** `F:\PC-Documents\DLCW\projects\<unit>\outputs\phase<N>\lesson_<NN>` *(path corrected v6 — never the `C:\Users\...\Documents` ghost)* — pull real lesson facts (book, chapter, page range, Visible Thinking routine, vocabulary unit, workshop pivot, write-back assignment). **Never invent curriculum content.**
 
 **Structural shape (mirrors `session` object in `marketing.{en,zh}.js`):**
 
@@ -479,20 +515,27 @@ Reusable convention for any "what does a real session look like?" surface. First
 
 | Channel | Audience | Primary goal | Default post type | Language |
 |---|---|---|---|---|
-| **Xiaohongshu (小红书)** | Chinese-immigrant moms in NA · diaspora moms researching pre-move | Build the entity (no off-site mention graph today) → drive DM/Cal.com bookings | Specific moment + before/after Lexile + framework name | ZH (Mainland Simplified, parent-friend register) |
+| **Xiaohongshu (小红书)** | Chinese-immigrant moms in NA · diaspora moms researching pre-move | Build the entity (no off-site mention graph today) → drive DM → consult-form inquiries (`/consult`; Cal.com retired 2026-06-28) | Specific moment + before/after Lexile + framework name | ZH (Mainland Simplified, parent-friend register) |
 | **WeChat** | Existing parents · referral network · diaspora moms | Retention · referral · trust deepening | Long-form newsletter + parent stories + cohort updates | ZH |
 | **Website (dodolearning.com)** | First-touch parents from search / LLM citation / referral | Convert to diagnostic consultation | Conversion-page copy · /faq · /lexile · /compare | EN primary · ZH parity via /zh routes |
-| **LLM citation surface** (llms.txt, llms-full.txt, schema, FAQ data) | ChatGPT · Claude · Perplexity · Gemini parsing for parent-shopping queries | Get cited when parents ask "best English program for bilingual kids in [city]" | Plain-text self-contained facts | EN |
+| **LLM citation surface** (llms.txt, llms-full.txt, schema, FAQ data) | ChatGPT · Claude · Perplexity · Gemini parsing for parent-shopping queries | Get cited when parents ask "best English program for bilingual kids in [city]" | Plain-text self-contained facts | EN (`llms.txt` · `llms-full.txt`) **+ ZH** (`llms-full.zh.txt`, shipped 2026-08-24) |
 
-**XHS CTA pyramid (do not deviate without strategic reason):**
+**XHS CTA pyramid:**
+
+> ⚠️ **OPEN RULING — the primary CTA conflicts with D29.** "Book a free Lexile
+> assessment" is exactly the assessment-entry CTA the funnel forbids sitewide
+> (consult before assess; assessment is never a lead capture). Either D29 gets a
+> stated social-channel carve-out, or this pyramid's primary becomes a consult-shaped
+> offer. **Do not deploy this CTA until the admin rules.** (Flagged in the 2026-08-26
+> critique; carried silently until v6.)
 
 | Priority | CTA | Frame |
 |---|---|---|
-| **Primary** | Comment `测一测` to book a free Lexile assessment | Zero barrier · zero cost · pure value · always this first |
+| **Primary** ⚠️ *(open — see above)* | Comment `测一测` to book a free Lexile assessment | Zero barrier · zero cost · pure value · always this first |
 | **Secondary** | Comment keyword to receive a PDF resource via DM | Resource gift · 🆓 + what they receive |
 | **Tertiary** | Founding Family Program | Positioning signal only — never promotion |
 
-**Bilingual rule for social:** ZH-platform posts (XHS, WeChat, Douyin if added) default to ZH. Framework names render bilingually on first mention: `Lexile（蓝思）`, `6+1 Trait（写作评估）`, `MCT（美国天才教育课程）`. Owned terms render per glossary: `导师（Navigator）`, `The Loop（学习循环）`.
+**Bilingual rule for social:** ZH-platform posts (XHS, WeChat, Douyin if added) default to ZH. Framework names render bilingually on first mention: `Lexile（蓝思）`, `6+1 Trait（写作评估）`, `MCT（美国天才教育课程）`. Owned terms render per glossary: `导师（Navigator）`; **The Loop stays in English with no 学习循环 gloss** — D92 retired `The Loop（学习循环）` (legacy body-copy instances await the open header-vs-body ruling).
 
 **What never goes on social:**
 - Discount language (限时 · 限量 · 折扣 · 优惠 · Charter Enrollment)
@@ -525,10 +568,10 @@ Brand-content effectiveness lives in measurable signals. Track these monthly; on
 
 | Source (EN) | Target (ZH) | Shape |
 |---|---|---|
-| `content/marketing.en.js` | `content/marketing.zh.js` | 9 named exports — `program`, `about`, `consult`, `compare`, `methodology`, `lexile`, `results`, `navigators`, `demos`. Each export is a `{ ... }` literal. |
+| `content/marketing.en.js` | `content/marketing.zh.js` | 17 named exports — `nav`, `footer`, `home`, `program`, `about`, `consult`, `compare`, `methodology`, `lexile`, `results`, `navigators`, `demos`, `ageBands`, `littleDodo`, `codingBand`, `credentials`, `founder`. Each export is a `{ ... }` literal. *(Count the exports before quoting this list — it has gone stale once already.)* |
 | `content/faq.js` → `faq.sections.en`, `faq.ui.en`, `faq.categories.en` | Same file → `.sections.zh`, `.ui.zh`, `.categories.zh` keys | Bilingual nested. Hand DeepSeek each `.en` block; paste returned object into matching `.zh` slot. |
-| `content/cities.js` → per-city `.en` block × 6 cities | Same file → per-city `.zh` block | Bilingual nested per city slug. |
-| `public/llms.txt` / `public/llms-full.txt` | *(EN-only)* | No ZH handoff needed — these are GEO surfaces for English-language LLM citation. |
+| `content/cities.js` → per-city `.en` block — 20 cities (6 rich + 14 compact) | Same file → per-city `.zh` block | Bilingual nested per city slug. |
+| `public/llms.txt` / `public/llms-full.txt` | `public/llms-full.zh.txt` | EN GEO surfaces + the ZH mirror (shipped 2026-08-24). The ZH file follows the same DeepSeek handoff as any ZH surface. ⚠️ All three summarize the human pages — refresh them **after** content cascades, never before (queued post-Wave-6 as of v6). |
 
 **Process (per file):**
 
@@ -542,13 +585,13 @@ Brand-content effectiveness lives in measurable signals. Track these monthly; on
      - `id` · `href` · `ctaHref` · numbers · Lexile scores · JSX placeholders · HTML tags → copy verbatim
      - Numeric values in stat objects (`'1.2'`, `'187'`, `'94%'`) → verbatim
      - `null` values → remain `null`
-   - Owned terms render bilingually: `导师（Navigator）` · `Lexile（蓝思）` · `The Loop（学习循环）`
+   - Owned terms render bilingually: `导师（Navigator）` · `Lexile（蓝思）`. **The Loop stays in English, no gloss** (D92 retired `The Loop（学习循环）`)
    - Keep English: `DODO Learning` · `MetaMetrics` · `Education Northwest` · `Common Core` · `IB`
    - `BC` → `不列颠哥伦比亚省`
    - Forbidden-word screen (per §10): no `补习班` · `干预` · `综上所述` · `毋庸置疑` · `由此可见` etc.
 6. Run `npm run build` after merge. Visual diff against `/zh/*` pages.
 
-**Owned terms locked in 2026-05 batch — add to `dodo-glossary.json` before next session:**
+**Owned terms locked in the 2026-05 batch** *(historical — since applied; `dodo-glossary.json` is the canonical file, verify against it, not this list)*:
 
 - `LCS` / `LCS Teaching System` → `语言循环体系` *(2026-06-01 canonical ZH section header; supersedes "LCS 教学体系" / "LCS 教学理念")*
 - `Summit` → `Summit（全境领航）`
@@ -581,10 +624,12 @@ Brand-content effectiveness lives in measurable signals. Track these monthly; on
 ✓ Navigators — never teachers/tutors
 ✓ Lexile cited with a specific number
 ✓ 6+1 Trait spelled out, never reduced to "writing skills"
-✓ MCT with distancing language ("grounded in / aligned with / in the tradition of")
+✓ MCT with distancing language ("grounded in / aligned with / in the tradition of"), named once per surface (§06; D93 exception: /methodology)
 ✓ Five Strands nested under the LCS branch — **L**: Literature · Vocabulary · Poetics · **C**: Grammar · Writing · **S**: Speaking (DODO's own) — described in DODO's words, not as a resold booklist
 ✓ Research claims framed as **acceleration into mastery**, never remediation/ELL/catch-up (§07a)
 ✓ ELA = 7 levels (L1 Island → L7 Lens III); Poodle not adapted; Little DODO is a separate program
+✓ The program is the **ELA Program** (never "16-Week Program" as a name); "cycle" = the 16-week unit
+✓ DODO Coding referenced one-way only — footer link + home band, nothing more (§06b)
 ✓ Harvard Project Zero nameable; routine titles not in hero copy
 ✓ Founding Family Program — positioning, never promotion
 ✓ Affirmative default; "We Don't / We Do" only when strategic
@@ -602,6 +647,7 @@ Brand-content effectiveness lives in measurable signals. Track these monthly; on
 ---
 
 *Source: distilled from v3.1 (Apr 2026 .docx) + DLCW curriculum sources · This is the working operator copy.*
-*v3.1 archive: `C:\Users\hsink\Documents\Claude_Marketing_Workflow\Samples\DODO_Brand_Guide_v3.1.docx`*
+*v3.1 archive: `F:\PC-Documents\Claude_Marketing_Workflow\Samples\DODO_Brand_Guide_v3.1.docx` (path corrected v6)*
+*The `.docx` beside this file is a **generated snapshot** (`node .build_docx.js`) — the May-era copy was moved to `archive/`; regenerate before circulating one.*
 *Companion specs: [DEEPSEEK_BRIEF.md](DEEPSEEK_BRIEF.md) · [dodo-glossary.json](dodo-glossary.json)*
 *Forthcoming: `SOCIAL_PLAYBOOK.md` (XHS / WeChat granular specs) · `NAVIGATOR_DISPOSITIONS.md` (CT/VT internal taxonomy)*

@@ -1,6 +1,12 @@
 # Content style decisions log
 
-**Purpose:** Date-stamped log of active brand/voice decisions made during page-by-page content reviews. Decisions promoted from this log into `translation/BRAND_CONTENT_GUIDE.md` when stable. Living doc — append, never delete.
+> **CLOSED AT D96 (2026-09-03).** This log holds D1–D50 and D91–D96 (D92–D96 include
+> interface decisions that landed here as the two-log split broke down; **D95 is
+> backfilled at the foot** — it originally had no log entry anywhere). **New decisions
+> (D97+) go to [`decision-log.md`](decision-log.md)** — one log, content and interface
+> alike. Nothing here is renumbered or moved; append-only history stays intact.
+
+**Purpose:** Date-stamped log of active brand/voice decisions made during page-by-page content reviews. Decisions promoted from this log into `translation/BRAND_CONTENT_GUIDE.md` when stable. Append-only history — never delete.
 
 **How to read:** Each entry includes (1) the decision, (2) what it overrides if anything, (3) where it lives now (brand guide section, glossary entry, skill lint rule), and (4) the trigger (which review surfaced it).
 
@@ -626,3 +632,32 @@ Applied at guide level to `BRAND_CONTENT_GUIDE.md` + `.zh.md` (§00 five-second,
   driven by a usage count would have removed it silently; reading the comment above
   each candidate is what caught it.
 - **Trigger:** the two debts recorded in D94 and the 2026-09-02 loop report.
+
+---
+
+## 2026-09-03 · Backfill + closure
+
+### D95 · Utility classes reaching the browser are a ratchet (2026-09-02 · entry backfilled 2026-09-03)
+
+*(Backfilled: D95 was made and built on 2026-09-02 but received no log entry in either
+log — it existed only in `decision-index.md` and the loop report. Recorded here so
+every D-number has exactly one log entry. Full narrative: `loop-report-2026-09-02.md`.)*
+
+- **The decision:** the set of utility classes that actually reach the browser is
+  guarded as a ratchet (`scripts/check-utility-emitted.mjs`, `postbuild`). The set may
+  grow freely; a class silently leaving it fails the build and names it. Baseline 40,
+  including the three `Label` classes, so D94's exact purge bug now trips it.
+- **Why this shape:** the first version compared "declared vs emitted" and failed on
+  "referenced in JSX but missing from CSS" — an **unreachable** condition, because
+  Tailwind's content scan reads the same files. It could not even be negative-tested:
+  a comment containing the class name kept the rule alive. Rebuilt on the observable
+  event instead. Declared-but-never-referenced classes are *reported, not failed*.
+- **Enforced by:** `check-utility-emitted` (postbuild). Status: `decision-index.md`.
+- **Trigger:** D94's first build purged its own CSS while every guard stayed green and
+  `type-floor` reported a *better* number.
+
+### Log closed at D96
+
+New decisions — content and interface alike — go to
+[`decision-log.md`](decision-log.md), starting at **D97**. Status for everything, as
+always: [`decision-index.md`](decision-index.md).

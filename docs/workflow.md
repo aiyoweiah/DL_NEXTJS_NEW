@@ -257,12 +257,14 @@ Re-ranking driven by 2026-08 tracker findings: Perplexity's competitor set drift
 
 ## Open Decisions
 
-These block downstream work. Updated 2026-05-17.
+These block downstream work. Statuses corrected 2026-09-03; the numbered admin items
+here are the same ones `completion-plan.md` Wave 6 tracks — that plan is the queue,
+this table is the detail.
 
 | # | Decision | Status |
 |---|---|---|
 | 1 | Verification vs Discovery — strategy | ✅ Hybrid (premium with quota per cohort; quality > volume) |
-| 2 | Price point — locked? | ✅ **Restructured 2026-05-17 to 5 combinations:** Summit $2,830 · Core $2,250 · Flex 1 $1,185 · Flex 2 $2,110 · Flex 3 from $750. Weekly: Flex 1 $74 · Flex 2 $132 · Core $140 · Summit $177 · Flex 3 ~$47. Live on `/program` + `/faq`. |
+| 2 | Price point — locked? | ✅ **Restructured 2026-05-17 to 5 combinations:** Summit $2,830 · Core $2,250 · Flex 1 $1,185 · Flex 2 $2,110 · Flex 3 from $750. Weekly: Flex 1 $74 · Flex 2 $132 · Core $140 · Summit $177 · Flex 3 ~$47. **Live on `/faq` only — hidden on `/program` per D13 / row 17** (corrected 2026-09-03; this cell used to contradict row 17). Figures still await the row-17 verification. |
 | 3 | Founder/Navigator named-expert identity (Person schema) | ✅ **Janet** confirmed as Founder & Lead Navigator (2026-05-17). **Person schema + full bio + credentials SHIPPED 2026-08-24** — see Tier-2 Claude Code's part #2. |
 | 4 | Xiaohongshu / WeChat operator + cadence | ❌ Pending |
 | 5 | The 8 monthly-tracked prompts | ✅ **Locked 2026-05-21** in `docs/llm-citations/2026-05-baseline.md`. Eight prompts mix Vancouver/Toronto core markets + EN + ZH + framework-specific (MCT, Lexile) + comparison (Kumon). Per-prompt × per-LLM matrix shape documented in baseline. Re-test due 2026-06-21. |
@@ -286,7 +288,7 @@ These block downstream work. Updated 2026-05-17.
 
 ## Operating Rules
 
-- This workflow doc is the single source of truth. Update statuses after each session.
+- This doc is the source of truth **for the SEO + GEO initiative** — its tiers, prompts and session log. Update statuses after each session. (Project-wide: `docs/README.md` is the map, `completion-plan.md` the queue, `decision-index.md` the status authority.)
 - All technical changes ship in `main` and auto-deploy to Cloudflare Pages (`output: 'export'`).
 - Voice: never imply tutoring / ESL / remediation (per `translation/DEEPSEEK_BRIEF.md`).
 - LLM citation tracker entries go in `docs/llm-citations/YYYY-MM.md` with screenshots.

@@ -1,19 +1,21 @@
-# Decision index — D1 … D91
+# Decision index — D1 … D98
 
-**Created:** 2026-08-30 · **Covers:** every numbered decision in both logs · **last updated 2026-09-01 (D91)**
-**Source of truth for STATUS.** The two logs remain the source of truth for *content*.
+**Created:** 2026-08-30 · **Covers:** every numbered decision · **last updated 2026-09-04 (D97–D98, visual-review execution)**
+**Source of truth for STATUS.** The logs remain the source of truth for *content*.
 
-There are 91 decisions across two append-only logs that share one number sequence:
+There are 98 decisions. Where each one's full entry lives:
 
-| Log | Holds |
+| Record | Holds |
 |---|---|
-| [`docs/content-style-decisions.md`](content-style-decisions.md) | D1–D50, D91 — voice, vocabulary, positioning, copy |
-| [`.interface-design/system.md`](../.interface-design/system.md) | D33–D90 — chrome, type, colour, controls, guards |
+| [`docs/content-style-decisions.md`](content-style-decisions.md) | D1–D50 and D91–D96 (D92–D96 were appended here as the two-log split broke down; D95 backfilled 2026-09-03). **Closed at D96.** |
+| [`docs/_archive/interface-system-v6.44.md`](_archive/interface-system-v6.44.md) | D33–D90 interface narratives — the decision entries that lived inline in the old interface guide, archived verbatim 2026-09-03 |
+| [`docs/decision-log.md`](decision-log.md) | **D97 onward — the single log for all new decisions**, content and interface alike (ruled 2026-09-03; the split had already failed in practice) |
 
-Decisions with both a content and a visual consequence appear in both. Neither log
-records status: to answer *"is D26 still true?"* you previously had to read every later
-entry looking for the sentence that overrode it. Three of those sentences existed and
-were never reflected at the decision they overrode. This table is that answer.
+Decisions with both a content and a visual consequence may appear in both historical
+logs. Neither log records status: to answer *"is D26 still true?"* you previously had
+to read every later entry looking for the sentence that overrode it. Three of those
+sentences existed and were never reflected at the decision they overrode. This table
+is that answer.
 
 **Status vocabulary**
 
@@ -126,17 +128,19 @@ Everything here applies to new work.
 | D90 | Wave 1 step 2 landed — 187 blocks extracted, ratchet 933 → 746 | Live · unblocked by **D89** | `check-inline-style` |
 | D91 | `/faq` reworked to v5 — Loop as per-session, five combinations, seven levels; D38 + D41 shipped | Live · EN + ZH (ZH `799629f`) | `dodo-content-writer` lint |
 | D92 | Wave 5 remainder — D37/D38/D41/D14 shipped, `/compare` voice pass (10 reversals → 1), §06 breach fixed, ZH LCS canon corrected | Live · EN `fde04cf` + ZH `2bccb55` · v5 cascade 18/18 | `check-cjk-coverage` · lint |
-| D93 | MCT may be named 4x on `/methodology` — stated §06/§07 exception, that page only | Live · no code change | — ⚠️ unguarded, by nature |
+| D93 | MCT may be named more than once on `/methodology` — stated §06/§07 exception, that page only *(original count "4x" was wrong; a full walk finds 7 — amended same day, the ruling stands)* | Live · no code change | — ⚠️ unguarded, by nature |
 | D94 | `Label` component — 3 variants; labels 1230→432, type floor 1013→671; 11px `qualifier` a logged exception | Live | `check-label-variant` (#15) |
 | D95 | Utility classes reaching the browser are a ratchet — a rule may not silently stop shipping | Live | `check-utility-emitted` (#16) |
 | D96 | Deep-lavender scale (5 steps, 9 sites); 13 dead utility classes deleted, `.check-list` restored as reserved-by-design | Live | `check-tokens` · `check-utility-emitted` |
+| D97 | The CJK source font is sticky — regeneration defaults to the manifest's source; explicit flag + banner to change the face; guard prints the source and fails half-regenerated states | Live | `check-cjk-coverage` (source-consistency, both passes) |
+| D98 | The site declares itself light — `color-scheme: light` + `colorScheme`/`themeColor` viewport meta, opting out of algorithmic darkening | Live | — ⚠️ unguarded; add a built-CSS grep if it regresses |
 
 ### Type & payload
 
 | D | Decision | Status | Enforced by |
 |---|---|---|---|
 | D59 | Source Sans 3 is the one Latin face | Live (Latin) · CJK half → D62 | `check-font-preload` |
-| D62 | ZH is set in LXGW WenKai GB | Live | `check-cjk-coverage` |
+| D62 | ZH is set in LXGW WenKai GB | ⚠️ **Recorded built (`fe4d5e4`), NOT what ships** — a routine font regeneration in `799629f` (D91 ZH work) ran without `--source=lxgw-wenkai-gb` and silently reverted ZH to Noto Sans SC; repo + production verified 2026-09-03. Guards stayed green (coverage is font-agnostic). Needs a ruling: redeploy WenKai, or re-rule to Noto. Sixth false completeness claim — the first caused by a default | `check-cjk-coverage` (coverage only — **cannot see the source font**) |
 | D63 | CJK served from a frequency-tiered local subset | Live | `check-cjk-coverage` (both passes) |
 | D64 | Latin preload trimmed to the subset actually used | Live | `check-font-preload` |
 | D67 | The Latin face leads the CJK stack | Live | — |
@@ -184,6 +188,7 @@ open one.
 | D13 | `/faq` pricing figures never re-verified against the current combinations. Internally consistent (weekly x16 ≈ lump sum on all five tiers); **no currency is named anywhere** despite serving CAD + USD cities; **Flex 3 is called "GPA tutoring" / "GPA 辅导课"**, which §10 bars as remedial framing and which works against the price anchor | admin |
 | D92 | **Header vs body: one ruling covers three.** `zh:279` (a link label) and `zh:346` (a meta description) still use a superseded LCS form, and **23 body uses of `学习循环`** remain — all barred for new translation, all unruled for existing body copy. §09 draws the line at header vs body; neither of the two is clearly either | content |
 | — | `/compare` founder `<figure>` renders a play button with `pointerEvents:none` — looks clickable, does nothing, on a conversion page | admin (needs the real embed URL) |
+| D62 | **ZH typeface divergence** (see the Live-table row): live site + repo serve Noto Sans SC while the decision records WenKai as built — redeploy WenKai or re-rule to Noto. Either way, make the generator's `--source` sticky and teach the guard to assert the family key, so a regeneration can never swap the typeface again. Full evidence: `.design/visual-review-2026-09/DESIGN_REVIEW.md` §1 | admin |
 
 ### Resolved conflicts
 
@@ -199,7 +204,9 @@ standing may not. No code changed.
 
 ## Adding a decision
 
-1. Append to the log that owns it — content or interface. Never renumber.
+1. Append to [`docs/decision-log.md`](decision-log.md) — the single log for D97 onward,
+   content and interface alike. Never renumber. (The historical two-log split is closed;
+   do not append to `content-style-decisions.md` or the archived interface log.)
 2. If it supersedes or amends an earlier D, **say so at BOTH ends**: the new entry names
    what it replaces, and the old entry gains a forward pointer. Every gap in this index
    came from doing only the first half.

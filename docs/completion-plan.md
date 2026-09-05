@@ -17,7 +17,7 @@ Numbers come from `npm run conformance` and the baselines; re-run before quoting
 ```
 WAVE 0  four decisions        ✅ CLOSED   (D79)
 WAVE 1  inline-style          ✅ COMPLETE 957 → 746  (D86 · D89 · D90)
-WAVE 2  small concrete fixes  ✅ COMPLETE (D82 grey · D86 images · D87 panels)
+WAVE 2  small concrete fixes  ◐ PARTIAL  (grey ✅ D82 · images ⏳ · panels ⏳ ratcheted at 41)
 
 WAVE 5  content cascade ──── D37 landed WITHOUT it ──X WAVE 3  label vocabulary
         independent · highest business value              (now unblocked)
@@ -27,8 +27,9 @@ WAVE 6  admin unblocks    you only · gates every Tier-2 SEO item
 WAVE 7  operational loose ends
 ```
 
-**Waves 0, 1, 2, 3 and 5 are closed**, and Wave 4's blocking measurement (task 4.0) is
-done. Wave 5 shipped EN + ZH on 2026-09-02.
+**Waves 0, 1, 3 and 5 are closed**; Wave 2 is one-of-three (the grey folded by D82 —
+images and the 41 ratcheted panels remain, both opportunistic); Wave 4's blocking
+measurement (task 4.0) is done. Wave 5 shipped EN + ZH on 2026-09-02.
 
 **The next move is Wave 6 — the admin unblocks.** They gate every Tier-2 SEO item, they
 are the only work here nobody but the owner can do, and with the design system settled
@@ -186,13 +187,17 @@ offenders, not a bulk edit.
 
 ---
 
-## Wave 2 · Small concrete fixes — independent, any time
+## Wave 2 · Small concrete fixes — independent, any time · ◐ one of three done
+
+*(Corrected 2026-09-03: an earlier version of the dependency graph called this wave
+complete and attributed the items to D86/D87. Only the grey was actually closed —
+D86 tokenised colour literals and D87 changed panel* detection*, migrating nothing.)*
 
 | Item | Size | Note |
 |---|---|---|
-| **`#94A3B8` — a fifth grey** | small | ⚠️ **Measured 2026-09-01: 31 uses sitewide, not the 2 this row assumed.** Not a system token — `--text-muted-dark` is `#9AA3B2`. `LexileBar.jsx:41` is `light ? '#3D4452' : '#94A3B8'`, a legitimate surface-aware pair written in raw hex, but the value has spread far beyond it. Settle this one **before** Wave 1's alpha-scale decision: it is the largest single untokenised literal and it is not an alpha variant, so it resolves without needing a scale. |
-| **15 images without `width`/`height`** | small | CLS. Needs real intrinsic dimensions; guessing distorts them. |
-| **24 hand-rolled panels** | medium | Ratcheted by `check-surfaces`. Migrate opportunistically — several sit in the same files as Wave 1's targets. |
+| ✅ **`#94A3B8` — a fifth grey** | small | **Closed by D82** — folded into `--text-muted-dark` (31 sitewide uses, 7.51:1 vs 7.57:1; all text). |
+| ⏳ **15 images without `width`/`height`** | small | CLS. Needs real intrinsic dimensions; guessing distorts them. Still open. |
+| ⏳ **Hand-rolled panels — 41, not 24** | medium | Ratcheted by `check-surfaces`; **D87's structural re-detection found the true count is 41** (`scripts/surface-baseline.json`), 17 of which the old value-matching detector had never seen. Migrate opportunistically — several sit in the same files as Wave 1's targets. |
 
 ---
 
@@ -277,12 +282,13 @@ locale having the copy, so `/zh/methodology` renders without them until it lands
 | ✅ **D14 Type A/B caption → `/methodology`** | Shipped `fde04cf`. Was **a live contradiction**, not a rehoming chore: the lost sentence denied a fixed rotation and the heading it moved under asserted one. |
 | ✅ **`/compare` deeper voice pass** | Shipped `fde04cf`. The page ran the §10 "not X — but Y" reversal **ten times**; nine became statements. Also fixed a §06 breach: "The Loop" was the named system in a section header, "LCS" appeared 0×. |
 
-**Still open on these surfaces:** the site nav labels `/methodology` "The Loop" /
-"The Loop 闭环" — the same §06 breach fixed on `/compare`, but chrome-level across
-116 routes. MCT is named 4× on `/methodology` (§07 permits each phrasing, §06 says
-name it once — the rules disagree about that page). `compare.s8.voices` carries two
-attributed testimonials with specific Lexile deltas and cities, same provenance
-shape as the Wave 7 items. All three need a call.
+**Still open on these surfaces** *(reconciled 2026-09-03 against the loop report)*:
+two of the three original items are closed — the chrome "The Loop" label was fixed
+the same day (footer program column → "DODO Method" / "DODO 教学系统" on all 116
+routes, matching the navbar), and the MCT count was ruled by **D93** (a stated
+§06/§07 exception on `/methodology`; count amended 4 → 7 same day). What remains:
+`compare.s8.voices` carries two attributed testimonials with specific Lexile deltas
+and cities, same provenance shape as the Wave 7 items — that one still needs a call.
 
 **Method is set** (cascade plan, user-set 2026-08-27): one surface at a time — scan,
 rework fully, verify, log — and **propose copy in chat first; live files only on an

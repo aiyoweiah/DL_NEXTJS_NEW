@@ -207,27 +207,32 @@ Every one of these produced a wrong number during this run.
 
 ## 5. Known-open work
 
-**Numbers here are measured by `npm run conformance`, not estimated.** Re-run it before
-quoting any of them; that is the whole point of it existing. Last measured 2026-09-01.
+**Numbers here are measured, not estimated — and several were superseded after this
+section was written.** Re-run `npm run conformance` / `npm run type-floor` before
+quoting anything. Statuses reconciled 2026-09-03; `completion-plan.md` is the live
+queue — this table is kept for provenance.
 
-### Open — work
+### Open — work *(statuses as of 2026-09-03)*
 
 | Item | Size | Notes |
 |---|---|---|
-| **Bring 957 down** | large, incremental | The §3.3 baseline is the map: `scripts/inline-style-baseline.json` gives the count per file. `/about` **58**, `/blog` **36**, `/program` and `/compare` next. Migrate a file, re-run with `--update`, commit the smaller baseline. This is now the main line of work. |
-| **The type floor** | large | **469** sub-12px nodes — 9px×32, 10px×310, 11px×127. ⚠️ Not comparable to the 558 this table used to quote: that was a different method. Conformance counts inline `font-size` and `text-[Npx]` classes, so it is a **lower bound** and misses class-driven sizes. Still a design pass, not a mechanical fix. |
-| **Hand-rolled uppercase labels** | medium | Was "35". Measured: **1,346 rendered instances, 140 distinct strings, 61 declaration sites across 25 files.** They do at least seven jobs — see the `conformance` families. The `section-label` residue (83 strings) is itself a mixed bucket and needs triage before any class decision. **Blocked behind the 957 migration by choice**, so the decision is made against a real per-site inventory rather than a regex taxonomy. |
-| **24 hand-rolled panels** | medium | Ratcheted by `check-surfaces.mjs`. |
-| **15 images without dimensions** | small | CLS. Needs real intrinsic sizes; guessing distorts them. |
+| ✅→floor **Bring 957 down** | closed as a campaign | Wave 1 finished at **746** (D86 tokenise · D89 `:where()` · D90 extract) and **746 is the ratchet's deliberate floor, not a shortfall** — D88 proved further extraction breaks specificity. Opportunistic only. |
+| ⏳ **The type floor** | large | ⚠️ **The 469 here was wrong by more than half** — conformance matches only `px` and this codebase writes type in rem. `npm run type-floor` (built 2026-09-02) measured **1,013**, now **659** after D94/D94b, of which 342 are the logged `qualifier` exception. Still a design pass, not a mechanical fix. |
+| ✅ **Hand-rolled uppercase labels** | settled | Wave 3 closed by **D94** (`Label`, 3 variants — 1,230 → 420) and the 2026-09-02 triage: the residue is seven jobs, mostly not labels; **verdict "build nothing further."** |
+| ⏳ **Hand-rolled panels — 41, not 24** | medium | D87's structural re-detection found the true count is **41** (17 were never matched by the old value list). Ratcheted by `check-surfaces.mjs`; migrate opportunistically. |
+| ⏳ **15 images without dimensions** | small | CLS. Needs real intrinsic sizes; guessing distorts them. Still open. |
 
-### Open — decisions someone has to make
+### Open — decisions someone has to make *(all four since ruled)*
 
-| Item | Notes |
+| Item | Ruled by |
 |---|---|
-| **`.skip-link` gilt ruling** | Found by the D73 build pass, allowlisted pending a call, and **D76 did not settle it** — D76 is about which conversion control leads; the skip link is a WCAG 2.4.1 bypass affordance. Either record a stated a11y carve-out in D76, or restyle to `--color-lavender-signal` as the D68 chips were. |
-| **`.eyebrow` uppercases the locked tagline** | `.eyebrow` sets `text-transform: uppercase`, so D36's *"Think once, in two languages."* renders as **"THINK ONCE, IN TWO LANGUAGES."** on 116 routes. D36 locked sentence case with a terminal full stop. A D36-vs-D57 conflict in the canonical component, not a hand-rolled defect. Belongs to whoever owns the tagline. |
-| **`.btn-do-charter` is now a synonym for `.btn-do-primary`** | Since D76 it carries the same swash and the same label colour. Fold it into `primary` and delete the class, or keep the name reserved for a real enrolment CTA that may want its own treatment. |
-| **`LexileBar`'s dark label is `#94A3B8`** | Not a system token — `--text-muted-dark` is `#9AA3B2`. A fifth grey, near but not equal to the one the system names. Small and concrete; independent of everything else here. |
+| **`.skip-link` gilt ruling** | **D79(a)** — restyled to `--color-lavender-signal`; the gilt allowlist is empty. |
+| **`.eyebrow` uppercases the locked tagline** | **D79(b)** — `sentence` prop / `.sentence-case`, scoped to the five tagline sites. |
+| **`.btn-do-charter` synonym** | **D79(c)** — folded into `.btn-do-primary`, class deleted. |
+| **`LexileBar`'s `#94A3B8`** | **D82** — folded into `--text-muted-dark` (31 uses sitewide). |
+
+*(The currently-open decisions live in `decision-index.md` § Open — do not work from
+this table.)*
 
 ### Closed since this document was written
 
