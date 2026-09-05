@@ -128,6 +128,22 @@ row updated in the index; `system.md` §9 rewritten to match.
   BCG §06/§13 EN+ZH. **Enforced by:** nothing mechanical `(unverified)` — the
   glossary bars re-introduction for new translation.
 
+### Flex 3 · Ruled: "Coursework Advancement / 课业进阶自由航行" + CAD (content) — 2026-09-05
+
+- **The ruling** (via the rulings form): Flex 3's descriptor is **课业进阶自由航行 /
+  Coursework Advancement**, retiring "GPA 管理 / GPA tutoring / GPA 辅导" (§10
+  remedial framing, flagged since the 2026-08-26 critique); and **all prices are
+  CAD**, now stated on every price-bearing answer (/faq ×3, llms-full EN+ZH).
+- **Applied same day** on the admin's "apply": /faq (5 rows), /program tier list
+  EN+ZH, llms-full tier lists EN+ZH, both guides' §06b rows + ⚠️ boxes → ✅,
+  §17/vocab rows, glossary, DEEPSEEK_BRIEF. Anti-remedial frame: "runs ahead of
+  the classroom, not behind it / 走在课堂前面的学科支持".
+- **Deliberately out of scope:** `/partners`' "GPA Navigation" (separate B2B
+  product, unruled — flagged) and /ops PDF tools (agreement-adjacent copy).
+- **Where the rule lives:** BCG §06b + §17, glossary. **Enforced by:** nothing
+  mechanical `(unverified)`; §10 bars 辅导/tutoring on sight. **Trigger:** D13 /
+  §06 ⚠️, admin ruling. D13's figure re-verification remains open.
+
 ### §5 fill classes · Ruled: migrate — retired at the definition (interface) — 2026-09-05
 
 - Admin ruled "migrate to btn-do". Executed with the D53b scope note honoured:

@@ -431,7 +431,7 @@ export const program = {
       { id: 'core',    name: 'Core',    nameZh: '稳健航行',           format: '每周2节文学课 + 1节写作课', price: '$2,250',     forWhom: '最受欢迎 · 长期发展',                 featured: true  },
       { id: 'flex-1',  name: 'Flex 1',  nameZh: '文学阅读自由航行',     format: '每周2节文学课',              price: '$1,185',     forWhom: '先打好阅读基础',                featured: false },
       { id: 'flex-2',  name: 'Flex 2',  nameZh: '大师写作自由航行',     format: '每周2节写作课',                 price: '$2,110',     forWhom: '写作专精',                               featured: false },
-      { id: 'flex-3',  name: 'Flex 3',  nameZh: 'GPA管理自由航行',     format: '每周1节GPA学业辅导',            price: '起价 $750', forWhom: '学校学业管理 · 可与上述任意组合搭配', featured: false },
+      { id: 'flex-3',  name: 'Flex 3',  nameZh: '课业进阶自由航行',     format: '每周1节课业进阶课程',            price: '起价 $750', forWhom: '走在课堂前面的学科支持 · 可与上述任意组合搭配', featured: false },
     ],
     note: '每种组合按16周一个周期运行。价格与按周付款选项详见常见问题。',
     faqLink: '查看定价详情 →',

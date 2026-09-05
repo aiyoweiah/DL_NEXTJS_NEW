@@ -456,7 +456,7 @@ export const program = {
       { id: 'core',    name: 'Core',    nameZh: '稳健航行',           format: '2× literature + 1× writing / week', price: '$2,250',     forWhom: 'Most popular · long-term development',                 featured: true  },
       { id: 'flex-1',  name: 'Flex 1',  nameZh: '文学阅读自由航行',     format: '2× literature / week',              price: '$1,185',     forWhom: 'Building the reading foundation first',                featured: false },
       { id: 'flex-2',  name: 'Flex 2',  nameZh: '大师写作自由航行',     format: '2× writing / week',                 price: '$2,110',     forWhom: 'Writing specialisation',                               featured: false },
-      { id: 'flex-3',  name: 'Flex 3',  nameZh: 'GPA管理自由航行',     format: '1× GPA tutoring / week',            price: 'from $750', forWhom: 'School academic management · pairs with any combination above', featured: false },
+      { id: 'flex-3',  name: 'Flex 3',  nameZh: '课业进阶自由航行',     format: '1× coursework-advancement session / week', price: 'from $750', forWhom: 'Runs ahead of the classroom · pairs with any combination above', featured: false },
     ],
     note: 'Each combination runs for one 16-week cycle. Pricing and weekly payment options are detailed in the FAQ.',
     faqLink: 'See pricing details in FAQ →',

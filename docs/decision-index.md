@@ -186,7 +186,7 @@ open one.
 
 | D | What is open | Owner |
 |---|---|---|
-| D13 | `/faq` pricing figures never re-verified against the current combinations. Internally consistent (weekly x16 ≈ lump sum on all five tiers); **no currency is named anywhere** despite serving CAD + USD cities; **Flex 3 is called "GPA tutoring" / "GPA 辅导课"**, which §10 bars as remedial framing and which works against the price anchor | admin |
+| D13 | **Partially closed 2026-09-05:** Flex 3 renamed **课业进阶自由航行 / Coursework Advancement** and **CAD stated** on every price-bearing surface (/faq, llms-full EN+ZH; /program tier list renamed) — record `content-review/04-flex3-cad.md`. **Still open:** pricing-figure re-verification against current combinations · /partners "GPA Navigation" (separate B2B product — does §10 extend there?) · /ops tools' tier naming | admin |
 | ~~D92~~ | **Ruled 2026-09-05: FULL migration, executed** — every `学习循环` gloss stripped (23 uses across marketing.zh.js / faq.js / cities.js), both superseded LCS renderings → 语言循环体系. See decision-log.md | closed |
 | — | `/compare` founder `<figure>` awaits the real embed URL (the dead play affordance was removed 2026-09-04; restoring it needs the URL) | admin |
 

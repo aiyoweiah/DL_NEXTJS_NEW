@@ -1,9 +1,15 @@
-# Flex 3 rename + CAD currency — DRAFT, apply-gated
+# Flex 3 rename + CAD currency — ✅ APPLIED 2026-09-05
 
-**Ruled 2026-09-05:** Flex 3 = **Coursework Advancement / 课业进阶自由航行** ·
-prices are **CAD**. Drafted below; admin adjusts wording freely, then says
-**"apply"**. Closes the §06 ⚠️ and half of D13 (the pricing-figures re-verification
-against current combinations remains admin homework).
+**Ruled and applied 2026-09-05** on the admin's "apply". Beyond the drafted rows,
+the apply-time GPA sweep found and fixed **four more Flex 3 surfaces** the draft
+missed: the `/program` combinations tier EN+ZH (`marketing.en.js:459`,
+`marketing.zh.js:434`) and the `llms-full` tier lists EN+ZH (each also gaining a
+CAD line). **Deliberately untouched:** `/partners`' "GPA Navigation" — a separate
+B2B product, not the Flex 3 tier; renaming it was never ruled (flagged to admin:
+does §10's tutoring-bar extend to the B2B surface?), and the internal /ops PDF
+tools (agreement-adjacent copy; admin should review their tier naming
+separately). Closes the §06 ⚠️ and half of D13 (pricing-figure re-verification
+remains open).
 
 ## Site copy
 

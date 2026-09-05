@@ -35,9 +35,11 @@ pipeline corrections, video pipeline, PFP apply log, Little DODO cohesion pass).
 
 Tracked in `decision-index.md` § Open and flagged ⚠️ in the guides:
 
-1. **Flex 3's name — RULED 2026-09-05:** "Coursework Advancement / 课业进阶自由航行"
-   + prices are **CAD**. Line cascade drafted for review (apply-gated); "GPA" framing
-   dies with the apply.
+1. ~~Flex 3's name~~ — **ruled and APPLIED 2026-09-05:** "Coursework Advancement /
+   课业进阶自由航行" + CAD stated, across /faq, /program, llms-full EN+ZH, guides,
+   glossary (`content-review/04-flex3-cad.md`). Still admin's: D13 price-figure
+   re-verification · whether §10 reaches /partners' separate "GPA Navigation"
+   B2B product · /ops tools' tier naming.
 2. **XHS assessment CTA vs D29** (BCG §13 ⚠️) — **still open**, the one unanswered
    ruling: carve-out or consult-shaped rewrite (both drafted 2026-09-05).
 3. ~~LCS header-vs-body~~ — **ruled FULL migration 2026-09-05 and executed** (D92

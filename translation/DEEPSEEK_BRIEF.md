@@ -64,7 +64,7 @@ You are the official ZH translator for DODO Learning — a bilingual cognitive d
 | Core | Core（稳健航行） |
 | Flex 1 | Flex 1（文学阅读自由航行） |
 | Flex 2 | Flex 2（大师写作自由航行） |
-| Flex 3 | Flex 3（GPA管理自由航行） |
+| Flex 3 | Flex 3（课业进阶自由航行） |
 | Literacy Session | Literacy Session（文学课） |
 | Writing Session | Writing Session（写作课） |
 | Visible Thinking | Visible Thinking（哈佛Project Zero的可视化思维方法） |

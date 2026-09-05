@@ -212,13 +212,14 @@ DODO ELA is a **seven-level** ladder grounded in the gifted-ELA tradition. Each 
 | **Core** — 稳健航行 | 2× Literature + 1× Writing / week | Most popular; long-term development |
 | **Flex 1** — 文学阅读自由航行 | ≥ 2× Literature / week | Building the reading foundation first |
 | **Flex 2** — 大师写作自由航行 | 2× Writing / week | Writing specialisation |
-| **Flex 3** — GPA管理自由航行 | ≥ 1× school-support session / week | School academic management; pairs with any of the above |
+| **Flex 3** — 课业进阶自由航行 | ≥ 1× coursework-advancement session / week | Runs ahead of the classroom, not behind it; pairs with any of the above |
 
-> ⚠️ **OPEN RULING — Flex 3's descriptor.** This combination has been described as
-> "GPA tutoring" / "GPA 辅导课" (still live on `/faq`), which **§10 strips on sight**
-> as remedial framing and which works against the price anchor (see D13, open).
-> Do **not** propagate "tutoring" phrasing to any new surface; the row above uses a
-> neutral placeholder until the admin rules on the combination's real name.
+> ✅ **RULED 2026-09-05 — Flex 3 = "Coursework Advancement / 课业进阶自由航行".**
+> The old "GPA tutoring / GPA 辅导课" framing (§10 remedial) is retired everywhere;
+> /faq re-copied in the same change, with CAD stated on every price-bearing answer.
+> "Tutoring / 辅导" phrasing remains barred on all surfaces (§10). Record:
+> `content-review/04-flex3-cad.md` · decision-log.md. D13's pricing-figure
+> re-verification remains open.
 
 **Calibrated against:** US SAT · SSAT · IB Extended Essay & Internal Assessments · Cambridge KET & PET · North American private school and gifted-school standards.
 
@@ -598,7 +599,7 @@ Brand-content effectiveness lives in measurable signals. Track these monthly; on
 - `Core` → `Core（稳健航行）`
 - `Flex 1` → `Flex 1（文学阅读自由航行）`
 - `Flex 2` → `Flex 2（大师写作自由航行）`
-- `Flex 3` → `Flex 3（GPA管理自由航行）`
+- `Flex 3` → `Flex 3（课业进阶自由航行）`
 - `English Thinker` → `英语思维者` (already in glossary; superseded `Bilingual Thinker`)
 - `Founding Family Program` → `创始家庭计划`
 - `Janet (Founder)` → `Janet（创始人）` — first name only, in both locales.
