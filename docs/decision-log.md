@@ -107,3 +107,37 @@ row updated in the index; `system.md` §9 rewritten to match.
 - **Enforced by:** nothing mechanical (rate claims are prose); the guides mark §11
   as the sole source for rate claims `(unverified)`. **Trigger:** frozen register
   C1–C4, admin ruling 2026-09-05.
+- **Applied 2026-09-05** (all 14 rows), **plus a 9-spot addendum** the original
+  table missed, exposed when a truncated grep was redone honestly: `cities.js`
+  proof stats EN+ZH, the ZH mirrors of rows 3/4/6/7 (`zh:460/797/963–971/1671–73`),
+  `zh:817`, a third blog post (`mct-language-arts…mdx`), and a stale globals.css
+  gilt-mark comment. Post-fix sweep of content/app/components/lib/public/styles:
+  zero two-cycle or 100–150L survivors. Lesson banked: never trust a `head_limit`
+  sweep as proof of absence.
+
+### D92 · Ruled: FULL migration (content) — 2026-09-05
+
+- **The ruling.** No header-vs-body line: everything migrates. All 19 gloss uses of
+  `The Loop（学习循环）` stripped to bare `The Loop` (marketing.zh.js, faq.js,
+  cities.js), the 4 non-gloss uses re-rendered (`完整 The Loop` stat unit,
+  `个 The Loop 阶段` counter, `Full Loop` band tags matching C8's EN ruling), and
+  the two superseded LCS renderings corrected to the glossary form 语言循环体系
+  (`zh:279` link label, `zh:346` meta). The glossary's "存量正文待裁定" hold is
+  resolved — no legacy form survives in live copy.
+- **Where the rule lives:** glossary `The Loop` / `LCS` entries (now unconditional);
+  BCG §06/§13 EN+ZH. **Enforced by:** nothing mechanical `(unverified)` — the
+  glossary bars re-introduction for new translation.
+
+### §5 fill classes · Ruled: migrate — retired at the definition (interface) — 2026-09-05
+
+- Admin ruled "migrate to btn-do". Executed with the D53b scope note honoured:
+  the AudiobookPlayer's download CTA (a true text control) → `.btn btn-do`; its
+  play/skip trio is **media transport — explicitly outside the control grammar** —
+  so it keeps its filled look via locally-scoped `.audio-play`/`.audio-skip`
+  (values verbatim from the retired classes), per the ⚠️'s own "scope audiobook
+  styles locally" alternative. `.btn-primary`, `.btn-solid`, `.btn-ghost`,
+  `.btn-outline`, `.btn-charter`, `.btn-gilt` deleted from globals.css (D75
+  precedent), forced-colors + print rules updated, `Button.jsx`'s stale fill-era
+  header corrected (it had mapped every variant to `.btn-do` since D79).
+  **Enforced by:** `check-utility-emitted` (baseline re-banked minus the retired
+  classes). D53b's option B is now complete — no fill class exists to misuse.

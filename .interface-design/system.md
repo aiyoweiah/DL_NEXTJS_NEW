@@ -155,12 +155,15 @@ distinct jobs. Keeping the jobs distinct is the whole system:
 - Hierarchy is weight + label colour + swash ink. **No fills on system controls**
   (D53b). Scope exclusions: media transport, non-interactive labels, utility chrome
   (locale switcher, pagination).
-- ⚠️ **Legacy fill classes still exist** (`.btn-primary`, `.btn-solid`, `.btn-ghost`,
-  `.btn-outline`, `.btn-charter` + `components/ui/Button.jsx`), consumed only by the
-  gated `AudiobookPlayer` (4 call sites). **Do not use them in new work.**
-  **OPEN RULING:** migrate those 4 sites (or scope audiobook styles locally) so the
-  fills can be retired at the definition per the D75 precedent — or record a permanent
-  carve-out. Until ruled, this paragraph is the carve-out's only record.
+- **Legacy fill classes retired at the definition (2026-09-05 admin ruling)** —
+  `.btn-primary`, `.btn-solid`, `.btn-ghost`, `.btn-outline`, `.btn-charter`,
+  `.btn-gilt` are gone from `globals.css` (D75 precedent). The `AudiobookPlayer`'s
+  download CTA migrated to `.btn-do`; its play/skip trio — **media transport, which
+  D53b's scope excludes** — keeps its filled look via the locally-scoped
+  `.audio-play` / `.audio-skip` pair (values verbatim from the retired classes,
+  player-only by comment contract). `Button.jsx` had already been mapping every
+  variant to the `.btn-do` family; its stale fill-era header comment corrected in
+  the same change.
 
 ### Labels
 

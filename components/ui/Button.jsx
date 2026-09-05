@@ -1,13 +1,13 @@
 // components/ui/Button.jsx
 //
-// Two variants:
-//   primary  — general CTAs on DARK surfaces. Uses .btn-primary (lavender).
-//   solid    — general CTAs on LIGHT surfaces. Uses .btn-solid (deep lavender).
-//              Filled buttons are surface-specific: lavender/gilt fills are
-//              1.75:1 and 1.47:1 against Whisper, so the pill has no edge.
+// Every variant resolves to the .btn-do family (option B, D53b) — the
+// variant names survive as call-site vocabulary only:
+//   primary / solid — section CTA (btn-do-primary; surface handled by .on-dark)
 //   fork     — two co-equal controls in one section (D76). Adds .btn-do-fork.
 //              Never label with discount language — see §8 of handoff.
-//   ghost    — secondary/outline CTA. Uses .btn-ghost.
+//   ghost / outline — secondary (plain btn-do)
+// The legacy fill classes these names once pointed at were retired at the
+// definition 2026-09-05 (system.md §5).
 //
 // Polymorphic: renders as <button> by default. Pass as="a" or as={Link}
 // for anchor/Link usage (e.g. when href is needed).

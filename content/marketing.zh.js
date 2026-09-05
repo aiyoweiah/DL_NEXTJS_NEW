@@ -276,7 +276,7 @@ export const home = {
         body:
           '阅读。思考。表达。写作。导师每周追踪孩子在每个阶段的进展。The LCS 以 MCT 语言艺术框架和哈佛Project Zero思维训练体系为基础。全程有量有据。',
         linkHref:  '/methodology',
-        linkLabel: '认识 The LCS 系统',
+        linkLabel: '认识语言循环体系',
       },
       {
         id:        'results',
@@ -343,7 +343,7 @@ export const program = {
   meta: {
     title: 'ELA 课程 — DODO Learning',
     description:
-      '真人、在线、导师亲授的英文语言艺术课程。LCS 教学理念与 MCT 课程为架构，每节课运行 The Loop — 阅读 → 思考 → 表达 → 写作。入学、中期、结业三次Lexile评估。每个16周周期Lexile阅读水平提升约一个年级。',
+      '真人、在线、导师亲授的英文语言艺术课程。语言循环体系与 MCT 课程为架构，每节课运行 The Loop — 阅读 → 思考 → 表达 → 写作。入学、中期、结业三次Lexile评估。每个16周周期Lexile阅读水平提升约一个年级。',
   },
   hero: {
     chip:       '一次思考，两种语言。',
@@ -360,7 +360,7 @@ export const program = {
       { value: '3',        unit: '次评估',    desc: '第0周 · 第8周 · 第16周'                     },
       { value: '1',        unit: '位导师（Navigator）',      desc: '了解您的孩子'                      },
       { value: '1对1',     unit: '始终如一',           desc: '无班级课，无导师轮换'         },
-      { value: '∞',   unit: '完整学习循环',  desc: '每一节课'                      },
+      { value: '∞',   unit: '完整 The Loop',  desc: '每一节课'                      },
     ],
   },
   loop: {
@@ -394,7 +394,7 @@ export const program = {
       {
         week: '第2–15周',
         label: '每周课程', labelZh: '每周课程',
-        desc: '每周，您的孩子与他们的导师（Navigator）一起操练 The Loop（学习循环）——这位导师了解他们的进步、挑战以及下一步该推动什么。每节课最长50分钟，最少每周一次。',
+        desc: '每周，您的孩子与他们的导师（Navigator）一起操练 The Loop——这位导师了解他们的进步、挑战以及下一步该推动什么。每节课最长50分钟，最少每周一次。',
         badge: null, badgeSub: null,
       },
       {
@@ -425,7 +425,7 @@ export const program = {
     h2:      '五种课程组合——同一个 The Loop，强度不同。',
     h2zh:    null,
     body:
-      '每一种组合都运行完整的16周周期，每节课都运行The Loop（学习循环），每个学生都与一位专属导师（Navigator）一起学习。不同组合在于每周课时数和侧重点——选择符合您孩子当前需求的模式。',
+      '每一种组合都运行完整的16周周期，每节课都运行The Loop，每个学生都与一位专属导师（Navigator）一起学习。不同组合在于每周课时数和侧重点——选择符合您孩子当前需求的模式。',
     items: [
       { id: 'summit',  name: 'Summit',  nameZh: '全境领航',           format: '每周3节文学课 + 1节写作课', price: '$2,830',     forWhom: '加速成长 · 高难度学业里程碑', featured: false },
       { id: 'core',    name: 'Core',    nameZh: '稳健航行',           format: '每周2节文学课 + 1节写作课', price: '$2,250',     forWhom: '最受欢迎 · 长期发展',                 featured: true  },
@@ -457,7 +457,7 @@ export const program = {
     h2zh:    null,
     lexile: {
       h3:    'Lexile阅读水平',
-      sub:   '与北美学校使用的测量体系相同——因此您可以直接对比进步。学生通常在两个16周周期内将阅读水平提升一个年级，每个周期的Lexile增长约在100L–150L范围。',
+      sub:   '与北美学校使用的测量体系相同——因此您可以直接对比进步。学生通常在每个16周周期内将阅读水平提升约一个年级——平均增长187个Lexile点。',
       note:  '我们不会说您的孩子“读得不错”。我们向您展示他们在16周内从<strong>Lexile 620 到 820</strong>——这就是四年级和六年级阅读水平之间的差距。',
       start: 620, end: 820,
     },
@@ -628,7 +628,7 @@ export const consult = {
       p1: '导师不会以推销话术开场。他们以一个提问开场：',
       q1: '“请告诉我，对您的孩子来说，一堂典型的英语课是什么样子的。不是分数——是感受。他们会举手吗？他们会回避老师的目光吗？”',
       p2: '那个问题在三十秒内告诉我们的信息，比一份成绩单一年告诉我们的还要多。我们在倾听学校衡量的东西与实际发生的情况之间的差距。',
-      p3: '到第15分钟，我们已经明确了差距。我们描述了对于具有该特定情况的学生，The Loop（学习循环）的头四周会是什么样子。',
+      p3: '到第15分钟，我们已经明确了差距。我们描述了对于具有该特定情况的学生，The Loop的头四周会是什么样子。',
       p4: '通话以一句诚实的话结束：',
       q4: '“根据您告诉我的情况，我认为 ELA 课程是合适的匹配。这是确切的原因——以及如果在第8周效果不理想，会发生什么。”',
     },
@@ -791,10 +791,10 @@ export const methodology = {
   meta: {
     title: '语言循环体系 —— DODO Learning方法论',
     description:
-      '语言循环体系是DODO Learning的方法论——文学精读、系统写作、表达——每节课以The Loop（学习循环）运行：阅读、思考、表达、写作。' +
+      '语言循环体系是DODO Learning的方法论——文学精读、系统写作、表达——每节课以The Loop运行：阅读、思考、表达、写作。' +
       '根植于MCT语言艺术传统和哈佛教育学院零点项目的Visible Thinking（可视化思维方法），' +
       '通过Lexile和6+1特质写作框架衡量。' +
-      '在两个16周周期内实现一个年级阅读水平增长的认知训练。',
+      '在每个16周周期内实现约一个年级阅读水平增长的认知训练。',
   },
 
   hero: {
@@ -802,7 +802,7 @@ export const methodology = {
     heading: '语言循环体系，就是一堂 DODO 课真正运转的样子——每一次都如此。',
     subheading:
       '一对一、在线的英语语言艺术，秉承MCT gifted-ELA传统。' +
-      '每节课都运行The Loop（学习循环）—— 阅读 → 思考 → 表达 → 写作。' +
+      '每节课都运行The Loop—— 阅读 → 思考 → 表达 → 写作。' +
       '我们培养达到精通水平的英语思维者。',
   },
 
@@ -814,7 +814,7 @@ export const methodology = {
 
   definition: {
     body:
-      '语言循环体系是DODO Learning的英语语言艺术方法论：文学精读、系统写作、表达，每节课以The Loop（学习循环）运行——阅读 → 思考 → 表达 → 写作。它根植于MCT gifted-ELA传统与哈佛教育学院零点项目的Visible Thinking（可视化思维方法），并以Lexile阅读水平和6+1特质写作框架衡量。学生通常在两个16周周期内取得一个年级的阅读增长。',
+      '语言循环体系是DODO Learning的英语语言艺术方法论：文学精读、系统写作、表达，每节课以The Loop运行——阅读 → 思考 → 表达 → 写作。它根植于MCT gifted-ELA传统与哈佛教育学院零点项目的Visible Thinking（可视化思维方法），并以Lexile阅读水平和6+1特质写作框架衡量。学生通常在每个16周周期内取得约一个年级的阅读增长。',
   },
 
   // D37 · 五大内容板块，归入 LCS 三大分支。EN mirror: marketing.en.js methodology.strands
@@ -896,7 +896,7 @@ export const methodology = {
       heading:  '在你说之前，你需要有内容可说。',
       body:
         '大多数英语教学的失败模式是这样的：学生在学会产生思想之前就学会了产生语言。' +
-        'The Loop（学习循环）强制思考先行。' +
+        'The Loop强制思考先行。' +
         '在学生开口之前，他们已经形成了一个立场——无论他们的大脑使用哪种语言。' +
         '导师（Navigator）使用哈佛教育学院零点项目的Visible Thinking（可视化思维方法）——在哈佛教育研究生院开发的结构化教学协议——来为此创造空间，以建立分析深度。',
       proof:    '每节课都有结构化的言前提示。',
@@ -960,15 +960,15 @@ export const methodology = {
     stats: [
       {
         id:     'gain',
-        number: '100–150L',
+        number: '187L',
         unit:   '每周期',
-        label:  '每个16周周期的典型Lexile增长',
+        label:  '每个16周周期的平均Lexile增长',
       },
       {
         id:     'grade',
         number: '1',
         unit:   '个年级水平',
-        label:  '两个16周周期的阅读增长',
+        label:  '每个16周周期的平均阅读增长',
       },
       {
         id:     'scale',
@@ -1040,7 +1040,7 @@ export const methodology = {
 
   cta: {
     heading:      '看到语言循环体系应用在您孩子身上。',
-    body:         '诊断性咨询让我们精确了解您孩子的当前位置——并向您展示对于与您孩子情况相似的学生，The Loop（学习循环）会是什么样子。',
+    body:         '诊断性咨询让我们精确了解您孩子的当前位置——并向您展示对于与您孩子情况相似的学生，The Loop会是什么样子。',
     ctaPrimary:   '预约咨询',
     ctaSecondary: '查看 ELA 课程',
   },
@@ -1078,7 +1078,7 @@ export const lexile = {
     eyebrow: '年级基准',
     heading: '每个年级对应的Lexile范围。',
     note:
-      '以下范围反映了典型的北美英语母语学生。双语学生通常得分低于这些范围——不是因为能力较低，而是因为Lexile专门衡量学术英语。弥合这一差距正是The Loop（学习循环）的构建目标。',
+      '以下范围反映了典型的北美英语母语学生。双语学生通常得分低于这些范围——不是因为能力较低，而是因为Lexile专门衡量学术英语。弥合这一差距正是The Loop的构建目标。',
     rows: [
       { grade: '三年级', range: '415L – 760L',   midpoint: '520L'  },
       { grade: '四年级', range: '635L – 950L',   midpoint: '740L'  },
@@ -1093,7 +1093,7 @@ export const lexile = {
     eyebrow: '双语孩子',
     heading: '为什么双语孩子通常得分低于年级水平——以及为什么这不是全部。',
     body:
-      'Lexile分数衡量的是学术英语理解能力——而不是智力、口语流利度或努力程度。一个能自信地说英语并在学校获得良好成绩的孩子，仍可能在Lexile评估中得分低于年级水平。这个差距不是失败。它反映了会话语言和学术语言之间的差异。会话流利度通过日常社交互动自然发展。学术语言——处理密集文本、跟随抽象论证、从陌生词汇中提取含义的能力——需要结构化、有意的练习。这正是The Loop（学习循环）训练的内容。',
+      'Lexile分数衡量的是学术英语理解能力——而不是智力、口语流利度或努力程度。一个能自信地说英语并在学校获得良好成绩的孩子，仍可能在Lexile评估中得分低于年级水平。这个差距不是失败。它反映了会话语言和学术语言之间的差异。会话流利度通过日常社交互动自然发展。学术语言——处理密集文本、跟随抽象论证、从陌生词汇中提取含义的能力——需要结构化、有意的练习。这正是The Loop训练的内容。',
   },
 
   dodo: {
@@ -1275,8 +1275,8 @@ export const results = {
     heading:  'Lexile成长是认知训练的自然副产品。',
     body:
       '学生不是通过练习Lexile测试来提高Lexile分数的。他们通过更精确地思考——用两种语言——来提高。' +
-      'The Loop（学习循环）是推动变化的原因。' +
-      'The Loop（学习循环）根植于MCT语言艺术传统和哈佛教育学院零点项目的' +
+      'The Loop是推动变化的原因。' +
+      'The Loop根植于MCT语言艺术传统和哈佛教育学院零点项目的' +
       'Visible Thinking（可视化思维方法），由拥有世界排名前50大学研究生学位的导师（Navigator）一对一交付。',
     cta:     '阅读完整方法论',
     ctaHref: '/methodology',
@@ -1344,13 +1344,13 @@ export const navigators = {
         { label: '资质',  body: "每位导师（Navigator）都拥有世界排名前50的大学（牛津大学、多伦多大学、皇后大学、伦敦政治经济学院等）的研究生学位，并具有英国文学或写作的专业背景。他们是经过认证的Lexile评估从业者，并接受过6+1特质写作框架的培训。英语母语者，在北美学术背景下具有与双语孩子的纵向合作经验。" },
         { label: '匹配',     body: "导师（Navigator）是与学生匹配的——而不是分配的。在第一次上课前，DODO评估您孩子的Lexile基线、6+1特质写作档案以及沟通风格。这种匹配是刻意的。" },
         { label: '纵向', body: "您孩子的导师（Navigator）承载他们的全部历史。每一次Lexile分数。每一条课堂笔记。每一个概念被理解或未被理解的时刻。没有重新开始。没有新面孔。" },
-        { label: '差距追踪', body: '导师（Navigator）不准备教案。他们为您的具体孩子做准备——他们这周在哪里，差距是什么，以及The Loop（学习循环）的哪一部分会弥合这个差距。' },
+        { label: '差距追踪', body: '导师（Navigator）不准备教案。他们为您的具体孩子做准备——他们这周在哪里，差距是什么，以及The Loop的哪一部分会弥合这个差距。' },
       ],
     },
     s4half: {
       eyebrow:    '认识导师（Navigator）',
       h2:         'Kimberly 老师。',
-      bio:        'Kimberly 老师现任大学教授，讲授英语文学与传播学，持有皇后大学的教育学学位，七年来陪伴学生走过北美顶尖大学所要求的精读与系统写作训练。她的课堂传承 MCT 的"作者临摹"理念——让学生反复研读一位成熟作家的笔触，直到那些笔触能在自己的文字中自然浮现。在 The Loop（学习循环）中，她最擅长 Speak（表达）→ Write（写作）的衔接——引导学生把口头表达过的立场，落成纸上一句精确的句子。',
+      bio:        'Kimberly 老师现任大学教授，讲授英语文学与传播学，持有皇后大学的教育学学位，七年来陪伴学生走过北美顶尖大学所要求的精读与系统写作训练。她的课堂传承 MCT 的"作者临摹"理念——让学生反复研读一位成熟作家的笔触，直到那些笔触能在自己的文字中自然浮现。在 The Loop中，她最擅长 Speak（表达）→ Write（写作）的衔接——引导学生把口头表达过的立场，落成纸上一句精确的句子。',
       stats: [
         { label: '教学经验',      value: '7 年' },
         { label: 'Lexile 认证',  value: '已认证' },
@@ -1396,19 +1396,19 @@ export const navigators = {
 export const demos = {
     meta: {
       title:       '课堂实录',
-      description: '观看真实的DODO Learning课堂实录。在导师（Navigator）带领的课程中看到The Loop（学习循环）如何在双语学生身上运行。三个年级段。未经剪辑。',
+      description: '观看真实的DODO Learning课堂实录。在导师（Navigator）带领的课程中看到The Loop如何在双语学生身上运行。三个年级段。未经剪辑。',
     },
     hero: {
       chip: '一次思考，两种语言。',
       h1:   '确切看到您孩子的课堂是什么样子。',
       h1zh: '看看真实的课堂是什么样子',
-      sub:  '没有推销。没有剪辑的精彩片段。一位真实的导师（Navigator），一位真实的学生，一起完成一堂真实的The Loop（学习循环）课程。在您做决定前观看。',
+      sub:  '没有推销。没有剪辑的精彩片段。一位真实的导师（Navigator），一位真实的学生，一起完成一堂真实的The Loop课程。在您做决定前观看。',
       cta1: '课堂实录',
       cta2: '预约咨询',
       stats: [
         { value: '3',      unit: '个年级段',  desc: '四至六年级，七至八年级，九年级及以上' },
         { value: '20',     unit: '分钟',          desc: '完整课堂，未经剪辑'       },
-        { value: '4',      unit: '个学习循环阶段',  desc: '阅读 · 思考 · 表达 · 写作' },
+        { value: '4',      unit: '个 The Loop 阶段',  desc: '阅读 · 思考 · 表达 · 写作' },
         { value: '1',      unit: '位真实学生', desc: '已获得家长同意'          },
         { value: '1',      unit: '位导师（Navigator）',    desc: '直播，无脚本'               },
         { value: '∞', unit: '免费',          desc: '无需注册'           },
@@ -1422,8 +1422,8 @@ export const demos = {
       row2Label: '关于课程',
       cards: [
         { videoId: YOUTUBE_IDS.demoGr46,       label: '成长期读者',    labelZh: 'Emerging Reader', tag1: '四至六年级', tag2: 'Lexile 580–720', tag3: '阅读 · 思考 · 写作' },
-        { videoId: YOUTUBE_IDS.demoGr78,       label: '独立阅读者', labelZh: 'Independent Reader', tag1: '七至八年级', tag2: 'Lexile 820–980', tag3: '完整学习循环' },
-        { videoId: YOUTUBE_IDS.demoGr9plus,    label: '高级阅读者',    labelZh: 'Advanced Reader', tag1: '九年级及以上',       tag2: 'Lexile 1020+',      tag3: '完整学习循环 · 拓展' },
+        { videoId: YOUTUBE_IDS.demoGr78,       label: '独立阅读者', labelZh: 'Independent Reader', tag1: '七至八年级', tag2: 'Lexile 820–980', tag3: 'Full Loop' },
+        { videoId: YOUTUBE_IDS.demoGr9plus,    label: '高级阅读者',    labelZh: 'Advanced Reader', tag1: '九年级及以上',       tag2: 'Lexile 1020+',      tag3: 'Full Loop · 拓展' },
         { streamKey: 'dodo-brand-full', label: '关于 DODO',           labelZh: 'The DODO Approach', tag1: '精选',   tag2: '4分钟',  tag3: '品牌介绍' },
         { streamKey: 'lcs-detailed',    label: '语言循环体系详解',     labelZh: 'The LCS System',    tag1: '方法论', tag2: '2分钟',  tag3: null },
         { streamKey: 'kimberly-intro',  label: '认识 Kimberly 老师',   labelZh: 'Meet Ms. Kimberly', tag1: '人物',   tag2: '30秒',   tag3: '导师（Navigator）' },
@@ -1442,7 +1442,7 @@ export const demos = {
       h2zh: '你在观看一场真实的课',
       p1: '导师不会介绍学生或解释形式。课程已经在进行中：',
       q1: '“你说作者的主要主张是关于公平的。我想追问一下——对文本中的角色而言公平意味着什么，相对于对你而言意味着什么？”',
-      p2: '学生停顿了一下。不是因为困惑——而是因为思考。这个停顿正是The Loop（学习循环）在起作用。',
+      p2: '学生停顿了一下。不是因为困惑——而是因为思考。这个停顿正是The Loop在起作用。',
       p3: '导师不会填补沉默。他们等待。当学生开口时，答案比没有这个停顿的情况下他们可能说出的任何东西都要精确。',
       p4: '在结束时，您会听到导师布置写作提示：',
       q4: '“起草一个段落：公平的代价是什么？使用文中的两条证据。我会在下次课前阅读它。”',
@@ -1470,7 +1470,7 @@ export const demos = {
         startLabel: '入学',
         endLabel:   '结业（16周）',
         scaleLabel: '1–6分制',
-        note:       '您在课堂实录中看到的写作成长正是推动这些分数变化的原因。The Loop（学习循环）就是那个机制。',
+        note:       '您在课堂实录中看到的写作成长正是推动这些分数变化的原因。The Loop就是那个机制。',
       },
     },
   }
@@ -1668,9 +1668,8 @@ export const credentials = {
         'DODO 在 ELA Program 的入学（第 0 周）、中期（第 8 周）、' +
         '结课（第 16 周）使用 MetaMetrics 认证的工具进行蓝思测评。' +
         '每一位 Navigator 都是认证的蓝思测评实践者。进步以具体的蓝思' +
-        '增量呈现 —— 从不使用模糊的"阅读水平"表述。学生通常在两个' +
-        '16 周周期内，阅读能力提升一个完整年级（每周期蓝思增量典型落在 ' +
-        '100L–150L 区间）。',
+        '增量呈现 —— 从不使用模糊的"阅读水平"表述。学生通常在每个' +
+        '16 周周期内，阅读能力提升约一个完整年级（平均增长 187 蓝思点）。',
       source: { label: 'MetaMetrics · Lexile & Quantile Hub', url: 'https://hub.lexile.com/' },
     },
     {

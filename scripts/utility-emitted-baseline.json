@@ -2,11 +2,9 @@
   "$comment": "Custom @layer utilities classes that reach the browser. May grow freely; a loss must be banked deliberately. See the header of check-utility-emitted.mjs.",
   "shipping": [
     "accent-top",
+    "audio-play",
+    "audio-skip",
     "btn",
-    "btn-charter",
-    "btn-ghost",
-    "btn-outline",
-    "btn-primary",
     "btn-secondary",
     "card",
     "card-dark",
@@ -43,19 +41,6 @@
     "tinted"
   ],
   "purgedButDeclared": [
-    "accent-top-gilt",
-    "check-list",
-    "delay-100",
-    "delay-200",
-    "delay-300",
-    "delay-400",
-    "delay-500",
-    "delay-600",
-    "delay-700",
-    "delay-800",
-    "divider-center",
-    "elevated",
-    "hairline",
-    "layout-sidebar"
+    "check-list"
   ]
 }

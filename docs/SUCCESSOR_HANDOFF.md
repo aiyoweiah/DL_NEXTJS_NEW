@@ -35,13 +35,16 @@ pipeline corrections, video pipeline, PFP apply log, Little DODO cohesion pass).
 
 Tracked in `decision-index.md` § Open and flagged ⚠️ in the guides:
 
-1. **Flex 3's name** — "GPA tutoring" breaks §10 (BCG §06 ⚠️) · pairs with `/faq`
-   pricing verification + the missing currency (Wave 6 #17, D13).
-2. **XHS assessment CTA vs D29** (BCG §13 ⚠️) — carve-out or rewrite.
-3. **LCS header-vs-body ZH ruling** — one call covers `zh:279`, `zh:346`, 23×
-   `学习循环` (D92 open).
-4. **AudiobookPlayer's 4 legacy fill buttons** — migrate or record a permanent
-   carve-out, then retire the fill classes at the definition (system.md §5 ⚠️).
+1. **Flex 3's name — RULED 2026-09-05:** "Coursework Advancement / 课业进阶自由航行"
+   + prices are **CAD**. Line cascade drafted for review (apply-gated); "GPA" framing
+   dies with the apply.
+2. **XHS assessment CTA vs D29** (BCG §13 ⚠️) — **still open**, the one unanswered
+   ruling: carve-out or consult-shaped rewrite (both drafted 2026-09-05).
+3. ~~LCS header-vs-body~~ — **ruled FULL migration 2026-09-05 and executed** (D92
+   closed; see decision-log.md).
+4. ~~AudiobookPlayer's 4 legacy fill buttons~~ — **ruled migrate 2026-09-05 and
+   executed**: download CTA → btn-do, transport → local `.audio-*` (D53b scope
+   exclusion), all six legacy fill classes retired at the definition.
 5. ~~Blog corrections~~ — **resolved 2026-09-05**: naming applied ("ELA Program");
    the 187-points claim now *conforms* to the re-ruled §11 canon (D99, per-cycle).
 5b. ~~D99 growth-canon cascade~~ — **applied in full 2026-09-05** (14 rows: pages,

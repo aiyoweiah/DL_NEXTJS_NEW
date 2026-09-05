@@ -401,12 +401,12 @@ export const cities = {
 
 export const citiesProofStats = {
   en: [
-    { number: '1',    unit: 'grade level',   label: 'average Lexile reading growth across two 16-week cycles' },
+    { number: '1',    unit: 'grade level',   label: 'average Lexile reading growth in each 16-week cycle' },
     { number: '300+', unit: 'students',      label: 'served since launch · real Lexile growth, verified results' },
     { number: '8/10', unit: '',              label: 'of families continue past the first 16-week cycle' },
   ],
   zh: [
-    { number: '1',    unit: '个年级',         label: '两个16周课程周期内的平均Lexile阅读水平增长' },
+    { number: '1',    unit: '个年级',         label: '每个16周课程周期的平均Lexile阅读水平增长' },
     { number: '300+', unit: '个学生',         label: '自成立以来真实陪跑——Lexile真实增长，已验证的成果' },
     { number: '8/10', unit: '',              label: '的家庭在第一个16周周期后选择继续' },
   ],
@@ -467,7 +467,7 @@ export const citiesUi = {
     ctaSecondary:     '了解我们的课程',
     contextEyebrow:   '服务本地社区',
     loopEyebrow:      '教学方法',
-    loopHeading:      'The Loop（学习循环）贯穿每一节课。',
+    loopHeading:      'The Loop贯穿每一节课。',
     loopBody:         '大多数英语项目单独训练某一技能。DODO训练完整的认知序列——因为用一种语言思考和用一种语言表现并不是同一件事。',
     loopCta:          '阅读完整方法论 →',
     structureEyebrow: '课程结构',

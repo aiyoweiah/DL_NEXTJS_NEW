@@ -781,13 +781,20 @@
     pointer-events: none;
   }
 
-  /* Primary — Lavender Signal */
-  .btn-primary {
+  /* ── Audiobook transport (D53b scope exclusion: media transport) ──
+     The only filled controls left, by design. 2026-09-05 admin ruling
+     (system.md §5): the player's play/skip trio keeps its filled look via
+     these locally-scoped classes so the legacy fill classes could be
+     retired at the definition (D75 precedent). Values are verbatim from
+     the retired .btn-primary / .btn-ghost. Not for use outside the
+     AudiobookPlayer — transport is excluded from the D53b control
+     grammar; everything else wears .btn-do. */
+  .audio-play {
     background-color: var(--color-lavender-signal);
     color: var(--color-void-black);
   }
 
-  .btn-primary:hover {
+  .audio-play:hover {
     background-color: #c8c7ff;
     box-shadow: 0 2px 20px rgba(183,181,254,0.4);
     transform: translateY(-1px);
@@ -795,34 +802,22 @@
     text-decoration: none;
   }
 
-  .btn-primary:active {
+  .audio-play:active {
     transform: translateY(0);
     box-shadow: none;
   }
 
-  /* Charter — Gilt (firm-close / conversion). `.btn-gilt` is a safety alias so
-     a stray use can never render unstyled (was undefined → invisible button). */
-  .btn-charter,
-  .btn-gilt {
-    background-color: var(--color-gilt);
-    color: var(--color-void-black);
-    font-weight: 700;
-    letter-spacing: 0.01em;
+  .audio-skip {
+    background-color: rgba(183,181,254,0.06);
+    color: var(--color-lavender-signal);
+    border: 1.5px solid rgba(183,181,254,0.32);
   }
 
-  .btn-charter:hover,
-  .btn-gilt:hover {
-    background-color: #f7d261;
-    box-shadow: 0 2px 20px rgba(245,200,66,0.45);
-    transform: translateY(-1px);
-    color: var(--color-void-black);
+  .audio-skip:hover {
+    background-color: rgba(183,181,254,0.1);
+    border-color: rgba(183,181,254,0.35);
+    color: var(--color-lavender-signal);
     text-decoration: none;
-  }
-
-  .btn-charter:active,
-  .btn-gilt:active {
-    transform: translateY(0);
-    box-shadow: none;
   }
 
   /* ── The D-o bracket (D53 · v6.9 option B) ─────────────────
@@ -1012,60 +1007,10 @@
     .btn-do::after  { margin-left: 0.3125rem; }
   }
 
-  /* Solid primary for LIGHT surfaces (v6.6, option B).
-     Filled buttons are SURFACE-SPECIFIC, exactly like the outline pair below.
-     Gilt and Lavender Signal fills clear text contrast on any ground but only
-     1.47:1 and 1.75:1 against Whisper — WCAG 1.4.11 wants 3:1 for the control's
-     own boundary, so the label reads while the button has no discernible edge.
-     Deep lavender + white passes both: text 5.80:1, edge 5.36:1 (6.66:1 hover).
-     Use this instead of btn-charter / btn-primary on any light section.
-     btn-charter stays for dark sections and genuine Charter Enrolment moments. */
-  .btn-solid {
-    background-color: var(--color-lavender-deep);
-    color: #ffffff;
-  }
-
-  .btn-solid:hover {
-    background-color: #4a48b8;
-    color: #ffffff;
-    text-decoration: none;
-    transform: translateY(-1px);
-  }
-
-  .btn-solid:active {
-    transform: translateY(0);
-  }
-
-  /* Outline — secondary on LIGHT surfaces. Deep-lavender text (#5856cc ≈ 5.8:1
-     on white) + visible boundary + faint fill so the pill reads as a button. */
-  .btn-outline {
-    background-color: rgba(88,86,204,0.06);
-    color: #5856cc;
-    border: 1.5px solid rgba(88,86,204,0.45);
-  }
-
-  .btn-outline:hover {
-    background-color: rgba(88,86,204,0.12);
-    border-color: #5856cc;
-    color: #5856cc;
-    text-decoration: none;
-  }
-
-  /* Ghost — secondary on DARK surfaces ONLY. Light-lavender text fails on light
-     backgrounds (~1.8:1) — use .btn-outline there. Faint fill + stronger border
-     give the resting pill a perceptible shape (was a near-invisible 0.12 border). */
-  .btn-ghost {
-    background-color: rgba(183,181,254,0.06);
-    color: var(--color-lavender-signal);
-    border: 1.5px solid rgba(183,181,254,0.32);
-  }
-
-  .btn-ghost:hover {
-    background-color: rgba(183,181,254,0.1);
-    border-color: rgba(183,181,254,0.35);
-    color: var(--color-lavender-signal);
-    text-decoration: none;
-  }
+  /* Legacy fill classes (.btn-primary/.btn-solid/.btn-ghost/.btn-outline/
+     .btn-charter/.btn-gilt) retired at the definition 2026-09-05 — D53b's
+     option B finally complete. Their last consumer, the AudiobookPlayer,
+     now uses .btn-do (download CTA) + the .audio-* transport pair above. */
 
   /* Secondary — Deep Void solid */
   .btn-secondary {
@@ -1844,7 +1789,7 @@
      "proof renders as citation, not badge".
 
      ⛔ THE RULE: mark a MEASURED OUTCOME, never a feature count.
-     "100–150L per cycle" is proof and may be circled. "16 Weeks",
+     "187L per cycle" is proof and may be circled. "16 Weeks",
      "4 Skills", "3 Assessments" are program facts and may not — circling
      them would say a brochure fact had been earned. At most ONE per row:
      a teacher circles the thing that matters, not the whole page.
@@ -1983,15 +1928,13 @@
     forced-color-adjust: none;
   }
 
-  .btn-primary,
-  .btn-charter {
+  .audio-play {
     background-color: Highlight;
     color: HighlightText;
     border-color: ButtonText;
   }
 
-  .btn-ghost,
-  .btn-outline {
+  .audio-skip {
     background-color: transparent;
     color: ButtonText;
     border-color: ButtonText;
@@ -2041,10 +1984,8 @@
   .nav,
   footer,
   .skip-link,
-  .btn-charter,
-  .btn-primary,
-  .btn-ghost,
-  .btn-outline,
+  .audio-play,
+  .audio-skip,
   .btn-secondary {
     display: none !important;
   }

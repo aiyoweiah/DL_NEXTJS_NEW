@@ -298,18 +298,12 @@ export default function AudiobookPlayer({ slug, title, chapters }) {
                   download
                   onClick={(e) => e.stopPropagation()}
                   aria-label={`Download ${ch.title}`}
-                  className="btn-outline"
+                  className="btn btn-do"
                   style={{
-                    padding: '0.5rem 0.875rem',
                     fontSize: '0.8125rem',
-                    borderRadius: 'var(--radius-pill)',
-                    border: '1.5px solid rgba(183,181,254,0.5)',
-                    color: 'var(--text-accent)',
-                    textDecoration: 'none',
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '0.375rem',
-                    background: 'transparent',
                     minHeight: 36,
                   }}
                 >
@@ -451,7 +445,7 @@ export default function AudiobookPlayer({ slug, title, chapters }) {
             type="button"
             onClick={() => skip(-SKIP_SEC)}
             aria-label="Back 15 seconds"
-            className="btn-ghost"
+            className="audio-skip"
             style={{ padding: '0.5rem 0.875rem' }}
           >
             ⟲ 15
@@ -461,7 +455,7 @@ export default function AudiobookPlayer({ slug, title, chapters }) {
             type="button"
             onClick={togglePlay}
             aria-label={isPlaying ? 'Pause' : 'Play'}
-            className="btn-primary"
+            className="audio-play"
             style={{
               width: 56, height: 56, padding: 0,
               borderRadius: '50%',
@@ -476,7 +470,7 @@ export default function AudiobookPlayer({ slug, title, chapters }) {
             type="button"
             onClick={() => skip(SKIP_SEC)}
             aria-label="Forward 15 seconds"
-            className="btn-ghost"
+            className="audio-skip"
             style={{ padding: '0.5rem 0.875rem' }}
           >
             15 ⟳

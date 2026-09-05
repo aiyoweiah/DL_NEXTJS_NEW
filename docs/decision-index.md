@@ -187,7 +187,7 @@ open one.
 | D | What is open | Owner |
 |---|---|---|
 | D13 | `/faq` pricing figures never re-verified against the current combinations. Internally consistent (weekly x16 ≈ lump sum on all five tiers); **no currency is named anywhere** despite serving CAD + USD cities; **Flex 3 is called "GPA tutoring" / "GPA 辅导课"**, which §10 bars as remedial framing and which works against the price anchor | admin |
-| D92 | **Header vs body: one ruling covers three.** `zh:279` (a link label) and `zh:346` (a meta description) still use a superseded LCS form, and **23 body uses of `学习循环`** remain — all barred for new translation, all unruled for existing body copy. §09 draws the line at header vs body; neither of the two is clearly either | content |
+| ~~D92~~ | **Ruled 2026-09-05: FULL migration, executed** — every `学习循环` gloss stripped (23 uses across marketing.zh.js / faq.js / cities.js), both superseded LCS renderings → 语言循环体系. See decision-log.md | closed |
 | — | `/compare` founder `<figure>` awaits the real embed URL (the dead play affordance was removed 2026-09-04; restoring it needs the URL) | admin |
 
 ### Resolved conflicts
