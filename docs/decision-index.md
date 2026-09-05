@@ -1,6 +1,6 @@
-# Decision index — D1 … D98
+# Decision index — D1 … D99
 
-**Created:** 2026-08-30 · **Covers:** every numbered decision · **last updated 2026-09-04 (D97–D98, visual-review execution)**
+**Created:** 2026-08-30 · **Covers:** every numbered decision · **last updated 2026-09-05 (admin rulings: D62 executed, D8→D99 canon re-rule, copy batch C5–C9)**
 **Source of truth for STATUS.** The logs remain the source of truth for *content*.
 
 There are 98 decisions. Where each one's full entry lives:
@@ -60,7 +60,8 @@ Everything here applies to new work.
 | D1 | "The LCS System" is the parent-facing methodology name (EN) | Live (EN) · ZH → D19 | — |
 | D19 | LCS ZH header = 语言循环体系 | Live | — |
 | D2 | MCT may be named directly in the Write step | Live | — |
-| D8 | Lexile canon — one grade level over two 16-week cycles | Live | — |
+| D8 | Lexile canon — one grade level over two 16-week cycles | **Superseded by D99** (2026-09-05) | — |
+| D99 | Lexile canon re-ruled: **about one grade level per 16-week cycle**, measured set restored (187 points · 1.2 grade levels · 94% ≥ one full grade) | Live in guides · **site cascade drafted, apply-gated** (`content-review/03-growth-canon-cascade-D99.md`) | — (§11 sole source, prose) |
 | D17 | Referral canon — 75%+ | Live | — |
 | D18 | Navigator credential — world top-50 (top-30 rejected) | **Live** | — |
 | D11 | Session length — up to 50 min, min. weekly | Live | — |
@@ -140,7 +141,7 @@ Everything here applies to new work.
 | D | Decision | Status | Enforced by |
 |---|---|---|---|
 | D59 | Source Sans 3 is the one Latin face | Live (Latin) · CJK half → D62 | `check-font-preload` |
-| D62 | ZH is set in LXGW WenKai GB | ⚠️ **Recorded built (`fe4d5e4`), NOT what ships** — a routine font regeneration in `799629f` (D91 ZH work) ran without `--source=lxgw-wenkai-gb` and silently reverted ZH to Noto Sans SC; repo + production verified 2026-09-03. Guards stayed green (coverage is font-agnostic). Needs a ruling: redeploy WenKai, or re-rule to Noto. Sixth false completeness claim — the first caused by a default | `check-cjk-coverage` (coverage only — **cannot see the source font**) |
+| D62 | ZH is set in LXGW WenKai GB | **Live** — re-shipped 2026-09-05 by admin ruling via D97's explicit `--source` flag (first deliberate SOURCE CHANGE); the `799629f` silent reversion is closed. 2 static faces, Medium serves 500–700 (no true bold), 730.7 KB total | `check-cjk-coverage` (coverage **+ source-consistency**, both passes) |
 | D63 | CJK served from a frequency-tiered local subset | Live | `check-cjk-coverage` (both passes) |
 | D64 | Latin preload trimmed to the subset actually used | Live | `check-font-preload` |
 | D67 | The Latin face leads the CJK stack | Live | — |
@@ -187,8 +188,8 @@ open one.
 |---|---|---|
 | D13 | `/faq` pricing figures never re-verified against the current combinations. Internally consistent (weekly x16 ≈ lump sum on all five tiers); **no currency is named anywhere** despite serving CAD + USD cities; **Flex 3 is called "GPA tutoring" / "GPA 辅导课"**, which §10 bars as remedial framing and which works against the price anchor | admin |
 | D92 | **Header vs body: one ruling covers three.** `zh:279` (a link label) and `zh:346` (a meta description) still use a superseded LCS form, and **23 body uses of `学习循环`** remain — all barred for new translation, all unruled for existing body copy. §09 draws the line at header vs body; neither of the two is clearly either | content |
-| — | `/compare` founder `<figure>` renders a play button with `pointerEvents:none` — looks clickable, does nothing, on a conversion page | admin (needs the real embed URL) |
-| D62 | **ZH typeface divergence** (see the Live-table row): live site + repo serve Noto Sans SC while the decision records WenKai as built — redeploy WenKai or re-rule to Noto. Either way, make the generator's `--source` sticky and teach the guard to assert the family key, so a regeneration can never swap the typeface again. Full evidence: `.design/visual-review-2026-09/DESIGN_REVIEW.md` §1 | admin |
+| — | `/compare` founder `<figure>` awaits the real embed URL (the dead play affordance was removed 2026-09-04; restoring it needs the URL) | admin |
+| D99 | **Growth-canon cascade awaiting "apply"** — 14 drafted edits in `content-review/03-growth-canon-cascade-D99.md` (incl. retiring the 100–150L per-cycle range; 4 flags for admin) | admin |
 
 ### Resolved conflicts
 

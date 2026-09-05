@@ -66,6 +66,8 @@ The defects cluster in four places: **one silent brand regression** (ZH typeface
 
 One ruling on C1–C4 (which growth claim is true?) unlocks a single apply-gated cascade; they should not be fixed piecemeal.
 
+**Register status (2026-09-05 admin rulings):** C1–C4 **resolved by D99** — canon re-ruled to per-cycle, so these spots now conform and the two-cycle statements became the outliers (cascade drafted in `content-review/03-growth-canon-cascade-D99.md`, apply-gated). C5 naming + C6 (诊断) + C7 (timeline re-cut 35–45/45–50) + C8 (Full Loop relabel) **applied**. C9 verified non-defect in source (`{number} {unit}` renders with a space). C1–C4's companion finding: the same claim also lived at `en:198`, `en:1182`, `en:1530`, `zh:180`, `zh:259` — all conform under D99.
+
 ---
 
 ## Proposed execution order (all visual items, no copy)

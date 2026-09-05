@@ -68,6 +68,7 @@
 
 ### D8 · Canonical Lexile claim — one grade level over two 16-week cycles
 - **Decision:** The canonical Lexile gain claim is **"one grade level over two 16-week cycles"** — supersedes prior "187 points / 1.2 grade levels / 16 weeks" figure. Re-verify against latest cohort data before quoting tighter numbers.
+- **→ Superseded by D99 (2026-09-05, `decision-log.md`):** canon re-ruled to **per-cycle**; the 187/1.2 measured set is restored.
 - **Overrides:** §11 prior canonical figure.
 - **Where it lives now:** `BRAND_CONTENT_GUIDE.md` §11 Typical Lexile gain row.
 - **Trigger:** User Fix C admin-set-truth override during initial home review.

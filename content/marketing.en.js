@@ -634,7 +634,7 @@ export const consult = {
       h2:      'Four phases. Twenty minutes. A real answer.',
       h2zh:    '四个阶段，二十分钟，真实的答案',
       steps: [
-        { num: '01', label: 'Diagnose',         labelZh: '诺断',            time: '5 min',
+        { num: '01', label: 'Diagnose',         labelZh: '诊断',            time: '5 min',
           desc: 'We ask about your child’s current school experience — not their English level. What does a typical English class feel like for them? Not the grade — the feeling.' },
         { num: '02', label: 'Identify the Gap', labelZh: '确定差距', time: '5 min',
           desc: 'We name the specific gap with precision. A vocabulary depth gap, a fluency gap, and a writing confidence gap require different solutions. We identify which one.' },
@@ -660,7 +660,7 @@ export const consult = {
     trust: {
       eyebrow: 'Before You Book',
       h2:      'This is a diagnostic call, not a sales call.',
-      h2zh:    '这是诺断通话，不是销售通话',
+      h2zh:    '这是诊断通话，不是销售通话',
       body:    'DODO consultations are run by Navigators — the same people who deliver the program. They will tell you honestly whether the ELA Program is the right fit for your child right now. If it is not, they will tell you that too.',
       points: [
         'Run by a Navigator, not a sales representative',
@@ -1432,8 +1432,8 @@ export const navigators = {
         { label: 'Minute 0–5: Assessment',          body: "Navigator reviews last session’s notes and the student’s written work since the previous session. They know where the student struggled, what clicked, and what needs reinforcement today." },
         { label: 'Minute 5–20: Read & Think',       body: 'Student reads a Lexile-calibrated text. Navigator asks one open question. Then waits. The silence is intentional — this is where thinking happens.' },
         { label: 'Minute 20–35: Speak & Challenge', body: "Student articulates their position. Navigator listens, then challenges with a Socratic follow-up. The goal isn’t agreement — it’s precision." },
-        { label: 'Minute 35–50: Write & Score',     body: 'Student writes their argument. Navigator scores live using 6+1 Traits — Ideas: 4/6, Organization: 5/6. Feedback is specific, not generic. The score names the gap.' },
-        { label: 'Minute 50–60: Next Steps',        body: 'Navigator assigns targeted work — specific to the gap identified today. Parent receives session notes with Lexile progress and specific next-session focus.' },
+        { label: 'Minute 35–45: Write & Score',     body: 'Student writes their argument. Navigator scores live using 6+1 Traits — Ideas: 4/6, Organization: 5/6. Feedback is specific, not generic. The score names the gap.' },
+        { label: 'Minute 45–50: Next Steps',        body: 'Navigator assigns targeted work — specific to the gap identified today. Parent receives session notes with Lexile progress and specific next-session focus.' },
       ],
     },
     s7: {
@@ -1487,7 +1487,7 @@ export const demos = {
       row1Label: 'ELA Program (Grade 3+) · Demo Classes',
       row2Label: 'About the Program',
       cards: [
-        { videoId: YOUTUBE_IDS.demoGr46,       label: 'Emerging Reader',    labelZh: '成长期读者', tag1: 'Grades 4–6', tag2: 'Lexile 580–720', tag3: 'Read · Think · Write' },
+        { videoId: YOUTUBE_IDS.demoGr46,       label: 'Emerging Reader',    labelZh: '成长期读者', tag1: 'Grades 4–6', tag2: 'Lexile 580–720', tag3: 'Full Loop' },
         { videoId: YOUTUBE_IDS.demoGr78,       label: 'Independent Reader', labelZh: '独立阅读者', tag1: 'Grades 7–8', tag2: 'Lexile 820–980', tag3: 'Full Loop' },
         { videoId: YOUTUBE_IDS.demoGr9plus,    label: 'Advanced Reader',    labelZh: '高级阅读者', tag1: 'Grades 9+',       tag2: 'Lexile 1020+',      tag3: 'Full Loop · Extended' },
         { streamKey: 'dodo-brand-full', label: 'The DODO Approach',  labelZh: '关于 DODO',           tag1: 'Featured', tag2: '4 min',  tag3: 'Brand' },

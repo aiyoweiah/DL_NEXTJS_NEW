@@ -43,7 +43,7 @@ Distilled from Master Brand Guide v3.1 (Apr 2026) + DLCW curriculum sources; con
 DODO Learning is a live, online, one-on-one English language arts program that builds English mastery through the LCS System — the five strands of a complete language education across Literacy and Composition, plus a live Speaking strand no book or app can teach — with a credentialed Navigator in every session.
 
 **Canonical positioning statement** *(the single assembled position — deploy as the strategic spine of /about, /methodology, sales):*
-> For families who want their child's English refined to the mastery level academic and professional life now demands, **DODO is a live, one-on-one English language arts program** that builds measurable reading and writing mastery — one grade level per two cycles — **unlike** tutoring, apps, or ESL, and unlike the gifted-ELA books parents could buy but can't teach, **because** DODO delivers that tradition through expert Navigators and adds the oral-defence Speaking strand no book or app can.
+> For families who want their child's English refined to the mastery level academic and professional life now demands, **DODO is a live, one-on-one English language arts program** that builds measurable reading and writing mastery — about one grade level per sixteen-week cycle — **unlike** tutoring, apps, or ESL, and unlike the gifted-ELA books parents could buy but can't teach, **because** DODO delivers that tradition through expert Navigators and adds the oral-defence Speaking strand no book or app can.
 
 | DODO is NOT | DODO IS |
 |---|---|
@@ -57,7 +57,7 @@ DODO Learning is a live, online, one-on-one English language arts program that b
 > *"We build English Thinkers at mastery level."*
 
 **The promise (deploy on every conversion-page hero):**
-One grade level of reading growth over two sixteen-week cycles (§11 canon). Specific Lexile delta. Specific 6+1 Trait movement. The numbers are visible after every cycle — Week 0 · 8 · 16. *(v6 correction: this block used to say "in sixteen weeks" — double the canonical rate. §11 is the only source for rate claims.)*
+About one grade level of reading growth per sixteen-week cycle (§11 canon). Specific Lexile delta. Specific 6+1 Trait movement. The numbers are visible after every cycle — Week 0 · 8 · 16. *(D99 re-ruling 2026-09-05: canon restored to per-cycle, superseding the v6 two-cycle correction. §11 is the only source for rate claims.)*
 
 **Competitive differentiation lines** *(ready-to-drop on /compare, sales calls, FAQ):*
 
@@ -79,7 +79,7 @@ One grade level of reading growth over two sixteen-week cycles (§11 canon). Spe
 
 | Objection | Response |
 |---|---|
-| "It's expensive." | "You're not buying sessions — you're buying a measured cognitive architecture. One grade level per two cycles, visible at Week 0 · 8 · 16. The outcome is on paper before you renew." |
+| "It's expensive." | "You're not buying sessions — you're buying a measured cognitive architecture. About one grade level per cycle, visible at Week 0 · 8 · 16. The outcome is on paper before you renew." |
 | "My child already gets A's in English." | "School English rewards fluency. We build the analytical reading and academic writing that A's don't yet test — the level university and leadership actually demand." |
 | "Is online 1-on-1 as good as in person?" | "Better for this: one Navigator, your child's full attention, every session measured. Geography stops mattering; the relationship doesn't." |
 | "16 weeks is a big commitment." | "A cycle is one measured arc — Week 0, 8, 16. You see the Lexile move before you decide again. Start with one." |
@@ -244,7 +244,7 @@ third card. Cross-band chips are wayfinding, not conversion.
 |---|---|---|---|---|
 | **MCT** (Michael Clay Thompson Language Arts) | Classical ELA tradition we are aligned with — etymology-based vocab, classical literature, mastery-over-calendar | *"grounded in the principles and philosophy of the MCT Language Arts framework"* · *"designed in the tradition of MCT"* · *"the MCT gifted-ELA tradition"* · *"the advanced literature framework"* / *"the advanced literature and writing framework"* (home hero soft-descriptor only — 2026-05-21 admin override) · *"the MCT writing arc: Grammar → sentence → paragraph → essay → academic composition"* (permitted when describing what students DO in the Write step — 2026-05-21) | "We teach MCT" · "Our MCT course" · any product-resale framing | /about · /methodology · /program · FAQ |
 | **Harvard Project Zero** (Visible Thinking) | Thinking Routines from HGSE — embedded in every Think phase | Nameable in captions / consultation as credential · *"Harvard's thinking science"* (home hero soft-descriptor only — 2026-05-21 admin override) | Naming specific routine titles in image copy or hero | /methodology · /navigators · /about · FAQ |
-| **Lexile** (MetaMetrics) | The North American reading-measurement standard. Cite specific *measured* numbers — a real start → end pair with its cadence (Week 0 · 8 · 16). Sitewide **rate** claims come only from §11's canon: one grade level over two cycles *(v6: the old "620 to 820 in 16 weeks" example modelled double the canonical rate — retired)* | Always with a number | Vague "Lexile growth" without data · invented rate examples | /program · /methodology · /lexile · /results · FAQ · llms.txt |
+| **Lexile** (MetaMetrics) | The North American reading-measurement standard. Cite specific *measured* numbers — a real start → end pair with its cadence (Week 0 · 8 · 16). Sitewide **rate** claims come only from §11's canon: about one grade level per 16-week cycle *(D99 2026-09-05: per-cycle rate restored; the v6 retirement of the "620 to 820 in 16 weeks" example is lifted)* | Always with a number | Vague "Lexile growth" without data · invented rate examples | /program · /methodology · /lexile · /results · FAQ · llms.txt |
 | **6+1 Trait** (Education Northwest) | Writing rubric used in BC / Ontario / US Common Core classrooms | "Ideas, Organization, Voice, Word Choice, Sentence Fluency, Conventions, Presentation" | Reducing to "writing skills" · framing as DODO curriculum | /methodology · /results · FAQ · llms.txt |
 
 > **Internal-only — never parent-facing:** *CT Dispositions / VT* (the Navigator-side taxonomy of thinking modes that selects which Project Zero routine to deploy). Lives in Navigator training docs.
@@ -329,7 +329,7 @@ third card. Cross-band chips are wayfinding, not conversion.
 | Website body copy | Warm-confident · third-person address ("your child") · at least one real number where it earns trust — not one in every line |
 | ClassIn (in-session) | Guided present-tense ("Today we go into Read…") · names the student's current Lexile · forward-facing close |
 | Xiaohongshu / WeChat post body | 老母亲 parent-friend ZH · 我们家孩子 acceptable · specific moments, real numbers, one idea per sentence |
-| Xiaohongshu / WeChat caption / hashtag | Outcome + framework name ("两个周期，阅读水平提升一个年级 #Lexile" — rate per §11 canon) · CES-optimised (earn a comment, not a like) |
+| Xiaohongshu / WeChat caption / hashtag | Outcome + framework name ("一期16周，阅读水平提升一个年级 #Lexile" — rate per §11 canon) · CES-optimised (earn a comment, not a like) |
 | Email / consultation follow-up | First-person plural · specific to this child's diagnostic · framework name + number per paragraph |
 
 **Old framing → New framing (retire all left-column phrases):**
@@ -379,7 +379,7 @@ These terms are DODO's. Use consistently across every channel.
 | **Literacy · Level 1** *(strand-scoped program label)* | The L-strand program at Level 1 — used as the canonical program identity on `navigators.dodolearning.com` and in any L-strand-only artefact. Shorthand: **L·L1**. Phases labelled **L·L1·P1 / L·L1·P2 / L·L1·P3**. *(See §06 for the Phase ↔ Cycle note: Navigator surfaces use "Phase"; brand surfaces use "Cycle". Same 16-week unit.)* | "Mud Trilogy program" · "Mud Trilogy Phase 1" — book series is the reading material, not the program identity |
 | **Summit · Core · Flex 1 / 2 / 3** | The five programme combinations. | "Plans" · "packages" · "tiers" |
 | **English Thinker** | The identity being built. (Evolved from *Bilingual Thinker* — that term is retired.) | Bilingual Thinker · 双语学习者 |
-| **Lexile Level** | Cited with a specific *measured* number — a real start → end pair and its cadence. Rate claims only per §11 canon (one grade level over two cycles). | Vague growth claims · invented per-cycle rate examples |
+| **Lexile Level** | Cited with a specific *measured* number — a real start → end pair and its cadence. Rate claims only per §11 canon (about one grade level per 16-week cycle). | Vague growth claims · invented per-cycle rate examples |
 | **6+1 Traits** | Ideas · Organization · Voice · Word Choice · Sentence Fluency · Conventions · Presentation | Reducing to "writing skills" |
 | **MCT** | See §07. Always with distancing language. | "We teach MCT" |
 | **Harvard Project Zero** | See §07. Nameable; routine titles not in hero copy. | Naming routines in hero copy |
@@ -431,7 +431,7 @@ Cite these wherever credibility is needed. **Update centrally — never edit one
 | Students served | **300+ students across the programme** |
 | Referral rate | **75%+ from genuine word-of-mouth** *(2026-06-01 admin set; supersedes prior 90%+. Update centrally — already cascaded to /about · partners · llms-full)* |
 | Navigator credentials | **Degrees from world top-50 universities** (Oxford, U of T, Queen's, LSE and others); specialist backgrounds in English literature and composition *(2026-06-01: top-50 retained — do NOT downgrade to top-30; the named pool incl. Queen's is not all top-30, so a tighter claim is unverifiable)* |
-| Typical Lexile gain | **One grade level over two 16-week cycles** *(canonical 2026-05-21 admin set; supersedes prior 187 points / 1.2 grade levels / 16 weeks. Re-verify against latest cohort data before quoting tighter numbers.)* |
+| Typical Lexile gain | **About one grade level per 16-week cycle** — measured set: **187 Lexile points · 1.2 grade levels · 94% ≥ one full grade level** *(D99 2026-09-05 admin re-ruling; supersedes the 2026-05-21 two-cycle set and restores the prior measured figures. Re-verify against latest cohort data before quoting tighter numbers.)* |
 | Lexile assessment cadence | **Week 0 · Week 8 · Week 16** |
 | Anchor case study | Canadian student, started at age 10. At age 13: **SSAT Vocabulary 92nd percentile · Writing 95th percentile.** |
 | Founder reference | **Janet** — first name only, in every context: conversion prose, formal credits, legal signatory, Person schema. No last name anywhere. *(Updated 2026-08-24 per founder direction — overrides the earlier "Janet Sui in formal contexts" convention.)* |
@@ -467,7 +467,7 @@ Quick anchors when rewriting each surface. Specifics on tone, must-include eleme
 | `/credentials` | Authority · citation surface | §07a citation register — footnote style, checkable, restrained; every research reference routes here | H1 ≤ 14 · sub ≤ 30 | Precise 70% · Confident 30% |
 | `/cities/[city]` | Verification post-referral | Local context · cohort cadence · Loop summary · local outcome anchor | H1 ≤ 14 · sub ≤ 30 | Warm 50% · Precise 30% · Confident 20% |
 | `/enroll` *(not built — and not planned: pricing lives on `/faq` per D13; enrollment goes through the consult flow)* | — | *(row kept only so nobody re-invents the page without noticing this note)* | — | — |
-| `llms.txt` / `llms-full.txt` | Be cited by LLMs | Tagline · what we are · what we are not · The Loop · LCS as named system · frameworks · "one grade level over two 16-week cycles" canon · MCT credit · MCT writing arc · §07a research base · **aspiration-defined audience (local + international, per §04)** | — | Precise 100% |
+| `llms.txt` / `llms-full.txt` | Be cited by LLMs | Tagline · what we are · what we are not · The Loop · LCS as named system · frameworks · "about one grade level per 16-week cycle" canon · MCT credit · MCT writing arc · §07a research base · **aspiration-defined audience (local + international, per §04)** | — | Precise 100% |
 
 ---
 

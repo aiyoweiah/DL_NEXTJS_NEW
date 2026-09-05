@@ -71,3 +71,39 @@ the embed URL (V5) · K2Note trailing-arrow normalisation (V6) · `/compare` s3 
 gap restored (V8) · `/methodology` trait-grid orphan closed (V8) · home hero
 min-height capped at 56rem (V8) · `/demos` placeholder players → quiet tinted
 stills (V4 interim) · hamburger 40→44px + global `scroll-margin-top` (V11).)*
+
+---
+
+## 2026-09-05 · Admin rulings (via the visual rulings form)
+
+### D62 · Executed as ruled — WenKai GB ships (not a new decision)
+
+Admin ruled **redeploy WenKai**. Regenerated with
+`npm run fonts:cjk -- --source=lxgw-wenkai-gb` — the first deliberate SOURCE CHANGE
+through D97's banner. 10 chunks (2 static faces × 5 tiers, Medium serving 500–700),
+730.7 KB vs Noto's 438.7 KB; charset unchanged (1,581). The `799629f` silent
+reversion is closed at both ends: mechanism (D97) and state (this change). Status
+row updated in the index; `system.md` §9 rewritten to match.
+
+### D99 · Growth-claim canon re-ruled to per-cycle (content)
+
+- **The decision.** The canonical growth rate is **about one grade level of reading
+  growth per 16-week cycle**, and the measured set is restored as canon:
+  **187 Lexile points average · 1.2 grade levels · 94% ≥ one full grade level.**
+- **Overrides:** D8 / §11's 2026-05-21 two-cycle set ("one grade level over two
+  16-week cycles", which itself superseded the 187/1.2 figures). Forward pointer
+  added at D8's entry in `content-style-decisions.md`; both guides' §11 (+ §01,
+  §02 objection, §06 framework row, §12 llms row, §13 XHS example) amended in the
+  same change, EN + ZH.
+- **Why.** The site argued with itself: `/methodology` stated the two-cycle canon
+  while home, `/program`, `/compare` and the gilt-circled `/results` rail claimed
+  per-cycle (frozen register C1–C4, plus five more spots found 2026-09-04). The
+  admin ruled the measured single-cycle claim true; the canon-stating lines become
+  the outliers.
+- **Cascade:** drafted in
+  [`../content-review/03-growth-canon-cascade-D99.md`](../content-review/03-growth-canon-cascade-D99.md)
+  (14 rows + 4 flags, incl. the death of the 100–150L per-cycle range) — **apply-gated,
+  not applied**. C1–C4, blogs, `en:198`/`1182`/`1530`, `zh:180`/`259` conform as-is.
+- **Enforced by:** nothing mechanical (rate claims are prose); the guides mark §11
+  as the sole source for rate claims `(unverified)`. **Trigger:** frozen register
+  C1–C4, admin ruling 2026-09-05.

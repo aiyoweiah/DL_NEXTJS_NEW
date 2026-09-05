@@ -42,15 +42,16 @@ Tracked in `decision-index.md` § Open and flagged ⚠️ in the guides:
    `学习循环` (D92 open).
 4. **AudiobookPlayer's 4 legacy fill buttons** — migrate or record a permanent
    carve-out, then retire the fill classes at the definition (system.md §5 ⚠️).
-5. **Blog corrections (apply-gate):** both posts still say "The 16-Week Program" and
-   claim "187 points / one grade level in four months" — **double** the §11 canon
-   (one grade level per two cycles). Needs approved replacement copy.
-6. `/compare` founder video — real embed URL (play button ships `pointerEvents:none`).
-6b. **ZH typeface ruling (found 2026-09-03):** live ZH is **Noto Sans SC**, not the
-   WenKai that D62 recorded as built — a default-source font regeneration silently
-   reverted it (`799629f`). Redeploy WenKai or re-rule to Noto; then make the
-   generator source sticky. Full visual review:
-   [`.design/visual-review-2026-09/DESIGN_REVIEW.md`](../.design/visual-review-2026-09/DESIGN_REVIEW.md).
+5. ~~Blog corrections~~ — **resolved 2026-09-05**: naming applied ("ELA Program");
+   the 187-points claim now *conforms* to the re-ruled §11 canon (D99, per-cycle).
+5b. **D99 growth-canon cascade awaiting "apply"** — the two-cycle statements are
+   now the outliers; 14 drafted edits + 4 flags in
+   [`../content-review/03-growth-canon-cascade-D99.md`](../content-review/03-growth-canon-cascade-D99.md).
+6. `/compare` founder video — real embed URL (dead play affordance removed
+   2026-09-04; restoring it needs the URL).
+6b. ~~ZH typeface ruling~~ — **ruled & executed 2026-09-05**: WenKai GB re-shipped
+   via D97's explicit `--source` flag; D62 → Live. The generator source is sticky
+   and the guard asserts the face on every build.
 7. Ms. Kimberly's bio — agent-authored, never verified. WeChat handle still
    `__PLACEHOLDER__` / `pending`. Cal.com cancellable after one real consult
    submission is seen end-to-end.
