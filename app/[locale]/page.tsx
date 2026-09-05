@@ -85,7 +85,12 @@ function Hero({ locale, c }: { locale: string; c: any }) {
       <div
         aria-hidden="true"
         className="pointer-events-none absolute select-none"
-        style={{ top: '0', right: '0', zIndex: 1 }}
+        style={{
+          /* `bottom` is load-bearing: the glyph sizes at height:100%, which
+             resolves to zero unless this wrapper has a definite height. It
+             also ties the glyph to the capped hero rather than the viewport. */
+          top: '0', bottom: '0', right: '0', zIndex: 1,
+        }}
       >
         <svg
           viewBox="280 55 200 195"
