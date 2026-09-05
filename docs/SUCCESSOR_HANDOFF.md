@@ -6,24 +6,34 @@
 go there for the deep operational narratives (consult-form backend + env vars, CJK
 pipeline corrections, video pipeline, PFP apply log, Little DODO cohesion pass).
 
-## Where things stand (2026-09-03)
+## Where things stand (2026-09-05, session close)
 
-- **Site:** bilingual (EN/ZH), fully shipped, 45 routes, static export on Cloudflare
-  Pages. **The v5 content cascade is 18/18** (D91/D92) and the label vocabulary is
-  settled (D94–D96). Fourteen guard passes run on every build.
-- **Docs restructured 2026-09-03:** interface guide rebuilt as a lean rulebook
-  (**v7.0**), brand guide consolidated to **v6.0** (EN + ZH), one decision log going
-  forward (`decision-log.md`, D97+), status in `decision-index.md`.
-- **Next moves, in order:** **Wave 6 admin unblocks** (owner-only; gates every Tier-2
-  SEO item — the critical path) → the machine surfaces (`llms-full.txt` /
-  `llms-full.zh.txt`, both predating the v5 cascade) → Wave 4's type-floor design
-  pass → Wave 7 loose ends. Detail: `completion-plan.md`.
+- **Site:** bilingual (EN/ZH), fully shipped, static export on Cloudflare Pages.
+  Fourteen guard passes on every build; `/consult` Lighthouse 98 desktop.
+- **The 2026-09-03 visual review is fully executed** (`.design/visual-review-2026-09/`):
+  quick wins + D97 (sticky CJK source) + D98 (`color-scheme: light`) shipped 09-04;
+  Wave-4 type floor + composition shipped 09-05 by admin ruling from before/after
+  previews (V14 skipped — device budget; V15 `--color-hearth` applied).
+- **Rulings batch 2026-09-05, all executed and live:** **D62** WenKai GB re-shipped
+  (731 KB, sticky source, guard asserts the face) · **D99** growth canon re-ruled
+  **per-cycle** (187L avg · 1.2 grade levels · 94% ≥ 1 grade) and cascaded to every
+  surface incl. schema + llms EN/ZH · copy batch C5–C9 · **D92** closed by FULL
+  migration (学习循环 gloss gone; LCS = 语言循环体系) · legacy fill classes retired
+  at the definition (player transport → local `.audio-*`) · **Flex 3 renamed
+  课业进阶自由航行 / Coursework Advancement + CAD stated** on every price surface.
+- **Docs:** interface rulebook v7.0 · brand guide v6 with all ruled boxes marked ✅ ·
+  single decision log (D97+), status in `decision-index.md` (header D1 … D99).
+- **Next moves, in order:** the **XHS-vs-D29 ruling** (last open ruling; both
+  resolutions drafted) → **assets** (V9 imagery, V4 demo footage, founder embed URL)
+  → **Wave 6 admin unblocks** (still the Tier-2 SEO critical path) → D13 homework
+  (price-figure re-verification · §10 vs `/partners` "GPA Navigation" · /ops tier
+  naming). Detail: `completion-plan.md` + `decision-index.md` § Open.
 
 ## Read in this order
 
 1. [`README.md`](README.md) — the map of every doc and the guard commands.
 2. [`completion-plan.md`](completion-plan.md) — the one work queue (waves).
-3. [`decision-index.md`](decision-index.md) — status of every D1–D96; check it before
+3. [`decision-index.md`](decision-index.md) — status of every D1–D99; check it before
    trusting any rule you read anywhere.
 4. The guides: [`../.interface-design/system.md`](../.interface-design/system.md)
    (visual, v7.0) · [`../translation/BRAND_CONTENT_GUIDE.md`](../translation/BRAND_CONTENT_GUIDE.md)
