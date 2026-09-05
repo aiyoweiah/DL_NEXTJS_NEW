@@ -47,6 +47,12 @@ export const viewport = {
   width:        'device-width',
   initialScale: 1,
   maximumScale: 5,
+  // D98 — single-theme light site, declared so algorithmic-darkening
+  // browsers (Android Auto-Dark, WebViews) leave the measured palette
+  // alone. Pairs with `color-scheme: light` on :root in globals.css.
+  colorScheme:  'light',
+  // Browser chrome colour: the navbar's Void Black tops every route.
+  themeColor:   '#0E0E12',
 }
 
 // ── Root layout ───────────────────────────────────────────────

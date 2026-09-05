@@ -122,7 +122,27 @@ const TIERS = [
 
 const args = process.argv.slice(2)
 const REPORT_ONLY = args.includes('--report')
-const sourceKey = (args.find((a) => a.startsWith('--source=')) || '--source=noto-sans-sc').split('=')[1]
+
+// ── D97: the source font is STICKY ───────────────────────────────────
+// With no --source flag, default to whatever the committed manifest
+// already uses — never to a hard-coded font. The old default silently
+// reverted D62's WenKai to Noto during a routine regeneration
+// (`799629f`): the typeface changed as a SIDE EFFECT and every guard
+// stayed green, because coverage is font-agnostic. A regeneration may
+// change the character set; only an explicit flag may change the face.
+const sourceFlag = args.find((a) => a.startsWith('--source='))
+let sourceKey = sourceFlag ? sourceFlag.split('=')[1] : null
+let manifestSourceKey = null
+try {
+  manifestSourceKey = JSON.parse(fs.readFileSync(MANIFEST_PATH, 'utf8')).source?.key ?? null
+} catch { /* first-ever run: no manifest yet */ }
+if (!sourceKey) sourceKey = manifestSourceKey ?? 'noto-sans-sc'
+if (manifestSourceKey && sourceKey !== manifestSourceKey) {
+  console.log(
+    `\n⚠️  SOURCE CHANGE: manifest is ${manifestSourceKey}, regenerating as ${sourceKey}.\n` +
+      `   This swaps the site's CJK typeface. Deliberate? (D62/D97 — say so in the commit.)\n`
+  )
+}
 
 const source = SOURCES[sourceKey]
 // A source is either ONE variable file spanning a weight range, or SEVERAL

@@ -163,7 +163,10 @@ export default async function ComparePage({ params }) {
           <Eyebrow dark center>{c.s3.eyebrow}</Eyebrow>
           <h2 className="max-w-3xl mx-auto" style={{ fontFamily: 'var(--font-latin)', fontWeight: 600, fontSize: 'clamp(28px, 3vw, 42px)', color: 'var(--text-inverse)', lineHeight: 1.3, letterSpacing: '-0.02em' }}>{c.s3.h2}</h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0">
+        {/* gap-y kept at md — `md:gap-0` used to zero the ROW gap too, so the
+            second row of five entries sat ~8px under the first (V8). Column
+            separation stays borders-only via gap-x-0 + px-8. */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-x-0 md:gap-y-14">
           {c.s3.cols.map(({ question, title, body }, i) => (
             <div key={title} className="px-0 md:px-8" style={i > 0 ? { borderLeft: '1px solid rgba(183,181,254,0.2)' } : undefined}>
               <div className="mb-4" style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '13px', fontStyle: 'italic', color: 'var(--platinum-60)' }}>{question}</div>
@@ -198,10 +201,11 @@ export default async function ComparePage({ params }) {
             <p className="max-w-[500px] mx-auto" style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '15px', color: 'var(--platinum-60)', lineHeight: 1.6 }}>{c.s5.sub}</p>
           </div>
           <figure className="max-w-[800px] mx-auto rounded-2xl overflow-hidden" style={{ aspectRatio: '16 / 9', backgroundColor: 'var(--color-midnight)', border: '1px solid rgba(183,181,254,0.12)', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            {/* Visual review 2026-09-03 V5: until the real embed URL exists
+                (open ruling), render NO play affordance — a play button with
+                pointerEvents:none read as broken on a conversion page. Quiet
+                captioned panel only; restore a real player when the URL lands. */}
             <div className="flex flex-col items-center gap-4" style={{ pointerEvents: 'none' }}>
-              <div className="flex items-center justify-center rounded-full" style={{ width: '72px', height: '72px', backgroundColor: 'var(--lavender-15)', border: '1.5px solid rgba(183,181,254,0.3)' }}>
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="#b7b5fe" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3" /></svg>
-              </div>
               <div style={{ textAlign: 'center' }}>
                 <p style={{ fontFamily: 'var(--font-latin)', fontWeight: 600, fontSize: '15px', color: 'var(--text-inverse)', marginBottom: '4px' }}>{c.s5.founderName}</p>
               </div>
@@ -273,7 +277,10 @@ export default async function ComparePage({ params }) {
           <p className="max-w-[520px] mx-auto mb-8" style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '16px', color: 'rgba(240,240,240,0.75)', lineHeight: 1.6 }}>{c.s9.sub}</p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-3">
             <Link href={`/${locale}/consult`} className="btn btn-do btn-do-primary w-full md:w-auto justify-center" style={{ minWidth: '280px' }}>{c.s9.ctaPrimary}</Link>
-            <Link href={`/${locale}/program`} className="w-full md:w-auto rounded-lg transition-all hover:border-white" style={{ fontFamily: 'var(--font-latin)', fontWeight: 500, fontSize: '16px', backgroundColor: 'transparent', color: 'var(--text-inverse)', border: '1.5px solid rgba(240,240,240,0.50)', padding: '14px 32px', textDecoration: 'none', display: 'inline-block', textAlign: 'center', minWidth: '280px' }}>{c.s9.ctaSecondary}</Link>
+            {/* Visual review 2026-09-03 V2: was a hand-rolled bordered <Link>
+                (the unmigrated remnant of the D65 sweep). Now the system
+                secondary — D53b: no fills/borders on controls. */}
+            <Link href={`/${locale}/program`} className="btn btn-do w-full md:w-auto justify-center" style={{ minWidth: '280px' }}>{c.s9.ctaSecondary}</Link>
           </div>
           <p className="mt-4" style={{ fontFamily: 'var(--font-latin)', fontWeight: 400, fontSize: '13px', color: 'var(--text-accent-dark)' }}>{c.s9.note}</p>
         </div>

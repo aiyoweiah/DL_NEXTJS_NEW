@@ -52,6 +52,37 @@ const manifest = JSON.parse(fs.readFileSync(MANIFEST, 'utf8'))
 const covered = new Set()
 for (const chunk of manifest.chunks) for (const ch of chunk.chars) covered.add(ch)
 
+// ── D97: the SOURCE FONT is part of what this guard reports ──────────
+// Coverage alone is font-agnostic — which is exactly how D62's WenKai was
+// silently reverted to Noto by a default-source regeneration (`799629f`)
+// while every pass stayed green. The guard cannot know which face is
+// *intended* (that is the D62 ruling), but it CAN (a) say which face is
+// shipping, on every build, and (b) fail on a half-regenerated state
+// where the chunks on disk disagree with the manifest's declared source.
+const srcKey = manifest.source?.key ?? '(unknown)'
+const srcFamily = manifest.source?.family ?? '(unknown)'
+const strayChunks = manifest.chunks.filter(
+  (c) => !path.basename(c.file).startsWith(`${srcKey}.`)
+)
+const cssPath = path.join(ROOT, 'styles/cjk-fonts.css')
+const cssHasSource =
+  fs.existsSync(cssPath) && fs.readFileSync(cssPath, 'utf8').includes(srcKey)
+if (strayChunks.length || !cssHasSource) {
+  console.error(
+    `\n✖ CJK source-consistency (D97): manifest declares source "${srcKey}"` +
+      ` but the generated artefacts disagree:\n` +
+      (strayChunks.length
+        ? strayChunks.map((c) => `    chunk ${c.file} does not carry the "${srcKey}." prefix\n`).join('')
+        : '') +
+      (!cssHasSource ? `    styles/cjk-fonts.css does not reference "${srcKey}"\n` : '') +
+      `\n  This is a half-regenerated state. Regenerate everything together:\n` +
+      `      npm run fonts:cjk\n` +
+      `  then commit public/fonts/cjk/, scripts/cjk-manifest.json,\n` +
+      `  lib/cjk-preload.json and styles/cjk-fonts.css as one change.\n`
+  )
+  process.exit(1)
+}
+
 // Every referenced chunk must exist on disk. A manifest pointing at a
 // filename that was never committed fails the same way a missing glyph
 // does — silently, at runtime — so check it here.
@@ -81,7 +112,8 @@ const missing = [...freq.keys()].filter((ch) => !covered.has(ch))
 if (missing.length === 0) {
   console.log(
     `✓ CJK coverage (${mode}): ${freq.size} characters, all covered by ` +
-      `${manifest.chunks.length} chunks (${(manifest.chunks.reduce((a, c) => a + c.bytes, 0) / 1024).toFixed(0)} KB).`
+      `${manifest.chunks.length} chunks (${(manifest.chunks.reduce((a, c) => a + c.bytes, 0) / 1024).toFixed(0)} KB) ` +
+      `— source: ${srcKey} (${srcFamily}).`
   )
   process.exit(0)
 }

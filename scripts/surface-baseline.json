@@ -1,10 +1,10 @@
 {
-  "total": 41,
+  "total": 39,
   "counts": {
     "app/[locale]/about/page.jsx": 4,
     "app/[locale]/blog/page.jsx": 1,
     "app/[locale]/blog/[slug]/page.jsx": 1,
-    "app/[locale]/compare/page.jsx": 4,
+    "app/[locale]/compare/page.jsx": 2,
     "app/[locale]/consult/page.jsx": 1,
     "app/[locale]/demos/page.jsx": 1,
     "app/[locale]/lexile/page.jsx": 1,

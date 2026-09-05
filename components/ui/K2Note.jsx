@@ -50,7 +50,10 @@ export default function K2Note({ locale, copy }) {
             <span
               className="shrink-0 text-sm font-semibold whitespace-nowrap inline-flex items-center gap-1 transition-colors duration-150 group-hover:text-[#3d3baa] text-[color:var(--text-accent)]"
             >
-              {copy.linkLabel}
+              {/* Strip a trailing arrow from the content string — this span
+                  renders its own animated one, and several linkLabels end in
+                  "→", which shipped as "→ →" (visual review 2026-09-03 V6). */}
+              {copy.linkLabel.replace(/\s*(?:→|->)\s*$/u, '')}
               <span
                 aria-hidden="true"
                 className="transition-transform duration-150 group-hover:translate-x-1"

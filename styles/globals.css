@@ -34,8 +34,24 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Anchor targets scroll clear of the fixed navbar (visual review 2026-09-03,
+   V11). Every in-page anchor (/faq category pills, section ids) would
+   otherwise land its heading underneath the 64px fixed header. */
+[id] {
+  scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
 /* ── 2. DESIGN TOKENS ─────────────────────────────────────── */
 :root {
+  /* D98 — the site is single-theme LIGHT, and must SAY so. Without an
+     explicit color-scheme, browsers with algorithmic darkening (Android
+     Chrome Auto-Dark, WebView setAlgorithmicDarkeningAllowed) repaint
+     every hand-measured colour on this page arbitrarily — observed live
+     2026-09-03. This one line is the documented opt-out; the matching
+     <meta name="color-scheme"> comes from the viewport export in
+     app/layout.jsx. Do not remove either without re-ruling D98. */
+  color-scheme: light;
+
   /* ── Brand primitives ── */
   --color-lavender-signal: #b7b5fe;
   --color-lavender-deep:   #5856cc;   /* promoted to a primitive v6.6 — it is the
@@ -589,6 +605,7 @@
 
   @media (min-width: 768px) {
     .nav { height: var(--nav-height-md); }
+
   }
 
   .nav.scrolled {

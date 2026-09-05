@@ -17,6 +17,26 @@ export default function YoutubeEmbed({ videoId, title, aspectRatio = '16/9', rou
   const [active, setActive] = useState(false)
   const thumbUrl = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`
 
+  // Visual review 2026-09-03 V4 — the YOUTUBE_IDS placeholders (REPLACE_…)
+  // rendered as dead black player rectangles on a funnel page: a broken
+  // thumbnail URL plus a play button that could never play. Until real IDs
+  // land (Wave 6 #12), render a quiet, non-interactive tinted still instead —
+  // no fake affordance, no new copy; the card's own labels carry the meaning.
+  const isPlaceholder = !videoId || /^REPLACE_/i.test(videoId)
+  if (isPlaceholder) {
+    return (
+      <div
+        aria-hidden="true"
+        className="bg-[color:var(--lavender-08)]"
+        style={{
+          aspectRatio,
+          width:        '100%',
+          borderRadius: rounded,
+        }}
+      />
+    )
+  }
+
   if (active) {
     return (
       <div

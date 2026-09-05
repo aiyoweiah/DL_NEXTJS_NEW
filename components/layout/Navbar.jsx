@@ -471,7 +471,7 @@ export default function Navbar({ locale, copy }) {
               aria-controls="mobile-nav-drawer"
               aria-label={mobileOpen ? copy.menuCloseAria : copy.menuOpenAria}
               onClick={() => setMobileOpen((prev) => !prev)}
-              className="md:hidden flex items-center justify-center w-10 h-10 rounded-md text-[#F0F0F0] hover:text-[#b7b5fe] hover:bg-[rgba(183,181,254,0.08)] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b7b5fe] focus-visible:ring-offset-1 focus-visible:ring-offset-[#0E0E12]"
+              className="md:hidden flex items-center justify-center w-11 h-11 rounded-md text-[#F0F0F0] hover:text-[#b7b5fe] hover:bg-[rgba(183,181,254,0.08)] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b7b5fe] focus-visible:ring-offset-1 focus-visible:ring-offset-[#0E0E12]"
             >
               <HamburgerIcon open={mobileOpen} />
             </button>

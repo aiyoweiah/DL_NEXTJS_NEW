@@ -441,10 +441,13 @@ export default async function MethodologyPage({ params }) {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {/* 7 traits in a 2/3-col grid always strand the 7th (V8, visual
+                review 2026-09-03) — the last card spans its row instead,
+                closing the grid deliberately. */}
             {t.trait.traits.map((trait) => (
               <div
                 key={trait.id}
-                className="rounded-2xl p-5"
+                className="rounded-2xl p-5 sm:last:col-span-2 lg:last:col-span-1 lg:last:col-start-2"
                 style={{ backgroundColor: 'var(--surface-raised)', border: '1px solid rgba(0,0,0,0.07)', borderTop: '2.5px solid #b7b5fe', boxShadow: '0 1px 6px rgba(0,0,0,0.04)' }}
               >
                 <p className="text-sm font-bold mb-2 text-[color:var(--text-body-dark)]">{trait.label}</p>
