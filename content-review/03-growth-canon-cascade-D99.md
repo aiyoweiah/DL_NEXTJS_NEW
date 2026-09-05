@@ -1,4 +1,8 @@
-# D99 growth-canon cascade — DRAFT, apply-gated
+# D99 growth-canon cascade — ✅ APPLIED 2026-09-05
+
+**Applied in full (all 14 rows, default flag resolutions) on the admin's "Proceed"
+after two review passes.** `en:1182` left untouched per flag 3's default. This file
+is now the record of what changed and why; the table below reads old → shipped.
 
 **Ruling (2026-09-05, admin, via rulings form):** the canonical growth rate is
 **about one grade level of reading growth per 16-week cycle**; the measured set is

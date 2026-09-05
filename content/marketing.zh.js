@@ -196,7 +196,7 @@ export const home = {
 
   proof: [
     { id: 'families', number: '300+', unit: '个孩子和家庭', label: '自成立以来真实陪跑——Lexile真实增长，已验证的成果' },
-    { id: 'lexile',   number: '1',    unit: '个年级',       label: '两个16周课程周期内的平均Lexile阅读水平增长' },
+    { id: 'lexile',   number: '1',    unit: '个年级',       label: '每个16周课程周期的平均Lexile阅读水平增长' },
     { id: 'writing',  number: '75%+', unit: '口碑推荐', label: '的家庭由另一个家庭推荐而来' },
     { id: 'repeat',   number: '10,000+', unit: '教学小时', label: '真人一对一、导师直播累计交付' },
   ],
@@ -343,7 +343,7 @@ export const program = {
   meta: {
     title: 'ELA 课程 — DODO Learning',
     description:
-      '真人、在线、导师亲授的英文语言艺术课程。LCS 教学理念与 MCT 课程为架构，每节课运行 The Loop — 阅读 → 思考 → 表达 → 写作。入学、中期、结业三次Lexile评估。两个16周周期内Lexile阅读水平提升一个年级。',
+      '真人、在线、导师亲授的英文语言艺术课程。LCS 教学理念与 MCT 课程为架构，每节课运行 The Loop — 阅读 → 思考 → 表达 → 写作。入学、中期、结业三次Lexile评估。每个16周周期Lexile阅读水平提升约一个年级。',
   },
   hero: {
     chip:       '一次思考，两种语言。',

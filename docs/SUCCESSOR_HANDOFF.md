@@ -44,9 +44,10 @@ Tracked in `decision-index.md` § Open and flagged ⚠️ in the guides:
    carve-out, then retire the fill classes at the definition (system.md §5 ⚠️).
 5. ~~Blog corrections~~ — **resolved 2026-09-05**: naming applied ("ELA Program");
    the 187-points claim now *conforms* to the re-ruled §11 canon (D99, per-cycle).
-5b. **D99 growth-canon cascade awaiting "apply"** — the two-cycle statements are
-   now the outliers; 14 drafted edits + 4 flags in
-   [`../content-review/03-growth-canon-cascade-D99.md`](../content-review/03-growth-canon-cascade-D99.md).
+5b. ~~D99 growth-canon cascade~~ — **applied in full 2026-09-05** (14 rows: pages,
+   tiles, schema, llms EN+ZH; record in
+   [`../content-review/03-growth-canon-cascade-D99.md`](../content-review/03-growth-canon-cascade-D99.md)).
+   The site now states one growth claim everywhere.
 6. `/compare` founder video — real embed URL (dead play affordance removed
    2026-09-04; restoring it needs the URL).
 6b. ~~ZH typeface ruling~~ — **ruled & executed 2026-09-05**: WenKai GB re-shipped

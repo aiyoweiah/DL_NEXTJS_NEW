@@ -214,7 +214,7 @@ export const home = {
 
   proof: [
     { id: 'families', number: '300+', unit: 'children & families', label: 'served since launch — real Lexile growth, verified results' },
-    { id: 'lexile',   number: '1',    unit: 'grade level',          label: 'average Lexile reading growth across two 16-week cycles' },
+    { id: 'lexile',   number: '1',    unit: 'grade level',          label: 'average Lexile reading growth in each 16-week cycle' },
     { id: 'writing',  number: '75%+', unit: 'by word-of-mouth', label: 'of families come to DODO through referral from another family' },
     { id: 'repeat',   number: '10,000+', unit: 'teaching hours', label: 'delivered one-on-one, live with a Navigator' },
   ],
@@ -360,7 +360,7 @@ export const program = {
   meta: {
     title: 'The ELA Program — DODO Learning',
     description:
-      'Live, online, Navigator-led English language arts. The LCS System and MCT-enriched curriculum, run each session through The Loop — Read → Think → Speak → Write. Entry, mid-cycle, and exit Lexile assessments. One grade level of growth across two 16-week cycles.',
+      'Live, online, Navigator-led English language arts. The LCS System and MCT-enriched curriculum, run each session through The Loop — Read → Think → Speak → Write. Entry, mid-cycle, and exit Lexile assessments. About one grade level of growth in each 16-week cycle.',
   },
   hero: {
     chip:       'Think once, in two languages.',
@@ -482,7 +482,7 @@ export const program = {
     h2zh:    null,
     lexile: {
       h3:    'Lexile Reading Level',
-      sub:   'The same measurement system used by schools across North America — so you can compare progress directly. Students typically advance one grade level in reading across two 16-week cycles, with per-cycle Lexile gains in the 100L–150L range.',
+      sub:   'The same measurement system used by schools across North America — so you can compare progress directly. Students typically advance about one grade level in reading in each 16-week cycle — an average gain of 187 Lexile points.',
       note:  'We don’t say your child “reads well.” We show you they moved from <strong>Lexile 620 to 820</strong> in 16 weeks — that’s the difference between Grade 4 and Grade 6 reading territory.',
       start: 620, end: 820,
     },
@@ -819,7 +819,7 @@ export const methodology = {
       'The LCS System is the DODO Learning methodology — Literacy, Composition, Speaking — run every session as The Loop: Read, Think, Speak, Write. ' +
       'Grounded in the MCT Language Arts tradition and Harvard Project Zero’s Visible Thinking routines, ' +
       'measured by Lexile and the 6+1 Trait writing framework. ' +
-      'The cognitive training behind one grade level of reading growth across two 16-week cycles.',
+      'The cognitive training behind about one grade level of reading growth in each 16-week cycle.',
   },
 
   hero: {
@@ -839,7 +839,7 @@ export const methodology = {
 
   definition: {
     body:
-      'The LCS System is DODO Learning’s methodology for English language arts: Literacy, Composition, and Speaking, run every session as The Loop — Read → Think → Speak → Write. It is grounded in the MCT gifted-ELA tradition and Harvard Project Zero’s Visible Thinking routines, and measured with Lexile reading levels and the 6+1 Trait writing framework. Students typically gain one grade level of reading across two 16-week cycles.',
+      'The LCS System is DODO Learning’s methodology for English language arts: Literacy, Composition, and Speaking, run every session as The Loop — Read → Think → Speak → Write. It is grounded in the MCT gifted-ELA tradition and Harvard Project Zero’s Visible Thinking routines, and measured with Lexile reading levels and the 6+1 Trait writing framework. Students typically gain about one grade level of reading in each 16-week cycle.',
   },
 
   // D37 · the five content strands, nested under the three LCS branches.
@@ -1003,15 +1003,15 @@ export const methodology = {
     stats: [
       {
         id:     'gain',
-        number: '100–150L',
+        number: '187L',
         unit:   'per cycle',
-        label:  'typical Lexile gain in each 16-week cycle',
+        label:  'average Lexile gain in each 16-week cycle',
       },
       {
         id:     'grade',
         number: '1',
         unit:   'grade level',
-        label:  'reading growth across two 16-week cycles',
+        label:  'average reading growth in each 16-week cycle',
       },
       {
         id:     'scale',
@@ -1746,8 +1746,8 @@ export const credentials = {
         'midpoint (Week 8), and exit (Week 16) using MetaMetrics-certified tools. ' +
         'Every Navigator is a certified Lexile assessment practitioner. Growth is ' +
         'reported in specific Lexile deltas — not vague "reading level" ' +
-        'claims. Students typically advance one full grade level in reading across ' +
-        'two 16-week cycles (per-cycle Lexile gains in the 100L–150L range).',
+        'claims. Students typically advance about one full grade level in reading ' +
+        'in each 16-week cycle (average gain 187 Lexile points).',
       source: { label: 'MetaMetrics · Lexile & Quantile Hub', url: 'https://hub.lexile.com/' },
     },
     {

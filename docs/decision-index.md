@@ -61,7 +61,7 @@ Everything here applies to new work.
 | D19 | LCS ZH header = 语言循环体系 | Live | — |
 | D2 | MCT may be named directly in the Write step | Live | — |
 | D8 | Lexile canon — one grade level over two 16-week cycles | **Superseded by D99** (2026-09-05) | — |
-| D99 | Lexile canon re-ruled: **about one grade level per 16-week cycle**, measured set restored (187 points · 1.2 grade levels · 94% ≥ one full grade) | Live in guides · **site cascade drafted, apply-gated** (`content-review/03-growth-canon-cascade-D99.md`) | — (§11 sole source, prose) |
+| D99 | Lexile canon re-ruled: **about one grade level per 16-week cycle**, measured set restored (187 points · 1.2 grade levels · 94% ≥ one full grade) | **Live everywhere** — guides + full 14-row site cascade applied 2026-09-05 (pages, tiles, schema, llms EN+ZH; record: `content-review/03-growth-canon-cascade-D99.md`) | — (§11 sole source, prose) |
 | D17 | Referral canon — 75%+ | Live | — |
 | D18 | Navigator credential — world top-50 (top-30 rejected) | **Live** | — |
 | D11 | Session length — up to 50 min, min. weekly | Live | — |
@@ -189,7 +189,6 @@ open one.
 | D13 | `/faq` pricing figures never re-verified against the current combinations. Internally consistent (weekly x16 ≈ lump sum on all five tiers); **no currency is named anywhere** despite serving CAD + USD cities; **Flex 3 is called "GPA tutoring" / "GPA 辅导课"**, which §10 bars as remedial framing and which works against the price anchor | admin |
 | D92 | **Header vs body: one ruling covers three.** `zh:279` (a link label) and `zh:346` (a meta description) still use a superseded LCS form, and **23 body uses of `学习循环`** remain — all barred for new translation, all unruled for existing body copy. §09 draws the line at header vs body; neither of the two is clearly either | content |
 | — | `/compare` founder `<figure>` awaits the real embed URL (the dead play affordance was removed 2026-09-04; restoring it needs the URL) | admin |
-| D99 | **Growth-canon cascade awaiting "apply"** — 14 drafted edits in `content-review/03-growth-canon-cascade-D99.md` (incl. retiring the 100–150L per-cycle range; 4 flags for admin) | admin |
 
 ### Resolved conflicts
 
