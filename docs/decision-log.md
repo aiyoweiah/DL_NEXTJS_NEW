@@ -218,7 +218,22 @@ an element that renders at 0×0 still counts as one element.
   against `9a205a4` and **observed to fail** on the collapsed glyph (§4's
   instrument warning). Green from an instrument never seen to go red is silence,
   not evidence.
-- **Status:** ruled, **unbuilt**. Design recorded in
+- **Status: BUILT 2026-09-06** — `scripts/check-zero-size.mjs`, run as
+  `npm run check:geometry`, standalone exactly as ruled; `prebuild`/`postbuild`
+  are untouched and the 14 remain 14. Drives an already-installed Chrome or Edge
+  through `puppeteer-core` (no bundled Chromium; `CHROME_PATH` overrides), so
+  nothing heavy enters the deploy path.
+- **Validation gate PASSED** — recorded in
+  [`../scripts/ZERO-SIZE-VALIDATION.md`](../scripts/ZERO-SIZE-VALIDATION.md).
+  Against `9a205a4` the probe exits **1** with 8 findings (the watermark wrapper
+  and its `<svg>`, x2 viewports, x2 locales) while that same build passes all 14
+  existing guards with exit 0. Against `main` it exits 0 across 120 routes. The
+  instrument has been seen to go red, and red for the right element — not merely
+  seen to stay green.
+- **Banked baseline is empty**, which is itself a claim: no decorative element on
+  this site is legitimately zero-area, so any future entry is a regression until
+  ruled otherwise.
+- **Closes the guard gap opened by D100.** Design in
   [`architecture-cohesion-proposal.md`](architecture-cohesion-proposal.md) §9.
-  **Closes the guard gap opened by D100.** **Enforced by:** — n/a, it *is* the
-  guard `(unverified until the 9a205a4 run passes)`.
+  **Promotion into `postbuild` stays deliberately deferred** until it has run
+  quiet through several visual passes — that deferral was the ruling's point.

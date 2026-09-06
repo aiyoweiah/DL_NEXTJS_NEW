@@ -441,4 +441,9 @@ manufactured confidence during the exact week the hero was blank. This codebase
 has a known-bad commit to calibrate against, which is a luxury; normally the
 broken case has to be fabricated. That run is step one of building it.
 
-Unbuilt as of 2026-09-05.
+**Built 2026-09-06** as `scripts/check-zero-size.mjs` / `npm run check:geometry`.
+The validation gate passed before it was trusted anywhere — against `9a205a4` it
+exits 1 with 8 findings while that same build passes all 14 existing guards;
+against `main` it exits 0 across 120 routes. Record:
+[`../scripts/ZERO-SIZE-VALIDATION.md`](../scripts/ZERO-SIZE-VALIDATION.md).
+Promotion into `postbuild` remains deferred by design.

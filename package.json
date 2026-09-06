@@ -18,7 +18,8 @@
     "check:ondark": "node scripts/check-on-dark.mjs --build",
     "type-floor": "node scripts/type-floor.mjs",
     "check:label": "node scripts/check-label-variant.mjs",
-    "check:utility": "node scripts/check-utility-emitted.mjs"
+    "check:utility": "node scripts/check-utility-emitted.mjs",
+    "check:geometry": "node scripts/check-zero-size.mjs"
   },
   "dependencies": {
     "@types/node": "20.6.2",
@@ -41,6 +42,7 @@
     "typescript": "5.2.2"
   },
   "devDependencies": {
+    "puppeteer-core": "^25.10.0",
     "subset-font": "^2.7.0"
   }
 }

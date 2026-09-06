@@ -1,0 +1,8 @@
+{
+  "$comment": "Elements that are painted but occupy zero area, and are accepted. See the header of check-zero-size.mjs. A NEW entry is a failure; bank one only when the zero is deliberate.",
+  "viewports": [
+    "1440x900",
+    "375x812"
+  ],
+  "zeros": []
+}
