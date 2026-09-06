@@ -355,3 +355,90 @@ that is where the question belongs. Both ratchets now refuse a drop of more than
 This is not a limit on real work. It is a prompt to say which kind of drop it was,
 at the only moment when anyone still knows.
 
+
+## 9. Geometry is unguarded — `check-zero-size` (proposed, unbuilt)
+
+**The finding (D100).** The homepage hero's O-glyph watermark rendered **0×0 from
+`9ef48c0` to `97e96fc`**. A wrapper positioned by `top`+`right` alone has a
+content-derived height; the glyph inside asked for `height:100%`; a percentage
+against an indefinite parent resolves to zero. The hero shipped with no figural
+background and **all 14 guards stayed green the entire time.**
+
+They stayed green because they were never looking. Every guard reads one of four
+things — colour, type size, token resolution, or class inventory. **None reads
+geometry.** An element that renders at 0×0 still has its classes, still resolves
+its tokens, still contributes its one inline-style declaration to the ratchet.
+It counts as present in every measure we take, and is absent only on screen.
+
+This is §2B's blind spot one level deeper. §2B says source scans cannot see what
+the page *renders*; moving guards to the built HTML (item 1) fixed that for
+content. But a collapsed box is not visible in built HTML either — **it is a
+layout fact, computable only after the cascade runs.** No parse of `out/` can
+find it.
+
+### The rule
+
+An element is an anomaly when it is **painted but has zero area**:
+
+- `display` is not `none`, `visibility` is not `hidden`, computed `opacity` > 0
+- **and** `getBoundingClientRect()` is 0 in either axis
+- **and** it has a visible paint source — background, `fill`, border, or is an `<svg>`
+
+`display:none` is deliberate absence and must be skipped; that exclusion is what
+keeps the false-positive rate near zero, since responsive-hidden elements
+(`hidden sm:block`, `.sr-only`) resolve to `display:none` rather than a zero box.
+
+### Shape
+
+A postbuild probe over `out/`, in headless Chrome, at two viewports (1440×900 and
+375×812, so responsive branches are both exercised). Restricted to the class that
+actually breaks — decorative positioned elements: `[aria-hidden="true"]`,
+`<svg>`, and anything with a background-image — which is a handful per page, not
+the whole tree. Banked baseline plus no-new-drift, matching `check-surfaces` and
+`check-inline-style`; a legitimately zero element gets banked once with a note.
+
+Cost is one browser dependency and roughly 45 routes × 2 viewports of layout.
+That dependency is the real decision: it is the first guard that would need a
+browser, and §4's instrument warning applies — **the probe must be validated
+against a known-bad build before it is trusted**, i.e. run it against `9a205a4`
+and confirm it fails.
+
+### What it would and would not catch
+
+Would: this bug, at both viewports. Any collapsed percentage-height chain. Any
+decorative layer that stops painting because its parent lost its box.
+
+Would not: an element that renders at the wrong *size* but non-zero, an element
+correctly sized but positioned offscreen, or one painted in a colour that matches
+its ground. Zero-area is a narrow, unambiguous, cheap-to-check failure — that
+narrowness is why it is worth building and why it must not be oversold as
+"the hero is verified."
+
+### Ruled 2026-09-05 (D101)
+
+1. **Standalone first, postbuild later — as a sequence, not a compromise.**
+   Ships as `npm run check:geometry`, outside the 14. An unvalidated instrument
+   does not go in the path that deploys the site: headless Chrome must install on
+   Windows, the Mac *and* Cloudflare's builder, and a guard that fails to install
+   there turns a green site into a failed deploy. Promote it into `postbuild`
+   once it has run quiet through several visual passes. Standalone's weakness —
+   it relies on someone remembering — is survivable for weeks; postbuild's risk
+   is not.
+2. **Two viewports: 1440×900 and 375×812.** They exercise both sides of nearly
+   every responsive rule this codebase writes. Tablet (768) is added only if a
+   real bug is ever found hiding there. Note D100's bug broke at *every* width,
+   so two catches it with room to spare.
+3. **Decorative positioned elements only.** `check-surfaces` and
+   `check-utility-emitted` work because their baselines are small enough that a
+   person actually reads the diff. A baseline of hundreds gets rubber-stamped,
+   and a rubber-stamped guard reports green while seeing nothing.
+
+**Validation gate (blocking, §4).** Before this guard is trusted anywhere: check
+out `9a205a4`, run the probe, confirm it **reports the collapsed glyph**. Green
+output from an instrument never seen to go red is silence, not evidence. If it
+passes on a build known to be broken it is worse than absent — it would have
+manufactured confidence during the exact week the hero was blank. This codebase
+has a known-bad commit to calibrate against, which is a luxury; normally the
+broken case has to be fabricated. That run is step one of building it.
+
+Unbuilt as of 2026-09-05.

@@ -64,6 +64,9 @@ neither — so it was retired rather than repaired.
   reach such browsers.
 - **Enforced by:** — ⚠️ attention only (a guard could grep the built CSS for the
   declaration; add one if this ever regresses). **Trigger:** visual review V3.
+- **Amended by D100** — the hero min-height cap in the batch below carried an
+  unlogged collateral edit that collapsed the hero watermark to 0×0. This
+  ruling stands; only that omission was corrected.
 
 *(Executed in the same change, no new rulings needed: `/compare` s9 secondary onto
 `.btn-do` (D53b conformance, V2) · founder-figure play affordance removed pending
@@ -157,3 +160,65 @@ row updated in the index; `system.md` §9 rewritten to match.
   header corrected (it had mapped every variant to `.btn-do` since D79).
   **Enforced by:** `check-utility-emitted` (baseline re-banked minus the retired
   classes). D53b's option B is now complete — no fill class exists to misuse.
+
+### D100 · The hero watermark is sized by its wrapper, not the viewport (interface)
+
+- **The decision.** The homepage hero's O-glyph watermark wrapper is pinned
+  `top:0; bottom:0; right:0` so it has a **definite height**; the glyph keeps
+  `height:100%` and therefore tracks the hero. Reverting to `100dvh` was
+  rejected — it sizes the glyph to the viewport (900px at 1440×900) rather than
+  to the capped hero (1035px), which is what the cap was reaching for.
+- **Why.** D98's executed batch capped the hero at `min(100dvh - nav, 56rem)`
+  and, as an **unlogged collateral edit**, changed the glyph from `height:100dvh`
+  to `height:100%`. The intent was right — `100dvh` overflows the shorter hero —
+  but the wrapper was positioned by `top`+`right` alone, so its height was
+  content-derived. A percentage height against an indefinite parent resolves to
+  zero: **wrapper and glyph both collapsed to 0×0 from `9ef48c0` until
+  `97e96fc`**, and the hero shipped that whole period with no figural background.
+- **Measured** (built output, 1440×900): wrapper 0 → 1034.75px, glyph 0×0 →
+  1034.75 × 1061.28. `/zh` at 375×812 confirms no horizontal overflow — the
+  section's `overflow:hidden` still bleeds the O off the right edge as designed.
+  Confirmed on `www.dodolearning.com` after deploy (wrapper inline style
+  `top:0;bottom:0;right:0;z-index:1`, glyph 1034.81 × 1061.34).
+- **Amends D98** — the parenthetical batch under its entry recorded the
+  min-height cap but not the glyph edit; that omission *is* the defect. D98's
+  ruling itself stands unchanged.
+- **Enforced by:** — ⚠️ nothing `(unverified)`. None of the 14 guards fails when
+  an element silently sizes to zero: every one reads colour, type, tokens or
+  class inventory, and none reads geometry. A `check-zero-size` guard is proposed
+  against [`architecture-cohesion-proposal.md`](architecture-cohesion-proposal.md)
+  §9 (geometry is unguarded); its shape was **ruled 2026-09-05 as D101**, still unbuilt. **Trigger:** owner report, 2026-09-05.
+
+**Lesson.** The edit appears in neither `9ef48c0`'s commit message nor
+`DESIGN_REVIEW.md`, which has no watermark item at all. §4 of the cohesion
+proposal records three claims that were sincere and false *when written*; this is
+the inverse and is harder to catch — nothing was written down, so there was no
+claim for a later reader to doubt. The ratchets stayed green throughout, because
+an element that renders at 0×0 still counts as one element.
+
+### D101 · Ruled: `check-zero-size` ships standalone before it ships in the build (interface)
+
+- **The ruling** (three questions put to the admin, all answered 2026-09-05):
+  **(1)** the guard ships as `npm run check:geometry`, **outside the 14**, and is
+  promoted into `postbuild` only after it has run quiet through several visual
+  passes — a sequence, not a compromise. **(2)** Two viewports, 1440×900 and
+  375×812. **(3)** Scope is decorative positioned elements only.
+- **Why standalone first.** It is the first guard that must *render* rather than
+  read, so it needs headless Chrome installed on Windows, the Mac and
+  Cloudflare's builder. A guard that fails to install in the deploy path converts
+  a healthy site into a failed deploy. Standalone's weakness is that it relies on
+  someone remembering to run it — the very thing that failed in D100 — but that
+  is survivable for a few weeks in a way a broken deploy is not.
+- **Why two viewports and decorative-only.** Two exercise both sides of nearly
+  every responsive rule written here; tablet is added only against a real bug.
+  Decorative-only keeps the banked baseline small enough that a person reads the
+  diff — the property that makes `check-surfaces` and `check-utility-emitted`
+  work, and whose absence would make this one theatre.
+- **Validation gate — blocking.** The guard is trusted nowhere until it is run
+  against `9a205a4` and **observed to fail** on the collapsed glyph (§4's
+  instrument warning). Green from an instrument never seen to go red is silence,
+  not evidence.
+- **Status:** ruled, **unbuilt**. Design recorded in
+  [`architecture-cohesion-proposal.md`](architecture-cohesion-proposal.md) §9.
+  **Closes the guard gap opened by D100.** **Enforced by:** — n/a, it *is* the
+  guard `(unverified until the 9a205a4 run passes)`.

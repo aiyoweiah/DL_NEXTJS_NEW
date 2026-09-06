@@ -1,9 +1,9 @@
-# Decision index — D1 … D99
+# Decision index — D1 … D101
 
-**Created:** 2026-08-30 · **Covers:** every numbered decision · **last updated 2026-09-05 (admin rulings: D62 executed, D8→D99 canon re-rule, copy batch C5–C9)**
+**Created:** 2026-08-30 · **Covers:** every numbered decision · **last updated 2026-09-05 (admin rulings: D62 executed, D8→D99 canon re-rule, copy batch C5–C9; D100 hero-watermark regression, D101 geometry guard ruled)**
 **Source of truth for STATUS.** The logs remain the source of truth for *content*.
 
-There are 98 decisions. Where each one's full entry lives:
+There are 100 decisions. Where each one's full entry lives:
 
 | Record | Holds |
 |---|---|
@@ -134,7 +134,9 @@ Everything here applies to new work.
 | D95 | Utility classes reaching the browser are a ratchet — a rule may not silently stop shipping | Live | `check-utility-emitted` (#16) |
 | D96 | Deep-lavender scale (5 steps, 9 sites); 13 dead utility classes deleted, `.check-list` restored as reserved-by-design | Live | `check-tokens` · `check-utility-emitted` |
 | D97 | The CJK source font is sticky — regeneration defaults to the manifest's source; explicit flag + banner to change the face; guard prints the source and fails half-regenerated states | Live | `check-cjk-coverage` (source-consistency, both passes) |
-| D98 | The site declares itself light — `color-scheme: light` + `colorScheme`/`themeColor` viewport meta, opting out of algorithmic darkening | Live | — ⚠️ unguarded; add a built-CSS grep if it regresses |
+| D98 | The site declares itself light — `color-scheme: light` + `colorScheme`/`themeColor` viewport meta, opting out of algorithmic darkening | Live · **amended → D100** (an unlogged edit in its executed batch) | — ⚠️ unguarded; add a built-CSS grep if it regresses |
+| D100 | The hero watermark is sized by its **wrapper** (`top`+`bottom` pinned), not the viewport — `height:100%` against an indefinite parent had collapsed the glyph to 0×0 | Live · amends **D98** · fixed `97e96fc`, confirmed on production | — ⚠️ unguarded; `check-zero-size` ruled as **D101**, unbuilt |
+| D101 | `check-zero-size` ships as standalone `npm run check:geometry` before promotion into the 14; two viewports (1440×900, 375×812); decorative positioned elements only | **Open** — ruled 2026-09-05, **unbuilt**; blocked on the `9a205a4` validation run | — n/a, it *is* the guard |
 
 ### Type & payload
 
