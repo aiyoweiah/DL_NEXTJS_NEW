@@ -237,3 +237,94 @@ an element that renders at 0×0 still counts as one element.
   [`architecture-cohesion-proposal.md`](architecture-cohesion-proposal.md) §9.
   **Promotion into `postbuild` stays deliberately deferred** until it has run
   quiet through several visual passes — that deferral was the ruling's point.
+
+---
+
+## 2026-09-09 · Admin rulings on the GEO audit (R1–R7)
+
+Source: `docs/geo-audit-2026-09.md` § Rulings requested; rulings given in chat 2026-09-09.
+Cascade rows staged in `content-review/05-geo-rulings-2026-09-09.md` — **apply-gated,
+not applied.**
+
+### D102 · The founding year is 2020 (content)
+
+- **The decision.** DODO Learning was founded in **2020** in Canada (relaunched 2025
+  with the full curriculum upgrade). The 2021 figure is retired everywhere it appears:
+  the founder bio EN/ZH (`content/marketing.en.js:1825/1841/1854`,
+  `marketing.zh.js:1739/1752/1762`), the `Person` schema bio and `foundingDate`
+  (`lib/schema.js:456/167`), `llms.txt:65`, `llms-full.txt:206/210`,
+  `llms-full.zh.txt:189/193`.
+- **Why.** Brand guide §11 has said 2020 since v3.1, and the `/about` numbers section
+  renders "Founded in 2020 in Canada. Relaunched 2025" (`en:556`) — while the founder
+  bio three sections below on the same page, the Person schema and all three llms
+  files said 2021. Two founding years on one entity is exactly the kind of
+  contradiction a citation engine trips on.
+- **Where the rule lives:** BCG §11 (EN + ZH; D-number noted). **Enforced by:**
+  nothing mechanical `(unverified)` — proposal G-1 `check-canon` would carry the
+  strings `2021 she founded` / `2021 年，她`. **Trigger:** GEO audit F8 / ruling R1.
+
+### D103 · The credential is "degrees", never "graduate degrees" (content) — restates D18
+
+- **The decision.** Navigator credentials read **degrees from world top-50
+  universities** (Oxford, U of T, Queen's, LSE and others). "Graduate degree(s)",
+  "graduate-degree holder" and 研究生学位 are retired on every surface — thirteen
+  spots: `/faq` (`content/faq.js:125/252`), `/about` (`marketing.en.js:572`,
+  `zh:547`), `/program` (`en:949`, `zh:912`), `/methodology` (`en:1345–1346`,
+  `zh:1280`), `/navigators` (`en:1410`, `zh:1344`), `llms-full.txt:9/83`,
+  `llms-full.zh.txt:82`. `llms.txt:9` ("graduates of world top-50 universities")
+  already conforms and is the reference sentence.
+- **Why.** §11 / D18 claims degrees, not graduate degrees, because the named pool
+  cannot be verified to the stronger claim. Ten customer-facing spots and three
+  machine-surface spots overclaimed; the audit swept only the machine surfaces and
+  the apply-time sweep found the other ten.
+- **Overrides:** nothing — restates D18's wording; D18 gains a forward pointer in
+  `content-style-decisions.md`. **Where the rule lives:** BCG §11 (EN + ZH).
+  **Enforced by:** nothing mechanical `(unverified)`; G-1 candidate string
+  `graduate degree`. **Trigger:** GEO audit F7 / ruling R2.
+
+### D104 · City pages carry `areaServed` only (machine surface)
+
+- **The decision.** `citySchema()` emits `@type: 'EducationalOrganization'` with
+  `areaServed`, `parentOrganization` and `contactPoint`; the `LocalBusiness` type
+  and the `PostalAddress` block are retired (`lib/schema.js:639`, `:649–654`).
+- **Why.** The program is delivered online and has premises in none of the 20
+  cities. Twenty addressless `LocalBusiness` nodes are the pattern structured-data
+  validators discount and Google's LocalBusiness guidance excludes; they add no
+  entity signal an `areaServed` list does not already carry.
+- **Where the rule lives:** the §4 header comment in `lib/schema.js`. **Enforced
+  by:** nothing mechanical `(unverified)`. **Trigger:** GEO audit S2(c) / ruling R5.
+
+### D105 · `sameAs` begins — the YouTube channel is DODO's (machine surface + chrome)
+
+- **The decision.** `https://www.youtube.com/@DODO-Learning` ("DODO Learning
+  Canada", channel `UCUTdsHg4VHnquYGBDQm7M1A`) is confirmed as DODO's and becomes
+  the first `sameAs` entry on the `EducationalOrganization` node
+  (`lib/schema.js:183–187`), plus a footer Resources link ("YouTube", EN + ZH,
+  `external: true`). Xiaohongshu / WeChat OA URLs remain pending — workflow Open
+  Decision #9 is now partially closed.
+- **Why.** Entity disambiguation: in Bing-backed results "Dodo Learning" is also an
+  unrelated corporate LMS app. A verified profile link is the cheapest signal that
+  tells a model which entity this site is.
+- **Where the rule lives:** `lib/schema.js` §1; `content/marketing.{en,zh}.js`
+  footer. **Enforced by:** nothing mechanical `(unverified)`. **Trigger:** GEO
+  audit O2/O3 / ruling R6.
+
+### R3 · R4 · R7 — evaluated, awaiting the owner's pick (not yet decisions)
+
+- **R3 (blog).** The March bylines are placeholders (owner-confirmed), and both
+  March posts carry banned register (intervention ×12 EN, 干预 ×12 ZH, "ESL
+  support" framing). Options B (prune to the MCT post) and C (retire `/blog`,
+  re-home the MCT article as an evergreen page) are drafted with GEO impact per
+  surface; **C recommended**.
+- **R4 (`/assessment`).** An `UnderConstruction` shell linked only from the footer
+  with `soon: true`. Repurposing it as a second contact page is recommended
+  against (URL semantics, D27/D29/D30, `/consult` already carries the email/WeChat
+  cards); two alternatives drafted.
+- **R7 (OG card).** Placeholder confirmed — uniform `#0E0E12`, `83830ea`, no brief
+  anywhere. Four candidates rendered from the built site's own assets to
+  `.design/og-card-2026-09/`; wiring rows drafted (per-locale OG default, square
+  logo for the Organization node).
+
+### D102–D105 · Applied 2026-09-09 (same afternoon)
+
+All four rulings applied on the owner's "apply", plus M1 (blog canonical). Build green, 14/14 guards; `content-audit` parity 0 · anti-dictionary 19 (baseline). **D103 landed on 16 spots, not 13** — the post-apply sweep (the D99 lesson) found the `/compare` "Longitudinal knowledge" row EN+ZH and `llms-full.zh.txt:9`, which the staged table had missed because a truncated grep hid them. Recorded in `content-review/05-geo-rulings-2026-09-09.md` § Status. **Enforced by:** still nothing mechanical — the retired strings (`graduate degree`, `研究生学位`, `2021 she founded`, `LocalBusiness`) are the first seeds for G-1 `check-canon`, now specified as an extension of `scripts/content-audit.mjs` (see `docs/geo-audit-2026-09.md` § Update).

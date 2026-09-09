@@ -1,9 +1,9 @@
-# Decision index — D1 … D101
+# Decision index — D1 … D105
 
-**Created:** 2026-08-30 · **Covers:** every numbered decision · **last updated 2026-09-05 (admin rulings: D62 executed, D8→D99 canon re-rule, copy batch C5–C9; D100 hero-watermark regression, D101 geometry guard ruled + built)**
+**Created:** 2026-08-30 · **Covers:** every numbered decision · **last updated 2026-09-05 (admin rulings: D62 executed, D8→D99 canon re-rule, copy batch C5–C9; D100 hero-watermark regression, D101 geometry guard ruled + built) · **2026-09-09: D102–D105 ruled on the GEO audit — founding year 2020, credential wording, areaServed-only city schema, sameAs — applied the same afternoon; R3/R4 deferred, R7 awaiting pick**
 **Source of truth for STATUS.** The logs remain the source of truth for *content*.
 
-There are 100 decisions. Where each one's full entry lives:
+There are 105 decisions. Where each one's full entry lives:
 
 | Record | Holds |
 |---|---|
@@ -62,8 +62,10 @@ Everything here applies to new work.
 | D2 | MCT may be named directly in the Write step | Live | — |
 | D8 | Lexile canon — one grade level over two 16-week cycles | **Superseded by D99** (2026-09-05) | — |
 | D99 | Lexile canon re-ruled: **about one grade level per 16-week cycle**, measured set restored (187 points · 1.2 grade levels · 94% ≥ one full grade) | **Live everywhere** — guides + full 14-row site cascade applied 2026-09-05 (pages, tiles, schema, llms EN+ZH; record: `content-review/03-growth-canon-cascade-D99.md`) | — (§11 sole source, prose) |
+| D102 | Founding year canon — **2020** in Canada, relaunched 2025; the 2021 figure retired on the founder bio, Person schema and llms EN+ZH | Live · **applied 2026-09-09** (11 rows; build 14/14; `content-review/05-geo-rulings-2026-09-09.md` § A) | — (G-1 candidate) |
+| D103 | Credential wording — **degrees** from world top-50, never "graduate degrees" / 研究生学位 (restates D18) | Live · **applied 2026-09-09** (16 spots — three found by the post-apply sweep; § B) | — (G-1 candidate) |
 | D17 | Referral canon — 75%+ | Live | — |
-| D18 | Navigator credential — world top-50 (top-30 rejected) | **Live** | — |
+| D18 | Navigator credential — world top-50 (top-30 rejected) | **Live** · wording restated by **D103** — *degrees*, never "graduate degrees" | — |
 | D11 | Session length — up to 50 min, min. weekly | Live | — |
 | D7 | Specific book titles over genre labels | Live | — |
 | D9 | ZH 6+1 canon 思考、结构、声音、用词、流畅、规范、呈现 | Live | — |
@@ -89,6 +91,13 @@ Everything here applies to new work.
 | D25 | Chrome i18n — copy passed as a prop from the server layout | Live | — |
 | D13 | Pricing hidden on `/program`, surfaced on `/faq` | Live · **FAQ figures unverified** | — |
 | D16 | /about beliefs framed as "DODO Learning's Pillars" | Live · content reworked by D49 | — |
+
+### Machine surfaces — schema · llms · chrome links
+
+| D | Decision | Status | Enforced by |
+|---|---|---|---|
+| D104 | City pages: `citySchema` is `EducationalOrganization` + `areaServed` only — `LocalBusiness` type and `PostalAddress` retired | Live · **applied 2026-09-09** (§ C; built city pages emit no LocalBusiness/PostalAddress) | — |
+| D105 | `sameAs` begins — `youtube.com/@DODO-Learning` on the Organization node + footer Resources link; XHS / WeChat OA pending | Live · **applied 2026-09-09** (§ D; schema + footer EN/ZH) | — |
 
 ### Interface system
 
@@ -191,6 +200,7 @@ open one.
 | D13 | **Partially closed 2026-09-05:** Flex 3 renamed **课业进阶自由航行 / Coursework Advancement** and **CAD stated** on every price-bearing surface (/faq, llms-full EN+ZH; /program tier list renamed) — record `content-review/04-flex3-cad.md`. **Still open:** pricing-figure re-verification against current combinations · /partners "GPA Navigation" (separate B2B product — does §10 extend there?) · /ops tools' tier naming | admin |
 | ~~D92~~ | **Ruled 2026-09-05: FULL migration, executed** — every `学习循环` gloss stripped (23 uses across marketing.zh.js / faq.js / cities.js), both superseded LCS renderings → 语言循环体系. See decision-log.md | closed |
 | — | `/compare` founder `<figure>` awaits the real embed URL (the dead play affordance was removed 2026-09-04; restoring it needs the URL) | admin |
+| — | **GEO audit R3 / R4 / R7** — blog retire-vs-prune (C recommended), `/assessment` repurpose (recommended against), OG card pick (four candidates in `.design/og-card-2026-09/`): evaluated 2026-09-09 in `content-review/05-geo-rulings-2026-09-09.md`, awaiting the owner pick. R1/R2/R5/R6 ruled → D102–D105 | admin |
 
 ### Resolved conflicts
 

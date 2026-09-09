@@ -156,6 +156,8 @@ For each decision above, ask: has this stabilized across 2+ surface reviews? If 
 - **Trigger:** User C-2.
 
 ### D18 · Top-50 university credential retained (top-30 rejected)
+
+> **Forward pointer (2026-09-09):** wording restated by **D103** — the credential is *degrees* from world top-50 universities; "graduate degree(s)" / 研究生学位 retired on every surface. See `decision-log.md`.
 - **Decision:** Navigator credential stays **world top-50**. A proposed top-30 was rejected: the named pool (Oxford · U of T · Queen's · LSE) is not all top-30, so the tighter claim is unverifiable and fails the skeptical-parent fact-check (§04 profile).
 - **Where it lives now:** `BRAND_CONTENT_GUIDE.md` §11 credentials row (do-not-downgrade note).
 - **Trigger:** User C-1.

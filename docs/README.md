@@ -24,6 +24,7 @@ Internal documentation. Not deployed (not in `public/`, not served).
 - **[audiobooks-setup.md](audiobooks-setup.md)** / **[audiobooks-add-new.md](audiobooks-add-new.md)** — Audiobook section setup and per-book add procedure.
 - **[proxy.example.js](proxy.example.js)** — Dormant Next.js 16 proxy/middleware code. Not active because the site uses `output: 'export'`. Reference blueprint for activating server-runtime locale routing if the deployment model ever changes (see file header for activation steps).
 - **[llm-citations/](llm-citations/)** — Monthly LLM citation tracking. Each `YYYY-MM*.md` file is a snapshot of how DODO is (or isn't) cited in answers to parent-shopping queries across ChatGPT / Claude / Perplexity / Gemini.
+- **[geo-audit-2026-09.md](geo-audit-2026-09.md)** — GEO audit of the machine surfaces (2026-09-09): what is verified healthy (AI-crawler access at the Cloudflare edge, llms files, JSON-LD, hreflang), four must-fix code defects (blog canonicals → `/undefined/`, scaffold blog index with dead links, blank OG image, JS-only `<html lang>`), the apply-gated `llms-full` drift register (F1–F13), rulings R1–R7, and the tooling decisions (GEOFlow not installed; writing-dna skills installed). Findings only — nothing applied.
 
 ## The guards
 

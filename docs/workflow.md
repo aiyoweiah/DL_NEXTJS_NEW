@@ -271,7 +271,7 @@ this table is the detail.
 | 6 | Off-site mention channel for Tier 3 | ❌ Pending — newsletters / podcast guesting / school-counselor outreach / education directories / Reddit |
 | 7 | Bing Webmaster Tools registration | ❌ Pending — blocks IndexNow integration |
 | 8 | Google Search Console verification + GA4 IDs | ❌ Pending |
-| 9 | Social profile URLs for `sameAs` | ❌ Pending |
+| 9 | Social profile URLs for `sameAs` | ◐ **YouTube confirmed 2026-09-09 (D105, staged)** — XHS / WeChat OA still pending |
 | 10 | Cities list approval (now **20 cities** in `areaServed`) | ✅ **Confirmed 2026-05-21.** Baseline 18 schema cities confirmed by user; Montreal + Denver added to schema for consistency with llms-full.txt service-area section + home-page result-card (Denver) + brand guide §11 primary city pool. If "18 only" was the literal intent, revert Montreal + Denver in `lib/schema.js`. |
 | 11 | City pages — build or list-only? | ✅ **Option C selected 2026-05-21.** Compact template for 14 additional cities (Burnaby · Coquitlam · Calgary · Richmond Hill · Mississauga · Montreal · San Jose · Cupertino · Irvine · Bellevue · New York · Boston · Houston · Denver) added to `content/cities.js`. Same data shape as the 6 rich pages, shorter h1/subheading/context. Auto-rendered by existing `page.jsx`. `citiesProofStats` also updated to new Lexile canon (D8). 20 city pages total now indexable. `public/llms.txt` published-city list updated to reflect rich vs compact. |
 | 12 | YouTube video IDs for `/demos` | ❌ Pending — placeholders in `content/marketing.{en,zh}.js` `YOUTUBE_IDS` const |
@@ -300,12 +300,44 @@ this table is the detail.
 - Council session output: in the conversation transcript that produced this plan (2026-05-11)
 - Baseline survey (raw): `F:\PC-Documents\DODO_web\GEO Survey Result.txt` (outside the repo, user-side workspace)
 - Baseline summary: `docs/llm-citations/2026-05-baseline.md`
+- Site audit — machine surfaces, schema, blog authority, OG, index (2026-09-09): `docs/geo-audit-2026-09.md`
 - Translation/voice brief: `translation/DEEPSEEK_BRIEF.md`
 - Dormant middleware (when moving to server runtime): `docs/proxy.example.js`
 
 ---
 
 ## Session Log
+
+### 2026-09-09 — GEO audit of machine surfaces, schema, blog authority and visual signals (Windows hub)
+
+**Deliverable:** [`geo-audit-2026-09.md`](geo-audit-2026-09.md) — every built route parsed (120), live origin diffed against the repo, Cloudflare zone read through the API, 18 crawler UAs probed, Bing-backed index sampled, OG image pixel-checked. No copy, code or asset changed; everything is a finding with a proposed fix.
+
+**Verified healthy (do not re-measure):** AI crawlers are not blocked at the Cloudflare edge (`ai_bots_protection: disabled`, robots.txt unmanaged) · `llms*.txt` live = repo (CRLF-insensitive) · 0 JSON-LD parse errors on 120 pages · hreflang in HTML + sitemap · FAQPage emits 58 clean Q&As · 100% img alt coverage.
+
+**Must fix (code, no copy):** M1 every blog post's canonical / hreflang / og:url = `/blog/undefined/` (`blog/[slug]/page.jsx:34` passes `frontmatter` without `slug`) · M2 `/blog` index renders a hard-coded scaffold — 5 of 7 linked articles 404, invented bylines, 31 Unsplash hotlinks, and the MCT pillar post is not linked at all · M3 `og-default.png` is a uniform `#0E0E12` rectangle, used as `og:image` on 120 routes and as `Organization.logo` · M4 `<html lang>` set only by inline JS.
+
+**Should fix:** S1 `grades 3–8` in five schema fields vs "ages 5 through high school" · S2 city meta carries the retired "16-Week Program", English on ZH pages, and 20 addressless `LocalBusiness` nodes · S3 `/faq` meta same retired name, English on ZH · S4 sitemap `lastmod` = build time for all 38 URLs; `/demos` and `/assessment` absent · S5 `/zh/blog/mct-…` serves English under `zh-Hans` · S6 Course/FAQ schema not localised · S7 title/description lengths.
+
+**Frozen register (apply-gated, 13 rows):** `llms-full` EN+ZH still carry 9 levels / Poodle / Little DODO 5–9 (F1), `LCS 教学系统` ×4 (F2), 全球流动家庭 (F3), 读→思→说→写 (F4), 辅导 in Type A (F5), 3–8 年级 (F6), "graduate degrees" vs §11 "degrees" (F7), founded 2021 vs §11 2020 (F8), no ZH research base (F9), no five strands (F10), no blog links / last-updated line (F11), un-canonised outcome numbers (F12), "new city's launch" (F13).
+
+**Off-site / entity:** Bing-backed index still shows the retired tagline in the homepage title (not re-crawled since D45 → Wave 6 #7) · "Dodo Learning" is also Dodo Brands' LMS app in the same results (entity ambiguity → `sameAs`) · `youtube.com/@DODO-Learning` ("DODO Learning Canada") is live, indexed and unlinked — first `sameAs` candidate once ownership is confirmed.
+
+**Rulings requested (R1–R7):** founding year 2020 vs 2021 · degrees vs graduate degrees · are the March blog authors real · `/assessment` index status · drop LocalBusiness on city pages · YouTube ownership → `sameAs` · OG card brief.
+
+**Rulings received the same day (owner, in chat):** R1 → 2020 (D102) · R2 → degrees (D103; ten further customer-page spots found at staging) · R3 → placeholders confirmed; blog retire-vs-prune evaluated, C (re-home the MCT article as an evergreen page) recommended · R4 → `/assessment`-as-contact-page evaluated, recommended against · R5 → `areaServed` only (D104) · R6 → YouTube confirmed (D105; Open Decision #9 partially closed) · R7 → OG placeholder confirmed, four candidates in `.design/og-card-2026-09/`. Cascade staged in `content-review/05-geo-rulings-2026-09-09.md` — **apply-gated**.
+
+**Applied the same afternoon (owner: "apply approved items"):** D102–D105 + M1 shipped — 14/14 guards green, content-audit parity 0 / 19 baseline hits; D103 turned out to be 16 spots (post-apply sweep found three more). Content commit local. **R3/R4 deferred by the owner until the GEO-skills pass is read; R7 awaits the card pick.**
+
+**GEO tooling installed (user scope, Windows):** `TheSmokeDev/geo-skills` — 16 `geo-*` skills + 5 subagents (`/geo audit`, `/geo-ai-index-access`, `/geo-citability`, `/geo-brand-mentions`, `/geo-measurement`, …); `onvoyage-ai/gtm-engineer-skills` — `audit-website-aeo`, `audit-content`, `improve-aeo-geo`; `metawhisp/best-aeo-skill` (4-vector GEO Score, Python evidence collectors). `AgriciDaniel/claude-seo` evaluated and **recommended as a plugin when Wave 6 #7 (Bing Webmaster + IndexNow) starts** — not installed (hook + Python runtime, owner's call). Official plugin catalog and skills directory have nothing for GEO.
+
+**Instruments run against the live origin:** `audit-website-aeo` 89/100 foundational (14/16; fails: alt coverage on decoratives, no RSS; weak: freshness 45, answer readiness 68, evidence density 72 — 0% author attribution, 0% date signals) · `best-aeo-skill` 79/79/84 (home/methodology/faq; Technical 100, Citability 83, Schema 50–75, Entity 80; no author markup, no `dateModified`, FAQPage only on /faq, uncited statistics) · index/access gates: Bing indexed (~1,750 `site:` results), IndexNow absent, no snippet restrictions, SSR pass · brand mentions: YouTube only; Reddit/Wikipedia/LinkedIn/reviews 0; **entity collisions in both languages** ("Dodo Learning" = Dodo Brands LMS + knomary app; 都学 = Doxue MBA prep). Full detail + the GEO-visual protocol (V1–V6, when/how) in `geo-audit-2026-09.md` § Update.
+
+**check-canon:** a partial function exists — `scripts/content-audit.mjs` Pass B (anti-dictionary over marketing/faq/cities + llms EN; reports, never fails, not in prebuild). G-1 is now specified as its extension: `retired_terms` in the glossary, Pass C over llms ZH + schema + metadata + MDX, `--strict`, wired into `prebuild`.
+
+
+**Tooling:** GEOFlow evaluated and **not installed** — it is a Laravel/Postgres/Redis content-ops platform for volume AI publishing, not a skill; the borrowable idea became proposal **G-1 `check-canon`** (a source guard that greps retired terms across llms/schema/metadata). `writing-dna-skill` + `lieflat-less-ai-tone` **installed at user scope (Windows)** for the future EN→ZH path replacing the DeepSeek paste-out; `dodo-content-writer` still says DeepSeek until the owner switches. Pilot job for the new path: F9.
+
+**Next capture:** 2026-09-24, full v3 matrix, incognito rules → `llm-citations/2026-09.md`.
 
 ### 2026-09-01 — Design-system architecture: the cohesion proposal finished (D72 closed, D73–D78)
 

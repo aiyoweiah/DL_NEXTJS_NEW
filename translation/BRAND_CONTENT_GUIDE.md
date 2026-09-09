@@ -427,11 +427,11 @@ Cite these wherever credibility is needed. **Update centrally — never edit one
 
 | Fact | Phrasing |
 |---|---|
-| Founded | **2020 in Canada · relaunched 2025** with full curriculum upgrade |
+| Founded | **2020 in Canada · relaunched 2025** with full curriculum upgrade *(D102, 2026-09-09: confirmed — the 2021 figure in the founder bio, Person schema and llms files is retired; cascade staged)* |
 | Teaching hours | **10,000+ hours delivered** |
 | Students served | **300+ students across the programme** |
 | Referral rate | **75%+ from genuine word-of-mouth** *(2026-06-01 admin set; supersedes prior 90%+. Update centrally — already cascaded to /about · partners · llms-full)* |
-| Navigator credentials | **Degrees from world top-50 universities** (Oxford, U of T, Queen's, LSE and others); specialist backgrounds in English literature and composition *(2026-06-01: top-50 retained — do NOT downgrade to top-30; the named pool incl. Queen's is not all top-30, so a tighter claim is unverifiable)* |
+| Navigator credentials | **Degrees from world top-50 universities** (Oxford, U of T, Queen's, LSE and others); specialist backgrounds in English literature and composition *(2026-06-01: top-50 retained — do NOT downgrade to top-30; the named pool incl. Queen's is not all top-30, so a tighter claim is unverifiable)* *(D103, 2026-09-09: "degrees" only — "graduate degree(s)" / 研究生学位 retired on 13 spots; cascade staged)* |
 | Typical Lexile gain | **About one grade level per 16-week cycle** — measured set: **187 Lexile points · 1.2 grade levels · 94% ≥ one full grade level** *(D99 2026-09-05 admin re-ruling; supersedes the 2026-05-21 two-cycle set and restores the prior measured figures. Re-verify against latest cohort data before quoting tighter numbers.)* |
 | Lexile assessment cadence | **Week 0 · Week 8 · Week 16** |
 | Anchor case study | Canadian student, started at age 10. At age 13: **SSAT Vocabulary 92nd percentile · Writing 95th percentile.** |
