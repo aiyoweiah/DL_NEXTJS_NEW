@@ -30,7 +30,7 @@ export async function generateMetadata({ params }) {
   const { locale, slug } = await params
   const post = getPost(locale, slug)
   if (!post) return {}
-  return buildPostMetadata(post.frontmatter, locale)
+  return buildPostMetadata({ ...post.frontmatter, slug: post.slug }, locale)
 }
 
 // ── UI copy ───────────────────────────────────────────────────

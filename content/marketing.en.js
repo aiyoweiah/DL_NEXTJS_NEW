@@ -150,6 +150,7 @@ export const footer = {
     { href: '/blog',     label: 'Blog'                },
     { href: '/faq',      label: 'FAQ'                 },
     { href: '/demos',    label: 'Watch a Class'       },
+    { href: 'https://www.youtube.com/@DODO-Learning', label: 'YouTube', external: true },
     { href: '/consult',  label: 'Book a Consultation' },
     { href: '/partners', label: 'Partners'            },
   ],
@@ -569,7 +570,7 @@ export const about = {
     p2:
       'A Navigator asks questions they don’t already know the answer to. They get genuinely curious about what a seven-year-old thinks about fairness, about loyalty, about why a character made the choice they made. The questions are drawn from Harvard Project Zero’s Visible Thinking routines — structured protocols developed at the Harvard Graduate School of Education — but the curiosity is real.',
     p3:
-      'They are readers. They are thinkers. Our ELA Program Navigators hold graduate degrees from world top-50 universities (Oxford, U of T, Queen’s, LSE and others) with specialist backgrounds in literature or composition. Our Little DODO educators are early-childhood specialists in phonetics, fluency, and pronunciation. Different expertise; the same commitment — to language as the way a child makes sense of everything, and to the long view that a child trained well in English has a mind that will carry them further than any test score ever could.',
+      'They are readers. They are thinkers. Our ELA Program Navigators hold degrees from world top-50 universities (Oxford, U of T, Queen’s, LSE and others) with specialist backgrounds in literature or composition. Our Little DODO educators are early-childhood specialists in phonetics, fluency, and pronunciation. Different expertise; the same commitment — to language as the way a child makes sense of everything, and to the long view that a child trained well in English has a mind that will carry them further than any test score ever could.',
     navigatorsLink:  'Meet the Navigators →',
     videoCaption:    'Ms. Kimberly · DODO Navigator',
     videoCaptionSub: 'A 30-second hello',
@@ -781,7 +782,7 @@ export const compare = {
     s6: {
       eyebrow: 'The Navigator Difference', h2: 'What a Navigator does that a tutor cannot.',
       points: [
-        { label: 'Longitudinal knowledge', body: 'A session-by-session tutor meets your child fresh each time. A Navigator carries the full arc\u00a0— your child’s Lexile baseline, their 6+1 Trait profile from week one, the specific sentence from three sessions ago that still needs to move. Every Navigator holds a graduate degree from a world top-50 university (Oxford, U of T, Queen’s, LSE and others) with a specialist background in literature or composition. That context compounds. The insight it produces cannot be replicated in a one-off session.' },
+        { label: 'Longitudinal knowledge', body: 'A session-by-session tutor meets your child fresh each time. A Navigator carries the full arc\u00a0— your child’s Lexile baseline, their 6+1 Trait profile from week one, the specific sentence from three sessions ago that still needs to move. Every Navigator holds a degree from a world top-50 university (Oxford, U of T, Queen’s, LSE and others) with a specialist background in literature or composition. That context compounds. The insight it produces cannot be replicated in a one-off session.' },
         { label: 'A better question', body: 'The Navigator’s first move after your child responds is always a follow-up question drawn from Harvard Project Zero’s Visible Thinking routines\u00a0— never an evaluation. This is the difference between growing a thinker and training a responder — one builds capacity, the other a habit of waiting to be told.' },
         { label: 'Feedback with a number attached', body: 'Every Navigator response references a specific 6+1 Trait, a specific score, and a specific next move. Not “good job”\u00a0— “your Ideas trait moved from a 2 to a 3 because of this sentence. A 4 requires this.” Your child always knows exactly where they are and what a higher score requires of them.' },
         { label: 'One Navigator. The full 16-week arc.', body: 'Your child’s Navigator is with them from initial Lexile assessment to final 6+1 Trait evaluation. One relationship, one standard, and the same set of eyes on every draft and every oral defence your child gives. The relationship itself is part of the program.' },
@@ -946,7 +947,7 @@ export const methodology = {
       heading:  'Precision in speech precedes precision on the page.',
       body:
         'Every session includes a live Socratic exchange with the Navigator — a specialist in literature or composition ' +
-        'holding a graduate degree from a world top-50 university (Oxford, U of T, Queen’s, LSE and others), ' +
+        'holding a degree from a world top-50 university (Oxford, U of T, Queen’s, LSE and others), ' +
         'and a native English speaker. ' +
         'The student takes a position and defends it. The Navigator does not correct in real time — they guide. ' +
         'Fluency is not the goal of this phase. Clarity of thinking, expressed in English, is. The difference matters.',
@@ -1342,7 +1343,7 @@ export const results = {
       'Students do not improve their Lexile score by practising Lexile tests. They improve ' +
       'by thinking more precisely — in both languages. The Loop is what causes the movement. ' +
       'The Loop is grounded in the MCT Language Arts tradition and Harvard Project Zero\'s ' +
-      'Visible Thinking routines, delivered one-on-one by a Navigator with a graduate degree ' +
+      'Visible Thinking routines, delivered one-on-one by a Navigator with a degree ' +
       'from a world top-50 university.',
     cta:     'Read the full methodology',
     ctaHref: '/methodology',
@@ -1407,7 +1408,7 @@ export const navigators = {
       eyebrow: 'The Relationship',
       h2: 'The same Navigator. Every session. Sixteen weeks.',
       points: [
-        { label: 'Credentialed',  body: "Every Navigator holds a graduate degree from a world top-50 university — Oxford, U of T, Queen’s, LSE and others — with a specialist background in English literature or composition. They are certified Lexile assessment practitioners and trained in the 6+1 Trait writing framework. Native English speakers, longitudinal experience with bilingual learners in North American academic contexts." },
+        { label: 'Credentialed',  body: "Every Navigator holds a degree from a world top-50 university — Oxford, U of T, Queen’s, LSE and others — with a specialist background in English literature or composition. They are certified Lexile assessment practitioners and trained in the 6+1 Trait writing framework. Native English speakers, longitudinal experience with bilingual learners in North American academic contexts." },
         { label: 'Matching',     body: "Navigators are matched to students — not assigned. Before the first session, DODO assesses your child’s Lexile baseline, their 6+1 Trait writing profile, and their communication style. The match is intentional." },
         { label: 'Longitudinal', body: "Your child’s Navigator carries their full history. Every Lexile score. Every session note. Every moment where a concept clicked or didn’t. There is no starting over. There is no new face." },
         { label: 'Gap tracking', body: 'A Navigator does not prepare a lesson plan. They prepare for your specific child — where they are this week, what the gap is, and which part of The Loop will close it.' },
@@ -1822,7 +1823,7 @@ export const founder = {
     'by reading the classical English canon (Alice in Wonderland, Mark Twain, Edgar Allan ' +
     'Poe), then Camus and Zola in French, until the sentences held. She passed TOEFL and ' +
     'TCF within that window and graduated from Concordia University in 2019 with a ' +
-    'Bachelor of Commerce. In 2021 she founded DODO Learning; since then more than 300 ' +
+    'Bachelor of Commerce. In 2020 she founded DODO Learning; since then more than 300 ' +
     'students have gone through the program. After the birth of her children she launched ' +
     'Little DODO, DODO’s early-childhood reading program.',
   long: [
@@ -1838,7 +1839,7 @@ export const founder = {
     'Everything DODO Learning teaches — the emphasis on classical literature over ' +
       'simplified readers, the LCS System’s insistence that comprehension precedes ' +
       'fluency, the refusal to treat English as a “subject” — comes out of what actually ' +
-      'moved the needle in her own arc. In 2021 she founded DODO so that no student would ' +
+      'moved the needle in her own arc. In 2020 she founded DODO so that no student would ' +
       'have to reinvent that path alone. Since then more than 300 students have gone ' +
       'through the program. After the birth of her children she launched Little DODO to ' +
       'bring the same philosophy to the phonetic and early-comprehension work that has to ' +
@@ -1851,5 +1852,5 @@ export const founder = {
     languageExams: ['TOEFL', 'TCF — Test de connaissance du français'],
     languages:     ['English', 'French', 'Mandarin'],
   },
-  foundingYear: '2021',
+  foundingYear: '2020',
 }
