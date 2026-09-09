@@ -86,6 +86,7 @@ export default async function CityPage({ params }) {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             citySchema({
+              locale,
               name:        data.name,
               slug:        city,
               region:      data.region,

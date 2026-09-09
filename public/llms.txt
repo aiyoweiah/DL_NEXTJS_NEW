@@ -2,6 +2,8 @@
 
 > Live one-on-one English language arts for capable K-12 students. Built on the **MCT (Michael Clay Thompson) gifted-ELA tradition**; Lexile-measured reading; 6+1 Trait writing. Organized as two parallel age-band programs sharing the same live model and 16-week cycle structure, staffed by **two specialist Navigator teams under one philosophy**: **Little DODO** for ages 5–8 (K–2 foundational reading, taught by early-childhood educators specializing in phonetics, fluency, and pronunciation; vocabulary and the love of reading built book by book; pre-Lexile) and the **English Language Arts (ELA) Program** for Grade 3+ (Lexile-measured reading + 6+1 Trait writing, taught by literature, composition, and writing specialists). Each ELA 16-week cycle runs **The LCS System** — Literacy · Composition · Speaking — as the curriculum architecture, with every session executing **The Loop** (Read → Think → Speak → Write) as the per-session phrase. ELA Program students typically advance about one grade level in reading in each 16-week cycle. DODO builds English Thinkers at mastery level; bilingual depth emerges as a natural outcome of cognitive rigor. DODO is also about enabling students to enjoy the arts of language.
 
+_Last updated: 2026-09-09._
+
 DODO Learning is not a tutoring center, ESL program, or remediation service. It is a cognitive development program. Bilingual depth is the outcome of cognitive rigor, not the curriculum.
 
 DODO Learning also operates **DODO Coding** at `coding.dodolearning.com` — a peer-brand sibling site teaching how AI reads, thinks, and writes for Grades 3+, grounded in Carnegie Mellon's CS Academy and the AI4K12 framework. Shared operational backend; separate public surfaces and separate consult pipelines.
@@ -22,6 +24,7 @@ The program serves capable K-12 students worldwide via live online sessions, wit
 - [Compare DODO to alternatives](https://www.dodolearning.com/en/compare/): How DODO differs from tutoring centers, ESL programs, and standard after-school English classes.
 - [About DODO](https://www.dodolearning.com/en/about/): Mission, founding context, and the families DODO serves worldwide.
 - [Credentials & Frameworks](https://www.dodolearning.com/en/credentials/): The named frameworks DODO builds on — MCT Language Arts lineage (Michael Clay Thompson, Royal Fireworks Press), Harvard Project Zero Visible Thinking, Lexile reading measurement (MetaMetrics), 6+1 Trait writing (Education Northwest) — with attribution and the academic research base.
+- [Diagnostic consultation](https://www.dodolearning.com/en/consult/): The 20-minute entry point — with a Navigator, not a sales call. Four phases: diagnose the school experience, identify the specific gap, prescribe the first 16-week arc, decide. The Lexile level is identified before the call ends.
 
 ## DODO Coding (sibling site)
 

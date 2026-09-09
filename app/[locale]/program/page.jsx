@@ -822,7 +822,7 @@ export default async function ProgramPage({ params }) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema()) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema(locale)) }}
       />
       <Hero              locale={locale} c={c} />
       <AgeBandChooser    locale={locale} copy={bands} current="/program" />

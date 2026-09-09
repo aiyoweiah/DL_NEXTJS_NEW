@@ -130,7 +130,7 @@ export default async function CredentialsPage({ params }) {
           academic citations for the research base. */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(credentialsSchema()) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(credentialsSchema(locale)) }}
       />
 
       {/* Hero */}

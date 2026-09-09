@@ -348,7 +348,7 @@ export default async function LittleDodoPage({ params }) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(littleDodoCourseSchema()) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(littleDodoCourseSchema(locale)) }}
       />
       <Hero            locale={locale} c={c} />
       <AgeBandChooser  locale={locale} copy={bands} current="/little-dodo" />

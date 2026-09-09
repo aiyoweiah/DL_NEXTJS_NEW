@@ -24,8 +24,8 @@ export async function generateMetadata({ params }) {
     zh: '使用条款',
   }
   const descriptions = {
-    en: 'The terms that govern your use of the DODO Learning website and the 16-Week Program. Plain-language summary plus the operative clauses.',
-    zh: 'DODO 都学书院网站及十六周课程的使用条款 — 通俗摘要与正式条款。',
+    en: 'The terms that govern your use of the DODO Learning website and the ELA Program. Plain-language summary plus the operative clauses.',
+    zh: 'DODO 都学书院网站及 ELA 课程的使用条款 — 通俗摘要与正式条款。',
   }
   return buildMetadata({
     locale,
@@ -41,7 +41,7 @@ const COPY = {
     updated: 'Last updated: June 2026',
     intro:
       'These terms govern your use of dodolearning.com and the DODO Learning ' +
-      '16-Week Program. By booking a consultation, enrolling a student, or ' +
+      'ELA Program. By booking a consultation, enrolling a student, or ' +
       'creating an account, you agree to the terms below.',
     sections: [
       {
@@ -67,7 +67,7 @@ const COPY = {
       {
         h: 'Enrollment and payment',
         p: [
-          'The 16-Week Program is billed by cycle. Pricing and the payment schedule are presented in writing before any payment is taken.',
+          'The ELA Program is billed by cycle. Pricing and the payment schedule are presented in writing before any payment is taken.',
           'Refund eligibility, mid-cycle pauses, and cycle-to-cycle continuation are handled per the enrollment agreement we issue at the start of each cycle.',
           'We reserve the right to decline or end an enrollment when continuing would not serve the student — for example, when the program is not a good fit for their needs.',
         ],
@@ -112,7 +112,7 @@ const COPY = {
     title:   '使用条款',
     updated: '最近更新：2026 年 6 月',
     intro:
-      '本条款约束您对 dodolearning.com 网站及 DODO 都学书院十六周课程的使用。' +
+      '本条款约束您对 dodolearning.com 网站及 DODO 都学书院 ELA 课程的使用。' +
       '预约面谈、为学生注册或创建账户即视为您同意以下条款。',
     sections: [
       {
@@ -138,7 +138,7 @@ const COPY = {
       {
         h: '注册与付款',
         p: [
-          '十六周课程按周期计费。价格与付款日程将在收取任何款项前以书面形式呈现。',
+          'ELA 课程按周期计费。价格与付款日程将在收取任何款项前以书面形式呈现。',
           '退款资格、周期中暂停以及周期之间的衔接，按每个周期开始时签订的入学协议处理。',
           '若继续课程无益于学生（例如课程与其需求不匹配），我们保留拒绝或终止注册的权利。',
         ],

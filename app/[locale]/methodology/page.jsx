@@ -71,7 +71,7 @@ export default async function MethodologyPage({ params }) {
       {/* JSON-LD — courseSchema on methodology per handoff §7 */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema()) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema(locale)) }}
       />
 
       {/* ── 1. Hero ───────────────────────────────────────── */}

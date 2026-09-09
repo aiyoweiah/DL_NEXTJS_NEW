@@ -185,7 +185,7 @@ export const cities = {
     },
     zh: {
       h1: '本拿比的家庭——DODO Learning 英语认知深度学习。',
-      subheading: '导师一对一实时主导，LCS 教学体系，以 Lexile 衡量。服务本拿比及大温哥华地区的家庭。',
+      subheading: '导师一对一实时主导，语言循环体系，以 Lexile 衡量。服务本拿比及大温哥华地区的家庭。',
       context: '本拿比位于大温哥华核心地带，是北美最大的华人社区之一。DODO Learning 在线服务本拿比的学生——与温哥华、列治文、高贵林等大温家庭同样的教学方法、同样的测量标准、同样的导师主导强度。',
     },
   },
@@ -201,7 +201,7 @@ export const cities = {
     },
     zh: {
       h1: '高贵林的家庭——DODO Learning 英语思维深度训练。',
-      subheading: '导师一对一实时主导，LCS 教学体系，以 Lexile 衡量。服务高贵林及三联市地区的家庭。',
+      subheading: '导师一对一实时主导，语言循环体系，以 Lexile 衡量。服务高贵林及三联市地区的家庭。',
       context: '高贵林、满地宝、高贵林港三联市拥有规模可观且持续增长的华人移民社区。DODO Learning 在线服务高贵林的学生——与大温东部地区其他家庭享有完全相同的教学方法。',
     },
   },
@@ -217,7 +217,7 @@ export const cities = {
     },
     zh: {
       h1: '卡尔加里的家庭——DODO Learning 英语深度学习。',
-      subheading: '导师一对一实时主导，LCS 教学体系与 MCT 课程，以 Lexile 衡量。服务卡尔加里及阿尔伯塔地区的家庭。',
+      subheading: '导师一对一实时主导，语言循环体系与 MCT 课程，以 Lexile 衡量。服务卡尔加里及阿尔伯塔地区的家庭。',
       context: '卡尔加里拥有阿尔伯塔最大的华人社区，主要集中在西北和东南区域。DODO Learning 在线服务卡尔加里学生——相同的 Loop 方法论、相同的导师主导强度，服务整个加拿大西部的学生。',
     },
   },
@@ -233,7 +233,7 @@ export const cities = {
     },
     zh: {
       h1: '列治文山的家庭——DODO Learning 英语深度学习。',
-      subheading: '导师一对一实时主导，LCS 教学体系，以 Lexile 衡量。服务列治文山及约克区的家庭。',
+      subheading: '导师一对一实时主导，语言循环体系，以 Lexile 衡量。服务列治文山及约克区的家庭。',
       context: '列治文山是安大略最大的华人社区之一，沿央街从多伦多向北延伸。DODO Learning 在线服务列治文山的学生——与约克区及大多伦多其他家庭享有完全相同的教学方法。',
     },
   },
@@ -249,7 +249,7 @@ export const cities = {
     },
     zh: {
       h1: '密西沙加的家庭——DODO Learning 英语深度学习。',
-      subheading: '导师一对一实时主导，LCS 教学体系，以 Lexile 衡量。服务密西沙加及皮尔区的家庭。',
+      subheading: '导师一对一实时主导，语言循环体系，以 Lexile 衡量。服务密西沙加及皮尔区的家庭。',
       context: '密西沙加是加拿大第六大城市，拥有多元的华人社区以及来自世界各地的家庭。DODO Learning 在线服务密西沙加学生——相同的 Loop、相同的测量、同一位导师贯穿全部 16 周。',
     },
   },
@@ -265,7 +265,7 @@ export const cities = {
     },
     zh: {
       h1: '蒙特利尔的家庭——DODO Learning 英语深度学习。',
-      subheading: '导师一对一实时主导，LCS 教学体系与 MCT 课程，以 Lexile 衡量。服务蒙特利尔的多语家庭。',
+      subheading: '导师一对一实时主导，语言循环体系与 MCT 课程，以 Lexile 衡量。服务蒙特利尔的多语家庭。',
       context: '蒙特利尔的家庭面对三语环境——学校的法语、家中的普通话或粤语、加拿大跨省机会的英语。DODO Learning 在线服务蒙特利尔学生——在不牺牲孩子其他语言的前提下，构建认知深度的英语能力。',
     },
   },
@@ -281,7 +281,7 @@ export const cities = {
     },
     zh: {
       h1: '圣何塞的家庭——DODO Learning 英语深度学习。',
-      subheading: '导师一对一实时主导，LCS 教学体系，以 Lexile 衡量。服务圣何塞及南湾地区的家庭。',
+      subheading: '导师一对一实时主导，语言循环体系，以 Lexile 衡量。服务圣何塞及南湾地区的家庭。',
       context: '圣何塞是南湾华人社区的核心，集中在 Almaden、Evergreen、Berryessa 等地区。DODO Learning 在线服务圣何塞的学生——与硅谷及更广湾区其他家庭享有完全相同的教学方法。',
     },
   },
@@ -297,7 +297,7 @@ export const cities = {
     },
     zh: {
       h1: '库比蒂诺的家庭——DODO Learning 英语深度学习。',
-      subheading: '导师一对一实时主导，LCS 教学体系，以 Lexile 衡量。服务库比蒂诺及西湾地区的家庭。',
+      subheading: '导师一对一实时主导，语言循环体系，以 Lexile 衡量。服务库比蒂诺及西湾地区的家庭。',
       context: '库比蒂诺拥有美国学术竞争最激烈的学区之一，以及规模可观的华人移民社区。DODO Learning 在线服务库比蒂诺学生——为他们准备好该学区高中所要求的分析性阅读深度与学术写作能力。',
     },
   },
@@ -313,7 +313,7 @@ export const cities = {
     },
     zh: {
       h1: '尔湾的家庭——DODO Learning 英语深度学习。',
-      subheading: '导师一对一实时主导，LCS 教学体系，以 Lexile 衡量。服务尔湾及橙县地区的家庭。',
+      subheading: '导师一对一实时主导，语言循环体系，以 Lexile 衡量。服务尔湾及橙县地区的家庭。',
       context: '尔湾拥有加州历史最悠久的华人移民社区之一，以及活跃的韩国与南亚社群。DODO Learning 在线服务尔湾学生——为从尔湾联合学区到顶尖美国大学的学业路径而设的方法论。',
     },
   },
@@ -329,7 +329,7 @@ export const cities = {
     },
     zh: {
       h1: '贝尔维尤的家庭——DODO Learning 英语深度学习。',
-      subheading: '导师一对一实时主导，LCS 教学体系，以 Lexile 衡量。服务贝尔维尤及东岸地区的家庭。',
+      subheading: '导师一对一实时主导，语言循环体系，以 Lexile 衡量。服务贝尔维尤及东岸地区的家庭。',
       context: '贝尔维尤及东岸是华盛顿州最大的华人社区之一，依托科技走廊蓬勃发展。DODO Learning 在线服务贝尔维尤学生——构建贝尔维尤学区 IB 与 AP 路径所需的英语深度能力。',
     },
   },
@@ -345,7 +345,7 @@ export const cities = {
     },
     zh: {
       h1: '纽约的家庭——DODO Learning 英语深度学习。',
-      subheading: '导师一对一实时主导，LCS 教学体系，以 Lexile 衡量。服务曼哈顿、法拉盛、长岛的纽约家庭。',
+      subheading: '导师一对一实时主导，语言循环体系，以 Lexile 衡量。服务曼哈顿、法拉盛、长岛的纽约家庭。',
       context: '纽约拥有世界上最成熟的华人社区之一，横跨曼哈顿唐人街、皇后区法拉盛、长岛及威斯特彻斯特郊区。DODO Learning 在线服务纽约学生——无论孩子就读公立、磁校还是独立学校，都是相同的方法论。',
     },
   },
@@ -361,7 +361,7 @@ export const cities = {
     },
     zh: {
       h1: '波士顿的家庭——DODO Learning 英语深度学习。',
-      subheading: '导师一对一实时主导，LCS 教学体系，以 Lexile 衡量。服务剑桥、牛顿、列克星敦、布鲁克莱恩的波士顿家庭。',
+      subheading: '导师一对一实时主导，语言循环体系，以 Lexile 衡量。服务剑桥、牛顿、列克星敦、布鲁克莱恩的波士顿家庭。',
       context: '大波士顿地区的华人社区集中在剑桥、牛顿、列克星敦、布鲁克莱恩——以学术强度著称的学区。DODO Learning 在线服务波士顿学生——构建该地区 BPS、考试学校与独立学校路径所需的分析性英语能力。',
     },
   },
@@ -377,7 +377,7 @@ export const cities = {
     },
     zh: {
       h1: '休斯顿的家庭——DODO Learning 英语深度学习。',
-      subheading: '导师一对一实时主导，LCS 教学体系，以 Lexile 衡量。服务休斯顿及糖城、西休斯顿走廊的家庭。',
+      subheading: '导师一对一实时主导，语言循环体系，以 Lexile 衡量。服务休斯顿及糖城、西休斯顿走廊的家庭。',
       context: '休斯顿拥有美国南部最大的华人社区之一，集中在糖城、西休斯顿、能源走廊地区。DODO Learning 在线服务休斯顿学生——同样的方法论、同样的测量标准，对所有有稳定网络的德州家庭开放。',
     },
   },
@@ -393,7 +393,7 @@ export const cities = {
     },
     zh: {
       h1: '丹佛的家庭——DODO Learning 英语深度学习。',
-      subheading: '导师一对一实时主导，LCS 教学体系，以 Lexile 衡量。服务丹佛及山地西部地区的家庭。',
+      subheading: '导师一对一实时主导，语言循环体系，以 Lexile 衡量。服务丹佛及山地西部地区的家庭。',
       context: '丹佛的华人社区正在快速增长，许多家庭从沿海城市迁居至此。DODO Learning 在线服务丹佛学生——无论家庭定居在科罗拉多还是更广的山地西部，都是相同的方法论。',
     },
   },
@@ -406,7 +406,7 @@ export const citiesProofStats = {
     { number: '8/10', unit: '',              label: 'of families continue past the first 16-week cycle' },
   ],
   zh: [
-    { number: '1',    unit: '个年级',         label: '每个16周课程周期的平均Lexile阅读水平增长' },
+    { number: '1',    unit: '个年级',         label: '每个 16 周周期的平均 Lexile 阅读水平增长' },
     { number: '300+', unit: '个学生',         label: '自成立以来真实陪跑——Lexile真实增长，已验证的成果' },
     { number: '8/10', unit: '',              label: '的家庭在第一个16周周期后选择继续' },
   ],

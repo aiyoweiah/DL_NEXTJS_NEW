@@ -25,9 +25,10 @@ export async function generateMetadata({ params }) {
   return buildMetadata({
     locale,
     path:        '/faq',
-    title:       'FAQ — DODO Learning',
-    description:
-      'Every question parents ask before enrolling in the DODO Learning 16-Week Program — answered completely. The Loop, Navigators, Lexile measurement, enrollment, and more.',
+    title:       locale === 'zh' ? '常见问题 — DODO Learning' : 'FAQ — DODO Learning',
+    description: locale === 'zh'
+      ? '家长在报名 DODO Learning ELA 课程前会问的每一个问题——完整回答。The Loop、导师（Navigator）、Lexile（蓝思）测评、报名流程等。'
+      : 'Every question parents ask before enrolling in the DODO Learning ELA Program — answered completely. The Loop, Navigators, Lexile measurement, enrollment, and more.',
   })
 }
 
@@ -57,7 +58,7 @@ export default async function FAQPage({ params }) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(faqItems)) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(faqItems, locale)) }}
       />
       <FAQClient locale={locale} />
     </>

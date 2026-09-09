@@ -1,0 +1,4 @@
+{
+  "_comment": "IndexNow key (Wave 6 #7). The same value is the file name and the content of public/<key>.txt. Rotate both together. Submit with: npm run indexnow (after the deploy is live).",
+  "key": "02634d58a5f4587accbef6214c232d09"
+}

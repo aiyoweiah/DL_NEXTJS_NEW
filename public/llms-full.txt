@@ -41,13 +41,14 @@ The three strands that make up The LCS System curriculum architecture (introduce
 - **C — Composition (系统写作训练)**: Systematic writing training: transforming reading depth and thinking into structured, persuasive, precise writing. From sentences to academic essays.
 - **S — Speaking (表达)**: High-quality 1-on-1 discussion with the Navigator. Students clarify perspective, organise thinking, produce clear and logically rigorous spoken output.
 
-## Programme Architecture: 9 levels, 5 combinations
+**Five content strands nest under the three branches.** Under **L · Literacy**: *Literature* (whole, unabridged classics, read for craft), *Vocabulary* (the Latin and Greek roots of English — structure, not memorization) and *Poetics* (the ear for how good writing is built). Under **C · Composition**: *Grammar* (the architecture of the sentence, taught first and fast, then applied) and *Writing* (sentence → paragraph → essay → academic composition). **S · Speaking** is DODO's own strand — oral defence, Socratic dialogue, perspective-taking — with no equivalent in a curriculum of books; it is what a live Navigator adds. More than one strand is running in any given session, even when only one has the student's attention.
 
-**9 Curriculum Levels.** Each level requires 2–3 cycles. Each cycle = 16 weeks.
+## Programme Architecture: seven ELA levels, five combinations
 
-- **Starter — Little DODO (英语阅读&口语启蒙)**: Ages 5–9 (NA 5–6). Classical picture books, ~100 books at level completion.
-- **Intermediate — DODO Poodle (文学阅读&写作进阶)**: Ages 7–8. Foundational grammar, first sentence-to-paragraph work.
-- **Levels 1–7 — DODO 英语文学阅读&系统写作**: Age 8+. 3+ SAT-required classics per level, 800+ new vocabulary per level. **Level 7 = college-tier academic English capability.**
+**The ELA Level Ladder — seven levels.** DODO ELA is a seven-level ladder grounded in the gifted-ELA tradition. Each level takes 2–3 cycles; each cycle is 16 weeks. Level 1 begins at Grade 3+; **Level 7 is college-tier academic English.**
+
+- **L1 Island → L2 Town → L3 Voyage → L4 Classic Literature → L5 Lens I → L6 Lens II → L7 Lens III.** Each level reads 3+ SAT-required classics and builds 800+ new vocabulary items through the Latin and Greek roots of English.
+- **Little DODO (ages 5–8)** is a separate program, independent of the ELA ladder and of the MCT tradition: decoding-led foundational reading with dedicated early-childhood educators specializing in phonetics, fluency and pronunciation, book by book, with the love of reading as the goal. It is the starting point for ages 5–8, running alongside the ELA ladder rather than beneath it.
 
 **5 Programme Combinations.** Every combination runs the full 16-week cycle, every session runs The Loop, every student works with one dedicated Navigator. The combinations differ in weekly session count and emphasis:
 
@@ -105,7 +106,7 @@ Both lump-sum and weekly options are available for every tier.
 
 **Cancellation:** Full refund before the first session; 50% refund before week 4; no refund after week 4.
 
-**Founding Family Program:** Families who enroll during a new city's launch are recognised through the Founding Family Program — a positioning signal honouring early commitment, not a discount or limited-time offer.
+**Founding Family Program:** Families who enroll early are recognised through the Founding Family Program — a positioning signal that honours early commitment. It is never a discount and never a limited-time offer.
 
 ## Diagnostic consultation
 

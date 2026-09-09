@@ -1,6 +1,5 @@
 {
   "_comment": "DODO Learning — Canonical Translation Glossary. Embed this inside DEEPSEEK_BRIEF.md. Update here when terminology evolves.",
-
   "owned_terms": {
     "Navigators": "导师（Navigator）",
     "Navigator": "导师（Navigator）",
@@ -27,7 +26,6 @@
     "IB": "IB（保留英文）",
     "BC": "不列颠哥伦比亚省",
     "Cal.com": "Cal.com（保留英文）",
-
     "LCS": "语言循环体系",
     "LCS Teaching System": "语言循环体系（Literacy 文学精读 · Composition 系统写作训练 · Speaking 表达）",
     "DODO Method": "DODO 教学系统",
@@ -55,25 +53,21 @@
     "Janet": "Janet（创始人 — 仅用名，不使用姓氏 · 2026-08-24 起适用于所有场景，包括正式署名、法律文件、Person schema）",
     "Ms. Jennifer": "Ms. Jennifer（示例导师姓名，保留英文）",
     "Ms. Willow": "Ms. Willow（示例导师姓名，保留英文）",
-
     "Building Language": "Building Language（MCT 词根词缀课程，保留英文）",
     "Caesar's English": "Caesar's English（MCT 词源课程，保留英文）",
     "Mud Trilogy": "Mud Trilogy（MCT 古典文学三部曲，保留英文）",
     "Grammar Island": "Grammar Island（MCT 语法基础课程，保留英文）",
     "Sentence Island": "Sentence Island（MCT 句子写作课程，保留英文）",
     "Music of the Hemispheres": "Music of the Hemispheres（MCT 诗歌课程，保留英文）",
-
     "SSAT": "SSAT（保留英文，美国私校入学考试）",
     "Oxford": "牛津大学",
     "U of T": "多伦多大学",
     "Queen's": "皇后大学",
     "LSE": "伦敦政治经济学院"
   },
-
   "context_specific_overrides": {
     "About (navbar primary only)": "故事 — Only in nav.primary on /. Everywhere else (page titles, meta, prose) use 关于 in the standard 'about/regarding' sense. Footer column items like '关于 DODO' and demos row labels like '关于课程' remain unchanged."
   },
-
   "do_not_translate": [
     "All id field values — these are CSS/code keys",
     "All href and ctaHref values — these are URL paths",
@@ -84,7 +78,6 @@
     "Grade numbers: '3', '4', '5', '6', '7', '8'",
     "Week references used as codes: 'week0', 'week8', 'week16'"
   ],
-
   "forbidden_zh_words": [
     "补习班",
     "赶上",
@@ -102,7 +95,6 @@
     "强化干预",
     "介入"
   ],
-
   "voice_rules": [
     "Default voice: confident, warm, precise. Not corporate. Not promotional.",
     "Bilingualism is a natural outcome of cognitive rigor — never frame as language maintenance.",
@@ -115,7 +107,6 @@
     "Bilingual Thinker is deprecated — translate as 英语思维者 if it appears.",
     "Do not produce AI-signature ZH phrases: 综上所述 · 毋庸置疑 · 由此可见 · 综合来看."
   ],
-
   "city_name_map": {
     "Calgary": "卡尔加里",
     "Vancouver": "温哥华",
@@ -125,5 +116,48 @@
     "San Francisco Bay Area": "旧金山湾区",
     "Denver": "丹佛",
     "Shanghai": "上海"
+  },
+  "retired_terms": {
+    "_comment": "Read by scripts/check-canon.mjs (prebuild guard, ruled 2026-09-09). A term goes here in the same commit as the ruling that retires it, and leaves only with a ruling that revives it. Substring match, case-sensitive, comment lines in code skipped.",
+    "en": [
+      "16-Week Program",
+      "Poodle",
+      "9 levels",
+      "9 Curriculum Levels",
+      "Think Once. In Both",
+      "Think Twice",
+      "Janet Sui",
+      "graduate degree",
+      "graduate-degree",
+      "2021 she founded",
+      "founded in 2021",
+      "grades 3–8",
+      "grades 3-8",
+      "The Hangar",
+      "Bilingual Thinker",
+      "Charter Enrollment",
+      "LocalBusiness",
+      "globally-mobile",
+      "globally mobile",
+      "GPA tutoring",
+      "GPA management"
+    ],
+    "zh": [
+      "研究生学位",
+      "学习循环",
+      "LCS 教学系统",
+      "LCS 教学体系",
+      "LCS 教学理念",
+      "全球流动",
+      "读→思→说→写",
+      "领航员",
+      "GPA管理",
+      "GPA 辅导",
+      "双语学习者",
+      "2021 年，她",
+      "16周课程",
+      "16 周课程",
+      "十六周课程"
+    ]
   }
 }
