@@ -328,3 +328,33 @@ not applied.**
 ### D102–D105 · Applied 2026-09-09 (same afternoon)
 
 All four rulings applied on the owner's "apply", plus M1 (blog canonical). Build green, 14/14 guards; `content-audit` parity 0 · anti-dictionary 19 (baseline). **D103 landed on 16 spots, not 13** — the post-apply sweep (the D99 lesson) found the `/compare` "Longitudinal knowledge" row EN+ZH and `llms-full.zh.txt:9`, which the staged table had missed because a truncated grep hid them. Recorded in `content-review/05-geo-rulings-2026-09-09.md` § Status. **Enforced by:** still nothing mechanical — the retired strings (`graduate degree`, `研究生学位`, `2021 she founded`, `LocalBusiness`) are the first seeds for G-1 `check-canon`, now specified as an extension of `scripts/content-audit.mjs` (see `docs/geo-audit-2026-09.md` § Update).
+
+---
+
+## 2026-09-09 · "Proceed as proposed" — canon guard, IndexNow, the machine layer, the llms cascade
+
+Owner's instruction in chat: proceed with the revised next-moves list of `docs/geo-audit-2026-09.md` § Update; R3/R4 remain the owner's; R7 to be ruled from a visual sheet.
+
+### D106 · The canon guard — `check-canon`, the fifteenth guard, first in `prebuild`
+
+- **The decision.** Retired terms live in one place, `translation/dodo-glossary.json → retired_terms` (EN 21, ZH 15), added in the same commit as the ruling that retires a term and removed only by a ruling that revives it. `scripts/check-canon.mjs` scans the surfaces a reader or a crawler can reach — `content/**` (JS, MDX), all three `public/llms*.txt`, `lib/*.js`, `app/**/page|layout.*` — skips comment-only lines in code, and **fails the build on any hit**. Wired as the first `prebuild` step; `npm run check:canon -- --report` lists hits without failing.
+- **Why.** Every drift in the 2026-09-09 audit lived on surfaces `scripts/content-audit.mjs` never read (schema, metadata, the ZH llms file, page files), and that script reports rather than fails because 19 of its hits are accepted strategic contrasts. Two contracts, two scripts — by design, and stated in both headers.
+- **First run caught 34 survivors nobody had listed:** 14 compact-city ZH subheadings still on the D92-superseded "LCS 教学体系"; the ZH FAQ (7), both Terms pages (EN 3, ZH 3 "十六周课程"), two ZH stat labels and two testimonial quotes still naming the program "16周课程 / 16-Week Program"; two aria-labels in `lib/a11y.js` ("Charter Enrollment", "The 16-Week Program"); one placeholder blog bio ("双语学习者"). All fixed in the same change (`content-review/05-geo-rulings-2026-09-09.md` § Status). A guard that goes red on its first run is the validation gate D101 asked for.
+- **Enforced by:** itself. **Trigger:** G-1 in the GEO audit; owner "proceed as proposed".
+
+### D107 · IndexNow is live — the technical half of Wave 6 #7
+
+- **The decision.** An IndexNow key is served at `public/<key>.txt` (the key sits in `scripts/indexnow.json`; file name, file content and JSON value are one string — rotate all three together). `npm run indexnow` posts every `<loc>` of `out/sitemap.xml`, the ZH alternates and the three llms files to `api.indexnow.org` (Bing, Yandex, Seznam, Naver share the endpoint); `--dry-run` prints the payload. **Run it after a deploy is live, never before** — Bing fetches the key file to verify.
+- **Why.** ChatGPT's browse and Copilot read the Bing index; Bing still showed the retired tagline in the homepage title two weeks after D45 (audit O1). IndexNow replaces waiting for a crawl with a push at deploy time and needs no account. **Bing Webmaster Tools verification remains the owner's half** — it unlocks the Copilot AI Performance report the measurement skill feeds on.
+- **Enforced by:** the script exits 2 unless the key file exists and matches. **Trigger:** audit O1; index-access Gate 1.
+
+### D108 · The machine layer carries authorship, freshness, entity aliases and locale
+
+- **The decision.** `lib/schema.js`: `CONTENT_MODIFIED` (bump with every content cascade) as `dateModified` on WebSite, Course, FAQPage and CollectionPage nodes · `founderRef()` — a minimal Person `#founder` node, first name only per D35 — as `author` on the ELA Course, Little DODO Course and `/credentials`, and as `reviewedBy` on the FAQPage (the Organization is its `author`) · `alternateName` gains 都学书院 and DODO Learning Canada on the Organization and WebSite nodes · Course / FAQPage / CollectionPage / city nodes are locale-aware (`@id`, `url`, `inLanguage`, ZH names and descriptions taken verbatim from the pages' existing ZH meta copy) · S1: the grade band reads "Grade 3 through high school" on every node · S2: `buildCityMetadata` is localised and drops the retired program name · S3: `/faq` metadata is localised.
+- **Deliberately not done:** FAQPage nodes on `/program`, `/methodology`, `/little-dodo`. JSON-LD FAQ without the Q&A visible on the page breaches Google's structured-data policy. The compliant form is a visible "questions parents ask" block drawn verbatim from `faq.js` plus the node — a layout addition for a before/after ruling, queued behind R7.
+- **Why.** Every instrument run on 2026-09-09 scored the site down on the same three things: author attribution (0% outside `/about`), date signals (0%), and entity disambiguation ("Dodo Learning" and 都学 both collide). None of this authors a word of customer copy.
+- **Enforced by:** nothing mechanical `(unverified)`; `check-canon` holds the retired grade-band string. **Trigger:** audit S1/S2/S3/S6 + instrument findings.
+
+### Frozen register — applied 2026-09-09 (F1–F6, F9–F11, F13)
+
+`llms-full.txt`: seven-level ELA ladder replaces the 9-level/Poodle block (F1), five strands added (F10), Founding Family line re-worded (F13). `llms-full.zh.txt`: lead re-mirrored without 全球流动 (F3), "what it is" mirrored from EN (F6), 语言循环体系 everywhere (F2, 5 spots), Loop gloss canonical (F4), 逐句指导 (F5), seven levels (F1), five strands (F10), **research base ported** (F9 — the first ZH surface produced through the in-session path with the glossary as context), Founding Family (F13). `llms.txt`: last-updated line + `/consult` (F11; the article links wait for R3). **F12 is held for a ruling** — "2× writing gain", "10,000+ hours", "8 of 10 continue" are not in §11. F7/F8 shipped with D102/D103.

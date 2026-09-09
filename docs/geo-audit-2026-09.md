@@ -3,7 +3,7 @@
 **Date:** 2026-09-09 · **Against:** `main` = `ed9f266` (tree clean, level with origin) and the live origin `www.dodolearning.com` · **Author:** Windows hub session
 **Instruments:** every built route in `out/` parsed (120 pages: title, description, h1, JSON-LD, hreflang, canonical, alt, word counts) · live origin fetched and diffed against the repo · Cloudflare zone config read through the API (not inferred) · 18 crawler user-agents probed · Bing-backed index sampled · pixel statistics on the OG image.
 **Companion to:** `workflow.md` (the SEO + GEO source of truth — session log entry added), `llm-citations/2026-08.md` (last capture), `.design/visual-review-2026-09/DESIGN_REVIEW.md` (the visual review this does not repeat).
-**Hard constraint honoured in the first pass:** no copy, code or asset was changed. Everything below is a finding with a proposed fix; live changes go through the apply-gate as usual. **Status 2026-09-09 afternoon:** R1/R2/R5/R6 applied as D102–D105 + M1 (see § Update at the foot); R3/R4 deferred by the owner; R7 awaiting the card pick.
+**Hard constraint honoured in the first pass:** no copy, code or asset was changed. Everything below is a finding with a proposed fix; live changes go through the apply-gate as usual. **Status 2026-09-09 evening:** R1/R2/R5/R6 applied as D102–D105 + M1; D106 canon guard, D107 IndexNow, D108 machine layer and the frozen register F1–F6/F9–F11/F13 applied (§ Update 2); R3 elaborated with option D, R4 open, R7 ruling sheet published — owner's picks pending.
 
 ---
 
@@ -318,3 +318,71 @@ Composite well under 20/100. **Entity collisions are worse than the audit's O2 s
 6. **Citability copy pass** on `/methodology`, `/lexile`, `/program` (apply-gated; ZH through the new tooling).
 7. **Tracker 2026-09-24** — consider `geo-measurement`'s panel design (fixed 60–100 prompts, repeated runs, share-of-citation per engine) before the capture.
 8. Descriptive alts on meaningful images; RSS only if the blog keeps a cadence.
+
+---
+
+## Update 2 · 2026-09-09 evening — "proceed as proposed" executed; R7 ruling sheet; R3 elaborated
+
+### What shipped (build green, fifteen guards)
+
+| Item | What | Record |
+|---|---|---|
+| **Canon guard** — G-1 | `scripts/check-canon.mjs`, retired-terms list in the glossary (EN 21 · ZH 15), first in `prebuild`. **Caught 34 survivors on its first run** — 14 compact-city ZH subheadings on the superseded "LCS 教学体系", the ZH FAQ and both Terms pages still naming "16周课程 / 十六周课程 / 16-Week Program", two aria-labels, two stat labels, two testimonial quotes, one placeholder bio — all fixed. | D106 |
+| **IndexNow** — half of Wave 6 #7 | key file at the site root, `npm run indexnow` posts the sitemap + ZH alternates + llms files after a deploy. First submission after the next push goes live. Bing Webmaster verification stays with the owner. | D107 |
+| **Copy-free machine layer** | `dateModified` on page nodes · founder as `author` / `reviewedBy` · `alternateName` += 都学书院, DODO Learning Canada · Course/FAQ/credentials/city nodes locale-aware with ZH names from existing meta · S1 grade band · S2 city metadata localised (retired name gone) · S3 FAQ metadata localised. FAQPage nodes on pages without visible Q&A **not** added (policy). | D108 |
+| **Frozen register** F1–F6, F9–F11, F13 | llms-full EN+ZH re-canonised; **research base ported to ZH** (F9, the first in-session ZH surface); llms.txt last-updated + `/consult`. **F12 held** — three outcome figures are not in §11. | decision-log § Frozen register |
+| **R7 ruling sheet** | three compositions × two locales, rendered as WeChat chat card, Moments thumbnail, LinkedIn/Facebook, X dark, iMessage — the WeChat 1:1 centre-crop is the decisive frame. A centred candidate (C) was added because A and B lose the wordmark and the start of the tagline in that crop. | `.design/og-card-2026-09/` + the ruling artifact |
+
+### R7 — what the mock-up shows
+
+WeChat and Moments crop the `og:image` to a centre square. Candidates A and B place the wordmark top-left and the tagline bottom-left, so the crop keeps only the middle of the eyebrow and a fragment of the tagline. Candidate C keeps everything inside the centre 600 px and survives every frame whole. Full-width cards (LinkedIn, Facebook, X, iMessage) render all three well; B reads as a dark block on dark chat UIs, which is the failure being replaced. **Recommendation: C for both locales.** After the pick: H1–H4 wiring, then V1 (opengraph.xyz re-scan and one link shared in WeChat).
+
+### R3 elaborated — the blog decision
+
+**What the posts actually contain (checked 2026-09-09).**
+
+| Post | Byline | Words | External links | Sources named | Register | Accuracy |
+|---|---|---|---|---|---|---|
+| `lexile-asymmetry-bilingual-children` (2026-03-10, EN+ZH) | "Dr. Sarah Chen" / 陈博士 — fictional | 955 | **0** | none | "intervene/intervention" ×8, "ESL support" framing; ZH 干预 ×7 | generic; no data |
+| `what-does-lexile-score-mean` (2026-03-08, EN+ZH) | "Michael Torres" — fictional | 809 | **0** | none | "intervention" ×4; ZH 干预 ×5 | **states the stretch zone as 50–100L *above* the reader's measure; MetaMetrics defines the reader's range as 100L below to 50L above** — the post inverts the framework it explains |
+| `mct-language-arts-in-a-live-one-on-one-program` (2026-08-26, EN only) | Janet | 1,878 | **0** | Gallagher 2017, Goodwin & Ahn 2010/2013, Bowers 2010, Henry 1997 — named, not linked | on-brand, §07a frame | sound; the citations are the guide's own |
+
+Plus the index page: five dead links, a "Navigator picks" persona, 31 stock hotlinks, an unverified "500+ diagnostic calls". No blog URL appeared in the Bing-backed or web-search samples; `/en/lexile/` did. The cadence planned in May ("one pillar post every two weeks") never started.
+
+**What a blog buys in GEO terms, and only under conditions.** Three things: topical authority for the help-intent prompts (Tier B: writing improvement, IB/AP readiness, SSAT, vocabulary through classics, bilingual-to-academic writing); citable, dated, authored long-form that an engine can quote; and freshness signals. Every instrument installed today scores exactly these dimensions, and the blog fails all of them as it stands — 0% date signals, 0% author attribution outside `/about`, statistics without citations. A shell with one real post delivers none of the three and signals abandonment; the March posts subtract, because an engine that finds an inverted Lexile definition on the domain has a reason to distrust the domain for Lexile queries (tracker A7).
+
+**Four options, with consequences.**
+
+| | A · Retire everything | B · Prune to the MCT post | C · Retire `/blog`, re-home MCT as an evergreen page | D · C plus consolidation into `/lexile` |
+|---|---|---|---|---|
+| MCT asset (A6/A8) | **lost** | kept, index links it | kept at `/en/mct-language-arts/`, linked from `/credentials` + `/methodology`, citations linked, `dateModified` | same as C |
+| Lexile posts | deleted, 301 → `/lexile/` | deleted, 301 → `/lexile/` | deleted, 301 → `/lexile/` | **substance salvaged**: two rewritten sections on `/lexile/` — bilingual asymmetry; what a score means and how it moves, with the stretch zone corrected — 301s to the matching anchors |
+| Fabricated layer | gone | gone | gone | gone |
+| Tracker A7 (Lexile) | — | — | — | **`/lexile/` becomes the parent-intent Lexile answer**, on the one page already earning search presence |
+| Freshness signal | none | a dated blog with March/August entries reads dormant | evergreen page, `dateModified`, no cadence implied | same |
+| ZH | — | MCT post has no ZH; fallback notice | same; first ZH job after F9 | same, plus the two `/lexile/` sections translated through the new tooling |
+| Copy authored | none | none | none (labels removed) | **two sections of new copy** — apply-gated; a natural pilot for `audit-content` and the ZH path |
+| Effort | 1–2 h | ~2 h | ~3 h | ~4–5 h |
+
+**Recommendation: D.** It keeps the only real article, removes the fabricated layer, corrects a factual error that is live today, and strengthens the page that already earns visibility instead of splitting Lexile authority across three thin URLs. It also removes the "Blog" promise from the chrome until a cadence exists.
+
+**When to bring the blog back.** When a post ships every two weeks for a quarter, each passed through `audit-content` (fabricated statistics, dead links, brand-DNA contradictions) and carrying a real author (Janet or a named Navigator), `datePublished`/`dateModified`, linked sources and an RSS feed. Name it "Writing" rather than "Blog". Until then, the evergreen pages carry the authority.
+
+**Decision tree for the owner.**
+
+1. Will a post ship every two weeks for the next quarter? **Yes → B** (keep the route, prune, add RSS, dates, authors). **No → C or D.**
+2. Are the two Lexile topics worth keeping? **Yes → D. No → C.**
+3. Either way: M1 is already shipped; under C/D the nav and footer "Blog" links come off; `audit-content` gates any future post; the ZH MCT translation is the first job after F9.
+
+**R4 stays open** as ruled; nothing above depends on it. The `/assessment` shell is unaffected by any of A–D.
+
+### Next moves, revised again
+
+1. **R7 pick** from the ruling sheet → H1–H4 → V1.
+2. **R3 pick** (A/B/C/D above; D recommended) → the blog change as its own commit; **R4** stays open.
+3. **Push** the pending commits; then `npm run indexnow` once the deploy is live; then verify on opengraph.xyz and by sharing one link in WeChat.
+4. **Bing Webmaster Tools verification** (owner) — unlocks the Copilot AI Performance report; **Search Console** next.
+5. **Visible FAQ blocks** on `/program`, `/methodology`, `/little-dodo` drawn verbatim from `faq.js` (+ FAQPage nodes) — before/after preview for a ruling; zero new copy.
+6. **Citability copy pass** on `/methodology`, `/lexile`, `/program` — answer-first openers, question-form H2s; drafted for apply, ZH through the in-session path.
+7. **Wikidata item** + XHS/WeChat profiles for `sameAs` (owner-side accounts).
+8. **Tracker 2026-09-24**, with the `geo-measurement` panel design.

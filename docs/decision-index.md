@@ -1,9 +1,9 @@
-# Decision index — D1 … D105
+# Decision index — D1 … D108
 
-**Created:** 2026-08-30 · **Covers:** every numbered decision · **last updated 2026-09-05 (admin rulings: D62 executed, D8→D99 canon re-rule, copy batch C5–C9; D100 hero-watermark regression, D101 geometry guard ruled + built) · **2026-09-09: D102–D105 ruled on the GEO audit — founding year 2020, credential wording, areaServed-only city schema, sameAs — applied the same afternoon; R3/R4 deferred, R7 awaiting pick**
+**Created:** 2026-08-30 · **Covers:** every numbered decision · **last updated 2026-09-05 (admin rulings: D62 executed, D8→D99 canon re-rule, copy batch C5–C9; D100 hero-watermark regression, D101 geometry guard ruled + built) · **2026-09-09: D102–D105 ruled on the GEO audit — founding year 2020, credential wording, areaServed-only city schema, sameAs — applied the same afternoon; **evening: D106 canon guard (15th), D107 IndexNow, D108 machine layer — shipped; R3 elaborated, R4 open, R7 ruling sheet out**
 **Source of truth for STATUS.** The logs remain the source of truth for *content*.
 
-There are 105 decisions. Where each one's full entry lives:
+There are 108 decisions. Where each one's full entry lives:
 
 | Record | Holds |
 |---|---|
@@ -98,6 +98,8 @@ Everything here applies to new work.
 |---|---|---|---|
 | D104 | City pages: `citySchema` is `EducationalOrganization` + `areaServed` only — `LocalBusiness` type and `PostalAddress` retired | Live · **applied 2026-09-09** (§ C; built city pages emit no LocalBusiness/PostalAddress) | — |
 | D105 | `sameAs` begins — `youtube.com/@DODO-Learning` on the Organization node + footer Resources link; XHS / WeChat OA pending | Live · **applied 2026-09-09** (§ D; schema + footer EN/ZH) | — |
+| D107 | IndexNow live — key file at the site root, `npm run indexnow` after each deploy (technical half of Wave 6 #7; Bing WMT verification is the owner's) | Live · **shipped 2026-09-09**; first submission after the next deploy | script refuses to run without the key file |
+| D108 | Machine layer: `CONTENT_MODIFIED` → `dateModified` · founder `#founder` as `author`/`reviewedBy` · `alternateName` 都学书院 + DODO Learning Canada · locale-aware Course/FAQ/credentials/city nodes · grade band, city + FAQ metadata localised. Invisible FAQPage nodes deliberately not added | Live · **shipped 2026-09-09** | `check-canon` (retired grade band); rest `(unverified)` |
 
 ### Interface system
 
@@ -145,6 +147,7 @@ Everything here applies to new work.
 | D97 | The CJK source font is sticky — regeneration defaults to the manifest's source; explicit flag + banner to change the face; guard prints the source and fails half-regenerated states | Live | `check-cjk-coverage` (source-consistency, both passes) |
 | D98 | The site declares itself light — `color-scheme: light` + `colorScheme`/`themeColor` viewport meta, opting out of algorithmic darkening | Live · **amended → D100** (an unlogged edit in its executed batch) | — ⚠️ unguarded; add a built-CSS grep if it regresses |
 | D100 | The hero watermark is sized by its **wrapper** (`top`+`bottom` pinned), not the viewport — `height:100%` against an indefinite parent had collapsed the glyph to 0×0 | Live · amends **D98** · fixed `97e96fc`, confirmed on production | `check-zero-size` (**D101**, standalone) |
+| D106 | **The canon guard** — `check-canon`, first in `prebuild`; retired terms from the glossary's `retired_terms` fail the build on any reader-reachable surface; comment lines skipped. First run: 34 survivors of D92 and the ELA rename, all fixed | Live · **built and wired 2026-09-09**; the fifteenth guard | itself |
 | D101 | `check-zero-size` ships as standalone `npm run check:geometry` before promotion into the 14; two viewports (1440×900, 375×812); decorative positioned elements only | **Live** — built 2026-09-06; validation gate passed (exits 1 on `9a205a4` with 8 findings, 0 on `main`); `postbuild` promotion deliberately deferred | — n/a, it *is* the guard |
 
 ### Type & payload

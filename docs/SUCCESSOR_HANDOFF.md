@@ -9,7 +9,7 @@ pipeline corrections, video pipeline, PFP apply log, Little DODO cohesion pass).
 ## Where things stand (2026-09-05, session close)
 
 - **Site:** bilingual (EN/ZH), fully shipped, static export on Cloudflare Pages.
-  Fourteen guard passes on every build; `/consult` Lighthouse 98 desktop.
+  Fifteen guard passes on every build (the fifteenth, `check-canon`, fails on retired terms — 2026-09-09); `/consult` Lighthouse 98 desktop.
 - **The 2026-09-03 visual review is fully executed** (`.design/visual-review-2026-09/`):
   quick wins + D97 (sticky CJK source) + D98 (`color-scheme: light`) shipped 09-04;
   Wave-4 type floor + composition shipped 09-05 by admin ruling from before/after
@@ -28,7 +28,7 @@ pipeline corrections, video pipeline, PFP apply log, Little DODO cohesion pass).
   → **Wave 6 admin unblocks** (still the Tier-2 SEO critical path) → D13 homework
   (price-figure re-verification · §10 vs `/partners` "GPA Navigation" · /ops tier
   naming). Detail: `completion-plan.md` + `decision-index.md` § Open.
-- **2026-09-09 GEO audit** (`geo-audit-2026-09.md`): machine layer verified healthy at the edge; four must-fix code defects found — every blog canonical points at `/blog/undefined/`, the `/blog` index is a scaffold (5 dead links, invented bylines, pillar post unlinked), `og-default.png` is a blank rectangle also used as the Organization logo, `<html lang>` is JS-only — plus the itemised `llms-full` drift register (F1–F13, apply-gated) and seven admin rulings (R1–R7). Rulings R1/R2/R5/R6 applied the same afternoon as D102–D105 + M1 (14/14 green); R3/R4 deferred, R7 awaiting the card pick. GEO skills installed at user scope (geo-skills, gtm-engineer-skills, best-aeo-skill); GEOFlow evaluated and not installed; `writing-dna-skill` + `lieflat-less-ai-tone` installed at user scope for the future EN→ZH path.
+- **2026-09-09 GEO audit** (`geo-audit-2026-09.md`): machine layer verified healthy at the edge; four must-fix code defects found — every blog canonical points at `/blog/undefined/`, the `/blog` index is a scaffold (5 dead links, invented bylines, pillar post unlinked), `og-default.png` is a blank rectangle also used as the Organization logo, `<html lang>` is JS-only — plus the itemised `llms-full` drift register (F1–F13, apply-gated) and seven admin rulings (R1–R7). Rulings R1/R2/R5/R6 applied the same afternoon as D102–D105 + M1 (14/14 green); R3/R4 deferred, R7 awaiting the card pick. GEO skills installed at user scope (geo-skills, gtm-engineer-skills, best-aeo-skill); GEOFlow evaluated and not installed; evening: D106 canon guard, D107 IndexNow, D108 machine layer, llms register F1–F13 (F12 held) shipped; R3 elaborated (option D), R7 ruling sheet out; `writing-dna-skill` + `lieflat-less-ai-tone` installed at user scope for the future EN→ZH path.
 
 ## Read in this order
 

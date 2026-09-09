@@ -188,7 +188,7 @@ Three tiers, restructured per LLM Council session (2026-05-11):
 | B | Fix `articleSchema` locale — accept `locale` param, emit correct `inLanguage` for `/zh/blog/*` | ✅ done |
 | C | Add `WebSite` + `SearchAction` schema site-wide | ✅ done |
 | D | Draft `public/llms.txt` and `public/llms-full.txt` — user reviews | ✅ drafted, awaiting user review before push |
-| E | Add IndexNow API key file to `public/` | ⏸ blocked on user Bing registration |
+| E | Add IndexNow API key file to `public/` | ✅ **done 2026-09-09 (D107)** — key file + `npm run indexnow`; no registration needed for submission. Bing WMT verification (reports) still the user's. |
 | F | Populate `sameAs` in `educationOrgSchema` with social URLs | ⏸ blocked on user-provided URLs |
 | G | Set up citation tracker (`docs/llm-citations/`) — baseline `2026-05-baseline.md` captured | ✅ done |
 | H | Build `Person` schema for founder/Navigator + add to `/about` author entity | ⏸ blocked on founder bio decision |
@@ -327,6 +327,8 @@ this table is the detail.
 **Rulings received the same day (owner, in chat):** R1 → 2020 (D102) · R2 → degrees (D103; ten further customer-page spots found at staging) · R3 → placeholders confirmed; blog retire-vs-prune evaluated, C (re-home the MCT article as an evergreen page) recommended · R4 → `/assessment`-as-contact-page evaluated, recommended against · R5 → `areaServed` only (D104) · R6 → YouTube confirmed (D105; Open Decision #9 partially closed) · R7 → OG placeholder confirmed, four candidates in `.design/og-card-2026-09/`. Cascade staged in `content-review/05-geo-rulings-2026-09-09.md` — **apply-gated**.
 
 **Applied the same afternoon (owner: "apply approved items"):** D102–D105 + M1 shipped — 14/14 guards green, content-audit parity 0 / 19 baseline hits; D103 turned out to be 16 spots (post-apply sweep found three more). Content commit local. **R3/R4 deferred by the owner until the GEO-skills pass is read; R7 awaits the card pick.**
+
+**Evening — "proceed as proposed" executed (owner):** D106 canon guard (15th, prebuild; 34 first-run catches fixed — D92 and the ELA rename had both left survivors) · D107 IndexNow live (key file + `npm run indexnow`; first submission after the next deploy; Bing WMT verification still the owner's) · D108 copy-free machine layer (`dateModified`, founder as author/reviewedBy, `alternateName` 都学书院 + DODO Learning Canada, locale-aware Course/FAQ/credentials/city nodes, S1/S2/S3 done; invisible FAQPage nodes deliberately not added) · frozen register F1–F6, F9–F11, F13 applied, **F12 held** · R7 ruling sheet published (WeChat centre-crop decides; centred candidate C recommended) · R3 elaborated with a fourth option D (consolidate the Lexile posts into `/lexile/`; the Lexile-score post inverts the stretch zone) — owner's pick pending, R4 open. Tier-1 row E (IndexNow) → ✅ key live, submission after deploy. Guard count is now **fifteen** (7 prebuild · 8 postbuild · 11 scripts).
 
 **GEO tooling installed (user scope, Windows):** `TheSmokeDev/geo-skills` — 16 `geo-*` skills + 5 subagents (`/geo audit`, `/geo-ai-index-access`, `/geo-citability`, `/geo-brand-mentions`, `/geo-measurement`, …); `onvoyage-ai/gtm-engineer-skills` — `audit-website-aeo`, `audit-content`, `improve-aeo-geo`; `metawhisp/best-aeo-skill` (4-vector GEO Score, Python evidence collectors). `AgriciDaniel/claude-seo` evaluated and **recommended as a plugin when Wave 6 #7 (Bing Webmaster + IndexNow) starts** — not installed (hook + Python runtime, owner's call). Official plugin catalog and skills directory have nothing for GEO.
 

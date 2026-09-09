@@ -28,15 +28,18 @@ Internal documentation. Not deployed (not in `public/`, not served).
 
 ## The guards
 
-Fourteen guard passes are wired into every build — six on `prebuild` (source) and
-eight on `postbuild` (the built output in `out/`), across ten `check-*` scripts.
+Fifteen guard passes are wired into every build — seven on `prebuild` (source, starting with
+`check-canon`, the retired-terms guard) and eight on `postbuild` (the built output in `out/`),
+across eleven `check-*` scripts.
 They exist because five completeness claims in this codebase were false when written;
 see the cohesion proposal §1. *(Decision entries have numbered guards as high as #16
 under an older counting; the `package.json` wiring is the checkable fact — count it,
 don't quote it.)*
 
 ```bash
-npm run build          # runs all fourteen
+npm run build          # runs all fifteen
+npm run check:canon -- --report   # retired-term survivors, without failing
+npm run indexnow       # after a deploy is live: push sitemap URLs to Bing (IndexNow)
 npm run conformance    # measured state, never fails — quote these numbers, not prose
 npm run conformance -- --labels    # the full label triage
 ```
