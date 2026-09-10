@@ -1,6 +1,6 @@
-# Decision index — D1 … D108
+# Decision index — D1 … D109
 
-**Created:** 2026-08-30 · **Covers:** every numbered decision · **last updated 2026-09-05 (admin rulings: D62 executed, D8→D99 canon re-rule, copy batch C5–C9; D100 hero-watermark regression, D101 geometry guard ruled + built) · **2026-09-09: D102–D105 ruled on the GEO audit — founding year 2020, credential wording, areaServed-only city schema, sameAs — applied the same afternoon; **evening: D106 canon guard (15th), D107 IndexNow, D108 machine layer — shipped; R3 elaborated, R4 open, R7 ruling sheet out**
+**Created:** 2026-08-30 · **Covers:** every numbered decision · **last updated 2026-09-05 (admin rulings: D62 executed, D8→D99 canon re-rule, copy batch C5–C9; D100 hero-watermark regression, D101 geometry guard ruled + built) · **2026-09-09: D102–D105 ruled on the GEO audit — founding year 2020, credential wording, areaServed-only city schema, sameAs — applied the same afternoon; **evening: D106 canon guard (15th), D107 IndexNow, D108 machine layer — shipped; R3 elaborated, R4 open, R7 ruling sheet out** · **2026-09-09 session close: D109 OG card = candidate C; every open call consolidated in ADMIN_RULINGS.md**
 **Source of truth for STATUS.** The logs remain the source of truth for *content*.
 
 There are 108 decisions. Where each one's full entry lives:
@@ -100,6 +100,7 @@ Everything here applies to new work.
 | D105 | `sameAs` begins — `youtube.com/@DODO-Learning` on the Organization node + footer Resources link; XHS / WeChat OA pending | Live · **applied 2026-09-09** (§ D; schema + footer EN/ZH) | — |
 | D107 | IndexNow live — key file at the site root, `npm run indexnow` after each deploy (technical half of Wave 6 #7; Bing WMT verification is the owner's) | Live · **shipped 2026-09-09**; first submission after the next deploy | script refuses to run without the key file |
 | D108 | Machine layer: `CONTENT_MODIFIED` → `dateModified` · founder `#founder` as `author`/`reviewedBy` · `alternateName` 都学书院 + DODO Learning Canada · locale-aware Course/FAQ/credentials/city nodes · grade band, city + FAQ metadata localised. Invisible FAQPage nodes deliberately not added | Live · **shipped 2026-09-09** | `check-canon` (retired grade band); rest `(unverified)` |
+| D109 | OG card = candidate C (light, centred, crop-safe): `og-default.png` EN · `og-zh.png` ZH · per-locale `OG_IMAGE_DEFAULT` · `Organization.logo` = the square 512 px mark · Article fallback per locale. Closes audit M3 / ruling R7 | Live · **shipped 2026-09-09** | `(unverified)` — no pixel-variance guard |
 
 ### Interface system
 
@@ -198,12 +199,14 @@ open one.
 
 ## Open — decided in principle, unresolved in practice
 
+**The consolidated list the admin rules from is [`ADMIN_RULINGS.md`](ADMIN_RULINGS.md) (2026-09-09); this table keeps the D-numbered ones.**
+
 | D | What is open | Owner |
 |---|---|---|
 | D13 | **Partially closed 2026-09-05:** Flex 3 renamed **课业进阶自由航行 / Coursework Advancement** and **CAD stated** on every price-bearing surface (/faq, llms-full EN+ZH; /program tier list renamed) — record `content-review/04-flex3-cad.md`. **Still open:** pricing-figure re-verification against current combinations · /partners "GPA Navigation" (separate B2B product — does §10 extend there?) · /ops tools' tier naming | admin |
 | ~~D92~~ | **Ruled 2026-09-05: FULL migration, executed** — every `学习循环` gloss stripped (23 uses across marketing.zh.js / faq.js / cities.js), both superseded LCS renderings → 语言循环体系. See decision-log.md | closed |
 | — | `/compare` founder `<figure>` awaits the real embed URL (the dead play affordance was removed 2026-09-04; restoring it needs the URL) | admin |
-| — | **GEO audit R3 / R4 / R7** — blog retire-vs-prune (C recommended), `/assessment` repurpose (recommended against), OG card pick (four candidates in `.design/og-card-2026-09/`): evaluated 2026-09-09 in `content-review/05-geo-rulings-2026-09-09.md`, awaiting the owner pick. R1/R2/R5/R6 ruled → D102–D105 | admin |
+| — | **GEO audit R3 / R4** — blog A / B / C / D (D recommended) · `/assessment` (G-2 `noindex` now, G-1 explainer later; not a contact page). R7 closed by D109. Every open call, D-numbered or not, is consolidated in [`ADMIN_RULINGS.md`](ADMIN_RULINGS.md) (2026-09-09) — rule from there | admin |
 
 ### Resolved conflicts
 

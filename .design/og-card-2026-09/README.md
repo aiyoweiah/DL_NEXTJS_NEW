@@ -18,3 +18,8 @@
 **Wiring after the pick** — rows H1–H4 in `content-review/05-geo-rulings-2026-09-09.md`: overwrite `og-default.png` with the EN pick (keeps cached external references valid), add `og-zh.png`, per-locale `OG_IMAGE_DEFAULT` in `lib/metadata.js`, and `Organization.logo` → the square `web-app-manifest-512x512.png`.
 
 If the owner wants a different composition (photograph from the painted hero series, a per-page variant for the top six routes — `workflow.md:241`), that is a design pass under `.interface-design/system.md`, not a re-render of these.
+
+
+---
+
+**Ruled 2026-09-09 (owner): candidate C — light, centred.** Shipped as `public/og-default.png` (EN) and `public/og-zh.png` (ZH); `Organization.logo` → the square 512 px mark; per-locale `OG_IMAGE_DEFAULT` in `lib/metadata.js`; Article fallback image per locale. Decision D109. The other four candidates stay here for provenance.

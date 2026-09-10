@@ -386,3 +386,19 @@ Plus the index page: five dead links, a "Navigator picks" persona, 31 stock hotl
 6. **Citability copy pass** on `/methodology`, `/lexile`, `/program` — answer-first openers, question-form H2s; drafted for apply, ZH through the in-session path.
 7. **Wikidata item** + XHS/WeChat profiles for `sameAs` (owner-side accounts).
 8. **Tracker 2026-09-24**, with the `geo-measurement` panel design.
+
+## Update 3 · 2026-09-09 session close — R7 ruled and wired; the one list; handoff to the Mac
+
+### R7 → D109, wired (H1–H4)
+
+Owner's ruling: **white, centred** = candidate C for both locales. Shipped: `public/og-default.png` is the EN card (old name kept so cached references update), `public/og-zh.png` the ZH card; `OG_IMAGE_DEFAULT` per locale in `lib/metadata.js` with `image = ogImage ?? OG_IMAGE_DEFAULT[locale]`; `Organization.logo` → `web-app-manifest-512x512.png` (512 × 512); `articleSchema`'s fallback image follows the locale. Fifteen guards green. **M3 closed.**
+
+**V1 (post-deploy):** pending at the time of this commit — the result is appended below once the deploy is live.
+
+### The one list
+
+Every open call now lives in [`ADMIN_RULINGS.md`](ADMIN_RULINGS.md) — § A unblocks drafted work (blog A1, `/assessment` A2, F12, visible FAQ blocks, citability pass, image alts), § B the seven Level 2 decisions + XHS CTA vs D29, § C owner-side accounts and assets (Bing WMT, Search Console, `sameAs` URLs, Wikidata, media, bios, D13 leftovers, the logo lockup question, the 2026-09-24 tracker). The "Next moves" lists above are superseded by it.
+
+### Handoff
+
+Windows is out of the repo after this push. The cross-machine handoff is `DLCW/_handoffs/2026-09-09_windows-to-mac_session-close-geo.md` (what changed on `main`, six things that bite, skill copy commands with pinned commits, sync state); `docs/SUCCESSOR_HANDOFF.md` is refreshed; `_handoffs/TODO.md` carries the three cross-machine items (skills parity optional, Level 2 not approved to build, IndexNow/CJK routine).

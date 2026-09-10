@@ -358,3 +358,17 @@ Owner's instruction in chat: proceed with the revised next-moves list of `docs/g
 ### Frozen register — applied 2026-09-09 (F1–F6, F9–F11, F13)
 
 `llms-full.txt`: seven-level ELA ladder replaces the 9-level/Poodle block (F1), five strands added (F10), Founding Family line re-worded (F13). `llms-full.zh.txt`: lead re-mirrored without 全球流动 (F3), "what it is" mirrored from EN (F6), 语言循环体系 everywhere (F2, 5 spots), Loop gloss canonical (F4), 逐句指导 (F5), seven levels (F1), five strands (F10), **research base ported** (F9 — the first ZH surface produced through the in-session path with the glossary as context), Founding Family (F13). `llms.txt`: last-updated line + `/consult` (F11; the article links wait for R3). **F12 is held for a ruling** — "2× writing gain", "10,000+ hours", "8 of 10 continue" are not in §11. F7/F8 shipped with D102/D103.
+
+## 2026-09-09 · Session close — the OG card ruling (R7) and the one list
+
+### D109 · The OG card is candidate C — light ground, centred, crop-safe (interface + machine surface)
+
+- **The ruling** (owner, 2026-09-09, from the ruling sheet): **white, centred.** `public/og-default.png` is now the EN card (kept under the old name so every cached external reference updates), `public/og-zh.png` the ZH card; `OG_IMAGE_DEFAULT` in `lib/metadata.js` is per locale (`image = ogImage ?? OG_IMAGE_DEFAULT[locale]`); `Organization.logo` is the square 512 px "DO" mark (`web-app-manifest-512x512.png`), not the social card; `articleSchema`'s fallback image follows the locale.
+- **Why C.** WeChat chat cards and Moments crop the `og:image` to a centre square. The left-aligned candidates (A light, B dark) lose the wordmark and the start of the tagline in that crop; C keeps everything inside the centre 600 px and survives every frame whole, and reads correctly on light and dark chat UIs. The card carries locked strings only — wordmark, the §16 first-mention pair "DODO Learning · 都学书院" as an eyebrow with the lead-in quote (D54), the D36 tagline per locale, the domain — so no copy was authored.
+- **Replaces:** the uniform `#0E0E12` rectangle committed 2026-03-20 (`83830ea`) that shipped as `og:image` on all 120 routes and as the Organization logo until today (audit M3, now closed).
+- **Where the rule lives:** `lib/metadata.js` (`OG_IMAGE_DEFAULT`), `lib/schema.js` §1 logo, `.design/og-card-2026-09/README.md` (the four other candidates kept for provenance). **Enforced by:** nothing mechanical `(unverified)` — a pixel-variance check on `og-*.png` would be the guard if this ever regresses. **Trigger:** audit M3 / ruling R7 via the ruling sheet.
+- **Verified live (V1):** recorded in `geo-audit-2026-09.md` § Update 3 after the deploy.
+
+### The one list — `docs/ADMIN_RULINGS.md` (process, not a D)
+
+Every open call anyone is waiting on now lives in one file, once, with the recommendation, the default if unruled, and where the detail is: § A unblocks drafted work, § B the Level 2 blog-automation decisions, § C owner-side accounts and assets. Sessions add rows; only the admin closes them. `decision-index.md` § Open keeps the D-numbered ones and points there.
