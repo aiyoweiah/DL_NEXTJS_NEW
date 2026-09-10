@@ -25,7 +25,7 @@
 | B6 | Notification channel | Lark (existing client) or email | same |
 | B7 | Social repurposing | on by default in plan rows, or off until B8 | same |
 | B8 | **XHS assessment CTA vs D29** (open since 2026-08-26) | carve-out or consult-shaped rewrite (both drafted 2026-09-05) | BCG §13 ⚠️ |
-| B9 | **Approval to build** Level 2 (week-1 scaffolding, then the three-post Level 1 pilot) | approve after B1–B7 |  § rollout |
+| B9 | **Approval to build** Level 2 (week-1 scaffolding, then the three-post Level 1 pilot) | approve after B1–B7 | `blog-automation-level2-method.md` § rollout |
 
 ## C · Owner-side accounts and assets (nothing in the repo can do these)
 

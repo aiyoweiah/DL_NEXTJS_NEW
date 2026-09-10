@@ -393,7 +393,7 @@ Plus the index page: five dead links, a "Navigator picks" persona, 31 stock hotl
 
 Owner's ruling: **white, centred** = candidate C for both locales. Shipped: `public/og-default.png` is the EN card (old name kept so cached references update), `public/og-zh.png` the ZH card; `OG_IMAGE_DEFAULT` per locale in `lib/metadata.js` with `image = ogImage ?? OG_IMAGE_DEFAULT[locale]`; `Organization.logo` → `web-app-manifest-512x512.png` (512 × 512); `articleSchema`'s fallback image follows the locale. Fifteen guards green. **M3 closed.**
 
-**V1 (post-deploy):** pending at the time of this commit — the result is appended below once the deploy is live.
+**V1 (post-deploy, 2026-09-09 late):** verified from the live origin, not through a third-party scanner — opengraph.xyz was rate-limiting (HTTP 429) and the in-app browser pane refused external navigation this session. Verified: `/en/` and `/zh/` serve `og:image` → `og-default.png` / `og-zh.png` with per-locale `og:image:alt` and `twitter:image`; inner pages (`/en/methodology/`, `/zh/faq/`) follow the locale; both PNGs return 200 `image/png` and are byte-identical to the repo (sha1 `60b53cb…` EN, `1795632…` ZH); the served images, inspected: light ground, centred lockup, eyebrow pair, tagline per locale, domain — candidate C as ruled. The live Organization `logo` is the 512 px mark. IndexNow re-submitted after the deploy (79 URLs, HTTP 200). **Still the owner's:** share one `/en/` and one `/zh/` link in WeChat (chat + Moments) and re-scan both on opengraph.xyz once it stops rate-limiting; WeChat's cached card can take up to a day to refresh.
 
 ### The one list
 
