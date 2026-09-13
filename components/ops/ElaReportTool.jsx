@@ -665,7 +665,14 @@ export default function ElaReportTool() {
         const el = document.getElementById(id);
         if (!el) throw new Error(`#${id} not found`);
         fitPageContent(el);
-        return html2canvas(el, { scale: 2, useCORS: true, backgroundColor: B.cream, logging: false });
+        // html2canvas parses this option with its own CSS parser, which has no
+        // document to resolve var() against: a tokenised B.cream reaches it as
+        // the literal 'var(--color-whisper)' and throws. The page's computed
+        // background is that same colour, already substituted.
+        return html2canvas(el, {
+          scale: 2, useCORS: true, logging: false,
+          backgroundColor: getComputedStyle(el).backgroundColor,
+        });
       };
 
       const pdf = new jsPDF("p", "mm", "a4");
